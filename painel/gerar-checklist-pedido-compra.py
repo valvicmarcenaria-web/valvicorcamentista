@@ -139,8 +139,8 @@ __FONTES__
     <div class="marca">valvic<small>Marcenaria</small></div>
     <h1>Um item mal escrito<br>vira <b>retrabalho na obra</b>.</h1>
     <div class="sub">Este folder é o padrão da casa para pedido de compra. Todo item pedido a qualquer
-    fornecedor precisa das <b>oito informações da frente</b>. Conforme a família do material, somam-se os
-    campos do verso. <b>Pedido com item incompleto não é enviado</b> — volta para quem pediu.</div>
+    fornecedor precisa das <b>oito informações abaixo</b>, sem exceção.
+    <b>Pedido com item incompleto não é enviado</b> — volta para quem pediu.</div>
   </div>
 
   <div class="faixa g">1 · As oito que todo item precisa ter</div>
@@ -157,39 +157,9 @@ __EXEMPLOS__
   três semanas depois, com a chapa já cortada.</div>
 __RODAPE__
 
-<div class="sheet">
-  <div class="topo">
-    <div class="marca">valvic<small>Marcenaria</small></div>
-    <div class="doc"><h2>Pedido de compra</h2>
-      <div class="m">O que cada família de material exige a mais</div></div>
-  </div>
-
-  <div class="faixa g">3 · Campos obrigatórios por família de material</div>
-  <table class="tb">
-    <tr><th style="width:24px">OK</th><th style="width:148px">Família</th><th>Além das oito, informe também</th></tr>
-__FAMILIAS__
-  </table>
-
-  <div class="faixa">4 · Antes de enviar, responda</div>
-  <div class="cab">__CONFERIR__</div>
-
-  <div class="faixa">5 · Os quatro erros que mais custam caro</div>
-  <div class="erros">
-__ERROS__
-  </div>
-
-  <div class="bloco" style="margin-top:9px"><b>Onde isto se aplica.</b> Vale para compra de material de
-  produção, de insumo, de ferramenta, de serviço de terceiro e de item de obra. <b>Orçamento recebido do
-  fornecedor também se confere por esta lista</b>: se a proposta dele não traz marca, código e acabamento,
-  ela não pode ser comparada com a de outro fornecedor nem aprovada.</div>
-__RODAPE__
-
 </body>
 </html>'''
   .replace('__CSS__', CSS)
   .replace('__OBRIGATORIAS__', obrig_html)
   .replace('__EXEMPLOS__', ex_html)
-  .replace('__FAMILIAS__', fam_html)
-  .replace('__CONFERIR__', duas(CONFERIR))
-  .replace('__ERROS__', err_html)
   .replace('__RODAPE__', RODAPE))

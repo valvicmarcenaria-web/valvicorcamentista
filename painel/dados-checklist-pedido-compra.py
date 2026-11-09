@@ -4,13 +4,13 @@
 OBRIGATORIAS = [
  ('01', 'Descrição do item', 'O nome do produto como o fornecedor o chama, não como a gente chama internamente.'),
  ('02', 'Marca / fabricante', 'Quem fabrica. "MDF branco" não é pedido — Duratex, Arauco, Guararapes e Sudati têm branco diferente.'),
- ('03', 'Cor e acabamento', 'Nome <b>e</b> código. Fosco, acetinado, brilho, texturizado — o acabamento muda a peça e muda o preço.'),
- ('04', 'Dimensão', 'Espessura, largura, comprimento, diâmetro, curso. Na unidade certa, com a unidade escrita.'),
- ('05', 'Unidade de compra', 'Chapa, metro linear, metro quadrado, rolo, peça, par, jogo, quilo, litro. Nunca "um".'),
- ('06', 'Quantidade', 'Número inteiro na unidade do item 05, com a sobra técnica já considerada.'),
- ('07', 'Destino', 'Obra, cliente ou setor. É o que permite jogar o custo no projeto certo depois.'),
- ('08', 'Iluminação: kelvin e voltagem',
+ ('03', 'Iluminação: kelvin e voltagem',
   'Havendo qualquer tipo de iluminação, <b>temperatura de cor em kelvin e voltagem são obrigatórias</b>. Sem elas, não compre.'),
+ ('04', 'Cor e acabamento', 'Nome <b>e</b> código. Fosco, acetinado, brilho, texturizado — o acabamento muda a peça e muda o preço.'),
+ ('05', 'Dimensão', 'Espessura, largura, comprimento, diâmetro, curso. Na unidade certa, com a unidade escrita.'),
+ ('06', 'Unidade de compra', 'Chapa, metro linear, metro quadrado, rolo, peça, par, jogo, quilo, litro. Nunca "um".'),
+ ('07', 'Quantidade', 'Número inteiro na unidade do item 06, com a sobra técnica já considerada.'),
+ ('08', 'Destino', 'Obra, cliente ou setor. É o que permite jogar o custo no projeto certo depois.'),
 ]
 
 EXEMPLOS = [
