@@ -17,6 +17,11 @@
      Blum         Corrediça Blum R$ 300          · Dobradiça Blum R$ 50
    O articulador das básculas, os pistões e a dobradiça da porta de vidro são
    os mesmos nas três.
+⭐ [Jonathan, 09/11/2026] SALA: "rack com a torre de nichos" e "portas com
+   sistema mão amiga", separados. E um item de PREÇO FECHADO, sem levantamento:
+   "cozinha existente: troca das portas dos armários inferiores, fabricação de
+   módulo complementar, tudo em MDF Branco TX, puxador de cava Rometal. Preço de
+   venda R$ 2.500" — o mesmo valor nas três linhas, fora da conta de MC.
 ⭐ O custo de cada item leva a sua parte da sobra de chapa, do corte e dos
    consumíveis pela fração de chapa e fita que ele usa (que não muda de linha),
    e 2% de embalagem sobre o próprio custo. A soma, na Hettich, tem de dar o
@@ -105,8 +110,15 @@ for x in TAB['Hettich']:
     assert TAB['Telescópica'][x]['pv'] <= TAB['Hettich'][x]['pv'] + 0.01 <= TAB['Blum'][x]['pv'] + 0.02, x
 
 
-def total(lin, amb=None):
-    return sum(v['pv'] for (a, _m), v in TAB[lin].items() if amb in (None, a))
+# ⭐ preço FECHADO pelo Jonathan, sem levantamento: entra igual nas três linhas
+FIXOS = {('Cozinha existente', 'Troca das portas dos inferiores e módulo complementar'): 2500.0}
+
+
+def total(lin, amb=None, fixos=True):
+    t = sum(v['pv'] for (a, _m), v in TAB[lin].items() if amb in (None, a))
+    if fixos:
+        t += sum(v for (a, _m), v in FIXOS.items() if amb in (None, a))
+    return t
 
 
 def custo(lin, amb=None):
@@ -124,7 +136,11 @@ if __name__ == '__main__':
                 f"{TAB[l][(a, m)]['pv']:>12,.0f}" for l in LINHAS))
         print(f"    {'subtotal':52s}" + ''.join(f'{total(l, amb):>12,.0f}' for l in LINHAS))
         print(f"    {'custo direto':52s}" + ''.join(f'{custo(l, amb):>12,.0f}' for l in LINHAS))
+    for (a, m), v in FIXOS.items():
+        print(f'\n{a.upper()} · preço fechado')
+        print(f"    {m[:52]:52s}" + ''.join(f'{v:>12,.0f}' for l in LINHAS))
     print(f"\n    {'TOTAL':52s}" + ''.join(f'{total(l):>12,.0f}' for l in LINHAS))
-    print(f"    {'custo direto':52s}" + ''.join(f'{custo(l):>12,.0f}' for l in LINHAS))
-    print(f"    {'MC efetiva':52s}" + ''.join(f'{(BASE - custo(l) / total(l)) * 100:>11.1f}%' for l in LINHAS))
+    print(f"    {'custo direto do levantado':52s}" + ''.join(f'{custo(l):>12,.0f}' for l in LINHAS))
+    print(f"    {'MC efetiva do levantado':52s}" + ''.join(
+        f'{(BASE - custo(l) / total(l, fixos=False)) * 100:>11.1f}%' for l in LINHAS))
     print('  ◆ = item com corrediça ou dobradiça da linha')

@@ -294,4 +294,58 @@ gavetas(it, 1, 94.6, 34.6, 50, frente=FR15, rotulo='Gavetão')
 P(it, 'Acabamento superior', 'faixa de 5 até o forro', 95, 5, 1, FR15, 0.95)
 soculo(it, 92, 58, 10)
 
-AMBIENTES = ['Cozinha', 'Gourmet']
+# ════════════════════════════════════════════════════════════════════════
+# 03 · SALA  [Jonathan, 09/11/2026]
+#   "coloquei mais duas imagens na pasta · vamos separar pelos seguintes itens:
+#    rack com a torre de nichos · portas com sistema mão amiga"
+#   Drive, pasta haverson: painel_e_portas.jpeg (render) e
+#   painel_e_portas_det..jpeg (elevação cotada).
+#   Rack: 355 = 20 (ponta boleada) + 2 × 67,75 (vidro) + 3 × 64,80 (MDF) · 50 de
+#   altura com a base recuada e LED por baixo · grafite.
+#   Torre: 40 × 260 · cinco vãos de 48,76, o de baixo é do subwoofer · Freijó.
+#   Portas: 2 × 115 × 260, de correr, Freijó, puxador concha redondo.
+#   ⚠ NENHUMA PROFUNDIDADE COTADA: rack e torre lançados com 45.
+# ════════════════════════════════════════════════════════════════════════
+GR15, GR18, GR6 = 'MDF Grafite 15', 'MDF Grafite 18', 'MDF Grafite 6'
+
+it = item('Sala', 'Rack com a torre de nichos', 'rack 355 × 50 × 45 · torre 40 × 260 × 45',
+          'elevação: 20 + 67,75 + 67,75 + 64,80 × 3 = 355 · 50 de altura com a base recuada · '
+          'torre de 40 com cinco vãos de 48,76 · profundidade não cotada, lançada com 45')
+# o rack, em grafite por dentro e por fora (o vidro mostra o interior)
+P(it, 'Rack · tampo', 'Grafite 18 · 355 não sai de chapa: duas peças, emenda sobre a divisória',
+  177.5, 45, 2, GR18, 1.775 + 0.45)
+P(it, 'Rack · base', 'Grafite 15 · duas peças', 177.5, 43, 2, GR15, 1.775)
+P(it, 'Rack · lateral e divisória', 'Grafite 15 · as duas pontas e as cinco divisões', 40, 43, 7, GR15,
+  0.40)
+P(it, 'Rack · fundo', 'Grafite 6 · duas peças, encaixe em rasgo', 177.5, 40, 2, GR6)
+prateleiras(it, 5, 66, 43, GR15, 'uma por vão, atrás das portas')
+giro(it, 3, 64.6, 39.6, frente=GR15, obs='Grafite 15 · puxador em cava no alto')
+T(it, 'Rack · porta de vidro reflecta bronze', 'perfil metálico e cava no alto · folha pronta',
+  67.55, 39.6, 2, 'Porta de vidro reflecta bronze')
+F(it, 'Dobradiça de porta de vidro', 'duas por folha', 4, 'un', 'Dobradiça vidro')
+F(it, 'Ponta boleada do rack', 'a ponta esquerda arredondada: lateral curva em MDF flexível '
+  'revestido no grafite', 1, 'un', 'Canto boleado')
+P(it, 'Rack · base recuada', 'Grafite 15 · h 8, recuada da frente para a luz correr por baixo',
+  170, 8, 2, GR15, 1.70)
+F(it, 'LED conjunto', 'fita e perfil sob o rack, ao longo da base recuada', 3.55, 'm', 'LED conjunto')
+F(it, 'Perfil de proteção de piso', 'na base recuada', 3.40, 'm', 'Perfil de proteção de piso')
+# a torre de nichos, em Freijó, do piso ao teto
+P(it, 'Torre · lateral', 'Freijó 18 · do piso ao teto', 260, 45, 2, FR18, 2.60)
+P(it, 'Torre · horizontal', 'Freijó 18 · topo, base e as quatro prateleiras FIXAS: o LED corre por '
+  'baixo', 36.4, 45, 6, FR18, 0.364)
+P(it, 'Torre · fundo', 'Freijó 6 · o fundo aparece nos nichos', 256.4, 36.4, 1, FR6)
+F(it, 'LED conjunto', 'perfil com abas sob as quatro prateleiras dos nichos', round(4 * 0.364, 2),
+  'm', 'LED conjunto')
+F(it, 'Fonte de LED', 'uma para o rack e a torre', 1, 'un', 'Fonte de LED')
+F(it, 'Perfil de proteção de piso', 'na base da torre', 0.40, 'm', 'Perfil de proteção de piso')
+
+it = item('Sala', 'Portas de correr com sistema mão amiga', '2 × 115 × 260',
+          'elevação: 115 + 115 = 230 · 260 do piso ao teto · as duas folhas abrem juntas')
+P(it, 'Porta de correr', 'Freijó 18 · as duas faces em Freijó, fita nas quatro bordas', 258, 115, 2,
+  FR18, 2 * (2.58 + 1.15))
+F(it, 'Sistema de correr mão amiga', 'as duas folhas correm sincronizadas · trilho, roldanas e '
+  'sincronizador para folhas de até 80 kg', 1, 'cj', 'Sistema mão amiga')
+F(it, 'Desempenador de porta', 'dois por folha: passa de 70 cm', 4, 'un', 'Desempenador de porta')
+cava(it, [100, 100], obs='puxador concha redondo, usinado na folha · um por folha')
+
+AMBIENTES = ['Cozinha', 'Gourmet', 'Sala']

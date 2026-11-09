@@ -28,20 +28,27 @@ PRECO = {'MDF Azul 18': 700, 'MDF Azul 15': 550, 'MDF Freijó 18': 700, 'MDF Fre
          # ⭐ referência confirmada em obra (Kenia e Fábio): reflecta bronze, perfil bronze,
          #   puxador e furos, cerca de R$ 660 o m² · ⚠ cotar com o vidraceiro
          'Porta de vidro reflecta bronze': 660,
-         'Corte por chapa': 2, 'Corte por peça': 2.5, 'Frete': 200}
+         'Corte por chapa': 2, 'Corte por peça': 2.5, 'Frete': 200,
+         # [09/11/2026] a sala: grafite na linha Melamínico Fosco, e três chaves ⚠ A COTAR
+         'MDF Grafite 18': 700, 'MDF Grafite 15': 550, 'MDF Grafite 6': 350,
+         'Desempenador de porta': 100, 'Sistema mão amiga': 2200, 'Canto boleado': 350}
 AREA, APROV, CONS, EMB = 5.0875, 0.80, 0.06, 0.02
 # ⭐ frete é a célula AMARELA, digitada pelo Jonathan na planilha [06/11/2026]
-VIAGENS = {'Cozinha': 1, 'Gourmet': 1}
+VIAGENS = {'Cozinha': 1, 'Gourmet': 1, 'Sala': 1}
 ABAS = [('Cozinha', '01 Cozinha', 102, 'Folhas 01 a 04 · planta e elevações A, B, C e D'),
-        ('Gourmet', '02 Gourmet', 103, 'Folhas 05 a 07 · planta e elevações A e B')]
+        ('Gourmet', '02 Gourmet', 103, 'Folhas 05 a 07 · planta e elevações A e B'),
+        ('Sala', '03 Sala', 104, 'render e elevação painel_e_portas, de 09/11/2026')]
 SUB = {
  'Cozinha': 'armários inferiores sob a bancada existente, torre quente, superiores, bancada em MDF com nicho da adega, armário e máscara da geladeira, painel do piso ao teto e colmeia de vinhos na ilha · MDF Azul a definir por fora, Branco por dentro · três linhas de ferragem: a aba mostra a Hettich',
  'Gourmet': 'cristaleira de vidro reflecta bronze, torre quente, nicho e superior com básculas em Freijó Puro · inferiores em Azul sob a bancada existente · três linhas de ferragem: a aba mostra a Hettich',
+ 'Sala': 'rack grafite com portas de vidro reflecta bronze e LED por baixo, torre de nichos em Freijó do piso ao teto, e duas portas de correr em Freijó com sistema mão amiga',
 }
 FORA = {
  'Cozinha': ['⛔ PEDRA: a bancada existente, o complemento de bancada, a ilha e a FRENTE dos sóculos ("no mesmo material da bancada")',
              'Cooktop, coifa, cubas, geladeira, micro-ondas, forno e a adega de 33 garrafas',
              'O sóculo existente sob as bancadas de pedra'],
+ 'Sala': ['Televisão, subwoofer e o revestimento da parede da TV',
+          'O que está atrás das portas de correr'],
  'Gourmet': ['⛔ PEDRA: as bancadas existentes, o frontão e a FRENTE dos sóculos',
              'Churrasqueira, cubas, micro-ondas, forno e a adega existente',
              'A bancada de alvenaria existente da parede da direita'],
@@ -59,6 +66,14 @@ DUV = {
              '⚠ OS SUPERIORES SOBRE A BANCADA têm 60 de profundidade, lidos do corte B. Se forem de 35, a chapa cai.',
              '⚠ COLMEIA DE VINHOS: a ilha tem 44 de profundidade e a prancha não cota a colmeia; lançada com 40. A meia-madeira das divisórias é usinagem de CNC sem preço na Base. ⚠ A regra dos 80% compra DUAS chapas de Freijó 18 só para ela, mas o plano de corte mostra que cabe em UMA: quatro tiras de 40, três horizontais ou quatro verticais em cada. Se a produção confirmar, saem R$ 700 e o corte de uma chapa.',
              '⚠ PORTA-TEMPEROS: lançado como gaveta estreita de MDF com três bandejas. Se for aramado, é outro preço.'],
+ 'Sala': ['⭐ ITENS NOVOS [Jonathan, 09/11/2026]: "rack com a torre de nichos" e "portas com sistema mão amiga", lidos do render e da elevação que ele pôs na pasta do Drive.',
+          '⚠ NENHUMA PROFUNDIDADE COTADA: rack e torre lançados com 45. A elevação cota só larguras e alturas.',
+          '⚠ SISTEMA MÃO AMIGA: as duas folhas correm sincronizadas. R$ 2.200 é estimativa (kit para duas portas de até 80 kg mais o sincronizador): não achei o kit com esse nome à venda. A COTAR.',
+          '⚠ PORTAS DE 115 × 260 EM FREIJÓ 18: folha alta e larga, com dois desempenadores cada (a regra da casa para porta de correr de 70 ou mais). Cada folha come quase uma chapa inteira.',
+          '⚠ PONTA BOLEADA DO RACK: a ponta esquerda é arredondada. R$ 350 pela lateral curva em MDF flexível revestido, sem preço na Base. A COTAR.',
+          '⚠ TAMPO DE 355 NÃO SAI DE CHAPA: duas peças com emenda sobre a divisória. Se o cliente não aceitar a emenda, o tampo vira peça especial.',
+          '⚠ PORTAS DE VIDRO DO RACK: reflecta bronze com perfil, o mesmo preço da cristaleira do gourmet (R$ 660 o m²).',
+          '⚠ GRAFITE no preço da linha Melamínico Fosco (550 a de 15, 700 a de 18). A torre e as portas, no Freijó do gourmet.'],
  'Gourmet': ['⚠ PORTA DE VIDRO REFLECTA BRONZE com perfil bronze: R$ 660 o m², a referência confirmada em obra (Kenia e Fábio). ⛔ Cotar com o vidraceiro, com o puxador bronze a definir.',
              '⚠ AS BÁSCULAS DO SUPERIOR ABREM PARA CIMA: articulador da casa (AVENTOS HK-XS, R$ 250). O mesmo nas três linhas.',
              '⚠ AS BÁSCULAS DA PIA ABREM PARA BAIXO, como na cozinha.',

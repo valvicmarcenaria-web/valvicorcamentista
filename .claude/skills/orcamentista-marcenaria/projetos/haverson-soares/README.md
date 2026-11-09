@@ -49,6 +49,34 @@ cartão. A base fica em **76,09%**, a mesma do Attos.
 **Chapas e sobra:** são 32 chapas, 18 na cozinha e 14 no gourmet. A sobra pesa
 R$ 3.395, porque cada cor e espessura compra chapa cheia por ambiente.
 
+## A sala e a cozinha existente · 09/11/2026
+
+⭐ [Jonathan] "coloquei mais duas imagens na pasta [...] vamos separar pelos seguintes
+itens: rack com a torre de nichos · portas com sistema mão amiga". As imagens estão na
+pasta `haverson` do Drive: `painel_e_portas.jpeg` (render) e `painel_e_portas_det..jpeg`
+(elevação cotada).
+- **Rack:** 355 × 50, em grafite. Ponta esquerda boleada, duas portas de vidro reflecta
+  bronze, três portas de MDF com cava e LED sob a base recuada.
+- **Torre de nichos:** 40 × 260, em Freijó. Quatro nichos com LED e o vão do subwoofer.
+- **Portas:** duas de correr de 115 × 260, em Freijó, com puxador concha e o sistema
+  mão amiga, em que as duas folhas abrem juntas.
+- ⚠ Nenhuma profundidade está cotada: rack e torre foram lançados com 45.
+- ⚠ A cotar: o sistema mão amiga (R$ 2.200, estimado) e a ponta boleada (R$ 350).
+
+⭐ [Jonathan] "cozinha existente: troca das portas dos armários inferiores, fabricação de
+módulo complementar, tudo em MDF Branco TX, puxador de cava Rometal. Preço de venda
+R$ 2.500". É preço fechado, sem levantamento, igual nas três linhas (`FIXOS` no
+`precos.py`).
+
+| Ambiente | Telescópica | Hettich | Blum |
+|---|---:|---:|---:|
+| Cozinha | 29.005 | 39.940 | 52.727 |
+| Gourmet | 28.153 | 34.509 | 42.755 |
+| Sala · rack com a torre de nichos | 13.711 | 15.530 | 17.876 |
+| Sala · portas com sistema mão amiga | 12.582 | 12.582 | 12.582 |
+| Cozinha existente (preço fechado) | 2.500 | 2.500 | 2.500 |
+| **Total** | **85.950** | **105.060** | **128.440** |
+
 ## As pranchas (`pranchas/`)
 
 | Folha | O que é |
