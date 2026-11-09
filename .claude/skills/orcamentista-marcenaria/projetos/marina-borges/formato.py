@@ -240,8 +240,33 @@ def pedidos(sid, linhas):
 LARGURAS = [('A', 0, 1, 28), ('B', 1, 2, 300), ('C', 2, 3, 430), ('D-K', 3, 11, 100)]
 
 
+#   ⛔ A ABA REESCRITA NÃO COMEÇA LIMPA. Ela já tem o formato da versão
+#     anterior, e a anterior era MAIS LONGA: tirar o Branco TX encolheu as
+#     nove abas de 781 para 760 linhas. Sem zerar antes, o que sobra fica
+#     com seção, borda e fundo de um conteúdo que não existe mais — e a
+#     mescla antiga impede a nova de entrar.
+LIMPA = 820
+
+
+def zera(sid):
+    """Desfaz a mescla e devolve a folha inteira ao estilo base, antes de
+    qualquer pedido de formato. Sem isto, formatar é pintar por cima."""
+    faixa = {'sheetId': sid, 'startRowIndex': 0, 'endRowIndex': LIMPA,
+             'startColumnIndex': 0, 'endColumnIndex': 11}
+    return [{'unmergeCells': {'range': faixa}},
+            {'repeatCell': {'range': faixa, 'fields': 'userEnteredFormat',
+                            'cell': {'userEnteredFormat': {
+                'textFormat': {'fontFamily': 'Arial', 'fontSize': 10,
+                               'bold': False,
+                               'foregroundColorStyle': {'rgbColor': dict(TINTA)}},
+                'backgroundColorStyle': {'rgbColor': dict(BRANCO)},
+                'horizontalAlignment': 'LEFT', 'verticalAlignment': 'MIDDLE',
+                'wrapStrategy': 'CLIP'}}}}]
+
+
 def pagina(sid, n):
-    R = [{'updateSheetProperties': {'properties': {
+    R = zera(sid)
+    R += [{'updateSheetProperties': {'properties': {
         'sheetId': sid, 'gridProperties': {'frozenRowCount': 2,
                                            'hideGridlines': True}},
         'fields': 'gridProperties.frozenRowCount,gridProperties.hideGridlines'}}]

@@ -124,7 +124,7 @@ NOTAS = {
    'AS NOVE FOLHAS NÃO SÃO DE MDF. São perfil de alumínio dourado com vidro, de piso '
    'a teto, nas três vistas.',
    '⭐ Por isso o interior sai em Cipres: com porta de vidro, o interior é fachada. '
-   '⭐ As nove folhas correm em esquadria de alumínio com PERFIL SLIM DE 25 mm '
+   '⭐ As nove folhas se fecham em esquadria de alumínio com PERFIL SLIM DE 25 mm '
    '[Jonathan, 09/11/2026] — leveza na moldura e o vidro como o que se vê.',
    '⭐ A vista 9C é sapateira de PRATELEIRA INCLINADA: 8 × 22,50 = 180 por coluna, '
    'duas colunas, 16 prateleiras com encaixe usinado em ângulo.',
@@ -242,11 +242,20 @@ def linhas_ambiente(nome, d, T):
     L.append(['Frete · R$ 200 a viagem', '⭐ A QUANTIDADE É DIGITADA: quantas '
               'viagens este ambiente leva.', lv.VIAGENS[nome], 'viagem',
               round(fr, 2), 0])
-    chapa_fita = sum(r[4] for r in L if r[0].startswith(('MDF', 'Fita')))
+    #   ⛔ 'Fita LED' TAMBÉM COMEÇA COM 'Fita'. O consumível de 6% é sobre
+    #     chapa e FITA DE BORDA; a de LED é iluminação, e entrava aqui
+    #     inflando o consumível do Closet em R$ 216,00 — o prefixo cego de
+    #     novo, agora na soma que ninguém confere.
+    chapa_fita = sum(r[4] for r in L
+                     if r[0].startswith(('MDF', 'Fita de borda')))
     cons = chapa_fita * b.CONSUMIVEIS
     L.append(['Consumíveis', '6% sobre chapa e fita', b.CONSUMIVEIS, '%',
               round(cons, 2), 0])
-    emb = (custo_mat + corte) * b.EMBALAGEM
+    #   ⛔ A BASE DA EMBALAGEM TEM DE SER A MESMA do _item() em
+    #     levantamento.py: lá ela incide sobre TUDO menos o frete, o
+    #     consumível incluído. Faltando o consumível aqui, a seção ① da aba
+    #     não fechava com o CUSTO DIRETO DO AMBIENTE logo abaixo dela.
+    emb = (custo_mat + corte + cons) * b.EMBALAGEM
     L.append(['Embalagem', '2% sobre o custo direto', b.EMBALAGEM, '%',
               round(emb, 2), 0])
     tot = d['direto']
@@ -387,7 +396,7 @@ DUVIDAS = {
  ],
  '09 Quarto': [
    '⚠ O "sistema de porta retrátil" do baú saiu a R$ 900, o mesmo do sistema de correr '
-   'Blum. Porta retrátil de verdade (que entra na lateral) é outro ferragem e é mais '
+   'SI Ocean 80, da Siforma — ⛔ Blum e Siforma são fabricantes diferentes. Porta retrátil de verdade (que entra na lateral) é outro ferragem e é mais '
    'cara. Confirmar o que a arquiteta quer.',
    '⚠ R$ 900 DE MARGEM, A NOSSO FAVOR · O RODAPÉ. A prancha pede RODAPÉ INOX h = 2 em cinco '
    'folhas, e orcei inox a R$ 85 o metro, que a Base tem. ⛔ Mas a regra da casa '
