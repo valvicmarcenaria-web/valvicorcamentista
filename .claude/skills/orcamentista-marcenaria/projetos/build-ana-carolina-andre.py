@@ -40,7 +40,7 @@ CLIENTE = 'Ana Carolina e André'
 ARQ = 'Ana Maria'
 OBRA = 'Ed. La Concordia · Funcionários'
 DATA = 'Novembro de 2026'
-PRAZO, VALIDADE = '60 dias corridos', '7 dias úteis'
+PRAZO, VALIDADE = '60 dias corridos', '3 dias corridos'   # [Jonathan, 09/11/2026]
 GAR = '30'
 
 br = lambda v: 'R$ ' + f'{v:,.2f}'.replace(',', '@').replace('.', ',').replace('@', '.')
@@ -397,7 +397,8 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
  <div class="three">
   <div>
    <div class="term"><div class="k">Validade desta proposta</div><div class="v">{E(VALIDADE)}</div>
-     <div class="s">A partir desta data.</div></div>
+     <div class="s">A partir desta data. É por esse tempo que conseguimos reservar a vaga
+       na agenda da fábrica que sustenta a entrega em {E(PRAZO)}.</div></div>
    <div class="term"><div class="k">Prazo de execução</div><div class="v">{E(PRAZO)}</div>
      <div class="s">Contados a partir da medição técnica no local, não da assinatura. A
        medição tem data própria no cronograma.</div></div>
