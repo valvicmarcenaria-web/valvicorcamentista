@@ -74,29 +74,40 @@ def roda(dob, cor, pul):
         return [float(x) for x in r.stdout.split()]
 
 
-if __name__ == '__main__':
+BASE = 1 - 0.239125              # o que sobra do preço para custo e margem
+DIA = 4000.0                     # custo fixo da fábrica, por dia de calendário
+
+
+def tabela(mc):
+    """⭐ A MC aqui é a REALIZADA, a que vale no preço — não a alvo da
+    planilha, que sai cinco pontos abaixo por causa do piso do "Médio"."""
     P = b.PRECO_FECHADO
-    BASE = 1 - 0.239125          # o que sobra do preço para custo e margem
-    print('═' * 102)
-    print('CHARBEL CHELALA · O MESMO PROJETO EM CADA DEGRAU DA ESCADA DA CASA')
+    print('═' * 108)
+    print('CHARBEL CHELALA · A ESCADA DE LINHAS A UMA MC DE %.0f%%' % (mc * 100))
     print('  nove ambientes, 38 itens, 496 peças · a marcenaria não muda, '
           'só a ferragem de movimento')
-    print('═' * 102)
-    print('  %-24s %11s %13s %14s %14s %6s %8s'
-          % ('LINHA', 'FERRAGEM', 'CUSTO DIRETO', 'PREÇO · MC 57%',
-             'MARGEM A 625k', 'MC', 'GARANTIA'))
-    print('─' * 102)
+    print('═' * 108)
+    print('  %-24s %13s %14s %14s %11s %10s %8s'
+          % ('LINHA', 'CUSTO DIRETO', 'PREÇO', 'MARGEM', 'EMPATE',
+             'vs 625 mil', 'GARANTIA'))
+    print('─' * 108)
     for nome, dob, cor, pul, gar in ESCADA:
-        c, f = roda(dob, cor, pul)
-        print('  %-24s %11s %13s %14s %14s %5.1f%% %8s'
-              % (nome, lv.brl(f), lv.brl(c), lv.brl(lv.preco_item(c)),
-                 lv.brl(P * BASE - c), (P * BASE - c) / P * 100, gar))
-    print('─' * 102)
-    print('  ⭐ FERRAGEM é só a de marca (it.fer): dobradiça, corrediça, pulsador,')
-    print('     botton, cabideiro, fonte, desempenador, alma de aço e os sistemas.')
-    print('  ⭐ PREÇO é o que o modelo pediria mantendo a MC em 57%.')
-    print('  ⭐ MARGEM é o que sobra se o preço ficar nos %s já fechados.'
-          % lv.brl(P))
-    print('  ⛔ a garantia vale pelo TIER MAIS BAIXO do projeto: sair do Blum')
-    print('     derruba a proposta inteira, não só a linha trocada.')
-    print('═' * 102)
+        c, _f = roda(dob, cor, pul)
+        preco = c / (BASE - mc)
+        marg = preco * mc
+        print('  %-24s %13s %14s %14s %8.0f d %10s %8s'
+              % (nome, lv.brl(c), lv.brl(preco), lv.brl(marg), marg / DIA,
+                 lv.brl(preco - P).replace('R$ ', ''), gar))
+    print('─' * 108)
+    print('  ⭐ PREÇO = custo direto ÷ (base de 76,09%% − MC de %.0f%%).' % (mc * 100))
+    print('  ⭐ EMPATE = quantos DIAS DE FÁBRICA a margem paga, a R$ 4.000 o dia.')
+    print('     ⛔ a entrega prometida ao Charbel é de 120 dias corridos.')
+    print('  ⭐ vs 625 mil = a diferença contra o preço JÁ FECHADO com ele.')
+    print('═' * 108)
+
+
+if __name__ == '__main__':
+    alvo = [float(x) / 100 for x in sys.argv[1:]] or [0.57]
+    for mc in alvo:
+        tabela(mc)
+        print()
