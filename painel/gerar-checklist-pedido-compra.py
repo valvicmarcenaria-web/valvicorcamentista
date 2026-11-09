@@ -7,7 +7,7 @@ import importlib.util, os
 _d = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dados-checklist-pedido-compra.py')
 _s = importlib.util.spec_from_file_location('dados_checklist_pedido_compra', _d)
 _m = importlib.util.module_from_spec(_s); _s.loader.exec_module(_m)
-OBRIGATORIAS, CABECALHO = _m.OBRIGATORIAS, _m.CABECALHO
+OBRIGATORIAS, EXEMPLOS = _m.OBRIGATORIAS, _m.EXEMPLOS
 FAMILIAS, CONFERIR, ERROS = _m.FAMILIAS, _m.CONFERIR, _m.ERROS
 
 CSS = """
@@ -78,6 +78,13 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
   padding:7px 10px; font-size:8.8px; line-height:1.5; color:var(--navy2); margin-bottom:8px }
 .aviso b{ color:var(--navy) }
 
+.ex{ border:1px solid var(--linha); border-left:3px solid var(--gold); border-radius:2px;
+  padding:6px 10px; margin-bottom:5px; display:flex; gap:10px; align-items:baseline }
+.ex .k{ flex:0 0 76px; font-size:8px; font-weight:700; letter-spacing:1.1px;
+  text-transform:uppercase; color:var(--gold) }
+.ex .v{ font-family:'JetBrains Mono',monospace; font-size:8.3px; line-height:1.55; color:#39465a }
+.ex .v b{ color:var(--navy); font-weight:700 }
+
 .erros{ display:grid; grid-template-columns:1fr 1fr; gap:6px }
 .er{ border:1px solid #f0dcda; border-left:3px solid var(--red); background:#fdf6f5;
   border-radius:2px; padding:6px 9px }
@@ -99,6 +106,10 @@ def duas(itens):
     col = lambda ns: '<div>' + ''.join(
       f'<div class="cx2"><span class="b"></span><span>{i}</span></div>' for i in ns) + '</div>'
     return col(itens[:meio]) + col(itens[meio:])
+
+ex_html = '\n'.join(
+  f'    <div class="ex"><span class="k">{k}</span><span class="v">{v}</span></div>'
+  for k, v in EXEMPLOS)
 
 fam_html = '\n'.join(
   f'    <tr><td style="width:24px"><span class="cx"></span></td>'
@@ -137,8 +148,8 @@ __FONTES__
 __OBRIGATORIAS__
   </div>
 
-  <div class="faixa">2 · E o pedido inteiro precisa destas</div>
-  <div class="cab">__CABECALHO__</div>
+  <div class="faixa">2 · Como fica na prática</div>
+__EXEMPLOS__
 
   <div class="aviso" style="margin-top:9px"><b>A regra que resolve a maioria dos casos.</b>
   Escreva o item de forma que <b>outra pessoa consiga comprar sem te perguntar nada</b>. Se o vendedor
@@ -177,7 +188,7 @@ __RODAPE__
 </html>'''
   .replace('__CSS__', CSS)
   .replace('__OBRIGATORIAS__', obrig_html)
-  .replace('__CABECALHO__', duas(CABECALHO))
+  .replace('__EXEMPLOS__', ex_html)
   .replace('__FAMILIAS__', fam_html)
   .replace('__CONFERIR__', duas(CONFERIR))
   .replace('__ERROS__', err_html)

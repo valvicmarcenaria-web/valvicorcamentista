@@ -4,12 +4,28 @@
 OBRIGATORIAS = [
  ('01', 'Descrição do item', 'O nome do produto como o fornecedor o chama, não como a gente chama internamente.'),
  ('02', 'Marca / fabricante', 'Quem fabrica. "MDF branco" não é pedido — Duratex, Arauco, Guararapes e Sudati têm branco diferente.'),
- ('03', 'Linha, modelo e código', 'A referência do catálogo do fabricante. É o que elimina a interpretação do vendedor.'),
- ('04', 'Cor e acabamento', 'Nome <b>e</b> código. Fosco, acetinado, brilho, texturizado — o acabamento muda a peça e muda o preço.'),
- ('05', 'Dimensão', 'Espessura, largura, comprimento, diâmetro, curso. Na unidade certa, com a unidade escrita.'),
- ('06', 'Unidade de compra', 'Chapa, metro linear, metro quadrado, rolo, peça, par, jogo, quilo, litro. Nunca "um".'),
- ('07', 'Quantidade', 'Número inteiro na unidade do item 06, com a sobra técnica já considerada.'),
- ('08', 'Destino', 'Obra, cliente ou setor. É o que permite jogar o custo no projeto certo depois.'),
+ ('03', 'Cor e acabamento', 'Nome <b>e</b> código. Fosco, acetinado, brilho, texturizado — o acabamento muda a peça e muda o preço.'),
+ ('04', 'Dimensão', 'Espessura, largura, comprimento, diâmetro, curso. Na unidade certa, com a unidade escrita.'),
+ ('05', 'Unidade de compra', 'Chapa, metro linear, metro quadrado, rolo, peça, par, jogo, quilo, litro. Nunca "um".'),
+ ('06', 'Quantidade', 'Número inteiro na unidade do item 05, com a sobra técnica já considerada.'),
+ ('07', 'Destino', 'Obra, cliente ou setor. É o que permite jogar o custo no projeto certo depois.'),
+ ('08', 'Iluminação: kelvin e voltagem',
+  'Havendo qualquer tipo de iluminação, <b>temperatura de cor em kelvin e voltagem são obrigatórias</b>. Sem elas, não compre.'),
+]
+
+EXEMPLOS = [
+ ('MDF',
+  'MDF <b>Noce Amêndoa</b> Duratex · acabamento texturizado · <b>18 mm</b> · duas faces · '
+  'chapa de 2.750 × 1.840 mm · <b>6 chapas</b> · obra Attos, cozinha'),
+ ('Fita de borda',
+  'Fita de borda Duratex <b>Noce Amêndoa</b> — mesma cor e mesmo código da chapa · '
+  '<b>22 mm</b> de largura · 0,45 mm de espessura · rolo de 50 m · <b>2 rolos</b> · obra Attos, cozinha'),
+ ('Corrediça',
+  'Corrediça oculta <b>Hettich</b>, com Silent System e extração total · acabamento zincado · '
+  '<b>500 mm</b> de curso · carga de <b>30 kg</b> · unidade: par · <b>8 pares</b> · obra Attos, rack da sala de TV'),
+ ('Vidro',
+  'Vidro <b>Reflecta fumê</b> · <b>4 mm</b> · 580 × 1.140 mm · lapidado nas quatro faces · '
+  'sem furação · temperado · unidade: peça · <b>2 peças</b> · obra Attos, aéreo da cozinha'),
 ]
 
 CABECALHO = [
@@ -33,7 +49,7 @@ FAMILIAS = [
  ('Puxador e metais',
   'Fabricante · modelo · acabamento · <b>medida entre furos</b> · comprimento total · quantidade'),
  ('Iluminação em LED',
-  'Tensão · potência por metro · <b>temperatura de cor em kelvin</b> · grau IP · metragem · fonte compatível e sua potência · dimerizável ou não · perfil e difusor'),
+  '<b>Voltagem</b> · potência por metro · <b>temperatura de cor em kelvin</b> · grau IP · metragem · fonte compatível e sua potência · dimerizável ou não · perfil e difusor'),
  ('Vidro e espelho',
   'Tipo (reflecta, incolor, fumê, bronze) · espessura · medida final · <b>lapidação ou bisotê</b> · furação · temperado ou comum'),
  ('Tinta, laca e verniz',

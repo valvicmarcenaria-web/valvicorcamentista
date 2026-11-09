@@ -115,6 +115,13 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
   padding:7px 10px; font-size:8.8px; line-height:1.5; color:var(--navy2); margin-bottom:8px }
 .aviso b{ color:var(--navy) }
 
+.ex{ border:1px solid var(--linha); border-left:3px solid var(--gold); border-radius:2px;
+  padding:6px 10px; margin-bottom:5px; display:flex; gap:10px; align-items:baseline }
+.ex .k{ flex:0 0 76px; font-size:8px; font-weight:700; letter-spacing:1.1px;
+  text-transform:uppercase; color:var(--gold) }
+.ex .v{ font-family:'JetBrains Mono',monospace; font-size:8.3px; line-height:1.55; color:#39465a }
+.ex .v b{ color:var(--navy); font-weight:700 }
+
 .erros{ display:grid; grid-template-columns:1fr 1fr; gap:6px }
 .er{ border:1px solid #f0dcda; border-left:3px solid var(--red); background:#fdf6f5;
   border-radius:2px; padding:6px 9px }
@@ -141,16 +148,19 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
   <div class="obrig">
     <div class="ob"><span class="n">01</span><span><span class="t">Descrição do item</span><span class="d">O nome do produto como o fornecedor o chama, não como a gente chama internamente.</span></span></div>
     <div class="ob"><span class="n">02</span><span><span class="t">Marca / fabricante</span><span class="d">Quem fabrica. "MDF branco" não é pedido — Duratex, Arauco, Guararapes e Sudati têm branco diferente.</span></span></div>
-    <div class="ob"><span class="n">03</span><span><span class="t">Linha, modelo e código</span><span class="d">A referência do catálogo do fabricante. É o que elimina a interpretação do vendedor.</span></span></div>
-    <div class="ob"><span class="n">04</span><span><span class="t">Cor e acabamento</span><span class="d">Nome <b>e</b> código. Fosco, acetinado, brilho, texturizado — o acabamento muda a peça e muda o preço.</span></span></div>
-    <div class="ob"><span class="n">05</span><span><span class="t">Dimensão</span><span class="d">Espessura, largura, comprimento, diâmetro, curso. Na unidade certa, com a unidade escrita.</span></span></div>
-    <div class="ob"><span class="n">06</span><span><span class="t">Unidade de compra</span><span class="d">Chapa, metro linear, metro quadrado, rolo, peça, par, jogo, quilo, litro. Nunca "um".</span></span></div>
-    <div class="ob"><span class="n">07</span><span><span class="t">Quantidade</span><span class="d">Número inteiro na unidade do item 06, com a sobra técnica já considerada.</span></span></div>
-    <div class="ob"><span class="n">08</span><span><span class="t">Destino</span><span class="d">Obra, cliente ou setor. É o que permite jogar o custo no projeto certo depois.</span></span></div>
+    <div class="ob"><span class="n">03</span><span><span class="t">Cor e acabamento</span><span class="d">Nome <b>e</b> código. Fosco, acetinado, brilho, texturizado — o acabamento muda a peça e muda o preço.</span></span></div>
+    <div class="ob"><span class="n">04</span><span><span class="t">Dimensão</span><span class="d">Espessura, largura, comprimento, diâmetro, curso. Na unidade certa, com a unidade escrita.</span></span></div>
+    <div class="ob"><span class="n">05</span><span><span class="t">Unidade de compra</span><span class="d">Chapa, metro linear, metro quadrado, rolo, peça, par, jogo, quilo, litro. Nunca "um".</span></span></div>
+    <div class="ob"><span class="n">06</span><span><span class="t">Quantidade</span><span class="d">Número inteiro na unidade do item 05, com a sobra técnica já considerada.</span></span></div>
+    <div class="ob"><span class="n">07</span><span><span class="t">Destino</span><span class="d">Obra, cliente ou setor. É o que permite jogar o custo no projeto certo depois.</span></span></div>
+    <div class="ob"><span class="n">08</span><span><span class="t">Iluminação: kelvin e voltagem</span><span class="d">Havendo qualquer tipo de iluminação, <b>temperatura de cor em kelvin e voltagem são obrigatórias</b>. Sem elas, não compre.</span></span></div>
   </div>
 
-  <div class="faixa">2 · E o pedido inteiro precisa destas</div>
-  <div class="cab"><div><div class="cx2"><span class="b"></span><span>Fornecedor, CNPJ e contato de quem atendeu</span></div><div class="cx2"><span class="b"></span><span>Número do pedido e data</span></div><div class="cx2"><span class="b"></span><span>Quem solicitou e quem autorizou</span></div><div class="cx2"><span class="b"></span><span>Prazo de entrega acordado, com data</span></div></div><div><div class="cx2"><span class="b"></span><span>Endereço de entrega — fábrica ou obra</span></div><div class="cx2"><span class="b"></span><span>Frete incluso ou por conta de quem, e com qual valor</span></div><div class="cx2"><span class="b"></span><span>Forma e prazo de pagamento</span></div><div class="cx2"><span class="b"></span><span>Condição de devolução de sobra ou peça errada</span></div></div></div>
+  <div class="faixa">2 · Como fica na prática</div>
+    <div class="ex"><span class="k">MDF</span><span class="v">MDF <b>Noce Amêndoa</b> Duratex · acabamento texturizado · <b>18 mm</b> · duas faces · chapa de 2.750 × 1.840 mm · <b>6 chapas</b> · obra Attos, cozinha</span></div>
+    <div class="ex"><span class="k">Fita de borda</span><span class="v">Fita de borda Duratex <b>Noce Amêndoa</b> — mesma cor e mesmo código da chapa · <b>22 mm</b> de largura · 0,45 mm de espessura · rolo de 50 m · <b>2 rolos</b> · obra Attos, cozinha</span></div>
+    <div class="ex"><span class="k">Corrediça</span><span class="v">Corrediça oculta <b>Hettich</b>, com Silent System e extração total · acabamento zincado · <b>500 mm</b> de curso · carga de <b>30 kg</b> · unidade: par · <b>8 pares</b> · obra Attos, rack da sala de TV</span></div>
+    <div class="ex"><span class="k">Vidro</span><span class="v">Vidro <b>Reflecta fumê</b> · <b>4 mm</b> · 580 × 1.140 mm · lapidado nas quatro faces · sem furação · temperado · unidade: peça · <b>2 peças</b> · obra Attos, aéreo da cozinha</span></div>
 
   <div class="aviso" style="margin-top:9px"><b>A regra que resolve a maioria dos casos.</b>
   Escreva o item de forma que <b>outra pessoa consiga comprar sem te perguntar nada</b>. Se o vendedor
@@ -173,7 +183,7 @@ table.tb tr:nth-child(odd) td{ background:#f7f9fb }
     <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Fita de borda</td><td class="camp">Fabricante · cor e código <b>idênticos aos da chapa</b> · largura em mm · espessura (0,45 · 1,0 · 2,0) · metragem do rolo · com ou sem cola</td></tr>
     <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Ferragem de movimento</td><td class="camp">Fabricante · linha e código · acabamento · curso ou comprimento · <b>capacidade de carga</b> · ângulo de abertura · amortecimento · unidade em peça, par ou jogo</td></tr>
     <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Puxador e metais</td><td class="camp">Fabricante · modelo · acabamento · <b>medida entre furos</b> · comprimento total · quantidade</td></tr>
-    <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Iluminação em LED</td><td class="camp">Tensão · potência por metro · <b>temperatura de cor em kelvin</b> · grau IP · metragem · fonte compatível e sua potência · dimerizável ou não · perfil e difusor</td></tr>
+    <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Iluminação em LED</td><td class="camp"><b>Voltagem</b> · potência por metro · <b>temperatura de cor em kelvin</b> · grau IP · metragem · fonte compatível e sua potência · dimerizável ou não · perfil e difusor</td></tr>
     <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Vidro e espelho</td><td class="camp">Tipo (reflecta, incolor, fumê, bronze) · espessura · medida final · <b>lapidação ou bisotê</b> · furação · temperado ou comum</td></tr>
     <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Tinta, laca e verniz</td><td class="camp">Fabricante · linha · <b>código da cor</b> · acabamento · base · catalisador e diluente · rendimento · quantidade em litros</td></tr>
     <tr><td style="width:24px"><span class="cx"></span></td><td style="width:148px" class="fam">Insumo e abrasivo</td><td class="camp">Fabricante · tipo · granulometria ou medida · formato · quantidade por caixa ou rolo</td></tr>
