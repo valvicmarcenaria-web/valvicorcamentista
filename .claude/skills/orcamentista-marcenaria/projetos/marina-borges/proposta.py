@@ -354,15 +354,11 @@ def html():
  </div>
  <div class="corpo">
   <div class="eyebrow">O PADRÃO</div>
-  <h2>Cinco padrões. Cada um arredonda a sua própria chapa.</h2>
+  <h2>Cinco padrões. E o que está por dentro<br>é o mesmo que está por fora.</h2>
+  <p class="texto curto">Caixa, gaveta e fundo saem no <b>padrão da própria face</b> — nenhum armário deste
+   apartamento é branco por dentro. Com porta de vidro no closet e na cristaleira, o interior é fachada: o que
+   se vê atrás do vidro é o mesmo material da frente.</p>
   <div class="pads">{pads}</div>
-  <div class="nota">
-   <b>O QUE ISSO PEDE DA FÁBRICA</b><br>
-   Neste apartamento <b>não há interior branco</b>: caixa, gaveta e fundo saem no padrão da própria face, e a fita
-   acompanha. É mais caro e é o que a prancha pede — com porta de vidro no closet e na cristaleira, o interior
-   é fachada. Cinco padrões significam <b>cinco planos de corte independentes</b>: nenhum deles aproveita a sobra
-   do outro, e cada um arredonda a sua própria chapa.
-  </div>
  </div>
  {rod(5)}
 </section>''')
