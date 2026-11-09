@@ -88,12 +88,20 @@ def custos(amb, lin):
     return out
 
 
+# ⭐ [Jonathan, 09/11/2026] "no geral vamos reduzir a mc em 4% · em específico no
+#   rack vamos reduzir em 10%": PONTOS de MC, em todas as linhas e em todos os
+#   itens levantados; no rack, 10 pontos no lugar dos 4 (não somam). A cozinha
+#   existente é preço fechado e não se move. ⚠ abaixo do piso da casa (35%).
+AJUSTE_MC = -0.04
+AJUSTE_ITEM = {('Sala', 'Rack com a torre de nichos'): -0.10}
+ANTES = {'Telescópica': 85950, 'Hettich': 105060, 'Blum': 128440}   # o que foi mostrado antes do corte
+
 TAB = {}
 for lin, f in LINHAS.items():
     TAB[lin] = {}
     for amb in ORDEM:
         for it in custos(amb, lin):
-            mc = f['mc'] if it['linha'] else MC_FIXA
+            mc = (f['mc'] if it['linha'] else MC_FIXA) + AJUSTE_ITEM.get((amb, it['movel']), AJUSTE_MC)
             TAB[lin][(amb, it['movel'])] = dict(custo=it['custo'], mc=mc, linha=it['linha'],
                                                 pv=it['custo'] / (BASE - mc))
 
@@ -126,8 +134,9 @@ def custo(lin, amb=None):
 
 
 if __name__ == '__main__':
-    print(f'base {BASE * 100:.4f}% · item sem ferragem de linha a {MC_FIXA:.0%} · '
-          + ' · '.join(f'{l} {f["mc"]:.0%}' for l, f in LINHAS.items()))
+    print(f'base {BASE * 100:.4f}% · item sem ferragem de linha a {MC_FIXA + AJUSTE_MC:.0%} · '
+          + ' · '.join(f'{l} {f["mc"] + AJUSTE_MC:.0%}' for l, f in LINHAS.items())
+          + ' · rack ' + '/'.join(f'{f["mc"] - 0.10:.0%}' for f in LINHAS.values()))
     for amb in ORDEM:
         print(f'\n{amb.upper()}')
         for (a, m), v in TAB['Hettich'].items():
@@ -141,6 +150,7 @@ if __name__ == '__main__':
         print(f"    {m[:52]:52s}" + ''.join(f'{v:>12,.0f}' for l in LINHAS))
     print(f"\n    {'TOTAL':52s}" + ''.join(f'{total(l):>12,.0f}' for l in LINHAS))
     print(f"    {'custo direto do levantado':52s}" + ''.join(f'{custo(l):>12,.0f}' for l in LINHAS))
+    print(f"    {'antes do corte de MC':52s}" + ''.join(f'{ANTES[l]:>12,.0f}' for l in LINHAS))
     print(f"    {'MC efetiva do levantado':52s}" + ''.join(
         f'{(BASE - custo(l) / total(l, fixos=False)) * 100:>11.1f}%' for l in LINHAS))
     print('  ◆ = item com corrediça ou dobradiça da linha')
