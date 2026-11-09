@@ -88,20 +88,56 @@ if __name__ == '__main__':
               '[Jonathan, 26/10/2026] "a prancha pede base metálica; nós '
               'fazemos em MDF" · a prancha pede inox h = 2 em cinco folhas'))
 
-    MC_ROTULO = 'A MC a 40% em vez de 43%'
-    L.append((MC_ROTULO,
-              patch('base.py', 'MC = 0.43', 'MC = 0.40'),
-              '⭐ não é premissa, é ESCOLHA — entra aqui só para dar a escala '
-              'das outras'))
+    #   ⛔⛔ O CENÁRIO DA MC SAIU DAQUI EM 09/11/2026, e o motivo é o
+    #     fechamento. Enquanto o preço era aberto, mexer na MC era a régua
+    #     que dava escala às outras dúvidas. Agora o preço está FECHADO em
+    #     R$ 625.000 [Jonathan, 09/11/2026]: a MC não é mais entrada, é
+    #     RESULTADO. E a inversão que isso causa é a coisa mais importante
+    #     deste arquivo:
+    #
+    #   ⭐⭐ COM O PREÇO ABERTO, custo direto a mais virava PREÇO a mais —
+    #     cada R$ 1 de custo multiplicava por 1/(BASE − MC). COM O PREÇO
+    #     FECHADO, não multiplica nada: sai inteiro da MARGEM. A mesma
+    #     dúvida que valia R$ 23 mil de preço agora vale R$ 4,4 mil de
+    #     margem, e é por isso que fechar alto COMPRA O DIREITO de responder
+    #     as perguntas sem reabrir o preço com o cliente.
+    import base as b
+    FATOR = b.BASE - b.MC          # preço × FATOR = custo direto
+    P = b.PRECO_FECHADO
+    c0 = p0 * FATOR
 
     L.sort(key=lambda x: -abs(x[1] - p0))
+    print('  %-58s %13s %13s' % ('A PERGUNTA', 'CUSTO DIRETO', 'MARGEM'))
+    print('─' * 92)
     for nome, pv, por in L:
-        print('  %-66s %14s' % (nome[:66], brl(pv - p0)))
+        dc = (pv - p0) * FATOR
+        print('  %-58s %13s %13s' % (nome[:58], brl(dc), brl(-dc)))
         print('      %s' % por)
     print('─' * 92)
-    #   ⛔ a MC não entra nesta soma: ela é escolha, não dúvida.
-    duvida = sum(abs(pv - p0) for n, pv, _ in L if n != MC_ROTULO)
-    print('  ⭐ As cinco premissas em aberto valem %s do preço — e a maior '
-          'delas é\n    uma ligação para o fornecedor de chapa.'
-          % f'{duvida / p0:.0%}')
+
+    contra = sum((pv - p0) * FATOR for n, pv, _ in L if pv > p0)
+    favor = sum((pv - p0) * FATOR for n, pv, _ in L if pv < p0)
+    m0 = P - c0 - (P - c0 - p0 * (1 - b.BASE) * 0)   # margem = preço − custo − encargos
+    m0 = P * b.BASE - c0
+    print('  margem de hoje, com o preço fechado em %s' % brl(P)[1:])
+    print('    %-56s %13s   MC %4.1f%%' % ('como está', brl(m0)[1:], 100 * m0 / P))
+    print('    %-56s %13s   MC %4.1f%%' % ('se TODAS as dúvidas virarem contra nós',
+                                           brl(m0 - contra)[1:], 100 * (m0 - contra) / P))
+    print('    %-56s %13s   MC %4.1f%%' % ('se todas virarem a nosso favor',
+                                           brl(m0 - favor)[1:], 100 * (m0 - favor) / P))
+    print('─' * 92)
+    #   ⭐ E A PERGUNTA QUE DECIDE SE 625 MIL PAGA A CASA NÃO É A MC: É
+    #     QUANTOS DIAS DE FÁBRICA ESTE JOB COME. O custo fixo da casa é de
+    #     R$ 120.000 por mês, R$ 4.000 por dia de calendário.
+    FIXO_DIA = 4000.0
+    print('  o custo fixo dos dias · R$ %s por dia de fábrica · entrega '
+          'prometida em %d dias' % ('4.000', b.PRAZO_DIAS))
+    for d in (45, 60, 75, 89, 100, b.PRAZO_DIAS):
+        luc = m0 - FIXO_DIA * d
+        marca = '  ⛔' if luc < 0 else ('  ⚠' if luc < 50000 else '')
+        print('    %3d dias de fábrica   custo fixo %13s   LUCRO %13s%s'
+              % (d, brl(-FIXO_DIA * d)[1:], brl(luc), marca))
+    print('    ⭐ o empate está em %.0f dias de fábrica EXCLUSIVA. Acima '
+          'disso,\n      625 mil só paga a casa se outro job correr ao lado.'
+          % (m0 / FIXO_DIA))
     print('═' * 92)

@@ -111,7 +111,7 @@ NOTAS = {
    'por isso que a suíte compra mais chapa do que a área dela sugere.',
    '⭐⭐ E O CASO EXTREMO ESTÁ AQUI: o fundo de nicho de 52 × 39 é a ÚNICA peça do '
    'projeto em Fontana 6 mm. 0,20 m² compram UMA CHAPA INTEIRA de R$ 350. Trocar por '
-   'Cipres 6 ou tirar de sobra de Fontana 18 devolve cerca de R$ 1.058 de preço.',
+   'Cipres 6 ou tirar de sobra de Fontana 18 devolve R$ 350 de margem.',
    '⭐ As duas divisórias levam RIPADO VAZADO de 4 × 240 × 4,20 — vazado, não aplicado: '
    'a ripa atravessa e se vê dos dois lados.',
    '⭐ A prateleira do painel da vista 11 tem 225,5 de vão livre. Acima de 1,20 m a '
@@ -173,7 +173,7 @@ OBS_PECA = {
  'fundo dos nichos em Fontana Magma':
    '⛔ É A ÚNICA PEÇA DO PROJETO EM FONTANA 6: 0,20 m² compram UMA CHAPA de '
    'R$ 350. Trocar por Cipres 6 ou por sobra de Fontana 18 devolve R$ 350 de '
-   'custo direto, cerca de R$ 1.058 de preço.',
+   'custo direto, que com o preço fechado sai inteiro da margem.',
  'prateleira do painel': '225,5 de vão livre: leva alma de aço, contra flecha',
  'maleiro': '150 de vão livre: leva alma de aço, contra flecha',
  'prateleiras inclinadas':
@@ -324,7 +324,7 @@ def monta(nome, d, T):
 
 DUVIDAS = {
  '01 Cozinha': [
-   '⛔ R$ 23.177 no projeto · O MDF CARIBE LINHA DUAL SYNCRO custa quanto? A Base só '
+   '⛔ R$ 7.669 DE MARGEM · O MDF CARIBE LINHA DUAL SYNCRO custa quanto? A Base só '
    'tem "MDF cor" a R$ 700 e tem uma linha separada, "CHAPA — COR E ACABAMENTO '
    'ESPECIAL · R$ 1.000, confirmado em plano de corte". Dual Syncro é sincronizado, '
    'que é exatamente isso. Vale uma ligação ao fornecedor.',
@@ -345,24 +345,24 @@ DUVIDAS = {
    '(R$ 75). Porta embutida em painel costuma pedir batente oculto, que a Base não '
    'tem. Confirmar com quem monta.'],
  '05 Suíte': [
-   '⛔ R$ 2.423 por 3 m² · O FORRO EM MDF CIPRES NÃO TEM COTA NA FOLHA 19. Os 9 m² '
+   '⛔ R$ 802 DE MARGEM por 3 m² · O FORRO EM MDF CIPRES NÃO TEM COTA NA FOLHA 19. Os 9 m² '
    'são leitura do mapa-chave. Medir resolve, e é a medição mais barata do projeto.',
-   '⚠ R$ 4.083 · DUAS MESAS DE CABECEIRA OU UMA? A folha 20 desenha uma e a chama no '
+   '⚠ R$ 1.351 DE MARGEM · DUAS MESAS DE CABECEIRA OU UMA? A folha 20 desenha uma e a chama no '
    'singular (vistas 12C e 12D são duas vistas da MESMA peça). A cama tem dois lados. '
    'Orcei duas.',
-   '⚠ R$ 1.058 · O FUNDO DE NICHO EM FONTANA 6 compra uma chapa inteira sozinho. '
+   '⚠ R$ 350 DE MARGEM · O FUNDO DE NICHO EM FONTANA 6 compra uma chapa inteira sozinho. '
    'Decidir se vale manter o padrão nessa peça.',
    '⚠ A fita metálica em latão dourado da mesa de cabeceira saiu como "friso em perfil '
    'laqueado", R$ 160 o metro — o mais perto que a Base tem. Latão de verdade é outro '
    'fornecedor.'],
  '06 Closet': [
-   '⛔ R$ 16.647 · QUANTO CUSTA UMA FOLHA DE 2,57 M EM PERFIL DE ALUMÍNIO COM VIDRO? '
+   '⛔ R$ 5.508 DE MARGEM · QUANTO CUSTA UMA FOLHA DE 2,57 M EM PERFIL DE ALUMÍNIO COM VIDRO? '
    'Usei R$ 1.400, que é a linha "Porta de espelho · R$ 1.200 + R$ 200 de frete, cerca '
    'de 1.400 posto na obra" da Base. Mas aquela é de ~2,10 m e leva espelho; estas são '
    'nove folhas de 2,57 m com vidro e perfil dourado. A R$ 2.000 a folha, o projeto '
-   'sobe R$ 16.647.',
-   '⚠ R$ 9.521 · A DOBRADIÇA DE VIDRO PODE ESTAR CONTADA DUAS VEZES. São 45 unidades a '
-   'R$ 70 = R$ 3.150 de custo direto, cerca de R$ 9.521 de preço. A Base tem a linha '
+   'custa R$ 5.508 de margem.',
+   '⚠ R$ 3.150 DE MARGEM, A NOSSO FAVOR · A DOBRADIÇA DE VIDRO PODE ESTAR CONTADA DUAS VEZES. São 45 unidades a '
+   'R$ 70 = R$ 3.150 de custo direto, e com o preço fechado isso volta inteiro para a margem. A Base tem a linha '
    '"Dobradiça para porta de vidro · porta de alumínio e vidro · R$ 70" separada, e por '
    'isso lancei. ⚠ Mas o R$ 1.400 da folha é "POSTO NA OBRA", e porta posta costuma vir '
    'ferrada. Perguntar ao fornecedor o que o preço da folha inclui.',
@@ -384,10 +384,10 @@ DUVIDAS = {
    '⚠ O "sistema de porta retrátil" do baú saiu a R$ 900, o mesmo do sistema de correr '
    'Blum. Porta retrátil de verdade (que entra na lateral) é outro ferragem e é mais '
    'cara. Confirmar o que a arquiteta quer.',
-   '⚠ R$ 2.720 no projeto · O RODAPÉ. A prancha pede RODAPÉ INOX h = 2 em cinco '
+   '⚠ R$ 900 DE MARGEM, A NOSSO FAVOR · O RODAPÉ. A prancha pede RODAPÉ INOX h = 2 em cinco '
    'folhas, e orcei inox a R$ 85 o metro, que a Base tem. ⛔ Mas a regra da casa '
    '[Jonathan, 26/10/2026] diz: "a prancha pede base metálica; nós fazemos em MDF '
-   'melamínico". Se valer a regra, devolve R$ 2.720.'],
+   'melamínico". Se valer a regra, devolve R$ 900 de margem.'],
 }
 
 

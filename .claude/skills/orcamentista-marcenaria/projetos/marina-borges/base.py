@@ -165,7 +165,31 @@ RT = 0.10
 VENDEDOR = 0.0
 BASE = cascata(rt=RT, vendedor=VENDEDOR)
 assert abs(BASE - BASE_COM_UM) < 1e-9, BASE      # 0,760875 · publicado 76,09%
-MC = 0.43
+#   ⭐⭐ [Jonathan, 09/11/2026] "vamos fechar o valor de venda em 625k na
+#     linha blum". Na planilha ele girou a ALVO para 52% e, com os cinco
+#     pontos de piso do quadro ⑤, a MC APLICADA saiu 57% em todos os nove
+#     ambientes — preço de R$ 625.048,49. Este MC é a REALIZADA, que é o
+#     que entra na conta aqui; a alvo de 52 só existe na planilha.
+#   ⛔ 57% está 17 pontos acima da faixa ideal da casa (35% a 40%) e 22
+#     acima do piso. Não é mais uma MC de trabalho: é posicionamento. Fica
+#     escrito aqui para a próxima pessoa não achar que foi descuido.
+MC = 0.57
+
+#   ── o fechamento ─────────────────────────────────────────────────────
+#   ⭐ [Jonathan, 09/11/2026], ditado inteiro. O modelo dá R$ 625.048,49 e
+#     o fechado é o número redondo: a diferença de R$ 48,49 é arredondamento
+#     comercial, não desconto.
+PRECO_FECHADO = 625000.00
+PRAZO_DIAS = 120                 # dias CORRIDOS, da assinatura à entrega
+VALIDADE_DIAS = 7                # validade da proposta
+#   40% de entrada + 3 parcelas de 20%, a primeira em 60 dias da assinatura.
+#   ⚠ As duas seguintes a 90 e 120 dias é LEITURA MINHA: ele disse só a
+#     primeira. Mensal é o natural, e 120 fecha junto com a entrega.
+PAGAMENTO = [('entrada, na assinatura', 0.40, 0),
+             ('1ª parcela', 0.20, 60),
+             ('2ª parcela', 0.20, 90),
+             ('3ª parcela', 0.20, 120)]
+assert abs(sum(p for _, p, _ in PAGAMENTO) - 1.0) < 1e-9
 
 # ── o cliente ───────────────────────────────────────────────────────────
 #   ⚠ A pasta do Drive chama-se `marina_borges`, que é a ARQUITETA. O nome
