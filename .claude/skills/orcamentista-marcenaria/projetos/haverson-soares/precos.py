@@ -93,8 +93,9 @@ def custos(amb, lin):
 #   itens levantados; no rack, 10 pontos no lugar dos 4 (não somam). A cozinha
 #   existente é preço fechado e não se move. ⚠ abaixo do piso da casa (35%).
 AJUSTE_MC = -0.04
-AJUSTE_ITEM = {('Sala', 'Rack com a torre de nichos'): -0.10}
-ANTES = {'Telescópica': 85950, 'Hettich': 105060, 'Blum': 128440}   # o que foi mostrado antes do corte
+# [Jonathan, 09/11/2026, depois] "no rack ainda podemos tirar mais 5% de MC": 15 pontos
+AJUSTE_ITEM = {('Sala', 'Rack com a torre de nichos'): -0.15}
+ANTES = {'Telescópica': 85950, 'Hettich': 105060, 'Blum': 128440}   # o que foi mostrado antes dos cortes
 
 TAB = {}
 for lin, f in LINHAS.items():
@@ -119,7 +120,8 @@ for x in TAB['Hettich']:
 
 
 # ⭐ preço FECHADO pelo Jonathan, sem levantamento: entra igual nas três linhas
-FIXOS = {('Cozinha existente', 'Troca das portas dos inferiores e módulo complementar'): 2500.0}
+# [Jonathan, 09/11/2026] "a cozinha existente vamos subir para 3.900" (era 2.500)
+FIXOS = {('Cozinha existente', 'Troca das portas dos inferiores e módulo complementar'): 3900.0}
 
 
 def total(lin, amb=None, fixos=True):
@@ -136,7 +138,7 @@ def custo(lin, amb=None):
 if __name__ == '__main__':
     print(f'base {BASE * 100:.4f}% · item sem ferragem de linha a {MC_FIXA + AJUSTE_MC:.0%} · '
           + ' · '.join(f'{l} {f["mc"] + AJUSTE_MC:.0%}' for l, f in LINHAS.items())
-          + ' · rack ' + '/'.join(f'{f["mc"] - 0.10:.0%}' for f in LINHAS.values()))
+          + ' · rack ' + '/'.join(f'{f["mc"] + AJUSTE_ITEM[("Sala", "Rack com a torre de nichos")]:.0%}' for f in LINHAS.values()))
     for amb in ORDEM:
         print(f'\n{amb.upper()}')
         for (a, m), v in TAB['Hettich'].items():

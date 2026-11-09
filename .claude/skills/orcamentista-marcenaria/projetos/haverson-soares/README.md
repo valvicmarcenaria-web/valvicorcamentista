@@ -42,18 +42,20 @@ cartão. A base fica em **76,09%**, a mesma do Attos.
 reduzir em 10%". São pontos de MC: os itens sem ferragem da linha saem a 34%, e a escada
 fica em 31 / 34 / 39. No rack, o corte é de 10 pontos no lugar dos 4, e a escada dele
 fica em 25 / 28 / 33. A cozinha existente é preço fechado e não se move.
+⭐ Depois, no mesmo dia: "no rack ainda podemos tirar mais 5% de MC" (agora 15 pontos:
+20 / 23 / 28) e "a cozinha existente vamos subir para 3.900".
 ⚠ Tudo isso fica abaixo do piso da casa (35%), menos a Blum.
 
 | Ambiente | Telescópica | Hettich | Blum |
 |---|---:|---:|---:|
 | Cozinha | 26.405 | 36.144 | 47.095 |
 | Gourmet | 25.570 | 31.229 | 38.318 |
-| Sala · rack com a torre de nichos | 11.027 | 12.300 | 13.727 |
+| Sala · rack com a torre de nichos | 10.044 | 11.142 | 12.300 |
 | Sala · portas com sistema mão amiga | 11.386 | 11.386 | 11.386 |
-| Cozinha existente (preço fechado) | 2.500 | 2.500 | 2.500 |
-| **Total** | **76.887** | **93.559** | **113.027** |
+| Cozinha existente (preço fechado) | 3.900 | 3.900 | 3.900 |
+| **Total** | **77.304** | **93.800** | **112.999** |
 | Antes do corte de MC | 85.950 | 105.060 | 128.440 |
-| MC efetiva do levantado | 31,2% | 33,2% | 37,0% |
+| MC efetiva do levantado | 30,6% | 32,6% | 36,5% |
 
 ## As pranchas (`pranchas/`)
 
