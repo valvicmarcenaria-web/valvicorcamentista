@@ -185,7 +185,7 @@ VALIDADE_DIAS = 7                # validade da proposta
 #   40% de entrada + 3 parcelas de 20%, a primeira em 60 dias da assinatura.
 #   ⚠ As duas seguintes a 90 e 120 dias é LEITURA MINHA: ele disse só a
 #     primeira. Mensal é o natural, e 120 fecha junto com a entrega.
-PAGAMENTO = [('entrada, na assinatura', 0.40, 0),
+PAGAMENTO = [('Entrada, na assinatura', 0.40, 0),
              ('1ª parcela', 0.20, 60),
              ('2ª parcela', 0.20, 90),
              ('3ª parcela', 0.20, 120)]
