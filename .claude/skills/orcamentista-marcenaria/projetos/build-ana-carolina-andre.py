@@ -16,6 +16,12 @@
   sai o bloco do closet aberto, porque os closets têm porta; a folha do padrão
   usa a imagem de closet que ele mandou; e o closet da suíte diz EXPLÍCITO que são
   dez gavetas (quatro gavetas e seis sapateiras) — exceção pedida à regra da contagem.
+⭐⭐ REVISÃO [Jonathan, 09/11/2026], com as pranchas de 08/11: "interno agora será
+  BRANCO TX, externo em PALHA, no closet teremos um PAR DE PORTAS com aplicação de
+  PALHA SINTÉTICA (mencionar isso na proposta), ferragens mantém Blum"; entram o
+  ROUPEIRO DA SUÍTE e o ARMÁRIO DO QUARTO ISABELLA; dois calceiros Slow Sense no
+  lado André. O closet da suíte passa a VINTE gavetas (treze gavetas e sete
+  sapateiras), e a exceção da contagem continua só nele.
 ⛔ Nenhum número digitado: tudo sai de `ana-carolina-andre/precos.py`.
 ⛔ Sem metragem e sem contagem nas descrições dos ambientes.
 ⛔ O projeto não tem render: as folhas de ambiente usam as ELEVAÇÕES do
@@ -69,8 +75,8 @@ folha(f'''<div class="cv">
  <div class="cv-l" style="padding-bottom:22mm">
   <div class="cv-brand">Valvic Marcenaria</div>
   <div class="cv-nome">Ana Carolina<br>e André</div>
-  <div class="cv-s">Os closets e o roupeiro do apartamento,<br>
-     inteiros no Palha da Duratex, com ferragem Blum.</div>
+  <div class="cv-s">Os closets e os roupeiros do apartamento,<br>
+     em Palha da Duratex por fora e Branco TX por dentro,<br>com ferragem Blum.</div>
   <div class="cv-meta">
    <div><div class="k">Projeto</div><div class="v">Arquiteta {E(ARQ)}</div></div>
    <div><div class="k">Obra</div><div class="v">{E(OBRA)}</div></div>
@@ -80,24 +86,25 @@ folha(f'''<div class="cv">
  </div>
  <div class="cv-r">{campo('des-closet-suite-e1', op=.55)}
   <div class="cv-selo"><div class="k">Padrão</div><div class="v">Palha</div>
-   <div class="s">Duratex · por dentro e por fora</div></div></div>
+   <div class="s">Duratex por fora · Branco TX por dentro</div></div></div>
 </div>
 <div class="foot" style="right:auto;width:92mm;border-top-color:rgba(255,255,255,.13)">
  <span>Proposta de marcenaria</span><span>Valvic · Vargas Decor</span></div>''', dark=True, rodape=False)
 
 # ── 02 · abertura ───────────────────────────────────────────────────────
 folha(f'''<div class="ambw">
- <div class="band" style="height:96mm">{campo('des-closet-suite-e1', 'des-gabriel-e1', 'des-isabella-e2', op=.6, row=True)}
+ <div class="band" style="height:96mm">{campo('des-suite-e1', 'des-closet-suite-e1', 'des-quarto-isabella', op=.6, row=True)}
    <div class="tag">O apartamento</div></div>
  <div class="low" style="grid-template-columns:1fr;padding:11mm 18mm 12mm">
   <div><div class="eyebrow">O que este apartamento pede</div><div class="rule"></div>
-   <h1 class="h1" style="margin:0 0 5mm">Três armários. Um padrão só, do lado de dentro também.</h1>
-   <p class="lead" style="max-width:none;font-size:10.4pt">O closet da suíte, o roupeiro do
-    Gabriel e o closet da Isabella — um só projeto da arquiteta <b>{E(ARQ)}</b>, com portas
-    de giro de cava usinada, portas de correr com espelho e gavetas que fecham sozinhas.
-    <b>Tudo no MDF Palha, da Duratex, por fora e por dentro</b>, sobre ferragem Blum. <b>Uma só empresa
-    responde por tudo o que está nestas folhas</b>, da medição à instalação. <em>Um
-    contrato, uma data, um nome para chamar.</em></p></div>
+   <h1 class="h1" style="margin:0 0 5mm">Cinco armários. Palha por fora, claro por dentro.</h1>
+   <p class="lead" style="max-width:none;font-size:10.4pt">O roupeiro e o closet da suíte, o
+    roupeiro do Gabriel, o closet e o armário da Isabella — um só projeto da arquiteta
+    <b>{E(ARQ)}</b>, com portas de giro de cava usinada, portas de correr com espelho, um par
+    de portas em palha sintética e gavetas que fecham sozinhas. <b>Por fora, o MDF Palha, da
+    Duratex; por dentro, o Branco TX</b>, sobre ferragem Blum. <b>Uma só empresa responde por
+    tudo o que está nestas folhas</b>, da medição à instalação. <em>Um contrato, uma data, um
+    nome para chamar.</em></p></div>
  </div></div>''')
 
 # ── 03 · a empresa e a infraestrutura ───────────────────────────────────
@@ -159,13 +166,14 @@ folha(f'''<div class="pad" style="padding:13mm 15mm 20mm">
 
 # ── 05 · o Palha, por inteiro ───────────────────────────────────────────
 PALHA = [
- ('Nenhuma chapa branca', 'Caixa, divisória, prateleira, fundo e a caixa de cada gaveta saem '
-  'no mesmo Palha das portas. <b>Abrir o armário é ver o mesmo móvel</b> — não um miolo '
-  'branco atrás de uma frente bonita.'),
- ('A borda na mesma cor', 'Toda aresta à vista recebe fita no tom do Palha. A peça parece '
-  'maciça de cor, de qualquer ângulo.'),
- ('A ferragem não interrompe', 'A corrediça Blum TANDEM corre escondida por baixo da gaveta e a '
-  'dobradiça fica dentro do armário: a lateral da gaveta é Palha, não trilho de metal.'),
+ ('O Palha no que se vê', 'Portas de giro, folhas de correr, rodapé e as laterais à vista saem '
+  'no Palha da Duratex, com fita no mesmo tom. <b>Fechado, o armário é uma peça só</b>, de '
+  'qualquer ângulo.'),
+ ('O branco no que se usa', 'Caixa, prateleiras, divisórias e gavetas, por dentro, em '
+  '<b>Branco TX</b>: o interior fica claro, a roupa aparece na cor verdadeira e o que está '
+  'guardado se encontra rápido.'),
+ ('A palha sintética', 'No closet da suíte, um par de portas recebe <b>aplicação de palha '
+  'sintética</b>: a trama ventila o módulo e leva textura para a frente do armário.'),
 ]
 folha(f'''<div class="ambw">
  <div class="band" style="height:104mm"><img src="{IMG['closet-palha']}" alt="" style="object-position:50% 40%">
@@ -175,13 +183,13 @@ folha(f'''<div class="ambw">
    apresentada na aprovação do projeto</div></div></div></div>
  <div class="low" style="display:block;padding:7mm 18mm 17mm"><div class="fitw">
   <div class="eyebrow">O padrão</div><div class="rule"></div>
-  <h2 class="h2" style="margin:1mm 0 3mm">Palha por inteiro. Por fora e por dentro.</h2>
+  <h2 class="h2" style="margin:1mm 0 3mm">Palha por fora. Branco por dentro.</h2>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 9mm">
    <div>{mv(PALHA[:1])}</div><div>{mv(PALHA[1:2])}</div><div>{mv(PALHA[2:])}</div></div>
   <div class="amb-nota" style="background:none;border-left-color:var(--gold);margin-top:4mm">
-    <div class="t">O que isso pede da fábrica</div><p>Chapa de cor em todo o móvel, fita de
-    cor em toda borda e ferragem que se esconde. É mais caro que o miolo branco — e é o que
-    faz o armário parecer uma peça só.</p></div></div>
+    <div class="t">O que isso pede da fábrica</div><p>Cada peça é cortada na cor do lado em
+    que vai ficar — Palha no que se vê, Branco TX no que se usa — e recebe fita no tom do
+    próprio lado. A troca de cor acontece onde a porta fecha, nunca à vista.</p></div></div>
  </div></div>''')
 
 # ── 06… · as folhas de ambiente, SEM preço ──────────────────────────────
@@ -189,19 +197,33 @@ TANDEM = ('Gavetas e sapateiras', 'Sobre corrediça <b>Blum TANDEM com BLUMOTION
           'inteira e fecha sozinha, em silêncio.')
 CLIP = ('Portas de giro', 'Com dobradiça <b>Blum CLIP top BLUMOTION</b> e puxador em cava '
         'usinado na própria folha: a porta fecha amortecida, sem bater.')
+ACAB_GIRO = 'Exterior em MDF Palha · Duratex · interior em Branco TX · ferragem Blum'
+ACAB_CORRER = 'Exterior em MDF Palha · interior em Branco TX · espelho prata em alumínio · SI Ocean 80 · Blum'
 AMB = [
+ ('O roupeiro<br>da suíte.', ['des-suite-e1'], 'Suíte master', ACAB_CORRER,
+  [('Um lado para cada', 'O roupeiro se divide ao meio — um lado da Ana Carolina, o outro do '
+    'André —, cada um com maleiro no alto, cabideiro e gavetas embaixo.'),
+   ('Portas de correr', 'Correm no sistema <b>SI Ocean 80</b>, da Siforma, com amortecimento '
+    'ao abrir e ao fechar: uma folha em Palha com cava usinada, a outra em espelho prata '
+    'emoldurado em alumínio.'),
+   ('As frentes das gavetas', 'Em Palha, como as portas: com o roupeiro aberto, o que aparece '
+    'continua no mesmo padrão.'),
+   TANDEM]),
  ('O closet<br>da suíte.', ['des-closet-suite-e1', 'des-closet-suite-e2'], 'Closet suíte master',
-  'MDF Palha · Duratex, por dentro e por fora · ferragem Blum',
-  [('Armário da parede longa', 'Do piso ao forro, fechado por portas de giro. Por trás delas, '
-    'maleiros no alto, cabideiros longos, prateleiras e uma coluna de gavetas e sapateiras.'),
-   ('Armários da parede da porta', 'Os dois blocos que ladeiam a entrada do closet, com a '
-    'mesma porta e a mesma cava: prateleiras, cabideiro e sapateiras.'),
+  ACAB_GIRO + ' · palha sintética',
+  [('O lado da Ana Carolina', 'Do piso ao teto, fechado por portas de giro: maleiros no alto, '
+    'cabideiros — o longo e o de calças — e, embaixo, gavetas, gavetas finas com chave e '
+    'sapateiras.'),
+   ('O lado do André', 'Maleiros, cabideiros e, embaixo, os <b>calceiros retráteis Slow '
+    'Sense</b>, que deslizam para fora com amortecimento, e as sapateiras.'),
+   ('Portas com palha sintética', 'O módulo de prateleiras e gavetas junto à porta se fecha com '
+    '<b>um par de portas com aplicação de palha sintética</b>: a trama deixa o armário '
+    'respirar.'),
    CLIP,
-   ('Dez gavetas', 'O closet contempla <b>dez gavetas</b>: quatro gavetas e seis sapateiras, '
+   ('Vinte gavetas', 'O closet contempla <b>vinte gavetas</b>: treze gavetas e sete sapateiras, '
     'todas sobre corrediça <b>Blum TANDEM com BLUMOTION</b> — a gaveta sai inteira e fecha '
     'sozinha, em silêncio.')]),
- ('O roupeiro<br>do Gabriel.', ['des-gabriel-e1'], 'Quarto Gabriel',
-  'MDF Palha · Duratex · espelho prata em alumínio · SI Ocean 80 · Blum',
+ ('O roupeiro<br>do Gabriel.', ['des-gabriel-e1'], 'Quarto Gabriel', ACAB_CORRER,
   [('Portas de correr', 'Correm no sistema <b>SI Ocean 80</b>, da Siforma, com amortecimento '
     'ao abrir e ao fechar: uma folha em Palha com cava usinada, a outra em espelho prata '
     'emoldurado em alumínio.'),
@@ -209,13 +231,20 @@ AMB = [
     'ocupar parede.'),
    ('Por dentro', 'Maleiro no alto, cabideiros e, embaixo, gavetas e sapateiros.'),
    TANDEM]),
- ('O closet<br>da Isabella.', ['des-isabella-e01', 'des-isabella-e2'], 'Closet Isabella',
-  'MDF Palha · Duratex, por dentro e por fora · ferragem Blum',
-  [('Armário da parede da porta', 'Maleiros no alto e cabideiros longos, com sapateiros '
-    'embaixo, atrás de portas de giro.'),
-   ('Armário da parede longa', 'Prateleiras, maleiros, cabideiros e as colunas de gavetas e '
-    'sapateiros, todo fechado por portas de giro.'),
+ ('O closet<br>da Isabella.', ['des-isabella-e01', 'des-isabella-e2'], 'Closet Isabella', ACAB_GIRO,
+  [('Armário da parede da porta', 'Maleiros no alto, prateleiras, cabideiro longo e '
+    'sapateiros embaixo, atrás de portas de giro.'),
+   ('Armário da parede longa', 'Maleiros, prateleira, cabideiros e as colunas de gavetas, '
+    'gavetas finas e sapateiros, todo fechado por portas de giro.'),
    CLIP, TANDEM]),
+ ('O armário<br>da Isabella.', ['des-quarto-isabella'], 'Quarto Isabella', ACAB_CORRER,
+  [('Portas de correr', 'No sistema <b>SI Ocean 80</b>, com amortecimento nos dois sentidos: '
+    'folhas em Palha com cava usinada e uma em espelho prata emoldurado em alumínio.'),
+   ('Por dentro', 'Maleiros no alto, uma coluna de prateleiras, cabideiros e gavetas com a '
+    'frente em Palha.'),
+   ('Junto à janela', 'Uma lateral fixa, recuada, deixa a cortina correr na frente do '
+    'armário.'),
+   TANDEM]),
 ]
 for titulo, imgs, tag, acab, itens in AMB:
     folha(f'''<div class="amb">
@@ -264,7 +293,7 @@ FER = [
    'Regulagem em altura, lateral e profundidade: a porta se realinha em minutos.',
    'Testada em <b>200 mil</b> aberturas e fechamentos.']),
  ('Corrediça', 'Blum TANDEM com BLUMOTION', ['tandem', 'gaveta'], [
-   'Oculta sob a gaveta: a lateral fica em Palha, sem trilho de metal à vista.',
+   'Oculta sob a gaveta: a lateral fica limpa, sem trilho de metal à vista.',
    'Extração total: a gaveta sai inteira e mostra o fundo.',
    '<b>BLUMOTION</b> integrado: no fim do curso, a gaveta se recolhe sozinha e fecha sem ruído.',
    'Carga de até <b>30 kg</b> por gaveta.']),
@@ -272,7 +301,7 @@ FER = [
    'Para roupeiros de portas de correr, com folhas de até <b>80 kg</b>.',
    'Amortecimento nos dois sentidos: a folha desacelera ao abrir e ao fechar.',
    'Certificado em <b>100 mil</b> ciclos de uso.',
-   'Recebe a folha em Palha e a de espelho prata do roupeiro do Gabriel.']),
+   'Recebe as folhas em Palha e as de espelho prata dos roupeiros e do armário da Isabella.']),
 ]
 def fcard(k, nome, imgs, pts):
     principal = f'<div class="fi"><img src="{IMG[imgs[0]]}" alt=""></div>'
@@ -321,11 +350,15 @@ folha(f'''<div class="pad">
 N0 = N[0] + 1   # ⛔ a primeira folha com preço
 
 # ── investimento ────────────────────────────────────────────────────────
-NOME_AMB = {'Closet suíte master': 'Closet da suíte', 'Quarto Gabriel': 'Roupeiro do Gabriel',
-            'Closet Isabella': 'Closet da Isabella'}
-DESC_AMB = {'Closet suíte master': 'Portas de giro e dez gavetas: quatro gavetas e seis sapateiras',
+NOME_AMB = {'Suíte master': 'Roupeiro da suíte', 'Closet suíte master': 'Closet da suíte',
+            'Quarto Gabriel': 'Roupeiro do Gabriel', 'Closet Isabella': 'Closet da Isabella',
+            'Quarto Isabella': 'Armário da Isabella'}
+DESC_AMB = {'Suíte master': 'Portas de correr SI Ocean 80, uma em espelho prata',
+            'Closet suíte master': 'Portas de giro, par de portas em palha sintética, calceiros '
+                                   'retráteis e vinte gavetas: treze gavetas e sete sapateiras',
             'Quarto Gabriel': 'Portas de correr SI Ocean 80, uma em espelho prata',
-            'Closet Isabella': 'Armários com portas de giro, gavetas e sapateiros'}
+            'Closet Isabella': 'Armários com portas de giro, gavetas e sapateiros',
+            'Quarto Isabella': 'Portas de correr SI Ocean 80, uma em espelho prata'}
 rows = ''.join(f'<tr><td class="l">{E(NOME_AMB[a])}<div class="sub">{E(DESC_AMB[a])}</div></td>'
                f'<td class="hi">{brs(PR.PV_R[a])}</td></tr>' for a in PR.ORDEM)
 folha(f'''<div class="pad">
@@ -344,15 +377,16 @@ folha(f'''<div class="pad">
   <div class="gar justo" style="grid-template-columns:1fr;margin-top:0">
    <div class="c hi"><div class="unid" style="margin-top:0">O projeto completo</div>
     <div class="tv">{br(PR.TOTAL)}</div>
-    <div class="x">MDF Palha por dentro e por fora, ferragem Blum, sistema SI Ocean 80 e
-     {GAR} anos de garantia.</div>
+    <div class="x">MDF Palha por fora e Branco TX por dentro, ferragem Blum, sistema SI
+     Ocean 80 e {GAR} anos de garantia.</div>
     <div class="l"><div class="k">Entrada, na assinatura</div>
      <div class="v">{br(PR.TOTAL * PR.PAGTO[0][1])}</div></div></div></div>
  </div>
  <div class="box" style="margin-top:auto"><div class="t">O que está incluso</div>
-  <p>Projeto executivo de marcenaria, chapa Palha em todo o móvel, usinagem, ferragens Blum,
-   o sistema de correr SI Ocean 80, a folha de espelho em alumínio, transporte, montagem e
-   instalação — num só contrato, com uma só data e uma só arquiteta responsável.</p></div>
+  <p>Projeto executivo de marcenaria, MDF Palha por fora e Branco TX por dentro, usinagem,
+   ferragens Blum, o sistema de correr SI Ocean 80, as folhas de espelho em alumínio, a
+   aplicação de palha sintética, os calceiros Slow Sense, transporte, montagem e instalação —
+   num só contrato, com uma só data e uma só arquiteta responsável.</p></div>
 </div>''')
 
 # ── condições ───────────────────────────────────────────────────────────
@@ -379,16 +413,16 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
    <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
      Todas as parcelas por transferência bancária.</div>
    <div class="box" style="margin-top:5mm"><div class="t">A amostra do padrão</div>
-    <p>O Palha é apresentado em amostra física na aprovação do projeto executivo, antes
-     da compra da chapa.</p></div>
+    <p>O Palha e a palha sintética são apresentados em amostra física na aprovação do
+     projeto executivo, antes da compra da chapa.</p></div>
   </div>
   <div class="fora">
    <div class="eyebrow" style="margin-bottom:3mm">O que não está nesta proposta</div>
    <ul>
     <li><div class="k">Suíte</div><div class="v">A bancada sob a janela, as mesinhas e o
       painel de cabeceira.</div></li>
-    <li><div class="k">Quarto da Isabella</div><div class="v">Cama, cômoda, estante, nicho
-      de livros e quadro de desenho.</div></li>
+    <li><div class="k">Quarto da Isabella</div><div class="v">Cama, cômoda, estante e quadro
+      de desenho, a cortina e o trilho.</div></li>
     <li><div class="k">Banheiros e pedra</div><div class="v">Bancadas, cubas, box, louças e
       metais.</div></li>
     <li><div class="k">Obra e iluminação</div><div class="v">Portas de passagem, iluminação de
@@ -517,7 +551,14 @@ for _p in ('cartão', 'cartao', 'desconto', 'valor cheio', 'telescópica', 'hett
 _txt = lambda fs: re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(fs)))
 _amb = _txt(S[N_AMB[0] - 1:N_AMB[1]])
 _suite = _txt([f for f in S[N_AMB[0] - 1:N_AMB[1]] if 'Closet suíte master' in f])
-assert 'dez gavetas' in _suite and 'quatro gavetas e seis sapateiras' in _suite, '⛔ as dez gavetas da suíte'
+assert 'vinte gavetas' in _suite and 'treze gavetas e sete sapateiras' in _suite, '⛔ as vinte gavetas da suíte'
+assert 'palha sintética' in _suite, '⛔ "mencionar isso na proposta": o par de portas em palha sintética'
+assert 'Branco TX' in _t and 'por dentro e por fora' not in _t and 'Nenhuma chapa branca' not in _t, \
+    '⛔ o interior agora é Branco TX [Jonathan, 09/11/2026]'
+_g = sum(f[2] for i in __import__('levantamento').ITENS if i['amb'] == 'Closet suíte master'
+         for f in i['ferr'] if f[4] == 'Corrediça')
+assert _g == 20, ('⛔ as gavetas do closet da suíte mudaram no levantamento', _g)
+assert set(NOME_AMB) == set(PR.ORDEM), '⛔ ambiente sem nome na folha de investimento'
 _sem_suite = _txt([f for f in S[N_AMB[0] - 1:N_AMB[1]] if 'Closet suíte master' not in f])
 assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição'
 assert not re.search(r'\b(\d+|duas|dois|três|quatro|cinco|seis|dez|treze|doze)\s+(portas?|folhas?|gavet\w+|sapat\w+|prateleiras?)', _sem_suite, re.I), '⛔ contagem'

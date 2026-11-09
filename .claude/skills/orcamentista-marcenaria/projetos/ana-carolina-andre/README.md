@@ -1,7 +1,43 @@
 # Ana Carolina e André · projeto [35] de Ana Maria
 
-Três ambientes com marcenaria: closet da Suíte master, roupeiro do Quarto Gabriel e
-closet da Isabella. **Ferragem Blum · RT 10% · sem vendedor** [Jonathan, 05/11/2026].
+Cinco ambientes com marcenaria desde a revisão de 09/11/2026: roupeiro e closet da Suíte
+master, roupeiro do Quarto Gabriel, closet da Isabella e armário do Quarto Isabella.
+**Ferragem Blum · RT 10% · sem vendedor** [Jonathan, 05/11/2026].
+
+## ⭐ Revisão de 09/11/2026 · pranchas de 08/11 (`35_.1_*_1.pdf`)
+
+[Jonathan] "interno agora será **branco tx**, externo em **palha**, no closet teremos um
+**par de portas com aplicação de palha sintética** (mencionar isso na proposta), ferragens
+mantém **Blum**". Nas respostas do mesmo dia:
+- o par de palha sintética fica no **módulo de 50** do closet da suíte (o da "tela para
+  ventilação");
+- o **roupeiro da suíte** (200, "um lado pra cada") **entra**;
+- o **armário do Quarto Isabella** (288,5, três portas de correr) **entra**;
+- "adicione dois cabideiros desse": **dois calceiros Slow Sense FGVTN** da Varotti, no lado
+  André.
+
+As elevações novas são **cotadas**: 270 = 10 de rodapé + 260 de caixa. O closet da suíte
+passou a **vinte gavetas** (treze gavetas e sete sapateiras), como a prancha desenha.
+
+Chaves novas no fim da Base (importada), todas ⚠ A COTAR:
+- `Calceiro Slow Sense` R$ 414, referência de mercado do FGVTN de 900 mm (o site da
+  Varotti não abre na rede da sessão);
+- `Palha sintética` R$ 650 o m², o preço da palhinha natural;
+- `Fechadura de gaveta` R$ 45, para as gavetas finas com tranca;
+- `Sistema deslizante SI Forma 3 portas` R$ 1.800, o kit de duas proporcional à folha.
+
+| Ambiente | 06/11 | 09/11 | Diferença |
+|---|---:|---:|---:|
+| 01 Suíte master (roupeiro) | — | 29.063 | +29.063 |
+| 02 Closet suíte master | 53.022 | 65.767 | +12.745 |
+| 03 Quarto Gabriel | 29.848 | 28.131 | −1.717 |
+| 04 Closet Isabella | 49.332 | 45.618 | −3.714 |
+| 05 Quarto Isabella (armário) | — | 30.884 | +30.884 |
+| **Total** | **132.202** | **199.463** | **+67.261** |
+
+Custo direto R$ 73.976,00 · MC 40% · margem de erro 1% · BASE 77,09%. A planilha mostra
+o mesmo número, centavo por centavo. Frete: 2 viagens nos dois ambientes novos, ⚠ a
+confirmar na célula amarela.
 
 **Decisões [Jonathan, 06/11/2026]:**
 - "não tem roupeiro na suíte master, apenas o closet": a aba saiu;
@@ -37,7 +73,7 @@ o conector do Drive só sobe arquivo com o conteúdo inteiro dentro do comando, 
   calcula o que a planilha **tem de mostrar** depois do clique.
 - `_abas.json` · as linhas exatamente como foram gravadas, aba por aba.
 
-## O que a planilha mostra · versão de 06/11/2026, a da proposta
+## O que a planilha mostrava · versão de 06/11/2026 (substituída em 09/11)
 
 O Jonathan mexeu na planilha em 06/11/2026, e vale o que ele deixou:
 - **margem de erro de 1%** em vez dos 2% da casa: BASE 77,09%;
@@ -54,7 +90,7 @@ O Jonathan mexeu na planilha em 06/11/2026, e vale o que ele deixou:
 `precos.py` refaz a cascata e trava o build se a conta deixar de bater com a planilha.
 A proposta mostra cada ambiente em real cheio, e o total é a soma do que se lê.
 
-## A proposta · `proposta-ana-carolina-andre.pdf` (14 folhas)
+## A proposta · `proposta-ana-carolina-andre.pdf` (16 folhas desde 09/11; eram 14)
 
 `build-ana-carolina-andre.py` monta o caderno do Michell e do Gustavo:
 - **só a linha Blum**, com uma folha "Por que Blum" e uma folha dedicada às ferragens;

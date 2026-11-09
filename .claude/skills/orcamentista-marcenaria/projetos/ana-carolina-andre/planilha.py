@@ -25,45 +25,66 @@ PRECO = {'MDF cor 18': 700, 'MDF cor 15': 550, 'MDF cor 6': 350, 'MDF Branco TX 
          'Corte por chapa': 2, 'Corte por peça': 2.5, 'Frete': 200,
          # [06/11/2026] Palha Duratex = linha Melamínico Fosco da Base · porta de giro e SI Forma
          'MDF Palha 18': 700, 'MDF Palha 15': 550, 'MDF Palha 6': 350,
-         'Dobradiça': 50, 'Sistema deslizante SI Forma': 1200, 'Porta de espelho em alumínio': 700}
+         'Dobradiça': 50, 'Sistema deslizante SI Forma': 1200, 'Porta de espelho em alumínio': 700,
+         # [09/11/2026] revisão de 08/11: chaves novas do projeto, ⚠ todas A COTAR
+         'Calceiro Slow Sense': 414, 'Palha sintética': 650, 'Fechadura de gaveta': 45,
+         'Sistema deslizante SI Forma 3 portas': 1800}
 AREA, APROV, CONS, EMB = 5.0875, 0.80, 0.06, 0.02
-# ⭐ frete é a célula AMARELA, digitada pelo Jonathan na planilha [06/11/2026]
-VIAGENS = {'Closet suíte master': 3, 'Quarto Gabriel': 2, 'Closet Isabella': 3}
-ABAS = [('Closet suíte master', '01 Closet suíte master', 102, 'CLOSET SUITE MASTER_E1 e E2'),
-        ('Quarto Gabriel', '02 Quarto Gabriel', 103, 'QUARTO GABRIEL · ELEVAÇÃO E1'),
-        ('Closet Isabella', '03 Closet Isabella', 104, 'CLOSET ISABELLA · ELEVAÇÃO E01 e E2')]
+# ⭐ frete é a célula AMARELA, digitada pelo Jonathan na planilha [06/11/2026]:
+#   3 · 2 · 3 nos três ambientes de antes · ⚠ 2 nos dois que entraram em 09/11
+VIAGENS = {'Suíte master': 2, 'Closet suíte master': 3, 'Quarto Gabriel': 2, 'Closet Isabella': 3, 'Quarto Isabella': 2}
+ABAS = [('Suíte master', '01 Suíte master', 101, 'SUITE MASTER_E1'),
+        ('Closet suíte master', '02 Closet suíte master', 102, 'CLOSET SUITE MASTER_E1 e E2'),
+        ('Quarto Gabriel', '03 Quarto Gabriel', 103, 'QUARTO GABRIEL · ELEVAÇÃO E1'),
+        ('Closet Isabella', '04 Closet Isabella', 104, 'CLOSET ISABELLA · ELEVAÇÃO E01 e E2'),
+        ('Quarto Isabella', '05 Quarto Isabella', 105, 'QUARTO ISABELLA 01')]
 SUB = {
- 'Closet suíte master': 'closet em duas paredes, do piso a 265, com portas de giro e puxador em cava · ⭐ dez gavetas e sapateiras, o teto que o Jonathan deu',
- 'Quarto Gabriel': 'a única prancha COTADA do projeto · roupeiro de 195 com maleiro, cabideiro e oito gavetas e sapateiros · duas portas de correr no SI Forma, uma de espelho prata',
- 'Closet Isabella': 'closet em duas paredes com portas de giro e puxador em cava · seis colunas, quatorze gavetas e sapateiros',
+ 'Suíte master': 'roupeiro de 200, um lado para cada, com maleiro, cabideiro e oito gavetas · duas portas de correr no SI Forma, uma de espelho prata',
+ 'Closet suíte master': 'closet em duas paredes, do piso ao teto, com portas de giro e puxador em cava · vinte gavetas e sapateiros, dois calceiros retráteis e o par de portas em palha sintética',
+ 'Quarto Gabriel': 'roupeiro de 195 com maleiro, cabideiro e oito gavetas e sapateiros · duas portas de correr no SI Forma, uma de espelho prata',
+ 'Closet Isabella': 'closet em duas paredes com portas de giro e puxador em cava · cinco colunas, dezesseis gavetas e sapateiros',
+ 'Quarto Isabella': 'armário de 288,5 com maleiro, prateleiras, cabideiro e cinco gavetas · três portas de correr no SI Forma, uma de espelho prata · lateral fixa recuada para a cortina',
 }
 FORA = {
- 'Closet suíte master': ['O ROUPEIRO DA SUÍTE MASTER: não existe, só o closet [Jonathan, 06/11/2026]',
-                         'Bancada, mesinhas e painel de cabeceira da suíte: só na planta, sem elevação',
-                         'Portas de passagem do closet (60 × 210)', 'Iluminação de forro'],
+ 'Suíte master': ['Bancada, mesinhas e painel de cabeceira da suíte: só na planta, sem elevação',
+                  'Cama, poltrona e tapete', 'Iluminação de forro e cortina'],
+ 'Closet suíte master': ['Portas de passagem do closet (60 × 210 e 70 × 210)', 'Iluminação de forro'],
  'Quarto Gabriel': ['Berço, poltrona, cômoda e cama EXISTENTES', 'Porta de passagem e ar-condicionado'],
- 'Closet Isabella': ['O QUARTO da Isabella — cama montessori, cômoda, estante, nicho de livros, quadro de desenho e puff — está na planta mas não tem elevação: fora desta conta',
-                     'Banho: bancada, cuba, box, louças e metais'],
+ 'Closet Isabella': ['Puff', 'Banho: bancada, cuba, box, louças e metais'],
+ 'Quarto Isabella': ['Cama montessori, cômoda, estante e quadro de desenho: estão na planta mas não têm elevação',
+                     'Cortina e trilho de cortina'],
 }
 COMUNS = [
- '⛔ AS ELEVAÇÕES NÃO TÊM COTA NEM NOTA DE MATERIAL (só a do Quarto Gabriel é cotada). Largura e profundidade vêm da planta; ALTURAS E DIVISÕES foram MEDIDAS NA ESCALA 1:25. Conferir na medição.',
- '⭐ TODO O MDF NO PADRÃO PALHA, DA DURATEX [Jonathan, 06/11/2026, no lugar do Nude Vel da Guararapes]: portas, caixaria, prateleiras, fundos e caixas de gaveta, com a fita de cor. Preço da linha MELAMÍNICO FOSCO da Base (550 a de 15, 700 a de 18, 350 a de 6). ⚠ Confirmar com o fornecedor o preço do Palha Duratex nas três espessuras.',
+ '⭐ REVISÃO DE 08/11/2026 [Jonathan, 09/11/2026]: INTERIOR EM BRANCO TX, EXTERIOR EM PALHA DURATEX, ferragens BLUM. As elevações novas são COTADAS: 270 do piso ao teto = 10 de rodapé + 260 de caixa.',
+ '⭐ PALHA é o que se vê com a porta fechada: portas de giro, folhas de correr de MDF, rodapé, a lateral que aparece e as frentes de gaveta que a prancha pinta de Palha (roupeiro da suíte e armário do Quarto Isabella). O resto — caixaria, prateleira, fundo, caixa de gaveta e a frente atrás da porta de giro — é BRANCO TX. Palha no preço da linha MELAMÍNICO FOSCO da Base. ⚠ Confirmar o preço do Palha Duratex.',
 ]
-GIRO = ('⭐ PORTAS DE GIRO COM PUXADOR EM CAVA [Jonathan, 06/11/2026]: 15 mm, a espessura de porta da Base · módulo acima de 60 leva DUAS folhas · '
+GIRO = ('⭐ PORTAS DE GIRO COM PUXADOR EM CAVA [Jonathan, 06/11/2026]: 15 mm Palha, sobrepostas à caixa inteira · módulo acima de 60 leva DUAS folhas · '
         'cinco dobradiças Blum por folha (passa de 200 de altura) · cava usinada de 1 m por folha.')
+CORRER = ('⭐ PORTAS DE CORRER NO SISTEMA DESLIZANTE SI FORMA [Jonathan, 06/11/2026]: folhas de MDF Palha de 18 mm com cava e UMA de ESPELHO PRATA em esquadria de alumínio '
+          '(Base: porta de espelho em alumínio, R$ 700 o m²) — folha pronta, sem chapa, sem fita e sem desempenador. Caixa com 55 de fundo: os 65 da planta menos os 10 do trilho.')
 DUV = {
- 'Closet suíte master': ['⭐ DEZ GAVETAS E SAPATEIRAS [Jonathan, 05/11/2026]: a E1 desenha três gavetas; distribuí dez — três sapateiras no módulo 1, quatro gavetas no módulo 3 e três sapateiras no módulo A da E2. Cada uma leva corrediça Blum.',
-                         GIRO + ' Aqui são TREZE folhas: oito de 41 na E1, quatro de 46 e uma de 55 na E2.',
-                         '⚠ FOLHA DE GIRO DE 254 DE ALTURA EM 15 MM: é a regra da Base, mas folha alta e estreita empena mais. Em 18 mm sobe a chapa de 15 para a de 18.',
-                         '⚠ BASE E TETO DE 331 NÃO SAEM DE CHAPA: emenda sobre a divisória do meio.'],
- 'Quarto Gabriel': ['⭐ DUAS PORTAS DE CORRER NO SISTEMA DESLIZANTE SI FORMA [Jonathan, 06/11/2026]: uma folha de MDF de 18 mm com cava e uma de ESPELHO PRATA em esquadria de alumínio (Base: porta de espelho em alumínio, R$ 700 o m²) — folha pronta, sem chapa, sem fita e sem desempenador.',
-                    '⚠ UM CONJUNTO SI FORMA para as duas folhas, como na Tereza Sá. Se o kit for por folha, entra mais um. ⚠ Se o espelho for COLADO sobre folha de MDF, troca pelo espelho colado (R$ 600 o m²) mais a chapa.',
+ 'Suíte master': ['⭐ O ROUPEIRO DA SUÍTE ENTRA [Jonathan, 09/11/2026]. A prancha de 06/11 não o tinha; a de 08/11 tem, "um lado pra cada".',
+                  CORRER + ' Um conjunto SI Forma para as duas folhas.',
+                  '⭐ FRENTES DE GAVETA EM PALHA: a prancha pinta as oito frentes de Palha, porque com a porta de correr aberta elas aparecem.',
+                  '⚠ FRETE: duas viagens, digitadas por mim na célula amarela. Confirmar.'],
+ 'Closet suíte master': ['⭐ VINTE GAVETAS E SAPATEIROS, como a prancha de 08/11 desenha: catorze no lado Ana Carolina (três gavetas finas, sete gavetas e quatro sapateiros), dois sapateiros no lado André e quatro no módulo de 50. O teto de dez da revisão anterior caiu com a prancha nova.',
+                         '⭐ PAR DE PORTAS COM APLICAÇÃO DE PALHA SINTÉTICA no módulo de 50 [Jonathan, 09/11/2026]: a prancha desenha "1 porta de giro com tela para ventilação"; viraram duas folhas de MDF Palha de 18 com requadro de 7 e a tela por trás. ⚠ Palha sintética a R$ 650 o m², o preço da palhinha natural da Base, aplicada por tapeceiro: A COTAR.',
+                         '⭐ DOIS CABIDEIROS CALCEIROS RETRÁTEIS Slow Sense, Varotti FGVTN [Jonathan, 09/11/2026], um por módulo do lado André. ⚠ R$ 414 cada é referência de mercado do FGVTN de 900 mm: o site da Varotti não abre na rede da sessão. A COTAR.',
+                         '⚠ "2 GAVETAS FINAS COM TRANCA": fechadura de gaveta a R$ 45, a da United. A COTAR.',
+                         GIRO + ' Aqui são CATORZE folhas: oito de 41 no lado Ana Carolina, quatro de 46 no lado André e as duas de palha sintética.',
+                         '⚠ BASE E TETO DE 331 NÃO SAEM DE CHAPA: emenda sobre a divisória do meio.',
+                         '⚠ "Verificar possibilidade de retirar a divisão vertical do maleiro": não muda a conta.'],
+ 'Quarto Gabriel': [CORRER + ' Um conjunto SI Forma para as duas folhas.',
                     '⚠ SAPATEIRO lido como GAVETA BAIXA com corrediça Blum, igual à gaveta. Se for prateleira inclinada fixa, saem quatro corrediças.'],
- 'Closet Isabella': [GIRO + ' Aqui são DOZE folhas: quatro de 33 na E01 (colunas de 65) e oito de 35 na E2 (colunas de 70).',
-                     '⚠ Se a arquiteta preferir UMA FOLHA POR COLUNA (65 a 70 cm), saem seis folhas e trinta dobradiças Blum.',
-                     '⚠ BASE E TETO DE 281 NÃO SAEM DE CHAPA: emenda sobre a divisória do meio.'],
+ 'Closet Isabella': [GIRO + ' Aqui são NOVE folhas: três na E01 e seis na E2.',
+                     '⭐ A PRANCHA DE 08/11 REDESENHOU O CLOSET: E01 com duas colunas (85,5 e 42) e E2 com três colunas de 90,3. Dezesseis gavetas e sapateiros.',
+                     '⚠ BASE E TETO DE 281 NÃO SAEM DE CHAPA: emenda sobre a divisória.'],
+ 'Quarto Isabella': ['⭐ O ARMÁRIO DO QUARTO ISABELLA ENTRA [Jonathan, 09/11/2026].',
+                     CORRER + ' Aqui são TRÊS folhas, duas de MDF e uma de espelho.',
+                     '⚠ SI FORMA DE TRÊS FOLHAS: R$ 1.800, o kit de duas (R$ 1.200) proporcional à folha. A COTAR.',
+                     '⚠ LATERAL FIXA RECUADA PARA A CORTINA: lida como um painel de Palha de 18, do piso ao teto, com 50 de fundo. Confirmar o recuo com a arquiteta.',
+                     '⚠ FRETE: duas viagens, digitadas por mim na célula amarela. Confirmar.'],
 }
-
 
 def chapa_custo(c, l, q, k):
     return c * l / 1e4 * q / (AREA * APROV) * PRECO[k]
@@ -133,7 +154,7 @@ def monta(amb, aba, sid, prancha):
     for k, rr in rows_mat.items():
         if k.startswith('MDF'):
             area = sum(x[3] * x[4] * x[5] for _, lin in blocos for x in lin if x[0] == 'peca' and x[7] == k) / 1e4
-            put(rr, k, f'{area:.1f} m² de peças · Palha Duratex · comprada inteira, por cor × espessura'.replace('.', ','),
+            put(rr, k, (f'{area:.1f} m² de peças · '.replace('.', ',') + ('Palha Duratex, o exterior' if 'Palha' in k else 'Branco TX, o interior') + ' · comprada inteira, por cor × espessura'),
                 f'=ROUNDUP(SUMPRODUCT(({K}=$B{rr})*IF(ISNUMBER({D_});{D_}*{E_}*{F_};0))/10000/({CH}))',
                 'chapas', f'=D{rr}*VLOOKUP($B{rr};precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
         elif k.startswith('Fita'):
@@ -142,7 +163,7 @@ def monta(amb, aba, sid, prancha):
         else:
             put(rr, k, 'Coladeira · 15 e 18 mm · serviço por metro de aresta feita, sem desperdício',
                 f'=SUMIF({K};"{k}";{F_})', 'm', f'=D{rr}*VLOOKUP("{k}";precos;2;FALSE)', f'=IFERROR(F{rr}/$F${rcd};"")')
-    put(rf, 'Ferragem, terceirizados e iluminação', 'Linha BLUM · corrediça, dobradiça, SI Forma, desempenador, cabideiro, suporte, cava, perfil de piso e folha de espelho · o resto de tudo que tem chave',
+    put(rf, 'Ferragem, terceirizados e iluminação', 'Linha BLUM · corrediça, dobradiça, SI Forma, desempenador, cabideiro, calceiro, fechadura, suporte, cava, perfil de piso, folha de espelho e palha sintética · o resto de tudo que tem chave',
         f'=SUMPRODUCT((LEFT({K};4)<>"MDF ")*(LEFT({K};4)<>"Fita")*(LEFT({K};9)<>"Filetagem")*({K}<>"")*IF(ISNUMBER({F_});{F_};0))', 'peças',
         f'=SUMIF({K};"<>";{I_})-SUMIF({K};"MDF *";{I_})-SUMIF({K};"Fita*";{I_})-SUMIF({K};"Filetagem*";{I_})', f'=IFERROR(F{rf}/$F${rcd};"")')
     mdf_rows = [rows_mat[k] for k in chaves_mdf]
