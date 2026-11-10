@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Cronograma · Escritório · Attos Henrique Salles</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#14233B;--gold:#B8913F;--gold-lt:#E2C98E;--ink:#1B1F27;--soft:#4A515E;--mut:#8A909B;
+      --line:#DADDE2;--cream:#F6EEDB;--paper:#FFFDF8}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:7.6pt;line-height:1.45}
+.page{width:210mm;height:297mm;padding:9mm 12mm 7mm;display:flex;flex-direction:column;overflow:hidden}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:2.6mm;
+    border-bottom:2px solid var(--navy)}
+.hd .lg{font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt;font-weight:700;line-height:.9}
+.hd .lg small{display:block;font-family:'DM Sans',sans-serif;font-size:5.6pt;letter-spacing:.42em;
+    color:var(--gold);font-weight:700;margin-top:1.6mm}
+.hd .r{text-align:right}
+.hd .r .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;font-weight:700;line-height:1}
+.hd .r .s{font-size:6.4pt;color:var(--mut);margin-top:1.2mm}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4mm;margin-top:3.2mm}
+.cards>div{border:1px solid var(--line);border-radius:2px;padding:2mm 2.6mm}
+.k{font-size:5.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.cards .v{font-size:7.6pt;font-weight:700;margin-top:.8mm;line-height:1.3}
+.prazo{margin-top:2.8mm;background:var(--navy);color:#fff;border-radius:3px;padding:2.8mm 5mm;
+       display:flex;align-items:center;gap:7mm}
+.prazo .k{color:var(--gold-lt);font-size:6.4pt;letter-spacing:.24em;white-space:nowrap}
+.prazo .d{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;font-weight:700;line-height:1;
+          color:#fff;white-space:nowrap}
+.prazo .t{font-size:7.6pt;color:#D5D9E0;line-height:1.5;border-left:1px solid rgba(255,255,255,.25);
+          padding-left:6mm}
+.prazo .t b{color:#fff}
+.info{display:grid;grid-template-columns:.6fr 1.2fr 1.2fr;gap:2.4mm;margin-top:2.6mm}
+.info>div{border:1px solid var(--line);border-left:3px solid var(--navy);padding:1.8mm 3mm}
+.info .v{font-size:7.4pt;margin-top:.7mm}
+.sec{margin-top:2.8mm;background:var(--navy);color:#fff;padding:1.8mm 3mm;font-size:6.6pt;
+     letter-spacing:.24em;text-transform:uppercase;font-weight:600}
+.sec b{color:var(--gold-lt);font-weight:600}
+table{width:100%;border-collapse:collapse}
+th{background:var(--navy);color:var(--gold-lt);font-size:5.4pt;letter-spacing:.2em;text-transform:uppercase;
+   text-align:left;padding:1.4mm 2.4mm;font-weight:600}
+td{padding:1.25mm 2.4mm;border-bottom:1px solid var(--line);vertical-align:top;font-size:7.2pt}
+tr:nth-child(even) td{background:#F7F8FA}
+td.amb{font-family:'DM Mono',ui-monospace,monospace;font-size:6.4pt;letter-spacing:.06em;white-space:nowrap}
+td.it{font-weight:700;width:44mm}
+td.sp{color:var(--soft)}
+td.ok,th.ok{width:9mm;text-align:center}
+td.n{width:7mm;font-family:'DM Mono',ui-monospace,monospace;color:var(--gold)}
+td.dt,th.dt{width:26mm;white-space:nowrap}
+td.dt{color:var(--mut)}
+td.def{width:30mm;color:var(--mut);white-space:nowrap}
+tr.fim td{background:var(--cream)!important;font-weight:700;border-bottom:none}
+tr.fim td.dd{color:var(--ink);font-size:8.4pt}
+tr.fim td.dt:not(.dd){font-weight:400}
+.cr{table-layout:fixed}
+.cr td.dt{font-size:6.6pt}
+.box{width:3.2mm;height:3.2mm;border:1.2px solid var(--ink);border-radius:.6mm;display:inline-block}
+.fer{display:flex;gap:2.4mm;margin-top:2.2mm}
+.fer>div{flex:1;border:1px solid var(--line);border-left:3px solid var(--navy);padding:2mm 3.4mm;
+         display:flex;align-items:baseline;gap:3mm}
+.fer .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:14pt;font-weight:700;line-height:1}
+.bl{margin-top:2.2mm;border:1px solid var(--line);border-left:3px solid var(--navy);padding:2.2mm 3.4mm;
+    font-size:7.2pt;color:var(--soft)}
+.bl b{color:var(--ink)}
+.bl .h{color:var(--ink);font-weight:700}
+.at{margin-top:2.2mm;border:1.5px solid var(--gold);border-radius:3px;background:var(--paper);
+    padding:2.2mm 3.4mm;font-size:7.2pt;color:var(--soft);display:grid;grid-template-columns:auto 1fr;
+    gap:4mm;align-items:center}
+.at .e{font-size:5.6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700;
+       white-space:nowrap}
+.at b{color:var(--ink)}
+.sig{display:grid;grid-template-columns:repeat(3,1fr);gap:9mm;margin-top:auto;padding-top:4mm}
+.sig>div{border-top:1px solid var(--ink);padding-top:1.4mm;text-align:center}
+.sig .h{font-weight:700;font-size:7.4pt}
+.sig .d{font-size:6.6pt;color:var(--soft)}
+.ft{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:2.6mm;
+    padding-top:2mm;font-size:5.6pt;letter-spacing:.14em;color:var(--mut);text-transform:uppercase}
+</style></head><body>
+<div class="page">
+ <div class="hd"><div class="lg">valvic<small>MARCENARIA</small></div>
+  <div class="r"><div class="t">Cronograma · Escritório</div><div class="s">Attos Henrique Salles · Costa Laguna · escritório · folha 1 de 1</div></div></div>
+
+ <div class="cards">
+  <div><div class="k">Cliente</div><div class="v">Attos Henrique Salles</div></div>
+  <div><div class="k">Obra</div><div class="v">Costa Laguna · Alphaville, Nova Lima</div></div>
+  <div><div class="k">Projeto</div><div class="v">Executivo Costa Laguna ATTOS · Rev. 03</div></div>
+  <div><div class="k">Escopo</div><div class="v">Escritório · 2 itens · sai à frente da casa</div></div>
+ </div>
+
+ <div class="prazo"><div><div class="k">Escritório instalado · contratual</div>
+   <div class="d">10/12/2026</div></div>
+  <div class="t">É a data do <b>escritório instalado e conferido</b>, independente do prazo da casa.
+   A previsão de cada etapa abaixo tem de caber antes dela.</div></div>
+
+ <div class="info"><div><div class="k">Medição técnica</div><div class="v">Até 13/11/2026</div></div><div><div class="k">Linha contratada</div><div class="v">Hettich · corrediça oculta com Silent System · dobradiça Sensys</div></div><div><div class="k">Garantia</div><div class="v">10 anos marcenaria e ferragem · 2 anos instalação · LED pelo fabricante</div></div></div>
+
+ <div class="sec">1 · <b>Os 2 itens do escritório</b>, como contratados</div>
+ <table><tr><th>Ambiente</th><th>Item</th><th>Especificação</th><th class="ok">OK</th></tr><tr><td class="amb">ESCRITÓRIO</td><td class="it">Painel ripado de fundo</td><td class="sp">Parede inteira do fundo, na mesma cadência da casa · base contínua onde os armários se fixam</td><td class="ok"><span class="box"></span></td></tr><tr><td class="amb">ESCRITÓRIO</td><td class="it">Armário superior, bancada e armário inferior</td><td class="sp">Armário superior suspenso, de portas de giro · bancada corre sobre o armário e avança em mesa, com apoio metálico na ponta · armário inferior com portas e gaveteiro</td><td class="ok"><span class="box"></span></td></tr></table>
+
+ <div class="sec">2 · <b>Cronograma de etapas</b> · previsão de entrega de cada etapa</div>
+ <table class="cr"><colgroup><col style="width:8mm"><col style="width:38mm"><col><col style="width:23mm">
+  <col style="width:23mm"><col style="width:8mm"></colgroup><tr><th>Nº</th><th>Etapa</th>
+  <th>O que fecha a etapa</th><th class="dt">Previsão</th><th class="dt">Realizado</th><th class="ok">✓</th></tr><tr><td class="n">01</td><td class="it">Definições informacionais</td><td class="sp">Cores, render × executivo resolvido, fixação da pedra</td><td class="dt">___/___/______</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr><tr><td class="n">02</td><td class="it">Programação</td><td class="sp">Executivo de marcenaria aprovado e plano de corte</td><td class="dt">___/___/______</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr><tr><td class="n">03</td><td class="it">Usinagem</td><td class="sp">Corte, fita de borda, ripas e usinagem</td><td class="dt">___/___/______</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr><tr><td class="n">04</td><td class="it">Pré-montagem</td><td class="sp">Armários montados e regulados, ripado em painéis</td><td class="dt">___/___/______</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr><tr><td class="n">05</td><td class="it">Conferência</td><td class="sp">Conferência contra o escopo · embalagem e carga</td><td class="dt">___/___/______</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr><tr><td class="n">06</td><td class="it">Início de montagem</td><td class="sp">Equipe na obra, com pedra e pontos elétricos prontos</td><td class="dt">___/___/______</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr><tr class="fim"><td class="n">07</td><td class="it">Entrega no cliente</td><td class="sp">Escritório instalado e conferido</td><td class="dt dd">10/12/2026</td><td class="dt">___/___/______</td><td class="ok"><span class="box"></span></td></tr></table>
+
+ <div class="sec">3 · Ferragens que serão utilizadas e estrutura</div>
+ <div class="fer"><div><div class="k">Corrediças</div><div class="v">Hettich</div></div><div><div class="k">Dobradiças</div><div class="v">Hettich Sensys</div></div></div>
+ <div class="bl"><span class="h">Estrutura e chapas.</span> Caixaria 15 mm, fundos 6 mm, frentes em 18 mm · <b>o apoio metálico da mesa é nosso</b>; a pedra é de terceiro</div>
+ <div class="at"><div class="e">Ponto de atenção</div><div><b>Fora da fila dos 70 dias</b> da casa: produção, carga e instalação com <b>janela própria</b>. O render e o executivo <b>não batem</b> aqui — nada corta antes de resolver.</div></div>
+
+ <div class="sec">4 · A definir antes de liberar a produção</div>
+ <table><tr><th class="ok">✓</th><th>O que</th><th>Condição</th><th>Definido em</th></tr><tr><td class="ok"><span class="box"></span></td><td class="it">Cores e padrões de MDF</td><td class="sp"><b>Definir as cores com o cliente</b> antes de comprar chapa.</td><td class="def">……………………</td></tr><tr><td class="ok"><span class="box"></span></td><td class="it">Render × executivo</td><td class="sp">Resolver a divergência entre o 3D e o projeto técnico <b>antes de detalhar</b>.</td><td class="def">……………………</td></tr><tr><td class="ok"><span class="box"></span></td><td class="it">Fixação da pedra</td><td class="sp">Alinhar com a marmoraria a fixação da pedra e o <b>apoio metálico da mesa</b>.</td><td class="def">……………………</td></tr></table>
+
+ <div class="sig">
+  <div><div class="h">Comercial</div><div class="d">Repassado em ___/___/______</div></div>
+  <div><div class="h">Gestão</div><div class="d">Recebido e conferido em ___/___/______</div></div>
+  <div><div class="h">Produção</div><div class="d">Liberado em ___/___/______</div></div>
+ </div>
+ <div class="ft"><span>Valvic Marcenaria · Vargas Decor LTDA</span><span>CRONOGRAMA · ESCRITÓRIO · COSTA LAGUNA · ATTOS</span></div>
+</div>
+</body></html>
