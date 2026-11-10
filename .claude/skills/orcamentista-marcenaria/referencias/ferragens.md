@@ -91,6 +91,12 @@ Atende do básico ao intermediário com bom custo-benefício e encaixe técnico.
 
 ### Hettich (tecnologia alemã — 3 níveis de posicionamento)
 
+> ⛔⛔ **NÃO TRABALHAMOS MAIS COM A HETTICH SENSYS.** [Jonathan, 10/11/2026]
+> A dobradiça Hettich da casa passa a ser a **Novisys**, a começar pelo projeto do
+> Attos. Em escopo, cronograma e proposta nova, "dobradiça Hettich" quer dizer
+> Novisys. ⚠ A chave `Dobradiça Hettich` da Base ainda custa R$ 50, o preço da
+> Sensys: rever quando o Jonathan pedir, porque proposta já declarada não se mexe.
+
 | Linha             | R$/un | Ciclos  | Garantia   | Posição          |
 |-------------------|-------|---------|------------|------------------|
 | Novisys           | 7,90  | 100.000 | 10 anos    | Intermediário/bom — grande volumetria (cozinhas completas) |

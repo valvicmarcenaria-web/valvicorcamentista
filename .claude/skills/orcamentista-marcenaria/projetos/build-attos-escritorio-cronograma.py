@@ -14,6 +14,8 @@
    · medição até 7 dias corridos após a assinatura de 06/11/2026.
    E `attos-costa-laguna/_HALL-ESCRITORIO.md`, a leitura do executivo Rev. 03.
 ⭐ Documento INTERNO, para a gestão e a produção: não leva preço.
+⛔ [Jonathan, 10/11/2026] "não trabalhamos mais com a hettich sensys, no projeto do
+   Attos será a novisys" — a dobradiça é a Hettich NOVISYS.
 """
 import pathlib, subprocess, os, re, html
 
@@ -31,7 +33,7 @@ ENTREGA = '10/12/2026'
 
 CARDS = [
  ('Medição técnica', 'Até 13/11/2026'),
- ('Linha contratada', 'Hettich · corrediça oculta com Silent System · dobradiça Sensys'),
+ ('Linha contratada', 'Hettich · corrediça oculta com Silent System · dobradiça Novisys'),
  ('Garantia', '10 anos marcenaria e ferragem · 2 anos instalação · LED pelo fabricante'),
 ]
 ITENS = [
@@ -50,7 +52,7 @@ ETAPAS = [
  ('Conferência', 'Conferência contra o escopo · embalagem e carga'),
  ('Início de montagem', 'Equipe na obra, com pedra e pontos elétricos prontos'),
 ]
-FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Hettich Sensys')]
+FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Hettich Novisys')]
 ESTRUTURA = ('Caixaria 15 mm, fundos 6 mm, frentes em 18 mm · <b>o apoio metálico da mesa é nosso</b>; '
              'a pedra é de terceiro')
 ATENCAO = ('<b>Fora da fila dos 70 dias</b> da casa: produção, carga e instalação com <b>janela '
@@ -128,6 +130,7 @@ _t = re.sub(r'<[^>]+>', ' ', HTML.split('<body>')[1])
 for _c in ('Orlando', 'Ivone', 'Haverson', 'Ana Carolina', 'Alexandre', 'Gisele', 'Gustavo', 'Phillip'):
     assert _c not in _t, f'⛔ vestígio de outro cliente: {_c}'
 assert 'R$' not in _t, '⛔ o cronograma não leva preço'
+assert 'Sensys' not in _t and 'Novisys' in _t, '⛔ a dobradiça do Attos é a Novisys [Jonathan, 10/11/2026]'
 assert not [c for c in '⭐⛔⚠' if c in _t], '⛔ marcação interna'
 assert all(e in _t for e, _d in ETAPAS) and ENTREGA in _t
 
