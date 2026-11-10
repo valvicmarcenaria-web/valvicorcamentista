@@ -14,7 +14,7 @@ vendedora apresentar a Valvic a escritórios de arquitetura.
 
 - **Papel:** apoio de conversa. Não é funil, não é peça de fechamento.
 - **Alvo:** prospecção aberta no segmento de alto padrão de BH e Nova Lima.
-- **Formatos:** impresso A4 + hotsite.
+- **Formatos:** apresentação empresarial 16:9 (peça principal) + handout impresso + hotsite.
 - **Decisão do Jonathan (10/11/2026):** a RT entra **escrita, com percentual**.
 - **Decisão do Jonathan (10/11/2026):** liderar por **obra entregue**; as máquinas
   novas aparecem em texto, porque ainda estão sendo instaladas e não há foto delas.
@@ -88,26 +88,32 @@ vidro, espelho e pedra.
 Fonte: Jonathan, 10/11/2026 + seções 2, 9 e 11 do Checklist.
 
 ### Ferragens
-Marcas em uso: **Blum, Hettich, Hardt, Häfele, Rometal** e linha padrão.
+Marcas nas linhas oficiais: **Blum, Siforma, Hettich, Rometal** e linha básica.
+Também em uso na casa, sem linha de garantia definida: **Hardt, Häfele** — ver pendência 8.
 Fonte: `.claude/skills/closer-vendas/referencias/garantia.md`
 
-### Garantia — escalonada por ferragem (política oficial, Jonathan jun/2026)
-| Ferragem | Garantia |
+### Garantia — escalonada por linha de ferragem
+**Política vigente: Jonathan, 10/11/2026.** Substitui a tabela de jun/2026
+(vitalícia / 10 / 5 / 2 anos), que está revogada.
+
+| Linha de ferragem | Garantia |
 |---|---|
-| Blum | **vitalícia** |
-| Hettich (Quadro, Actro, Sensys) | **10 anos** |
-| Hardt | **5 anos** |
-| Telescópica / dobradiça padrão | **2 anos** |
+| **Blum · Siforma** | **30 anos** |
+| **Hettich · Rometal** | **10 anos** |
+| **Básica** — telescópica, pistão a gás, sistema deslizante aparente | **1 ano** |
 
 - Regra do elo mais fraco: o conjunto segue a ferragem de menor tier presente.
 - Instalações e regulagens: 2 anos. Iluminação LED: sem garantia (nota técnica).
 - Atendimento: retorno em 24h, visita em até 3 dias úteis, custo zero no prazo.
 - Termo assinado na entrega + guia de conservação.
 
-Fonte: `.claude/skills/closer-vendas/referencias/garantia.md`
+Fonte: Jonathan, 10/11/2026. Replicado em
+`.claude/skills/closer-vendas/referencias/garantia.md`.
 
-> **Esta é a prova mais forte que a casa tem e não estava sendo usada.** "Garantia
-> vitalícia na linha Blum" é manchete, não rodapé.
+> **Esta é a prova mais forte que a casa tem e não estava sendo usada.**
+> "Garantia de 30 anos na linha Blum" é manchete, não rodapé. E para o arquiteto
+> é poder de especificação: ele consegue dizer ao cliente que subir a ferragem leva
+> a garantia de 1 para 30 anos — e o crédito desse argumento é dele, não nosso.
 
 ### Processo do projeto — 7 etapas
 Derivado de `Valvic_Checklist_Liberacao_Projeto.pdf` (5 folhas, 13 seções, pela Bruna)
@@ -199,9 +205,43 @@ internas**. A marca voltada ao cliente é **dourado + creme + quase-preto**. Nã
 
 ## 7. Estrutura das peças
 
-### Impresso · A4 retrato · 8 páginas
-| Pág. | Seção | Imagem |
+### Peça principal · apresentação empresarial 16:9 · 16 slides
+
+| Slide | Seção | Essencial |
 |---|---|---|
+| 01 | Capa | sim |
+| 02 | A tese — "nós executamos projeto de arquitetura" | sim |
+| 03 | A casa | sim |
+| 04 | Números | — |
+| 05 | Obra entregue (galeria) | sim |
+| 06 | A fábrica — a ponte do argumento | sim |
+| 07 | Coladeira de borda | — |
+| 08 | Centro de furação | — |
+| 09 | O processo, 7 etapas | sim |
+| 10 | O Checklist, 13 seções — momento de entregar o PDF | sim |
+| 11 | Materiais | — |
+| 12 | Ferragens e garantia | sim |
+| 13 | A parceria — RT | sim |
+| 14 | Os quatro compromissos | sim |
+| 15 | Jardim Canadá | — |
+| 16 | O convite e o contato | sim |
+
+Os 10 slides marcados como essenciais formam a versão de 10 minutos.
+
+**Regra de diagramação:** pouco texto na tela, muito na nota do apresentador.
+Arquiteto desconfia de slide cheio, e slide que se explica sozinho tira o papel da
+vendedora na sala. Toda a copy já vem separada em TELA e NOTA DO APRESENTADOR.
+
+### Derivados da mesma copy
+- **Handout impresso:** os 16 slides em A4 retrato, para deixar no escritório.
+- **Hotsite:** mesma sequência em rolagem única, galeria maior.
+  *Restrição técnica:* dentro de um artifact o navegador bloqueia download — se o
+  hotsite for publicado como artifact, o Checklist só pode ser mencionado, não baixado.
+  Em domínio próprio, funciona.
+- **Checklist de Liberação de Projeto:** peça à parte, já pronta, entregue impressa
+  no slide 10.
+
+---|---|---|
 | 01 | Capa — headline + assinatura | Foto de obra entregue, sangria total |
 | 02 | A casa — relato histórico + 4 números | Equipe / fábrica |
 | 03 | **Obra entregue** — galeria | 4 a 6 fotos, com crédito ao escritório onde houver |
@@ -283,13 +323,15 @@ Segunda pasta: `1QkrU_eU-XlsVYdBT8_nnwppuV9GIksf_`
 | 4 | Divergência RT 10% × 7% no `valvic_os.html` | Jonathan | Página 07 |
 | 5 | Nome da vendedora | Jonathan | Guia interno |
 | 6 | Capacidade mensal da nova fábrica | Jonathan | Fala da vendedora, não a peça |
-| 7 | Revisão do Termo de Garantia em 4 tiers | Jonathan / jurídico | Página 06 |
+| 7 | Reescrever o Termo de Garantia nos 3 tiers vigentes (30 / 10 / 1 ano) | Jonathan / jurídico | Slide 12 |
+| 8 | **Hardt e Häfele ficam em que linha?** Estão em uso e fora da tabela nova | Jonathan | Slide 12 |
 
 ## 10. QA antes de imprimir
 
 - [ ] Nenhuma página diz "Vargas Decor" onde deveria dizer "Valvic"
 - [ ] Nenhum prazo de entrega impresso
-- [ ] Garantia aparece como escalonada, nunca como "10 anos" fixo
+- [ ] Garantia nos tiers vigentes: Blum/Siforma 30 anos, Hettich/Rometal 10, básica 1
+- [ ] Nenhuma menção a garantia "vitalícia" ou a tier de 5 ou 2 anos (revogados)
 - [ ] Nenhum dado de MC, custo, comissão interna ou fornecedor
 - [ ] "Hardt" escrito certo; "Premium" escrito certo
 - [ ] Crédito ao escritório em toda foto de projeto com arquiteta
