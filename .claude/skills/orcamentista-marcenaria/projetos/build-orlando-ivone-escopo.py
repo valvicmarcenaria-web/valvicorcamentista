@@ -16,6 +16,14 @@
    (`proposta-orlando-ivone-fechamento.pdf`), e o dossiê `2026-orlando-ivone.md`.
 ⚠ A data de assinatura do contrato não está aqui: o campo sai em branco para o
   comercial preencher.
+⭐ [Jonathan, 10/11/2026] alterações:
+   · "informe apenas as ferragens que serão utilizadas · corrediças Hettich -
+     dobradiças Blum";
+   · "definir cores com a arquiteta";
+   · "prazo de entrega no cliente (finalizado) 04/12";
+   · "criar cronograma de etapas (definições informacionais, programação,
+     usinagem, pré-montagem, conferência, início de montagem) · preciso de um
+     lugar para preencher a previsão de data para entrega de cada etapa".
 """
 import pathlib, subprocess, os, re, html
 
@@ -39,29 +47,36 @@ ATENCAO = ('A bancada não apoia no armário', [
   '<b>driver</b>. Berço e passagem são nossos; o modelo da arandela e do driver tem de chegar '
   'antes do corte.'),
 ])
+ENTREGA = '04/12/2026'
+# ⭐ o cronograma: a previsão de cada etapa é preenchida à mão pela gestão
+ETAPAS = [
+ ('Definições informacionais', 'Cores, revisão liberada do projeto, arandelas e driver, medição'),
+ ('Programação', 'Executivo de marcenaria aprovado e plano de corte'),
+ ('Usinagem', 'Corte, fita de borda, furação e usinagem'),
+ ('Pré-montagem', 'Módulos montados e regulados na fábrica, espelho no perfil'),
+ ('Conferência', 'Conferência contra este escopo · embalagem e carga'),
+ ('Início de montagem', 'Equipe na obra, com sóculo, pedra e ponto elétrico prontos'),
+]
 CARDS = [
  ('Medição técnica', 'Até 7 dias corridos após a assinatura (___/___/______)'),
- ('Entrega', '50 dias corridos contados da medição — não da assinatura'),
- ('Linha contratada', 'Premium · MDF Ultra resistente à umidade · ferragem Hettich com amortecimento'),
+ ('Entrega no cliente, finalizada', ENTREGA),
+ ('Linha contratada', 'Premium · MDF Ultra resistente à umidade · corrediças Hettich · dobradiças Blum'),
  ('Garantia', '10 anos estrutura e ferragens · 2 anos instalação e regulagem · arandelas e driver '
   'pelo fabricante'),
 ]
 ITENS = [
  ('BANHO SUÍTE', 'Armário inferior sob a bancada',
   'Duas portas de giro sob a cuba e quatro gavetas sobre corrediça oculta Hettich com amortecimento '
-  '· frente em amadeirado fosco, caixaria em branco · puxador Zen Phenix 20 cm cromado · assenta no '
+  '· frente e caixaria nas cores a definir com a arquiteta · puxador Zen Phenix 20 cm cromado · assenta no '
   'sóculo de alvenaria, sob a pedra, sem sustentá-la'),
  ('BANHO SUÍTE', 'Armário superior · espelheira',
   'Quatro folhas de espelho prata em perfil de alumínio, de giro, em dois vãos · puxador de trespasse '
-  'de 1 cm, sem puxador aplicado · três peças fixas em amadeirado para as arandelas, com berço e '
-  'passagem do driver · interior branco, com prateleiras'),
+  'de 1 cm, sem puxador aplicado · três peças fixas para as arandelas, com berço e passagem do '
+  'driver · interior com prateleiras · cores a definir com a arquiteta'),
 ]
-FERRAGENS = ('Corrediça oculta Hettich com amortecimento, uma por gaveta · dobradiça com amortecedor '
-             'nas portas do inferior e nas folhas de espelho, que <b>não perdoam desalinho</b> · '
-             'puxador Zen Phenix 20 cm cromado nas portas e gavetas do inferior · trespasse de 1 cm '
-             'nas folhas de espelho, sem puxador aplicado')
-ESTRUTURA = ('MDF Ultra, resistente à umidade · caixaria em branco · todo o aparente em amadeirado '
-             'fosco <b>em 18 mm</b>: portas, frentes de gaveta, as três peças fixas, a lateral direita '
+FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Blum')]   # ⭐ apenas o que será usado
+ESTRUTURA = ('MDF Ultra, resistente à umidade · <b>cores a definir com a arquiteta</b> · todo o '
+             'aparente <b>em 18 mm</b>: portas, frentes de gaveta, as três peças fixas, a lateral direita '
              'dos dois móveis e a base da espelheira — <b>manter em 18</b>: em 15 entra uma chapa a '
              'mais · espelho prata em perfil de alumínio, fornecido e alinhado por nós')
 FORA = ('<b>Pedra:</b> bancada e o seu apoio e fixação, rodabanca, testeira, acabamento do sóculo e '
@@ -69,8 +84,8 @@ FORA = ('<b>Pedra:</b> bancada e o seu apoio e fixação, rodabanca, testeira, a
         'soleiras. <b>Box de correr, louças, metais e acessórios.</b> <b>Arandelas, driver e a '
         'instalação elétrica</b> — nossa é só a usinagem da passagem e o berço na peça fixa.')
 DEFINIR = [
- ('Padrão do amadeirado', 'A legenda da prancha diz "MDF a definir"; o fechamento vendeu '
-  '<b>amadeirado fosco</b>. Definir o padrão com o cliente e a arquiteta <b>antes de comprar chapa</b>.'),
+ ('Cores e padrões de MDF', '<b>Definir as cores com a arquiteta</b> antes de comprar chapa: o '
+  'aparente dos dois móveis, as peças fixas da espelheira e a caixaria.'),
  ('Revisão final do projeto', 'Rev. 00, estudo. <b>Pedir à arquiteta a revisão liberada para '
   'execução</b> e conferir se a marcenaria mudou.'),
  ('Arandelas e driver', 'Modelo e medida das arandelas e do driver, para o berço e a passagem na '
@@ -150,6 +165,19 @@ td.def{width:30mm;color:var(--mut);white-space:nowrap}
 .ft{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:4mm;
     padding-top:2mm;font-size:5.6pt;letter-spacing:.14em;color:var(--mut);text-transform:uppercase}
 .pg1 .ft{margin-top:auto}
+.fer{display:flex;gap:2.4mm;margin-top:2.6mm}
+.fer>div{flex:1;border:1px solid var(--line);border-left:3px solid var(--navy);padding:2.2mm 3.4mm;
+         display:flex;align-items:baseline;gap:3mm}
+.fer .k{font-size:5.6pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.fer .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:14pt;font-weight:700;line-height:1}
+td.n{width:7mm;font-family:'DM Mono',ui-monospace,monospace;color:var(--gold);font-weight:500}
+td.dt{width:27mm;white-space:nowrap;color:var(--mut)}
+th.dt{width:27mm}
+tr.fim td{background:var(--cream)!important;font-weight:700;border-bottom:none}
+tr.fim td.dt{color:var(--ink);font-size:8.4pt}
+.p2 td{padding:1.5mm 2.4mm}
+.p2 .sec{margin-top:3.4mm}
+.p2 .sig{padding-top:4mm}
 """
 
 def cab(n, tot):
@@ -167,6 +195,14 @@ itens = ''.join(f'<tr><td class="amb">{E(a)}</td><td class="it">{E(i)}</td><td c
                 f'<td class="ok">{BOX}</td></tr>' for a, i, s in ITENS)
 defs = ''.join(f'<tr><td class="ok">{BOX}</td><td class="it">{E(k)}</td><td class="sp">{d}</td>'
                f'<td class="def">……………………</td></tr>' for k, d in DEFINIR)
+fer = ''.join(f'<div><div class="k">{E(k)}</div><div class="v">{E(v)}</div></div>' for k, v in FERRAGENS)
+DATA_V = '___/___/______'
+crono = ''.join(f'<tr><td class="n">{n:02d}</td><td class="it">{E(k)}</td><td class="sp">{E(d)}</td>'
+                f'<td class="dt">{DATA_V}</td><td class="dt">{DATA_V}</td><td class="ok">{BOX}</td></tr>'
+                for n, (k, d) in enumerate(ETAPAS, 1))
+crono += (f'<tr class="fim"><td class="n">{len(ETAPAS)+1:02d}</td><td class="it">Entrega no cliente</td>'
+          f'<td class="sp">Montagem finalizada e conferida · termo de garantia assinado</td>'
+          f'<td class="dt">{ENTREGA}</td><td class="dt">{DATA_V}</td><td class="ok">{BOX}</td></tr>')
 N_IT = {1: 'O ITEM CONTRATADO', 2: 'OS 2 ITENS CONTRATADOS'}.get(len(ITENS), f'OS {len(ITENS)} ITENS CONTRATADOS')
 
 HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
@@ -195,13 +231,16 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
  {FT}
 </div>
 
-<div class="page">
+<div class="page p2">
  {cab(2, 2)}
- <div class="sec">2 · Ferragens, estrutura e o que fica fora</div>
- <div class="bl"><span class="k">Ferragens.</span> {FERRAGENS}</div>
+ <div class="sec">2 · <b>Cronograma de etapas</b> · previsão de entrega de cada etapa até a obra finalizada em {ENTREGA}</div>
+ <table><tr><th>Nº</th><th>Etapa</th><th>O que fecha a etapa</th><th class="dt">Previsão</th><th class="dt">Realizado</th>
+  <th class="ok">✓</th></tr>{crono}</table>
+ <div class="sec">3 · Ferragens que serão utilizadas, estrutura e o que fica fora</div>
+ <div class="fer">{fer}</div>
  <div class="bl"><span class="k">Estrutura e chapas.</span> {ESTRUTURA}</div>
  <div class="bl fora"><span class="k">Fora do escopo.</span> {FORA}</div>
- <div class="sec">3 · A definir e a alinhar antes de liberar a produção</div>
+ <div class="sec">4 · A definir e a alinhar antes de liberar a produção</div>
  <table><tr><th class="ok">✓</th><th>O que</th><th>Condição</th><th>Definido em</th></tr>{defs}</table>
  <div class="sig">
   <div><div class="k">Comercial</div><div class="d">Repassado em ___/___/______</div></div>
@@ -217,6 +256,8 @@ _t = re.sub(r'<[^>]+>', ' ', HTML.split('<body>')[1])
 for _c in ('Attos', 'Costa Laguna', 'Haverson', 'Ana Carolina', 'Alexandre', 'Gisele', 'Gustavo', 'Phillip'):
     assert _c not in _t, f'⛔ vestígio de outro cliente: {_c}'
 assert 'R$' not in _t, '⛔ o escopo de venda não leva preço'
+assert 'amadeirado' not in _t, '⛔ as cores são definidas com a arquiteta [Jonathan, 10/11/2026]'
+assert all(e in _t for e, _d in ETAPAS) and ENTREGA in _t
 assert not [c for c in '⭐⛔⚠' if c in _t], '⛔ marcação interna'
 
 R = P / 'orlando-ivone'
