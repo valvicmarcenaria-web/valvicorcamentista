@@ -170,7 +170,7 @@ def _esp(it, q):
 OBS_MATERIAL = {
  ('05 Suíte', 'MDF Fontana 6 mm'):
    ' · ⛔ UMA CHAPA INTEIRA PARA UM FUNDO DE NICHO',
- ('06 Closet', 'Dobradiça Blum para porta de vidro'):
+ ('06 Closet', 'Dobradiça para porta de vidro'):
    ' · ⚠ PODE ESTAR CONTADA DUAS VEZES — ver as dúvidas',
  ('09 Quarto', 'Sistema de porta retrátil'):
    ' · ⚠ preço emprestado do sistema de correr',
@@ -284,7 +284,7 @@ def monta(nome, d, T):
     folhas = ' e '.join(str(f) for f in sorted(d['folhas']))
     R = [[f'  VALVIC MARCENARIA        {nome[3:].upper()}'],
          [f'  {b.CLIENTE} · {b.ARQUITETA} · {b.EXECUTIVO}, folha(s) {folhas} · '
-          f'ferragem Blum · {len(d["itens"])} itens · {d["pecas"]} peças'],
+          f'ferragem {b.LINHA} · {len(d["itens"])} itens · {d["pecas"]} peças'],
          [],
          ['  O AMBIENTE   ·   o que ele consome, por linha de material'],
          [],
@@ -396,7 +396,7 @@ DUVIDAS = {
  ],
  '09 Quarto': [
    '⚠ O "sistema de porta retrátil" do baú saiu a R$ 900, o mesmo do sistema de correr '
-   'SI Ocean 80, da Siforma — ⛔ Blum e Siforma são fabricantes diferentes. Porta retrátil de verdade (que entra na lateral) é outro ferragem e é mais '
+   'SI Ocean 80, da Siforma — ⛔ Hettich e Siforma são fabricantes diferentes. Porta retrátil de verdade (que entra na lateral) é outra ferragem e é mais '
    'cara. Confirmar o que a arquiteta quer.',
    '⚠ R$ 900 DE MARGEM, A NOSSO FAVOR · O RODAPÉ. A prancha pede RODAPÉ INOX h = 2 em cinco '
    'folhas, e orcei inox a R$ 85 o metro, que a Base tem. ⛔ Mas a regra da casa '

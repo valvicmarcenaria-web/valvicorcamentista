@@ -29,7 +29,7 @@ def roda(env=None):
     shutil.rmtree(os.path.join(AQUI, '__pycache__'), ignore_errors=True)
     out = subprocess.run([sys.executable, '-B', 'levantamento.py'],
                          capture_output=True, text=True, env=e, cwd=AQUI)
-    m = re.search(r'PREÇO · BLUM.*?R\$ ([\d.,]+)', out.stdout)
+    m = re.search(r'PREÇO · [A-ZÀ-Ú]+.*?R\$ ([\d.,]+)', out.stdout)
     assert m, out.stdout[-800:] + out.stderr[-800:]
     return float(m.group(1).replace('.', '').replace(',', '.'))
 
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     print('    %-56s %13s   MC %4.1f%%' % ('se todas virarem a nosso favor',
                                            brl(m0 - favor)[1:], 100 * (m0 - favor) / P))
     print('─' * 92)
-    #   ⭐ E A PERGUNTA QUE DECIDE SE 625 MIL PAGA A CASA NÃO É A MC: É
+    #   ⭐ E A PERGUNTA QUE DECIDE SE O PREÇO PAGA A CASA NÃO É A MC: É
     #     QUANTOS DIAS DE FÁBRICA ESTE JOB COME. O custo fixo da casa é de
     #     R$ 120.000 por mês, R$ 4.000 por dia de calendário.
     FIXO_DIA = 4000.0
@@ -138,6 +138,6 @@ if __name__ == '__main__':
         print('    %3d dias de fábrica   custo fixo %13s   LUCRO %13s%s'
               % (d, brl(-FIXO_DIA * d)[1:], brl(luc), marca))
     print('    ⭐ o empate está em %.0f dias de fábrica EXCLUSIVA. Acima '
-          'disso,\n      625 mil só paga a casa se outro job correr ao lado.'
+          'disso,\n      o preço fechado só paga a casa se outro job correr ao lado.'
           % (m0 / FIXO_DIA))
     print('═' * 92)

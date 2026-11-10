@@ -84,14 +84,14 @@ class Item:
         if prat:
             larg = (L - n_lat * 1.5) / (div + 1)
             self.p(f'{nome} · prateleiras', larg, P - 2, esp, mat, prat, larg / 100)
-            self.f('Suporte de prateleira Blum, jogo de 4', prat, b.SUPORTE_JOGO)
+            self.f('Suporte de prateleira, jogo de 4', prat, b.SUPORTE_JOGO)
         return self
 
     def porta(self, larg, alt, n, mat, esp=18, cava=False, botao=False,
               nome='porta de abrir'):
         self.p(f'{n} × {nome} {larg:.0f} × {alt:.0f}', larg, alt, esp, mat, n,
                (larg + alt) * 2 / 100)
-        self.f('Dobradiça Blum', n * b.dobradicas(alt), b.DOBRADICA)
+        self.f(b.DOBRADICA_NOME, n * b.dobradicas(alt), b.DOBRADICA)
         if cava:
             self.t('Puxador cava usinado', n * larg / 100, b.CAVA_M, 'm')
         if botao:
@@ -106,7 +106,7 @@ class Item:
         self.p(f'{n} × caixa de gaveta', (larg + prof) * 2, 13, 15,
                self.interno, n, (larg + prof) * 2 / 100)
         self.p(f'{n} × fundo de gaveta', larg, prof, 6, self.interno, n)
-        self.f('Corrediça Blum Movento, par', n, b.CORREDICA_PAR)
+        self.f(b.CORREDICA_NOME, n, b.CORREDICA_PAR)
         if cava:
             self.t('Puxador cava usinado', n * larg / 100, b.CAVA_M, 'm')
         if botao:
@@ -165,7 +165,7 @@ it = novo('Cozinha · varal retrátil estilo gaveta', 15,
           '75,00 × 12,00 · corre como gaveta, logo leva par de corrediça')
 it.p('frente do varal', 75, 12, 18, CARIBE, 1, (75 + 12) * 2 / 100)
 it.p('estrutura do varal', 75, 55, 15, it.interno, 2, .75)
-it.f('Corrediça Blum Movento, par', 1, b.CORREDICA_PAR)
+it.f(b.CORREDICA_NOME, 1, b.CORREDICA_PAR)
 
 # ─── 03 ─────────────────────────────────────────────────────────────────
 it = novo('Cozinha · armário inferior da vista 01', 15,
@@ -226,7 +226,7 @@ it = novo('Jantar · cristaleira da vista 03', 16,
 it.caixa(109, 247, 36, CARIBE, div=1, prat=8, nome='vitrine e base')
 it.t('Porta de cristaleira em perfil com vidro', 2, b.PORTA_CRISTALEIRA,
      'folha')
-it.f('Dobradiça Blum para porta de vidro', 2 * b.dobradicas(139),
+it.f('Dobradiça para porta de vidro', 2 * b.dobradicas(139),
      b.DOBRADICA_VIDRO)
 it.p('tampo do aparador', 107, 36, 18, CARIBE, 1, (107 + 36) * 2 / 100)
 it.porta(50, 67, 2, CARIBE, cava=True)
@@ -263,7 +263,7 @@ it = novo('Estar · adega com portas em vidro reflecta bronze', 17,
 it.caixa(88, 141.5, 35, CARIBE, div=1, prat=4, nome='adega')
 it.t('Porta em reflecta bronze com perfil champanhe', 2, b.PORTA_REFLECTA,
      'folha')
-it.f('Dobradiça Blum para porta de vidro', 2 * b.dobradicas(141),
+it.f('Dobradiça para porta de vidro', 2 * b.dobradicas(141),
      b.DOBRADICA_VIDRO)
 it.t('Estrutura metálica de suporte das garrafas', 2 * 1.415, b.SERRALHERIA_M,
      'm')
@@ -313,7 +313,7 @@ it.t('Perfil de proteção de piso', 3.4653, b.PERFIL_PISO_M, 'm')
 it.p('folha da porta da suíte', 104, 208, 18, CARIBE, 1, (104 + 208) * 2 / 100)
 it.p('folha da porta do quarto', 105, 208, 18, CARIBE, 1, (105 + 208) * 2 / 100)
 it.p('miolo sarrafeado das duas folhas', 104, 208, 15, it.interno, 2)
-it.f('Dobradiça Blum', 2 * b.dobradicas(208), b.DOBRADICA)
+it.f(b.DOBRADICA_NOME, 2 * b.dobradicas(208), b.DOBRADICA)
 it.f('Sistema pivô e fecho rolete de porta embutida', 2,
      b.FERRAGEM_PORTA_OCULTA)
 it.t('Puxador cava usinado', 2 * 2.08, b.CAVA_M, 'm')
@@ -464,7 +464,7 @@ it = novo('Closet · vista 9A', 21,
 it.caixa(418.5, 257, 60, CIPRES, div=5, prat=7)
 it.t('Porta de closet em perfil de alumínio com vidro', 4,
      b.PORTA_VIDRO_PERFIL, 'folha')
-it.f('Dobradiça Blum para porta de vidro', 4 * b.dobradicas(257),
+it.f('Dobradiça para porta de vidro', 4 * b.dobradicas(257),
      b.DOBRADICA_VIDRO)
 it.gaveta(48.5, 14, 55, 4, CIPRES, botao=True)
 it.gaveta(87, 14, 55, 2, CIPRES, botao=True)
@@ -481,7 +481,7 @@ it = novo('Closet · vista 9B', 21,
 it.caixa(150, 257, 60, CIPRES, div=2, prat=3)
 it.t('Porta de closet em perfil de alumínio com vidro', 3,
      b.PORTA_VIDRO_PERFIL, 'folha')
-it.f('Dobradiça Blum para porta de vidro', 3 * b.dobradicas(257),
+it.f('Dobradiça para porta de vidro', 3 * b.dobradicas(257),
      b.DOBRADICA_VIDRO)
 it.p('maleiro', 150, 60, 18, CIPRES, 1, 1.50)
 it.f('Alma de aço · barra chata de 3 m', 1, b.ALMA_BARRA)   # 150 de vão
@@ -495,10 +495,10 @@ it = novo('Closet · sapateira da vista 9C', 21,
 it.caixa(90, 257, 35, CIPRES, div=1, prat=0)
 it.t('Porta de closet em perfil de alumínio com vidro', 2,
      b.PORTA_VIDRO_PERFIL, 'folha')
-it.f('Dobradiça Blum para porta de vidro', 2 * b.dobradicas(257),
+it.f('Dobradiça para porta de vidro', 2 * b.dobradicas(257),
      b.DOBRADICA_VIDRO)
 it.p('prateleiras inclinadas', 44, 33, 18, CIPRES, 16, .44)
-it.f('Suporte de prateleira Blum, jogo de 4', 16, b.SUPORTE_JOGO)
+it.f('Suporte de prateleira, jogo de 4', 16, b.SUPORTE_JOGO)
 it.t('Usinagem de encaixe inclinado de prateleira', 16 * .44, b.FILETE_MAQ, 'm')
 it.led(8.0, fontes=1, bottons=1)
 
@@ -515,7 +515,7 @@ it.caixa(183, 110, 17, it.interno, div=3, prat=4)
 it.p('estrutura das 4 folhas espelhadas', 40.44, 110, 18, CINZA, 4,
      (40.44 + 110) * 2 / 100)
 it.t('Espelho colado na folha', 1.52 * 1.10, b.ESPELHO_M2)
-it.f('Dobradiça Blum', 4 * b.dobradicas(110), b.DOBRADICA)
+it.f(b.DOBRADICA_NOME, 4 * b.dobradicas(110), b.DOBRADICA)
 it.led(1.83, fontes=1, bottons=1)
 
 # ─── 31 ─────────────────────────────────────────────────────────────────
@@ -542,7 +542,7 @@ it = novo('Banheiro social · ARMÁRIO G', 23,
 it.caixa(70, 140, 19, it.interno, div=0, prat=2)
 it.p('estrutura da folha espelhada', 60, 138, 18, CINZA, 1, (60 + 138) * 2 / 100)
 it.t('Espelho colado na folha', .60 * 1.38, b.ESPELHO_M2)
-it.f('Dobradiça Blum', b.dobradicas(138), b.DOBRADICA)
+it.f(b.DOBRADICA_NOME, b.dobradicas(138), b.DOBRADICA)
 it.t('Puxador cava usinado na estrutura do espelho', 1.38 * 2, b.CAVA_M, 'm')
 it.led(1.40 * 2, fontes=1, bottons=1)
 
@@ -579,7 +579,7 @@ it.p('frente retrátil em Cacao Matt', 91, 36, 18, CACAO, 1, (91 + 36) * 2 / 100
 it.p('frente fixa de 118 em Cacao Matt', 118, 36, 18, CACAO, 1,
      (118 + 36) * 2 / 100)
 it.f('Sistema de porta retrátil', 1, b.SISTEMA_CORRER)
-it.f('Pulsador Blum Tip-on', 1, b.PULSADOR)
+it.f(b.PULSADOR_NOME, 1, b.PULSADOR)
 
 # ─── 37 ─────────────────────────────────────────────────────────────────
 it = novo('Quarto · painel fixo com espelho', 25,
@@ -713,7 +713,7 @@ if __name__ == '__main__':
                                      b.VENDEDOR)) if v]) or 'sem RT e sem vendedor'
     print('═' * W)
     print(f'{b.CLIENTE.upper()} · {b.PROJETO} — {b.EXECUTIVO}')
-    print(f'  ferragem BLUM · BASE {b.BASE:.2%} (com {_c}) · MC {b.MC:.0%}')
+    print(f'  ferragem {b.LINHA.upper()} · BASE {b.BASE:.2%} (com {_c}) · MC {b.MC:.2%}')
     print('═' * W)
     for it, direto in zip(M, T['diretos']):
         pv = preco_item(direto)
@@ -731,7 +731,8 @@ if __name__ == '__main__':
     print()
     for rot, v in (('chapa', T['c_chapa']), ('fita', T['c_fita']),
                    ('corte', T['c_corte']), ('consumíveis', T['c_cons']),
-                   ('terceirizado', T['c_terc']), ('ferragem Blum', T['c_fer']),
+                   ('terceirizado', T['c_terc']),
+                   (f'ferragem {b.LINHA}', T['c_fer']),
                    ('frete · %d viagens' % sum(VIAGENS.values()), T['c_frete'])):
         print('    %-44s %16s' % (rot, brl(v)))
     print('    %-44s %16s' % ('CUSTO DIRETO (com embalagem)', brl(T['direto'])))
@@ -739,7 +740,7 @@ if __name__ == '__main__':
     pv = preco_item(T['direto'])
     assert abs(pv - sum(preco_item(d) for d in T['diretos'])) < 0.01, \
         '⛔ a soma dos itens não bate com o motor'
-    print('  %-44s %16s' % (f'PREÇO · BLUM, MC {b.MC:.0%}', brl(pv)))
+    print('  %-44s %16s' % (f'PREÇO · {b.LINHA.upper()}, MC {b.MC:.1%}', brl(pv)))
     print('  %-44s %16s' % ('  MC realizada', f'{b.BASE - T["direto"] / pv:.1%}'))
     print('  %-44s %16s' % ('  itens · peças · chapas',
                             f'{len(M)} · {T["pecas"]} · {T["n_chapas"]}'))

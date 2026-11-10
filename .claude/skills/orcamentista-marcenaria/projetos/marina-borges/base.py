@@ -65,17 +65,35 @@ CORTE_CHAPA, CORTE_PECA = 2.00, 2.50
 CONSUMIVEIS = 0.06
 EMBALAGEM = 0.02
 
-# ── ferragem · TUDO BLUM ────────────────────────────────────────────────
-#   ⭐ Os mesmos preços que a casa cravou para a linha Blum em 03 e 04/11.
-DOBRADICA = 50.0                  # Blum
-CORREDICA_PAR = 300.0             # Blum Movento
-#   ⛔ SIFORMA NÃO É BLUM [Jonathan, 09/11/2026]. A Blum é austríaca e faz
-#     dobradiça, corrediça e pulsador; o sistema de correr SI Ocean 80 é da
-#     SIFORMA. Eu tinha escrito "Blum SI Forma", que é duas empresas numa
-#     linha só — e ficha técnica errada é o que o cliente confere.
+# ── ferragem · A LINHA DO PROJETO ───────────────────────────────────────
+#   ⭐⭐ [Jonathan, 10/11/2026] "vamos fechar a proposta dela em hettich a
+#     397.000". A escada de posicionamento da aba Ferragens da Base tem
+#     quatro degraus, e o Gold é Hettich. Entre os dois Hettich do Gold eu
+#     fiquei com a SENSYS, não com a Novisys: é a que sustenta o mesmo
+#     argumento que a proposta fazia com o Blum — 100 mil ciclos, pistão
+#     gel, ajuste 3D, iF Award — e custa os MESMOS R$ 50 da dobradiça Blum
+#     na nossa Base. ⚠ A Novisys devolveria R$ 3.182,40 de margem e é a
+#     "Silent System econômico": troca de produto, não de preço.
+#   ⛔ TODO O GANHO DE SAIR DO BLUM ESTÁ NAS 27 GAVETAS. A dobradiça não
+#     muda de preço; a corrediça cai de R$ 300 para R$ 150. São R$ 4.050,
+#     R$ 4.161,60 já com a embalagem — e vinte anos de garantia a menos.
+LINHA = 'Hettich'
+DOBRADICA = 50.0                  # Hettich Sensys · 100 mil ciclos
+DOBRADICA_NOME = 'Dobradiça Hettich Sensys'
+CORREDICA_PAR = 150.0             # Hettich Quadro V6 · 30 kg, Silent System
+CORREDICA_NOME = 'Corrediça Hettich Quadro V6, par'
+#   ⛔ SIFORMA NÃO É HETTICH, como não era Blum [Jonathan, 09/11/2026]. O
+#     sistema de correr SI Ocean 80 é da SIFORMA, e sai inalterado: ele
+#     nunca esteve no degrau que o Jonathan trocou.
 SISTEMA_CORRER = 900.0            # Siforma SI Ocean 80
-BASCULA_HK = 250.0                # Blum AVENTOS HK-XS
-PULSADOR = 100.0                  # Blum Tip-on
+BASCULA_HK = 250.0                # ⚠ ainda Blum AVENTOS HK-XS · não usado neste projeto
+PULSADOR = 70.0                   # "Pulsador outros" da Base · era 100 no Tip-on
+PULSADOR_NOME = 'Pulsador de abertura por toque'
+#   ⛔⛔ A GARANTIA VALE PELO TIER MAIS BAIXO DO PROJETO [Jonathan,
+#     29/10/2026]: Blum 30 anos, HETTICH 10, Hardt 5, telescópica 2. Sair
+#     do Blum derruba a proposta inteira de 30 para 10 — e a folha "por que
+#     Blum" foi escrita em cima dos 30. Este número manda na proposta.
+GARANTIA_ANOS = 10
 SUPORTE_JOGO = 6.50               # por prateleira INTERNA, jogo de 4
 SUPORTE_OCULTO = 30.0             # só prateleira de PAREDE
 DESEMPENADOR = 100.0              # toda porta deslizante · 70 cm ou mais leva DOIS
@@ -169,25 +187,36 @@ RT = 0.10
 VENDEDOR = 0.0
 BASE = cascata(rt=RT, vendedor=VENDEDOR)
 assert abs(BASE - BASE_COM_UM) < 1e-9, BASE      # 0,760875 · publicado 76,09%
-#   ⭐⭐ [Jonathan, 09/11/2026] "vamos fechar o valor de venda em 625k na
-#     linha blum". Na planilha ele girou a ALVO para 52% e, com os cinco
-#     pontos de piso do quadro ⑤, a MC APLICADA saiu 57% em todos os nove
-#     ambientes — preço de R$ 625.048,49. Este MC é a REALIZADA, que é o
-#     que entra na conta aqui; a alvo de 52 só existe na planilha.
-#   ⛔ 57% está 17 pontos acima da faixa ideal da casa (35% a 40%) e 22
-#     acima do piso. Não é mais uma MC de trabalho: é posicionamento. Fica
-#     escrito aqui para a próxima pessoa não achar que foi descuido.
-MC = 0.57
+#   ⭐⭐ A MC DEIXOU DE SER ESCOLHIDA E PASSOU A SER LIDA. Até 09/11 o
+#     Jonathan girava a MC e o modelo dava o preço. Em 10/11 ele cravou os
+#     dois lados — linha Hettich E R$ 397.000 — e aí a MC é o que sobra:
+#         MC = base de 76,0875% − custo direto ÷ preço
+#     Com o custo de R$ 118.971,23 da linha Hettich, dá 46,1199%.
+#   ⛔ AS OITO CASAS NÃO SÃO PRECIOSISMO. Com quatro, o modelo devolve
+#     R$ 397.000,85 e a planilha passa a mostrar 85 centavos de diferença
+#     contra o preço fechado — um "quase" que alguém um dia vai tentar
+#     explicar. Este número foi LIDO do preço, não escolhido: é
+#     base − custo ÷ preço, com o custo da linha Hettich.
+#   ⭐ 46,1% continua acima da faixa ideal da casa (35% a 40%) e 11 pontos
+#     acima do piso de 35%. Não é desconto: é um degrau abaixo do
+#     posicionamento de 57% que ele tinha pedido na linha Blum.
+MC = 0.46119935
 
 #   ── o fechamento ─────────────────────────────────────────────────────
-#   ⭐ [Jonathan, 09/11/2026], ditado inteiro. O modelo dá R$ 625.048,49 e
-#   ⚠ E A DIFERENÇA DEIXOU DE SER ARREDONDAMENTO. Quando ele fechou, o
-#     custo direto era R$ 119.306 e o modelo dava R$ 625.048 — R$ 48 de
-#     sobra. Tirar o Branco TX do interior levou o custo a R$ 123.133, e a
-#     MC de 57% agora pediria R$ 645.097. Manter os 625 mil é absorver
-#     R$ 20 mil na margem, que cai de 57,0% para 56,4%. É decisão dele, e
-#     fica escrita aqui para ninguém chamar de arredondamento.
-PRECO_FECHADO = 625000.00
+#   ⭐⭐ [Jonathan, 10/11/2026] "vamos fechar a proposta dela em hettich a
+#     397.000". Preço e linha ditados juntos, e é o preço que manda.
+#   ⚠ O QUE ISSO MUDA CONTRA O FECHAMENTO ANTERIOR, de 625 mil em Blum:
+#         preço    R$ 625.000,00  →  R$ 397.000,00   (−R$ 228.000,00)
+#         custo    R$ 123.132,83  →  R$ 118.971,23   (−R$   4.161,60)
+#         margem   R$ 352.414,04  →  R$ 183.096,14   (−R$ 169.317,90)
+#         MC               56,4%  →          46,1%
+#         garantia      30 anos   →        10 anos
+#   ⛔⛔ E O EMPATE CAIU PARA 46 DIAS DE FÁBRICA, contra uma entrega
+#     prometida de 120 dias corridos. A R$ 4.000 de custo fixo por dia, a
+#     margem de R$ 183.096 paga 46 dias de fábrica EXCLUSIVA. Acima disso,
+#     397 mil só pagam a casa se outro job correr ao lado. Está escrito
+#     aqui porque é a conta que decide, e não é a MC.
+PRECO_FECHADO = 397000.00
 PRAZO_DIAS = 120                 # dias CORRIDOS, da assinatura à entrega
 VALIDADE_DIAS = 7                # validade da proposta
 #   40% de entrada + 3 parcelas de 20%, a primeira em 60 dias da assinatura.

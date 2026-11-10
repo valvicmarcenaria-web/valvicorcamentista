@@ -3,20 +3,31 @@
 
 ⛔⛔ NENHUM NÚMERO DESTA PROPOSTA É DIGITADO. Todos saem de planilha.json,
   que sai de levantamento.py, que lê a Base de Custos da casa. O rótulo se
-  calcula, nunca se digita — e numa proposta de 625 mil isso deixa de ser
-  elegância e vira a diferença entre cobrar o que foi levantado e cobrar o
-  que alguém lembrou de digitar.
+  calcula, nunca se digita — e numa proposta de quase 400 mil isso deixa de
+  ser elegância e vira a diferença entre cobrar o que foi levantado e
+  cobrar o que alguém lembrou de digitar. A LINHA DA FERRAGEM e o PRAZO DE
+  GARANTIA também vêm de base.py, pelo mesmo motivo.
 
 ⭐ A ESTRUTURA É A DA PROPOSTA DA ANA CAROLINA E DO ANDRÉ [Jonathan,
   09/11/2026: "use a mesma estrutura de informacoes da blum e siforma
   dessa proposta"]. O que muda é o projeto: lá eram cinco armários num
   padrão só; aqui são nove ambientes em cinco padrões de MDF.
 
-⚠ O FECHAMENTO É R$ 625.000,00 e o modelo, depois que o Branco TX saiu do
-  interior, dá R$ 645.096,69. A tabela da folha de investimento é RATEADA
-  para fechar no redondo, centavo a centavo. ⛔ Isso NÃO é arredondamento:
-  são R$ 20 mil absorvidos na margem, que cai de 57,0% para 56,4%. Uma
-  tabela de proposta que não soma o total é um erro que o cliente encontra.
+⭐⭐ O FECHAMENTO É R$ 397.000,00 NA LINHA HETTICH [Jonathan, 10/11/2026].
+  A proposta inteira estava escrita em cima do Blum — a folha "por que
+  Blum", os cards da ferragem, os trinta anos de garantia, o nome do
+  arquivo. Trocar só o número e deixar o resto seria entregar ao cliente
+  uma ficha técnica da concorrente com o nosso preço em cima.
+
+⛔ E AS FOTOS DE PRODUTO DA BLUM FORAM APAGADAS do repositório, não só
+  desta folha. Elas vieram da proposta de referência, e uma foto da Blum
+  embaixo do nome "Hettich" é a pior linha de uma proposta de 400 mil. Os
+  dois primeiros cards passam a mostrar PORTA E GAVETA DESTE apartamento,
+  dos próprios renders; só o card da Siforma segue com a foto da fabricante.
+
+⚠ A TABELA DA FOLHA DE INVESTIMENTO É RATEADA para fechar no preço
+  ditado, centavo a centavo. O modelo dá R$ 396.999,99 — um centavo —
+  porque a MC foi LIDA do preço em base.py, com oito casas.
 """
 import io, json, os, subprocess, sys
 
@@ -73,9 +84,9 @@ AMB = {
    ('A frente é uma peça só', 'Os armários superior e inferior correm a parede inteira sem interrupção de desenho, e o painel do forno entra na mesma linha da frente.'),
    ('O puxador não é comprado', 'É <b>cava usinada no próprio material</b> da porta e da gaveta. Sem peça aplicada, sem metal à vista, sem o que soltar com os anos.'),
    ('A torre central esconde o quadro', 'O quadro de distribuição do apartamento fica atrás de uma tampa que abre. Deixa de ser um retângulo na parede.'),
-   ('O varal corre como gaveta', 'Por isso sai sobre <b>corrediça Blum</b>, não sobre trilho de varal: sai inteiro e volta sozinho.'),
+   ('O varal corre como gaveta', 'Por isso sai sobre <b>corrediça Hettich</b>, não sobre trilho de varal: sai inteiro e volta sozinho.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro, da Guararapes · interior no mesmo padrão · puxador cava usinado · rodapé inox · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro, da Guararapes · interior no mesmo padrão · puxador cava usinado · rodapé inox · ferragem Hettich'),
 
  '02 Hall e Jantar': dict(
   foto='r-40-02.jpg', tarja='HALL E JANTAR', titulo='O hall<br>e o jantar.',
@@ -85,17 +96,17 @@ AMB = {
    ('A divisória tem moldura curva', 'Usinada na própria folha, não perfil colado por cima.'),
    ('O forro em madeira acompanha o recorte', 'Não o retângulo: o desenho do teto segue a planta do hall.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro · porta de vidro em esquadria slim de 25 mm · fita de LED com perfil de embutir · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro · porta de vidro em esquadria slim de 25 mm · fita de LED com perfil de embutir · ferragem Hettich'),
 
  '03 Estar e TV': dict(
   foto='r-40-00.jpg', tarja='ESTAR E TV', titulo='O estar<br>e a TV.',
   bullets=[
    ('A base do rack corre a parede', 'Uma porta de abrir e duas de correr, todas em <b>MDF ripado Caribe</b>, sobre sistema de correr <b>Siforma</b> com amortecimento nos dois sentidos.'),
-   ('A adega fecha em reflecta bronze', 'Vidro reflecta bronze em <b>esquadria slim de 25 mm com perfil champanhe</b>, sobre dobradiça Blum de vidro, com estrutura metálica de suporte das garrafas por dentro.'),
+   ('A adega fecha em reflecta bronze', 'Vidro reflecta bronze em <b>esquadria slim de 25 mm com perfil champanhe</b>, sobre dobradiça de vidro, com estrutura metálica de suporte das garrafas por dentro.'),
    ('Os dois pés da mesa de jantar são nossos', 'Com <b>entalhamento diagonal usinado em CNC</b>. São peça de marcenaria, não base comprada.'),
    ('O painel fixo é ripado', 'Com filetagem nas duas faces de cada ripa, sobre estrutura de sarrafo por trás.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro · ripado com filetagem · vidro reflecta bronze em esquadria slim de 25 mm, perfil champanhe · Siforma · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro · ripado com filetagem · vidro reflecta bronze em esquadria slim de 25 mm, perfil champanhe · Siforma · ferragem Hettich'),
 
  '04 Acessos e Corredor': dict(
   foto='c-corredor.jpg', tarja='ACESSOS E CORREDOR', titulo='Os acessos<br>e o corredor.',
@@ -105,7 +116,7 @@ AMB = {
    ('O espelho é fixado na marcenaria', 'Não na parede: sai no mesmo caminhão e é instalado pela mesma equipe.'),
    ('O armário tem acabamento curvo ripado', 'Na lateral à vista, a ripa <b>vira a quina</b> em vez de topar nela.'),
   ],
-  acab='MDF Caribe Linha Dual Syncro e Cipres · ripado com filetagem · espelho fixado na marcenaria · sistema pivô embutido · ferragem Blum'),
+  acab='MDF Caribe Linha Dual Syncro e Cipres · ripado com filetagem · espelho fixado na marcenaria · sistema pivô embutido · ferragem Hettich'),
 
  '05 Suíte': dict(
   foto='f00.jpg', tarja='SUÍTE', titulo='A suíte.',
@@ -115,7 +126,7 @@ AMB = {
    ('O painel da cabeceira é mais largo que a chapa', 'Sai emendado <b>por projeto</b>, e a emenda é decidida no desenho, não na serra.'),
    ('A prateleira do painel leva alma de aço', 'É o que trabalha contra a flecha, e o que a mantém reta daqui a dez anos.'),
   ],
-  acab='MDF Cipres, Fontana Linha Magma e Cacao Matt · interior no mesmo padrão · espelho fixado na marcenaria · ferragem Blum'),
+  acab='MDF Cipres, Fontana Linha Magma e Cacao Matt · interior no mesmo padrão · espelho fixado na marcenaria · ferragem Hettich'),
 
  '06 Closet': dict(
   foto='r-39-04.jpg', tarja='CLOSET', titulo='O closet.', inteira=True,
@@ -126,7 +137,7 @@ AMB = {
    ('A sapateira é de prateleira inclinada', 'Com <b>encaixe usinado em ângulo</b> na lateral. O sapato fica de frente, não de lado.'),
    ('A luz corre em cada prateleira e em cada arara', 'Fita de LED com perfil de embutir e difusor, acionada por <b>botton na própria marcenaria</b> — não há interruptor na parede.'),
   ],
-  acab='MDF Cipres · nove folhas em esquadria de alumínio slim de 25 mm com vidro · fita de LED com perfil de embutir · cabideiro em metal · ferragem Blum'),
+  acab='MDF Cipres · nove folhas em esquadria de alumínio slim de 25 mm com vidro · fita de LED com perfil de embutir · cabideiro em metal · ferragem Hettich'),
 
  '07 Banho da Suíte': dict(
   foto='f01.jpg', tarja='BANHO DA SUÍTE', titulo='O banho<br>da suíte.',
@@ -135,7 +146,7 @@ AMB = {
    ('A luz sai do espelho', 'A fita de LED corre dentro de uma faixa demarcada no desenho, com perfil de embutir e difusor. Não vem do teto.'),
    ('Padrão único', 'Todo o ambiente em <b>MDF Cinza Sagrado, da Duratex</b>, por fora e por dentro.'),
   ],
-  acab='MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · espelho prata colado na folha · puxador cava usinado · ferragem Blum'),
+  acab='MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · espelho prata colado na folha · puxador cava usinado · ferragem Hettich'),
 
  '08 Banheiro Social': dict(
   foto='r-39-03.jpg', tarja='BANHEIRO SOCIAL', titulo='O banheiro<br>social.',
@@ -144,7 +155,7 @@ AMB = {
    ('São três peças de espelho', 'A folha do armário, o espelho fixado e a moldura — todas nossas, todas no mesmo caminhão.'),
    ('O nicho aberto na base', 'Quebra a frente cheia e dá onde apoiar, sem porta.'),
   ],
-  acab='MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · três peças de espelho prata · puxador cava usinado · ferragem Blum'),
+  acab='MDF Cinza Sagrado, da Duratex · interior no mesmo padrão · três peças de espelho prata · puxador cava usinado · ferragem Hettich'),
 
  '09 Quarto': dict(
   foto='r-39-07.jpg', tarja='QUARTO', titulo='O quarto.',
@@ -152,9 +163,9 @@ AMB = {
    ('Duas folhas de correr em Cacao Matt', 'Sobre sistema de correr <b>Siforma</b>. Folha larga leva <b>dois desempenadores</b>, e é o que a impede de descer com o tempo.'),
    ('O armário dobra em L', 'Nichos abertos em Cipres, bancada e prateleira, e o retorno acompanha a volta da parede.'),
    ('O móvel baú abre retrátil', 'A frente em Cacao Matt <b>entra para dentro</b> em vez de girar para fora.'),
-   ('O painel da cabeceira abraça o espelho', 'Dentro de moldura, com <b>pulsador Blum Tip-on</b> no acionamento da luz.'),
+   ('O painel da cabeceira abraça o espelho', 'Dentro de moldura, com <b>pulsador de toque</b> no acionamento da luz.'),
   ],
-  acab='MDF Cacao Matt, da Arauco, e Cipres · interior no mesmo padrão · espelho fixado na marcenaria · Siforma · ferragem Blum'),
+  acab='MDF Cacao Matt, da Arauco, e Cipres · interior no mesmo padrão · espelho fixado na marcenaria · Siforma · ferragem Hettich'),
 }
 
 #   ⭐ DOIS AMBIENTES POR FOLHA [Jonathan, 09/11/2026]. O closet fica
@@ -178,24 +189,26 @@ PADROES = [
  ('Cinza Sagrado', 'Duratex', 'Banho da suíte e banheiro social'),
 ]
 
-#   ⭐⭐ BLUM E SIFORMA SÃO EMPRESAS DIFERENTES [Jonathan, 09/11/2026], e eu
-#     as tinha misturado numa linha só, "Blum SI Forma". A Blum é austríaca
-#     e faz dobradiça, corrediça e pulsador. O sistema de correr SI Ocean 80
-#     é da SIFORMA. Escrever as duas juntas é erro de ficha técnica, e numa
-#     proposta de 625 mil ficha técnica errada é o que o cliente confere.
+#   ⭐⭐ A FABRICANTE DA FERRAGEM E A DO SISTEMA DE CORRER SÃO DUAS, e já
+#     foram três nomes nesta proposta. Em 09/11 eu tinha escrito "Blum SI
+#     Forma", duas empresas numa linha só. Em 10/11 a linha virou HETTICH,
+#     alemã, que faz a dobradiça Sensys e a corrediça Quadro V6 — e o
+#     sistema de correr SI Ocean 80 continua sendo da SIFORMA, porque ele
+#     nunca esteve no degrau que o Jonathan trocou. ⛔ Ficha técnica errada
+#     é exatamente o que o cliente confere, e o nome está em base.py.
 FERRAGEM = [
- ('DOBRADIÇA', 'Blum CLIP top BLUMOTION', 'img-000.png', None,
-  ['Amortecimento <b>BLUMOTION</b> embutido no caneco: a porta fecha suave e em silêncio.',
-   'Encaixe <b>CLIP</b>: a porta se monta e se retira sem ferramenta, para limpeza ou ajuste.',
-   'Regulagem em altura, lateral e profundidade: a porta se realinha em minutos.',
-   'Testada em <b>200 mil</b> aberturas e fechamentos antes de sair da fábrica.']),
- ('CORREDIÇA', 'Blum MOVENTO com BLUMOTION', 'img-001.png', 'img-002.png',
+ ('DOBRADIÇA', 'Hettich Sensys', 'h-porta.jpg', None,
+  ['Amortecimento <b>Silent System</b> por pistão de gel: a porta fecha suave e em silêncio.',
+   '<b>Ajuste 3D</b> com a porta montada: altura, lateral e profundidade se realinham em minutos.',
+   'Caneco de 35 mm, o padrão da marcenaria — a mesma furação de sempre, sem adaptação.',
+   'Testada em <b>100 mil</b> ciclos de abrir e fechar antes de sair da fábrica.']),
+ ('CORREDIÇA', 'Hettich Quadro V6', 'h-gaveta.jpg', 'h-gaveta2.jpg',
   ['Oculta sob a gaveta: a lateral fica limpa, <b>sem trilho de metal à vista</b>.',
    'Extração total: a gaveta sai inteira e mostra o fundo.',
-   '<b>BLUMOTION</b> integrado: no fim do curso a gaveta se recolhe sozinha e fecha sem ruído.',
-   'Movimento sincronizado nos dois lados, mesmo com carga desigual.']),
+   '<b>Silent System</b>: no fim do curso a gaveta se recolhe sozinha e fecha sem ruído.',
+   'Até <b>30 kg</b> por gaveta, com movimento sincronizado nos dois lados.']),
  ('SISTEMA DE CORRER', 'SI Ocean 80 · Siforma', 'img-003.png', 'img-004.png',
-  ['⭐ <b>Outra fabricante</b>: a Siforma faz o sistema de correr; a Blum, a dobradiça e a corrediça.',
+  ['⭐ <b>Outra fabricante</b>: a Siforma faz o sistema de correr; a Hettich, a dobradiça e a corrediça.',
    'Para roupeiros de portas de correr, com folhas de peso alto.',
    'Amortecimento nos dois sentidos: a folha desacelera ao abrir e ao fechar.',
    'O trilho some na estrutura — não há perfil aparente no piso.']),
@@ -244,11 +257,11 @@ def html():
   <div class="marca">VALVIC MARCENARIA</div>
   <h1>Charbel<br>Chelala</h1>
   <p class="lede">O apartamento inteiro em marcenaria — nove ambientes,
-   da cozinha ao closet, em cinco padrões de MDF e ferragem Blum.</p>
+   da cozinha ao closet, em cinco padrões de MDF e ferragem Hettich.</p>
   <div class="capa-meta">
    <div><span>PROJETO</span>Mariana Borges<br>Arquitetura &amp; Interiores</div>
    <div><span>OBRA</span>Apartamento<br>Belo Horizonte</div>
-   <div><span>LINHA</span>Blum</div>
+   <div><span>LINHA</span>Hettich</div>
    <div><span>DATA</span>Novembro de 2026</div>
   </div>
   <div class="capa-rod">PROPOSTA DE MARCENARIA &nbsp;&nbsp;·&nbsp;&nbsp; VALVIC · VARGAS DECOR</div>
@@ -272,7 +285,7 @@ def html():
    Mariana Borges</b>, com portas de giro de cava usinada, folhas de correr amortecidas, nove
    folhas em perfil de alumínio com vidro e gavetas que fecham sozinhas.
    <b>Cinco padrões de MDF por fora — Caribe, Cipres, Fontana Magma, Cacao Matt e Cinza
-   Sagrado — e o interior no mesmo padrão da face</b>, sobre ferragem Blum e sistema de correr Siforma.
+   Sagrado — e o interior no mesmo padrão da face</b>, sobre ferragem Hettich e sistema de correr Siforma.
    <b>Uma só empresa responde por tudo o que está nestas folhas</b>, da medição à instalação.
    <i>Um contrato, uma data, um nome para chamar.</i></p>
   <div class="numeros">
@@ -400,25 +413,31 @@ def html():
  {rod(6 + i)}
 </section>''')
 
-    # ── 15 · por que blum ───────────────────────────────────────────────
+    # ── 15 · por que hettich ────────────────────────────────────────────
+    #   ⛔ ESTA FOLHA ERA "POR QUE BLUM" E FOI REESCRITA INTEIRA. Trocar o
+    #     nome e deixar o texto era o pior dos mundos: os 200 mil ciclos e
+    #     o BLUMOTION são da Blum, e o cliente que digita o nome da
+    #     ferragem acha a ficha técnica em trinta segundos. Os números
+    #     abaixo saem da nossa Base de Custos, aba Ferragens.
     P.append(f'''<section class="pg escuro">
  <div class="corpo alto">
-  <div class="eyebrow ouro">POR QUE BLUM</div>
+  <div class="eyebrow ouro">POR QUE HETTICH</div>
   <h2 class="claro">A ferragem é a única parte<br>do móvel que trabalha todo dia.</h2>
   <p class="texto claro curto">É ela que decide se, daqui a muitos anos, a porta ainda fecha alinhada e a gaveta
-   ainda corre macia. Por isso a ferragem de movimento deste projeto sai na linha <b>Blum</b>, uma das referências
-   mundiais do ramo — e as folhas de correr, no sistema <b>SI Ocean 80, da Siforma</b>.</p>
+   ainda corre macia. Por isso a ferragem de movimento deste projeto sai na linha <b>Hettich</b>, uma das maiores
+   fabricantes de ferragem de móveis do mundo — e as folhas de correr, no sistema <b>SI Ocean 80, da Siforma</b>.</p>
   <div class="big4">
-   <div><b>200 mil</b><span>ABERTURAS E FECHAMENTOS</span><p>É o ensaio a que a Blum submete as suas dobradiças antes de elas saírem da fábrica.</p></div>
-   <div><b>30 anos</b><span>DE GARANTIA VALVIC</span><p>No projeto inteiro: marcenaria e ferragem de movimento, com termo assinado no dia da entrega.</p></div>
-   <div><b>Áustria</b><span>EMPRESA FAMILIAR</span><p>A Blum desenha e fabrica as próprias ferragens, com controle de qualidade em cada etapa.</p></div>
-   <div><b>BLUMOTION</b><span>O FECHAMENTO AMORTECIDO</span><p>Porta e gaveta fecham suave e silenciosamente, toda vez — sem a batida que, com os anos, é o que desgasta o móvel.</p></div>
+   <div><b>100 mil</b><span>CICLOS DE ENSAIO</span><p>É o que a dobradiça Sensys e a corrediça Quadro V6 cumprem antes de sair da fábrica.</p></div>
+   <div><b>{b.GARANTIA_ANOS} anos</b><span>DE GARANTIA VALVIC</span><p>No projeto inteiro: marcenaria e ferragem de movimento, com termo assinado no dia da entrega.</p></div>
+   <div><b>Alemanha</b><span>EMPRESA FAMILIAR</span><p>A Hettich desenha e fabrica as próprias ferragens, com controle de qualidade em cada etapa.</p></div>
+   <div><b>SILENT SYSTEM</b><span>O FECHAMENTO AMORTECIDO</span><p>Porta e gaveta fecham suave e silenciosamente, toda vez — sem a batida que, com os anos, é o que desgasta o móvel.</p></div>
   </div>
-  <p class="frase">Neste apartamento, toda porta de giro e toda gaveta se movem sobre Blum —
+  <p class="frase">Neste apartamento, toda porta de giro e toda gaveta se movem sobre Hettich —
    <i>sem exceção</i>.</p>
-  <div class="nota escura"><b>TESTADA ANTES DE CHEGAR AQUI</b><br>
-   Na fábrica da Blum, as ferragens passam por ensaios de movimento, de carga e de corrosão — com calor, água e
-   sal — que reproduzem em laboratório o desgaste de anos de uso. O que chega à nossa bancada já provou que dura.</div>
+  <div class="nota escura"><b>AJUSTE 3D, E POR QUE ISSO IMPORTA DEPOIS</b><br>
+   A dobradiça Sensys regula nos três eixos — altura, lateral e profundidade — com a porta montada. Prédio novo
+   assenta, madeira trabalha com a estação, e um móvel que atravessa dez anos é um móvel que pôde ser
+   realinhado em minutos, sem desmontar nada.</div>
  </div>
  {rod(11, True)}
 </section>''')
@@ -441,9 +460,10 @@ def html():
   </div>
   <div class="fers tres">{fs}</div>
   <div class="nota">As <b>nove folhas do closet</b> e as portas de cristaleira e de adega se fecham em
-   <b>esquadria de alumínio com perfil slim de 25 mm</b>, sobre dobradiça Blum de vidro. O perfil fino é
+   <b>esquadria de alumínio com perfil slim de 25 mm</b>, sobre dobradiça de vidro. O perfil fino é
    escolha de desenho: confere mais leveza à moldura e personalidade ao conjunto, e deixa o vidro — e o que
-   está guardado atrás dele — como o que se vê. <i>Imagens ilustrativas das fabricantes.</i></div>
+   está guardado atrás dele — como o que se vê. <i>A porta e as gavetas acima são renders deste apartamento;
+   as duas últimas imagens são da fabricante do sistema de correr.</i></div>
  </div>
  {rod(12)}
 </section>''')
@@ -454,12 +474,12 @@ def html():
     P.append(f'''<section class="pg">
  <div class="corpo alto">
   <div class="eyebrow">GARANTIA</div>
-  <h2>Trinta anos. O termo é assinado na entrega.</h2>
-  <p class="texto curto">A garantia da Valvic <b>é escalonada pela ferragem</b> — e a linha Blum é a do prazo mais
-   longo da casa. Ela vale para o projeto inteiro e não é promessa de proposta: é <b>termo assinado no dia da
+  <h2>Dez anos. O termo é assinado na entrega.</h2>
+  <p class="texto curto">A garantia da Valvic <b>acompanha a ferragem especificada</b>, e a desta proposta é a
+   linha Hettich. Ela vale para o projeto inteiro e não é promessa de proposta: é <b>termo assinado no dia da
    entrega</b>, junto com o guia de conservação do móvel.</p>
   <div class="gar">
-   <div class="gar-card"><b>30</b><span>ANOS DE GARANTIA</span><h4>Linha Blum</h4>
+   <div class="gar-card"><b>{b.GARANTIA_ANOS}</b><span>ANOS DE GARANTIA</span><h4>Linha {b.LINHA}</h4>
     <p>Marcenaria e ferragem de movimento, no projeto inteiro.</p></div>
    <div class="gar-col">
     <div class="eyebrow">COMO SE ACIONA</div>
@@ -497,14 +517,14 @@ def html():
                    f'<td class="v">{brl(fechado[aba], 0)}</td></tr>')
     P.append(f'''<section class="pg">
  <div class="corpo alto">
-  <div class="eyebrow">INVESTIMENTO · LINHA BLUM</div>
+  <div class="eyebrow">INVESTIMENTO · LINHA HETTICH</div>
   <h2>O apartamento, ambiente por ambiente.</h2>
   <div class="inv">
    <div class="inv-t">
     <p class="texto curto">Cada móvel foi levantado <b>peça por peça do projeto executivo</b>, ambiente por
      ambiente. Nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
     <table>
-     <thead><tr><th>AMBIENTE</th><th class="v">LINHA<br>BLUM</th></tr></thead>
+     <thead><tr><th>AMBIENTE</th><th class="v">LINHA<br>HETTICH</th></tr></thead>
      <tbody>{linhas}</tbody>
      <tfoot><tr><td>O PROJETO COMPLETO</td><td class="v">{brl(b.PRECO_FECHADO, 0)}</td></tr></tfoot>
     </table>
@@ -512,15 +532,16 @@ def html():
    <div class="inv-card">
     <div class="eyebrow ouro">O PROJETO COMPLETO</div>
     <div class="preco">R$ {brl(b.PRECO_FECHADO)}</div>
-    <p>Nove ambientes em cinco padrões de MDF, interior no mesmo padrão da face, ferragem Blum, sistema de
-     correr Siforma, as nove folhas do closet em esquadria slim de 25 mm com vidro e 30 anos de garantia.</p>
+    <p>Nove ambientes em cinco padrões de MDF, interior no mesmo padrão da face, ferragem Hettich, sistema
+     de correr Siforma, as nove folhas do closet em esquadria slim de 25 mm com vidro e {b.GARANTIA_ANOS} anos
+     de garantia.</p>
     <div class="hr"></div>
     <div class="eyebrow ouro">ENTRADA, NA ASSINATURA</div>
     <div class="entrada">R$ {brl(entrada)}</div>
    </div>
   </div>
   <div class="nota"><b>O QUE ESTÁ INCLUSO</b><br>
-   Projeto executivo de marcenaria, os cinco padrões de MDF por fora e por dentro, usinagem, ferragens Blum,
+   Projeto executivo de marcenaria, os cinco padrões de MDF por fora e por dentro, usinagem, ferragens Hettich,
    o sistema de correr Siforma, as nove folhas de closet e as portas de cristaleira e de adega em esquadria
    de alumínio slim de 25 mm com vidro, os espelhos, a iluminação em fita de LED com perfil e fonte, o
    transporte, a montagem e a instalação — num só contrato, com uma só data e uma só responsável.</div>
@@ -548,7 +569,7 @@ def html():
     <h5 class="cond-v">{b.PRAZO_DIAS} dias corridos</h5>
     <p>Contados a partir da medição técnica no local, não da assinatura. A medição tem data própria no cronograma.</p>
     <div class="eyebrow">GARANTIA</div>
-    <h5 class="cond-v">30 anos · linha Blum</h5>
+    <h5 class="cond-v">{b.GARANTIA_ANOS} anos · linha {b.LINHA}</h5>
     <p>Instalação e regulagem, dois anos. Termo assinado na entrega.</p>
     <div class="eyebrow">PROJETO EXECUTIVO DE MARCENARIA</div>
     <h5 class="cond-v">Incluso</h5>
@@ -667,6 +688,10 @@ h5{font-size:9.5pt;font-weight:600}
 .tarja.baixo{bottom:0}
 .numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:8mm;margin-top:auto;margin-bottom:16mm;
    padding-top:7mm;border-top:1px solid var(--fino)}
+/* ⛔ algarismos ALINHADOS nos números grandes: o "1" de texto do Cormorant,
+   sozinho e em corpo grande, lê-se como I maiúsculo — "10 anos" virava "IO". */
+.numeros b,.big4 b,.gar-card b,.preco{font-variant-numeric:lining-nums;
+   font-feature-settings:'lnum' 1,'onum' 0}
 .numeros b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:28pt;display:block;
    line-height:1;color:var(--ouro)}
 .numeros span{display:block;font-size:5.9pt;letter-spacing:.2em;color:var(--corpo);margin-top:2.5mm}
@@ -849,7 +874,8 @@ if __name__ == '__main__':
     print('  html:', saida)
 
     # ── e o PDF, pela mesma mão: sem passo manual que alguém esquece ───
-    pdf = os.path.join(AQUI, 'pr', 'Charbel Chelala · Proposta Valvic · Linha Blum.pdf')
+    pdf = os.path.join(AQUI, 'pr',
+                       f'Charbel Chelala · Proposta Valvic · Linha {b.LINHA}.pdf')
     js = '''const {chromium} = require('playwright');
 (async () => {
   const nav = await chromium.launch();
