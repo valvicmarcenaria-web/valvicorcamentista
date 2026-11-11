@@ -24,7 +24,7 @@ COZINHA  · chapas 22 Branco TX 15 7, Branco TX 18 1, Branco TX 6 3, Escarlate 1
 
 DESPENSA  · chapas 5 Branco TX 15 1, Escarlate 15 4
     Prateleiras em L com LED                                  14,558      14,558
-    subtotal                                                  14,558      14,558   custo 6,564
+    subtotal                                                   8,500       8,500   custo 6,564
 
 LAVANDERIA  · chapas 8 Branco TX 15 2, Branco TX 18 1, Branco TX 6 2, Griss Chess 15 3
   ◆ Armário superior com cabideiro                             6,238       7,275
@@ -35,7 +35,7 @@ LAVANDERIA  · chapas 8 Branco TX 15 2, Branco TX 18 1, Branco TX 6 2, Griss Che
 ESPAÇO GOURMET  · chapas 5 Branco TX 15 2, Branco TX 6 1, Escarlate 15 1, Griss Chess 15 1
   ◆ Inferior da pia com portas e gaveteiro                     7,280       9,715
     Prateleiras com LED                                        3,830       3,830
-    subtotal                                                  11,110      13,545   custo 5,009
+    subtotal                                                  12,300      14,735   custo 5,009
 
 SUÍTE 01  · chapas 13 Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Escarlate 18 3, Frapê 15 1, Frapê 18 1
   ◆ Roupeiro com portas de correr em vidro reflecta           40,572      55,450
@@ -75,6 +75,6 @@ CLOSET MASTER  · chapas 14 Branco TX 15 5, Branco TX 18 2, Branco TX 6 4, Frap�
   ◆ Closet aberto em L, sem portas                            30,713      43,445
     subtotal                                                  30,713      43,445   custo 10,776
 
-    TOTAL                                                    360,952     442,379
+    TOTAL                                                    356,084     437,512
     custo direto                                             132,173     144,872
 chapas no total: 115

@@ -90,7 +90,19 @@ for x, v in TAB['Hettich'].items():
         assert len({round(TAB[l][x]['pv'], 2) for l in LINHAS}) == 1, x
 
 
-def total(lin, amb=None): return sum(v['pv'] for (a, _), v in TAB[lin].items() if amb in (None, a))
+# ⭐ [Jonathan, 11/11/2026] "a despensa podemos vender por 8.500 · o gourmet por 12.300":
+#   preço FECHADO do ambiente. Despensa não tem ferragem de linha: igual nas duas.
+#   ⚠ Gourmet: 12.300 é a Hettich; a Blum leva a mesma diferença de ferragem da conta (premissa).
+#   ⛔ a despensa a 8.500 fica ABAIXO do custo depois da cascata (custo 6.564 / base 76%).
+_gb = sum(TAB['Blum'][x]['pv'] - TAB['Hettich'][x]['pv'] for x in TAB['Hettich'] if x[0] == 'Espaço gourmet')
+FECHADO = {'Despensa': {'Hettich': 8500.0, 'Blum': 8500.0},
+           'Espaço gourmet': {'Hettich': 12300.0, 'Blum': round(12300.0 + _gb)}}
+
+
+def total(lin, amb=None):
+    if amb in FECHADO: return FECHADO[amb][lin]
+    if amb is None: return sum(total(lin, a) for a in L.AMBIENTES)
+    return sum(v['pv'] for (a, _), v in TAB[lin].items() if a == amb)
 def custo(lin, amb=None): return sum(v['custo'] for (a, _), v in TAB[lin].items() if amb in (None, a))
 
 
