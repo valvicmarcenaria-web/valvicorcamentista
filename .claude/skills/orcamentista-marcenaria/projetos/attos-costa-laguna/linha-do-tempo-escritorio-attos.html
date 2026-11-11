@@ -19,6 +19,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6pt
        margin-top:1mm;color:var(--navy)}
 .tt .s{font-size:8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-top:1.4mm}
 .tops{display:flex;gap:3mm;align-items:stretch}
+.amb{display:inline-flex;align-items:baseline;gap:3mm;margin-top:1.6mm;background:var(--gold);
+     border-radius:2px;padding:1.2mm 5mm}
+.amb span{font-size:6.6pt;letter-spacing:.26em;text-transform:uppercase;color:var(--navy);font-weight:700}
+.amb b{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;line-height:1;color:var(--navy)}
 .fer{display:flex;border:1.8px solid var(--navy);border-radius:3px;background:#fff}
 .fer>div{padding:2.6mm 5mm;text-align:left}
 .fer>div+div{border-left:1px solid var(--line)}
@@ -67,7 +71,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6pt
 .cd.fim .q{color:var(--gold)}
 .cd .o{font-size:7.4pt;color:var(--soft);margin-top:1.4mm;min-height:7mm}
 .mp{list-style:none;margin-top:1.2mm;padding:1.6mm 2mm;background:var(--cream);border-radius:2px;
-    min-height:46mm}
+    min-height:32mm}
 .mp li{display:grid;grid-template-columns:3.4mm 1fr;gap:1.4mm;font-size:7.2pt;line-height:1.3;
        color:var(--ink);padding:.9mm 0;border-bottom:1px solid #E9DFC6}
 .mp li:last-child{border-bottom:none}
@@ -89,8 +93,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6pt
 <div class="page">
  <div class="hd">
   <div class="lg">valvic<small>MARCENARIA</small></div>
-  <div class="tt"><div class="e">Linha do tempo da obra · Escritório</div>
-   <div class="t">Attos Henrique Salles</div><div class="s">Costa Laguna · Alphaville, Nova Lima</div></div>
+  <div class="tt"><div class="e">Linha do tempo da obra</div>
+   <div class="t">Attos Henrique Salles</div>
+   <div class="amb"><span>Ambiente</span><b>Escritório</b></div>
+   <div class="s">Costa Laguna · Alphaville, Nova Lima</div></div>
   <div class="tops">
    <div class="fer"><div><div class="k">Corrediças</div><div class="v">Hettich</div></div><div><div class="k">Dobradiças</div><div class="v">Hettich Novisys</div></div></div>
    <div class="ent"><div class="k">Entrega no cliente · finalizada</div>
@@ -109,58 +115,58 @@ body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6pt
      <div class="t">Definições informacionais</div><div class="q">até 12/11</div>
      <div class="o">Tudo o que o executivo precisa saber antes de ser desenhado.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
-     <div class="nk">Necessidades mapeadas no escopo</div><ul class="mp"><li><span class="bx"></span>Cores e padrões de MDF definidos com o cliente, antes de comprar chapa</li><li><span class="bx"></span>Perfil de alumínio na base do painel ripado: levar ao cliente em protótipo</li><li><span class="bx"></span>Divergência entre o render e o executivo resolvida — nada corta antes</li></ul>
+     <div class="nk">Necessidades mapeadas no escopo</div><ul class="mp"><li><span class="bx"></span>Cores e padrões de MDF definidos com o cliente, antes de comprar chapa</li><li><span class="bx"></span>Perfil de alumínio na base do painel ripado: levar ao cliente em protótipo</li><li><span class="bx"></span>Divergência entre o render e o executivo resolvida</li></ul>
      <div class="nk">Outras necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
+     <div class="pt"><div></div><div></div><div></div><div></div></div></div><div class="cd">
      <div class="ch"><span class="n">02</span><span class="box"></span></div>
      <div class="t">Programação</div><div class="q">até 19/11</div>
      <div class="o">Executivo de marcenaria e plano de corte.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
      <div class="nk">Necessidades mapeadas no escopo</div><ul class="mp"><li><span class="bx"></span>Fixação da pedra alinhada com a marmoraria — a pedra é de terceiro</li><li><span class="bx"></span>Apoio metálico estrutural da ponta da mesa desenhado</li></ul>
      <div class="nk">Outras necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
+     <div class="pt"><div></div><div></div><div></div><div></div></div></div><div class="cd">
      <div class="ch"><span class="n">03</span><span class="box"></span></div>
      <div class="t">Aprovação da arquiteta</div><div class="q">19 a 22/11</div>
      <div class="o">Executivo aprovado pela arquiteta.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
      <div class="nk">Necessidades mapeadas no escopo</div><ul class="mp"><li><span class="bx"></span>Compra do material e pedido da serralheria logo após a aprovação da arquiteta e do cliente</li></ul>
      <div class="nk">Outras necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
+     <div class="pt"><div></div><div></div><div></div><div></div></div></div><div class="cd">
      <div class="ch"><span class="n">04</span><span class="box"></span></div>
      <div class="t">Usinagem</div><div class="q">começa 23/11</div>
      <div class="o">Corte, fita de borda, ripas e usinagem.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
-     <div class="nk">Necessidades mapeadas no escopo</div><ul class="mp"><li><span class="bx"></span>Janela própria na produção: fora da fila dos 70 dias da casa</li><li><span class="bx"></span>Chapa comprada nos padrões aprovados</li></ul>
-     <div class="nk">Outras necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
+     
+     <div class="nk">Necessidades e pendências</div>
+     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
      <div class="ch"><span class="n">05</span><span class="box"></span></div>
      <div class="t">Pré-montagem</div><div class="q">30/11</div>
      <div class="o">Armários montados e regulados na fábrica.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
      
      <div class="nk">Necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
+     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
      <div class="ch"><span class="n">06</span><span class="box"></span></div>
      <div class="t">Conferência</div><div class="q">04/12</div>
      <div class="o">Conferência contra o escopo · embalagem e carga.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
      
      <div class="nk">Necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
+     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd">
      <div class="ch"><span class="n">07</span><span class="box"></span></div>
      <div class="t">Início de montagem</div><div class="q">07/12</div>
      <div class="o">Equipe na obra.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
      
      <div class="nk">Necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd fim">
+     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="cd fim">
      <div class="ch"><span class="n">08</span><span class="box"></span></div>
      <div class="t">Entrega</div><div class="q">10/12</div>
      <div class="o">Escritório instalado e conferido.</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
      <div class="nk">Necessidades mapeadas no escopo</div><ul class="mp"><li><span class="bx"></span>Instalado até 10/12/2026 — prazo contratual</li><li><span class="bx"></span>Termo de garantia: 10 anos marcenaria e ferragem</li></ul>
      <div class="nk">Outras necessidades e pendências</div>
-     <div class="pt"><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div>
+     <div class="pt"><div></div><div></div><div></div><div></div></div></div></div>
 
  <div class="rod">
   <div class="lgd"><span><i style="background:var(--navy)"></i>Etapa</span>

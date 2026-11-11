@@ -25,6 +25,9 @@
    · mais destaque para o NOME DO CLIENTE;
    · as FERRAGENS ganham uma caixa como a da data, grande no topo, mas sem o
      fundo de cor cheia.
+⭐ [Jonathan, 11/11/2026, depois] "necessidades mapeadas: a fase 4 pode tirar
+   também" · "nunca precisa dizer isso: nada corta antes" · "no cabeçalho deixe
+   mais evidente qual o ambiente em questão".
 ⭐ O anexo marca só o INÍCIO de cada etapa (ou o fim, nas duas primeiras): na
    barra, cada etapa corre até a véspera da seguinte.
 """
@@ -46,7 +49,7 @@ ETAPAS = [
   'Tudo o que o executivo precisa saber antes de ser desenhado.',
   ['Cores e padrões de MDF definidos com o cliente, antes de comprar chapa',
    'Perfil de alumínio na base do painel ripado: levar ao cliente em protótipo',
-   'Divergência entre o render e o executivo resolvida — nada corta antes']),
+   'Divergência entre o render e o executivo resolvida']),
  ('Programação', 'até 19/11', D(2026, 11, 13), D(2026, 11, 19),
   'Executivo de marcenaria e plano de corte.',
   ['Fixação da pedra alinhada com a marmoraria — a pedra é de terceiro',
@@ -56,8 +59,7 @@ ETAPAS = [
   ['Compra do material e pedido da serralheria logo após a aprovação da arquiteta e do cliente']),
  ('Usinagem', 'começa 23/11', D(2026, 11, 23), D(2026, 11, 29),
   'Corte, fita de borda, ripas e usinagem.',
-  ['Janela própria na produção: fora da fila dos 70 dias da casa',
-   'Chapa comprada nos padrões aprovados']),
+  []),
  ('Pré-montagem', '30/11', D(2026, 11, 30), D(2026, 12, 3),
   'Armários montados e regulados na fábrica.',
   []),
@@ -95,7 +97,7 @@ def barra(n, a, b, ultimo):
 
 gantt = ''.join(barra(n, a, b, n == len(ETAPAS)) for n, (_k, _q, a, b, _d, _m) in enumerate(ETAPAS, 1))
 
-LINHAS, LINHAS_SEM = 6, 15
+LINHAS, LINHAS_SEM = 4, 13
 FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Hettich Novisys')]
 def mapeadas(m):
     if not m:
@@ -131,6 +133,10 @@ body{{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6p
        margin-top:1mm;color:var(--navy)}}
 .tt .s{{font-size:8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-top:1.4mm}}
 .tops{{display:flex;gap:3mm;align-items:stretch}}
+.amb{{display:inline-flex;align-items:baseline;gap:3mm;margin-top:1.6mm;background:var(--gold);
+     border-radius:2px;padding:1.2mm 5mm}}
+.amb span{{font-size:6.6pt;letter-spacing:.26em;text-transform:uppercase;color:var(--navy);font-weight:700}}
+.amb b{{font-family:'Cormorant Garamond',Georgia,serif;font-size:20pt;line-height:1;color:var(--navy)}}
 .fer{{display:flex;border:1.8px solid var(--navy);border-radius:3px;background:#fff}}
 .fer>div{{padding:2.6mm 5mm;text-align:left}}
 .fer>div+div{{border-left:1px solid var(--line)}}
@@ -179,7 +185,7 @@ body{{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6p
 .cd.fim .q{{color:var(--gold)}}
 .cd .o{{font-size:7.4pt;color:var(--soft);margin-top:1.4mm;min-height:7mm}}
 .mp{{list-style:none;margin-top:1.2mm;padding:1.6mm 2mm;background:var(--cream);border-radius:2px;
-    min-height:46mm}}
+    min-height:32mm}}
 .mp li{{display:grid;grid-template-columns:3.4mm 1fr;gap:1.4mm;font-size:7.2pt;line-height:1.3;
        color:var(--ink);padding:.9mm 0;border-bottom:1px solid #E9DFC6}}
 .mp li:last-child{{border-bottom:none}}
@@ -206,8 +212,10 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <div class="page">
  <div class="hd">
   <div class="lg">valvic<small>MARCENARIA</small></div>
-  <div class="tt"><div class="e">Linha do tempo da obra · {E(AMBIENTE)}</div>
-   <div class="t">{E(CLIENTE)}</div><div class="s">{E(OBRA)}</div></div>
+  <div class="tt"><div class="e">Linha do tempo da obra</div>
+   <div class="t">{E(CLIENTE)}</div>
+   <div class="amb"><span>Ambiente</span><b>{E(AMBIENTE)}</b></div>
+   <div class="s">{E(OBRA)}</div></div>
   <div class="tops">
    <div class="fer">{''.join(f'<div><div class="k">{E(k)}</div><div class="v">{E(v)}</div></div>' for k, v in FERRAGENS)}</div>
    <div class="ent"><div class="k">Entrega no cliente · finalizada</div>
@@ -246,7 +254,8 @@ for _a, _b in zip(ETAPAS, ETAPAS[1:]):
 assert '10/12/2026' in _t and 'Bruna Castro' in _t and 'Novisys' in _t and 'Sensys' not in _t
 for _fora in ('Silent', 'Medição técnica', 'mesma cadência', 'divergência do render', 'por escrito'):
     assert _fora not in _t, f'⛔ saiu da folha [Jonathan, 11/11/2026]: {_fora}'
-assert not any(_m for *_r, _m in ETAPAS[4:7]), '⛔ as etapas 5, 6 e 7 ficam sem necessidade mapeada'
+assert not any(_m for *_r, _m in ETAPAS[3:7]), '⛔ as etapas 4 a 7 ficam sem necessidade mapeada'
+assert 'nada corta' not in _t, '⛔ "nunca precisa dizer isso: nada corta antes" [Jonathan, 11/11/2026]'
 for _c in ('Orlando', 'Ivone', 'Haverson', 'Ana Carolina', 'Alexandre', 'Gisele'):
     assert _c not in _t, f'⛔ vestígio de outro cliente: {_c}'
 
