@@ -34,9 +34,12 @@ AREA, APROV, CONS, EMB, FRETE = 5.0875, 0.80, 0.06, 0.02, 200
 NF, ERRO, SERRA, MANUT, RT = 0.05, 0.02, 0.005, 0.005, 0.10
 LIQ = 1 - NF
 BASE = 1 - (NF + ERRO + SERRA + MANUT + RT * LIQ + 0.075 * (LIQ - RT * LIQ))
-LINHAS = {'Telescópica': dict(dob=4.0, corr=15.0, mc=0.35), 'Hettich': dict(dob=50.0, corr=150.0, mc=0.38),
+LINHAS = {'Hettich': dict(dob=50.0, corr=150.0, mc=0.38),
           'Blum': dict(dob=50.0, corr=300.0, mc=0.43)}
 MC_FIXA = 0.38
+# ⭐ [Jonathan, 11/11/2026] "vamos considerar em apenas hettich e blum e subir 3% na mc":
+#   sai a Telescópica; +3 PONTOS de MC em todos os itens → Hettich e sem ferragem 41%, Blum 46%
+AJUSTE_MC = 0.03
 
 
 def custos(amb, lin):
@@ -76,7 +79,7 @@ for lin, f in LINHAS.items():
     for amb in L.AMBIENTES:
         its, nch = custos(amb, lin); CHAPAS[amb] = nch
         for it in its:
-            mc = f['mc'] if it['linha'] else MC_FIXA
+            mc = (f['mc'] if it['linha'] else MC_FIXA) + AJUSTE_MC
             TAB[lin][(amb, it['movel'])] = dict(it, mc=mc, pv=it['custo'] / (BASE - mc))
 
 for x, v in TAB['Hettich'].items():
@@ -90,8 +93,8 @@ def custo(lin, amb=None): return sum(v['custo'] for (a, _), v in TAB[lin].items(
 
 if __name__ == '__main__':
     print(f'BASE {BASE*100:.4f}% · sem ferragem de linha MC {MC_FIXA:.0%} · ' +
-          ' · '.join(f'{l} {f["mc"]:.0%}' for l, f in LINHAS.items()))
-    print(f"{'':56s}{'Telescópica':>12s}{'Hettich':>12s}{'Blum':>12s}")
+          ' · '.join(f'{l} {f["mc"]:.0%}' for l, f in LINHAS.items()) + f' · ajuste {AJUSTE_MC:+.0%}')
+    print(f"{'':56s}{'Hettich':>12s}{'Blum':>12s}")
     for amb in L.AMBIENTES:
         print(f'\n{amb.upper()}  · chapas {sum(CHAPAS[amb].values())} ' +
               ', '.join(f"{k.replace('MDF ','')} {n}" for k, n in sorted(CHAPAS[amb].items())))

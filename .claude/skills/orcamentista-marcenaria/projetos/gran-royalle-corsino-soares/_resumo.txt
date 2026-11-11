@@ -1,80 +1,80 @@
-BASE 76.0875% · sem ferragem de linha MC 38% · Telescópica 35% · Hettich 38% · Blum 43%
-                                                         Telescópica     Hettich        Blum
+BASE 76.0875% · sem ferragem de linha MC 38% · Hettich 38% · Blum 43% · ajuste +3%
+                                                             Hettich        Blum
 
 SALA ESTAR E TV  · chapas 4 Branco TX 15 1, Branco TX 6 1, Griss Chess 15 1, Griss Chess 18 1
-  ◆ Rack suspenso                                              7,878       9,222      11,540
-    subtotal                                                   7,878       9,222      11,540   custo 3,512
+  ◆ Rack suspenso                                             10,010      12,691
+    subtotal                                                  10,010      12,691   custo 3,512
 
 SALA DE JANTAR  · chapas 10 Branco TX 15 1, Branco TX 18 1, Branco TX 6 1, Escarlate 15 2, Escarlate 18 2, Griss Chess 15 1, Griss Chess 18 2
-  ◆ Cristaleira com portas de vidro                           16,912      20,314      24,771
-    Painel da adega com suporte de vinhos                      7,555       7,555       7,555
-    Painel com porta de correr da despensa                     7,133       7,133       7,133
-    subtotal                                                  31,600      35,002      39,459   custo 13,332
+  ◆ Cristaleira com portas de vidro                           22,051      27,241
+    Painel da adega com suporte de vinhos                      8,201       8,201
+    Painel com porta de correr da despensa                     7,743       7,743
+    subtotal                                                  37,995      43,185   custo 13,332
 
 COZINHA  · chapas 22 Branco TX 15 7, Branco TX 18 1, Branco TX 6 3, Escarlate 15 2, Escarlate 18 8, Griss Chess 15 1
-  ◆ Ilha · armários com gavetas e porta-temperos               5,722       9,427      15,013
-  ◆ Inferior da pia com báscula e gavetões                     4,083       5,735       7,989
-    Prateleiras e fundo da pia com LED                         7,045       7,045       7,045
-  ◆ Torre quente com armário superior                          3,614       4,145       4,771
-  ◆ Armário sobre a geladeira e laterais                       3,563       4,336       4,991
-    Painel com porta de correr da lavanderia                   6,135       6,135       6,135
-    Painel da parede da escada (elevação C)                    6,756       6,756       6,756
-    Painel com porta de giro do lavabo                         6,087       6,087       6,087
-    subtotal                                                  43,005      49,667      58,788   custo 18,917
+  ◆ Ilha · armários com gavetas e porta-temperos              10,233      16,510
+  ◆ Inferior da pia com báscula e gavetões                     6,226       8,786
+    Prateleiras e fundo da pia com LED                         7,647       7,647
+  ◆ Torre quente com armário superior                          4,499       5,247
+  ◆ Armário sobre a geladeira e laterais                       4,707       5,489
+    Painel com porta de correr da lavanderia                   6,660       6,660
+    Painel da parede da escada (elevação C)                    7,334       7,334
+    Painel com porta de giro do lavabo                         6,608       6,608
+    subtotal                                                  53,913      64,280   custo 18,917
 
 DESPENSA  · chapas 5 Branco TX 15 1, Escarlate 15 4
-    Prateleiras em L com LED                                  17,233      17,233      17,233
-    subtotal                                                  17,233      17,233      17,233   custo 6,564
+    Prateleiras em L com LED                                  18,707      18,707
+    subtotal                                                  18,707      18,707   custo 6,564
 
 LAVANDERIA  · chapas 8 Branco TX 15 2, Branco TX 18 1, Branco TX 6 2, Griss Chess 15 3
-  ◆ Armário superior com cabideiro                             4,186       5,747       6,616
-  ◆ Inferior da cuba com báscula e gavetão                     2,004       2,770       3,651
-  ◆ Torre de vassouras e utilidades                            5,651       7,328       8,435
-    subtotal                                                  11,840      15,844      18,701   custo 6,035
+  ◆ Armário superior com cabideiro                             6,238       7,275
+  ◆ Inferior da cuba com báscula e gavetão                     3,007       4,015
+  ◆ Torre de vassouras e utilidades                            7,954       9,276
+    subtotal                                                  17,199      20,566   custo 6,035
 
 ESPAÇO GOURMET  · chapas 5 Branco TX 15 2, Branco TX 6 1, Escarlate 15 1, Griss Chess 15 1
-  ◆ Inferior da pia com portas e gaveteiro                     5,735       8,618      11,770
-    Prateleiras com LED                                        4,534       4,534       4,534
-    subtotal                                                  10,268      13,152      16,304   custo 5,009
+  ◆ Inferior da pia com portas e gaveteiro                     9,355      12,943
+    Prateleiras com LED                                        4,922       4,922
+    subtotal                                                  14,276      17,865   custo 5,009
 
 SUÍTE 01  · chapas 13 Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Escarlate 18 3, Frapê 15 1, Frapê 18 1
-  ◆ Roupeiro com portas de correr em vidro reflecta           29,285      37,376      50,423
-  ◆ Cabeceira com brise e estofado, painel e mesa de cab      12,718      14,443      17,550
-    subtotal                                                  42,003      51,819      67,973   custo 19,737
+  ◆ Roupeiro com portas de correr em vidro reflecta           40,572      55,450
+  ◆ Cabeceira com brise e estofado, painel e mesa de cab      15,678      19,300
+    subtotal                                                  56,250      74,751   custo 19,737
 
 BANHO SUÍTE 01  · chapas 3 Branco TX 15 1, Branco TX 6 1, Frapê 15 1
-  ◆ Gabinete suspenso                                          3,291       5,243       7,885
-  ◆ Armário superior com portas de espelho e LED               6,735       8,374       9,640
-    subtotal                                                  10,026      13,617      17,525   custo 5,186
+  ◆ Gabinete suspenso                                          5,691       8,671
+  ◆ Armário superior com portas de espelho e LED               9,090      10,601
+    subtotal                                                  14,781      19,272   custo 5,186
 
 SUÍTE 02  · chapas 14 Branco TX 15 3, Branco TX 18 1, Branco TX 6 2, Escarlate 18 1, Frapê 15 2, Frapê 18 5
-  ◆ Roupeiro com porta de correr e porta de espelho           17,071      20,946      27,348
-    Painel com porta de giro do banho                         10,621      10,621      10,621
-  ◆ Bancada com gavetas e prateleiras                          3,266       4,608       6,692
-  ◆ Cabeceira em Escarlate e mesa de cabeceira                 2,825       3,770       5,265
-    subtotal                                                  33,783      39,946      49,926   custo 15,214
+  ◆ Roupeiro com porta de correr e porta de espelho           22,737      30,075
+    Painel com porta de giro do banho                         11,529      11,529
+  ◆ Bancada com gavetas e prateleiras                          5,002       7,359
+  ◆ Cabeceira em Escarlate e mesa de cabeceira                 4,093       5,790
+    subtotal                                                  43,361      54,753   custo 15,214
 
 BANHO SUÍTE 02  · chapas 3 Branco TX 15 1, Branco TX 6 1, Frapê 15 1
-  ◆ Gabinete suspenso                                          3,397       5,357       8,017
-  ◆ Armário superior com portas de espelho e LED               6,004       7,585       8,732
-    subtotal                                                   9,401      12,943      16,748   custo 4,930
+  ◆ Gabinete suspenso                                          5,815       8,816
+  ◆ Armário superior com portas de espelho e LED               8,234       9,602
+    subtotal                                                  14,049      18,418   custo 4,930
 
 SUÍTE MASTER  · chapas 10 Branco TX 15 2, Branco TX 18 1, Branco TX 6 1, Escarlate 15 1, Frapê 15 2, Frapê 18 3
-  ◆ Cabeceira estofada e mesas de cabeceira                    7,631       9,679      12,991
-    Painel revestido de espelho com porta de correr           24,808      24,808      24,808
-    Prateleiras com pontas arredondadas                        5,028       5,028       5,028
-  ◆ Penteadeira e gaveteiro                                    4,655       6,107       8,417
-    subtotal                                                  42,123      45,622      51,244   custo 17,376
+  ◆ Cabeceira estofada e mesas de cabeceira                   10,506      14,286
+    Painel revestido de espelho com porta de correr           26,929      26,929
+    Prateleiras com pontas arredondadas                        5,458       5,458
+  ◆ Penteadeira e gaveteiro                                    6,629       9,256
+    subtotal                                                  49,522      55,929   custo 17,376
 
 BANHO MASTER  · chapas 4 Branco TX 15 1, Branco TX 6 2, Frapê 15 1
-  ◆ Gabinete suspenso com tulhas                               4,025       4,950       6,161
-    Armário superior com portas de correr de espelho e L      10,781      10,781      10,781
-    subtotal                                                  14,806      15,731      16,942   custo 5,992
+  ◆ Gabinete suspenso com tulhas                               5,374       6,775
+    Armário superior com portas de correr de espelho e L      11,703      11,703
+    subtotal                                                  17,076      18,478   custo 5,992
 
 CLOSET MASTER  · chapas 14 Branco TX 15 5, Branco TX 18 2, Branco TX 6 4, Frapê 15 1, Frapê 18 2
-  ◆ Closet aberto em L, sem portas                            21,201      28,294      39,506
-    subtotal                                                  21,201      28,294      39,506   custo 10,776
+  ◆ Closet aberto em L, sem portas                            30,713      43,445
+    subtotal                                                  30,713      43,445   custo 10,776
 
-    TOTAL                                                    295,168     348,091     421,889
-    custo direto                                             117,866     132,579     145,278
+    TOTAL                                                    377,853     462,339
+    custo direto                                             132,579     145,278
 chapas no total: 115
