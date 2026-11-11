@@ -14,6 +14,17 @@
    estar resolvida. Vêm impressas, com caixa de marcar; embaixo delas fica o
    espaço pautado para o que surgir.
 ⛔ Dobradiça Hettich NOVISYS, não Sensys [Jonathan, 10/11/2026].
+⭐ [Jonathan, 11/11/2026] correções:
+   · etapa 2: "medidas já foram tiradas" · "o apoio metálico é estrutural" ·
+     "painel ripado não precisa dessa informação";
+   · etapa 3: sai a divergência do render (resolvida na etapa 1) e a
+     confirmação por escrito; entra "compra do material e pedido da
+     serralheria sai logo após aprovação da arquiteta/cliente";
+   · "não precisa dessa descrição Silent System";
+   · saem as necessidades mapeadas das etapas 5, 6 e 7;
+   · mais destaque para o NOME DO CLIENTE;
+   · as FERRAGENS ganham uma caixa como a da data, grande no topo, mas sem o
+     fundo de cor cheia.
 ⭐ O anexo marca só o INÍCIO de cada etapa (ou o fim, nas duas primeiras): na
    barra, cada etapa corre até a véspera da seguinte.
 """
@@ -38,31 +49,24 @@ ETAPAS = [
    'Divergência entre o render e o executivo resolvida — nada corta antes']),
  ('Programação', 'até 19/11', D(2026, 11, 13), D(2026, 11, 19),
   'Executivo de marcenaria e plano de corte.',
-  ['Medição técnica no local até 13/11',
-   'Fixação da pedra alinhada com a marmoraria — a pedra é de terceiro',
-   'Apoio metálico da ponta da mesa desenhado — o apoio é nosso',
-   'Painel ripado na mesma cadência da casa']),
+  ['Fixação da pedra alinhada com a marmoraria — a pedra é de terceiro',
+   'Apoio metálico estrutural da ponta da mesa desenhado']),
  ('Aprovação da arquiteta', '19 a 22/11', D(2026, 11, 19), D(2026, 11, 22),
   'Executivo aprovado pela arquiteta.',
-  ['Executivo sem a divergência do render',
-   'Cores e perfil da base confirmados por escrito: alteração só vale por escrito']),
+  ['Compra do material e pedido da serralheria logo após a aprovação da arquiteta e do cliente']),
  ('Usinagem', 'começa 23/11', D(2026, 11, 23), D(2026, 11, 29),
   'Corte, fita de borda, ripas e usinagem.',
   ['Janela própria na produção: fora da fila dos 70 dias da casa',
    'Chapa comprada nos padrões aprovados']),
  ('Pré-montagem', '30/11', D(2026, 11, 30), D(2026, 12, 3),
   'Armários montados e regulados na fábrica.',
-  ['Corrediças Hettich com Silent System e dobradiças Hettich Novisys',
-   'Gaveteiro do armário inferior regulado',
-   'Ripado em painéis, com a base contínua onde os armários se fixam']),
+  []),
  ('Conferência', '04/12', D(2026, 12, 4), D(2026, 12, 6),
   'Conferência contra o escopo · embalagem e carga.',
-  ['Painel ripado, armário superior, bancada e armário inferior conferidos',
-   'Apoio metálico da mesa pronto para a carga']),
+  []),
  ('Início de montagem', '07/12', D(2026, 12, 7), D(2026, 12, 9),
   'Equipe na obra.',
-  ['Carga e instalação em janela própria',
-   'Marmoraria alinhada para a pedra sobre a bancada']),
+  []),
  ('Entrega', '10/12', D(2026, 12, 10), D(2026, 12, 10),
   'Escritório instalado e conferido.',
   ['Instalado até 10/12/2026 — prazo contratual',
@@ -91,19 +95,22 @@ def barra(n, a, b, ultimo):
 
 gantt = ''.join(barra(n, a, b, n == len(ETAPAS)) for n, (_k, _q, a, b, _d, _m) in enumerate(ETAPAS, 1))
 
-LINHAS = 6
+LINHAS, LINHAS_SEM = 6, 15
+FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Hettich Novisys')]
 def mapeadas(m):
-    return ''.join(f'<li><span class="bx"></span>{E(x)}</li>' for x in m)
+    if not m:
+        return ''
+    li = ''.join(f'<li><span class="bx"></span>{E(x)}</li>' for x in m)
+    return f'<div class="nk">Necessidades mapeadas no escopo</div><ul class="mp">{li}</ul>'
 cards = ''.join(
     f'''<div class="cd{" fim" if n == len(ETAPAS) else ""}">
      <div class="ch"><span class="n">{n:02d}</span><span class="box"></span></div>
      <div class="t">{E(k)}</div><div class="q">{E(q)}</div>
      <div class="o">{E(o)}</div>
      <div class="rz"><span>Realizado em</span> ___/___</div>
-     <div class="nk">Necessidades mapeadas no escopo</div>
-     <ul class="mp">{mapeadas(m)}</ul>
-     <div class="nk">Outras necessidades e pendências</div>
-     <div class="pt">{"<div></div>" * LINHAS}</div></div>'''
+     {mapeadas(m)}
+     <div class="nk">{"Outras necessidades e pendências" if m else "Necessidades e pendências"}</div>
+     <div class="pt">{"<div></div>" * (LINHAS if m else LINHAS_SEM)}</div></div>'''
     for n, (k, q, _a, _b, o, m) in enumerate(ETAPAS, 1))
 
 CSS = f"""
@@ -119,8 +126,17 @@ body{{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:8.6p
 .lg small{{display:block;font-family:'DM Sans',sans-serif;font-size:6.8pt;letter-spacing:.46em;
     color:var(--gold);font-weight:700;margin-top:2mm}}
 .tt{{text-align:center}}
-.tt .t{{font-family:'Cormorant Garamond',Georgia,serif;font-size:24pt;font-weight:700;line-height:1}}
+.tt .e{{font-size:7.6pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700}}
+.tt .t{{font-family:'Cormorant Garamond',Georgia,serif;font-size:36pt;font-weight:700;line-height:1;
+       margin-top:1mm;color:var(--navy)}}
 .tt .s{{font-size:8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-top:1.4mm}}
+.tops{{display:flex;gap:3mm;align-items:stretch}}
+.fer{{display:flex;border:1.8px solid var(--navy);border-radius:3px;background:#fff}}
+.fer>div{{padding:2.6mm 5mm;text-align:left}}
+.fer>div+div{{border-left:1px solid var(--line)}}
+.fer .k{{font-size:6.6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}}
+.fer .v{{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;font-weight:700;line-height:1;
+        color:var(--navy);margin-top:1mm;white-space:nowrap}}
 .ent{{background:var(--navy);color:#fff;border-radius:3px;padding:2.6mm 5mm;text-align:right}}
 .ent .k{{font-size:6.6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt);font-weight:600}}
 .ent .d{{font-family:'Cormorant Garamond',Georgia,serif;font-size:26pt;font-weight:700;line-height:1}}
@@ -190,10 +206,12 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <div class="page">
  <div class="hd">
   <div class="lg">valvic<small>MARCENARIA</small></div>
-  <div class="tt"><div class="t">Linha do tempo da obra</div>
-   <div class="s">{E(CLIENTE)} · {E(AMBIENTE)} · {E(OBRA)}</div></div>
-  <div class="ent"><div class="k">Entrega no cliente · finalizada</div>
-   <div class="d">{FIM.strftime('%d/%m/%Y')}</div></div>
+  <div class="tt"><div class="e">Linha do tempo da obra · {E(AMBIENTE)}</div>
+   <div class="t">{E(CLIENTE)}</div><div class="s">{E(OBRA)}</div></div>
+  <div class="tops">
+   <div class="fer">{''.join(f'<div><div class="k">{E(k)}</div><div class="v">{E(v)}</div></div>' for k, v in FERRAGENS)}</div>
+   <div class="ent"><div class="k">Entrega no cliente · finalizada</div>
+    <div class="d">{FIM.strftime('%d/%m/%Y')}</div></div></div>
  </div>
 
  <div class="sec"><span>1 · <b>O caminho até a entrega</b>, dia a dia</span>
@@ -222,10 +240,13 @@ HTML = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 _t = re.sub(r'<[^>]+>', ' ', HTML.split('<body>')[1])
 assert 'R$' not in _t and not [c for c in '⭐⛔⚠' if c in _t]
 for _k, _q, _a, _b, _o, _m in ETAPAS:
-    assert _a <= _b and _k in _t and _q in _t and _m
+    assert _a <= _b and _k in _t and _q in _t
 for _a, _b in zip(ETAPAS, ETAPAS[1:]):
     assert _b[2] >= _a[2], '⛔ etapa fora de ordem'
 assert '10/12/2026' in _t and 'Bruna Castro' in _t and 'Novisys' in _t and 'Sensys' not in _t
+for _fora in ('Silent', 'Medição técnica', 'mesma cadência', 'divergência do render', 'por escrito'):
+    assert _fora not in _t, f'⛔ saiu da folha [Jonathan, 11/11/2026]: {_fora}'
+assert not any(_m for *_r, _m in ETAPAS[4:7]), '⛔ as etapas 5, 6 e 7 ficam sem necessidade mapeada'
 for _c in ('Orlando', 'Ivone', 'Haverson', 'Ana Carolina', 'Alexandre', 'Gisele'):
     assert _c not in _t, f'⛔ vestígio de outro cliente: {_c}'
 
