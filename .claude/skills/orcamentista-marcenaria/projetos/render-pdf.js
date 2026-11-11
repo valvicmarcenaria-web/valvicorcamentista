@@ -12,13 +12,15 @@
 const { chromium } = require('playwright');
 const path = require('path');
 (async () => {
-  const [ent, sai] = process.argv.slice(2);
-  if (!ent || !sai) { console.error('uso: render-pdf.js <entrada.html> <saida.pdf>'); process.exit(1); }
+  // ⭐ [11/11/2026] formato e orientação opcionais, para a linha do tempo em A3:
+  //   render-pdf.js ent.html sai.pdf A3 paisagem · sem eles, A4 retrato como sempre
+  const [ent, sai, formato = 'A4', orient = ''] = process.argv.slice(2);
+  if (!ent || !sai) { console.error('uso: render-pdf.js <entrada.html> <saida.pdf> [A4|A3] [paisagem]'); process.exit(1); }
   const b = await chromium.launch();
   const p = await b.newPage();
   await p.goto('file://' + path.resolve(ent), { waitUntil: 'networkidle' });
   await p.waitForTimeout(2500);
-  await p.pdf({ path: sai, format: 'A4', printBackground: true,
+  await p.pdf({ path: sai, format: formato, landscape: orient === 'paisagem', printBackground: true,
                 margin: { top: 0, right: 0, bottom: 0, left: 0 } });
   await b.close();
 })();
