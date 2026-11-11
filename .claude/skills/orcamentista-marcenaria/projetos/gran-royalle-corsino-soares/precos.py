@@ -27,7 +27,7 @@ PRECO = {
  'Kit porta de correr de passagem': 700, 'Kit porta de giro embutida': 450,
  'Suporte de vinhos': 450, 'Puxador Sotille': 90, 'Prateleira de vidro': 300,
  'Fixação invisível': 35, 'Sistema de correr 3 folhas': 1200, 'Sistema de correr leve': 300,
- 'Pino de brise': 15, 'Espelho colado': 650, 'Vidro temperado': 400,
+ 'Pino de brise': 15, 'Espelho colado': 600, 'Vidro temperado': 400,
  'Divisória de acrílico': 180, 'Kit tulha': 250,
 }
 AREA, APROV, CONS, EMB, FRETE = 5.0875, 0.80, 0.06, 0.02, 200
@@ -40,6 +40,9 @@ MC_FIXA = 0.38
 # ⭐ [Jonathan, 11/11/2026] "vamos considerar em apenas hettich e blum e subir 3% na mc":
 #   sai a Telescópica; +3 PONTOS de MC em todos os itens → Hettich e sem ferragem 41%, Blum 46%
 AJUSTE_MC = 0.03
+# ⭐ [Jonathan, 11/11/2026] "sala de jantar, despensa, gourmet pode diminuir a mc em 10%":
+#   10 PONTOS a menos nesses três ambientes (sobre o +3 → líquido −7 pontos)
+AJUSTE_AMB = {'Sala de jantar': -0.10, 'Despensa': -0.10, 'Espaço gourmet': -0.10}
 
 
 def custos(amb, lin):
@@ -79,7 +82,7 @@ for lin, f in LINHAS.items():
     for amb in L.AMBIENTES:
         its, nch = custos(amb, lin); CHAPAS[amb] = nch
         for it in its:
-            mc = (f['mc'] if it['linha'] else MC_FIXA) + AJUSTE_MC
+            mc = (f['mc'] if it['linha'] else MC_FIXA) + AJUSTE_MC + AJUSTE_AMB.get(amb, 0)
             TAB[lin][(amb, it['movel'])] = dict(it, mc=mc, pv=it['custo'] / (BASE - mc))
 
 for x, v in TAB['Hettich'].items():

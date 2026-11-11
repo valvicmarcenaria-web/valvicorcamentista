@@ -383,12 +383,12 @@ F(it, 'Corrediça · sapateira', 7, 'Corrediça Hettich')
 AMBIENTES = list(dict.fromkeys(i['amb'] for i in ITENS))
 
 DUVIDAS = [
- 'Hall, varanda da master e lavabo aparecem na apresentação, mas o caderno não tem prancha de marcenaria para eles: fora desta conta.',
+ '⭐ [Jonathan, 11/11/2026] Hall, varanda da master e lavabo FICAM DE FORA (sem prancha no caderno). RT de 10% para a Jéssica Sollero: confirmado.',
  'Griss Chess, Escarlate e Frapê (Arauco) orçados no preço da linha de cor (550 / 700 / 350). Se o Escarlate for linha madeirada mais cara, a conta sobe.',
  'Portas de passagem nos painéis (despensa, lavanderia, lavabo, banho da suíte 02, closet master): folha em duas chapas de 18, kit de correr R$ 700 e de giro embutida R$ 450 — A COTAR.',
- 'Suporte de vinhos com haste preta: 4 hastes a R$ 450 cada — é serralheria/acessório; confirmar se é nosso ou da arquiteta.',
+ '⭐ [Jonathan, 11/11/2026] Suporte de vinhos com haste preta é NOSSO: 4 hastes a R$ 450 cada, preço a cotar.',
  'Roupeiro da suíte 01: três folhas de vidro reflecta de 100 × 274 em alumínio slim — altura grande para vidro de correr; sistema de 3 folhas a R$ 1.200, A COTAR com o vidraceiro.',
- 'Painel da master: a nota diz espelho BRONZE e o desenho diz espelho PRATA. Lançado espelho colado a R$ 650 o m².',
+ '⭐ [Jonathan, 11/11/2026] Painel da master em espelho PRATA colado, R$ 600 o m².',
  'Prateleiras de 5 de espessura (cozinha, despensa, gourmet, suítes): duas faces de 15 com enchimento e meia esquadria; fixação invisível a R$ 35 cada.',
  'LED: R$ 150 o metro instalado + fonte por ambiente. A despensa sozinha tem 14 metros (5 níveis em L).',
  'Puxador chanfrado lançado como usinagem por metro (R$ 50, a chave da cava). Puxador Sotille champagne a R$ 90 a peça — A COTAR.',

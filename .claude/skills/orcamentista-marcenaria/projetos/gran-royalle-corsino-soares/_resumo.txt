@@ -6,10 +6,10 @@ SALA ESTAR E TV  · chapas 4 Branco TX 15 1, Branco TX 6 1, Griss Chess 15 1, Gr
     subtotal                                                  10,010      12,691   custo 3,512
 
 SALA DE JANTAR  · chapas 10 Branco TX 15 1, Branco TX 18 1, Branco TX 6 1, Escarlate 15 2, Escarlate 18 2, Griss Chess 15 1, Griss Chess 18 2
-  ◆ Cristaleira com portas de vidro                           22,051      27,241
-    Painel da adega com suporte de vinhos                      8,201       8,201
-    Painel com porta de correr da despensa                     7,743       7,743
-    subtotal                                                  37,995      43,185   custo 13,332
+  ◆ Cristaleira com portas de vidro                           17,160      20,446
+    Painel da adega com suporte de vinhos                      6,382       6,382
+    Painel com porta de correr da despensa                     6,026       6,026
+    subtotal                                                  29,568      32,853   custo 13,332
 
 COZINHA  · chapas 22 Branco TX 15 7, Branco TX 18 1, Branco TX 6 3, Escarlate 15 2, Escarlate 18 8, Griss Chess 15 1
   ◆ Ilha · armários com gavetas e porta-temperos              10,233      16,510
@@ -23,8 +23,8 @@ COZINHA  · chapas 22 Branco TX 15 7, Branco TX 18 1, Branco TX 6 3, Escarlate 1
     subtotal                                                  53,913      64,280   custo 18,917
 
 DESPENSA  · chapas 5 Branco TX 15 1, Escarlate 15 4
-    Prateleiras em L com LED                                  18,707      18,707
-    subtotal                                                  18,707      18,707   custo 6,564
+    Prateleiras em L com LED                                  14,558      14,558
+    subtotal                                                  14,558      14,558   custo 6,564
 
 LAVANDERIA  · chapas 8 Branco TX 15 2, Branco TX 18 1, Branco TX 6 2, Griss Chess 15 3
   ◆ Armário superior com cabideiro                             6,238       7,275
@@ -33,9 +33,9 @@ LAVANDERIA  · chapas 8 Branco TX 15 2, Branco TX 18 1, Branco TX 6 2, Griss Che
     subtotal                                                  17,199      20,566   custo 6,035
 
 ESPAÇO GOURMET  · chapas 5 Branco TX 15 2, Branco TX 6 1, Escarlate 15 1, Griss Chess 15 1
-  ◆ Inferior da pia com portas e gaveteiro                     9,355      12,943
-    Prateleiras com LED                                        4,922       4,922
-    subtotal                                                  14,276      17,865   custo 5,009
+  ◆ Inferior da pia com portas e gaveteiro                     7,280       9,715
+    Prateleiras com LED                                        3,830       3,830
+    subtotal                                                  11,110      13,545   custo 5,009
 
 SUÍTE 01  · chapas 13 Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Escarlate 18 3, Frapê 15 1, Frapê 18 1
   ◆ Roupeiro com portas de correr em vidro reflecta           40,572      55,450
@@ -61,10 +61,10 @@ BANHO SUÍTE 02  · chapas 3 Branco TX 15 1, Branco TX 6 1, Frapê 15 1
 
 SUÍTE MASTER  · chapas 10 Branco TX 15 2, Branco TX 18 1, Branco TX 6 1, Escarlate 15 1, Frapê 15 2, Frapê 18 3
   ◆ Cabeceira estofada e mesas de cabeceira                   10,506      14,286
-    Painel revestido de espelho com porta de correr           26,929      26,929
+    Painel revestido de espelho com porta de correr           25,770      25,770
     Prateleiras com pontas arredondadas                        5,458       5,458
   ◆ Penteadeira e gaveteiro                                    6,629       9,256
-    subtotal                                                  49,522      55,929   custo 17,376
+    subtotal                                                  48,363      54,770   custo 16,969
 
 BANHO MASTER  · chapas 4 Branco TX 15 1, Branco TX 6 2, Frapê 15 1
   ◆ Gabinete suspenso com tulhas                               5,374       6,775
@@ -75,6 +75,6 @@ CLOSET MASTER  · chapas 14 Branco TX 15 5, Branco TX 18 2, Branco TX 6 4, Frap�
   ◆ Closet aberto em L, sem portas                            30,713      43,445
     subtotal                                                  30,713      43,445   custo 10,776
 
-    TOTAL                                                    377,853     462,339
-    custo direto                                             132,579     145,278
+    TOTAL                                                    360,952     442,379
+    custo direto                                             132,173     144,872
 chapas no total: 115
