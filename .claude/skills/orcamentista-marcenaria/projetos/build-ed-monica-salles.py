@@ -222,6 +222,46 @@ folha(f'''<div class="pad">
    <div class="term"><div class="k">Alteração por terceiro</div>
     <div class="s">Feita no móvel depois da entrega.</div></div></div>
  </div></div>''')
+# ── a página da Hettich (a mesma do caderno do Attos, com imagens)  [Jonathan, 12/11/2026]
+#   "use a página dedicada à hettich (com imagens) que já usamos em alguma proposta"
+#   ⛔ dobradiça Hettich da casa = NOVISYS (Sensys não trabalhamos mais) · sem "Silent System"
+FER = [
+ ('Dobradiça', 'Hettich Novisys', [
+   'Amortecimento <b>integrado à dobradiça</b>: a porta fecha suave e em silêncio, sem bater.',
+   'Regulagem nos três sentidos: a porta se realinha em minutos, na obra ou anos depois.',
+   'A mesma dobradiça em todas as portas de giro do projeto: armários da cozinha e abrigo da sauna.']),
+ ('Porta de correr', 'Correr com amortecimento', [
+   'A porta da academia corre sobre trilho com <b>amortecedor de fim de curso</b>: fecha sem bater.',
+   'Desempenador na folha: a porta alta se mantém reta com o uso.',
+   'Perfil metálico de proteção na base, pensado para o uso intenso de área comum.']),
+ ('Padrão Hettich', 'Ferragem alemã', [
+   'A Hettich é ferragem alemã, testada para <b>dezenas de milhares de ciclos</b> de abertura.',
+   'Peças de reposição e regulagem com a mesma marca, por todo o prazo da garantia.',
+   'É a ferragem que nos permite responder pelo projeto <b>por dez anos</b>.']),
+]
+
+
+def fcol(k, nome, pts):
+    li = ''.join(f'<li>{x}</li>' for x in pts)
+    return f'''<div class="fc"><div class="fk">{E(k)}</div><div class="fn">{E(nome)}</div><ul>{li}</ul></div>'''
+
+
+FAIXA = [('fer-hettich-gaveta', 'A linha Hettich'), ('fer-corredica-oculta', 'Ferragem Hettich'),
+         ('fer-sensys', 'Dobradiça Hettich')]
+faixa = ''.join(f'<figure><img src="{IMG[i]}" alt=""><figcaption>{E(c)}</figcaption></figure>' for i, c in FAIXA)
+folha(f'''<div class="pad" style="padding-top:13mm">
+ <div class="eyebrow">A ferragem escolhida · linha Hettich</div><div class="rule"></div>
+ <div style="display:flex;align-items:baseline;gap:9mm;margin-bottom:4mm">
+  <h1 class="h1" style="margin:0;white-space:nowrap">O que se toca todo dia.</h1>
+  <p class="lead" style="margin:0;max-width:118mm">A ferragem é a única parte do móvel que
+   trabalha todos os dias — e numa área comum, trabalha mais. É ela que decide por quanto
+   tempo o móvel continua fechando bem.</p></div>
+ <div class="faixa">{faixa}</div>
+ <div class="fers">{''.join(fcol(*f) for f in FER)}</div>
+ <div class="garf"><div class="anos">{GAR['Hettich']}</div><div><div class="k">anos de garantia Valvic</div>
+  <div class="s">Na linha Hettich, sobre a marcenaria e a ferragem de movimento do projeto inteiro.
+   Termo assinado no dia da entrega.</div></div><div class="leg-f">Imagens ilustrativas.</div></div>
+</div>''')
 N0 = N[0] + 1   # ⛔ a primeira folha com preço
 
 rows = ''.join(
@@ -347,6 +387,32 @@ EXTRA += '''
 .band.duo3 .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
   font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;padding:3mm 6mm;font-weight:600}
 .gar.duas{grid-template-columns:1fr 1fr !important}
+.faixa{display:flex;gap:3mm;height:58mm;flex:none;margin-top:1mm}
+.faixa figure{margin:0;position:relative;height:100%;background:#fff;overflow:hidden}
+.faixa img{height:100%;width:auto;display:block}
+.faixa figcaption{position:absolute;left:0;bottom:0;background:rgba(36,31,27,.86);color:var(--gold-lt);
+  font-size:6pt;letter-spacing:.22em;text-transform:uppercase;padding:1.8mm 3.4mm;font-weight:600}
+/* as ferragens */
+.fers{display:grid;grid-template-columns:repeat(3,1fr);gap:7mm;flex:1;min-height:0;margin-top:1mm}
+.fc{display:flex;flex-direction:column;min-height:0}
+.fimg{position:relative;height:66mm;flex:none;display:flex;gap:2mm;background:#fff}
+.fi{flex:1;min-width:0;overflow:hidden}
+.fi img,.fx img{width:100%;height:100%;object-fit:cover;display:block}
+.fx{width:30mm;flex:none;overflow:hidden}
+.fk{font-size:6.6pt;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:3.5mm}
+.fn{font-family:'Cormorant Garamond',Georgia,serif;font-size:16pt;line-height:1.1;font-weight:500;margin-top:.8mm}
+.fc ul{margin:2mm 0 0;padding:0;list-style:none}
+.fc li{font-size:7.9pt;color:var(--soft);line-height:1.42;padding:1.3mm 0 1.3mm 3.6mm;
+       border-bottom:1px solid var(--hair);position:relative}
+.fc li:last-child{border-bottom:none}
+.fc li::before{content:"";position:absolute;left:0;top:3mm;width:4px;height:4px;border-radius:50%;background:var(--gold-lt)}
+.fc li b{color:var(--ink)}
+.garf{display:flex;align-items:center;gap:5mm;border-top:1px solid var(--line);padding-top:3mm;margin-top:2mm}
+.garf .anos{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;line-height:1;color:var(--gold)}
+.garf .k{font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.garf .s{font-size:8pt;color:var(--soft);margin-top:.6mm}
+.leg-f{font-size:6.4pt;color:var(--mut);margin-left:auto;align-self:flex-end}
+
 .inv13 td,.inv13 th{padding-top:1.05mm !important;padding-bottom:1.05mm !important;font-size:8.6pt}
 .inv13 td.l{padding-top:1.05mm;padding-bottom:1.05mm;font-size:8.8pt}
 .inv13 td .sub{font-size:7pt;color:var(--mut);font-weight:400}
