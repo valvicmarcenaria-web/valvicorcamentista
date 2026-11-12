@@ -180,16 +180,17 @@ AMB = [
    ('A estante', 'Do piso ao teto, com prateleiras abertas para toalhas, halteres e acessórios.')]),
 ]
 _a0 = N[0] + 1
-for titulo, imgs, tag, acab, itens in AMB:
-    fig = ''.join(f'<img src="{IMG[i]}" alt="">' for i in imgs)
-    folha(f'''<div class="amb">
-     <div class="amb-img{" duo" if len(imgs) > 1 else ""}">{fig}<div class="tag">{E(tag)}</div></div>
-     <div class="amb-txt">
-      <div class="eyebrow">Ambiente</div><div class="rule"></div>
-      <div class="fit"><h2 class="h2" style="margin:1mm 0 4mm">{titulo}</h2>{mv(itens)}
-       <div class="amb-nota" style="background:none;border-left-color:var(--line)">
-         <div class="t">Acabamentos</div><p>{E(acab)}</p></div></div>
-     </div></div>''', foot_r=True)
+# ⭐ [Jonathan, 12/11/2026] "mude a estrutura colocando dois ambientes por página":
+#   cada folha leva duas metades, cada uma com a sua foto, o título, os itens e o acabamento
+def metade(titulo, imgs, tag, acab, itens):
+    return f'''<div class="dp">
+     <div class="dp-img"><img src="{IMG[imgs[0]]}" alt=""><div class="tag">{E(tag)}</div></div>
+     <div class="dp-txt"><div class="eyebrow">Ambiente</div><div class="rule"></div>
+      <h2 class="h2">{titulo.replace("<br>", " ")}</h2>{mv(itens)}
+      <div class="amb-nota" style="background:none;border-left-color:var(--line)">
+        <div class="t">Acabamentos</div><p>{E(acab)}</p></div></div></div>'''
+for k in range(0, len(AMB), 2):
+    folha(f'<div class="duplo">{"".join(metade(*a) for a in AMB[k:k + 2])}</div>')
 N_AMB = (_a0, N[0])
 
 # ── a garantia ──────────────────────────────────────────────────────────
@@ -387,6 +388,17 @@ EXTRA += '''
 .band.duo3 .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
   font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;padding:3mm 6mm;font-weight:600}
 .gar.duas{grid-template-columns:1fr 1fr !important}
+.duplo{display:grid;grid-template-columns:1fr 1fr;gap:9mm;height:100%;padding:12mm 14mm 18mm}
+.dp{display:flex;flex-direction:column;min-height:0}
+.dp-img{position:relative;height:100mm;flex:none;overflow:hidden;background:var(--sand)}
+.dp-img img{width:100%;height:100%;object-fit:cover;display:block}
+.dp-img .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
+  font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;padding:3mm 6mm;font-weight:600}
+.dp-txt{padding-top:5mm;min-height:0}
+.dp-txt .h2{font-size:19pt;margin:1mm 0 2.5mm}
+.dp-txt .mv .t{font-size:8.8pt}
+.dp-txt .mv .d{font-size:8.1pt}
+.dp-txt .amb-nota{margin-top:3mm}
 .faixa{display:flex;gap:3mm;height:58mm;flex:none;margin-top:1mm}
 .faixa figure{margin:0;position:relative;height:100%;background:#fff;overflow:hidden}
 .faixa img{height:100%;width:auto;display:block}
