@@ -149,9 +149,8 @@ F(it, 'Perfil metálico de proteção (m)', 1.6, 'Perfil de proteção de piso')
 it = item('Academia', 'Painel da TV com perfil metálico', '464,5 × 223')
 painel(it, 464.5, 223, AD18, 'Painel da TV')
 
-it = item('Academia', 'Painel com espelho e banco com nicho para colchonetes', '171 × 243 · banco de 55')
-painel(it, 171, 178, AD18, 'Painel com espelho')
-M2(it, 'Espelho prata colado no painel', 171, 178, 1, 'Espelho colado')
+it = item('Academia', 'Painel e banco com nicho para colchonetes', '171 × 243 · banco de 55')
+painel(it, 171, 178, AD18, 'Painel (recebe o espelho do item de espelhos)')
 P(it, 'Banco · tampo (20 de espessura, duas faces)', 171, 55, 2, AD18)
 P(it, 'Banco · frente e topos do tampo', 171 + 2 * 55, 20, 1, AD18)
 P(it, 'Banco · laterais e fundo do nicho', 141, 35, 3, AD15)
@@ -172,11 +171,18 @@ F(it, 'Desempenador de porta', 2, 'Desempenador de porta')
 F(it, 'Perfil metálico de proteção (m)', 0.96, 'Perfil de proteção de piso')
 F(it, 'Puxador cava (m)', 0.7, 'Cava usinada')
 
+# ⭐ [Jonathan, 12/11/2026] "vamos tirar o espelho desse item e criar um item contemplando todos os espelhos"
+it = item('Academia', 'Espelhos prata', 'painel do banco + três paredes')
+M2(it, 'Espelho prata colado no painel do banco (elev. 03)', 171, 178, 1, 'Espelho colado')
+M2(it, 'Espelho prata colado na parede (elev. 01)', 359, 213, 1, 'Espelho colado')
+M2(it, 'Espelho prata colado na parede (elev. 03, ao lado da porta)', 172, 233, 1, 'Espelho colado')
+M2(it, 'Espelho prata colado na parede (elev. 04)', 135.5, 233, 1, 'Espelho colado')
+
 AMBIENTES = list(dict.fromkeys(i['amb'] for i in ITENS))
 
 DUVIDAS = [
  'Todos os acabamentos estão "a definir": orçados em MDF de cor/madeirado (550/700). Se for lâmina natural ou laca, a conta muda.',
- 'Espelhos prata colados DIRETO NA PAREDE da academia (359 × 213, 172 × 233, 135,5 × 233): não fazem parte de móvel, ficaram FORA. O espelho do painel sobre o banco é nosso (R$ 600 o m²). Confirmar.',
+ '⭐ [Jonathan, 12/11/2026] Todos os espelhos num item só: o do painel do banco e os três colados na parede (359 × 213, 172 × 233, 135,5 × 233), R$ 600 o m².',
  'Painel do bar (portal): lido como parede revestida dos dois lados, do piso ao forro, com testeira de 13 sob o forro. A prancha não tem corte do portal.',
  'Abrigo ripado da sauna: ripas de 2 com vão de 3 (detalhe 01), sobre base de MDF; portas de abrir com 4 dobradiças cada.',
  'Porta de correr da academia: folha em duas chapas de 18, kit R$ 700 A COTAR, puxador "a definir" lançado como cava.',

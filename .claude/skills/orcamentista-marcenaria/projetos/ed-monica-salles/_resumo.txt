@@ -10,11 +10,12 @@ ESPAÇO GOURMET  · chapas 13 Branco TX 15 4, Branco TX 18 1, Branco TX 6 1, aca
 
 ACADEMIA  · chapas 11 Branco TX 15 1, Branco TX 6 1, acabamento a definir 15 3, acabamento a definir 18 6
     Painel da TV com perfil metálico                           7,815
-    Painel com espelho e banco com nicho para colchonete      12,250
+    Painel e banco com nicho para colchonetes                  6,862
     Estante aberta do piso ao teto                             6,310
     Porta de correr com perfil metálico                        5,914
-    subtotal                                                  32,289   custo 11,163
+    Espelhos prata                                            31,607
+    subtotal                                                  58,508   custo 20,228
 
-    TOTAL                                                     63,731
-    custo direto                                              22,033
+    TOTAL                                                     89,950
+    custo direto                                              31,098
 chapas no total: 24
