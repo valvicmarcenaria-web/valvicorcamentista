@@ -31,11 +31,11 @@ PRECO = {
  'Divisória de acrílico': 180, 'Kit tulha': 250,
 }
 AREA, APROV, CONS, EMB, FRETE = 5.0875, 0.80, 0.06, 0.02, 200
-NF, ERRO, SERRA, MANUT, RT = 0.05, 0.02, 0.005, 0.005, 0.10
+# ⭐ [Jonathan, 12/11/2026] "vamos trabalhar apenas com a linha hettich, rt de 10% + comissão de 4%"
+NF, ERRO, SERRA, MANUT, RT, VEND = 0.05, 0.02, 0.005, 0.005, 0.10, 0.04
 LIQ = 1 - NF
-BASE = 1 - (NF + ERRO + SERRA + MANUT + RT * LIQ + 0.075 * (LIQ - RT * LIQ))
-LINHAS = {'Hettich': dict(dob=50.0, corr=150.0, mc=0.38),
-          'Blum': dict(dob=50.0, corr=300.0, mc=0.43)}
+BASE = 1 - (NF + ERRO + SERRA + MANUT + RT * LIQ + VEND * LIQ + 0.075 * (LIQ - RT * LIQ - VEND * LIQ))
+LINHAS = {'Hettich': dict(dob=50.0, corr=150.0, mc=0.38)}
 MC_FIXA = 0.38
 AJUSTE_MC = 0.0
 AJUSTE_AMB = {}
@@ -98,7 +98,7 @@ def custo(lin, amb=None): return sum(v['custo'] for (a, _), v in TAB[lin].items(
 if __name__ == '__main__':
     print(f'BASE {BASE*100:.4f}% · sem ferragem de linha MC {MC_FIXA:.0%} · ' +
           ' · '.join(f'{l} {f["mc"]:.0%}' for l, f in LINHAS.items()) + f' · ajuste {AJUSTE_MC:+.0%}')
-    print(f"{'':56s}{'Hettich':>12s}{'Blum':>12s}")
+    print(f"{'':56s}{'Hettich':>12s}")
     for amb in L.AMBIENTES:
         print(f'\n{amb.upper()}  · chapas {sum(CHAPAS[amb].values())} ' +
               ', '.join(f"{k.replace('MDF ','')} {n}" for k, n in sorted(CHAPAS[amb].items())))
