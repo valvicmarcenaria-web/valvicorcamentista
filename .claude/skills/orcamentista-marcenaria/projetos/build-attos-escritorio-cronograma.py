@@ -45,22 +45,22 @@ ITENS = [
 ]
 # ⭐ o cronograma: a previsão de cada etapa é preenchida à mão pela gestão
 ETAPAS = [
- ('Definições informacionais', 'Cores, render × executivo resolvido, fixação da pedra'),
+ ('Definições informacionais', 'Cores e render × executivo resolvido'),
  ('Programação', 'Executivo de marcenaria aprovado e plano de corte'),
  ('Usinagem', 'Corte, fita de borda, ripas e usinagem'),
  ('Pré-montagem', 'Armários montados e regulados, ripado em painéis'),
  ('Conferência', 'Conferência contra o escopo · embalagem e carga'),
- ('Início de montagem', 'Equipe na obra, com pedra e pontos elétricos prontos'),
+ ('Início de montagem', 'Equipe na obra, com pontos elétricos prontos'),
 ]
 FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Hettich Novisys')]
-ESTRUTURA = ('Caixaria 15 mm, fundos 6 mm, frentes em 18 mm · <b>o apoio metálico da mesa é nosso</b>; '
-             'a pedra é de terceiro')
+ESTRUTURA = ('Caixaria 15 mm, fundos 6 mm, frentes em 18 mm · <b>o apoio metálico da mesa é nosso</b>')
 ATENCAO = ('<b>Fora da fila dos 70 dias</b> da casa: produção, carga e instalação com <b>janela '
            'própria</b>. O render e o executivo <b>não batem</b> aqui: resolver antes de detalhar.')
 DEFINIR = [
  ('Cores e padrões de MDF', '<b>Definir as cores com o cliente</b> antes de comprar chapa.'),
  ('Render × executivo', 'Resolver a divergência entre o 3D e o projeto técnico <b>antes de detalhar</b>.'),
- ('Fixação da pedra', 'Alinhar com a marmoraria a fixação da pedra e o <b>apoio metálico da mesa</b>.'),
+ # ⭐ [Jonathan, 13/11/2026] marmoraria eliminada
+ ('Apoio metálico da mesa', 'Desenhar o <b>apoio metálico estrutural</b> da ponta da mesa.'),
 ]
 
 BOX = '<span class="box"></span>'
@@ -130,6 +130,7 @@ _t = re.sub(r'<[^>]+>', ' ', HTML.split('<body>')[1])
 for _c in ('Orlando', 'Ivone', 'Haverson', 'Ana Carolina', 'Alexandre', 'Gisele', 'Gustavo', 'Phillip'):
     assert _c not in _t, f'⛔ vestígio de outro cliente: {_c}'
 assert 'R$' not in _t, '⛔ o cronograma não leva preço'
+assert 'pedra' not in _t.lower() and 'marmoraria' not in _t.lower(), '⛔ marmoraria eliminada [Jonathan, 13/11/2026]'
 assert 'nada corta' not in _t, '⛔ "nunca precisa dizer isso: nada corta antes" [Jonathan, 11/11/2026]'
 assert 'Sensys' not in _t and 'Novisys' in _t, '⛔ a dobradiça do Attos é a Novisys [Jonathan, 10/11/2026]'
 assert not [c for c in '⭐⛔⚠' if c in _t], '⛔ marcação interna'

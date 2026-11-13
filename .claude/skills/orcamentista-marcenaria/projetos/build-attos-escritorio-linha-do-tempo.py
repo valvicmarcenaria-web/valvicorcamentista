@@ -52,8 +52,8 @@ ETAPAS = [
    'Divergência entre o render e o executivo resolvida']),
  ('Programação', 'até 19/11', D(2026, 11, 13), D(2026, 11, 19),
   'Executivo de marcenaria e plano de corte.',
-  ['Fixação da pedra alinhada com a marmoraria — a pedra é de terceiro',
-   'Apoio metálico estrutural da ponta da mesa desenhado']),
+  # ⭐ [Jonathan, 13/11/2026] "no attos elimine as partes de marmoraria, não será mais necessário"
+  ['Apoio metálico estrutural da ponta da mesa desenhado']),
  # ⭐ [Jonathan, 13/11/2026] "troque a etapa de aprovação da arquiteta para compras"
  ('Compras', '19 a 22/11', D(2026, 11, 19), D(2026, 11, 22),
   'Chapas, ferragens e serralheria pedidas.',
@@ -254,7 +254,7 @@ for _k, _q, _a, _b, _o, _m in ETAPAS:
 for _a, _b in zip(ETAPAS, ETAPAS[1:]):
     assert _b[2] >= _a[2], '⛔ etapa fora de ordem'
 assert '10/12/2026' in _t and 'Bruna Castro' in _t and 'Novisys' in _t and 'Sensys' not in _t
-for _fora in ('Silent', 'Medição técnica', 'mesma cadência', 'divergência do render', 'por escrito'):
+for _fora in ('marmoraria', 'pedra', 'Silent', 'Medição técnica', 'mesma cadência', 'divergência do render', 'por escrito'):
     assert _fora not in _t, f'⛔ saiu da folha [Jonathan, 11/11/2026]: {_fora}'
 assert not any(_m for *_r, _m in ETAPAS[3:7]), '⛔ as etapas 4 a 7 ficam sem necessidade mapeada'
 assert 'nada corta' not in _t, '⛔ "nunca precisa dizer isso: nada corta antes" [Jonathan, 11/11/2026]'
