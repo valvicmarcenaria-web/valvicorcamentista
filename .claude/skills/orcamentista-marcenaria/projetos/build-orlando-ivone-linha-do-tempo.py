@@ -26,15 +26,16 @@ ETAPAS = [
   'Cores com a arquiteta, arandelas e driver.', []),
  ('Programação', 'até 13/11', D(2026, 11, 12), D(2026, 11, 13),
   'Executivo de marcenaria e plano de corte.',
-  ['Medidas das portas de espelho com perfil de alumínio extra fino definidas',
-   'PEDIDO DAS PORTAS DE ESPELHO enviado ao fornecedor']),
+  ['Medidas das portas de espelho com perfil de alumínio extra fino definidas']),
  # ⭐ [Jonathan, 13/11/2026] "altere a aprovação para 13 e compras entre 13 e 16"
  ('Aprovação da arquiteta', '13/11', D(2026, 11, 13), D(2026, 11, 13),
   'Executivo de marcenaria aprovado pela arquiteta.', []),
  # ⭐ [Jonathan, 13/11/2026] "no do Orlando insira a etapa de compras no dia 16"
  ('Compras', '13 a 16/11', D(2026, 11, 13), D(2026, 11, 16),
   'Chapas e ferragens pedidas, logo após a aprovação.',
-  ['COMPRA DOS MATERIAIS logo após a aprovação: chapas e ferragens']),
+  ['COMPRA DOS MATERIAIS logo após a aprovação: chapas e ferragens',
+   # ⭐ [Jonathan, 13/11/2026] "o pedido da porta de espelho pode ser até dia 17"
+   'PEDIDO DAS PORTAS DE ESPELHO ao fornecedor até 17/11']),
  ('Usinagem', 'começa 17/11', D(2026, 11, 17), D(2026, 11, 22),
   'Corte, fita de borda, furação e usinagem.', []),
  ('Pré-montagem', '23/11', D(2026, 11, 23), D(2026, 11, 26),
@@ -58,7 +59,7 @@ cols = ''.join(
     f'<span>{d.day:02d}/{d.month:02d}</span></div>' for d in DIAS)
 fundo = ''.join(f'<div class="{"fs" if d.weekday() >= 5 else ""}"></div>' for d in DIAS)
 
-COMPRA = {2: ' · pedido das portas de espelho', 4: ' · compra dos materiais'}
+COMPRA = {4: ' · materiais · portas de espelho até 17/11'}
 
 def barra(n, a, b, ultimo):
     i = (a - INICIO).days
@@ -80,7 +81,8 @@ def mapeadas(m):
     if not m:
         return ''
     li = ''.join(f'<li><span class="bx"></span>{E(x)}</li>' for x in m)
-    return f'<div class="nk">Compras e pedidos desta etapa</div><ul class="mp">{li}</ul>'
+    rot = 'Compras e pedidos desta etapa' if any(x.startswith(('COMPRA', 'PEDIDO')) for x in m) else 'Necessidades mapeadas'
+    return f'<div class="nk">{rot}</div><ul class="mp">{li}</ul>'
 cards = ''.join(
     f'''<div class="cd{" fim" if n == len(ETAPAS) else ""}">
      <div class="ch"><span class="n">{n:02d}</span><span class="box"></span></div>
