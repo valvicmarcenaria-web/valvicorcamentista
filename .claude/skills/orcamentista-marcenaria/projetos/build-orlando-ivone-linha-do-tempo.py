@@ -28,8 +28,11 @@ ETAPAS = [
   'Executivo de marcenaria e plano de corte.',
   ['Medidas das portas de espelho com perfil de alumínio extra fino definidas',
    'PEDIDO DAS PORTAS DE ESPELHO enviado ao fornecedor']),
- ('Aprovação da arquiteta', '13 a 16/11', D(2026, 11, 13), D(2026, 11, 16),
-  'Executivo de marcenaria aprovado pela arquiteta.',
+ ('Aprovação da arquiteta', '13 a 15/11', D(2026, 11, 13), D(2026, 11, 15),
+  'Executivo de marcenaria aprovado pela arquiteta.', []),
+ # ⭐ [Jonathan, 13/11/2026] "no do Orlando insira a etapa de compras no dia 16"
+ ('Compras', '16/11', D(2026, 11, 16), D(2026, 11, 16),
+  'Chapas e ferragens pedidas, logo após a aprovação.',
   ['COMPRA DOS MATERIAIS logo após a aprovação: chapas e ferragens']),
  ('Usinagem', 'começa 17/11', D(2026, 11, 17), D(2026, 11, 22),
   'Corte, fita de borda, furação e usinagem.', []),
@@ -54,7 +57,7 @@ cols = ''.join(
     f'<span>{d.day:02d}/{d.month:02d}</span></div>' for d in DIAS)
 fundo = ''.join(f'<div class="{"fs" if d.weekday() >= 5 else ""}"></div>' for d in DIAS)
 
-COMPRA = {2: ' · pedido das portas de espelho', 3: ' · compra dos materiais'}
+COMPRA = {2: ' · pedido das portas de espelho', 4: ' · compra dos materiais'}
 
 def barra(n, a, b, ultimo):
     i = (a - INICIO).days

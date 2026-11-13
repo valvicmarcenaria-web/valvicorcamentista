@@ -54,8 +54,9 @@ ETAPAS = [
   'Executivo de marcenaria e plano de corte.',
   ['Fixação da pedra alinhada com a marmoraria — a pedra é de terceiro',
    'Apoio metálico estrutural da ponta da mesa desenhado']),
- ('Aprovação da arquiteta', '19 a 22/11', D(2026, 11, 19), D(2026, 11, 22),
-  'Executivo aprovado pela arquiteta.',
+ # ⭐ [Jonathan, 13/11/2026] "troque a etapa de aprovação da arquiteta para compras"
+ ('Compras', '19 a 22/11', D(2026, 11, 19), D(2026, 11, 22),
+  'Chapas, ferragens e serralheria pedidas.',
   ['Compra do material e pedido da serralheria logo após a aprovação da arquiteta e do cliente']),
  ('Usinagem', 'começa 23/11', D(2026, 11, 23), D(2026, 11, 29),
   'Corte, fita de borda, ripas e usinagem.',
