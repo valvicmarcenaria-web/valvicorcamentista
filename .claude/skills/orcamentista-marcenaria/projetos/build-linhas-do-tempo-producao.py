@@ -25,6 +25,7 @@ OBJ = {
  'Entrega': 'Instalado, limpo e conferido com o cliente.',
  'Projeto': 'Executivo de marcenaria e plano de corte aprovados.',
  'Compras': 'Chapas, ferragens e terceirizados pedidos.',
+ 'Aprovação do projeto': 'Executivo aprovado pelo cliente e pela arquiteta.',
 }
 OBRAS = [
  dict(slug='shelf', cliente='Shelf', ambiente='', obra='', fer=[('Ferragens', 'Sem ferragens')],
@@ -37,14 +38,18 @@ OBRAS = [
               ('Montagem', D(25, 11)), ('Entrega', D(26, 11))], map={}),
  dict(slug='andrea', cliente='Andrea', ambiente='', obra='', fer=[],
       etapas=[('Usinagem', D(16, 11)), ('Pré-montagem', D(19, 11)), ('Conferência', D(2, 12)),
-              ('Montagem', D(4, 12)), ('Entrega', D(11, 12))], map={}),
+              ('Montagem', D(4, 12)), ('Entrega', D(11, 12))],
+      # ⭐ [Jonathan, 13/11/2026] "adicione na andrea: atenção para pedido do vidro"
+      map={'Usinagem': ['Atenção: pedido do vidro, para chegar antes da montagem']}),
  dict(slug='nadia', cliente='Nádia', ambiente='', obra='',
       fer=[('Ferragens', 'Blum'), ('Articuladores', 'Aventos HK-S')],
       etapas=[('Usinagem', D(18, 11)), ('Pré-montagem', D(30, 11)), ('Conferência', D(1, 12)),
               ('Montagem', D(14, 12)), ('Entrega', D(17, 12))],
       map={'Usinagem': ['Atenção: pedido das portas de vidro, para chegarem antes da montagem']}),
  dict(slug='raquel', cliente='Raquel', ambiente='', obra='', fer=[('Ferragens', 'Hettich')],
-      etapas=[('Projeto', D(18, 11)), ('Compras', D(19, 11)), ('Usinagem', D(23, 11)),
+      # ⭐ [Jonathan, 13/11/2026] Raquel alterada: projeto e aprovação em 17/11, compras em 18/11
+      etapas=[('Projeto', D(17, 11)), ('Aprovação do projeto', D(17, 11)), ('Compras', D(18, 11)),
+              ('Usinagem', D(23, 11)),
               ('Pré-montagem', D(30, 11)), ('Conferência', D(9, 12)), ('Montagem', D(10, 12)),
               ('Entrega', D(15, 12))],
       map={'Compras': ['Atenção: pedido do estofado, para chegar antes da montagem']}),
