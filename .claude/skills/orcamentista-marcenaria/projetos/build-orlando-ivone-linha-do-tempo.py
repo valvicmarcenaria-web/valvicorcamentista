@@ -28,10 +28,11 @@ ETAPAS = [
   'Executivo de marcenaria e plano de corte.',
   ['Medidas das portas de espelho com perfil de alumínio extra fino definidas',
    'PEDIDO DAS PORTAS DE ESPELHO enviado ao fornecedor']),
- ('Aprovação da arquiteta', '13 a 15/11', D(2026, 11, 13), D(2026, 11, 15),
+ # ⭐ [Jonathan, 13/11/2026] "altere a aprovação para 13 e compras entre 13 e 16"
+ ('Aprovação da arquiteta', '13/11', D(2026, 11, 13), D(2026, 11, 13),
   'Executivo de marcenaria aprovado pela arquiteta.', []),
  # ⭐ [Jonathan, 13/11/2026] "no do Orlando insira a etapa de compras no dia 16"
- ('Compras', '16/11', D(2026, 11, 16), D(2026, 11, 16),
+ ('Compras', '13 a 16/11', D(2026, 11, 13), D(2026, 11, 16),
   'Chapas e ferragens pedidas, logo após a aprovação.',
   ['COMPRA DOS MATERIAIS logo após a aprovação: chapas e ferragens']),
  ('Usinagem', 'começa 17/11', D(2026, 11, 17), D(2026, 11, 22),
