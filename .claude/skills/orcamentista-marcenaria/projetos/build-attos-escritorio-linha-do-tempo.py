@@ -99,7 +99,8 @@ def barra(n, a, b, ultimo):
 gantt = ''.join(barra(n, a, b, n == len(ETAPAS)) for n, (_k, _q, a, b, _d, _m) in enumerate(ETAPAS, 1))
 
 LINHAS, LINHAS_SEM = 4, 13
-FERRAGENS = [('Corrediças', 'Hettich'), ('Dobradiças', 'Hettich Novisys')]
+# ⭐ [Jonathan, 13/11/2026] "coloque em uma caixa única, ambos serão hettich"
+FERRAGENS = [('Ferragens · corrediças e dobradiças Novisys', 'Hettich')]
 def mapeadas(m):
     if not m:
         return ''
