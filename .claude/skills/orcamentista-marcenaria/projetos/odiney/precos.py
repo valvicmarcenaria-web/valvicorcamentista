@@ -122,3 +122,18 @@ if __name__ == '__main__':
     print(f"\n    {'TOTAL':52s}" + ''.join(f'{total(l):>12,.0f}' for l in LINHAS))
     print(f"    {'custo direto':52s}" + ''.join(f'{custo(l):>12,.0f}' for l in LINHAS))
     print('chapas no total:', sum(sum(c.values()) for c in CHAPAS.values()))
+
+
+# ⭐ [Jonathan, 16/11/2026] "ajuste o total para 629k considerando que o serviço será executado em
+#   Governador Valadares": a logística (deslocamento, hospedagem e frete da equipe a ~320 km) entra
+#   rateada na proporção de cada ambiente, e a soma fecha em R$ 629.000.
+TOTAL_GV = 629000.0
+FATOR_GV = TOTAL_GV / sum(total('Hettich', a) for a in L.AMBIENTES)
+
+
+def valores_gv():
+    v = {a: round(total('Hettich', a) * FATOR_GV) for a in L.AMBIENTES}
+    maior = max(v, key=v.get)
+    v[maior] += int(TOTAL_GV) - sum(v.values())
+    assert sum(v.values()) == TOTAL_GV
+    return v
