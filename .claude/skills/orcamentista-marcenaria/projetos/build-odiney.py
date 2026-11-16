@@ -30,9 +30,9 @@ GAR = {'Hettich': '10'}
 CHAMADA = {'Hettich': 'Ferragem Hettich'}
 # ⭐ [Jonathan, 16/11/2026] "ajuste o formato de pagamento para terminar junto com a entrega"
 # ⭐ [Jonathan, 16/11/2026] "coloque uma entrada de 40% para os valores ficarem mais redondos"
-PAGTO = [('Entrada, na assinatura do contrato', 0.40), ('30 dias após a assinatura', 0.12),
-         ('60 dias após a assinatura', 0.12), ('90 dias após a assinatura', 0.12),
-         ('120 dias após a assinatura', 0.12), ('Na entrega, aos 150 dias', 0.12)]
+# ⭐ [Jonathan, 16/11/2026] "após a entrada, iniciar as demais parcelas a partir de 90 dias após a assinatura"
+PAGTO = [('Entrada, na assinatura do contrato', 0.40), ('90 dias após a assinatura', 0.20),
+         ('120 dias após a assinatura', 0.20), ('Na entrega, aos 150 dias', 0.20)]
 assert abs(sum(p for _, p in PAGTO) - 1) < 1e-9
 
 br = lambda v: 'R$ ' + f'{v:,.2f}'.replace(',', '@').replace('.', ',').replace('@', '.')
