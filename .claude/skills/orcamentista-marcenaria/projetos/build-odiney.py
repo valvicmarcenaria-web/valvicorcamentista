@@ -29,9 +29,10 @@ LIN = ('Hettich',)
 GAR = {'Hettich': '10'}
 CHAMADA = {'Hettich': 'Ferragem Hettich'}
 # ⭐ [Jonathan, 16/11/2026] "ajuste o formato de pagamento para terminar junto com a entrega"
-PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.14),
-         ('60 dias após a assinatura', 0.14), ('90 dias após a assinatura', 0.14),
-         ('120 dias após a assinatura', 0.14), ('Na entrega, aos 150 dias', 0.14)]
+# ⭐ [Jonathan, 16/11/2026] "coloque uma entrada de 40% para os valores ficarem mais redondos"
+PAGTO = [('Entrada, na assinatura do contrato', 0.40), ('30 dias após a assinatura', 0.12),
+         ('60 dias após a assinatura', 0.12), ('90 dias após a assinatura', 0.12),
+         ('120 dias após a assinatura', 0.12), ('Na entrega, aos 150 dias', 0.12)]
 assert abs(sum(p for _, p in PAGTO) - 1) < 1e-9
 
 br = lambda v: 'R$ ' + f'{v:,.2f}'.replace(',', '@').replace('.', ',').replace('@', '.')
@@ -59,8 +60,9 @@ DESC = {
  'Banheiro suíte filha': 'Armário em Verde Jade com nicho e prateleiras suspensas',
  'Closet filha': 'Roupeiro almofadado com palhinha natural',
 }
-assert list(DESC) == PR.L.AMBIENTES, set(PR.L.AMBIENTES) ^ set(DESC)
-LINHAS_INV = [(a, DESC[a], {l: VGV[a] for l in LIN}) for a in PR.L.AMBIENTES]
+DESC[PR.ITEM_GV] = 'Transporte, deslocamento e estadia da equipe, montagem e instalação na obra'
+assert list(DESC) == PR.L.AMBIENTES + [PR.ITEM_GV], set(PR.L.AMBIENTES) ^ set(DESC)
+LINHAS_INV = [(a, DESC[a], {l: VGV[a] for l in LIN}) for a in PR.L.AMBIENTES + [PR.ITEM_GV]]
 VAL = {l: [round(v[l]) for *_, v in LINHAS_INV] for l in LIN}
 TOT = {l: sum(VAL[l]) for l in LIN}
 assert TOT['Hettich'] == sum(VGV.values()), TOT
@@ -400,7 +402,7 @@ folha(f'''<div class="pad" style="padding-top:11mm">
    <div class="k">Entrada, na assinatura</div><div class="e">{br(TOT['Hettich'] * PAGTO[0][1])}</div>
    <div class="x"><b>Incluso:</b> projeto executivo, material, usinagem, ferragem Hettich, espelhos,
     vidros, estofados, palhinha, frisos metálicos, serralheria dos pés e das prateleiras, LED embutido,
-    transporte, deslocamento e estadia da equipe em Governador Valadares, montagem e instalação.</div>
+    e a logística e a montagem em Governador Valadares.</div>
   </div>
  </div>
 </div>''')

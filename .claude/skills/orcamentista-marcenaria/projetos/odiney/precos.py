@@ -124,19 +124,14 @@ if __name__ == '__main__':
     print('chapas no total:', sum(sum(c.values()) for c in CHAPAS.values()))
 
 
-# ⭐ [Jonathan, 16/11/2026, depois] "ajuste o valor dos itens do projeto considerando um custo de 42k de
-#   logística e montagem em Valadares" (substitui o total de 629k): R$ 42.000 de CUSTO, que passa pela
-#   cascata da casa (nota, RT, produção) sem margem, e entra rateado na proporção de cada ambiente.
+# ⭐ [Jonathan, 16/11/2026] "eu quero que coloque o custo de 42k como se fosse um item da proposta":
+#   a logística e a montagem em Governador Valadares saem do rateio e viram UM ITEM de R$ 42.000;
+#   os ambientes voltam aos valores fechados.
 LOGISTICA_GV = 42000.0
-ACRESCIMO_GV = LOGISTICA_GV / BASE
+ITEM_GV = 'Logística e montagem em Governador Valadares'
 
 
 def valores_gv():
-    base = {a: total('Hettich', a) for a in L.AMBIENTES}
-    soma = sum(base.values())
-    v = {a: round(x + ACRESCIMO_GV * x / soma) for a, x in base.items()}
-    alvo = round(soma + ACRESCIMO_GV)
-    maior = max(v, key=v.get)
-    v[maior] += alvo - sum(v.values())
-    assert sum(v.values()) == alvo
+    v = {a: round(total('Hettich', a)) for a in L.AMBIENTES}
+    v[ITEM_GV] = int(LOGISTICA_GV)
     return v
