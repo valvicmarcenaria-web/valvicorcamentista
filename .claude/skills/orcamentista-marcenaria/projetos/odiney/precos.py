@@ -89,7 +89,15 @@ for x, v in TAB['Hettich'].items():
         assert len({round(TAB[l][x]['pv'], 2) for l in LINHAS}) == 1, x
 
 
-FECHADO = {}
+# ⭐ [Jonathan, 16/11/2026] ajustes de preço: valor FECHADO por ambiente (e um item)
+_F = {'Cozinha': 48000, 'Despensa': 7200, 'Lavanderia e lavabo': 35000, 'Banheiro social': 7500,
+      'Suíte master': 55000, 'Closet master': 69000, 'Banheiro master': 11500, 'Suíte hóspedes': 52000,
+      'Banheiro suíte hóspedes': 6500, 'Closet filha': 75000}
+FECHADO = {a: {'Hettich': float(v)} for a, v in _F.items()}
+ITEM_FIXO = {('Sala de TV', 'Prateleira iluminada do hall, atravessando o espelho'): 2300.0}
+for _x, _v in ITEM_FIXO.items():
+    TAB['Hettich'][_x]['pv'] = _v
+assert set(_F) <= set(L.AMBIENTES), set(_F) - set(L.AMBIENTES)
 
 
 def total(lin, amb=None):

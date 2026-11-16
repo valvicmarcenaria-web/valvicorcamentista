@@ -154,7 +154,8 @@ def led(it, m, fonte=True):
     if fonte: F(it, 'Fonte de LED', 1, 'Fonte de LED')
 
 # ══ 01 · HALL DE ACESSO ══════════════════════════════════════════════════
-it = item('Hall de acesso', 'Prateleira iluminada atravessando o espelho', '185 × 3 × 20')
+# ⭐ [Jonathan, 16/11/2026] "prateleira iluminada - 2.3k inclua junto com a sala de tv"
+it = item('Sala de TV', 'Prateleira iluminada do hall, atravessando o espelho', '185 × 3 × 20')
 P(it, 'Prateleira · duas faces de 15', 185, 20, 2, CH15, 3.7)
 F(it, 'Pontas arredondadas e recorte do espelho', 1, 'Canto boleado')
 F(it, 'Fixação invisível', 4, 'Fixação invisível')
@@ -211,19 +212,21 @@ it = item('Cozinha', 'Painel em Carvalho do lado da cozinha', '430 × 277')
 painel(it, 430, 277, CH18, 'Painel do lado da cozinha')
 
 # ══ 04 · DESPENSA ════════════════════════════════════════════════════════
-it = item('Despensa', 'Prateleiras em L com chumbador oculto', '150 + 175 · 5 níveis')
-prat_grossa(it, 5, 150, 50, AM15, led=False)
-prat_grossa(it, 5, 175, 35, AM15, led=False)
+it = item('Despensa', 'Prateleiras em L', '150 + 175 · 5 níveis')
+# ⭐ [Jonathan, 16/11/2026] "despensa 7.2k sem chumbadores"
+prat_grossa(it, 5, 150, 50, AM15, led=False, invis=False)
+prat_grossa(it, 5, 175, 35, AM15, led=False, invis=False)
 
 # ══ 05 · LAVANDERIA ══════════════════════════════════════════════════════
-it = item('Lavanderia', 'Armário superior almofadado com LED', '315 × 110 × 35')
+# ⭐ [Jonathan, 16/11/2026] "lavanderia e lavabo - 35k": um ambiente só na conta
+it = item('Lavanderia e lavabo', 'Armário superior almofadado com LED', '315 × 110 × 35')
 caixa(it, 315, 110, 35, AM15, ndiv=5, base_ext=True)
 prat(it, 6, 52.5, 35)
 giro(it, 6, 52.5, 110, AM18, pux='')
 almofadar(it, 6); pux(it, 6)
 led(it, 3.15)
 
-it = item('Lavanderia', 'Armários inferiores almofadados', '245 × 78 × 70 + 165 × 78 × 60')
+it = item('Lavanderia e lavabo', 'Armários inferiores almofadados', '245 × 78 × 70 + 165 × 78 × 60')
 caixa(it, 245, 78, 68, AM15, ndiv=4, lat_ext=1)
 giro(it, 4, 49, 78, AM18, pux='')
 gavetas(it, 4, 49, 19.5, 60, AM18, pux='')
@@ -232,7 +235,7 @@ giro(it, 4, 41, 78, AM18, pux='')
 prat(it, 6, 49, 60)
 almofadar(it, 12); pux(it, 12)
 
-it = item('Lavanderia', 'Nicho suspenso e despenseiro', '165 × 70 × 35 · 40 × 260 × 60')
+it = item('Lavanderia e lavabo', 'Nicho suspenso e despenseiro', '165 × 70 × 35 · 40 × 260 × 60')
 caixa(it, 165, 70, 35, AM18, base_ext=True, topo_ext=True)
 P(it, 'Forro interno em Carvalho', 159, 54, 1, CH15, 0)
 P(it, 'Caixa inferior com LED', 149, 15, 2, AM15)
@@ -243,7 +246,7 @@ giro(it, 1, 40, 260, AM18, pux='')
 almofadar(it, 1); pux(it, 1)
 
 # ══ 06 · LAVABO ══════════════════════════════════════════════════════════
-it = item('Lavabo', 'Prateleira ripada em Carvalho', '100 × 3 × 50')
+it = item('Lavanderia e lavabo', 'Prateleira ripada do lavabo, em Carvalho', '100 × 3 × 50')
 P(it, 'Quadro da prateleira', 100, 3, 2, CH18); P(it, 'Quadro · laterais', 44, 3, 2, CH18)
 ripado(it, 94, 44, CH18, ripa=3, vao=1, base=False)
 F(it, 'Fixação invisível', 2, 'Fixação invisível')
@@ -274,16 +277,18 @@ gavetas(it, 4, 47, 18.5, 40, AM15, pux='')
 pux(it, 4); pes(it, 2)
 
 # ══ 08 · BANHEIRO SOCIAL ═════════════════════════════════════════════════
-it = item('Banheiro social', 'Armário de gavetões suspenso', '150 × 25 × 55')
+# ⭐ [Jonathan, 16/11/2026] "banho social com espelho - 7.5k": o espelho retroiluminado entra
+it = item('Banheiro social', 'Armário de gavetões suspenso e espelho retroiluminado', '150 × 25 × 55')
 caixa(it, 150, 25, 55, CH18, ndiv=2, base_ext=True)
 gavetas(it, 3, 50, 25, 50, CH15, pux='cava', nome='Gavetão')
 
 # ══ 09 · SUÍTE MASTER ════════════════════════════════════════════════════
-it = item('Suíte master', 'Painel frisado e muxarabi em Carvalho com LED', '435 × 265')
+# ⭐ [Jonathan, 16/11/2026] "suíte master (painel muxarabi usinado plano) - 55k"
+it = item('Suíte master', 'Painel frisado e muxarabi usinado plano em Carvalho, com LED', '435 × 265')
 painel(it, 435, 145, CH18, 'Painel frisado')
 F(it, 'Frisos de 1 cm (usinagem, m)', 4.35, 'Cava usinada')
 P(it, 'Muxarabi 5×5 em Carvalho', 120, 435 / 2, 2, CH18, 2 * 1.2)
-M2(it, 'Usinagem CNC do muxarabi', 435, 120, 1, 'Usinagem CNC muxarabi')
+M2(it, 'Usinagem CNC do muxarabi, plano (sem vazar)', 435, 120, 1, 'Usinagem CNC muxarabi')
 led(it, 4.35)
 
 it = item('Suíte master', 'Mesas de cabeceira com pés dourados', '120 × 60 × 50 e 60 × 60 × 60')
@@ -349,7 +354,8 @@ gavetas(it, 4, 56, 28, 45, CH15, pux='cava', nome='Gavetão')
 
 it = item('Suíte hóspedes', 'Cabeceira: painéis ripados em Carvalho e painel Frapê com frisos', '345 × 265')
 painel(it, 174, 265, CH18, 'Painéis lisos em Carvalho')
-ripado(it, 102, 265, CH18, base=False, nome='Ripado em Carvalho')
+# ⭐ [Jonathan, 16/11/2026] "ponto de atenção e destaque na proposta para o estilo do ripado de 1X1"
+ripado(it, 102, 265, CH18, ripa=1, vao=1, base=False, nome='Ripado 1×1 em Carvalho')
 painel(it, 171, 250, FR18, 'Painel em Frapê')
 F(it, 'Friso metálico preto (m)', 12.5, 'Perfil metálico dourado')
 
@@ -436,7 +442,8 @@ DUVIDAS = [
  'Interno do armário do hall íntimo não detalhado: lançadas 10 prateleiras.',
  'Gavetas atrás da porta espelhada do closet master: consideradas reais. LED sob as prateleiras do closet só aparece no render: FORA.',
  'Prateleira do hall de acesso sem material na prancha: lançada em Carvalho Hanover.',
- 'Muxarabi 5×5 da suíte master: usinagem CNC a R$ 400 o m², a cotar.',
+ '⭐ Muxarabi 5×5 da suíte master USINADO PLANO (sem vazar) [Jonathan, 16/11/2026].',
+ '⭐ Suíte hóspedes: RIPADO 1×1 (ripa de 1 com vão de 1) — ponto de atenção, com destaque na proposta [Jonathan, 16/11/2026].',
  'Pés de serralheria (criados e mesas de cabeceira) a R$ 300 o jogo; prateleiras de vidro com serralheria dourada do closet a R$ 450 cada; metalon dourado do banho da filha a R$ 600: tudo a cotar.',
  'Estofados (cabeceira do quarto 01 e da suíte filha) a R$ 600 o m²; a da filha é em gomos, pode sair mais.',
  'Puxadores Zen Design a R$ 45 a peça em média; palhinha natural a R$ 650 o m²; frente almofadada a R$ 40 de usinagem por frente.',

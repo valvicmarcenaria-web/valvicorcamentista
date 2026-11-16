@@ -1,36 +1,30 @@
 BASE 76.0875% · sem ferragem de linha MC 38% · Hettich 38% · ajuste +0%
                                                              Hettich
 
-HALL DE ACESSO  · chapas 1 Carvalho Hanover 15 1
-    Prateleira iluminada atravessando o espelho                4,604
-    subtotal                                                   4,604   custo 1,753
-
 SALA DE TV  · chapas 26 Areia Matt 15 3, Areia Matt 18 2, Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Carvalho Hanover 15 1, Carvalho Hanover 18 5, Titânio 18 7
-  ◆ Home suspenso com gavetões e nicho                         9,538
-    Painel em Titânio com frisos metálicos dourados           25,899
-  ◆ Cristaleira com portas de vidro e suporte de vinhos       18,676
-    Painel em Carvalho com porta de correr embutida (sal      10,518
-    subtotal                                                  64,631   custo 24,617
+    Prateleira iluminada do hall, atravessando o espelho       2,300
+  ◆ Home suspenso com gavetões e nicho                         9,485
+    Painel em Titânio com frisos metálicos dourados           25,747
+  ◆ Cristaleira com portas de vidro e suporte de vinhos       18,592
+    Painel em Carvalho com porta de correr embutida (sal      10,452
+    subtotal                                                  66,575   custo 25,573
 
 COZINHA  · chapas 15 Areia Matt 15 1, Areia Matt 18 1, Branco TX 15 7, Branco TX 18 1, Branco TX 6 2, Carvalho Hanover 18 3
   ◆ Armário da pia, almofadado                                16,660
   ◆ Ilha · torres de forno e micro-ondas                       4,557
     Painel em Carvalho do lado da cozinha                      8,798
-    subtotal                                                  30,015   custo 11,432
+    subtotal                                                  48,000   custo 11,432
 
 DESPENSA  · chapas 5 Areia Matt 15 4, Branco TX 15 1
-    Prateleiras em L com chumbador oculto                     12,154
-    subtotal                                                  12,154   custo 4,629
+    Prateleiras em L                                           8,873
+    subtotal                                                   7,200   custo 3,380
 
-LAVANDERIA  · chapas 14 Areia Matt 15 2, Areia Matt 18 3, Branco TX 15 5, Branco TX 6 3, Carvalho Hanover 15 1
-  ◆ Armário superior almofadado com LED                       11,824
-  ◆ Armários inferiores almofadados                           15,290
-  ◆ Nicho suspenso e despenseiro                               8,195
-    subtotal                                                  35,309   custo 13,448
-
-LAVABO  · chapas 1 Carvalho Hanover 18 1
-    Prateleira ripada em Carvalho                              3,532
-    subtotal                                                   3,532   custo 1,345
+LAVANDERIA E LAVABO  · chapas 15 Areia Matt 15 2, Areia Matt 18 3, Branco TX 15 5, Branco TX 6 3, Carvalho Hanover 15 1, Carvalho Hanover 18 1
+  ◆ Armário superior almofadado com LED                       12,330
+  ◆ Armários inferiores almofadados                           15,983
+  ◆ Nicho suspenso e despenseiro                               8,647
+    Prateleira ripada do lavabo, em Carvalho                   1,356
+    subtotal                                                  35,000   custo 14,594
 
 QUARTO 01  · chapas 16 Areia Matt 15 1, Areia Matt 18 3, Branco TX 15 4, Branco TX 18 2, Branco TX 6 3, Carvalho Hanover 18 3
   ◆ Roupeiro com portas de correr espelhadas                  33,627
@@ -40,38 +34,38 @@ QUARTO 01  · chapas 16 Areia Matt 15 1, Areia Matt 18 3, Branco TX 15 4, Branco
     subtotal                                                  64,360   custo 24,513
 
 BANHEIRO SOCIAL  · chapas 4 Branco TX 15 1, Branco TX 6 1, Carvalho Hanover 15 1, Carvalho Hanover 18 1
-  ◆ Armário de gavetões suspenso                               7,592
-    subtotal                                                   7,592   custo 2,892
+  ◆ Armário de gavetões suspenso e espelho retroiluminad       7,592
+    subtotal                                                   7,500   custo 2,892
 
 SUÍTE MASTER  · chapas 13 Branco TX 15 2, Branco TX 6 1, Carvalho Hanover 18 7, Frapê 15 1, Frapê 18 2
-    Painel frisado e muxarabi em Carvalho com LED             15,699
+    Painel frisado e muxarabi usinado plano em Carvalho,      15,699
   ◆ Mesas de cabeceira com pés dourados                        5,897
   ◆ Bancada suspensa com gavetões                              6,586
     Painel de TV e painel lateral em Carvalho, prateleir      12,032
-    subtotal                                                  40,214   custo 15,316
+    subtotal                                                  55,000   custo 15,316
 
 CLOSET MASTER  · chapas 30 Branco TX 15 8, Branco TX 18 2, Branco TX 6 8, Carvalho Hanover 15 8, Frapê 15 1, Frapê 18 3
   ◆ Closet aberto em U, Frapê com interno em Carvalho         64,452
-    subtotal                                                  64,452   custo 24,548
+    subtotal                                                  69,000   custo 24,548
 
 BANHEIRO MASTER  · chapas 4 Branco TX 15 1, Branco TX 6 1, Carvalho Hanover 15 1, Carvalho Hanover 18 1
   ◆ Armário suspenso com nicho central                         7,488
-    subtotal                                                   7,488   custo 2,852
+    subtotal                                                  11,500   custo 2,852
 
 HALL ÍNTIMO  · chapas 10 Branco TX 15 4, Branco TX 6 2, Carvalho Hanover 15 1, Frapê 18 3
   ◆ Armário em Frapê com nicho iluminado em Carvalho          20,123
     subtotal                                                  20,123   custo 7,664
 
 SUÍTE HÓSPEDES  · chapas 16 Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Carvalho Hanover 15 1, Carvalho Hanover 18 2, Frapê 15 1, Frapê 18 4
-  ◆ Roupeiro de correr em Frapê, uma folha espelhada          28,849
-  ◆ Home suspenso com gavetões                                 5,166
-    Cabeceira: painéis ripados em Carvalho e painel Frap      11,839
-  ◆ Mesa de cabeceira com pés de serralheria                   2,378
-    subtotal                                                  48,232   custo 18,370
+  ◆ Roupeiro de correr em Frapê, uma folha espelhada          28,692
+  ◆ Home suspenso com gavetões                                 5,127
+    Cabeceira: painéis ripados em Carvalho e painel Frap      15,210
+  ◆ Mesa de cabeceira com pés de serralheria                   2,365
+    subtotal                                                  52,000   custo 19,574
 
 BANHEIRO SUÍTE HÓSPEDES  · chapas 4 Branco TX 15 1, Branco TX 6 1, Carvalho Hanover 15 1, Carvalho Hanover 18 1
   ◆ Armário suspenso iluminado e prateleiras                   8,853
-    subtotal                                                   8,853   custo 3,372
+    subtotal                                                   6,500   custo 3,372
 
 SUÍTE FILHA  · chapas 16 Branco TX 15 2, Branco TX 18 1, Branco TX 6 1, Carvalho Hanover 15 1, Carvalho Hanover 18 1, Frapê 15 1, Frapê 18 9
   ◆ Estante e home suspenso em Frapê com Carvalho             10,037
@@ -86,8 +80,8 @@ BANHEIRO SUÍTE FILHA  · chapas 4 Branco TX 15 1, Branco TX 6 1, Carvalho Hanov
 
 CLOSET FILHA  · chapas 16 Areia Matt 15 3, Branco TX 15 5, Branco TX 6 4, Frapê 18 4
   ◆ Roupeiro em L com portas almofadadas e palhinha           51,829
-    subtotal                                                  51,829   custo 19,740
+    subtotal                                                  75,000   custo 19,740
 
-    TOTAL                                                    533,221
-    custo direto                                             203,091
-chapas no total: 195
+    TOTAL                                                    587,593
+    custo direto                                             202,049
+chapas no total: 194
