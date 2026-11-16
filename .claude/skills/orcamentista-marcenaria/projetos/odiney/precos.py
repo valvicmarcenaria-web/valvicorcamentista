@@ -124,16 +124,19 @@ if __name__ == '__main__':
     print('chapas no total:', sum(sum(c.values()) for c in CHAPAS.values()))
 
 
-# ⭐ [Jonathan, 16/11/2026] "ajuste o total para 629k considerando que o serviço será executado em
-#   Governador Valadares": a logística (deslocamento, hospedagem e frete da equipe a ~320 km) entra
-#   rateada na proporção de cada ambiente, e a soma fecha em R$ 629.000.
-TOTAL_GV = 629000.0
-FATOR_GV = TOTAL_GV / sum(total('Hettich', a) for a in L.AMBIENTES)
+# ⭐ [Jonathan, 16/11/2026, depois] "ajuste o valor dos itens do projeto considerando um custo de 42k de
+#   logística e montagem em Valadares" (substitui o total de 629k): R$ 42.000 de CUSTO, que passa pela
+#   cascata da casa (nota, RT, produção) sem margem, e entra rateado na proporção de cada ambiente.
+LOGISTICA_GV = 42000.0
+ACRESCIMO_GV = LOGISTICA_GV / BASE
 
 
 def valores_gv():
-    v = {a: round(total('Hettich', a) * FATOR_GV) for a in L.AMBIENTES}
+    base = {a: total('Hettich', a) for a in L.AMBIENTES}
+    soma = sum(base.values())
+    v = {a: round(x + ACRESCIMO_GV * x / soma) for a, x in base.items()}
+    alvo = round(soma + ACRESCIMO_GV)
     maior = max(v, key=v.get)
-    v[maior] += int(TOTAL_GV) - sum(v.values())
-    assert sum(v.values()) == TOTAL_GV
+    v[maior] += alvo - sum(v.values())
+    assert sum(v.values()) == alvo
     return v

@@ -24,12 +24,14 @@ CLIENTE = 'Odiney'
 ARQ = 'ArqForma'
 OBRA = 'Governador Valadares'
 DATA = 'Novembro de 2026'
-PRAZO, VALIDADE = '90 dias corridos', '7 dias úteis'
+PRAZO, VALIDADE = '150 dias corridos', '7 dias úteis'   # ⭐ [Jonathan, 16/11/2026] "prazo de entrega 150 dias"
 LIN = ('Hettich',)
 GAR = {'Hettich': '10'}
 CHAMADA = {'Hettich': 'Ferragem Hettich'}
-PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.20),
-         ('60 dias após a assinatura', 0.20), ('90 dias após a assinatura', 0.30)]
+# ⭐ [Jonathan, 16/11/2026] "ajuste o formato de pagamento para terminar junto com a entrega"
+PAGTO = [('Entrada, na assinatura do contrato', 0.30), ('30 dias após a assinatura', 0.14),
+         ('60 dias após a assinatura', 0.14), ('90 dias após a assinatura', 0.14),
+         ('120 dias após a assinatura', 0.14), ('Na entrega, aos 150 dias', 0.14)]
 assert abs(sum(p for _, p in PAGTO) - 1) < 1e-9
 
 br = lambda v: 'R$ ' + f'{v:,.2f}'.replace(',', '@').replace('.', ',').replace('@', '.')
@@ -61,7 +63,7 @@ assert list(DESC) == PR.L.AMBIENTES, set(PR.L.AMBIENTES) ^ set(DESC)
 LINHAS_INV = [(a, DESC[a], {l: VGV[a] for l in LIN}) for a in PR.L.AMBIENTES]
 VAL = {l: [round(v[l]) for *_, v in LINHAS_INV] for l in LIN}
 TOT = {l: sum(VAL[l]) for l in LIN}
-assert TOT['Hettich'] == 629000, TOT
+assert TOT['Hettich'] == sum(VGV.values()), TOT
 
 S, N = [], [0]
 def folha(corpo, dark=False, rodape=True, foot_r=False, cls=''):
@@ -225,9 +227,56 @@ AMB = [
 _a0 = N[0] + 1
 # ⭐ [Jonathan, 12/11/2026] "mude a estrutura colocando dois ambientes por página":
 #   cada folha leva duas metades, cada uma com a sua foto, o título, os itens e o acabamento
+# ⭐ [Jonathan, 16/11/2026] "na página da suíte master adicione um detalhe de imagem que mostre o
+#   detalhe do muxarabi, de forma criativa e bonita · faça o mesmo do detalhe ripado da suíte de hóspede"
+#   → uma lupa circular sobre a foto, com o detalhe desenhado em SVG (veio de madeira por filtro).
+VEIO = """<filter id="veio{k}" x="0" y="0" width="100%" height="100%">
+ <feTurbulence type="fractalNoise" baseFrequency="0.006 0.16" numOctaves="3" seed="{k}"/>
+ <feColorMatrix values="0 0 0 0 0.42  0 0 0 0 0.28  0 0 0 0 0.16  0 0 0 0.55 0"/>
+ <feComposite in2="SourceGraphic" operator="in"/></filter>"""
+
+
+def svg_muxarabi():
+    cel = ''.join(f'<rect x="{12 + c * 56}" y="{132 + r * 33}" width="46" height="25" rx="1.5" fill="url(#poco)"/>'
+                  for r in range(5) for c in range(5))
+    return f"""<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><defs>{VEIO.format(k=1)}
+ <linearGradient id="mad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C79C6B"/><stop offset="1" stop-color="#9C7146"/></linearGradient>
+ <linearGradient id="poco" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E4A2B"/><stop offset=".35" stop-color="#8D6440"/><stop offset="1" stop-color="#A57A50"/></linearGradient>
+ <radialGradient id="led" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE7A8" stop-opacity=".95"/><stop offset="1" stop-color="#FFE7A8" stop-opacity="0"/></radialGradient></defs>
+ <rect width="300" height="300" fill="url(#mad1)"/><rect width="300" height="300" fill="#B88A5A" filter="url(#veio1)"/>
+ <rect x="0" y="0" width="300" height="104" fill="#B58757"/><rect x="0" y="0" width="300" height="104" fill="#B58757" filter="url(#veio1)"/>
+ <rect x="148" y="0" width="4" height="104" fill="#5A3B22" opacity=".75"/>
+ <ellipse cx="150" cy="114" rx="190" ry="16" fill="url(#led)"/><rect x="0" y="111" width="300" height="4" fill="#FFF1C9"/>
+ {cel}</svg>"""
+
+
+def svg_ripado():
+    rip = ''.join(f'<rect x="{x}" y="0" width="9" height="300" fill="url(#ripa)"/>' for x in range(4, 300, 18))
+    return f"""<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><defs>{VEIO.format(k=2)}
+ <linearGradient id="ripa" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E0B98A"/><stop offset=".55" stop-color="#C39467"/><stop offset="1" stop-color="#8E6440"/></linearGradient>
+ <linearGradient id="luz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient></defs>
+ <rect width="300" height="300" fill="#4A3220"/>{rip}<rect width="300" height="300" fill="#C39467" opacity=".55" filter="url(#veio2)"/>
+ <rect width="300" height="300" fill="url(#luz)"/>
+ <g font-family="DM Sans,sans-serif" font-size="15" font-weight="700" fill="#F4E3B6">
+  <line x1="94" y1="226" x2="103" y2="226" stroke="#F4E3B6" stroke-width="2"/><line x1="103" y1="226" x2="112" y2="226" stroke="#F4E3B6" stroke-width="2" stroke-dasharray="2 2"/>
+  <text x="80" y="250">1 × 1</text></g></svg>"""
+
+
+DETALHE = {'Suíte master': (svg_muxarabi, 'Detalhe', 'Muxarabi usinado plano, com a linha de luz'),
+           'Suíte hóspedes': (svg_ripado, 'Detalhe', 'Ripado 1 × 1: ripa e vão iguais')}
+
+
+def lupa(tag):
+    if tag not in DETALHE:
+        return ''
+    f, k, t = DETALHE[tag]
+    return (f'<div class="lupa"><div class="lc">{f()}</div>'
+            f'<div class="lt"><span>{E(k)}</span>{E(t)}</div></div>')
+
+
 def metade(titulo, imgs, tag, acab, itens):
     return f'''<div class="dp">
-     <div class="dp-img"><img src="{IMG[imgs[0]]}" alt=""><div class="tag">{E(tag)}</div></div>
+     <div class="dp-img"><img src="{IMG[imgs[0]]}" alt=""><div class="tag">{E(tag)}</div>{lupa(tag)}</div>
      <div class="dp-txt"><div class="eyebrow">Ambiente</div><div class="rule"></div>
       <h2 class="h2">{titulo.replace("<br>", " ")}</h2>{DESTAQUE.get(tag, "")}{mv(itens)}
       <div class="amb-nota" style="background:none;border-left-color:var(--line)">
@@ -236,8 +285,24 @@ DESTAQUE = {'Suíte hóspedes': '''<div class="dq"><div class="k">Ponto de aten�
   <p>A cabeceira leva um ripado de <b>ripa e vão iguais, de desenho muito fino</b>. É o detalhe que
   mais pede precisão de usinagem e de montagem: as ripas são conferidas uma a uma na fábrica e
   montadas no prumo na obra.</p></div>'''}
+# ⭐ [Jonathan, 16/11/2026] "na página 10 explore melhor o design inserindo imagem de palhinha natural
+#   em alta resolução": a metade livre da folha do closet da filha vira a textura da palhinha.
+PALHA = f'''<div class="dp palha"><div class="pl-img"><img src="{IMG['palhinha']}" alt="">
+  <div class="tag">Palhinha natural</div></div>
+  <div class="dp-txt"><div class="eyebrow">O detalhe</div><div class="rule"></div>
+   <h2 class="h2">A palhinha natural.</h2>
+   <p class="pl-p">Nas portas do closet, a palhinha natural entra na almofada de cima, emoldurada pelo
+    Frapê. A trama deixa o armário <b>respirar</b> — o que guarda roupa agradece — e leva para o
+    closet a textura artesanal que dá o tom do quarto. Cada folha é tensionada e fixada na fábrica,
+    antes da montagem.</p>
+   <div class="amb-nota" style="background:none;border-left-color:var(--line)">
+    <div class="t">Na proposta</div><p>Palhinha natural nas portas do roupeiro · moldura em MDF Frapê almofadado</p></div>
+  </div></div>'''
 for k in range(0, len(AMB), 2):
-    folha(f'<div class="duplo">{"".join(metade(*a) for a in AMB[k:k + 2])}</div>')
+    par = "".join(metade(*a) for a in AMB[k:k + 2])
+    if len(AMB[k:k + 2]) == 1:
+        par += PALHA
+    folha(f'<div class="duplo">{par}</div>')
 N_AMB = (_a0, N[0])
 
 # ── a garantia ──────────────────────────────────────────────────────────
@@ -305,49 +370,39 @@ folha(f'''<div class="pad" style="padding-top:13mm">
    trabalha todos os dias — e é ela que decide por quanto tempo o móvel continua fechando bem.</p></div>
  <div class="faixa">{faixa}</div>
  <div class="fers">{''.join(fcol(*f) for f in FER)}</div>
- <div class="garf"><div class="anos">{GAR['Hettich']}</div><div><div class="k">anos de garantia Valvic</div>
-  <div class="s">Na linha Hettich, sobre a marcenaria e a ferragem de movimento do projeto inteiro.
-   Termo assinado no dia da entrega.</div></div><div class="leg-f">Imagens ilustrativas.</div></div>
+ <div class="garx"><div class="gselo"><b>{GAR['Hettich']}</b><span>anos</span></div>
+  <div><div class="k">Garantia Valvic · linha Hettich</div>
+   <div class="t">Dez anos sobre a marcenaria e a ferragem de movimento da casa inteira.</div>
+   <div class="s">Corrediças, dobradiças e a estrutura de cada móvel, com termo assinado no dia da entrega.
+    Instalação e regulagem, dois anos.</div></div><div class="leg-f">Imagens ilustrativas.</div></div>
 </div>''')
 N0 = N[0] + 1   # ⛔ a primeira folha com preço
 
 rows = ''.join(
-    f'<tr><td class="l">{E(n)} <span class="sub">· {E(d)}</span></td>'
-    + ''.join(f'<td{" class=hi" if l == "Hettich" else ""}>{brs(VAL[l][i])}</td>' for l in LIN)
-    + '</tr>' for i, (n, d, _v) in enumerate(LINHAS_INV))
+    f'<tr><td class="l">{E(n)}</td><td class="hi">{brs(VAL["Hettich"][i])}</td></tr>'
+    for i, (n, d, _v) in enumerate(LINHAS_INV))
+# ⭐ [Jonathan, 16/11/2026] "sintetize melhor a página 12 e 13 para eliminar a 14": tabela e total juntos
 folha(f'''<div class="pad" style="padding-top:11mm">
- <div class="eyebrow">Investimento · ambiente a ambiente</div><div class="rule"></div>
+ <div class="eyebrow">Investimento</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 2mm">A casa, ambiente a ambiente.</h1>
  <p class="lead" style="max-width:235mm;font-size:9pt">Cada móvel foi levantado <b>peça por peça
-  do caderno de marcenaria</b> — nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
- <table class="inv inv13" style="margin-top:3mm">
-  <tr><th class="l">Ambiente</th>
-   {''.join(f'<th{" class=hi" if l == "Hettich" else ""}>{E(l)}</th>' for l in LIN)}</tr>
-  {rows}
-  <tr class="tot"><td class="l">O projeto completo</td>
-   {''.join(f'<td{" class=hi" if l == "Hettich" else ""}>{brs(TOT[l])}</td>' for l in LIN)}</tr>
- </table>
-</div>''')
-
-folha(f'''<div class="pad">
- <div class="eyebrow">Investimento</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">O projeto completo.</h1>
- <p class="lead" style="max-width:215mm">A casa inteira, com ferragem <b>Hettich</b> e dez anos
-  de garantia sobre a marcenaria e a ferragem, instalada em Governador Valadares.</p>
- <div class="gar justo duas"><div class="c hi">
-     <div class="anos">{GAR['Hettich']}</div><div class="unid">anos de garantia</div>
-     <div class="nm">Ferragem Hettich</div>
-     <div class="x">Dobradiça com amortecedor e regulagem nos três sentidos.</div>
-     <div class="l"><div class="k">O projeto completo</div>
-      <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:23pt">{br(TOT['Hettich'])}</div></div>
-     <div class="l" style="margin-top:2mm"><div class="k">Entrada, na assinatura</div>
-      <div class="v">{br(TOT['Hettich'] * PAGTO[0][1])}</div></div></div>
-  <div class="c"><div class="nm" style="margin-top:0">O que está incluso</div>
-   <div class="x">Projeto executivo de marcenaria, material, usinagem, ferragem Hettich, os
-    espelhos, os vidros, os estofados, a palhinha, os frisos metálicos, a serralheria dos pés e
-    das prateleiras, a iluminação em LED embutida, <b>transporte, deslocamento e estadia da
-    equipe em Governador Valadares</b>, montagem e instalação — num só contrato, com uma só data
-    e uma só arquiteta responsável.</div></div></div>
+  do caderno de marcenaria</b>, com ferragem <b>Hettich</b>, instalado em Governador Valadares.</p>
+ <div class="invg2">
+  <table class="inv inv13">
+   <tr><th class="l">Ambiente</th><th class="hi">Hettich</th></tr>
+   {rows}
+  </table>
+  <div class="totc">
+   <div class="k">O projeto completo</div><div class="v">{br(TOT['Hettich'])}</div>
+   <div class="sp"></div>
+   <div class="g"><b>{GAR['Hettich']}</b><span>anos de garantia<br>marcenaria e ferragem</span></div>
+   <div class="sp"></div>
+   <div class="k">Entrada, na assinatura</div><div class="e">{br(TOT['Hettich'] * PAGTO[0][1])}</div>
+   <div class="x"><b>Incluso:</b> projeto executivo, material, usinagem, ferragem Hettich, espelhos,
+    vidros, estofados, palhinha, frisos metálicos, serralheria dos pés e das prateleiras, LED embutido,
+    transporte, deslocamento e estadia da equipe em Governador Valadares, montagem e instalação.</div>
+  </div>
+ </div>
 </div>''')
 
 pay = ''.join(f'<tr><td>{E(r)}</td><td class="d">{p*100:.0f}%</td></tr>' for r, p in PAGTO)
@@ -382,8 +437,8 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
       nicho da sala e a pia esculpida do lavabo são marmoraria.</div></li>
     <li><div class="k">Eletros, metais e louças</div><div class="v">Televisões, adega, cooktop,
       coifa, forno, geladeira, cubas, torneiras, box e banheira.</div></li>
-    <li><div class="k">Móveis e madeira maciça</div><div class="v">Cabeceiras, bancos, poltronas,
-      camas e puffs comprados prontos, e o tampo da mesa em madeira maciça.</div></li>
+    <li><div class="k">Móveis e madeira maciça</div><div class="v">Bancos, poltronas, camas e puffs
+      comprados prontos, e o tampo da mesa em madeira maciça.</div></li>
     <li><div class="k">Acabamentos de obra</div><div class="v">Boiseries pintadas, portas de
       passagem Pormade, espelhos soltos de parede e o forro de gesso.</div></li>
     <li><div class="k">Obra e iluminação geral</div><div class="v">Pontos elétricos, piso,
@@ -448,6 +503,41 @@ EXTRA += '''
 .dp-txt .mv .t{font-size:8.8pt}
 .dp-txt .mv .d{font-size:8.1pt}
 .dp-txt .amb-nota{margin-top:3mm}
+.lupa{position:absolute;right:5mm;bottom:5mm;display:flex;flex-direction:column;align-items:center;gap:1.6mm}
+.lupa .lc{width:40mm;height:40mm;border-radius:50%;overflow:hidden;border:2.2mm solid #FCFAF5;
+  box-shadow:0 0 0 .5mm var(--gold),0 3mm 8mm rgba(0,0,0,.35)}
+.lupa .lc svg{width:100%;height:100%;display:block}
+.lupa .lt{background:rgba(28,24,20,.9);color:#F6F1E7;font-size:6.3pt;padding:1.4mm 3mm;border-radius:1mm;
+  max-width:56mm;text-align:center;line-height:1.35}
+.lupa .lt span{display:block;color:var(--gold-lt);letter-spacing:.24em;text-transform:uppercase;font-size:5.6pt;font-weight:700}
+.palha .pl-img{position:relative;height:70mm;flex:none;overflow:hidden}
+.palha .pl-img img{width:100%;height:100%;object-fit:cover;display:block}
+.palha .pl-img .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
+  font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;padding:3mm 6mm;font-weight:600}
+.pl-p{font-size:8.6pt;line-height:1.55;color:var(--soft)}
+.pl-p b{color:var(--ink)}
+.garx{display:flex;align-items:center;gap:6mm;margin-top:3mm;padding:3.4mm 5mm;border:1.6px solid var(--gold);
+  border-radius:4px;background:rgba(201,169,106,.09)}
+.garx .gselo{width:27mm;height:27mm;border-radius:50%;background:var(--deep);color:var(--gold-lt);flex:none;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 1.2mm #FCFAF5,0 0 0 1.6mm var(--gold)}
+.garx .gselo b{font-family:'Cormorant Garamond',Georgia,serif;font-size:34pt;line-height:.9;font-weight:600}
+.garx .gselo span{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase}
+.garx .k{font-size:6.8pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.garx .t{font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;line-height:1.15;margin-top:1mm;color:var(--ink)}
+.garx .s{font-size:8pt;color:var(--soft);margin-top:1mm}
+.invg2{display:grid;grid-template-columns:1.5fr 1fr;gap:9mm;margin-top:4mm;align-items:start}
+.invg2 .inv13 td,.invg2 .inv13 th{padding-top:1.5mm !important;padding-bottom:1.5mm !important;font-size:9.2pt}
+.invg2 .inv13 td .sub{display:block;font-size:6.6pt;color:var(--mut);font-weight:400;margin-top:.2mm}
+.totc{background:var(--deep);color:#F6F1E7;border-radius:4px;padding:6mm 6mm 5mm}
+.totc .k{font-size:6.6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt);font-weight:600}
+.totc .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:27pt;line-height:1.05;margin-top:1mm}
+.totc .e{font-family:'Cormorant Garamond',Georgia,serif;font-size:17pt;margin-top:.6mm}
+.totc .sp{height:1px;background:rgba(226,201,142,.35);margin:4mm 0}
+.totc .g{display:flex;align-items:center;gap:3.4mm}
+.totc .g b{font-family:'Cormorant Garamond',Georgia,serif;font-size:34pt;line-height:.9;color:var(--gold-lt);font-weight:600}
+.totc .g span{font-size:7pt;letter-spacing:.14em;text-transform:uppercase;line-height:1.4}
+.totc .x{font-size:7.2pt;line-height:1.5;color:#D9D2C4;margin-top:4mm}
+.totc .x b{color:var(--gold-lt)}
 .dq{border:1.6px solid var(--gold);background:rgba(201,169,106,.10);border-radius:4px;padding:2.6mm 3.4mm;margin:0 0 2.6mm}
 .dq .k{font-size:6.8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
 .dq p{font-size:8.2pt;line-height:1.45;margin-top:1mm;color:var(--ink)}
@@ -501,7 +591,7 @@ for _c in ('Michell', 'Michelle', 'Arlei', 'Gustavo', 'Raposo', 'Haverson', 'Lui
 assert not [c for c in '⭐⛔⚠' if c in ''.join(S)], '⛔ marcação interna'
 for _p in ('cartão', 'cartao', 'desconto', 'margem', 'comissão', 'telescópica', 'sensys', 'blum', 'nada corta', 'corsino', 'gran royalle', 'jéssica', 'academia', 'sauna'):
     assert _p not in _t.lower(), f'⛔ a peça fala em "{_p}"'
-_amb = re.sub(r'<[^>]+>', ' ', re.sub(r'data:[^"]+', '', ''.join(S[N_AMB[0] - 1:N_AMB[1]]))).replace('1×1', '')
+_amb = re.sub(r'<svg.*?</svg>', '', re.sub(r'<[^>]+>(?![^<]*</svg>)', ' ', re.sub(r'data:[^"]+', '', ''.join(S[N_AMB[0] - 1:N_AMB[1]])))).replace('1×1', '').replace('1 × 1', '')
 assert 'ripado 1×1' in ''.join(S) and 'Ponto de atenção' in ''.join(S), '⛔ o ripado 1×1 tem de estar em destaque [Jonathan, 16/11/2026]'
 assert not re.search(r'\d+\s*(cm|mm|m²|m\b)', _amb), '⛔ medida na descrição'
 assert not re.search(r'\b(\d+|duas|dois|três|quatro|cinco|seis|sete|oito|dez)\s+(portas?|folhas?|gavet\w+|básculas?|nichos?|prateleiras?)', _amb, re.I), '⛔ contagem'
