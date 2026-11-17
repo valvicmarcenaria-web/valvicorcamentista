@@ -2,7 +2,57 @@
 
 **Pranchas:** `SALA - VISTA 2` (1/50) e `NICHO RIPADO` (1/30, pág. 18).
 **Entregue:** `projetos/painel-sala/` — `base.py`, `levantamento.py`,
-`cenarios.py`. ⚠ **Proposta ainda não gerada.**
+`cenarios.py`, `proposta.py` → `Painel da Sala · Proposta Valvic.pdf`, uma A4.
+
+---
+
+## ⭐⭐ FECHADO EM R$ 49.800 · obra em GOVERNADOR VALADARES
+
+> [Jonathan, 17/11/2026] *"vamos vender por 53.000 esse projeto / deixe claro na
+> proposta que é com a conferencia tecnica e instalação em Governador
+> Valadares"* e, um minuto depois, *"alias, por 49.800"*. Vale o segundo.
+
+### ⛔ "Governador Valadares" derrubou a minha linha de frete
+
+Os **R$ 200 por viagem** que você cravou em 29/10 são número de **Belo
+Horizonte**: o caminhão sai, entrega e volta no mesmo turno. **GV fica a 320 km**
+— 640 de ida e volta — e a equipe dorme fora. Eu tinha **R$ 400 no projeto
+inteiro**; só a instalação passa de quatro mil.
+
+⚠ E a Base não me salvou desta: as **quatro** linhas de frete da aba MDF estão
+vazias, de propósito — *"linha criada e vazia de propósito: assim o orçamento
+mostra zero e grita"*. Ela gritou. Montei a logística linha a linha:
+
+| | veículo | equipe | cama | comida | total |
+|---|--:|--:|--:|--:|--:|
+| Conferência técnica · 1 pessoa, 1,5 d, 1 noite | 768,00 | 432,00 | 180,00 | 120,00 | **1.500,00** |
+| Instalação · 2 pessoas, 3 d, 2 noites | 1.152,00 | 1.728,00 | 720,00 | 480,00 | **4.080,00** |
+| **TOTAL** | | | | | **R$ 5.580,00** |
+
+⚠ Só a **hora de marceneiro (R$ 36 com encargos)** vem da Base. O resto é
+estimativa minha — km a R$ 1,20 (utilitário) e R$ 1,80 (caminhão), hospedagem
+R$ 180 por noite, alimentação R$ 80 por dia. **Trocar um desses números refaz o
+bloco sozinho.**
+
+### O fechamento
+
+| | |
+|---|--:|
+| **PREÇO FECHADO** | **R$ 49.800,00** |
+| custo direto | R$ 16.519,71 |
+| — dos quais, logística de GV | R$ 5.580,00 |
+| **MC lida · com RT de 10%** | **42,92%** |
+| MC lida · se não houver RT | 51,70% |
+| margem de contribuição | R$ 21.371,87 |
+| empate em dias de fábrica | 5,3 d |
+
+⛔⛔ **A LOGÍSTICA DE GV VALE 10,4 PONTOS DE MC.** Sem ela eu estaria reportando
+**53,32%** e precificando sobre uma ficção.
+
+⚠ **RT de 10% é leitura minha** — você não disse. São pranchas executivas de
+arquiteto e a regra da casa é "RT quando há parceiro indicando". Sem RT a MC vai
+a 51,70%.
+⚠ **Prazo (60 dias) e pagamento (50% + 50%) também são leitura minha.**
 
 ---
 

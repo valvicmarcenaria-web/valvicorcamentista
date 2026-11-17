@@ -232,7 +232,10 @@ def custo(itens, arredonda=True):
                  + q['c_terc'] + q['c_fer']) * (1 + b.EMBALAGEM))
 
     diretos = [_item(q) for _it, q in L]
-    c_frete = b.VIAGENS * b.FRETE_VIAGEM
+    #   ⛔⛔ A LOGÍSTICA DE GOVERNADOR VALADARES, no lugar do frete de BH.
+    #     Ela é do PROJETO, não de um item, e por isso é rateada pelo custo
+    #     direto — senão a soma dos itens deixa de ser o custo do projeto.
+    c_frete = b.CUSTO_GV
     soma = sum(diretos)
     diretos = [d + c_frete * (d / soma) for d in diretos]
     T = dict(area=area, chapas=chapas, preco=preco, c_chapa=c_chapa,
@@ -257,6 +260,20 @@ def brl(v):
 
 T = custo(M)
 DIRETO = T['direto']
+
+#   ⭐⭐ A MC É LIDA DO PREÇO: MC = BASE − custo ÷ preço.
+MC = b.BASE - DIRETO / b.PRECO_FECHADO
+MC_SEM_RT = b.BASE_SEM_RT - DIRETO / b.PRECO_FECHADO
+MARGEM = b.PRECO_FECHADO * b.BASE - DIRETO
+FIXO_DIA = 4000.0
+assert abs(DIRETO / (b.BASE - MC) - b.PRECO_FECHADO) < 0.01
+
+#   ⭐ O rateio do preço fechado entre os itens, pelo custo direto. O último
+#     absorve o centavo, para que a tabela some o preço exato.
+_br = [d / DIRETO * b.PRECO_FECHADO for d in T['diretos']]
+RATEIO = [round(v, 2) for v in _br[:-1]]
+RATEIO.append(round(b.PRECO_FECHADO - sum(RATEIO), 2))
+assert abs(sum(RATEIO) - b.PRECO_FECHADO) < 1e-9
 
 
 # ════════════════════════════════════════════════════════════════════════
@@ -365,14 +382,43 @@ if __name__ == '__main__':
                    ('Consumíveis · 6% sobre chapa e fita', T['c_cons']),
                    ('Terceirizado · painel ripado', T['c_terc']),
                    ('Ferragem', T['c_fer']),
-                   (f'Frete · {b.VIAGENS} viagens', T['c_frete']),
+                   (f'Logística · {b.OBRA}', T['c_frete']),
                    ('Embalagem · 2%', T['c_emb'])]:
         print(f'  {rot:<54}{brl(v):>20}')
     print(f'  {"CUSTO DIRETO":<54}{brl(DIRETO):>20}')
 
-    print(f'\n  ⑦ A RÉGUA DE PREÇO  ' + S * 55)
-    print('  ⚠ Nenhum preço fechado: o pedido foi o CUSTO, não a MC.')
-    print(f'  {"":<30}{"MC 35%":>20}{"MC 40%":>20}')
-    for rot, base in [('sem RT', b.BASE_SEM_RT), ('com RT de 10%', b.BASE_COM_RT)]:
-        print(f'  {rot:<30}{brl(DIRETO/(base-b.FAIXA[0])):>20}'
-              f'{brl(DIRETO/(base-b.FAIXA[1])):>20}')
+    print(f'\n  ⑦ A LOGÍSTICA DE {b.OBRA.upper()}  ' + S * 36)
+    print(f'  {"":<34}{"VEÍCULO":>11}{"EQUIPE":>11}{"CAMA":>9}'
+          f'{"COMIDA":>9}{"TOTAL":>11}')
+    for v in b.LOGISTICA:
+        c = b.viagem(v)
+        print(f'  {v["rotulo"]:<34}{brl(c["veiculo"]):>11}'
+              f'{brl(c["equipe"]):>11}{brl(c["hospedagem"]):>9}'
+              f'{brl(c["alimentacao"]):>9}{brl(sum(c.values())):>11}')
+        print(f'    {v["pessoas"]} pessoa(s) · {v["dias"]:g} dias · '
+              f'{v["noites"]} noite(s) · {b.KM_IDA*2:.0f} km de ida e volta')
+    print(f'  {"TOTAL":<34}{"":>40}{brl(b.CUSTO_GV):>11}')
+    print('  ⚠ Só a hora de marceneiro vem da Base (R$ 36 com encargos). O\n'
+          '     resto é estimativa minha, linha a linha, porque as QUATRO\n'
+          '     linhas de frete da Base estão vazias — "A COTAR".')
+
+    print(f'\n  ⑧ O FECHAMENTO  ' + S * 59)
+    print(f'  {"PREÇO FECHADO":<40}{brl(b.PRECO_FECHADO):>18}')
+    print(f'  {"custo direto":<40}{brl(DIRETO):>18}')
+    print(f'  {"  dos quais, logística de GV":<40}{brl(b.CUSTO_GV):>18}')
+    print(f'  {"MC LIDA · com RT de 10%":<40}{MC*100:>17.2f}%')
+    print(f'  {"MC LIDA · se não houver RT":<40}{MC_SEM_RT*100:>17.2f}%')
+    print(f'  {"margem de contribuição":<40}{brl(MARGEM):>18}')
+    print(f'  {"empate em dias de fábrica":<40}{MARGEM/FIXO_DIA:>16.1f} d')
+    print(f'\n  ⚠ SE A LOGÍSTICA DE GV NÃO EXISTISSE (frete de BH, R$ 400):')
+    _sem = DIRETO - b.CUSTO_GV + 400.0
+    print(f'  {"  custo direto":<40}{brl(_sem):>18}')
+    print(f'  {"  MC que eu estaria reportando":<40}'
+          f'{(b.BASE - _sem/b.PRECO_FECHADO)*100:>17.2f}%')
+    print(f'  {"  o que GV custa, em pontos de MC":<40}'
+          f'{((b.BASE - _sem/b.PRECO_FECHADO) - MC)*100:>17.2f} pt')
+
+    print(f'\n  ⑨ O RATEIO DO PREÇO  ' + S * 54)
+    for (it, _q), v in zip(T['L'], RATEIO):
+        print(f'  {it.nome:<54}{brl(v):>20}')
+    print(f'  {"PREÇO FECHADO":<54}{brl(b.PRECO_FECHADO):>20}')

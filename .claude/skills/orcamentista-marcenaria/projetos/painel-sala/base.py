@@ -147,13 +147,52 @@ def dobradicas(altura_cm):
     return 5
 
 
-# ── logística ───────────────────────────────────────────────────────────
-#   ⚠ A aba MDF tem quatro linhas de frete e AS QUATRO ESTÃO VAZIAS, de
+# ── logística · ⛔⛔ O JOB É EM GOVERNADOR VALADARES ─────────────────────
+#   ⭐⭐ [Jonathan, 17/11/2026] "deixe claro na proposta que é com a
+#     conferencia tecnica e instalação em Governador Valadares".
+#   ⛔ ISSO DERRUBA A LINHA QUE EU TINHA. Os R$ 200 por viagem que o
+#     Jonathan cravou em 29/10 são número de Belo Horizonte: caminhão sai,
+#     entrega e volta no mesmo turno. GV fica a 320 km — 640 de ida e
+#     volta —, e a equipe dorme fora. Eu tinha R$ 400 de frete no projeto
+#     inteiro; só a instalação passa de quatro mil.
+#   ⚠ A aba MDF tem QUATRO linhas de frete e as quatro estão VAZIAS, de
 #     propósito: "linha criada e vazia de propósito: assim o orçamento
-#     mostra zero e grita". Uso os R$ 200 por viagem que o Jonathan cravou
-#     em 29/10/2026, e o buraco da Base fica anotado.
-FRETE_VIAGEM = 200.0
-VIAGENS = 2
+#     mostra zero e grita". Ela gritou. Como não há número na casa, monto
+#     a logística linha a linha, e marco com ⚠ tudo o que é estimativa
+#     minha — para o Jonathan trocar UM número, não o bloco inteiro.
+OBRA = 'Governador Valadares'
+KM_IDA = 320.0                 # ⚠ BH → GV por BR-381 e BR-116
+KM_LEVE = 1.20                 # ⚠ utilitário · combustível, pedágio, desgaste
+KM_CARGA = 1.80                # ⚠ caminhão com o painel
+MARCENEIRO_H = 36.00           # ⭐ Base, Terceirizados · "hora com encargos"
+#   ⛔ Era R$ 65 e a Base corrige: "Era 65, que é valor de VENDA, não custo".
+HORAS_DIA = 8.0
+HOSPEDAGEM_NOITE = 180.0       # ⚠ por pessoa, por noite
+ALIMENTACAO_DIA = 80.0         # ⚠ por pessoa, por dia
+
+#   ⭐ CONFERÊNCIA TÉCNICA — ela vem ANTES do corte, e é ela que transforma
+#     "as medidas deverão ser conferidas no local" em medida de fábrica.
+#     Um técnico, um dia e meio com a estrada, uma noite fora.
+CONFERENCIA = dict(rotulo='Conferência técnica, antes do corte',
+                   pessoas=1, dias=1.5, noites=1, km=KM_LEVE)
+#   ⭐ INSTALAÇÃO — 6,82 m de painel, três folhas de porta mimetizada e a
+#     estrutura chumbada na alvenaria. Dois montadores, três dias de obra,
+#     duas noites fora.
+INSTALACAO = dict(rotulo='Instalação em ' + OBRA,
+                  pessoas=2, dias=3.0, noites=2, km=KM_CARGA)
+
+
+def viagem(v):
+    """Custo de uma ida a GV: veículo, mão de obra, cama e comida."""
+    return dict(
+        veiculo=KM_IDA * 2 * v['km'],
+        equipe=v['pessoas'] * v['dias'] * HORAS_DIA * MARCENEIRO_H,
+        hospedagem=v['pessoas'] * v['noites'] * HOSPEDAGEM_NOITE,
+        alimentacao=v['pessoas'] * v['dias'] * ALIMENTACAO_DIA)
+
+
+LOGISTICA = [CONFERENCIA, INSTALACAO]
+CUSTO_GV = sum(sum(viagem(v).values()) for v in LOGISTICA)
 
 # ── a cascata · aba Comissões ───────────────────────────────────────────
 ENCARGO_BRUTO = 0.05 + 0.02 + 0.005 + 0.005
@@ -176,8 +215,27 @@ BASE_COM_RT = cascata(rt=0.10)
 assert abs(BASE_SEM_RT - 0.8488) < 1e-4
 assert abs(BASE_COM_RT - 0.760875) < 1e-9
 
-#   ⚠ O Jonathan não disse preço, MC nem RT. Ele pediu o CUSTO em tabela.
 FAIXA = (0.35, 0.40)
+
+# ── o fechamento ────────────────────────────────────────────────────────
+#   ⭐⭐ [Jonathan, 17/11/2026] "vamos vender por 53.000 esse projeto" e, um
+#     minuto depois, "alias, por 49.800". Vale o segundo.
+#   ⭐ COM PREÇO CRAVADO, A MC É LIDA, NÃO ESCOLHIDA: MC = BASE − custo ÷ preço.
+PRECO_FECHADO = 49800.00
+#   ⚠ RT DE 10%, E É LEITURA MINHA — ele não disse. São pranchas executivas
+#     de arquiteto, e a regra da casa é "RT 10% quando há parceiro
+#     indicando". Orçar COM e não pagar sobra margem; orçar SEM e ter de
+#     pagar tira 8,8 pontos de MC. Erro para o lado que não quebra, e o
+#     levantamento imprime as duas leituras.
+RT = 0.10
+BASE = BASE_COM_RT
+#   ⚠ Prazo e pagamento também não foram ditos. 60 dias corridos cabem na
+#     conferência técnica, nos cinco dias de fábrica e nas duas viagens a
+#     GV; 50% + 50% é o que ele fechou no JPC hoje de manhã.
+PRAZO_DIAS = 60
+VALIDADE_DIAS = 7
+PAGAMENTO = [('Entrada, na assinatura', 0.50), ('Saldo, na entrega', 0.50)]
+assert abs(sum(p for _, p in PAGAMENTO) - 1.0) < 1e-9
 
 PROJETO = 'Sala · painel ripado com nicho'
 EXECUTIVO = 'SALA - VISTA 2 (1/50) e NICHO RIPADO (1/30), pág. 18'
