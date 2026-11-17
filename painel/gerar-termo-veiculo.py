@@ -85,6 +85,17 @@ PESSOAS = {
         'qualificacao': 'PRESTADOR',
         'veiculos': FROTA,
     },
+    'yan': {
+        'arquivo': 'Yan',
+        'Nome completo': 'Yan Filipe Dornela Vieira',
+        'CPF': '163.838.716-84',
+        'CNH nº': '07619472035',
+        'Categoria': 'B',             # só automóvel; cobre os três carros da frota
+        'Validade': '06/01/2036',
+        'Telefone': '',               # não consta na CNH
+        'qualificacao': None,         # a definir: CLT, prestador ou parceiro
+        'veiculos': FROTA,
+    },
 }
 
 
