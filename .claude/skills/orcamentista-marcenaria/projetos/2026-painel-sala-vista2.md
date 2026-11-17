@@ -143,12 +143,38 @@ contra 108.
 ⭐ A última eu achei que economizaria R$ 400 e **custa R$ 162**: em 18 mm a base
 entra na pilha do liso e empurra a sexta chapa. Medir em vez de supor.
 
-## ⑦ A régua de preço — nada fechado
+## ⑦ A régua de preço
 
-| | MC 35% | MC 40% |
+⚠ Nada fechado ainda. [Jonathan, 17/11/2026] perguntou **"e se a MC for de 50%?"**
+
+| MC, com RT de 10% | preço | margem | empate em dias de fábrica |
+|---|--:|--:|--:|
+| 35% | R$ 27.598,92 | R$ 9.659,62 | 2,4 d |
+| 40% | R$ 31.422,81 | R$ 12.569,12 | 3,1 d |
+| 45% | R$ 36.476,74 | R$ 16.414,53 | 4,1 d |
+| **50%** | **R$ 43.467,97** | **R$ 21.733,99** | **5,4 d** |
+| 55% | R$ 53.774,54 | R$ 29.576,00 | 7,4 d |
+
+| MC 50% | base | preço | margem | empate |
+|---|--:|--:|--:|--:|
+| sem RT | 84,87% | R$ 32.515,29 | R$ 16.257,64 | 4,1 d |
+| com RT de 10% | 76,09% | R$ 43.467,97 | R$ 21.733,99 | 5,4 d |
+| com RT e vendedor | 67,30% | R$ 65.547,44 | R$ 32.773,72 | 8,2 d |
+
+⭐⭐ **E O EMPATE É QUEM JUSTIFICA OS 50%, não o posicionamento.** O empate é
+margem ÷ R$ 4.000 de custo fixo por dia. A 40% ele dá **3,1 dias de fábrica
+exclusiva** — e só a **filetagem manual** deste painel são 292 m, cerca de
+**40 horas de bancada** a R$ 36/h de marceneiro com encargos (aba
+Terceirizados). Somadas a colagem de 162 ripas, o tamponamento das duas
+portas de 42 e a instalação de 6,82 m, o painel ocupa mais do que 3 dias.
+A 50% o empate vai a 5,4 dias, que é mais perto do que ele realmente custa
+em tempo de fábrica. ⛔ A 35% ou 40% este job específico fica apertado.
+
+| a MC de 50% nas duas dúvidas vivas | custo | preço com RT |
 |---|--:|--:|
-| sem RT | R$ 22.736,25 | R$ 25.269,54 |
-| com RT de 10% | R$ 27.598,92 | R$ 31.422,81 |
+| como orçado | R$ 11.339,71 | R$ 43.467,97 |
+| Gianduia Trama for padrão especial | R$ 13.471,22 | R$ 51.638,58 |
+| a ripa entrar na coladeira | R$ 10.595,21 | R$ 40.614,12 |
 
 ---
 
