@@ -1,34 +1,23 @@
 # -*- coding: utf-8 -*-
-"""PAINEL DA SALA — VISTA 2 · o quantitativo, peça a peça.
+"""PAINEL DA SALA — VISTA 2 · o quantitativo, refeito sobre a Base de Custos.
 
-GEOMETRIA LIDA DAS PRANCHAS
-  Painel corrido de 682 de largura × 277 de altura, sobre sóculo de 15.
-  Volume de 50 de profundidade (vista lateral e perspectiva, 1/30).
+GEOMETRIA (pranchas SALA - VISTA 2, 1/50, e NICHO RIPADO, 1/30, pág. 18)
+  Painel corrido de 682 × 277, sobre sóculo de pedra de 15 (292 no total).
 
   ┌── 0 ───────── 50 ─────────────────── 352 ──── 366 ── 449 ─── 592 ─ 662 ─ 682
   │   porta ripada │   nicho de pedra 302   │  ←──── PAINEL LISO 330 ────────→
-  │   50 × 277     │   (75 ripado em cima,  │       porta 83    porta 70
-  │                │    131 de pedra,       │       × 210       × 210
-  │                │    71 ripado embaixo)  │
+  │   50 × 277     │   75 ripado em cima    │       porta 83    porta 70
+  │   ARMÁRIO      │  131 de pedra          │       × 210       × 210
+  │                │   71 ripado embaixo    │       PASSAGEM, 42 mm
   └──────── RIPADO 352 ────────────────────┘
 
-  Alturas, da vista lateral 1/30:  75 | 4 | 123 | 4 | 71 | 15  =  292
-  O 4 + 123 + 4 = 131 é o "NICHO 131X302CM EM MÁRMORE TRAVERTINO ROMANO".
-
-⛔⛔ A FRONTEIRA DO ESCOPO — regra 19 [Jonathan, 29/10/2026]: "pedra nao é
-  escopo da marcenaria". Ficam FORA, e não se lançam nem a zero:
-    · o NICHO 131 × 302 em mármore travertino romano estucado
-    · o SÓCULO em ALVENARIA revestido de mármore (a prancha diz alvenaria)
-    · o RODAPÉ de 15 cm em mármore travertino
-    · a JANELA 202 × 175 em vidro laminado com estrutura metálica preta
-  ⭐ A fita de LED do nicho é NOSSA: ela é usinada e embutida na marcenaria.
-
-⚠ O QUE EU ASSUMI, e está na lista de dúvidas: o painel é PELE sobre
-  estrutura/alvenaria existente — a prancha diz "sóculo em alvenaria", e o
-  nicho é revestido pelo marmorista. Orço a pele, as três folhas de porta e
-  a estrutura de fixação. ⛔ O INTERIOR do "ARMÁRIO 50X274" atrás da porta
-  ripada NÃO está desenhado em lugar nenhum — não tem prateleira, divisória
-  nem profundidade útil cotada — e por isso NÃO está orçado.
+⛔ FORA, por regra 19 e por ordem do Jonathan:
+   · nicho 131 × 302 em mármore travertino romano estucado
+   · sóculo em ALVENARIA revestido de mármore · rodapé de 15 cm em mármore
+   · janela 202 × 175 em vidro laminado com estrutura metálica
+   · ⭐ A ILUMINAÇÃO DO NICHO — "iluminação nao é nossa" [17/11/2026].
+     A prancha escreve "PREVER fita de LED no nicho 3000K" nas duas folhas,
+     e PREVER é o elétrico. A marcenaria deixa o rasgo; a fita é de outro.
 """
 import math, importlib.util, pathlib
 
@@ -36,17 +25,16 @@ _aqui = pathlib.Path(__file__).resolve().parent
 _sp = importlib.util.spec_from_file_location('ps_base', _aqui / 'base.py')
 b = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(b)
 
-GIA = 'MDF Gianduia'
-EST = 'MDF Branco TX'
+GIA, EST = 'MDF Gianduia', 'MDF Branco TX'
 
 # ── as cotas, uma vez só ────────────────────────────────────────────────
 LARG, ALT = 682.0, 277.0
-R_PORTA_L = 50.0                      # porta ripada do armário
-NICHO_L, NICHO_H = 302.0, 131.0       # o vazio de pedra
-R_SUP, R_INF = 75.0, 71.0             # bandas ripadas acima e abaixo
-RIPADO_L = R_PORTA_L + NICHO_L        # 352 · até onde termina a pedra
-LISO_L = LARG - RIPADO_L              # 330
-PORTAS = [(83.0, 210.0), (70.0, 210.0)]   # mimetizadas, do chão
+R_PORTA_L = 50.0
+NICHO_L, NICHO_H = 302.0, 131.0
+R_SUP, R_INF = 75.0, 71.0
+RIPADO_L = R_PORTA_L + NICHO_L           # 352
+LISO_L = LARG - RIPADO_L                 # 330
+PORTAS = [(83.0, 210.0), (70.0, 210.0)]
 assert abs(R_SUP + 4 + 123 + 4 + R_INF - ALT) < 1e-9
 
 
@@ -54,10 +42,13 @@ class Item:
     def __init__(self, nome, obs=''):
         self.nome, self.obs = nome, obs
         self.pecas, self.terc, self.fer = [], [], []
+        self.fita22 = self.fita50 = self.fita_ripa = 0.0
 
-    def p(self, nome, L, A, esp, mat=GIA, qtd=1, fita=0.0, obs=''):
+    def p(self, nome, L, A, esp, mat=GIA, qtd=1, f22=0.0, f50=0.0, obs=''):
         self.pecas.append(dict(nome=nome, L=L, A=A, esp=esp, mat=mat,
-                               qtd=qtd, fita=fita, obs=obs))
+                               qtd=qtd, f22=f22, f50=f50, obs=obs))
+        self.fita22 += f22 * qtd
+        self.fita50 += f50 * qtd
         return self
 
     def t(self, nome, q, unit, un='m'):
@@ -69,20 +60,41 @@ class Item:
         return self
 
     def ripado(self, larg, alt, nome):
-        """⭐⭐ O PADRÃO DE COTAÇÃO DA CASA PARA RIPADO, com o passo DESTE
-        projeto (4 cm, não 6). Três linhas, sempre as mesmas:
-          1. a ÁREA EQUIVALENTE de chapa das ripas — ripa não é peça;
-          2. a mão de obra de painel ripado, por m² de FACE;
-          3. a filetagem das DUAS faces de cada ripa, por metro.
-        ⛔ A ripa NÃO entra na contagem de peças do corte: quem paga o corte
-          de 164 tiras é a linha de mão de obra, e cobrar os dois é cobrar
-          duas vezes o mesmo serviço."""
+        """⭐⭐ O RIPADO, AGORA COM AS TRÊS LINHAS QUE ELE TEM — e não com
+        duas, como eu tinha feito:
+          1. ÁREA EQUIVALENTE de chapa das ripas, com a perda de serra 1,10
+             da linha "Perda de serra ao tirar ripa" dos Terceirizados;
+          2. FITA MAIS FILETAGEM das duas faces de cada ripa. ⛔ Eu cobrava
+             só a filetagem. A fita de 285 metros não existia no orçamento.
+             E a filetagem é MANUAL: coladeira automática não pega peça de
+             20 mm de largura, e a Base nomeia o caso.
+          3. a mão de obra de painel ripado, por m² de FACE.
+        ⛔ A ripa NÃO entra na contagem de peças do corte — quem paga o
+          corte das tiras é a linha de mão de obra."""
         n = int(larg // b.PASSO)
         self.p(f'{nome} · {n} ripas de {b.RIPA_L:g} × {alt:.0f}',
                b.RIPA_L * n * b.RIPA_PERDA, alt, b.RIPA_ESP_MM, GIA, 1,
-               obs=f'área equivalente · passo {b.PASSO:g} cm')
+               obs=f'área equivalente · passo {b.PASSO:g} · perda de serra 1,10')
+        #   as duas faces de cada ripa, mais os dois topos
+        self.fita_ripa += n * alt / 100 * 2 + n * b.RIPA_L / 100 * 2
         self.t('Painel ripado, mão de obra', larg * alt / 10000, b.RIPADO_M2, 'm²')
-        self.t('Filetagem de ripa, duas faces', n * alt / 100 * 2, b.FILETE_RIPA)
+        return self
+
+    def porta_passagem(self, L, A, i):
+        """⛔⛔ 42 MM, e não 18. A aba MDF crava "Portas de passagem · 42 mm"
+        em "ESPESSURA PADRÃO POR APLICAÇÃO". Folha de 42 é tamponamento:
+        18 + 18 + 6, a MESMA ÁREA TRÊS VEZES. As duas faces em Gianduia —
+        ⚠ a de dentro é vista do outro ambiente e o acabamento de lá não
+        está nas pranchas — e o miolo em Branco TX, que ninguém vê.
+        ⛔ E a borda de 42 mm NÃO leva fita de 22: leva a de 50, que a Base
+          lista a R$ 7,00 "para peça de 5 cm"."""
+        for j, (esp, mat) in enumerate(b.PASSAGEM_CAMADAS):
+            cam = ('face vista', 'face oposta', 'miolo')[j]
+            self.p(f'Porta {i} · {cam} {esp} mm', L, A, esp, mat, 1,
+                   f50=(L + A) * 2 / 100 if j == 0 else 0.0,
+                   obs='tamponamento de 42 mm' if j == 0 else '')
+        self.f('Sistema pivô de porta mimetizada', 1, b.SISTEMA_PIVO)
+        self.f('Fecho rolete para porta pivotante', 1, b.FECHO_ROLETE)
         return self
 
 
@@ -92,74 +104,69 @@ def novo(nome, obs=''):
 
 
 # ════════════════════════════════════════════════════════════════════════
-# 01 · PAINEL RIPADO — 352 × 277, até onde a pedra termina
+# 01 · PAINEL RIPADO — as duas bandas em volta do nicho
 # ════════════════════════════════════════════════════════════════════════
-it = novo('Painel ripado com o vão do nicho',
+#   ⭐⭐ "vc quantificou onde esta as chapas da base onde as ripas serão
+#     coladas?" — estas duas linhas são essa base, e agora elas aparecem na
+#     tabela com nome, medida, espessura e m², em vez de sumirem dentro de
+#     um total de chapa.
+it = novo('Painel ripado · base e ripas',
           f'{RIPADO_L:.0f} × {ALT:.0f} · trama 20/20, passo 4 cm')
-#   ⛔ O SUBSTRATO SAI NO MESMO GIANDUIA. O vão de 2 cm tem 2 cm de fundo:
-#     vê-se o que está atrás da ripa. Branco ou cru apareceria na obra.
-it.p('Substrato do ripado · banda superior', NICHO_L, R_SUP,
-     b.SUBSTRATO_ESP_MM, GIA, 1, NICHO_L / 100, 'topo do vão do nicho')
-it.p('Substrato do ripado · banda inferior', NICHO_L, R_INF,
-     b.SUBSTRATO_ESP_MM, GIA, 1, NICHO_L / 100, 'base do vão do nicho')
-it.ripado(NICHO_L, R_SUP, 'Ripado da banda superior')
-it.ripado(NICHO_L, R_INF, 'Ripado da banda inferior')
+it.p('BASE do ripado · banda superior', NICHO_L, R_SUP, b.SUBSTRATO_ESP_MM,
+     GIA, 1, f22=NICHO_L / 100, obs='onde as ripas são coladas · vista no vão')
+it.p('BASE do ripado · banda inferior', NICHO_L, R_INF, b.SUBSTRATO_ESP_MM,
+     GIA, 1, f22=NICHO_L / 100, obs='onde as ripas são coladas · vista no vão')
+it.ripado(NICHO_L, R_SUP, 'Ripas da banda superior')
+it.ripado(NICHO_L, R_INF, 'Ripas da banda inferior')
 
 # ════════════════════════════════════════════════════════════════════════
-# 02 · PORTA RIPADA DO ARMÁRIO — 50 × 277, mimetizada
+# 02 · PORTA RIPADA DO ARMÁRIO — 50 × 277
 # ════════════════════════════════════════════════════════════════════════
-#   ⚠ A prancha chama de "ARMÁRIO 50X274CM RIPADO EM MDF GIANDUIA TRAMA".
-#     Oriento-me pelo DETALHE 1/30, que dá 277 de folha sobre o sóculo.
 it = novo('Porta ripada do armário, mimetizada',
           f'{R_PORTA_L:.0f} × {ALT:.0f} · folha inteira, sem puxador')
-#   ⭐ Folha de 18 mm, não 15: 2,77 m de altura numa folha de 50 de largura
-#     empena se for fina, e ela ainda recebe 12 ripas coladas na frente.
-it.p('Folha da porta', R_PORTA_L, ALT, 18, GIA, 1, (R_PORTA_L + ALT) * 2 / 100)
-it.ripado(R_PORTA_L, ALT, 'Ripado da porta')
-it.f('Sistema pivô de porta mimetizada', 1, b.SISTEMA_PIVO)
-it.f('Fecho rolete', 1, b.FECHO_ROLETE)
+#   ⭐ A folha É a base das ripas. 15 mm, que é a espessura de porta da aba
+#     MDF — e as 12 ripas coladas na frente enrijecem o conjunto.
+it.p('BASE do ripado · folha da porta', R_PORTA_L, ALT, b.ESP_PORTA, GIA, 1,
+     f22=(R_PORTA_L + ALT) * 2 / 100, obs='onde as ripas são coladas')
+it.ripado(R_PORTA_L, ALT, 'Ripas da porta')
+#   ⭐⭐ "e as dobradiças da porta a esquerda?" — não havia NENHUMA. Esta
+#     porta é de ARMÁRIO, não de passagem: dobradiça, não pivô. E a tabela
+#     da Base manda CINCO, porque 277 passa de 200 cm.
+it.f(b.DOBRADICA_NOME, b.dobradicas(ALT), b.DOBRADICA)
+#   ⚠ 2,77 m de altura em 15 mm: a Base tem a barra chata contra empeno.
+it.f('Alma de aço, barra chata de 3 m', 1, b.ALMA_BARRA)
 
 # ════════════════════════════════════════════════════════════════════════
 # 03 · PAINEL LISO — 330 × 277, do fim da pedra para a direita
 # ════════════════════════════════════════════════════════════════════════
-#   ⭐⭐ [Jonathan, 17/11/2026] "Do nicho de pedra para a direita, o painel
+#   ⭐ [Jonathan, 17/11/2026] "Do nicho de pedra para a direita, o painel
 #     vai ser liso com as duas portas mimetizadas, mas não vai ser ripado."
-#     São 9,14 m² de face que deixam de levar ripa, filetagem e mão de obra
-#     de painel ripado — e passam a levar chapa de 18 inteira, porque aqui
-#     a face vista É a melamina.
 it = novo('Painel liso com os vãos das duas portas',
           f'{LISO_L:.0f} × {ALT:.0f} · face melamínica, sem ripa')
-_h_sup = ALT - PORTAS[0][1]            # 67 · faixa acima das portas
-#   ⛔ 330 cm NÃO SAI DE UMA CHAPA DE 275: a faixa superior é emendada.
+_h_sup = ALT - PORTAS[0][1]              # 67
+#   ⛔ 330 cm não sai de uma chapa de 275: a faixa superior é emendada.
 it.p('Faixa superior sobre as portas', LISO_L / 2, _h_sup, 18, GIA, 2,
-     (LISO_L / 2 + _h_sup) * 2 / 100, 'emendada · 330 > 273 de peça')
-#   as três faixas verticais que sobram ao lado e entre as portas
-_x = [(RIPADO_L, 366.0), (449.0, 592.0), (662.0, LARG)]
-for i, (a, z) in enumerate(_x, 1):
+     f22=(LISO_L / 2 + _h_sup) * 2 / 100, obs='emendada · 330 > 273')
+for i, (a, z) in enumerate([(RIPADO_L, 366.0), (449.0, 592.0),
+                            (662.0, LARG)], 1):
     it.p(f'Faixa vertical {i} entre vãos', z - a, PORTAS[0][1], 18, GIA, 1,
-         ((z - a) + PORTAS[0][1]) * 2 / 100)
+         f22=((z - a) + PORTAS[0][1]) * 2 / 100)
 
 # ════════════════════════════════════════════════════════════════════════
-# 04 · AS DUAS PORTAS MIMETIZADAS DE PASSAGEM
+# 04 · AS DUAS PORTAS DE PASSAGEM MIMETIZADAS — 42 mm
 # ════════════════════════════════════════════════════════════════════════
-#   ⚠ São portas DE PASSAGEM, não de armário: 210 de altura, arco de
-#     abertura para dentro da sala e arranque NO PISO — elas cruzam a linha
-#     do sóculo de pedra. Por isso levam marco, e não dobradiça de caixa.
 it = novo('Duas portas mimetizadas de passagem',
-          '83 × 210 e 70 × 210 · face lisa, alinhadas ao painel')
+          '83 × 210 e 70 × 210 · tamponamento de 42 mm, 18 + 18 + 6')
 for i, (L, A) in enumerate(PORTAS, 1):
-    it.p(f'Folha da porta {i} · {L:.0f} × {A:.0f}', L, A, 18, GIA, 1,
-         (L + A) * 2 / 100)
-    it.p(f'Marco mimetizado da porta {i}', 2 * A + L, 12, 18, GIA, 1,
-         (2 * A + L) / 100)
-    it.f('Sistema pivô de porta mimetizada', 1, b.SISTEMA_PIVO)
-    it.f('Fecho rolete', 1, b.FECHO_ROLETE)
+    it.porta_passagem(L, A, i)
+    #   o marco, que também é nosso: 15 cm para abraçar os 42 da folha
+    it.p(f'Marco mimetizado da porta {i}', 2 * A + L, 15, 18, GIA, 1,
+         f22=(2 * A + L) / 100)
 
 # ════════════════════════════════════════════════════════════════════════
-# 05 · ESTRUTURA DE FIXAÇÃO E ILUMINAÇÃO DO NICHO
+# 05 · ESTRUTURA DE FIXAÇÃO
 # ════════════════════════════════════════════════════════════════════════
-#   ⛔ REGRA 1 DA CASA: pinus está proibido. O que segurava o painel em
-#     sarrafo passa a ser TRAVESSA DE MDF, tirada da própria chapa.
+#   ⛔ REGRA 1 DA CASA: pinus está proibido. Travessa de MDF, da chapa.
 it = novo('Estrutura de fixação do painel',
           'montantes a cada 60 cm e três fiadas de travessa')
 it.p('Montantes verticais a cada 60 cm', 8, ALT, 18, EST, 12,
@@ -167,32 +174,39 @@ it.p('Montantes verticais a cada 60 cm', 8, ALT, 18, EST, 12,
 it.p('Travessas horizontais', LARG / 2, 8, 18, EST, 6,
      obs='três fiadas, emendadas')
 
-#   ⭐ "PREVER FITA DE LED NO NICHO 3000K" — a prancha escreve em duas
-#     folhas. É usinagem na marcenaria, então é nossa.
-it = novo('Iluminação do nicho',
-          'fita 3000K no topo do vão, perfil de embutir e difusor')
-it.t('Fita LED 3000K, perfil de embutir e difusor', NICHO_L / 100, b.LED_M)
-it.f('Fonte de LED', 1, b.LED_FONTE)
-
 
 # ════════════════════════════════════════════════════════════════════════
 # O CUSTO
 # ════════════════════════════════════════════════════════════════════════
 def _levanta(it):
-    area, fita, pecas = {}, 0.0, 0
+    area, pecas = {}, 0
     for p in it.pecas:
         k = (p['mat'], p['esp'])
         area[k] = area.get(k, 0.0) + p['L'] * p['A'] / 10000 * p['qtd']
         pecas += p['qtd']
-        fita += p['fita'] * p['qtd']
-    return dict(area=area, fita=fita, pecas=pecas,
+    #   ⭐⭐ FITA = MATERIAL (com os 10% de desperdício que a própria Base
+    #     manda somar) MAIS A APLICAÇÃO. A Base publica o par pronto para a
+    #     de 22: "Fita de cor com filetagem, preço cheio da casa · R$ 5,50
+    #     · já inclui a aplicação" = 3,00 + 2,50. Aqui sai 5,80, que é o
+    #     mesmo par com os 10% em cima do material — e para a de 50 não há
+    #     linha cheia na Base, então ela se monta igual: 7,00 + 2,50.
+    mat22 = it.fita22 * b.FITA_22 * b.FITA_PERDA
+    mat50 = it.fita50 * b.FITA_50 * b.FITA_PERDA
+    matrp = it.fita_ripa * b.FITA_22 * b.FITA_PERDA
+    apl = (it.fita22 + it.fita50) * b.FILETE_MAQ + it.fita_ripa * b.FILETE_RIPA
+    return dict(area=area, pecas=pecas,
+                fita_m=it.fita22 + it.fita50 + it.fita_ripa,
+                c_fita_mat=mat22 + mat50 + matrp, c_filete=apl,
                 c_terc=sum(q * u for _n, q, u, _un in it.terc),
                 c_fer=sum(q * u for _n, q, u in it.fer))
 
 
 def custo(itens, arredonda=True):
-    """⭐⭐ O ARREDONDAMENTO DE CHAPA É DO PROJETO, NÃO DO ITEM, e a sobra é
-    RATEADA pela área. Assim a soma dos itens É o custo do projeto."""
+    """⭐ "⛔ NÃO EXISTE 2,7 CHAPAS, SÃO 3. A chapa é a unidade de compra:
+    arredonda-se para cima POR PADRÃO × ESPESSURA, e cada padrão puxa no
+    mínimo uma chapa." — aba MDF da Base, em caixa alta.
+    A sobra do arredondamento é RATEADA pela área, para que a soma dos
+    itens continue sendo o custo do projeto."""
     L = [(it, _levanta(it)) for it in itens]
     area = {}
     for _it, q in L:
@@ -211,23 +225,30 @@ def custo(itens, arredonda=True):
                  for k, a in q['area'].items())
         corte = (n_chapas * b.CORTE_CHAPA * (q['pecas'] / n_pecas)
                  + q['pecas'] * b.CORTE_PECA)
-        fita = q['fita'] * b.FITA_COR * b.FITA_PERDA
-        cons = (ch + fita) * b.CONSUMIVEIS
-        return (ch + fita + corte + cons + q['c_terc'] + q['c_fer']) * (1 + b.EMBALAGEM)
+        #   "Consumíveis · sobre chapa e fita · 6%" — sobre MATERIAL, não
+        #   sobre a mão de obra de aplicar.
+        cons = (ch + q['c_fita_mat']) * b.CONSUMIVEIS
+        return ((ch + q['c_fita_mat'] + q['c_filete'] + corte + cons
+                 + q['c_terc'] + q['c_fer']) * (1 + b.EMBALAGEM))
 
-    c_fita = sum(q['fita'] for _i, q in L) * b.FITA_COR * b.FITA_PERDA
     diretos = [_item(q) for _it, q in L]
     c_frete = b.VIAGENS * b.FRETE_VIAGEM
     soma = sum(diretos)
     diretos = [d + c_frete * (d / soma) for d in diretos]
-    return dict(area=area, chapas=chapas, preco=preco, c_chapa=c_chapa,
-                pecas=n_pecas, n_chapas=n_chapas,
-                fita=sum(q['fita'] for _i, q in L), c_fita=c_fita,
-                c_corte=n_chapas * b.CORTE_CHAPA + n_pecas * b.CORTE_PECA,
-                c_cons=(c_chapa + c_fita) * b.CONSUMIVEIS,
-                c_terc=sum(q['c_terc'] for _i, q in L),
-                c_fer=sum(q['c_fer'] for _i, q in L),
-                c_frete=c_frete, diretos=diretos, direto=sum(diretos), L=L)
+    T = dict(area=area, chapas=chapas, preco=preco, c_chapa=c_chapa,
+             pecas=n_pecas, n_chapas=n_chapas,
+             fita_m=sum(q['fita_m'] for _i, q in L),
+             c_fita_mat=sum(q['c_fita_mat'] for _i, q in L),
+             c_filete=sum(q['c_filete'] for _i, q in L),
+             c_corte=n_chapas * b.CORTE_CHAPA + n_pecas * b.CORTE_PECA,
+             c_terc=sum(q['c_terc'] for _i, q in L),
+             c_fer=sum(q['c_fer'] for _i, q in L),
+             c_frete=c_frete, diretos=diretos, direto=sum(diretos), L=L)
+    T['c_cons'] = (T['c_chapa'] + T['c_fita_mat']) * b.CONSUMIVEIS
+    T['c_emb'] = (T['direto'] - c_frete
+                  - (T['c_chapa'] + T['c_fita_mat'] + T['c_filete']
+                     + T['c_corte'] + T['c_cons'] + T['c_terc'] + T['c_fer']))
+    return T
 
 
 def brl(v):
@@ -239,97 +260,119 @@ DIRETO = T['direto']
 
 
 # ════════════════════════════════════════════════════════════════════════
-# A TABELA — é o que o Jonathan pediu antes da proposta
+# A TABELA
 # ════════════════════════════════════════════════════════════════════════
+BANDAS = [(R_PORTA_L, ALT, 'Porta ripada do armário'),
+          (NICHO_L, R_SUP, 'Banda superior do nicho'),
+          (NICHO_L, R_INF, 'Banda inferior do nicho')]
+
+
 def _ripas():
-    """⭐ O número que ele pediu em primeiro lugar: quantas ripas e quantos
-    metros de filete. Separado por banda, porque a fábrica corta assim."""
-    R = []
-    for larg, alt, rot in [(R_PORTA_L, ALT, 'Porta ripada'),
-                           (NICHO_L, R_SUP, 'Banda superior do nicho'),
-                           (NICHO_L, R_INF, 'Banda inferior do nicho')]:
+    for larg, alt, rot in BANDAS:
         n = int(larg // b.PASSO)
-        R.append((rot, larg, alt, n, n * alt / 100, n * alt / 100 * 2,
-                  larg * alt / 10000))
-    return R
+        yield (rot, larg, alt, n,
+               n * alt / 100 * 2 + n * b.RIPA_L / 100 * 2,
+               larg * alt / 10000)
 
 
 if __name__ == '__main__':
-    L, S = 74, '─'
-    print(f'\n  PAINEL DA SALA · VISTA 2 — LEVANTAMENTO DE CUSTOS')
+    S = '─'
+    print(f'\n  PAINEL DA SALA · VISTA 2 — LEVANTAMENTO REFEITO SOBRE A BASE')
     print(f'  {b.EXECUTIVO}')
-    if b.ESPECIAL:
-        print('  ⚠ rodando na linha ESPECIAL de R$ 1.000 a chapa')
+    print(f'  filetagem da ripa: '
+          f'{"COLADEIRA · R$ 2,50" if b.RIPA_NA_MAQUINA else "MANUAL · R$ 5,00"}'
+          f'  ·  chapa de cor: R$ {brl(b.PRECO["MDF Gianduia 18"])}')
 
-    print(f'\n  ① A RIPA  ' + S * (L - 10))
-    print(f'  {"BANDA":<26}{"FACE":>12}{"RIPAS":>8}{"RIPA m":>10}'
-          f'{"FILETE m":>10}{"m² FACE":>8}')
+    print(f'\n  ① A RIPA E A SUA BASE  ' + S * 52)
+    print(f'  {"BANDA":<26}{"FACE":>12}{"RIPAS":>7}{"FITA+FILETE m":>15}'
+          f'{"m² FACE":>9}')
     tn = tf = tm = 0.0
-    for rot, larg, alt, n, mr, mf, m2 in _ripas():
-        print(f'  {rot:<26}{f"{larg:.0f} × {alt:.0f}":>12}{n:>8}'
-              f'{mr:>10.1f}{mf:>10.1f}{m2:>8.2f}')
+    for rot, larg, alt, n, mf, m2 in _ripas():
+        print(f'  {rot:<26}{f"{larg:.0f} × {alt:.0f}":>12}{n:>7}{mf:>15.1f}'
+              f'{m2:>9.2f}')
         tn += n; tf += mf; tm += m2
-    print(f'  {"TOTAL":<26}{"":>12}{int(tn):>8}{"":>10}{tf:>10.1f}{tm:>8.2f}')
+    print(f'  {"TOTAL":<26}{"":>12}{int(tn):>7}{tf:>15.1f}{tm:>9.2f}')
     print(f'  {"":<26}passo {b.PASSO:g} cm · ripa {b.RIPA_L:g} · vão '
-          f'{b.RIPA_VAO:g} · {25:.0f} ripas por metro')
+          f'{b.RIPA_VAO:g} · 25 ripas por metro')
+    print(f'\n  A BASE onde as ripas são coladas, peça a peça:')
+    for it, _q in T['L']:
+        for p in it.pecas:
+            if p['nome'].startswith('BASE'):
+                med = '%.0f × %.0f × %d' % (p['L'], p['A'], p['esp'])
+                print(f'    {p["nome"]:<40}{med:>18}'
+                      f'{p["L"]*p["A"]/10000:>8.2f} m²')
+    print(f'    {"soma da base ripada":<40}{"":>18}{tm:>8.2f} m²')
 
-    print(f'\n  ⚠ CONTRA O PASSO PADRÃO DA CASA (ripa 4, vão 2 · passo 6)')
-    _n6 = sum(int(l // 6.0) for l, _a, _r in
-              [(R_PORTA_L, ALT, 0), (NICHO_L, R_SUP, 0), (NICHO_L, R_INF, 0)])
-    _f6 = sum(int(l // 6.0) * a / 100 * 2 for l, a in
-              [(R_PORTA_L, ALT), (NICHO_L, R_SUP), (NICHO_L, R_INF)])
-    print(f'  {"":<26}{"ESTE (20/20)":>14}{"CASA (40/20)":>14}{"A MAIS":>12}')
-    print(f'  {"ripas":<26}{int(tn):>14}{_n6:>14}{int(tn)-_n6:>12}')
-    print(f'  {"metros de filete":<26}{tf:>14.1f}{_f6:>14.1f}{tf-_f6:>12.1f}')
-    print(f'  {"custo da filetagem":<26}'
-          f'{brl(tf*b.FILETE_RIPA):>14}{brl(_f6*b.FILETE_RIPA):>14}'
-          f'{brl((tf-_f6)*b.FILETE_RIPA):>12}')
-
-    print(f'\n  ② AS FACES  ' + S * (L - 12))
-    _liso = LISO_L * ALT / 10000
-    _port = sum(x * y for x, y in PORTAS) / 10000
-    for rot, v in [('Ripado · com ripa, filete e mão de obra', tm),
-                   ('Liso · só chapa melamínica', _liso - _port),
-                   ('Portas mimetizadas de passagem', _port),
-                   ('Porta ripada do armário (já no ripado)', 0.0)]:
-        if v: print(f'  {rot:<50}{v:>10.2f} m²')
-    print(f'  {"TOTAL DE FACE":<50}{tm + _liso:>10.2f} m²')
-
-    print(f'\n  ③ O CUSTO POR ITEM  ' + S * (L - 20))
-    for (it, q), d in zip(T['L'], T['diretos']):
-        print(f'  {it.nome:<52}{brl(d):>20}')
-        print(f'    {it.obs}')
-    print(f'  {"CUSTO DIRETO":<52}{brl(DIRETO):>20}')
-
-    print(f'\n  ④ O CUSTO POR NATUREZA  ' + S * (L - 24))
+    print(f'\n  ② O QUANTITATIVO DE CHAPAS  ' + S * 47)
+    print(f'  {"PADRÃO E ESPESSURA":<28}{"ÁREA":>9}{"FRAÇÃO":>9}'
+          f'{"CHAPAS":>8}{"R$/CHAPA":>12}{"CUSTO":>14}')
+    rend = b.CHAPA_M2 * b.APROV
     for k, n in sorted(T['chapas'].items()):
-        rot = '%s %d mm · %.2f m²' % (k[0], k[1], T['area'][k])
-        print(f'  {rot:<36}{n:>3} chapas ×{brl(T["preco"][k]):>10}'
-              f'{brl(n * T["preco"][k]):>21}')
-    _emb = DIRETO - T['c_frete'] - (T['c_chapa'] + T['c_fita'] + T['c_corte']
-                                    + T['c_cons'] + T['c_fer'] + T['c_terc'])
-    for rot, v in [(f'Fita de borda · {T["fita"]:.1f} m', T['c_fita']),
-                   (f'Corte · {T["n_chapas"]} chapas, {T["pecas"]} peças', T['c_corte']),
-                   ('Consumíveis · 6%', T['c_cons']),
-                   ('Terceirizados · ripado, filete e LED', T['c_terc']),
-                   ('Ferragem · 3 pivôs e 3 fechos, fonte', T['c_fer']),
-                   (f'Frete · {b.VIAGENS} viagens', T['c_frete']),
-                   ('Embalagem · 2%', _emb)]:
-        print(f'  {rot:<52}{brl(v):>20}')
-    print(f'  {"CUSTO DIRETO":<52}{brl(DIRETO):>20}')
+        a = T['area'][k]
+        rot = '%s %d mm' % (k[0], k[1])
+        print(f'  {rot:<28}{a:>7.2f} m²{a/rend:>9.2f}'
+              f'{n:>8}{brl(T["preco"][k]):>12}{brl(n*T["preco"][k]):>14}')
+    print(f'  {"TOTAL":<28}{sum(T["area"].values()):>7.2f} m²{"":>9}'
+          f'{T["n_chapas"]:>8}{"":>12}{brl(T["c_chapa"]):>14}')
+    print('  ⛔ "NÃO EXISTE 2,7 CHAPAS, SÃO 3" — aba MDF. Arredonda-se por\n'
+          '     PADRÃO × ESPESSURA, e cada padrão puxa no mínimo uma chapa.')
 
-    print(f'\n  ⑤ O QUE O TERCEIRIZADO PESA  ' + S * (L - 29))
+    print(f'\n  ③ FITA DE BORDA E FILETAGEM  ' + S * 46)
+    print(f'  {"ONDE":<34}{"METROS":>9}{"R$/m":>9}{"MATERIAL":>12}'
+          f'{"APLICAÇÃO":>12}')
+    f22 = sum(i.fita22 for i in M); f50 = sum(i.fita50 for i in M)
+    frp = sum(i.fita_ripa for i in M)
+    for rot, m, pm, pa in [
+            ('Fita 22 mm · peças e portas', f22, b.FITA_22, b.FILETE_MAQ),
+            ('Fita 50 mm · borda de 42 das portas', f50, b.FITA_50, b.FILETE_MAQ),
+            ('Fita 22 mm · as duas faces da ripa', frp, b.FITA_22, b.FILETE_RIPA)]:
+        print(f'  {rot:<34}{m:>9.1f}'
+              f'{brl(pm*b.FITA_PERDA+pa):>9}{brl(m*pm*b.FITA_PERDA):>12}'
+              f'{brl(m*pa):>12}')
+    print(f'  {"TOTAL":<34}{T["fita_m"]:>9.1f}{"":>9}'
+          f'{brl(T["c_fita_mat"]):>12}{brl(T["c_filete"]):>12}')
+    print(f'  {"fita mais filetagem":<34}{"":>9}{"":>9}'
+          f'{brl(T["c_fita_mat"]+T["c_filete"]):>24}')
+    print('  ⛔ A ripa de 2 cm NÃO entra na coladeira automática: a Base\n'
+          '     nomeia o caso em "Filetagem manual · o que não entra na\n'
+          '     máquina · R$ 5,00". Rode RIPA_NA_MAQUINA=1 para comparar.')
+
+    print(f'\n  ④ FERRAGEM  ' + S * 62)
     _ag = {}
     for it, _q in T['L']:
-        for n, qt, u, un in it.terc:
-            a = _ag.setdefault(n, [0.0, u, un]); a[0] += qt
-    for n, (qt, u, un) in _ag.items():
-        print(f'  {n:<40}{qt:>9.2f} {un:<4}×{brl(u):>9}{brl(qt * u):>16}')
+        for n, qt, u in it.fer:
+            a = _ag.setdefault(n, [0, u]); a[0] += qt
+    for n, (qt, u) in _ag.items():
+        print(f'  {n:<44}{qt:>5} ×{brl(u):>10}{brl(qt*u):>15}')
+    print(f'  {"TOTAL":<44}{"":>5}{"":>11}{brl(T["c_fer"]):>15}')
+    print('  ⭐ A escada de dobradiça da Base, para a porta da esquerda:')
+    for nome, v in b.ESCADA_DOBRADICA:
+        d = b.dobradicas(ALT)
+        print(f'     {nome:<28}{d} × {brl(v):>8} = {brl(d*v):>9}'
+              f'{"   ← orçado" if v == b.DOBRADICA else ""}')
 
-    print(f'\n  ⑥ A RÉGUA DE PREÇO  ' + S * (L - 20))
-    print('  ⚠ Nenhum preço foi fechado: o Jonathan pediu o CUSTO, não a MC.')
+    print(f'\n  ⑤ O CUSTO POR ITEM  ' + S * 55)
+    for (it, q), d in zip(T['L'], T['diretos']):
+        print(f'  {it.nome:<54}{brl(d):>20}')
+        print(f'    {it.obs}')
+    print(f'  {"CUSTO DIRETO":<54}{brl(DIRETO):>20}')
+
+    print(f'\n  ⑥ O CUSTO POR NATUREZA  ' + S * 51)
+    for rot, v in [(f'Chapa · {T["n_chapas"]} chapas', T['c_chapa']),
+                   (f'Fita de borda · {T["fita_m"]:.0f} m, material', T['c_fita_mat']),
+                   ('Filetagem · aplicação', T['c_filete']),
+                   (f'Corte · {T["n_chapas"]} chapas, {T["pecas"]} peças', T['c_corte']),
+                   ('Consumíveis · 6% sobre chapa e fita', T['c_cons']),
+                   ('Terceirizado · painel ripado', T['c_terc']),
+                   ('Ferragem', T['c_fer']),
+                   (f'Frete · {b.VIAGENS} viagens', T['c_frete']),
+                   ('Embalagem · 2%', T['c_emb'])]:
+        print(f'  {rot:<54}{brl(v):>20}')
+    print(f'  {"CUSTO DIRETO":<54}{brl(DIRETO):>20}')
+
+    print(f'\n  ⑦ A RÉGUA DE PREÇO  ' + S * 55)
+    print('  ⚠ Nenhum preço fechado: o pedido foi o CUSTO, não a MC.')
     print(f'  {"":<30}{"MC 35%":>20}{"MC 40%":>20}')
     for rot, base in [('sem RT', b.BASE_SEM_RT), ('com RT de 10%', b.BASE_COM_RT)]:
-        print(f'  {rot:<30}'
-              f'{brl(DIRETO / (base - b.FAIXA[0])):>20}'
-              f'{brl(DIRETO / (base - b.FAIXA[1])):>20}')
+        print(f'  {rot:<30}{brl(DIRETO/(base-b.FAIXA[0])):>20}'
+              f'{brl(DIRETO/(base-b.FAIXA[1])):>20}')

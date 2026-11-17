@@ -1,61 +1,97 @@
 # -*- coding: utf-8 -*-
-"""PAINEL DA SALA — o que cada decisão custa, em reais.
+"""PAINEL DA SALA — o que cada decisão e cada dúvida custa, em reais.
 
-⭐ Três perguntas que o levantamento sozinho não responde:
-   1. quanto a ORDEM DO JONATHAN economizou — ripado até a pedra, e liso
-      dali para a direita, contra o ripado correndo os 682 inteiros;
-   2. quanto custa a dúvida do GIANDUIA TRAMA, se ele for padrão especial;
-   3. onde o arredondamento de chapa cobra uma chapa inteira por 5% de área.
+⭐ Roda o levantamento inteiro em cada cenário, em SUBPROCESSO num diretório
+  temporário, porque `base.py` é lido como módulo próprio e trocar uma
+  constante em memória não muda nada — e não mudar nada, calado, é o pior
+  resultado possível.
 """
-import importlib.util, pathlib, copy
+import subprocess, sys, pathlib, tempfile, shutil, re, os
 
 P = pathlib.Path(__file__).resolve().parent
-def _mod(n, a):
-    sp = importlib.util.spec_from_file_location(n, P / a)
-    m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m); return m
-lv = _mod('ps_lv', 'levantamento.py'); b = lv.b
-brl = lv.brl
+SONDA = ('import importlib.util,pathlib,sys\n'
+         'd=pathlib.Path(__file__).resolve().parent\n'
+         'sp=importlib.util.spec_from_file_location("lv",d/"levantamento.py")\n'
+         'm=importlib.util.module_from_spec(sp);sp.loader.exec_module(m)\n'
+         'print("%.2f" % m.DIRETO)\n')
 
-BASE = lv.custo(lv.M)
 
-#   ⭐⭐ O RIPADO CORRENDO OS 682: o liso vira substrato e ganha ripa em
-#     cima, mais a mão de obra e a filetagem da face inteira.
-_tudo = [copy.deepcopy(i) for i in lv.M]
+def roda(subs=(), env=None):
+    """subs: lista de (regex, troca) aplicados a base.py antes de rodar."""
+    with tempfile.TemporaryDirectory() as d:
+        d = pathlib.Path(d)
+        for f in ('base.py', 'levantamento.py'):
+            shutil.copy(P / f, d / f)
+        if subs:
+            t = (d / 'base.py').read_text()
+            for pat, rep in subs:
+                t, n = re.subn(pat, rep, t, count=1, flags=re.M)
+                assert n == 1, pat          # ⛔ troca que não pega é erro
+            (d / 'base.py').write_text(t)
+        (d / '_s.py').write_text(SONDA)
+        r = subprocess.run([sys.executable, '-I', str(d / '_s.py')],
+                           capture_output=True, text=True,
+                           env=dict(os.environ, **(env or {})))
+        assert r.returncode == 0, r.stderr[-900:]
+        return float(r.stdout.strip())
+
+
+def brl(v):
+    return f'{v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
+
+
+BASE = roda()
+print(f'\n  PAINEL DA SALA · VISTA 2 — O QUE CADA DECISÃO CUSTA')
+print(f'\n  CUSTO DIRETO COMO ORÇADO{brl(BASE):>52}\n')
+
+LINHAS = [
+ ('A ORDEM DO JONATHAN · ripado só até a pedra', None, None, None),
+ ('  se o ripado corresse os 682 inteiros',
+  [(r'^LISO_L_RIPADO = .*$', '')], None, 'ripado_tudo'),
+ ('AS DÚVIDAS QUE AINDA TÊM PREÇO', None, None, None),
+ ('  Gianduia Trama for padrão especial (R$ 1.000 a chapa)',
+  None, {'ESPECIAL': '1'}, None),
+ ('  a ripa de 2 cm entrar na coladeira (R$ 2,50)',
+  None, {'RIPA_NA_MAQUINA': '1'}, None),
+ ('  a dobradiça cair para Novisys (R$ 20)',
+  [(r'^DOBRADICA = 50\.0$', 'DOBRADICA = 20.0')], None, None),
+ ('  a dobradiça cair para Bigfer Inox Click (R$ 10)',
+  [(r'^DOBRADICA = 50\.0$', 'DOBRADICA = 10.0')], None, None),
+ ('  a base do ripado sair em 18 e não em 15',
+  [(r'^SUBSTRATO_ESP_MM = 15$', 'SUBSTRATO_ESP_MM = 18')], None, None),
+ ('  os montantes forem a cada 75 cm e não a cada 60',
+  None, None, 'montantes'),
+]
+
+for rot, subs, env, especial in LINHAS:
+    if subs is None and env is None and especial is None:
+        print(f'  {rot}'); continue
+    if especial == 'ripado_tudo':
+        v = roda_tudo = None
+        continue
+    if especial == 'montantes':
+        continue
+    v = roda(subs or (), env)
+    print(f'  {rot:<54}{brl(v):>14}{("+ " if v > BASE else "− ") + brl(abs(v-BASE)):>16}')
+
+#   ⭐ os dois cenários que mexem no levantamento, não na base
+import importlib.util, copy
+sp = importlib.util.spec_from_file_location('lv', P / 'levantamento.py')
+lv = importlib.util.module_from_spec(sp); sp.loader.exec_module(lv)
+
+_t = [copy.deepcopy(i) for i in lv.M]
 _x = lv.Item('Ripado sobre os 330 do liso', '')
 _x.ripado(lv.LISO_L, lv.ALT, 'Ripado do trecho liso')
-_tudo.append(_x)
-TUDO = lv.custo(_tudo)
+_t.append(_x)
+v = lv.custo(_t)['direto']
+print(f'\n  {"se o ripado corresse os 682 inteiros":<54}{brl(v):>14}'
+      f'{"+ " + brl(v - BASE):>16}')
 
-print(f'\n  PAINEL DA SALA · VISTA 2 — O QUE CADA DECISÃO CUSTA\n')
-print(f'  {"":<46}{"CUSTO DIRETO":>16}{"DIFERENÇA":>15}')
-print('  ' + '─' * 77)
-print(f'  {"Ripado até a pedra, liso dali (Jonathan, 17/11)":<46}'
-      f'{brl(BASE["direto"]):>16}{"—":>15}')
-print(f'  {"Ripado correndo os 682 inteiros":<46}'
-      f'{brl(TUDO["direto"]):>16}'
-      f'{"+ " + brl(TUDO["direto"] - BASE["direto"]):>15}')
-print(f'\n  ⭐ A ordem economiza {brl(TUDO["direto"] - BASE["direto"])} de custo '
-      f'direto: o ripado inteiro custaria '
-      f'{(TUDO["direto"]/BASE["direto"]-1)*100:.0f}% a mais.')
-_n = int(lv.LISO_L // b.PASSO)
-print(f'     São {_n} ripas, {_n*lv.ALT/100*2:.0f} m de filete e '
-      f'{lv.LISO_L*lv.ALT/10000:.2f} m² de mão de obra de painel ripado'
-      f'\n     que deixam de existir.')
-
-print(f'\n  ── a dúvida do Gianduia Trama ' + '─' * 48)
-print(f'  {"MDF cor de catálogo · R$ 700 a chapa":<46}{brl(BASE["direto"]):>16}')
-print(f'  {"Padrão especial da Base · R$ 1.000 a chapa":<46}'
-      f'{brl(9954.24):>16}{"+ " + brl(9954.24 - BASE["direto"]):>15}')
-print('  ⚠ "GIANDUIA TRAMA - DURATEX" é padrão texturizado. É a primeira\n'
-      '    cotação a fazer, e ela vale 19% do custo do projeto.')
-
-print(f'\n  ── o arredondamento da estrutura ' + '─' * 45)
-_rend = b.CHAPA_M2 * b.APROV
-for passo, n_m in [(60, 12), (70, 11), (75, 10), (80, 9)]:
-    a = n_m * 0.08 * lv.ALT / 100 + 6 * (lv.LARG / 2 / 100) * 0.08
-    ch = int(-(-a // _rend))
-    print(f'  montantes a cada {passo} cm · {n_m:>2} un · {a:>4.2f} m² · '
-          f'{ch} chapa(s) de Branco TX{brl(ch * 400):>12}')
-print('  ⚠ A 60 cm a estrutura passa 5% do rendimento de uma chapa e compra\n'
-      '    a SEGUNDA inteira. A 75 cm cabe numa só. Não mexi: afrouxar\n'
-      '    montante para caber na chapa é decisão de obra, não minha.')
+_t = [copy.deepcopy(i) for i in lv.M]
+for i in _t:
+    for p in i.pecas:
+        if p['nome'].startswith('Montantes'):
+            p['qtd'] = 10
+v = lv.custo(_t)['direto']
+print(f'  {"se os montantes forem a cada 75 cm":<54}{brl(v):>14}'
+      f'{"− " + brl(BASE - v):>16}')
