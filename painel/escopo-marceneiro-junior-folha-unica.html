@@ -1,0 +1,271 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<title>Valvic &middot; Marceneiro J&uacute;nior &mdash; folha &uacute;nica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0E2038;--navy2:#16314F;--gold:#C2A05A;--goldsoft:#d8bd80;
+      --goldbg:#F6EDD6;--cream:#FBFAF7;--ink:#1b2733;--muted:#6c7785;--line:#e8e3d8;
+      --ok:#2F7D4F;--okbg:#E7F1EA;--red:#B0413F;--redbg:#FBF1F0}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:A4 portrait;margin:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:#8a8a8a}
+.sheet{width:210mm;height:297mm;background:#fff;position:relative;overflow:hidden;
+       display:flex;flex-direction:column;page-break-after:always}
+.sheet:last-child{page-break-after:auto}
+@media print{body{background:#fff}.sheet{margin:0}}
+@media screen{.sheet{margin:8mm auto;box-shadow:0 2px 16px rgba(0,0,0,.3)}}
+
+.rh{background:var(--navy);color:#fff;padding:5mm 15mm 4.4mm;display:flex;
+    align-items:flex-end;justify-content:space-between}
+.rh .kx{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--goldsoft);font-weight:600}
+.rh .tt{font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:600;
+        line-height:1.06;margin-top:.8mm}
+.rh .r{text-align:right;font-size:6.4pt;color:#9FB0C4;line-height:1.5}
+.rh .r b{color:#fff;font-weight:600}
+.gold-rule{height:1.1mm;background:linear-gradient(90deg,var(--gold),var(--goldsoft))}
+.body{flex:1;padding:5mm 15mm 3mm;display:flex;flex-direction:column;min-height:0}
+.rf{background:var(--goldbg);padding:2.2mm 15mm;font-size:6.2pt;color:#7A5B17;
+    display:flex;justify-content:space-between;align-items:center}
+
+/* capa */
+.capa{flex:1;display:flex;flex-direction:column;justify-content:center;
+      padding:0 15mm;text-align:center}
+.capa .mk{width:22mm;height:22mm;border:.6mm solid var(--gold);border-radius:2mm;
+  margin:0 auto 7mm;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:34pt;font-weight:700;color:var(--gold)}
+.capa .kx{font-size:8pt;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  font-weight:700}
+.capa h1{font-family:'Cormorant Garamond',serif;font-size:44pt;font-weight:700;
+  color:var(--navy);line-height:1;margin-top:3mm}
+.capa .nv{font-size:10.5pt;color:var(--muted);margin-top:3.4mm;letter-spacing:.02em}
+.capa .ln{width:34mm;height:.9mm;background:var(--gold);margin:8mm auto}
+.capa .lead{font-size:10pt;line-height:1.65;color:var(--ink);max-width:132mm;
+  margin:0 auto;text-align:center}
+.capa .emp{margin-top:11mm;font-size:8pt;color:var(--muted);line-height:1.7;
+  letter-spacing:.03em}
+.capa .emp b{color:var(--navy);font-weight:700;letter-spacing:.14em}
+
+.sec{display:flex;align-items:baseline;gap:3mm;margin:0 0 3mm}
+.sec .bar{width:6mm;height:1mm;background:var(--gold);align-self:center;flex-shrink:0}
+.sec .kx{font-size:6.4pt;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;white-space:nowrap}
+.sec .tt{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:600;
+  color:var(--navy);line-height:1.1}
+.sec2{font-family:'Cormorant Garamond',serif;font-size:12.5pt;font-weight:600;
+  color:var(--navy);margin:5mm 0 2.4mm;display:flex;align-items:center;gap:2.4mm}
+.sec2::before{content:'';width:4mm;height:.7mm;background:var(--gold);flex-shrink:0}
+
+p{font-size:8.6pt;line-height:1.6}
+p+p{margin-top:2.4mm}
+p b{color:var(--navy)}
+
+.ficha{display:flex;flex-wrap:wrap;border:.35mm solid var(--navy2);margin:3mm 0 4mm}
+.ficha .f{padding:2.2mm 3.4mm;border-right:.25mm solid var(--line);
+  border-bottom:.25mm solid var(--line)}
+.ficha .k{font-size:5.8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:600}
+.ficha .v{font-size:9pt;font-weight:700;color:var(--navy);margin-top:.8mm;line-height:1.2}
+.ficha .v span{font-weight:400;color:var(--ink);font-size:8.4pt}
+
+.grupo{margin-bottom:3.2mm}
+.grupo .gh{display:flex;align-items:center;gap:2.6mm;margin-bottom:1.8mm}
+.grupo .gn{width:6.4mm;height:6.4mm;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:7.4pt;font-weight:800;
+  flex-shrink:0}
+.grupo .gt{font-size:9.6pt;font-weight:800;color:var(--navy);line-height:1.2}
+ul{list-style:none;padding-left:9mm}
+ul li{font-size:8.4pt;line-height:1.48;margin-bottom:1.5mm;position:relative;
+  padding-left:4mm}
+ul li::before{content:'';position:absolute;left:0;top:1.7mm;width:1.8mm;height:1.8mm;
+  background:var(--goldsoft);transform:rotate(45deg)}
+ul li b{color:var(--navy);font-weight:700}
+
+.nota{background:var(--goldbg);border-left:1.2mm solid var(--gold);padding:2.5mm 3.6mm;
+  font-size:8.2pt;line-height:1.52;margin:3mm 0}
+.nota .h{font-size:6.4pt;letter-spacing:.16em;text-transform:uppercase;color:#7A5B17;
+  font-weight:800;margin-bottom:1.4mm}
+.nota b{color:var(--navy)}
+.nota.ok{background:var(--okbg);border-left-color:var(--ok)}
+.nota.ok .h{color:var(--ok)}
+.nota.at{background:var(--redbg);border-left-color:var(--red)}
+.nota.at .h{color:var(--red)}
+
+table{width:100%;border-collapse:collapse;margin:2.2mm 0}
+th{background:var(--navy2);color:#fff;font-size:6.6pt;font-weight:600;letter-spacing:.06em;
+  padding:2.2mm 2.4mm;text-align:left}
+td{border:.25mm solid var(--line);padding:2.4mm;font-size:8.4pt;line-height:1.35;
+  vertical-align:top}
+td b{color:var(--navy)}
+tr:nth-child(even) td{background:#fafbfc}
+td.c{text-align:center}
+td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.compacta td{padding:1.7mm 2.4mm;font-size:8.2pt}
+.compacta th{padding:1.8mm 2.4mm}
+
+.remun{display:flex;gap:3mm;margin:3mm 0}
+.remun .c{flex:1;border:.3mm solid var(--line);border-top:1mm solid var(--gold);
+  border-radius:1mm;padding:2.6mm 3.4mm;background:#fffdf8}
+.remun .k{font-size:6pt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  font-weight:700}
+.remun .v{font-family:'Cormorant Garamond',serif;font-size:18pt;font-weight:700;
+  color:var(--navy);line-height:1.1;margin-top:1mm}
+.remun .s{font-size:7.2pt;color:var(--muted);margin-top:1mm;line-height:1.35}
+
+.escada{display:flex;gap:3mm;margin-top:2mm}
+.deg{flex:1;border:.3mm solid var(--line);border-radius:1mm;padding:2.6mm 3mm}
+.deg .n{font-family:'Cormorant Garamond',serif;font-size:15pt;font-weight:700;
+  color:var(--goldsoft);line-height:1}
+.deg .t{font-size:9.2pt;font-weight:800;color:var(--navy);margin-top:1.2mm;line-height:1.18}
+.deg .d{font-size:7.8pt;line-height:1.45;color:var(--ink);margin-top:1.6mm}
+.deg .d b{color:var(--navy)}
+.deg.aqui{background:var(--goldbg);border-color:var(--gold)}
+.deg.aqui .n{color:var(--gold)}
+.tagaqui{display:inline-block;font-size:5.6pt;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--navy);color:#fff;padding:.5mm 1.6mm;
+  border-radius:1mm;margin-left:1.4mm;vertical-align:1.4px}
+
+.assin{display:flex;gap:10mm;margin-top:auto;padding-top:6mm}
+.assin .a{flex:1;text-align:center}
+.assin .a .ln{border-top:.3mm solid var(--ink);margin-bottom:1.4mm}
+.assin .a .t{font-size:6.6pt;color:var(--muted);line-height:1.4}
+.local{font-size:8.4pt;margin-top:5mm}
+.local .l{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:46mm;margin:0 1.4mm}
+.local .s{display:inline-block;border-bottom:.25mm dotted #b9c2cc;width:11mm;margin:0 1.4mm}
+</style><style>
+.body{padding:4mm 13mm 2mm}
+.duas{display:flex;gap:6mm}
+.duas>div{flex:1;min-width:0}
+.cmp{font-size:7.3pt;line-height:1.38}
+.cmp li{font-size:7.3pt;line-height:1.38;margin-bottom:.9mm;padding-left:3.2mm}
+.cmp li::before{top:1.35mm;width:1.4mm;height:1.4mm}
+ul.cmp{padding-left:0}
+.mini{font-size:6.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  font-weight:800;margin:0 0 1.4mm;display:flex;align-items:center;gap:2mm}
+.mini::after{content:'';flex:1;height:.25mm;background:var(--line)}
+.fichaL{display:flex;border:.3mm solid var(--navy2);margin:0 0 3mm}
+.fichaL .f{flex:1;padding:1.6mm 2.6mm;border-right:.25mm solid var(--line);min-width:0}
+.fichaL .f:last-child{border-right:0}
+.fichaL .k{font-size:5.4pt;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fichaL .v{font-size:7.6pt;font-weight:700;color:var(--navy);margin-top:.5mm;line-height:1.2}
+.deg3{display:flex;gap:2.4mm;margin:0 0 3mm}
+.deg3>div{flex:1;border:.28mm solid var(--line);border-radius:1mm;padding:1.8mm 2.4mm;min-width:0}
+.deg3 .t{font-size:7.8pt;font-weight:800;color:var(--navy);line-height:1.15}
+.deg3 .d{font-size:6.8pt;line-height:1.35;color:var(--ink);margin-top:.8mm}
+.deg3 .aq{background:var(--goldbg);border-color:var(--gold)}
+.lim{background:#f7f9fb;border:.28mm solid var(--line);border-left:1.1mm solid var(--navy2);
+  padding:2mm 3mm;font-size:7.2pt;line-height:1.45;margin:0 0 3mm}
+.lim b{color:var(--navy)}
+.pack{border:.3mm solid var(--line);border-top:1mm solid var(--gold);border-radius:1mm;
+  padding:2.4mm 3mm;background:#fffdf8;height:100%}
+.pack .hd{font-family:'Cormorant Garamond',serif;font-size:13pt;font-weight:700;color:var(--navy);line-height:1}
+.pack .big{font-family:'Cormorant Garamond',serif;font-size:16pt;font-weight:700;color:var(--navy);
+  line-height:1;margin:1.6mm 0 .6mm}
+.pack .sm{font-size:6.9pt;line-height:1.4;color:var(--ink)}
+.pack .sm b{color:var(--navy)}
+.pack ul{padding-left:0;margin-top:1.6mm}
+.pack li{font-size:6.9pt;line-height:1.35;margin-bottom:.7mm;padding-left:3mm}
+.pack li::before{top:1.2mm;width:1.3mm;height:1.3mm}
+.comum{background:var(--navy);color:#fff;padding:2mm 3mm;font-size:7pt;line-height:1.45;
+  border-radius:1mm;margin-top:2.6mm}
+.comum b{color:var(--goldsoft)}
+.alerta{background:var(--redbg);border-left:1.1mm solid var(--red);padding:1.8mm 3mm;
+  font-size:7.2pt;line-height:1.42;margin:0 0 3mm}
+.alerta b{color:var(--red)}
+</style></head><body>
+<section class="sheet">
+<div class="rh"><div><div class="kx">Escopo de Fun&ccedil;&atilde;o</div>
+<div class="tt">Marceneiro J&uacute;nior</div></div>
+<div class="r"><b>VALVIC MARCENARIA</b><br>Vargas Decor Ltda<br>CNPJ 17.269.304/0001-51</div></div>
+<div class="gold-rule"></div>
+<div class="body">
+
+<div class="fichaL">
+  <div class="f"><div class="k">&Aacute;rea</div><div class="v">Produ&ccedil;&atilde;o e Montagem</div></div>
+  <div class="f"><div class="k">Supervis&atilde;o</div><div class="v">Coordena&ccedil;&atilde;o de Produ&ccedil;&atilde;o</div></div>
+  <div class="f"><div class="k">Local</div><div class="v">F&aacute;brica e obra do cliente</div></div>
+  <div class="f"><div class="k">Trabalha com</div><div class="v">Ajudante sob sua condu&ccedil;&atilde;o</div></div>
+  <div class="f"><div class="k">Forma&ccedil;&atilde;o</div><div class="v">Deivson e Samuel</div></div>
+</div>
+
+<div class="mini">O n&iacute;vel do cargo &mdash; definido pela complexidade do ambiente, n&atilde;o pelo tempo de casa</div>
+<div class="deg3">
+  <div><div class="t">Ajudante</div><div class="d">Apoia e aprende. N&atilde;o responde por ambiente.</div></div>
+  <div class="aq"><div class="t">Marceneiro J&uacute;nior<span class="tagaqui">este cargo</span></div>
+    <div class="d">Responde por <b>ambiente m&eacute;dio</b>: arm&aacute;rio, gaveta, prateleira, frente lisa ou ripada.</div></div>
+  <div><div class="t">Marceneiro</div><div class="d">Responde por ambiente <b>dif&iacute;cil e complexo</b>: relevo, palhinha, geometria fora de esquadro.</div></div>
+</div>
+
+<div class="duas">
+  <div>
+    <div class="mini">Na f&aacute;brica</div>
+    <ul class="cmp">
+      <li><b>Ler o projeto antes de cortar.</b> Projeto executivo e plano de corte conferidos contra a medida real da obra; cor, espessura, veio e quantidade do material; d&uacute;vida se levanta antes &mdash; pe&ccedil;a errada n&atilde;o volta a ser chapa.</li>
+      <li><b>Fabricar no padr&atilde;o da casa.</b> Caixaria e gaveta com esquadro e folga corretos; filetagem, inclusive de puxador; fura&ccedil;&atilde;o, ferragens e regulagem de dobradi&ccedil;a, corredi&ccedil;a, pist&atilde;o e puxador.</li>
+      <li><b>Chapa e m&aacute;quina.</b> Aproveitamento de chapa &mdash; o MDF &eacute; o maior custo do projeto; opera&ccedil;&atilde;o segura apenas das m&aacute;quinas para as quais h&aacute; autoriza&ccedil;&atilde;o, sempre com EPI.</li>
+      <li><b>Conferir antes de sair.</b> Ficha de confer&ecirc;ncia de produ&ccedil;&atilde;o preenchida antes do carregamento; ferragens, perfis e acess&oacute;rios separados; pe&ccedil;a protegida para o transporte.</li>
+      <li><b>Organiza&ccedil;&atilde;o e limpeza.</b> Bancada, ferramenta e corredor livres ao fim do dia, padr&atilde;o 5S; cada ferramenta de volta ao seu lugar; retalho aproveit&aacute;vel guardado e identificado; p&oacute; e serragem recolhidos do posto.</li>
+    </ul>
+  </div>
+  <div>
+    <div class="mini">Na obra</div>
+    <ul class="cmp">
+      <li><b>Montar como quem assina a pe&ccedil;a.</b> Medida e prumo conferidos antes de subir o m&oacute;vel; parede fora de esquadro se resolve na montagem, n&atilde;o na reclama&ccedil;&atilde;o; fixa&ccedil;&atilde;o segura, nivelamento e regulagem de porta e gaveta.</li>
+      <li><b>Acabamento.</b> Instala&ccedil;&atilde;o de bancada, prateleira, nicho e pe&ccedil;as de banheiro; arremate final &mdash; &eacute; o que o cliente v&ecirc; primeiro.</li>
+      <li><b>Conduta na casa do cliente.</b> Piso e ambiente protegidos, espa&ccedil;o devolvido limpo; <b>nunca combinar mudan&ccedil;a de escopo direto com o cliente</b> &mdash; pedido novo passa pela coordena&ccedil;&atilde;o.</li>
+      <li><b>Conduzir o ajudante.</b> Mostrar como se faz, n&atilde;o s&oacute; mandar fazer; responder pela seguran&ccedil;a de quem trabalha com voc&ecirc;; dizer &agrave; coordena&ccedil;&atilde;o o que ele j&aacute; domina e o que falta.</li>
+      <li><b>Ve&iacute;culo.</b> Quando utilizar ve&iacute;culo da empresa, registrar a ficha de uso na sa&iacute;da e na volta.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="lim" style="margin-top:3mm"><b>Os limites do cargo.</b> O J&uacute;nior n&atilde;o decide
+altera&ccedil;&atilde;o de projeto &middot; n&atilde;o combina escopo novo com o cliente &middot;
+n&atilde;o libera ambiente para carregamento sem a confer&ecirc;ncia da coordena&ccedil;&atilde;o &middot;
+n&atilde;o opera m&aacute;quina sem autoriza&ccedil;&atilde;o &middot; n&atilde;o responde sozinho
+por ambiente dif&iacute;cil ou complexo. Estes limites protegem voc&ecirc; e protegem a obra, e
+deixam de valer conforme os degraus se confirmam.</div>
+
+<div class="alerta"><b>O que a Valvic n&atilde;o aceita: esconder erro.</b> Pe&ccedil;a que voltou,
+medida errada, risco no m&oacute;vel do cliente ou material danificado t&ecirc;m de ser avisados
+na hora. Erro avisado cedo &eacute; problema pequeno; erro descoberto pelo cliente &eacute;
+preju&iacute;zo e &eacute; confian&ccedil;a perdida. Ningu&eacute;m aqui &eacute; cobrado por
+avisar &mdash; s&oacute; por esconder.</div>
+
+<div class="mini">Os dois formatos de remunera&ccedil;&atilde;o &mdash; mesmo escopo, mesma avalia&ccedil;&atilde;o</div>
+<div class="duas">
+  <div><div class="pack">
+    <div class="hd">CLT</div>
+    <div class="big">R$ 2.500 <span style="font-size:8pt;font-weight:400;color:var(--muted)">/ m&ecirc;s</span></div>
+    <div class="sm">Sal&aacute;rio com registro em carteira</div>
+    <ul>
+      <li><b>VR R$ 400</b> por m&ecirc;s, desde a admiss&atilde;o</li>
+      <li><b>VT conforme a regi&atilde;o</b> de moradia. Calculado hoje para a f&aacute;brica no <b>Horto</b>; na mudan&ccedil;a para o <b>Jardim Canad&aacute;</b> a empresa reajusta, sem precisar de pedido seu</li>
+      <li>Contrato de experi&ecirc;ncia de <b>90 dias</b></li>
+      <li>13&ordm; sal&aacute;rio, f&eacute;rias com 1/3, FGTS e os demais direitos de lei</li>
+    </ul>
+  </div></div>
+  <div><div class="pack">
+    <div class="hd">Presta&ccedil;&atilde;o de servi&ccedil;os</div>
+    <div class="big">R$ 3.500 <span style="font-size:8pt;font-weight:400;color:var(--muted)">a R$ 4.500 / m&ecirc;s</span></div>
+    <div class="sm">Ajuda de custo &mdash; <b>piso pago independentemente da comiss&atilde;o</b>, que vem por cima e n&atilde;o &eacute; descontada dela</div>
+    <ul>
+      <li><b>+ 2,5% sobre fabrica&ccedil;&atilde;o</b> e <b>2,5% sobre montagem</b>, calculados sobre a <b>receita l&iacute;quida do ambiente</b></li>
+      <li>Ambiente de R$ 18.000 com RT de arquiteto: receita l&iacute;quida de R$ 15.390 &rarr; <b>R$ 384,75</b> por etapa</li>
+      <li>Recebe-se a comiss&atilde;o <b>da etapa executada</b>. Fabrica&ccedil;&atilde;o e montagem muitas vezes ficam com pessoas diferentes</li>
+      <li>CNPJ pr&oacute;prio e nota fiscal mensal</li>
+    </ul>
+  </div></div>
+</div>
+
+<div class="comum">Igual nos dois regimes: <b>ferramental, equipamentos e EPI cedidos pela Valvic</b>,
+sem custo, sob Termo de Responsabilidade &middot; <b>ajudante disponibilizado pela empresa</b>,
+sob a sua condu&ccedil;&atilde;o &middot; <b>avalia&ccedil;&atilde;o a cada 90 dias</b> com quem te
+acompanha &mdash; Deivson na f&aacute;brica, Samuel na obra. A r&eacute;gua &eacute; o que voc&ecirc;
+j&aacute; domina; se a evolu&ccedil;&atilde;o n&atilde;o veio, o ciclo repete com o ponto a
+desenvolver dito de forma clara.</div>
+
+</div>
+<div class="rf"><span>Valvic Marcenaria &middot; Escopo de Fun&ccedil;&atilde;o &middot; Marceneiro J&uacute;nior</span><span>Legado &middot; Sinergia &middot; Excel&ecirc;ncia</span></div>
+</section></body></html>
