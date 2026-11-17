@@ -145,9 +145,8 @@ assert len(ITENS) == len(lv.RATEIO), (len(ITENS), len(lv.RATEIO))
 linhas = ''.join(
   f'<div class="cj"><div class="n">{i:02d}</div>'
   f'<div><div class="t">{nome} · <span style="color:var(--mut)">{sub}</span></div>'
-  f'<div class="d">{d}</div></div>'
-  f'<div class="v">R$ {br(v)}</div></div>'
-  for i, ((nome, sub, d), v) in enumerate(zip(ITENS, lv.RATEIO), 1))
+  f'<div class="d">{d}</div></div></div>'
+  for i, (nome, sub, d) in enumerate(ITENS, 1))
 
 ENTRADA = b.PRECO_FECHADO * b.PAGAMENTO[0][1]
 SALDO   = b.PRECO_FECHADO * b.PAGAMENTO[1][1]
@@ -167,14 +166,13 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
    viewBox (67,5+11 e 88,5+11): com isso os dois desenhos saem na MESMA
    escala, e o max-width manda na altura dos dois de uma vez. */
 .dois{{display:grid;grid-template-columns:78.5fr 99.5fr;gap:0 6mm;
-  max-width:136mm;margin:4.5mm auto 0;align-items:end;}}
+  max-width:154mm;margin:5.5mm auto 0;align-items:end;}}
 .dois svg{{width:100%;height:auto;display:block;}}
 .leg{{font-size:6.2pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--verde-lt);font-weight:600;margin-top:1.2mm;text-align:center;}}
-.cj{{padding:1.9mm 0;grid-template-columns:7mm 1fr auto;}}
+.cj{{padding:2.4mm 0;grid-template-columns:7mm 1fr;}}
 .cj .t{{font-size:9.6pt;}}
-.cj .d{{font-size:7.2pt;line-height:1.44;margin-top:.9mm;max-width:120mm;}}
-.cj .v{{font-size:11.5pt;}}
+.cj .d{{font-size:7.8pt;line-height:1.5;margin-top:1.1mm;max-width:138mm;}}
 .tot{{margin-top:4mm;background:var(--verde);color:#F4F2EC;padding:4mm 6mm;
   display:flex;align-items:center;justify-content:space-between;}}
 .tot .k{{font-size:6.6pt;letter-spacing:.3em;text-transform:uppercase;
@@ -185,16 +183,11 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
   letter-spacing:-.025em;white-space:nowrap;padding-left:8mm;}}
 .gr{{grid-template-columns:repeat(4,1fr);gap:0 6mm;margin-top:5mm;}}
 .gr .k{{font-size:6.1pt;letter-spacing:.24em;}}
-.gr .v{{font-size:7.2pt;line-height:1.44;margin-top:1.3mm;}}
+.gr .v{{font-size:7.6pt;line-height:1.5;margin-top:1.4mm;}}
 .fora{{margin-top:4.5mm;padding:4.5mm 5.5mm;}}
 .fora .k{{font-size:6.4pt;}}
-.lst{{font-size:7.1pt;line-height:1.42;margin-top:2.4mm;}}
+.lst{{font-size:7.5pt;line-height:1.46;margin-top:2.6mm;}}
 .lst li{{margin-bottom:1.1mm;}}
-.conf{{margin-top:3.6mm;padding-top:3mm;border-top:1px solid var(--linha);
-  font-size:7pt;line-height:1.48;color:var(--mut);}}
-.conf b{{color:#4A463E;font-weight:600;}}
-.conf .k{{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--verde-lt);font-weight:600;display:block;margin-bottom:1.6mm;}}
 .pe2{{margin-top:auto;padding-top:5mm;font-size:6.2pt;}}
 </style></head><body>
 
@@ -232,7 +225,7 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
     <div><div class="k">Acabamento</div><div class="v">
       MDF de <b>cor ou amadeirado de catálogo</b>, fita de borda na mesma cor em
       toda face aparente e abertura em <b>cava usinada</b>, sem puxador
-      aplicado — como no desenho.</div></div>
+      aplicado — como no desenho. Padrões especiais sob consulta.</div></div>
   </div>
 
   <div class="fora"><div class="k">O que não está nesta proposta</div>
@@ -247,16 +240,6 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
     <li><b>Alvenaria, elétrica, hidráulica e revestimento</b>, inclusive os
       pontos de fixação na parede.</li>
   </ul></div>
-
-  <div class="conf"><span class="k">A conferir na medição, antes do corte</span>
-    <b>A profundidade do gabinete do Banho Social</b> — a prancha não a cota, e
-    adotamos <b>45 cm</b>, que é a bancada de 50,5 com o mesmo recuo da suíte ·
-    <b>o padrão e a cor do MDF</b>, que as pranchas não especificam: o preço
-    acima vale para qualquer cor ou amadeirado de catálogo, e padrões especiais
-    — sincronizado, alto-relevo, super matte — têm acréscimo ·
-    <b>as prateleiras internas do Banho Social</b>, que o desenho não mostra e
-    que incluímos sem acréscimo, se a arquiteta quiser.
-  </div>
 
   <div class="pe2"><span>Valvic Marcenaria</span>
     <span>{b.PROJETO} · {DATA} · proposta válida por {b.VALIDADE_DIAS} dias</span>
