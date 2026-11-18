@@ -95,17 +95,79 @@ nove folhas abrem por toque, com tecnologia Blum"*.
 discreto. Elas não são de toque: são pivotantes com fecho rolete. **O puxador
 delas não está especificado no executivo e não está orçado.**
 
+### 18/11 · porta de giro em cima, Blum, e a proposta de três páginas
+
+> [Jonathan, 18/11/2026] *"Tire a descrição de articulador AVENTOS da Blum...
+> não será a báscula, será a porta de giro na parte superior também... descreva
+> que na região das portas pivotantes será painel liso, não ripado."* E:
+> *"Pode montar uma proposta um pouco mais robusta, apresentando as etapas da
+> empresa, apresentar a garantia. Pode ter umas 3 páginas... Explore mais as
+> imagens 3D."*
+
+| | |
+|---|--:|
+| saem 4 básculas AVENTOS HK-XS | −R$ 1.000,00 |
+| entram 8 dobradiças (75 cm de altura → 2 por folha) | +R$ 400,00 |
+| **custo direto** | R$ 22.696,50 → **R$ 22.084,50** |
+| **MC com RT** | 30,51% → **31,74%** |
+| MC sem RT | **40,53%** |
+
+⚠ **Fica registrado o que a báscula fazia:** a folha de 75 × 75 a 2,17 m do piso
+abre para fora e para baixo, e quem estiver na mesa de jantar leva a quina na
+cabeça. A báscula sobe. É decisão dele, e é o tipo de coisa que não aparece no
+orçamento e aparece na obra.
+
+### ⭐⭐ BLUM DEVOLVEU VINTE ANOS DE GARANTIA, DE GRAÇA
+
+A Base lista **"Dobradiça Blum · ⭐ O QUE VALE HOJE · R$ 50,00"** — exatamente o
+mesmo preço da Hettich Sensys. Mas a escada de garantia da casa
+(`closer-vendas/referencias/garantia.md`, reafirmada em 29/10/2026) dá:
+
+| ferragem | garantia Valvic |
+|---|---|
+| telescópica / dobradiça padrão | 2 anos |
+| Hardt | 5 anos |
+| Hettich | 10 anos |
+| **Blum** | **30 anos** |
+
+**Trocar a linha não custou um centavo e subiu a promessa de 10 para 30 anos.**
+
+⚠⚠ **PENDÊNCIA QUE TRAVA A IMPRESSÃO:** garantia.md diz que *"só o termo de 10
+anos está desenhado; o termo de 30 anos precisa existir assinado antes de a
+proposta sair"*. A folha promete 30 — o documento tem de acompanhar.
+⚠ E a folha escreve **"garantia sobre a marcenaria"**, nunca "garantia Blum de
+fábrica": não existe termo de 30 anos publicado pela Blum.
+
+### A proposta de três páginas
+
+1. **Capa** — render do jantar com a parede ripada e o nicho, título, e a fiada
+   obra / entrega / garantia.
+2. **O painel** — a elevação desenhada ripa a ripa, dois estudos 3D da prancha,
+   os quatro itens e o bloco de aviso dos armários.
+3. **Como trabalhamos** — as **oito etapas da casa** (copiadas de
+   `proposta-aline.html`, só a etapa 2 adaptada), o selo de **30 anos** com a
+   política real, o investimento, as condições, o que não está incluso e o
+   fecho com "o próximo passo".
+
+⛔ Duas estrelas ⭐ da minha notação de caderno vazaram para a folha do cliente,
+em item 03 e na garantia. Numa proposta elas não significam nada e parecem erro
+de copiar e colar. Removidas.
+
+⛔ E o rodapé: trocar `margin-top:auto` por 5 mm estourou a pág. 2 em 19 px —
+numa coluna flex sem folga, `auto` resolve em ZERO. As três páginas agora são
+medidas no navegador a cada build.
+
 ### O fechamento
 
 | | |
 |---|--:|
 | **PREÇO FECHADO** | **R$ 49.800,00** |
-| custo direto | R$ 22.696,50 |
+| custo direto | R$ 22.084,50 |
 | — dos quais, logística de GV | R$ 5.580,00 |
-| **⛔ MC lida · com RT de 10%** | **30,51%** |
-| MC lida · se não houver RT | 39,30% |
-| margem de contribuição | R$ 15.195,08 |
-| empate em dias de fábrica | 3,8 d |
+| **⛔ MC lida · com RT de 10%** | **31,74%** |
+| MC lida · se não houver RT | **40,53%** |
+| margem de contribuição | R$ 15.807,08 |
+| empate em dias de fábrica | 4,0 d |
 
 ⛔⛔ **A R$ 49.800 A MC CAIU PARA 31,07% — ABAIXO DO PISO DE 35% DA CASA.** Os
 armários custaram R$ 5.901 e o preço não mudou.

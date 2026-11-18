@@ -146,12 +146,13 @@ def novo(nome, obs=''):
 #     tabela com nome, medida, espessura e m², em vez de sumirem dentro de
 #     um total de chapa.
 it = novo('Armário superior do nicho',
-          f'{NICHO_L:.0f} × {R_SUP:.0f} × 50 · {b.VAOS_BANDA} folhas basculantes')
+          f'{NICHO_L:.0f} × {R_SUP:.0f} × 50 · {b.VAOS_BANDA} folhas de giro')
 it.caixa(NICHO_L, R_SUP, b.PROF_UTIL, b.VAOS_BANDA, 'Armário superior')
 it.folhas_ripadas(NICHO_L, R_SUP, b.VAOS_BANDA, 'Armário superior')
 it.ripado(NICHO_L, R_SUP, 'Ripas da banda superior')
-#   ⭐ 2,17 m a 2,92 m do piso: é aéreo, e a casa resolve aéreo com báscula.
-it.f(b.BASCULA_NOME, b.VAOS_BANDA, b.BASCULA_HK)
+#   ⛔ Porta de GIRO também em cima [Jonathan, 18/11/2026]. 75 de altura →
+#     2 dobradiças por folha, pela tabela da Base.
+it.f(b.DOBRADICA_NOME, b.VAOS_BANDA * b.dobradicas(R_SUP), b.DOBRADICA)
 it.f(b.PULSADOR_NOME, b.VAOS_BANDA, b.PULSADOR)
 
 it = novo('Armário inferior do nicho',

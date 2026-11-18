@@ -131,10 +131,32 @@ FECHO_ROLETE = 75.0
 #     alto padrão, e o degrau Gold da Base é Hettich. Vou de SENSYS e
 #     deixo a escada impressa na tabela, para ele descer um degrau com um
 #     número na mão em vez de um palpite.
+#   ⛔ [Jonathan, 18/11/2026] "pode manter as ferragens dobradiça ... da
+#     Blum". A Base: "Dobradiça Blum · ⭐ O QUE VALE HOJE · un · R$ 50,00".
+#     ⭐⭐ E ISSO NÃO CUSTA UM CENTAVO: Sensys e Blum valem os MESMOS R$ 50
+#     na Base. O que muda é a GARANTIA — a escada da casa dá 10 anos ao
+#     degrau Gold (Hettich) e 30 ANOS ao Blum. Mesmo custo, vinte anos a
+#     mais de promessa.
 DOBRADICA = 50.0
-DOBRADICA_NOME = 'Dobradiça Hettich Sensys'
+DOBRADICA_NOME = 'Dobradiça Blum'
 ESCADA_DOBRADICA = [('Bigfer Inox Click', 10.0), ('Bigfer Onix', 15.0),
                     ('Hettich Novisys', 20.0), ('Hettich Sensys', 50.0)]
+
+#   ⭐⭐ E A GARANTIA SOBE JUNTO, DE GRAÇA. A política da casa
+#     (`closer-vendas/referencias/garantia.md`, reafirmada pelo Jonathan em
+#     29/10/2026) é escalonada por ferragem:
+#         telescópica 2 anos · Hardt 5 · Hettich 10 · BLUM 30
+#     A dobradiça Blum custa os MESMOS R$ 50 da Sensys na Base. Trocar a
+#     linha não tirou um centavo do custo e devolveu VINTE ANOS de promessa.
+#   ⛔ Regra do elo mais fraco: o pivô e o fecho rolete das portas de
+#     passagem não estão na escada — quem manda nela é a dobradiça.
+#   ⚠⚠ PENDÊNCIA DA CASA, e ela trava a impressão: garantia.md diz que "só o
+#     termo de 10 anos está desenhado; o termo de 30 anos precisa existir
+#     assinado antes de a proposta sair". A folha promete 30; o documento
+#     tem de acompanhar.
+#   ⚠ E a folha escreve "garantia sobre a marcenaria", NUNCA "garantia Blum
+#     de fábrica": não existe termo de 30 anos publicado pela Blum.
+GARANTIA_ANOS = 30
 #   "Alma de aço · barra chata 5 mm, barra de 3 m · R$ 50,00 · contra empeno"
 ALMA_BARRA = 50.0
 
@@ -155,12 +177,16 @@ ALMA_BARRA = 50.0
 #     maçaneta, não no toque.
 PULSADOR = 100.0
 PULSADOR_NOME = 'Pulsador Blum Tip-on, abertura por toque'
-#   ⭐ O ARMÁRIO SUPERIOR É AÉREO DE VERDADE: a banda de cima vai de 2,17 m
-#     a 2,92 m do piso. Porta de girar a essa altura, com 75 cm de largura,
-#     abre na cara de quem está embaixo. A Base tem a resposta da casa:
-#     "Blum AVENTOS HK-XS · ⭐ A BÁSCULA DA CASA · un · R$ 250,00".
-BASCULA_HK = 250.0
-BASCULA_NOME = 'Báscula Blum AVENTOS HK-XS'
+#   ⛔⛔ A BÁSCULA SAIU [Jonathan, 18/11/2026]: "não será a báscula, será a
+#     porta de giro na parte superior também". Eu tinha posto quatro
+#     AVENTOS HK-XS a R$ 250 porque a banda de cima vai de 2,17 m a 2,92 m
+#     do piso e porta de girar a essa altura abre na cara de quem está
+#     embaixo. Ele decidiu de giro, e é decisão dele.
+#     ⭐ Troca R$ 1.000 de báscula por 8 dobradiças de R$ 50: devolve R$ 600.
+#   ⚠ FICA REGISTRADO O QUE SE PERDE: a folha de 75 × 75 a 2,17 m abre para
+#     fora e para baixo, e quem estiver na mesa de jantar leva a quina na
+#     cabeça. A báscula sobe. É o tipo de coisa que não aparece no
+#     orçamento e aparece na obra.
 #   ⛔ REGRA 2 DA CASA [Jonathan, 28/10/2026]: "prateleiras internas dos
 #     armarios nao ultilizamos suporte oculto, mas precisamos considerar
 #     que toda prateleira interna existe a composição de 4 suportes em um

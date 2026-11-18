@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
-"""PAINEL DA SALA — VISTA 2 · a proposta de uma página.
+"""PAINEL DA SALA — VISTA 2 · a proposta de TRÊS PÁGINAS.
 
-⭐ [Jonathan, 17/11/2026] "vamos vender por 53.000 esse projeto / deixe claro
-  na proposta que é com a conferencia tecnica e instalação em Governador
-  Valadares" e, logo depois, "alias, por 49.800".
+⭐⭐ [Jonathan, 18/11/2026] "Pode montar uma proposta um pouco mais robusta,
+  apresentando as etapas da empresa, apresentar a garantia. Pode ter umas 3
+  páginas essa proposta. Explore mais as imagens 3D que foi enviada no chat."
 
-⭐⭐ O DESENHO SAI DAS MESMAS COTAS QUE O ORÇAMENTO USA. O ripado é
-  desenhado ripa a ripa, no passo real de 4 cm, e PARA onde a pedra acaba —
-  que foi a decisão dele. O cliente vê a diferença entre o trecho ripado e
-  o liso sem precisar ler uma linha.
+E, no mesmo fôlego: "Tire a descrição de articulador AVENTOS da Blum... não
+será a báscula, será a porta de giro na parte superior também. E descreva que
+na região das portas pivotantes será painel liso, não ripado."
+
+⛔ AS OITO ETAPAS E A POLÍTICA DE GARANTIA NÃO SÃO MINHAS. Saíram, palavra
+  por palavra, de `proposta-aline.html` (a linha do tempo da casa) e de
+  `closer-vendas/referencias/garantia.md`. Inventar o processo da empresa numa
+  proposta é prometer o que a fábrica não combinou.
+
+⚠⚠ E A GARANTIA DE 30 ANOS TEM UMA PENDÊNCIA ABERTA NA CASA: garantia.md
+  avisa que "só o termo de 10 anos está desenhado; o termo de 30 anos precisa
+  existir assinado antes de a proposta sair". A folha promete 30; o documento
+  tem de acompanhar.
 """
 import pathlib, subprocess, os, importlib.util, datetime, base64
 
@@ -20,22 +29,21 @@ b  = _mod('ps_base', 'base.py')
 lv = _mod('ps_lv', 'levantamento.py')
 
 CSS = (P.parent / 'css-brinquedoteca.css').read_text()
-
-#   ⭐ [Jonathan, 18/11/2026] "Use as imagens enviadas no chat para montar a
-#     proposta." São os renders do próprio executivo: a parede ripada com o
-#     nicho de travertino vista do jantar, e a mesma parede do outro ângulo,
-#     com a porta mimetizada. ⛔ Entrada de build é arquivo do REPOSITÓRIO,
-#     nunca do scratchpad — a lição do job da Eliza, 30/10/2026.
-def uri(n):
-    return ('data:image/jpeg;base64,'
-            + base64.b64encode((P / 'img' / n).read_bytes()).decode())
-IMG_NICHO, IMG_JANTAR = uri('sala-nicho.jpg'), uri('sala-jantar.jpg')
 br = lambda v: f'{v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
 MES = ('janeiro fevereiro março abril maio junho julho agosto setembro '
        'outubro novembro dezembro').split()
 _h = datetime.date.today()
 DATA = f'{_h.day} de {MES[_h.month - 1]} de {_h.year}'
 
+#   ⭐ [Jonathan, 18/11/2026] "Explore mais as imagens 3D que foi enviada no
+#     chat." São cinco: dois renders do ambiente, dois estudos 3D da própria
+#     prancha (a parede inteira e o nicho de perto) e o living.
+#   ⛔ Entrada de build é arquivo do REPOSITÓRIO, nunca do scratchpad.
+def uri(n):
+    return ('data:image/jpeg;base64,'
+            + base64.b64encode((P / 'img' / n).read_bytes()).decode())
+IMG = {k: uri(k + '.jpg') for k in
+       ('capa', 'living', 'escada', 'rodape', '3d-parede', '3d-nicho')}
 # ════════════════════════════════════════════════════════════════════════
 # O DESENHO
 # ════════════════════════════════════════════════════════════════════════
@@ -122,8 +130,8 @@ def desenho():
                  f'font-family="Inter,sans-serif" paint-order="stroke" '
                  f'stroke="#FFFFFF" stroke-width="4" '
                  f'stroke-linejoin="round">{rot}</text>')
-    banda(Y0, lv.R_SUP, 'ARMÁRIO · 4 FOLHAS BASCULANTES')
-    banda(NIC_Y1, Y1 - NIC_Y1, 'ARMÁRIO · 4 FOLHAS DE ABRIR')
+    banda(Y0, lv.R_SUP, 'ARMÁRIO SUPERIOR · 4 FOLHAS')
+    banda(NIC_Y1, Y1 - NIC_Y1, 'ARMÁRIO INFERIOR · 4 FOLHAS')
     porta(X0, lv.R_PORTA_L, A, 'ARMÁRIO')
     porta(X0 + 366, 83, 210, 'PORTA')
     porta(X0 + 592, 70, 210, 'PORTA')
@@ -141,110 +149,241 @@ def desenho():
     return ''.join(s)
 
 
+
 # ════════════════════════════════════════════════════════════════════════
-# A FOLHA
+# O CONTEÚDO
 # ════════════════════════════════════════════════════════════════════════
 ITENS = [
  ('Os dois armários do nicho', '302 cm, acima e abaixo da pedra',
   'Dois armários de <b>50 cm de profundidade</b> emoldurando o nicho: o '
-  '<b>superior</b> — 302 × 75, a 2,17 m do piso — em <b>quatro folhas '
-  'basculantes</b>, e o <b>inferior</b> — 302 × 71 — em quatro folhas de abrir. '
-  'Caixa, prateleira e ferragem em cada vão. As oito folhas são ripadas na mesma '
-  'trama e <b>a junta cai dentro do vão de 2 cm</b>: fechadas, elas somem.'),
+  '<b>superior</b> — 302 × 75, a 2,17 m do piso — e o <b>inferior</b> — '
+  '302 × 71 —, cada um em <b>quatro folhas de giro</b>, com caixa, prateleira '
+  'e ferragem em cada vão. As oito folhas são ripadas na mesma trama e a junta '
+  'cai dentro do vão de 2 cm: fechadas, elas somem.'),
  ('Armário lateral', '50 × 277 × 50, folha inteira',
   'Coluna inteira atrás de uma única folha ripada de <b>2,77 m</b>, com cinco '
-  'prateleiras. Dobradiças Hettich Sensys e alma de aço contra empeno, que uma '
-  'folha dessa altura pede.'),
+  'prateleiras. Dobradiças Blum e alma de aço contra empeno, que uma folha '
+  'dessa altura pede.'),
  ('Painel liso e as duas portas de passagem', '330 cm, do nicho para a direita',
-  'Face melamínica lisa, sem ripa. As duas folhas de passagem — <b>83 × 210</b> e '
-  '<b>70 × 210</b> — são <b>tamponadas em 42 mm</b>, com marco mimetizado e '
+  'Do fim da pedra para a direita <b>o painel é liso, sem ripa</b> — é a '
+  'região das <b>duas portas pivotantes</b>. As folhas de <b>83 × 210</b> e '
+  '<b>70 × 210</b> são tamponadas em <b>42 mm</b>, com marco mimetizado e '
   'sistema pivô, e fecham alinhadas ao painel.'),
  ('Estrutura de fixação', 'montantes e travessas',
   'Montantes a cada 60 cm e três fiadas de travessa, em MDF, chumbados na '
   'alvenaria — é o que mantém 6,82 m de painel e três armários num plano só.'),
 ]
-linhas = ''.join(
-  f'<div class="cj"><div class="n">{i:02d}</div>'
-  f'<div><div class="t">{n} · <span style="color:var(--mut)">{s}</span></div>'
-  f'<div class="d">{d}</div></div></div>'
-  for i, (n, s, d) in enumerate(ITENS, 1))
+
+#   ⛔ AS OITO ETAPAS SÃO AS DA CASA, copiadas de `proposta-aline.html`. Só a
+#     etapa 2 foi adaptada ao projeto, porque é a que cita o executivo.
+ETAPAS = [
+ ('Alinhamento', 'Entendemos o escopo e o ambiente antes de qualquer número. '
+  'A visita define o que será executado.'),
+ ('Detalhamento técnico', 'O executivo vira instrução de fábrica. Cada medida '
+  'conferida no local, em ' + b.OBRA + '.'),
+ ('Programação', 'Data de produção definida antes de iniciar, com prazo '
+  'comunicado.'),
+ ('Produção', 'Corte, montagem e furação com os processos acumulados em anos '
+  'de fábrica.'),
+ ('Acabamento', 'Borda, superfície e detalhe revisados antes de o módulo '
+  'entrar em embalagem.'),
+ ('Conferência', 'Cada peça testada, cada ferragem montada e verificada antes '
+  'de sair da fábrica.'),
+ ('Entrega e montagem', 'Equipe própria. Do caminhão ao parafuso final — sem '
+  'terceirização de montagem.'),
+ ('Compromisso contínuo', 'Ferragem tem garantia. Dúvida tem resposta. A '
+  'relação não encerra na entrega.'),
+]
 
 ENTRADA = b.PRECO_FECHADO * b.PAGAMENTO[0][1]
 SALDO = b.PRECO_FECHADO * b.PAGAMENTO[1][1]
 
+_itens = ''.join(
+  f'<div class="cj"><div class="n">{i:02d}</div>'
+  f'<div><div class="t">{n} · <span style="color:var(--mut)">{s}</span></div>'
+  f'<div class="d">{d}</div></div></div>'
+  for i, (n, s, d) in enumerate(ITENS, 1))
+_etapas = ''.join(
+  f'<div class="et"><div class="n">{i:02d}</div><div class="t">{t}</div>'
+  f'<div class="d">{d}</div></div>'
+  for i, (t, d) in enumerate(ETAPAS, 1))
+
+CSS_X = '''
+/* ── capa ───────────────────────────────────────────────────────────── */
+.cv .ph{flex:none;height:152mm;}
+.cv .pe{padding:14mm 19mm 12mm;}
+.cv .nm{font-size:34pt;line-height:1.06;letter-spacing:-.028em;margin-top:4mm;}
+.cv .nm em{font-style:italic;color:#A9BFAF;}
+.cv .sub{margin-top:6mm;color:#C3CFC5;font-size:9.4pt;max-width:128mm;
+  line-height:1.6;}
+.cv .fat{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8mm;
+  margin-top:9mm;}
+.cv .fat .k{font-size:6.2pt;letter-spacing:.26em;text-transform:uppercase;
+  color:#7E9A88;font-weight:600;}
+.cv .fat .v{font-family:'Fraunces',Georgia,serif;font-size:15pt;font-weight:300;
+  color:#F4F2EC;margin-top:2mm;line-height:1.15;
+  font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1,'onum' 0;}
+.cv .fat .v small{display:block;font-family:'Inter',sans-serif;font-size:7.2pt;
+  color:#A9BFAF;margin-top:1.4mm;letter-spacing:0;}
+.cv .rod{display:flex;justify-content:space-between;margin-top:8mm;
+  padding-top:4mm;border-top:1px solid rgba(255,255,255,.14);font-size:6.6pt;
+  letter-spacing:.24em;text-transform:uppercase;color:#A9BFAF;}
+/* ── miolo ──────────────────────────────────────────────────────────── */
+.in{padding:13mm 19mm 5mm;}
+h2.tt{font-size:21pt;line-height:1.12;margin-top:3mm;letter-spacing:-.018em;}
+h2.tt em{font-style:italic;color:var(--verde);}
+.lead{font-size:8.6pt;color:var(--verde-lt);margin-top:3.5mm;max-width:150mm;
+  line-height:1.6;}
+.lead b{color:var(--tinta);font-weight:500;}
+.des{width:152mm;margin:5mm auto 1mm;}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0 5mm;margin-top:3.6mm;}
+.duo .ph{aspect-ratio:1.66/1;position:relative;}
+.duo .ph img{width:100%;height:100%;object-fit:cover;}
+.duo .ph span{position:absolute;left:0;bottom:0;background:var(--verde);
+  color:#DCE5DD;font-size:5.6pt;letter-spacing:.2em;text-transform:uppercase;
+  padding:1.2mm 2.4mm;}
+.cj{padding:1.9mm 0;grid-template-columns:7mm 1fr;}
+.cj .t{font-size:9.4pt;}
+.cj .d{font-size:7.1pt;line-height:1.42;margin-top:.9mm;max-width:154mm;}
+.nota{margin-top:3.5mm;padding:3.4mm 5mm;background:#F6F1EC;
+  border-left:2px solid var(--terra);border-radius:2px;}
+.nota .k{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.nota .t{font-size:7.2pt;line-height:1.5;color:var(--verde-lt);margin-top:1.8mm;}
+.nota .t b{color:var(--tinta);font-weight:600;}
+/* ── etapas ─────────────────────────────────────────────────────────── */
+.etapas{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm 6mm;
+  margin-top:6mm;}
+.et .n{font-family:'Fraunces',Georgia,serif;font-size:15pt;font-weight:300;
+  color:var(--terra);line-height:1;}
+.et .t{font-size:8.4pt;font-weight:600;margin-top:1.8mm;letter-spacing:-.005em;}
+.et .d{font-size:7pt;line-height:1.45;color:var(--verde-lt);margin-top:1.4mm;}
+/* ── garantia ───────────────────────────────────────────────────────── */
+.gar{margin-top:7mm;display:grid;grid-template-columns:40mm 1fr;gap:0 8mm;
+  align-items:start;padding-top:5mm;border-top:1.4px solid var(--tinta);}
+.gar .big{font-family:'Fraunces',Georgia,serif;font-size:40pt;font-weight:300;
+  line-height:.92;letter-spacing:-.03em;color:var(--verde);
+  font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1,'onum' 0;}
+.gar .big span{display:block;font-family:'Inter',sans-serif;font-size:6.6pt;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--verde-lt);
+  font-weight:600;margin-top:2.5mm;}
+.gar .tx{font-size:7.6pt;line-height:1.55;color:var(--verde-lt);}
+.gar .tx b{color:var(--tinta);font-weight:600;}
+.gar .tx + .tx{margin-top:2.6mm;}
+/* ── investimento e condições ───────────────────────────────────────── */
+.tot{margin-top:6mm;background:var(--verde);color:#F4F2EC;padding:4mm 6mm;
+  display:flex;align-items:center;justify-content:space-between;}
+.tot .k{font-size:6.6pt;letter-spacing:.3em;text-transform:uppercase;
+  color:#A9BFAF;font-weight:500;}
+.tot .t{font-size:8.8pt;color:#D3DDD5;margin-top:1.6mm;}
+.tot .t b{color:#fff;font-weight:500;}
+.tot .gv{font-size:7.4pt;color:#A9BFAF;margin-top:1.4mm;}
+.tot .gv b{color:#fff;font-weight:500;}
+.tot .v{font-family:'Fraunces',Georgia,serif;font-size:26pt;font-weight:300;
+  letter-spacing:-.025em;white-space:nowrap;padding-left:8mm;
+  font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1,'onum' 0;}
+.gr{grid-template-columns:repeat(4,1fr);gap:0 6mm;margin-top:4mm;}
+.gr .k{font-size:6.1pt;letter-spacing:.24em;}
+.gr .v{font-size:7pt;line-height:1.44;margin-top:1.2mm;}
+.fora{margin-top:4mm;padding:3.6mm 5mm;}
+.fora .k{font-size:6.4pt;}
+.lst{font-size:7pt;line-height:1.4;margin-top:2.2mm;}
+.lst li{margin-bottom:1mm;}
+.fecho{margin-top:auto;padding-top:6mm;display:grid;
+  grid-template-columns:1fr 1fr;gap:0 7mm;align-items:center;}
+.fecho .ph{aspect-ratio:2.33/1;}
+.fecho .ph img{width:100%;height:100%;object-fit:cover;}
+.fecho .k{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}
+.fecho .d{font-size:7.6pt;line-height:1.55;color:var(--verde-lt);margin-top:2.2mm;}
+.fecho .d b{color:var(--tinta);font-weight:600;}
+.pe2{margin-top:auto;padding-top:3mm;font-size:6.2pt;letter-spacing:.18em;}
+.pe2 span{white-space:nowrap;}
+'''
+
 HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <title>Painel da Sala · Proposta Valvic</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>{CSS}
-.in{{padding:12mm 19mm 3mm;}}
-.ttl{{font-size:22pt;margin-top:3mm;line-height:1.1;}}
-.sub1{{font-size:8.4pt;color:var(--verde-lt);margin-top:3.2mm;}}
-.sub1 b{{color:var(--tinta);font-weight:500;}}
-.vis{{display:grid;grid-template-columns:102fr 50fr;gap:0 5mm;
-  max-width:160mm;margin:4.5mm auto 0;align-items:start;}}
-.des{{width:100%;}}
-.fotos{{display:flex;flex-direction:column;gap:2mm;}}
-.fotos .ph{{position:relative;aspect-ratio:2.1/1;}}
-.fotos .ph img{{width:100%;height:100%;object-fit:cover;}}
-.fotos .ph span{{position:absolute;left:0;bottom:0;background:var(--verde);
-  color:#DCE5DD;font-size:5.4pt;letter-spacing:.2em;text-transform:uppercase;
-  padding:1.1mm 2.2mm;}}
-.des svg{{width:100%;height:auto;display:block;}}
-.cj{{padding:1.5mm 0;grid-template-columns:7mm 1fr;}}
-.cj .t{{font-size:9.4pt;}}
-.cj .d{{font-size:6.8pt;line-height:1.4;margin-top:.8mm;max-width:152mm;}}
-.tot{{margin-top:3.1mm;background:var(--verde);color:#F4F2EC;padding:3.5mm 6mm;
-  display:flex;align-items:center;justify-content:space-between;}}
-.tot .k{{font-size:6.6pt;letter-spacing:.3em;text-transform:uppercase;
-  color:#A9BFAF;font-weight:500;}}
-.tot .t{{font-size:8.8pt;color:#D3DDD5;margin-top:1.6mm;}}
-.tot .t b{{color:#fff;font-weight:500;}}
-.tot .gv{{font-size:7.6pt;color:#A9BFAF;margin-top:1.4mm;}}
-.tot .gv b{{color:#fff;font-weight:500;}}
-.tot .v{{font-family:'Fraunces',Georgia,serif;font-size:25pt;font-weight:300;
-  letter-spacing:-.025em;white-space:nowrap;padding-left:8mm;}}
-.gr{{grid-template-columns:repeat(4,1fr);gap:0 6mm;margin-top:3.4mm;}}
-.gr .k{{font-size:6.1pt;letter-spacing:.24em;}}
-.gr .v{{font-size:6.8pt;line-height:1.4;margin-top:1.1mm;}}
-.nota{{margin-top:2.4mm;padding:3mm 5mm;background:#F6F1EC;
-  border-left:2px solid var(--terra);border-radius:2px;}}
-.nota .k{{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
-  color:var(--terra);font-weight:600;}}
-.nota .t{{font-size:6.9pt;line-height:1.46;color:var(--verde-lt);margin-top:1.6mm;}}
-.nota .t b{{color:var(--tinta);font-weight:600;}}
-.fora{{margin-top:2.8mm;padding:3.2mm 5mm;}}
-.fora .k{{font-size:6.4pt;}}
-.lst{{font-size:6.7pt;line-height:1.38;margin-top:2mm;}}
-.lst li{{margin-bottom:1mm;}}
-.pe2{{margin-top:auto;padding-top:2.2mm;font-size:6.2pt;letter-spacing:.18em;}}
-.pe2 span{{white-space:nowrap;}}
-</style></head><body>
+<style>{CSS}{CSS_X}</style></head><body>
 
-<div class="pg"><div class="in">
-  <div class="sel">Proposta de marcenaria · Sala</div>
-  <h1 class="ttl disp">Uma parede de 6,82 m —<br>
-    <em>e onze folhas que ela esconde.</em></h1>
-  <div class="sub1">Executivo <b>SALA · VISTA 2</b> (1/50) e <b>NICHO RIPADO</b>
-    (1/30, pág. 18) · obra em <b>{b.OBRA}</b></div>
-
-  <div class="vis">
-    <div class="des">{desenho()}</div>
-    <div class="fotos">
-      <div class="ph"><img src="{IMG_NICHO}" alt=""><span>O nicho de travertino</span></div>
-      <div class="ph"><img src="{IMG_JANTAR}" alt=""><span>A porta mimetizada</span></div>
+<!-- ─────────────────────────────── 1 · CAPA ─────────────────────────── -->
+<div class="pg cv"><div class="in">
+  <div class="ph"><img src="{IMG['capa']}" alt=""></div>
+  <div class="pe">
+    <div class="sel">Proposta de marcenaria · Sala</div>
+    <h1 class="nm disp">Uma parede de 6,82 m —<br>
+      <em>e onze folhas que ela esconde.</em></h1>
+    <div class="sub">Painel ripado em <b>MDF Gianduia Trama</b> emoldurando o
+      nicho de <b>travertino romano</b>, com <b>três armários mimetizados</b> e
+      <b>duas portas de passagem</b> que desaparecem na trama.</div>
+    <div class="fat">
+      <div><div class="k">Obra</div><div class="v">{b.OBRA}
+        <small>conferência técnica e instalação inclusas</small></div></div>
+      <div><div class="k">Entrega</div><div class="v">{b.PRAZO_DIAS} dias
+        <small>corridos, da assinatura</small></div></div>
+      <div><div class="k">Garantia</div><div class="v">{b.GARANTIA_ANOS} anos
+        <small>sobre marcenaria e ferragem</small></div></div>
     </div>
+    <div class="rod"><span>Valvic Marcenaria</span>
+      <span>{DATA} · validade de {b.VALIDADE_DIAS} dias</span></div>
+  </div>
+</div></div>
+
+<!-- ─────────────────────────────── 2 · O PAINEL ─────────────────────── -->
+<div class="pg"><div class="in">
+  <div class="sel">O painel · executivo SALA · VISTA 2</div>
+  <h2 class="tt disp">Seis metros e oitenta e dois,<br>
+    <em>num plano só.</em></h2>
+  <div class="lead">O ripado corre da esquerda <b>até onde a pedra termina</b>,
+    em 352 cm. Dali para a direita o painel é <b>liso</b> — é a região das duas
+    portas pivotantes. A pedra, o sóculo e o rodapé são da marmoraria; o vão
+    sai da fábrica pronto para recebê-los.</div>
+
+  <div class="des">{desenho()}</div>
+
+  <div class="duo">
+    <div class="ph"><img src="{IMG['3d-parede']}" alt=""><span>A parede inteira · estudo 3D</span></div>
+    <div class="ph"><img src="{IMG['3d-nicho']}" alt=""><span>O nicho de travertino</span></div>
   </div>
 
-  {linhas}
+  {_itens}
 
   <div class="nota">
     <div class="k">Atenção · o que esta proposta acrescenta ao executivo</div>
     <div class="t"><b>Os armários não aparecem nas pranchas.</b> O executivo
     desenha o painel como superfície contínua: os <b>três armários</b> — nove
-    folhas ao todo, acima e abaixo do nicho e na coluna lateral — são
-    acréscimo desta proposta, com caixa, prateleira e ferragem em cada vão.
-    As nove folhas <b>abrem por toque, com tecnologia Blum</b>, sem puxador
-    aparente, para que a trama do ripado corra inteira de ponta a ponta.</div>
+    folhas ao todo, acima e abaixo do nicho e na coluna lateral — são acréscimo
+    desta proposta, com caixa, prateleira e ferragem em cada vão. As nove folhas
+    <b>abrem por toque, com Blum Tip-on</b>, sem puxador aparente, para que a
+    trama do ripado corra inteira de ponta a ponta.</div>
+  </div>
+
+  <div class="pe2"><span>Valvic Marcenaria</span>
+    <span>{b.OBRA} · {DATA}</span></div>
+</div></div>
+
+<!-- ───────────────── 3 · PROCESSO, GARANTIA E INVESTIMENTO ──────────── -->
+<div class="pg"><div class="in">
+  <div class="sel">Como trabalhamos</div>
+  <h2 class="tt disp">Oito etapas, e nenhuma<br>
+    <em>terceirizada na montagem.</em></h2>
+
+  <div class="etapas">{_etapas}</div>
+
+  <div class="gar">
+    <div><div class="big">{b.GARANTIA_ANOS}<span>anos de garantia</span></div></div>
+    <div>
+      <div class="tx">A escada de garantia da Valvic <b>sobe com a ferragem</b>,
+        e este projeto é <b>Blum de ponta a ponta</b> — dobradiça e pulsador.
+        São <b>200 mil ciclos de ensaio</b> na dobradiça: abrir e fechar vinte
+        vezes por dia durante vinte e sete anos.</div>
+      <div class="tx"><b>O prazo é nosso, não do fabricante.</b> A garantia é
+        sobre a marcenaria: quem responde é a casa que desenhou, produziu e
+        instalou. <b>Instalações e regulagens: 2 anos.</b> Atendimento com
+        retorno em <b>24 horas</b> e visita em até <b>3 dias úteis</b>, sem
+        custo dentro do prazo. O termo é assinado na entrega, junto do guia de
+        conservação.</div>
+    </div>
   </div>
 
   <div class="tot">
@@ -258,35 +397,39 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 
   <div class="gr">
     <div><div class="k">Conferência técnica</div><div class="v">
-      Antes do corte, <b>no local, em {b.OBRA}</b>. É ela que transforma a
-      cota da prancha em medida de fábrica — e é nossa.</div></div>
+      Antes do corte, <b>no local</b>. É ela que transforma a cota da prancha em
+      medida de fábrica — e é nossa.</div></div>
     <div><div class="k">Entrega e instalação</div><div class="v">
-      <b>{b.PRAZO_DIAS} dias corridos</b> da assinatura. <b>Instalação em
-      {b.OBRA}</b> por equipe própria, com deslocamento e estadia já no
-      preço.</div></div>
+      <b>{b.PRAZO_DIAS} dias corridos</b> da assinatura, com instalação em
+      {b.OBRA} por <b>equipe própria</b>.</div></div>
     <div><div class="k">Abertura e ferragem</div><div class="v">
-      As <b>nove folhas de armário</b> abrem <b>por toque, com Blum Tip-on</b> —
-      nenhum puxador. Básculas <b>Blum AVENTOS</b> no aéreo, dobradiças
-      <b>Hettich Sensys</b> nas demais. As duas de passagem são pivotantes.
-      </div></div>
-    <div><div class="k">Acabamento e garantia</div><div class="v">
-      <b>MDF Gianduia Trama · Duratex</b>, fita na mesma cor em toda face
-      aparente, inclusive nas duas faces de cada ripa. <b>10 anos</b> sobre
-      marcenaria e ferragem.</div></div>
+      Nove folhas de armário <b>por toque, com Blum Tip-on</b>. Dobradiças
+      <b>Blum</b>; as duas de passagem são pivotantes.</div></div>
+    <div><div class="k">Validade</div><div class="v">
+      <b>{b.VALIDADE_DIAS} dias corridos</b> para esta proposta. Depois disso
+      os valores são reconfirmados com a fábrica.</div></div>
   </div>
 
   <div class="fora"><div class="k">O que não está nesta proposta</div>
   <ul class="lst">
     <li><b>Toda a pedra.</b> O nicho de <b>131 × 302 em mármore travertino
-      romano</b>, o sóculo em alvenaria revestido e o rodapé de 15 cm. O painel
-      é entregue com o vão pronto para recebê-los.</li>
+      romano</b>, o sóculo em alvenaria revestido e o rodapé de 15 cm.</li>
     <li><b>A iluminação do nicho.</b> A prancha pede <i>prever</i> fita de LED
       3000 K: deixamos o rasgo e a passagem; a fita, a fonte e o acionamento
       são do elétrico.</li>
-    <li><b>A janela 202 × 175</b> em vidro laminado com estrutura metálica,
-      e toda a <b>alvenaria, elétrica e revestimento</b> — inclusive os
-      pontos de fixação na parede.</li>
+    <li><b>A janela 202 × 175</b> em vidro laminado com estrutura metálica, e
+      toda a <b>alvenaria, elétrica e revestimento</b> — inclusive os pontos de
+      fixação na parede.</li>
   </ul></div>
+
+  <div class="fecho">
+    <div class="ph"><img src="{IMG['rodape']}" alt=""></div>
+    <div class="tx"><div class="k">O próximo passo</div>
+      <div class="d">Com a proposta aprovada, marcamos a <b>conferência técnica
+      em {b.OBRA}</b> e a partir dela nasce o plano de corte. Estamos à
+      disposição para apresentar o projeto pessoalmente e responder o que
+      for preciso.</div></div>
+  </div>
 
   <div class="pe2"><span>Valvic Marcenaria</span>
     <span>{b.OBRA} · {DATA} · validade de {b.VALIDADE_DIAS} dias</span></div>
@@ -299,10 +442,10 @@ SAIDA.write_text(HTML, encoding='utf-8')
 subprocess.run(['node', str(P.parent / 'render-pdf.js'), str(SAIDA), str(PDF)],
                check=True, env=dict(os.environ,
                                     NODE_PATH='/opt/node22/lib/node_modules'))
-print(f'  {"PAINEL DA SALA · proposta de uma página":<44}')
+print(f'  {"PAINEL DA SALA · proposta de três páginas":<44}')
 print(f'    {"PREÇO FECHADO":<32}{"R$ " + br(b.PRECO_FECHADO):>16}')
 print(f'    {"custo direto":<32}{"R$ " + br(lv.DIRETO):>16}')
-print(f'    {"  logística de " + b.OBRA:<32}{"R$ " + br(b.CUSTO_GV):>16}')
 print(f'    {"MC lida · com RT":<32}{lv.MC*100:>15.2f}%')
 print(f'    {"MC lida · sem RT":<32}{lv.MC_SEM_RT*100:>15.2f}%')
+print(f'    {"garantia":<32}{str(b.GARANTIA_ANOS) + " anos":>16}')
 print(f'  → {PDF}')
