@@ -148,8 +148,13 @@ ALMA_BARRA = 50.0
 #     "Pulsador outros · un · R$ 70,00" da aba Ferragens.
 #   ⚠ E o pulsador vale também para a porta de 50 × 277, que eu já tinha
 #     orçado "sem puxador" sem dizer COMO ela abre.
-PULSADOR = 70.0
-PULSADOR_NOME = 'Pulsador de abertura por toque'
+#   ⛔ Eu tinha o genérico de R$ 70. Blum é a linha de cima da
+#     Base: "Pulsador Blum Tip-on ou Servo · Abertura por toque ·
+#     un · R$ 100,00 · Jonathan, 26/10/2026". São R$ 30 por folha
+#     e NOVE folhas de armário — as duas de passagem abrem na
+#     maçaneta, não no toque.
+PULSADOR = 100.0
+PULSADOR_NOME = 'Pulsador Blum Tip-on, abertura por toque'
 #   ⭐ O ARMÁRIO SUPERIOR É AÉREO DE VERDADE: a banda de cima vai de 2,17 m
 #     a 2,92 m do piso. Porta de girar a essa altura, com 75 cm de largura,
 #     abre na cara de quem está embaixo. A Base tem a resposta da casa:

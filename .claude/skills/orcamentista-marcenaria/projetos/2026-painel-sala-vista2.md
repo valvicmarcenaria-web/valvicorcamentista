@@ -73,17 +73,39 @@ não ter interior desenhado. Com as duas bandas virando armário, deixar oco
 justamente o que o executivo NOMEIA armário deixou de fazer sentido. Está em
 linha própria e some com uma palavra.
 
+### 18/11 · mantido em R$ 49.800, com os renders e o aviso
+
+> [Jonathan, 18/11/2026] *"Vamos manter em 49.800 / Use as imagens enviadas no
+> chat para montar a proposta / Deixe sinalizado sobre a existência dos armários
+> que não mostra nos projetos e que serão com abertura por toque com tecnologia
+> BLUM"*
+
+⛔ **"BLUM" trocou o pulsador.** Eu tinha o genérico — *"Pulsador outros · R$ 70"*.
+Blum é a linha de cima da Base: *"Pulsador Blum Tip-on ou Servo · Abertura por
+toque · R$ 100,00"*. São R$ 30 por folha e **nove folhas de armário** — as duas
+de passagem abrem na maçaneta, não no toque. Custo direto de R$ 22.421,10 para
+**R$ 22.696,50**; MC de 31,07% para **30,51%**.
+
+⭐ A folha ganhou **dois renders do próprio executivo** (`img/sala-nicho.jpg` e
+`img/sala-jantar.jpg`, recortados de 6.webp e 5.webp) ao lado da elevação, e um
+**bloco de aviso em destaque**: *"Os armários não aparecem nas pranchas... As
+nove folhas abrem por toque, com tecnologia Blum"*.
+
+⚠ O render mostra **puxador nas duas portas de passagem** — um traço preto
+discreto. Elas não são de toque: são pivotantes com fecho rolete. **O puxador
+delas não está especificado no executivo e não está orçado.**
+
 ### O fechamento
 
 | | |
 |---|--:|
 | **PREÇO FECHADO** | **R$ 49.800,00** |
-| custo direto | R$ 22.421,10 |
+| custo direto | R$ 22.696,50 |
 | — dos quais, logística de GV | R$ 5.580,00 |
-| **⛔ MC lida · com RT de 10%** | **31,07%** |
-| MC lida · se não houver RT | 39,85% |
-| margem de contribuição | R$ 15.470,48 |
-| empate em dias de fábrica | 3,9 d |
+| **⛔ MC lida · com RT de 10%** | **30,51%** |
+| MC lida · se não houver RT | 39,30% |
+| margem de contribuição | R$ 15.195,08 |
+| empate em dias de fábrica | 3,8 d |
 
 ⛔⛔ **A R$ 49.800 A MC CAIU PARA 31,07% — ABAIXO DO PISO DE 35% DA CASA.** Os
 armários custaram R$ 5.901 e o preço não mudou.

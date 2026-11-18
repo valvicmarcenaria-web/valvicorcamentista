@@ -10,7 +10,7 @@
   que foi a decisão dele. O cliente vê a diferença entre o trecho ripado e
   o liso sem precisar ler uma linha.
 """
-import pathlib, subprocess, os, importlib.util, datetime
+import pathlib, subprocess, os, importlib.util, datetime, base64
 
 P = pathlib.Path(__file__).resolve().parent
 def _mod(n, a):
@@ -20,6 +20,16 @@ b  = _mod('ps_base', 'base.py')
 lv = _mod('ps_lv', 'levantamento.py')
 
 CSS = (P.parent / 'css-brinquedoteca.css').read_text()
+
+#   ⭐ [Jonathan, 18/11/2026] "Use as imagens enviadas no chat para montar a
+#     proposta." São os renders do próprio executivo: a parede ripada com o
+#     nicho de travertino vista do jantar, e a mesma parede do outro ângulo,
+#     com a porta mimetizada. ⛔ Entrada de build é arquivo do REPOSITÓRIO,
+#     nunca do scratchpad — a lição do job da Eliza, 30/10/2026.
+def uri(n):
+    return ('data:image/jpeg;base64,'
+            + base64.b64encode((P / 'img' / n).read_bytes()).decode())
+IMG_NICHO, IMG_JANTAR = uri('sala-nicho.jpg'), uri('sala-jantar.jpg')
 br = lambda v: f'{v:,.2f}'.replace(',', '§').replace('.', ',').replace('§', '.')
 MES = ('janeiro fevereiro março abril maio junho julho agosto setembro '
        'outubro novembro dezembro').split()
@@ -166,16 +176,24 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <title>Painel da Sala · Proposta Valvic</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>{CSS}
-.in{{padding:12mm 19mm 7mm;}}
+.in{{padding:12mm 19mm 3mm;}}
 .ttl{{font-size:22pt;margin-top:3mm;line-height:1.1;}}
 .sub1{{font-size:8.4pt;color:var(--verde-lt);margin-top:3.2mm;}}
 .sub1 b{{color:var(--tinta);font-weight:500;}}
-.des{{width:134mm;margin:5mm auto 0;}}
+.vis{{display:grid;grid-template-columns:102fr 50fr;gap:0 5mm;
+  max-width:160mm;margin:4.5mm auto 0;align-items:start;}}
+.des{{width:100%;}}
+.fotos{{display:flex;flex-direction:column;gap:2mm;}}
+.fotos .ph{{position:relative;aspect-ratio:2.1/1;}}
+.fotos .ph img{{width:100%;height:100%;object-fit:cover;}}
+.fotos .ph span{{position:absolute;left:0;bottom:0;background:var(--verde);
+  color:#DCE5DD;font-size:5.4pt;letter-spacing:.2em;text-transform:uppercase;
+  padding:1.1mm 2.2mm;}}
 .des svg{{width:100%;height:auto;display:block;}}
-.cj{{padding:1.8mm 0;grid-template-columns:7mm 1fr;}}
+.cj{{padding:1.5mm 0;grid-template-columns:7mm 1fr;}}
 .cj .t{{font-size:9.4pt;}}
-.cj .d{{font-size:7.1pt;line-height:1.44;margin-top:.9mm;max-width:148mm;}}
-.tot{{margin-top:4mm;background:var(--verde);color:#F4F2EC;padding:4mm 6mm;
+.cj .d{{font-size:6.8pt;line-height:1.4;margin-top:.8mm;max-width:152mm;}}
+.tot{{margin-top:3.1mm;background:var(--verde);color:#F4F2EC;padding:3.5mm 6mm;
   display:flex;align-items:center;justify-content:space-between;}}
 .tot .k{{font-size:6.6pt;letter-spacing:.3em;text-transform:uppercase;
   color:#A9BFAF;font-weight:500;}}
@@ -185,27 +203,49 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 .tot .gv b{{color:#fff;font-weight:500;}}
 .tot .v{{font-family:'Fraunces',Georgia,serif;font-size:25pt;font-weight:300;
   letter-spacing:-.025em;white-space:nowrap;padding-left:8mm;}}
-.gr{{grid-template-columns:repeat(4,1fr);gap:0 6mm;margin-top:4mm;}}
+.gr{{grid-template-columns:repeat(4,1fr);gap:0 6mm;margin-top:3.4mm;}}
 .gr .k{{font-size:6.1pt;letter-spacing:.24em;}}
-.gr .v{{font-size:7.1pt;line-height:1.42;margin-top:1.2mm;}}
-.fora{{margin-top:3.5mm;padding:4mm 5.5mm;}}
+.gr .v{{font-size:6.8pt;line-height:1.4;margin-top:1.1mm;}}
+.nota{{margin-top:2.4mm;padding:3mm 5mm;background:#F6F1EC;
+  border-left:2px solid var(--terra);border-radius:2px;}}
+.nota .k{{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--terra);font-weight:600;}}
+.nota .t{{font-size:6.9pt;line-height:1.46;color:var(--verde-lt);margin-top:1.6mm;}}
+.nota .t b{{color:var(--tinta);font-weight:600;}}
+.fora{{margin-top:2.8mm;padding:3.2mm 5mm;}}
 .fora .k{{font-size:6.4pt;}}
-.lst{{font-size:7pt;line-height:1.4;margin-top:2.2mm;}}
+.lst{{font-size:6.7pt;line-height:1.38;margin-top:2mm;}}
 .lst li{{margin-bottom:1mm;}}
-.pe2{{margin-top:auto;padding-top:3mm;font-size:6.2pt;letter-spacing:.18em;}}
+.pe2{{margin-top:auto;padding-top:2.2mm;font-size:6.2pt;letter-spacing:.18em;}}
 .pe2 span{{white-space:nowrap;}}
 </style></head><body>
 
 <div class="pg"><div class="in">
   <div class="sel">Proposta de marcenaria · Sala</div>
   <h1 class="ttl disp">Uma parede de 6,82 m —<br>
-    <em>e nove folhas que ela esconde.</em></h1>
+    <em>e onze folhas que ela esconde.</em></h1>
   <div class="sub1">Executivo <b>SALA · VISTA 2</b> (1/50) e <b>NICHO RIPADO</b>
     (1/30, pág. 18) · obra em <b>{b.OBRA}</b></div>
 
-  <div class="des">{desenho()}</div>
+  <div class="vis">
+    <div class="des">{desenho()}</div>
+    <div class="fotos">
+      <div class="ph"><img src="{IMG_NICHO}" alt=""><span>O nicho de travertino</span></div>
+      <div class="ph"><img src="{IMG_JANTAR}" alt=""><span>A porta mimetizada</span></div>
+    </div>
+  </div>
 
   {linhas}
+
+  <div class="nota">
+    <div class="k">Atenção · o que esta proposta acrescenta ao executivo</div>
+    <div class="t"><b>Os armários não aparecem nas pranchas.</b> O executivo
+    desenha o painel como superfície contínua: os <b>três armários</b> — nove
+    folhas ao todo, acima e abaixo do nicho e na coluna lateral — são
+    acréscimo desta proposta, com caixa, prateleira e ferragem em cada vão.
+    As nove folhas <b>abrem por toque, com tecnologia Blum</b>, sem puxador
+    aparente, para que a trama do ripado corra inteira de ponta a ponta.</div>
+  </div>
 
   <div class="tot">
     <div><div class="k">Investimento · o painel completo</div>
@@ -225,9 +265,10 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
       {b.OBRA}</b> por equipe própria, com deslocamento e estadia já no
       preço.</div></div>
     <div><div class="k">Abertura e ferragem</div><div class="v">
-      <b>Nove folhas mimetizadas, nenhum puxador:</b> tudo abre por toque.
-      Básculas <b>Blum AVENTOS</b> no aéreo e dobradiças <b>Hettich Sensys</b>
-      nas demais.</div></div>
+      As <b>nove folhas de armário</b> abrem <b>por toque, com Blum Tip-on</b> —
+      nenhum puxador. Básculas <b>Blum AVENTOS</b> no aéreo, dobradiças
+      <b>Hettich Sensys</b> nas demais. As duas de passagem são pivotantes.
+      </div></div>
     <div><div class="k">Acabamento e garantia</div><div class="v">
       <b>MDF Gianduia Trama · Duratex</b>, fita na mesma cor em toda face
       aparente, inclusive nas duas faces de cada ripa. <b>10 anos</b> sobre
@@ -242,9 +283,9 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
     <li><b>A iluminação do nicho.</b> A prancha pede <i>prever</i> fita de LED
       3000 K: deixamos o rasgo e a passagem; a fita, a fonte e o acionamento
       são do elétrico.</li>
-    <li><b>A janela 202 × 175</b> em vidro laminado com estrutura metálica.</li>
-    <li><b>Alvenaria, elétrica e revestimento</b>, inclusive os pontos de
-      fixação na parede.</li>
+    <li><b>A janela 202 × 175</b> em vidro laminado com estrutura metálica,
+      e toda a <b>alvenaria, elétrica e revestimento</b> — inclusive os
+      pontos de fixação na parede.</li>
   </ul></div>
 
   <div class="pe2"><span>Valvic Marcenaria</span>
