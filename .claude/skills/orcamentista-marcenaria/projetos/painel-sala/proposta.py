@@ -95,6 +95,25 @@ def desenho():
                  f'font-family="Inter,sans-serif" paint-order="stroke" '
                  f'stroke="#FFFFFF" stroke-width="4" '
                  f'stroke-linejoin="round">{rot}</text>')
+    #   ⭐⭐ AS DUAS BANDAS VIRARAM ARMÁRIO [Jonathan, 18/11/2026] e o
+    #     desenho tem de mostrar isso: oito folhas, não uma pele. As
+    #     divisões caem dentro do vão de 2 cm da trama — fechadas, somem —,
+    #     mas numa proposta elas precisam ser vistas.
+    def banda(y, h, rot):
+        s.append(f'<rect x="{NIC_X0}" y="{y}" width="{lv.NICHO_L}" '
+                 f'height="{h}" fill="none" stroke="{TERRA}" '
+                 f'stroke-width="{FINO}" stroke-dasharray="5 3.5"/>')
+        for i in range(1, b.VAOS_BANDA):
+            x = NIC_X0 + lv.NICHO_L * i / b.VAOS_BANDA
+            s.append(f'<path d="M{x} {y}V{y+h}" stroke="{TERRA}" '
+                     f'stroke-width="{FINISSIMO}" stroke-dasharray="4 3"/>')
+        s.append(f'<text x="{(NIC_X0+NIC_X1)/2}" y="{y+h/2+3}" font-size="9" '
+                 f'fill="{TERRA}" text-anchor="middle" letter-spacing="1.2" '
+                 f'font-family="Inter,sans-serif" paint-order="stroke" '
+                 f'stroke="#FFFFFF" stroke-width="4" '
+                 f'stroke-linejoin="round">{rot}</text>')
+    banda(Y0, lv.R_SUP, 'ARMÁRIO · 4 FOLHAS BASCULANTES')
+    banda(NIC_Y1, Y1 - NIC_Y1, 'ARMÁRIO · 4 FOLHAS DE ABRIR')
     porta(X0, lv.R_PORTA_L, A, 'ARMÁRIO')
     porta(X0 + 366, 83, 210, 'PORTA')
     porta(X0 + 592, 70, 210, 'PORTA')
@@ -116,21 +135,23 @@ def desenho():
 # A FOLHA
 # ════════════════════════════════════════════════════════════════════════
 ITENS = [
- ('Painel ripado', '352 cm, até onde a pedra termina',
-  'Ripado em <b>MDF Gianduia Trama</b>, ripa de 2 cm e vão de 2 cm, sobre base '
-  'da mesma cor — porque o vão tem 2 cm de profundidade e o fundo é visto. '
-  'São <b>162 ripas</b> e <b>292 m de fita filetada</b> nas duas faces de cada uma.'),
- ('Porta do armário', '50 × 277, mimetizada no ripado',
-  'Folha inteira, ripada na mesma trama e na mesma linha das ripas do painel: '
-  'fechada, ela <b>não existe</b>. Dobradiças Hettich Sensys e alma de aço contra '
-  'empeno, que 2,77 m de altura pedem.'),
+ ('Os dois armários do nicho', '302 cm, acima e abaixo da pedra',
+  'Dois armários de <b>50 cm de profundidade</b> emoldurando o nicho: o '
+  '<b>superior</b> — 302 × 75, a 2,17 m do piso — em <b>quatro folhas '
+  'basculantes</b>, e o <b>inferior</b> — 302 × 71 — em quatro folhas de abrir. '
+  'Caixa, prateleira e ferragem em cada vão. As oito folhas são ripadas na mesma '
+  'trama e <b>a junta cai dentro do vão de 2 cm</b>: fechadas, elas somem.'),
+ ('Armário lateral', '50 × 277 × 50, folha inteira',
+  'Coluna inteira atrás de uma única folha ripada de <b>2,77 m</b>, com cinco '
+  'prateleiras. Dobradiças Hettich Sensys e alma de aço contra empeno, que uma '
+  'folha dessa altura pede.'),
  ('Painel liso e as duas portas de passagem', '330 cm, do nicho para a direita',
   'Face melamínica lisa, sem ripa. As duas folhas de passagem — <b>83 × 210</b> e '
   '<b>70 × 210</b> — são <b>tamponadas em 42 mm</b>, com marco mimetizado e '
   'sistema pivô, e fecham alinhadas ao painel.'),
  ('Estrutura de fixação', 'montantes e travessas',
   'Montantes a cada 60 cm e três fiadas de travessa, em MDF, chumbados na '
-  'alvenaria — é o que mantém 6,82 m de painel num plano só.'),
+  'alvenaria — é o que mantém 6,82 m de painel e três armários num plano só.'),
 ]
 linhas = ''.join(
   f'<div class="cj"><div class="n">{i:02d}</div>'
@@ -178,7 +199,7 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
 <div class="pg"><div class="in">
   <div class="sel">Proposta de marcenaria · Sala</div>
   <h1 class="ttl disp">Uma parede de 6,82 m —<br>
-    <em>e três portas que ela esconde.</em></h1>
+    <em>e nove folhas que ela esconde.</em></h1>
   <div class="sub1">Executivo <b>SALA · VISTA 2</b> (1/50) e <b>NICHO RIPADO</b>
     (1/30, pág. 18) · obra em <b>{b.OBRA}</b></div>
 
@@ -203,13 +224,14 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
       <b>{b.PRAZO_DIAS} dias corridos</b> da assinatura. <b>Instalação em
       {b.OBRA}</b> por equipe própria, com deslocamento e estadia já no
       preço.</div></div>
-    <div><div class="k">Acabamento</div><div class="v">
-      <b>MDF Gianduia Trama · Duratex</b>, conforme o executivo. Fita de borda
-      na mesma cor em toda face aparente, inclusive nas duas faces de cada
-      ripa.</div></div>
-    <div><div class="k">Garantia</div><div class="v">
-      <b>10 anos</b> sobre marcenaria e ferragem — o prazo da linha Hettich,
-      que é a ferragem deste projeto.</div></div>
+    <div><div class="k">Abertura e ferragem</div><div class="v">
+      <b>Nove folhas mimetizadas, nenhum puxador:</b> tudo abre por toque.
+      Básculas <b>Blum AVENTOS</b> no aéreo e dobradiças <b>Hettich Sensys</b>
+      nas demais.</div></div>
+    <div><div class="k">Acabamento e garantia</div><div class="v">
+      <b>MDF Gianduia Trama · Duratex</b>, fita na mesma cor em toda face
+      aparente, inclusive nas duas faces de cada ripa. <b>10 anos</b> sobre
+      marcenaria e ferragem.</div></div>
   </div>
 
   <div class="fora"><div class="k">O que não está nesta proposta</div>

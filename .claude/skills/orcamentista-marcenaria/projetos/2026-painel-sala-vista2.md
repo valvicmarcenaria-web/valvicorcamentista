@@ -34,20 +34,73 @@ estimativa minha — km a R$ 1,20 (utilitário) e R$ 1,80 (caminhão), hospedage
 R$ 180 por noite, alimentação R$ 80 por dia. **Trocar um desses números refaz o
 bloco sozinho.**
 
+### ⭐⭐ 18/11 · AS DUAS BANDAS VIRARAM ARMÁRIO
+
+> [Jonathan, 18/11/2026] *"a parte superior e a parte inferior de onde está o
+> nicho de pedra também serão armários, não serão apenas painéis. Então temos
+> que considerar tanto o custo de material de estrutura quanto de ferragem."*
+
+Até 17/11 as bandas eram **pele**: uma chapa com ripas coladas. Agora são
+armários de 50 cm de profundidade, com caixa, prateleira e ferragem em cada vão.
+
+| | |
+|---|--:|
+| custo direto · só painel (17/11) | R$ 16.519,71 |
+| custo direto · com os três armários | **R$ 22.421,10** |
+| a diferença | **+R$ 5.901,39 · 36%** |
+
+| de onde vem | antes | depois | |
+|---|--:|--:|--:|
+| chapa · de 10 para 16 chapas | 5.650,00 | 8.700,00 | +3.050,00 |
+| ferragem · 13 dobradiças, 4 básculas, 9 pulsadores | 690,00 | 2.804,50 | +2.114,50 |
+| fita de borda · de 351 para 403 m | 1.209,88 | 1.381,08 | +171,20 |
+| filetagem | 1.608,27 | 1.737,97 | +129,70 |
+| corte · de 37 para 83 peças | 112,50 | 239,50 | +127,00 |
+
+⛔⛔ **E ISSO ARRASTOU UMA FERRAGEM QUE NÃO ESTAVA EM LUGAR NENHUM: porta
+mimetizada em ripado não tem puxador.** Cava usinada cortaria a trama
+justamente onde ela precisa correr inteira. Logo, abertura por **toque** —
+R$ 70 por folha, **nove folhas**. ⚠ Vale também para a porta de 50 × 277, que eu
+já tinha orçado "sem puxador" sem dizer COMO ela abre.
+
+⭐ **O armário superior é aéreo de verdade:** a banda de cima vai de **2,17 m a
+2,92 m** do piso. Porta de girar a essa altura, com 75 cm de largura, abre na
+cara de quem está embaixo. A Base responde: *"Blum AVENTOS HK-XS · ⭐ A BÁSCULA
+DA CASA · R$ 250"*. Quatro delas.
+
+⚠ **E incluí a caixa do "ARMÁRIO 50X274CM"**, que eu tinha deixado de fora por
+não ter interior desenhado. Com as duas bandas virando armário, deixar oco
+justamente o que o executivo NOMEIA armário deixou de fazer sentido. Está em
+linha própria e some com uma palavra.
+
 ### O fechamento
 
 | | |
 |---|--:|
 | **PREÇO FECHADO** | **R$ 49.800,00** |
-| custo direto | R$ 16.519,71 |
+| custo direto | R$ 22.421,10 |
 | — dos quais, logística de GV | R$ 5.580,00 |
-| **MC lida · com RT de 10%** | **42,92%** |
-| MC lida · se não houver RT | 51,70% |
-| margem de contribuição | R$ 21.371,87 |
-| empate em dias de fábrica | 5,3 d |
+| **⛔ MC lida · com RT de 10%** | **31,07%** |
+| MC lida · se não houver RT | 39,85% |
+| margem de contribuição | R$ 15.470,48 |
+| empate em dias de fábrica | 3,9 d |
 
-⛔⛔ **A LOGÍSTICA DE GV VALE 10,4 PONTOS DE MC.** Sem ela eu estaria reportando
-**53,32%** e precificando sobre uma ficção.
+⛔⛔ **A R$ 49.800 A MC CAIU PARA 31,07% — ABAIXO DO PISO DE 35% DA CASA.** Os
+armários custaram R$ 5.901 e o preço não mudou.
+
+| o preço, com RT de 10% | preço | margem | empate |
+|---|--:|--:|--:|
+| ⛔ R$ 49.800 · o que ele cravou em 17/11 | R$ 49.800,00 | R$ 15.470,48 | 3,9 d |
+| piso da casa · MC 35% | R$ 54.569,14 | R$ 19.099,20 | 4,8 d |
+| faixa ideal · MC 40% | R$ 62.129,81 | R$ 24.851,93 | 6,2 d |
+| a MC que ele comprava em 17/11 · 42,92% | R$ 67.599,60 | R$ 29.013,75 | 7,3 d |
+| MC 50%, como ele perguntou | R$ 85.945,75 | R$ 42.972,87 | 10,7 d |
+
+⭐ A folha saiu nos R$ 49.800, que é o único preço que ele deu. Trocar o número
+é um comando.
+
+⛔ **A LOGÍSTICA DE GV VALE 10,4 PONTOS DE MC.** Sem ela eu estaria reportando
+41,47% e precificando sobre uma ficção.
 
 ⚠ **RT de 10% é leitura minha** — você não disse. São pranchas executivas de
 arquiteto e a regra da casa é "RT quando há parceiro indicando". Sem RT a MC vai

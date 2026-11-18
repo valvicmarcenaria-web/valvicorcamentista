@@ -80,6 +80,41 @@ class Item:
         self.t('Painel ripado, mão de obra', larg * alt / 10000, b.RIPADO_M2, 'm²')
         return self
 
+    def caixa(self, L, A, P, vaos, nome):
+        """⭐⭐ A CAIXA QUE AS BANDAS NÃO TINHAM [Jonathan, 18/11/2026].
+        Até ontem a banda do nicho era uma PELE: uma chapa com ripas
+        coladas. Agora ela é armário, e armário tem lateral, divisória,
+        tampo, base, fundo e prateleira — mais a ferragem de cada folha.
+        ⛔ Peça com mais de 273 cm não existe: a chapa é 275 e a sangria é
+          2. Tampo, base e fundo de 302 saem EMENDADOS, e é por isso que a
+          conta é de área e não de peça inteira."""
+        n_lat = vaos + 1
+        self.p(f'{nome} · laterais e divisórias', P, A, b.ESP_ESTRUTURA,
+               GIA, n_lat, f22=A / 100)
+        emenda = 2 if L > b.ALT_MAX else 1
+        self.p(f'{nome} · tampo e base', L / emenda, P, b.ESP_ESTRUTURA,
+               GIA, 2 * emenda, f22=L / emenda / 100,
+               obs='emendado' if emenda > 1 else '')
+        self.p(f'{nome} · fundo', L / emenda, A, b.ESP_FUNDO, GIA, emenda,
+               obs='⛔ fundo em Gianduia: a caixa é vista com a porta aberta')
+        larg = (L - n_lat * 1.5) / vaos
+        self.p(f'{nome} · prateleiras', larg, P - 2, 18, GIA, vaos,
+               f22=larg / 100)
+        self.f('Suporte de prateleira, jogo de 4', vaos, b.SUPORTE_JOGO)
+        return self
+
+    def folhas_ripadas(self, L, A, vaos, nome):
+        """⭐ A base do ripado deixa de ser UM painel e vira N FOLHAS DE
+        PORTA. A área é a mesma e as ripas são as mesmas — o que muda é a
+        fita, que passa a ter o perímetro de cada folha, e a ferragem.
+        ⛔ A junta das folhas cai dentro do vão de 2 cm da trama: fechadas,
+          elas somem, e é por isso que a prancha não desenha divisão."""
+        larg = L / vaos
+        self.p(f'{nome} · {vaos} folhas de {larg:.1f} × {A:.0f}'.replace('.', ','),
+               larg, A, b.ESP_PORTA, GIA, vaos, f22=(larg + A) * 2 / 100,
+               obs='BASE onde as ripas são coladas')
+        return self
+
     def porta_passagem(self, L, A, i):
         """⛔⛔ 42 MM, e não 18. A aba MDF crava "Portas de passagem · 42 mm"
         em "ESPESSURA PADRÃO POR APLICAÇÃO". Folha de 42 é tamponamento:
@@ -110,20 +145,29 @@ def novo(nome, obs=''):
 #     coladas?" — estas duas linhas são essa base, e agora elas aparecem na
 #     tabela com nome, medida, espessura e m², em vez de sumirem dentro de
 #     um total de chapa.
-it = novo('Painel ripado · base e ripas',
-          f'{RIPADO_L:.0f} × {ALT:.0f} · trama 20/20, passo 4 cm')
-it.p('BASE do ripado · banda superior', NICHO_L, R_SUP, b.SUBSTRATO_ESP_MM,
-     GIA, 1, f22=NICHO_L / 100, obs='onde as ripas são coladas · vista no vão')
-it.p('BASE do ripado · banda inferior', NICHO_L, R_INF, b.SUBSTRATO_ESP_MM,
-     GIA, 1, f22=NICHO_L / 100, obs='onde as ripas são coladas · vista no vão')
+it = novo('Armário superior do nicho',
+          f'{NICHO_L:.0f} × {R_SUP:.0f} × 50 · {b.VAOS_BANDA} folhas basculantes')
+it.caixa(NICHO_L, R_SUP, b.PROF_UTIL, b.VAOS_BANDA, 'Armário superior')
+it.folhas_ripadas(NICHO_L, R_SUP, b.VAOS_BANDA, 'Armário superior')
 it.ripado(NICHO_L, R_SUP, 'Ripas da banda superior')
+#   ⭐ 2,17 m a 2,92 m do piso: é aéreo, e a casa resolve aéreo com báscula.
+it.f(b.BASCULA_NOME, b.VAOS_BANDA, b.BASCULA_HK)
+it.f(b.PULSADOR_NOME, b.VAOS_BANDA, b.PULSADOR)
+
+it = novo('Armário inferior do nicho',
+          f'{NICHO_L:.0f} × {R_INF:.0f} × 50 · {b.VAOS_BANDA} folhas de abrir')
+it.caixa(NICHO_L, R_INF, b.PROF_UTIL, b.VAOS_BANDA, 'Armário inferior')
+it.folhas_ripadas(NICHO_L, R_INF, b.VAOS_BANDA, 'Armário inferior')
 it.ripado(NICHO_L, R_INF, 'Ripas da banda inferior')
+#   15 a 86 cm do piso: porta de abrir, 71 de altura → 2 dobradiças cada.
+it.f(b.DOBRADICA_NOME, b.VAOS_BANDA * b.dobradicas(R_INF), b.DOBRADICA)
+it.f(b.PULSADOR_NOME, b.VAOS_BANDA, b.PULSADOR)
 
 # ════════════════════════════════════════════════════════════════════════
 # 02 · PORTA RIPADA DO ARMÁRIO — 50 × 277
 # ════════════════════════════════════════════════════════════════════════
-it = novo('Porta ripada do armário, mimetizada',
-          f'{R_PORTA_L:.0f} × {ALT:.0f} · folha inteira, sem puxador')
+it = novo('Armário lateral, porta ripada inteira',
+          f'{R_PORTA_L:.0f} × {ALT:.0f} × 50 · folha inteira, abertura por toque')
 #   ⭐ A folha É a base das ripas. 15 mm, que é a espessura de porta da aba
 #     MDF — e as 12 ripas coladas na frente enrijecem o conjunto.
 it.p('BASE do ripado · folha da porta', R_PORTA_L, ALT, b.ESP_PORTA, GIA, 1,
@@ -135,6 +179,18 @@ it.ripado(R_PORTA_L, ALT, 'Ripas da porta')
 it.f(b.DOBRADICA_NOME, b.dobradicas(ALT), b.DOBRADICA)
 #   ⚠ 2,77 m de altura em 15 mm: a Base tem a barra chata contra empeno.
 it.f('Alma de aço, barra chata de 3 m', 1, b.ALMA_BARRA)
+#   ⛔ E ELA TAMBÉM NÃO TEM PUXADOR. Eu tinha escrito "sem puxador" sem
+#     dizer como ela abre. Abre por toque, como as outras oito.
+it.f(b.PULSADOR_NOME, 1, b.PULSADOR)
+#   ⭐⭐ A CAIXA DESTE, QUE A PRANCHA CHAMA DE "ARMÁRIO 50X274CM" E QUE EU
+#     TINHA DEIXADO DE FORA por não ter interior desenhado. Com as duas
+#     bandas virando armário, deixar OCO justamente o que o executivo
+#     nomeia armário deixou de fazer sentido. ⚠ Vai em linha própria: é a
+#     única das três que o Jonathan não pediu, e some com uma palavra.
+it.caixa(R_PORTA_L, ALT, b.PROF_UTIL, 1, 'Armário lateral')
+it.p('Armário lateral · prateleiras extras', R_PORTA_L - 3, b.PROF_UTIL - 2,
+     18, GIA, 4, f22=(R_PORTA_L - 3) / 100, obs='2,77 m de altura · 5 no total')
+it.f('Suporte de prateleira, jogo de 4', 4, b.SUPORTE_JOGO)
 
 # ════════════════════════════════════════════════════════════════════════
 # 03 · PAINEL LISO — 330 × 277, do fim da pedra para a direita

@@ -138,6 +138,39 @@ ESCADA_DOBRADICA = [('Bigfer Inox Click', 10.0), ('Bigfer Onix', 15.0),
 #   "Alma de aço · barra chata 5 mm, barra de 3 m · R$ 50,00 · contra empeno"
 ALMA_BARRA = 50.0
 
+# ── ⭐⭐ AS BANDAS VIRARAM ARMÁRIO [Jonathan, 18/11/2026] ────────────────
+#   "a parte superior e a parte inferior de onde está o nicho de pedra
+#    também serão armários, não serão apenas painéis. Então temos que
+#    considerar tanto o custo de material de estrutura quanto de ferragem."
+#   ⛔ E ISSO ARRASTA UMA FERRAGEM QUE NÃO ESTAVA EM LUGAR NENHUM: porta
+#     mimetizada em ripado NÃO TEM PUXADOR. Cava usinada cortaria a trama
+#     justamente onde ela precisa correr inteira. Logo, abertura por TOQUE:
+#     "Pulsador outros · un · R$ 70,00" da aba Ferragens.
+#   ⚠ E o pulsador vale também para a porta de 50 × 277, que eu já tinha
+#     orçado "sem puxador" sem dizer COMO ela abre.
+PULSADOR = 70.0
+PULSADOR_NOME = 'Pulsador de abertura por toque'
+#   ⭐ O ARMÁRIO SUPERIOR É AÉREO DE VERDADE: a banda de cima vai de 2,17 m
+#     a 2,92 m do piso. Porta de girar a essa altura, com 75 cm de largura,
+#     abre na cara de quem está embaixo. A Base tem a resposta da casa:
+#     "Blum AVENTOS HK-XS · ⭐ A BÁSCULA DA CASA · un · R$ 250,00".
+BASCULA_HK = 250.0
+BASCULA_NOME = 'Báscula Blum AVENTOS HK-XS'
+#   ⛔ REGRA 2 DA CASA [Jonathan, 28/10/2026]: "prateleiras internas dos
+#     armarios nao ultilizamos suporte oculto, mas precisamos considerar
+#     que toda prateleira interna existe a composição de 4 suportes em um
+#     custo total de 6.50". ⚠ NÃO é o "Suporte oculto · R$ 30" da Base:
+#     aquele é só para prateleira de PAREDE.
+SUPORTE_JOGO = 6.50
+#   profundidade útil dentro do volume de 50, descontada a frente
+#   (folha de 15 mm mais ripa de 18 mm = 33 mm)
+PROF_UTIL = 46.0
+#   ⚠ 302 cm de banda dividida em QUATRO vãos. A prancha não desenha
+#     divisão nenhuma — e não desenha de propósito: a junta das folhas cai
+#     DENTRO do vão de 2 cm da trama e some. Quatro é o que dá folha de
+#     75,5, que é o limite confortável de uma báscula HK-XS.
+VAOS_BANDA = 4
+
 
 def dobradicas(altura_cm):
     """Ferragens · "REGRA · quantas dobradiças por porta, pela altura"."""
