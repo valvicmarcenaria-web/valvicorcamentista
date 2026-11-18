@@ -208,6 +208,7 @@ _etapas = ''.join(
 CSS_X = '''
 /* ── capa ───────────────────────────────────────────────────────────── */
 .cv .ph{flex:none;height:152mm;}
+.cv .ph img{object-position:left center;}
 .cv .pe{padding:14mm 19mm 12mm;}
 .cv .nm{font-size:31pt;line-height:1.06;letter-spacing:-.028em;margin-top:4mm;}
 .cv .nm em{font-style:italic;color:#A9BFAF;}

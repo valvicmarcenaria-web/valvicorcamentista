@@ -297,10 +297,12 @@ PRECO_FECHADO = 53500.00
 #     levantamento imprime as duas leituras.
 RT = 0.10
 BASE = BASE_COM_RT
-#   ⚠ Prazo e pagamento também não foram ditos. 60 dias corridos cabem na
-#     conferência técnica, nos cinco dias de fábrica e nas duas viagens a
-#     GV; 50% + 50% é o que ele fechou no JPC hoje de manhã.
-PRAZO_DIAS = 60
+#   ⭐ [Jonathan, 18/11/2026] "Altere o prazo para 90 dias". Eu tinha lido
+#     60 e ele corrigiu — 90 é o que cabe de verdade: a conferência técnica
+#     em GV vem ANTES do corte, e só depois dela nasce o plano de corte.
+#   ⚠ O pagamento continua sendo leitura minha: 50% + 50%, como ele fechou
+#     no JPC na véspera.
+PRAZO_DIAS = 90
 VALIDADE_DIAS = 7
 PAGAMENTO = [('Entrada, na assinatura', 0.50), ('Saldo, na entrega', 0.50)]
 assert abs(sum(p for _, p in PAGAMENTO) - 1.0) < 1e-9

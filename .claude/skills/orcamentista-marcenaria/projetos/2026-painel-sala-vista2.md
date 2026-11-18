@@ -168,6 +168,27 @@ O que muda é que o cliente deixa de ler uma linha que descreve encanamento
 interno em vez de móvel. ⚠ Se a intenção era tirar do ESCOPO, são R$ 1.222 de
 custo direto a menos e a MC sobe para 34,2%.
 
+### 18/11 · capa nova e prazo de 90 dias
+
+> [Jonathan, 18/11/2026] *"Mude a imagem da capa / Altere o prazo para 90 dias"*
+
+⭐ **Prazo: 60 → 90 dias corridos.** Eu tinha lido 60; 90 é o que cabe de
+verdade, porque a conferência técnica em GV vem ANTES do corte e só depois dela
+nasce o plano de corte.
+
+⭐ **Capa:** passou para o render do jantar em que o **painel ripado ocupa o
+terço esquerdo em perspectiva**, com a porta mimetizada e o puxador visíveis —
+é a imagem em que a marcenaria é o assunto, e não o cenário.
+⛔ `object-fit:cover` apara pelos LADOS, e nesta foto o painel está na borda
+esquerda: sem `object-position:left`, a capa cortava justamente o nosso móvel.
+
+⚠ **O nicho só aparece nas tomadas do jantar.** Testei o render do living e o da
+escada: nos dois o ripado é cenário e o nicho fica fora de quadro. Como o título
+nomeia o travertino, o nicho tem a sua foto própria e legendada na página 2.
+Os outros três candidatos ficaram guardados em `img/` — `capa-jantar-niche.jpg`
+(a anterior, que mostra o nicho), `capa-living.jpg` e `escada.jpg`. Trocar é uma
+linha.
+
 ### O fechamento
 
 ⭐ **[Jonathan, 18/11/2026] "Ajuste o valor para 53.500".** O preço deste job
@@ -184,6 +205,7 @@ cai a 31,07%; 18/11 *"ajuste para 53.500"*.
 | MC lida · se não houver RT | **43,60%** |
 | margem de contribuição | R$ 18.622,32 |
 | empate em dias de fábrica | 4,7 d |
+| prazo | 90 dias corridos |
 | entrada e saldo · 50% + 50% | R$ 26.750,00 cada |
 
 ⭐ Os R$ 3.700 recompõem o que o escopo novo tinha comido: **34,81% contra
