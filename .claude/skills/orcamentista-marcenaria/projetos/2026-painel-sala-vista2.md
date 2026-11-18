@@ -170,15 +170,24 @@ custo direto a menos e a MC sobe para 34,2%.
 
 ### O fechamento
 
+⭐ **[Jonathan, 18/11/2026] "Ajuste o valor para 53.500".** O preço deste job
+andou três vezes, e o registro fica: 17/11 *"vamos vender por 53.000"* →
+*"alias, por 49.800"*; 18/11 as duas bandas viram armário e a R$ 49.800 a MC
+cai a 31,07%; 18/11 *"ajuste para 53.500"*.
+
 | | |
 |---|--:|
-| **PREÇO FECHADO** | **R$ 49.800,00** |
+| **PREÇO FECHADO** | **R$ 53.500,00** |
 | custo direto | R$ 22.084,50 |
 | — dos quais, logística de GV | R$ 5.580,00 |
-| **⛔ MC lida · com RT de 10%** | **31,74%** |
-| MC lida · se não houver RT | **40,53%** |
-| margem de contribuição | R$ 15.807,08 |
-| empate em dias de fábrica | 4,0 d |
+| **MC lida · com RT de 10%** | **34,81%** |
+| MC lida · se não houver RT | **43,60%** |
+| margem de contribuição | R$ 18.622,32 |
+| empate em dias de fábrica | 4,7 d |
+| entrada e saldo · 50% + 50% | R$ 26.750,00 cada |
+
+⭐ Os R$ 3.700 recompõem o que o escopo novo tinha comido: **34,81% contra
+31,74%**, a 19 centésimos do piso de 35% da casa. Sem RT, 43,60%.
 
 ⛔⛔ **A R$ 49.800 A MC CAIU PARA 31,07% — ABAIXO DO PISO DE 35% DA CASA.** Os
 armários custaram R$ 5.901 e o preço não mudou.

@@ -282,10 +282,14 @@ assert abs(BASE_COM_RT - 0.760875) < 1e-9
 FAIXA = (0.35, 0.40)
 
 # ── o fechamento ────────────────────────────────────────────────────────
-#   ⭐⭐ [Jonathan, 17/11/2026] "vamos vender por 53.000 esse projeto" e, um
-#     minuto depois, "alias, por 49.800". Vale o segundo.
 #   ⭐ COM PREÇO CRAVADO, A MC É LIDA, NÃO ESCOLHIDA: MC = BASE − custo ÷ preço.
-PRECO_FECHADO = 49800.00
+#   O preço deste job andou três vezes, e o registro fica:
+#     17/11  "vamos vender por 53.000"  →  "alias, por 49.800"
+#     18/11  as duas bandas viram armário: a R$ 49.800 a MC caiu a 31,07%
+#     18/11  "Ajuste o valor para 53.500"  ← vale este
+#   ⭐ E ele recompõe o que o escopo novo tinha comido: 34,81% com RT, contra
+#     os 31,74% de R$ 49.800. Quase de volta ao piso de 35% da casa.
+PRECO_FECHADO = 53500.00
 #   ⚠ RT DE 10%, E É LEITURA MINHA — ele não disse. São pranchas executivas
 #     de arquiteto, e a regra da casa é "RT 10% quando há parceiro
 #     indicando". Orçar COM e não pagar sobra margem; orçar SEM e ter de
