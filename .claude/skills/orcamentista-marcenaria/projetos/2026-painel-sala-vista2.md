@@ -157,6 +157,17 @@ de copiar e colar. Removidas.
 numa coluna flex sem folga, `auto` resolve em ZERO. As três páginas agora são
 medidas no navegador a cada build.
 
+### 18/11 · fora o item 04
+
+> [Jonathan, 18/11/2026] *"Tire o item 4"*
+
+A **estrutura de fixação** saiu da FOLHA. ⛔ **Da folha, não do orçamento:**
+montante e travessa são o que mantém 6,82 m de painel e três armários num plano
+só, continuam sendo feitos e continuam no custo. **A MC não mudou: 31,74%.**
+O que muda é que o cliente deixa de ler uma linha que descreve encanamento
+interno em vez de móvel. ⚠ Se a intenção era tirar do ESCOPO, são R$ 1.222 de
+custo direto a menos e a MC sobe para 34,2%.
+
 ### O fechamento
 
 | | |

@@ -169,9 +169,6 @@ ITENS = [
   'região das <b>duas portas pivotantes</b>. As folhas de <b>83 × 210</b> e '
   '<b>70 × 210</b> são tamponadas em <b>42 mm</b>, com marco mimetizado e '
   'sistema pivô, e fecham alinhadas ao painel.'),
- ('Estrutura de fixação', 'montantes e travessas',
-  'Montantes a cada 60 cm e três fiadas de travessa, em MDF, chumbados na '
-  'alvenaria — é o que mantém 6,82 m de painel e três armários num plano só.'),
 ]
 
 #   ⛔ AS OITO ETAPAS SÃO AS DA CASA, copiadas de `proposta-aline.html`. Só a
@@ -235,7 +232,7 @@ h2.tt em{font-style:italic;color:var(--verde);}
 .lead{font-size:8.6pt;color:var(--verde-lt);margin-top:3.5mm;max-width:150mm;
   line-height:1.6;}
 .lead b{color:var(--tinta);font-weight:500;}
-.des{width:152mm;margin:5mm auto 1mm;}
+.des{width:162mm;margin:5mm auto 1mm;}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:0 5mm;margin-top:3.6mm;}
 .duo .ph{aspect-ratio:1.66/1;position:relative;}
 .duo .ph img{width:100%;height:100%;object-fit:cover;}
