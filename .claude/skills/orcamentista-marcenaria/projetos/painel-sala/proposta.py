@@ -209,7 +209,7 @@ CSS_X = '''
 /* ── capa ───────────────────────────────────────────────────────────── */
 .cv .ph{flex:none;height:152mm;}
 .cv .pe{padding:14mm 19mm 12mm;}
-.cv .nm{font-size:34pt;line-height:1.06;letter-spacing:-.028em;margin-top:4mm;}
+.cv .nm{font-size:31pt;line-height:1.06;letter-spacing:-.028em;margin-top:4mm;}
 .cv .nm em{font-style:italic;color:#A9BFAF;}
 .cv .sub{margin-top:6mm;color:#C3CFC5;font-size:9.4pt;max-width:128mm;
   line-height:1.6;}
@@ -308,11 +308,11 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
   <div class="ph"><img src="{IMG['capa']}" alt=""></div>
   <div class="pe">
     <div class="sel">Proposta de marcenaria · Sala</div>
-    <h1 class="nm disp">Uma parede de 6,82 m —<br>
-      <em>e onze folhas que ela esconde.</em></h1>
-    <div class="sub">Painel ripado em <b>MDF Gianduia Trama</b> emoldurando o
-      nicho de <b>travertino romano</b>, com <b>três armários mimetizados</b> e
-      <b>duas portas de passagem</b> que desaparecem na trama.</div>
+    <h1 class="nm disp">Painel ripado sob medida,<br>
+      <em>emoldurando o nicho de travertino.</em></h1>
+    <div class="sub"><b>6,82 m</b> de parede em <b>MDF Gianduia Trama</b>, com
+      <b>três armários mimetizados</b> e <b>duas portas de passagem</b> que
+      desaparecem na trama.</div>
     <div class="fat">
       <div><div class="k">Obra</div><div class="v">{b.OBRA}
         <small>conferência técnica e instalação inclusas</small></div></div>
