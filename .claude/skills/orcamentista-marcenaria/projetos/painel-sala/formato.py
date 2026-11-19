@@ -244,11 +244,20 @@ def pedidos(sid, linhas):
         #       · FABRICAÇÃO e MONTAGEM — só a quantidade: o CUSTO é
         #         fórmula, dias × a célula ÚNICA do dia da dupla, que mora
         #         em 'Preço e Comissões'!$D$11 e serve a TODOS os ambientes.
-        elif b.startswith('Frete'):
-            E(i, i + 1, 3, 4, b=True, bg=AMARELO, nf=N0, h='RIGHT')
-            E(i, i + 1, 5, 6, b=True, bg=AMARELO, nf=MOEDA, h='RIGHT')
-        elif b.startswith('Fabrica\u00e7\u00e3o \u00b7 dupla') or b.startswith('Montagem \u00b7 dupla'):
+        elif len(r) > 6 and isinstance(r[6], (int, float)):
+            #   ⭐ LINHA QUE O AMBIENTE DIGITA. Reconhece-se por ter um
+            #     R$ UNITÁRIO na coluna H — não pelo rótulo, que muda de
+            #     obra para obra. A QUANTIDADE é sempre amarela.
             E(i, i + 1, 3, 4, b=True, bg=AMARELO, nf=N2, h='RIGHT')
+            if ((r[3] if len(r) > 3 else '') or '') == 'dia':
+                #   ⛔ O UNITÁRIO DA DUPLA NÃO É AMARELO: ele é espelho da
+                #     célula Única de 'Preço e Comissões'. Pintar de amarelo
+                #     convidaria a digitar por cima da fórmula, e aí cada
+                #     ambiente teria o seu próprio dia de dupla — que é
+                #     exatamente o que o mecanismo existe para impedir.
+                E(i, i + 1, 7, 8, fs=9, fg=CINZA, nf=MOEDA, h='RIGHT')
+            else:
+                E(i, i + 1, 7, 8, b=True, bg=AMARELO, nf=MOEDA, h='RIGHT')
     return R, cl
 
 

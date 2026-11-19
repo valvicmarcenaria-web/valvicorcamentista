@@ -36,6 +36,11 @@ def _n(v, casas=2):
     return round(float(v), casas)
 
 
+def _br(v):
+    """1234.5 -> "1.234,50", para escrever o unitário DENTRO do rótulo"""
+    return ('%0.2f' % v).replace('.', ',')
+
+
 def linhas():
     L = [['  VALVIC MARCENARIA        01 SALA · PAINEL RIPADO'],
          ['  Executivo SALA · VISTA 2 (1/50) e NICHO RIPADO (1/30, pág. 18) · '
@@ -47,10 +52,17 @@ def linhas():
 
     # ── ① O AMBIENTE ────────────────────────────────────────────────────
     L += [['  O AMBIENTE   ·   o que ele consome, por linha de material'], [],
-          ['MATERIAL', 'ESPECIFICAÇÃO', 'QUANTIDADE', 'UN', 'CUSTO', '% DO CUSTO']]
+          ['MATERIAL', 'ESPECIFICAÇÃO', 'QUANTIDADE', 'UN', 'CUSTO',
+           '% DO CUSTO', 'R$ UNITÁRIO']]
     D = T['direto']
-    def mat(rot, esp, qtd, un, custo):
-        L.append([rot, esp, _n(qtd, 2), un, _n(custo), _n(custo / D, 4)])
+    #   ⭐ `unit` só existe nas linhas de logística e de dupla: são as que o
+    #     ambiente DIGITA, e nelas o custo é fórmula (quantidade × unitário).
+    #     Nas demais o custo vem da Base e não há o que digitar.
+    def mat(rot, esp, qtd, un, custo, unit=None):
+        lin = [rot, esp, _n(qtd, 2), un, _n(custo), _n(custo / D, 4)]
+        if unit is not None:
+            lin.append(_n(unit))
+        L.append(lin)
 
     for k, n in sorted(T['chapas'].items()):
         mat('%s %d mm' % k, 'área líquida de %.2f m² · rendimento de %.2f m² por '
@@ -100,29 +112,30 @@ def linhas():
     #     Na planilha a QUANTIDADE destes três é célula AMARELA, e o custo é
     #     fórmula. O custo do dia da dupla mora numa célula só, na aba
     #     "Preço e Comissões", e todos os ambientes a referenciam.
-    mat('Frete e estadia · ' + b.OBRA,
-        '⭐ A QUANTIDADE É DIGITADA: quantas viagens este ambiente leva · '
-        '%s fica a %.0f km, %.0f de ida e volta · veículo R$ %.2f, hospedagem '
-        'R$ %.2f, alimentação R$ %.2f · ⛔ só deslocamento, cama e comida: a '
-        'mão de obra é dia de dupla, logo abaixo · ⚠ as QUATRO linhas de '
-        'frete da Base estão vazias, "A COTAR"'
-        % (b.OBRA, b.KM_IDA, b.KM_IDA * 2,
-           sum(b.viagem(v)['veiculo'] for v in b.LOGISTICA),
-           sum(b.viagem(v)['hospedagem'] for v in b.LOGISTICA),
-           sum(b.viagem(v)['alimentacao'] for v in b.LOGISTICA)),
-        len(b.LOGISTICA), 'viagem', b.CUSTO_GV)
+    #   ⭐⭐ O CUSTO ESPECIAL DE GV, LINHA A LINHA [Jonathan, 19/11/2026].
+    #     Cada uma tem a QUANTIDADE amarela e o unitário escrito no
+    #     rótulo, para ele trocar UM número sem refazer o bloco.
+    for v in b.LOGISTICA:
+        mat(v['rotulo'],
+            '⭐ DIGITE A QUANTIDADE E O UNITÁRIO · %s · ⛔ obra especial em '
+            '%s: estes são os números do Jonathan, não estimativa minha — as '
+            'QUATRO linhas de frete da Base continuam vazias, "A COTAR"'
+            % (v['obs'], b.OBRA),
+            v['qtd'], v['un'], v['qtd'] * v['unit'], v['unit'])
     mat('Fabricação · dupla de marceneiro e ajudante',
         '⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · 83 peças, '
         '162 ripas coladas e 292 m de filetagem manual · o custo do dia vem '
         'da célula única da aba "Preço e Comissões"',
-        b.DIAS_FABRICACAO, 'dia', b.DIAS_FABRICACAO * b.DUPLA_DIA)
+        b.DIAS_FABRICACAO, 'dia', b.DIAS_FABRICACAO * b.DUPLA_DIA, b.DUPLA_DIA)
     mat('Montagem · dupla de marceneiro e ajudante',
-        '⭐ A QUANTIDADE É DIGITADA: 3 dias de obra em %s mais 1 da '
-        'conferência técnica, que a mesma dupla faz · ⛔ a equipe SAIU da '
-        'linha de viagem: ela já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = '
-        'R$ 1.728, e somar as duas seria pagar a montagem duas vezes'
-        % b.OBRA,
-        b.DIAS_MONTAGEM, 'dia', b.DIAS_MONTAGEM * b.DUPLA_DIA)
+        '⭐ A QUANTIDADE É DIGITADA: são os MESMOS %d dias das diárias de '
+        'Airbnb e dos %d dias de alimentação, lá em cima — mexeu num, mexa '
+        'nos três · ⛔ a equipe NÃO entra na logística: aquele bloco paga '
+        'carreto, carro, cama e comida, e a mão de obra é esta linha · '
+        '⚠ o dia de quem vai MEDIR não está aqui nem lá: o bate-volta paga '
+        'a estrada, não a diária. Somar 1 dia custa R$ 460,80'
+        % (b.AIRBNB_QTD, b.ALIMENTACAO_QTD // 2),
+        b.DIAS_MONTAGEM, 'dia', b.DIAS_MONTAGEM * b.DUPLA_DIA, b.DUPLA_DIA)
     mat('Consumíveis', '6% sobre chapa e fita · cola, lixa, parafuso, cavilha, '
         'tapa-furo, fundo e verniz', b.CONSUMIVEIS, '%', T['c_cons'])
     mat('Embalagem', '2% sobre o custo direto · papelão, filme e cantoneira',
@@ -216,14 +229,23 @@ NOTAS = [
  'comissão e passaram a ser DIAS DE DUPLA — um marceneiro (R$ 36/h, da Base) mais um '
  'ajudante (R$ 21,60/h, ⚠ premissa minha de 60%: a Base não tem a linha), 8 h por dia = '
  'R$ 460,80. O custo do dia é UMA célula, na aba "Preço e Comissões"; os dias são '
- 'digitados em cada ambiente. ⛔ E a equipe saiu da linha de viagem, que já cobrava '
- '2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728 — somar as duas pagaria a montagem '
- 'duas vezes, e isso some no total sem avisar.',
- '⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,38%) E DE MONTAGEM (2,38%), e o '
- 'modelo diz em caixa alta que "montagem e fabricação entram AQUI, como comissão — '
- 'nunca como dia de marceneiro no custo direto". Com a dupla no custo direto, as duas '
- 'linhas pagam o mesmo trabalho. ⚠ DECISÃO PENDENTE do Jonathan: zerar as duas na '
- 'cascata, ou manter e aceitar a sobreposição.',
+ 'digitados em cada ambiente. ⛔ E a equipe NÃO entra na logística: aquele bloco paga '
+ 'carreto, carro, cama e comida, e nada de mão de obra — as duas coisas juntas '
+ 'pagariam a montagem duas vezes, e isso some no total sem avisar.',
+ '⭐⭐ O CUSTO ESPECIAL DE GOVERNADOR VALADARES [Jonathan, 19/11/2026] substituiu a '
+ 'minha tabela de km × R$/km. São seis linhas, todas números dele: medição bate-volta '
+ 'R$ 350 por pessoa; carreto de caminhão HR R$ 2.500; Mobi com R$ 400 de combustível e '
+ 'R$ 170 de pedágio; Airbnb R$ 900 pelas 4 diárias; alimentação R$ 440 por pessoa pelos '
+ '4 dias, com duas pessoas. ⛔ DÁ R$ 5.200 E EU ESTIMAVA R$ 3.420: eu estava R$ 1.780 '
+ 'ABAIXO, metade disso só no carreto, que sozinho vale quase o que eu punha no bloco '
+ 'inteiro. A lição é a de sempre — quando a Base diz "A COTAR", a resposta está com '
+ 'quem compra, não comigo.',
+ '⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,14%) E DE MONTAGEM (2,14%), '
+ 'R$ 2.287,12 no total — e o modelo diz em caixa alta que "montagem e fabricação '
+ 'entram AQUI, como comissão — nunca como dia de marceneiro no custo direto". Com a '
+ 'dupla no custo direto, as duas linhas pagam o MESMO trabalho. ⭐ Zerando as duas, a '
+ 'MC deste projeto sobe de 26,91% para 31,18% sem mexer no preço. ⚠ DECISÃO PENDENTE '
+ 'do Jonathan.',
  '⭐ OS TRÊS ARMÁRIOS NÃO ESTÃO NO EXECUTIVO. A prancha desenha o painel como superfície '
  'contínua; as bandas acima e abaixo do nicho e a coluna de 50 viraram armário por decisão '
  'de 18/11/2026, com caixa, prateleira e ferragem em cada vão. A proposta diz isso em '
@@ -231,13 +253,13 @@ NOTAS = [
 ]
 
 DUVIDAS = [
- '⚠ R$ 8.028 · O FRETE E OS DIAS DE DUPLA são um TERÇO DO CUSTO DIRETO, e quase tudo neles '
- 'é premissa. Só a hora de marceneiro (R$ 36 com encargos) vem da Base. Km, hospedagem e '
- 'alimentação são leitura minha, porque as QUATRO linhas de frete da Base estão vazias — '
- '"A COTAR". A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o '
- 'primeiro número que o Jonathan deve trocar, e ele mexe em TODOS os ambientes de uma vez, '
- 'porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são '
- 'estimativa de quem leu a prancha, não apontamento de quem fez.',
+ '⚠ R$ 4.608 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são '
+ 'números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. '
+ 'A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro '
+ 'número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é '
+ 'uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu '
+ 'a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os '
+ 'R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu.',
  '⚠ R$ 2.132 · "GIANDUIA TRAMA - DURATEX" é padrão ESPECIAL? Trama é texturizado, e a Base '
  'tem a linha "CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000,00". Orçado no genérico de cor, '
  'R$ 700. É a primeira cotação a fazer.',
@@ -251,7 +273,7 @@ DUVIDAS = [
  '⚠ a prancha pede relevo de 20 mm e cortamos de chapa de 18, que é o padrão da casa. Ou '
  'se aceita 18, ou se lamina — e aí muda.',
  '⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto '
- 'e a regra da casa é "RT quando há parceiro indicando". Sem RT a MC vai de 30,23% a 39,02%.',
+ 'e a regra da casa é "RT quando há parceiro indicando". Sem RT a MC vai de 26,91% a 35,69%.',
  '⚠ o NOME DO CLIENTE não está em nenhuma das pranchas, e a capa da proposta hoje sai sem ele.',
 ]
 

@@ -225,11 +225,59 @@ def dobradicas(altura_cm):
 #     a logística linha a linha, e marco com ⚠ tudo o que é estimativa
 #     minha — para o Jonathan trocar UM número, não o bloco inteiro.
 OBRA = 'Governador Valadares'
-KM_IDA = 320.0                 # ⚠ BH → GV por BR-381 e BR-116
-KM_LEVE = 1.20                 # ⚠ utilitário · combustível, pedágio, desgaste
-KM_CARGA = 1.80                # ⚠ caminhão com o painel
-HOSPEDAGEM_NOITE = 180.0       # ⚠ por pessoa, por noite
-ALIMENTACAO_DIA = 80.0         # ⚠ por pessoa, por dia
+
+#   ⭐⭐ OS NÚMEROS SÃO DO JONATHAN [19/11/2026], não meus. Ele mandou o
+#     conjunto fechado da obra especial de GV, e isso APOSENTA a minha
+#     tabela de km × R$/km, hospedagem por noite e alimentação por dia.
+#     Eu estava estimando R$ 3.420; o real é R$ 5.200 — eu estava
+#     R$ 1.780 abaixo, 52% a menos no bloco.
+#   ⛔ DUAS VIAGENS, DE NATUREZAS DIFERENTES:
+#       · a MEDIÇÃO é bate-volta, no mesmo dia, e cobra POR PESSOA;
+#       · a INSTALAÇÃO leva carreto (o painel não cabe no Mobi), o Mobi
+#         com a dupla, 4 diárias de Airbnb e 4 dias de alimentação.
+#   ⭐ As 4 diárias e os 4 dias de comida BATEM com DIAS_MONTAGEM = 4.
+#     Se ele mudar os dias de montagem, estas duas linhas mudam junto —
+#     na planilha são campos amarelos lado a lado, de propósito.
+MEDICAO_UNIT = 350.00          # bate-volta, POR PESSOA
+MEDICAO_QTD = 1                # ⚠ quantas pessoas vão medir
+CARRETO_UNIT = 2500.00         # caminhão HR, a viagem de carga
+CARRETO_QTD = 1
+COMBUSTIVEL_UNIT = 400.00      # Mobi, a viagem
+COMBUSTIVEL_QTD = 1
+PEDAGIO_UNIT = 170.00          # Mobi, a viagem
+PEDAGIO_QTD = 1
+AIRBNB_UNIT = 225.00           # R$ 900 pelas 4 diárias
+AIRBNB_QTD = 4
+ALIMENTACAO_UNIT = 110.00      # R$ 440 por pessoa pelos 4 dias
+ALIMENTACAO_QTD = 8            # 2 pessoas × 4 dias
+
+#   ⛔ A ORDEM IMPORTA: é a ordem em que as linhas entram na planilha, e
+#     a planilha pinta a QUANTIDADE de amarelo em todas.
+LOGISTICA = [
+    dict(rotulo='Medição · bate-volta, por pessoa',
+         qtd=MEDICAO_QTD, un='pessoa', unit=MEDICAO_UNIT,
+         obs='a conferência técnica antes do corte · vai e volta no mesmo '
+             'dia, sem dormir fora · ⚠ hoje está 1 pessoa'),
+    dict(rotulo='Carreto · caminhão HR',
+         qtd=CARRETO_QTD, un='viagem', unit=CARRETO_UNIT,
+         obs='leva o painel · ⛔ é a maior linha da logística e sozinha '
+             'vale metade do bloco'),
+    dict(rotulo='Mobi · combustível',
+         qtd=COMBUSTIVEL_QTD, un='viagem', unit=COMBUSTIVEL_UNIT,
+         obs='o carro que leva a dupla, ida e volta'),
+    dict(rotulo='Mobi · pedágio',
+         qtd=PEDAGIO_QTD, un='viagem', unit=PEDAGIO_UNIT,
+         obs='ida e volta'),
+    dict(rotulo='Airbnb · diária',
+         qtd=AIRBNB_QTD, un='diária', unit=AIRBNB_UNIT,
+         obs='R$ 900 pelas 4 diárias · ⭐ são os MESMOS 4 dias de '
+             'montagem: mexeu num, mexa no outro'),
+    dict(rotulo='Alimentação · por pessoa, por dia',
+         qtd=ALIMENTACAO_QTD, un='pessoa-dia', unit=ALIMENTACAO_UNIT,
+         obs='R$ 440 por pessoa pelos 4 dias · 2 pessoas × 4 dias'),
+]
+CUSTO_GV = sum(v['qtd'] * v['unit'] for v in LOGISTICA)
+
 
 # ── ⭐⭐ O DIA DA DUPLA [Jonathan, 19/11/2026] ──────────────────────────
 #   "considerando dias de fabricação e dias de montagem. Ambos serão
@@ -249,35 +297,22 @@ AJUDANTE_H = MARCENEIRO_H * 0.60
 HORAS_DIA = 8.0
 DUPLA_DIA = (MARCENEIRO_H + AJUDANTE_H) * HORAS_DIA      # R$ 460,80
 
-#   ⛔⛔ E A EQUIPE SAIU DA LOGÍSTICA, senão eu pagaria duas vezes. A linha
-#     de instalação já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728.
-#     Agora a VIAGEM paga veículo, cama e comida; a MÃO DE OBRA é dia de
-#     dupla. Foi o primeiro efeito colateral de mudar o mecanismo, e ele
-#     não aparece em lugar nenhum da planilha — some no total.
-CONFERENCIA = dict(rotulo='Conferência técnica, antes do corte',
-                   pessoas=1, dias=1.5, noites=1, km=KM_LEVE)
-INSTALACAO = dict(rotulo='Instalação em ' + OBRA,
-                  pessoas=2, dias=3.0, noites=2, km=KM_CARGA)
-
-
-def viagem(v):
-    """Só o que é DESLOCAMENTO: veículo, cama e comida. A mão de obra é dia
-    de dupla, na seção própria."""
-    return dict(
-        veiculo=KM_IDA * 2 * v['km'],
-        hospedagem=v['pessoas'] * v['noites'] * HOSPEDAGEM_NOITE,
-        alimentacao=v['pessoas'] * v['dias'] * ALIMENTACAO_DIA)
-
-
+#   ⛔⛔ E A EQUIPE NÃO ENTRA NA LOGÍSTICA, senão eu pagaria duas vezes. O
+#     bloco de GV paga carreto, carro, cama e comida; a MÃO DE OBRA é dia
+#     de dupla, aqui. Esse efeito colateral não aparece em lugar nenhum da
+#     planilha — some no total.
 #   ⭐ OS DOIS CAMPOS QUE O AMBIENTE DIGITA. São dias de DUPLA, não de
 #     pessoa: 6 dias de bancada para 83 peças, 162 ripas coladas e 292 m de
-#     filetagem manual; 4 dias de montagem, que são os 3 de obra em GV mais
-#     1 da conferência técnica — a mesma dupla faz a viagem.
+#     filetagem manual; 4 dias de montagem, que são os MESMOS 4 das
+#     diárias de Airbnb e dos 4 dias de alimentação.
+#   ⚠ E O DIA DE QUEM VAI MEDIR NÃO ESTÁ AQUI. A medição bate-volta paga
+#     o deslocamento (R$ 350 por pessoa) e não paga a diária de quem foi:
+#     640 km de estrada consomem o dia inteiro. São R$ 288 de um marceneiro
+#     sozinho, ou R$ 460,80 se for a dupla. Fica de FORA até o Jonathan
+#     dizer — basta somar 1 em DIAS_MONTAGEM.
 DIAS_FABRICACAO = 6.0
 DIAS_MONTAGEM = 4.0
 
-LOGISTICA = [CONFERENCIA, INSTALACAO]
-CUSTO_GV = sum(sum(viagem(v).values()) for v in LOGISTICA)
 
 # ── a cascata · aba Comissões ───────────────────────────────────────────
 ENCARGO_BRUTO = 0.05 + 0.02 + 0.005 + 0.005

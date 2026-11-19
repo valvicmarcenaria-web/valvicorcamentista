@@ -17,7 +17,8 @@
    "QUANTIDADE",
    "UN",
    "CUSTO",
-   "% DO CUSTO"
+   "% DO CUSTO",
+   "R$ UNITÁRIO"
   ],
   [
    "MDF Branco TX 6 mm",
@@ -25,7 +26,7 @@
    1.0,
    "chapa",
    250.0,
-   0.0102
+   0.0095
   ],
   [
    "MDF Branco TX 18 mm",
@@ -33,7 +34,7 @@
    2.0,
    "chapa",
    800.0,
-   0.0326
+   0.0304
   ],
   [
    "MDF Gianduia 6 mm",
@@ -41,7 +42,7 @@
    2.0,
    "chapa",
    700.0,
-   0.0285
+   0.0266
   ],
   [
    "MDF Gianduia 15 mm",
@@ -49,7 +50,7 @@
    5.0,
    "chapa",
    2750.0,
-   0.1121
+   0.1045
   ],
   [
    "MDF Gianduia 18 mm",
@@ -57,7 +58,7 @@
    6.0,
    "chapa",
    4200.0,
-   0.1712
+   0.1596
   ],
   [
    "Fita de borda de cor, 22 mm",
@@ -65,7 +66,7 @@
    99.81,
    "m",
    329.37,
-   0.0134
+   0.0125
   ],
   [
    "Fita de borda de cor, 50 mm",
@@ -73,7 +74,7 @@
    11.46,
    "m",
    88.24,
-   0.0036
+   0.0034
   ],
   [
    "Fita de borda de cor, 22 mm · ripas",
@@ -81,7 +82,7 @@
    291.96,
    "m",
    963.47,
-   0.0393
+   0.0366
   ],
   [
    "Filetagem manual",
@@ -89,7 +90,7 @@
    291.96,
    "m",
    1459.8,
-   0.0595
+   0.0555
   ],
   [
    "Filetagem na coladeira automática",
@@ -97,7 +98,7 @@
    111.27,
    "m",
    278.18,
-   0.0113
+   0.0106
   ],
   [
    "Suporte de prateleira, jogo de 4",
@@ -105,7 +106,7 @@
    13.0,
    "un",
    84.5,
-   0.0034
+   0.0032
   ],
   [
    "Dobradiça Blum",
@@ -113,7 +114,7 @@
    21.0,
    "un",
    1050.0,
-   0.0428
+   0.0399
   ],
   [
    "Pulsador Blum Tip-on, abertura por toque",
@@ -121,7 +122,7 @@
    9.0,
    "un",
    900.0,
-   0.0367
+   0.0342
   ],
   [
    "Alma de aço, barra chata de 3 m",
@@ -129,7 +130,7 @@
    1.0,
    "un",
    50.0,
-   0.002
+   0.0019
   ],
   [
    "Sistema pivô de porta mimetizada",
@@ -137,7 +138,7 @@
    2.0,
    "un",
    240.0,
-   0.0098
+   0.0091
   ],
   [
    "Fecho rolete para porta pivotante",
@@ -145,7 +146,7 @@
    2.0,
    "un",
    150.0,
-   0.0061
+   0.0057
   ],
   [
    "Painel ripado, mão de obra",
@@ -153,7 +154,7 @@
    5.79,
    "m²",
    1042.96,
-   0.0425
+   0.0396
   ],
   [
    "Corte",
@@ -161,15 +162,61 @@
    83.0,
    "peça",
    239.5,
-   0.0098
+   0.0091
   ],
   [
-   "Frete e estadia · Governador Valadares",
-   "⭐ A QUANTIDADE É DIGITADA: quantas viagens este ambiente leva · Governador Valadares fica a 320 km, 640 de ida e volta · veículo R$ 1920.00, hospedagem R$ 900.00, alimentação R$ 600.00 · ⛔ só deslocamento, cama e comida: a mão de obra é dia de dupla, logo abaixo · ⚠ as QUATRO linhas de frete da Base estão vazias, \"A COTAR\"",
-   2.0,
+   "Medição · bate-volta, por pessoa",
+   "⭐ DIGITE A QUANTIDADE E O UNITÁRIO · a conferência técnica antes do corte · vai e volta no mesmo dia, sem dormir fora · ⚠ hoje está 1 pessoa · ⛔ obra especial em Governador Valadares: estes são os números do Jonathan, não estimativa minha — as QUATRO linhas de frete da Base continuam vazias, \"A COTAR\"",
+   1.0,
+   "pessoa",
+   350.0,
+   0.0133,
+   350.0
+  ],
+  [
+   "Carreto · caminhão HR",
+   "⭐ DIGITE A QUANTIDADE E O UNITÁRIO · leva o painel · ⛔ é a maior linha da logística e sozinha vale metade do bloco · ⛔ obra especial em Governador Valadares: estes são os números do Jonathan, não estimativa minha — as QUATRO linhas de frete da Base continuam vazias, \"A COTAR\"",
+   1.0,
    "viagem",
-   3420.0,
-   0.1394
+   2500.0,
+   0.095,
+   2500.0
+  ],
+  [
+   "Mobi · combustível",
+   "⭐ DIGITE A QUANTIDADE E O UNITÁRIO · o carro que leva a dupla, ida e volta · ⛔ obra especial em Governador Valadares: estes são os números do Jonathan, não estimativa minha — as QUATRO linhas de frete da Base continuam vazias, \"A COTAR\"",
+   1.0,
+   "viagem",
+   400.0,
+   0.0152,
+   400.0
+  ],
+  [
+   "Mobi · pedágio",
+   "⭐ DIGITE A QUANTIDADE E O UNITÁRIO · ida e volta · ⛔ obra especial em Governador Valadares: estes são os números do Jonathan, não estimativa minha — as QUATRO linhas de frete da Base continuam vazias, \"A COTAR\"",
+   1.0,
+   "viagem",
+   170.0,
+   0.0065,
+   170.0
+  ],
+  [
+   "Airbnb · diária",
+   "⭐ DIGITE A QUANTIDADE E O UNITÁRIO · R$ 900 pelas 4 diárias · ⭐ são os MESMOS 4 dias de montagem: mexeu num, mexa no outro · ⛔ obra especial em Governador Valadares: estes são os números do Jonathan, não estimativa minha — as QUATRO linhas de frete da Base continuam vazias, \"A COTAR\"",
+   4.0,
+   "diária",
+   900.0,
+   0.0342,
+   225.0
+  ],
+  [
+   "Alimentação · por pessoa, por dia",
+   "⭐ DIGITE A QUANTIDADE E O UNITÁRIO · R$ 440 por pessoa pelos 4 dias · 2 pessoas × 4 dias · ⛔ obra especial em Governador Valadares: estes são os números do Jonathan, não estimativa minha — as QUATRO linhas de frete da Base continuam vazias, \"A COTAR\"",
+   8.0,
+   "pessoa-dia",
+   880.0,
+   0.0334,
+   110.0
   ],
   [
    "Fabricação · dupla de marceneiro e ajudante",
@@ -177,15 +224,17 @@
    6.0,
    "dia",
    2764.8,
-   0.1127
+   0.1051,
+   460.8
   ],
   [
    "Montagem · dupla de marceneiro e ajudante",
-   "⭐ A QUANTIDADE É DIGITADA: 3 dias de obra em Governador Valadares mais 1 da conferência técnica, que a mesma dupla faz · ⛔ a equipe SAIU da linha de viagem: ela já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728, e somar as duas seria pagar a montagem duas vezes",
+   "⭐ A QUANTIDADE É DIGITADA: são os MESMOS 4 dias das diárias de Airbnb e dos 4 dias de alimentação, lá em cima — mexeu num, mexa nos três · ⛔ a equipe NÃO entra na logística: aquele bloco paga carreto, carro, cama e comida, e a mão de obra é esta linha · ⚠ o dia de quem vai MEDIR não está aqui nem lá: o bate-volta paga a estrada, não a diária. Somar 1 dia custa R$ 460,80",
    4.0,
    "dia",
    1843.2,
-   0.0751
+   0.0701,
+   460.8
   ],
   [
    "Consumíveis",
@@ -193,7 +242,7 @@
    0.06,
    "%",
    604.86,
-   0.0247
+   0.023
   ],
   [
    "Embalagem",
@@ -201,14 +250,14 @@
    0.02,
    "%",
    323.62,
-   0.0132
+   0.0123
   ],
   [
    "CUSTO DIRETO DO AMBIENTE",
    "",
    "",
    "",
-   24532.5,
+   26312.5,
    1.0
   ],
   [],
@@ -235,7 +284,7 @@
    "",
    "",
    "",
-   6629.19
+   7110.19
   ],
   [
    "",
@@ -249,7 +298,7 @@
    "",
    "",
    "",
-   6416.04
+   6881.57
   ],
   [
    "",
@@ -263,7 +312,7 @@
    "",
    "",
    "",
-   4032.22
+   4324.79
   ],
   [
    "",
@@ -277,7 +326,7 @@
    "",
    "",
    "",
-   2194.54
+   2353.77
   ],
   [
    "",
@@ -291,7 +340,7 @@
    "",
    "",
    "",
-   3896.06
+   4178.75
   ],
   [
    "",
@@ -305,7 +354,7 @@
    "",
    "",
    "",
-   1364.44
+   1463.43
   ],
   [
    "",
@@ -749,11 +798,15 @@
   ],
   [
    "",
-   "⭐⭐ O DIA DA DUPLA [Jonathan, 19/11/2026]: fabricação e montagem deixaram de ser comissão e passaram a ser DIAS DE DUPLA — um marceneiro (R$ 36/h, da Base) mais um ajudante (R$ 21,60/h, ⚠ premissa minha de 60%: a Base não tem a linha), 8 h por dia = R$ 460,80. O custo do dia é UMA célula, na aba \"Preço e Comissões\"; os dias são digitados em cada ambiente. ⛔ E a equipe saiu da linha de viagem, que já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728 — somar as duas pagaria a montagem duas vezes, e isso some no total sem avisar."
+   "⭐⭐ O DIA DA DUPLA [Jonathan, 19/11/2026]: fabricação e montagem deixaram de ser comissão e passaram a ser DIAS DE DUPLA — um marceneiro (R$ 36/h, da Base) mais um ajudante (R$ 21,60/h, ⚠ premissa minha de 60%: a Base não tem a linha), 8 h por dia = R$ 460,80. O custo do dia é UMA célula, na aba \"Preço e Comissões\"; os dias são digitados em cada ambiente. ⛔ E a equipe NÃO entra na logística: aquele bloco paga carreto, carro, cama e comida, e nada de mão de obra — as duas coisas juntas pagariam a montagem duas vezes, e isso some no total sem avisar."
   ],
   [
    "",
-   "⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,38%) E DE MONTAGEM (2,38%), e o modelo diz em caixa alta que \"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro no custo direto\". Com a dupla no custo direto, as duas linhas pagam o mesmo trabalho. ⚠ DECISÃO PENDENTE do Jonathan: zerar as duas na cascata, ou manter e aceitar a sobreposição."
+   "⭐⭐ O CUSTO ESPECIAL DE GOVERNADOR VALADARES [Jonathan, 19/11/2026] substituiu a minha tabela de km × R$/km. São seis linhas, todas números dele: medição bate-volta R$ 350 por pessoa; carreto de caminhão HR R$ 2.500; Mobi com R$ 400 de combustível e R$ 170 de pedágio; Airbnb R$ 900 pelas 4 diárias; alimentação R$ 440 por pessoa pelos 4 dias, com duas pessoas. ⛔ DÁ R$ 5.200 E EU ESTIMAVA R$ 3.420: eu estava R$ 1.780 ABAIXO, metade disso só no carreto, que sozinho vale quase o que eu punha no bloco inteiro. A lição é a de sempre — quando a Base diz \"A COTAR\", a resposta está com quem compra, não comigo."
+  ],
+  [
+   "",
+   "⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,14%) E DE MONTAGEM (2,14%), R$ 2.287,12 no total — e o modelo diz em caixa alta que \"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro no custo direto\". Com a dupla no custo direto, as duas linhas pagam o MESMO trabalho. ⭐ Zerando as duas, a MC deste projeto sobe de 26,91% para 31,18% sem mexer no preço. ⚠ DECISÃO PENDENTE do Jonathan."
   ],
   [
    "",
@@ -767,7 +820,7 @@
   [],
   [
    "",
-   "⚠ R$ 8.028 · O FRETE E OS DIAS DE DUPLA são um TERÇO DO CUSTO DIRETO, e quase tudo neles é premissa. Só a hora de marceneiro (R$ 36 com encargos) vem da Base. Km, hospedagem e alimentação são leitura minha, porque as QUATRO linhas de frete da Base estão vazias — \"A COTAR\". A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número que o Jonathan deve trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez."
+   "⚠ R$ 4.608 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu."
   ],
   [
    "",
@@ -791,7 +844,7 @@
   ],
   [
    "",
-   "⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\". Sem RT a MC vai de 30,23% a 39,02%."
+   "⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\". Sem RT a MC vai de 26,91% a 35,69%."
   ],
   [
    "",

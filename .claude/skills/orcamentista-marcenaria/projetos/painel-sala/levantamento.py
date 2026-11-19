@@ -452,13 +452,11 @@ if __name__ == '__main__':
     print(f'  {"CUSTO DIRETO":<54}{brl(DIRETO):>20}')
 
     print(f'\n  ⑦ O DESLOCAMENTO E A DUPLA  ' + S * 47)
-    print(f'  {"":<36}{"VEÍCULO":>11}{"CAMA":>10}{"COMIDA":>10}{"TOTAL":>11}')
+    print(f'  {"":<36}{"QTD":>11}{"UN":>12}{"UNITÁRIO":>10}{"TOTAL":>11}')
     for v in b.LOGISTICA:
-        c = b.viagem(v)
-        print(f'  {v["rotulo"]:<36}{brl(c["veiculo"]):>11}'
-              f'{brl(c["hospedagem"]):>10}{brl(c["alimentacao"]):>10}'
-              f'{brl(sum(c.values())):>11}')
-    print(f'  {"frete e estadia":<36}{"":>31}{brl(b.CUSTO_GV):>11}')
+        print(f'  {v["rotulo"]:<36}{v["qtd"]:>11g}{v["un"]:>12}'
+              f'{brl(v["unit"]):>10}{brl(v["qtd"] * v["unit"]):>11}')
+    print(f'  {"frete e estadia":<36}{"":>33}{brl(b.CUSTO_GV):>11}')
     print(f'\n  {"":<36}{"DIAS":>11}{"R$/DIA":>10}{"":>10}{"TOTAL":>11}')
     for rot, d in [('Fabricação · dupla', b.DIAS_FABRICACAO),
                    ('Montagem · dupla', b.DIAS_MONTAGEM)]:
@@ -468,9 +466,11 @@ if __name__ == '__main__':
     print(f'  ⭐ a dupla é 1 marceneiro (R$ {b.MARCENEIRO_H:.2f}/h, da Base) mais '
           f'1 ajudante\n     (R$ {b.AJUDANTE_H:.2f}/h, ⚠ premissa minha de 60%), '
           f'{b.HORAS_DIA:.0f} h por dia.')
-    print('  ⛔ A EQUIPE SAIU DA LINHA DE VIAGEM: a instalação já cobrava 2\n'
-          '     pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728. Somar a dupla sem\n'
-          '     tirar isso seria pagar a mesma montagem duas vezes.')
+    print('  ⛔ A EQUIPE NÃO ENTRA NA LOGÍSTICA: o bloco de GV paga carreto,\n'
+          '     carro, cama e comida. A mão de obra é dia de dupla, aqui.')
+    print('  ⚠ E O DIA DE QUEM VAI MEDIR NÃO ESTÁ EM LUGAR NENHUM: os R$ 350\n'
+          '     do bate-volta pagam a estrada, não a diária. São 640 km, o dia\n'
+          '     inteiro. Somar 1 em DIAS_MONTAGEM resolve, e custa R$ 460,80.')
 
     print(f'\n  ⑧ O FECHAMENTO  ' + S * 59)
     print(f'  {"PREÇO FECHADO":<40}{brl(b.PRECO_FECHADO):>18}')
