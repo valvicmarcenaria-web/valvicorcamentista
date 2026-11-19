@@ -189,6 +189,39 @@ Os outros três candidatos ficaram guardados em `img/` — `capa-jantar-niche.jp
 (a anterior, que mostra o nicho), `capa-living.jpg` e `escada.jpg`. Trocar é uma
 linha.
 
+### 19/11 · o orçamento foi para a planilha
+
+> [Jonathan, 19/11/2026] *"coloque o orcamento na planilha"*
+
+**`Painel da Sala · Levantamento de Quantitativo`** ·
+`1fiw2KEbRWGf6_U0w89geSBPdSaFWijbrEp3GlEtx3FQ`
+
+⛔ Nasceu de uma cópia do **MODELO** (`Valvic · PLANILHA BASE`), nunca do
+arquivo de outro cliente — é o que o Painel da própria base manda em caixa alta.
+`planilha.py` gera as 123 linhas da aba a partir do levantamento, e `formato.py`
+(maquinário da casa, copiado para cá) aplica o formato. **A aba é gerada, nunca
+digitada.**
+
+| aba | o que ficou |
+|---|---|
+| `01 Sala · Painel ripado` | 22 linhas de material, 6 itens, 33 peças, 6 notas e 8 dúvidas |
+| `Painel` | 1 ambiente · 6 itens · **16 chapas** · R$ 22.084,50 · R$ 53.500,00 |
+| `Preço e Comissões` | MC alvo 29,81% + 5 de "Médio" = **34,81% aplicada** · RT 10% · conferência **R$ 0,00** |
+
+### ⛔⛔ O MODELO DA CASA TEM UM BUG QUE ZERA A CASCATA INTEIRA
+
+Toda a coluna **EM R$** da aba `Preço e Comissões` multiplica por **`$D$33`** — e
+o preço mora em **`$E$33`**. D33 é a coluna do RÓTULO "PREÇO DE VENDA", vazia.
+Resultado: os catorze valores da cascata saem **R$ 0,00**, a MC média realizada
+sai **0,0%** e a linha de conferência acusa **−R$ 18.622,31** em vez de zero.
+
+Corrigido nesta cópia (E14:E27, D34 e E35). ⚠ **O MODELO CONTINUA COM O
+DEFEITO**, e toda cópia nova vai nascer com ele — é conserto de uma vez só, na
+planilha base.
+
+⚠ Também ajustei no Painel a linha de frete, que o modelo rotula "R$ 200 a
+viagem" e dividia os R$ 5.580 de GV por 200, imprimindo "27,9 viagens".
+
 ### O fechamento
 
 ⭐ **[Jonathan, 18/11/2026] "Ajuste o valor para 53.500".** O preço deste job

@@ -1,0 +1,785 @@
+{
+ "01 Sala · Painel ripado": [
+  [
+   "  VALVIC MARCENARIA        01 SALA · PAINEL RIPADO"
+  ],
+  [
+   "  Executivo SALA · VISTA 2 (1/50) e NICHO RIPADO (1/30, pág. 18) · obra em Governador Valadares · painel corrido de 682 × 277 sobre sóculo de pedra de 15 · ripado até 352, onde a pedra termina, e liso nos 330 seguintes · trama de 20/20, passo de 4 cm"
+  ],
+  [],
+  [
+   "  O AMBIENTE   ·   o que ele consome, por linha de material"
+  ],
+  [],
+  [
+   "MATERIAL",
+   "ESPECIFICAÇÃO",
+   "QUANTIDADE",
+   "UN",
+   "CUSTO",
+   "% DO CUSTO"
+  ],
+  [
+   "MDF Branco TX 6 mm",
+   "área líquida de 3.21 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   1.0,
+   "chapa",
+   250.0,
+   0.0113
+  ],
+  [
+   "MDF Branco TX 18 mm",
+   "área líquida de 4.30 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   2.0,
+   "chapa",
+   800.0,
+   0.0362
+  ],
+  [
+   "MDF Gianduia 6 mm",
+   "área líquida de 5.79 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   2.0,
+   "chapa",
+   700.0,
+   0.0317
+  ],
+  [
+   "MDF Gianduia 15 mm",
+   "área líquida de 17.72 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   5.0,
+   "chapa",
+   2750.0,
+   0.1245
+  ],
+  [
+   "MDF Gianduia 18 mm",
+   "área líquida de 20.61 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   6.0,
+   "chapa",
+   4200.0,
+   0.1902
+  ],
+  [
+   "Fita de borda de cor, 22 mm",
+   "peças, folhas e marcos · R$ 3,00 o metro mais 10% de desperdício",
+   99.81,
+   "m",
+   329.37,
+   0.0149
+  ],
+  [
+   "Fita de borda de cor, 50 mm",
+   "⛔ a borda das portas de passagem tem 42 mm e NÃO leva fita de 22 · R$ 7,00 o metro mais 10%",
+   11.46,
+   "m",
+   88.24,
+   0.004
+  ],
+  [
+   "Fita de borda de cor, 22 mm · ripas",
+   "as DUAS faces e os dois topos de cada uma das 162 ripas",
+   291.96,
+   "m",
+   963.47,
+   0.0436
+  ],
+  [
+   "Filetagem manual",
+   "⛔ coladeira automática não pega peça de 20 mm de largura: a Base nomeia o caso em \"o que não entra na máquina · R$ 5,00\"",
+   291.96,
+   "m",
+   1459.8,
+   0.0661
+  ],
+  [
+   "Filetagem na coladeira automática",
+   "as demais peças, 15 e 18 mm · R$ 2,50 o metro",
+   111.27,
+   "m",
+   278.18,
+   0.0126
+  ],
+  [
+   "Suporte de prateleira, jogo de 4",
+   "⭐ regra 2 da casa: é a PRATELEIRA a unidade, não o par de pinos — R$ 6,50 o jogo de quatro",
+   13.0,
+   "un",
+   84.5,
+   0.0038
+  ],
+  [
+   "Dobradiça Blum",
+   "⭐ 21 folhas de armário · a tabela da Base manda 2 até 90 cm, 3 até 160, 4 até 200 e 5 acima · é a linha que dá 30 anos de garantia",
+   21.0,
+   "un",
+   1050.0,
+   0.0475
+  ],
+  [
+   "Pulsador Blum Tip-on, abertura por toque",
+   "⛔ porta mimetizada em ripado NÃO tem puxador: cava cortaria a trama. Nove folhas de armário",
+   9.0,
+   "un",
+   900.0,
+   0.0408
+  ],
+  [
+   "Alma de aço, barra chata de 3 m",
+   "⚠ a folha de 50 × 277 em 15 mm pede barra chata contra empeno",
+   1.0,
+   "un",
+   50.0,
+   0.0023
+  ],
+  [
+   "Sistema pivô de porta mimetizada",
+   "as duas portas de passagem",
+   2.0,
+   "un",
+   240.0,
+   0.0109
+  ],
+  [
+   "Fecho rolete para porta pivotante",
+   "as duas portas de passagem",
+   2.0,
+   "un",
+   150.0,
+   0.0068
+  ],
+  [
+   "Painel ripado, mão de obra",
+   "⚠ R$ 180 o m² na Base, que avisa \"faixa observada de 70 a 420 · depende da largura da ripa e do vão\" — trama de 20/20 é a mais fechada que já fizemos",
+   5.79,
+   "m²",
+   1042.96,
+   0.0472
+  ],
+  [
+   "Corte",
+   "16 chapas a R$ 2,00 e 83 peças a R$ 2,50 · ⛔ a ripa NÃO entra nesta contagem: quem paga o corte das tiras é a mão de obra de painel ripado",
+   83.0,
+   "peça",
+   239.5,
+   0.0108
+  ],
+  [
+   "Logística · Conferência técnica, antes do corte",
+   "⚠ Governador Valadares fica a 320 km: 640 de ida e volta · 1 pessoa(s), 1.5 dias, 1 noite(s) · veículo R$ 768.00, equipe R$ 432.00, hospedagem R$ 180.00, alimentação R$ 120.00 · ⛔ os R$ 200 por viagem da casa são número de Belo Horizonte",
+   1.0,
+   "viagem",
+   1500.0,
+   0.0679
+  ],
+  [
+   "Logística · Instalação em Governador Valadares",
+   "⚠ Governador Valadares fica a 320 km: 640 de ida e volta · 2 pessoa(s), 3 dias, 2 noite(s) · veículo R$ 1152.00, equipe R$ 1728.00, hospedagem R$ 720.00, alimentação R$ 480.00 · ⛔ os R$ 200 por viagem da casa são número de Belo Horizonte",
+   1.0,
+   "viagem",
+   4080.0,
+   0.1847
+  ],
+  [
+   "Consumíveis",
+   "6% sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz",
+   0.06,
+   "%",
+   604.86,
+   0.0274
+  ],
+  [
+   "Embalagem",
+   "2% sobre o custo direto · papelão, filme e cantoneira",
+   0.02,
+   "%",
+   323.62,
+   0.0147
+  ],
+  [
+   "CUSTO DIRETO DO AMBIENTE",
+   "",
+   "",
+   "",
+   22084.5,
+   1.0
+  ],
+  [],
+  [],
+  [
+   "  OS ITENS   ·   cada item é um móvel, e é assim que ele vai para a proposta"
+  ],
+  [],
+  [
+   "ITEM",
+   "MÓVEL",
+   "MEDIDA",
+   "",
+   "",
+   "",
+   "",
+   "CUSTO"
+  ],
+  [
+   "01",
+   "Armário superior do nicho",
+   "302 × 75 × 50",
+   "",
+   "",
+   "",
+   "",
+   5967.69
+  ],
+  [
+   "",
+   "302 × 75 × 50 · 4 folhas de giro"
+  ],
+  [
+   "02",
+   "Armário inferior do nicho",
+   "302 × 71 × 50",
+   "",
+   "",
+   "",
+   "",
+   5775.81
+  ],
+  [
+   "",
+   "302 × 71 × 50 · 4 folhas de abrir"
+  ],
+  [
+   "03",
+   "Armário lateral, porta ripada inteira",
+   "50 × 277 × 50",
+   "",
+   "",
+   "",
+   "",
+   3629.87
+  ],
+  [
+   "",
+   "50 × 277 × 50 · folha inteira, abertura por toque"
+  ],
+  [
+   "04",
+   "Painel liso com os vãos das duas portas",
+   "330 × 277",
+   "",
+   "",
+   "",
+   "",
+   1975.56
+  ],
+  [
+   "",
+   "330 × 277 · face melamínica, sem ripa"
+  ],
+  [
+   "05",
+   "Duas portas mimetizadas de passagem",
+   "83 × 210 e 70 × 210, folha de 42 mm",
+   "",
+   "",
+   "",
+   "",
+   3507.29
+  ],
+  [
+   "",
+   "83 × 210 e 70 × 210 · tamponamento de 42 mm, 18 + 18 + 6"
+  ],
+  [
+   "06",
+   "Estrutura de fixação do painel",
+   "682 × 277",
+   "",
+   "",
+   "",
+   "",
+   1228.28
+  ],
+  [
+   "",
+   "montantes a cada 60 cm e três fiadas de travessa"
+  ],
+  [
+   "⭐ CONFERÊNCIA — a soma dos itens contra o painel de material",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   0.0
+  ],
+  [],
+  [],
+  [
+   "  O QUE NÃO É MARCENARIA   ·   está na prancha, não está nesta conta"
+  ],
+  [],
+  [
+   "",
+   "⛔ O NICHO 131 × 302 EM MÁRMORE TRAVERTINO ROMANO ESTUCADO. Regra 19 [Jonathan, 29/10/2026]: pedra nunca é nossa. A marcenaria entrega o vão pronto para recebê-lo."
+  ],
+  [
+   "",
+   "⛔ O SÓCULO, que a própria prancha diz ser EM ALVENARIA revestida de mármore, e o RODAPÉ de 15 cm em travertino."
+  ],
+  [
+   "",
+   "⛔ A ILUMINAÇÃO DO NICHO [Jonathan, 18/11/2026] \"iluminação nao é nossa\". A prancha pede PREVER fita de LED 3000 K, e prever é o elétrico: deixamos o rasgo e a passagem; fita, fonte e acionamento são de outro."
+  ],
+  [
+   "",
+   "⛔ A JANELA 202 × 175 em vidro laminado com estrutura metálica preta, e toda a alvenaria, elétrica e revestimento — inclusive os pontos de fixação."
+  ],
+  [
+   "",
+   "⚠ O PUXADOR DAS DUAS PORTAS DE PASSAGEM aparece no render e NÃO está especificado no executivo: não está orçado. As nove folhas de armário não levam puxador nenhum, por decisão de projeto — abrem no toque."
+  ],
+  [],
+  [],
+  [
+   "  AS PEÇAS, ITEM POR ITEM   ·   cada linha é uma peça que vai para o plano de corte"
+  ],
+  [],
+  [
+   "PEÇA",
+   "OBSERVAÇÃO",
+   "C",
+   "L",
+   "QTD",
+   "UN",
+   "CHAVE DA BASE",
+   "CUSTO"
+  ],
+  [
+   "■ Armário superior do nicho",
+   "302 × 75 × 50 · 4 folhas de giro"
+  ],
+  [
+   "Armário superior · laterais e divisórias",
+   "",
+   46.0,
+   75.0,
+   5,
+   "pç",
+   "MDF Gianduia 15",
+   233.11
+  ],
+  [
+   "Armário superior · tampo e base",
+   "emendado",
+   151.0,
+   46.0,
+   4,
+   "pç",
+   "MDF Gianduia 15",
+   375.46
+  ],
+  [
+   "Armário superior · fundo",
+   "⛔ fundo em Gianduia: a caixa é vista com a porta aberta",
+   151.0,
+   75.0,
+   2,
+   "pç",
+   "MDF Gianduia 6",
+   194.78
+  ],
+  [
+   "Armário superior · prateleiras",
+   "",
+   73.6,
+   44.0,
+   4,
+   "pç",
+   "MDF Gianduia 18",
+   222.86
+  ],
+  [
+   "Armário superior · 4 folhas de 75,5 × 75",
+   "BASE onde as ripas são coladas",
+   75.5,
+   75.0,
+   4,
+   "pç",
+   "MDF Gianduia 15",
+   306.08
+  ],
+  [
+   "Ripas da banda superior · 75 ripas de 2 × 75",
+   "área equivalente · passo 4 · perda de serra 1,10",
+   165.0,
+   75.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   212.84
+  ],
+  [
+   "■ Armário inferior do nicho",
+   "302 × 71 × 50 · 4 folhas de abrir"
+  ],
+  [
+   "Armário inferior · laterais e divisórias",
+   "",
+   46.0,
+   71.0,
+   5,
+   "pç",
+   "MDF Gianduia 15",
+   220.68
+  ],
+  [
+   "Armário inferior · tampo e base",
+   "emendado",
+   151.0,
+   46.0,
+   4,
+   "pç",
+   "MDF Gianduia 15",
+   375.46
+  ],
+  [
+   "Armário inferior · fundo",
+   "⛔ fundo em Gianduia: a caixa é vista com a porta aberta",
+   151.0,
+   71.0,
+   2,
+   "pç",
+   "MDF Gianduia 6",
+   184.39
+  ],
+  [
+   "Armário inferior · prateleiras",
+   "",
+   73.6,
+   44.0,
+   4,
+   "pç",
+   "MDF Gianduia 18",
+   222.86
+  ],
+  [
+   "Armário inferior · 4 folhas de 75,5 × 71",
+   "BASE onde as ripas são coladas",
+   75.5,
+   71.0,
+   4,
+   "pç",
+   "MDF Gianduia 15",
+   289.76
+  ],
+  [
+   "Ripas da banda inferior · 75 ripas de 2 × 71",
+   "área equivalente · passo 4 · perda de serra 1,10",
+   165.0,
+   71.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   201.49
+  ],
+  [
+   "■ Armário lateral, porta ripada inteira",
+   "50 × 277 × 50 · folha inteira, abertura por toque"
+  ],
+  [
+   "BASE do ripado · folha da porta",
+   "onde as ripas são coladas",
+   50.0,
+   277.0,
+   1,
+   "pç",
+   "MDF Gianduia 15",
+   187.16
+  ],
+  [
+   "Ripas da porta · 12 ripas de 2 × 277",
+   "área equivalente · passo 4 · perda de serra 1,10",
+   26.4,
+   277.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   125.77
+  ],
+  [
+   "Armário lateral · laterais e divisórias",
+   "",
+   46.0,
+   277.0,
+   2,
+   "pç",
+   "MDF Gianduia 15",
+   344.38
+  ],
+  [
+   "Armário lateral · tampo e base",
+   "",
+   50.0,
+   46.0,
+   2,
+   "pç",
+   "MDF Gianduia 15",
+   62.16
+  ],
+  [
+   "Armário lateral · fundo",
+   "⛔ fundo em Gianduia: a caixa é vista com a porta aberta",
+   50.0,
+   277.0,
+   1,
+   "pç",
+   "MDF Gianduia 6",
+   119.1
+  ],
+  [
+   "Armário lateral · prateleiras",
+   "",
+   47.0,
+   44.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   35.57
+  ],
+  [
+   "Armário lateral · prateleiras extras",
+   "2,77 m de altura · 5 no total",
+   47.0,
+   44.0,
+   4,
+   "pç",
+   "MDF Gianduia 18",
+   142.27
+  ],
+  [
+   "■ Painel liso com os vãos das duas portas",
+   "330 × 277 · face melamínica, sem ripa"
+  ],
+  [
+   "Faixa superior sobre as portas",
+   "emendada · 330 > 273",
+   165.0,
+   67.0,
+   2,
+   "pç",
+   "MDF Gianduia 18",
+   380.27
+  ],
+  [
+   "Faixa vertical 1 entre vãos",
+   "",
+   14.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   50.57
+  ],
+  [
+   "Faixa vertical 2 entre vãos",
+   "",
+   143.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   516.49
+  ],
+  [
+   "Faixa vertical 3 entre vãos",
+   "",
+   20.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   72.24
+  ],
+  [
+   "■ Duas portas mimetizadas de passagem",
+   "83 × 210 e 70 × 210 · tamponamento de 42 mm, 18 + 18 + 6"
+  ],
+  [
+   "Porta 1 · face vista 18 mm",
+   "tamponamento de 42 mm",
+   83.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   299.78
+  ],
+  [
+   "Porta 1 · face oposta 18 mm",
+   "",
+   83.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   299.78
+  ],
+  [
+   "Porta 1 · miolo 6 mm",
+   "",
+   83.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Branco TX 6",
+   107.06
+  ],
+  [
+   "Marco mimetizado da porta 1",
+   "",
+   503.0,
+   15.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   129.77
+  ],
+  [
+   "Porta 2 · face vista 18 mm",
+   "tamponamento de 42 mm",
+   70.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   252.83
+  ],
+  [
+   "Porta 2 · face oposta 18 mm",
+   "",
+   70.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   252.83
+  ],
+  [
+   "Porta 2 · miolo 6 mm",
+   "",
+   70.0,
+   210.0,
+   1,
+   "pç",
+   "MDF Branco TX 6",
+   90.29
+  ],
+  [
+   "Marco mimetizado da porta 2",
+   "",
+   490.0,
+   15.0,
+   1,
+   "pç",
+   "MDF Gianduia 18",
+   126.41
+  ],
+  [
+   "■ Estrutura de fixação do painel",
+   "montantes a cada 60 cm e três fiadas de travessa"
+  ],
+  [
+   "Montantes verticais a cada 60 cm",
+   "não aparece · MDF branco",
+   8.0,
+   277.0,
+   12,
+   "pç",
+   "MDF Branco TX 18",
+   261.35
+  ],
+  [
+   "Travessas horizontais",
+   "três fiadas, emendadas",
+   341.0,
+   8.0,
+   6,
+   "pç",
+   "MDF Branco TX 18",
+   160.86
+  ],
+  [],
+  [],
+  [
+   "  AS NOTAS   ·   o que a leitura da prancha ensinou"
+  ],
+  [],
+  [
+   "",
+   "⭐⭐ A TRAMA DESTE PROJETO NÃO É A DA CASA. A prancha crava \"RIPADO EM MDF GIANDUIA TRAMA DE 20MM E ESPAÇAMENTO DE 20MM - DURATEX\" e o detalhe 1/5 confirma com a cota 2 · 2 · 2. Passo de 4 cm, contra os 6 cm do nosso padrão (ripa 4, vão 2): são 25 ripas por metro em vez de 16,7. CINQUENTA POR CENTO MAIS RIPA E MAIS FILETAGEM por m² de face. Quem copiar o passo da casa erra o orçamento para baixo."
+  ],
+  [
+   "",
+   "⛔⛔ E O VÃO TEM 2 CM DE PROFUNDIDADE: enxerga-se o fundo entre as ripas. O substrato sai no MESMO Gianduia, nunca em branco nem em cru. Foi a primeira coisa que eu ia economizar e é a que apareceria na obra."
+  ],
+  [
+   "",
+   "⛔ PORTA DE PASSAGEM É 42 MM, não 18. A aba MDF da Base crava em \"ESPESSURA PADRÃO POR APLICAÇÃO\". Folha de 42 é tamponamento: 18 + 18 + 6, a MESMA ÁREA TRÊS VEZES. E a borda de 42 mm pede fita de 50, não a de 22."
+  ],
+  [
+   "",
+   "⛔ A FITA DAS RIPAS NÃO EXISTIA no primeiro levantamento: eu cobrei a FILETAGEM (a aplicação) e esqueci a FITA (o material) nos 292 m de ripa. A Base tem o par pronto — \"fita de cor com filetagem, preço cheio da casa, R$ 5,50, já inclui a aplicação\" = 3,00 + 2,50."
+  ],
+  [
+   "",
+   "⭐ A DOBRADIÇA BLUM CUSTA OS MESMOS R$ 50 DA HETTICH SENSYS na Base — e a escada de garantia da casa dá 10 anos ao Hettich e 30 ao Blum. Trocar a linha não custou um centavo e devolveu vinte anos de promessa. ⚠ Pendência: só o termo de 10 anos está desenhado; o de 30 precisa existir assinado antes de a proposta sair."
+  ],
+  [
+   "",
+   "⚠ A BÁSCULA SAIU POR DECISÃO [Jonathan, 18/11/2026]: a banda de cima vai de 2,17 m a 2,92 m do piso, e porta de girar de 75 × 75 a essa altura abre para fora e para baixo, na cara de quem está na mesa de jantar. A báscula sobe. Fica escrito porque não aparece no orçamento e aparece na obra."
+  ],
+  [
+   "",
+   "⭐ OS TRÊS ARMÁRIOS NÃO ESTÃO NO EXECUTIVO. A prancha desenha o painel como superfície contínua; as bandas acima e abaixo do nicho e a coluna de 50 viraram armário por decisão de 18/11/2026, com caixa, prateleira e ferragem em cada vão. A proposta diz isso em bloco destacado."
+  ],
+  [],
+  [],
+  [
+   "  AS DÚVIDAS   ·   ⛔ cada uma é dinheiro parado, e estão em ordem de quanto valem"
+  ],
+  [],
+  [
+   "",
+   "⚠ R$ 5.580 · a LOGÍSTICA DE GOVERNADOR VALADARES é ESTIMATIVA. Só a hora de marceneiro (R$ 36 com encargos) vem da Base; km, hospedagem e alimentação são leitura minha, porque as QUATRO linhas de frete da Base estão vazias — \"A COTAR\". Trocar um número refaz o bloco."
+  ],
+  [
+   "",
+   "⚠ R$ 2.132 · \"GIANDUIA TRAMA - DURATEX\" é padrão ESPECIAL? Trama é texturizado, e a Base tem a linha \"CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000,00\". Orçado no genérico de cor, R$ 700. É a primeira cotação a fazer."
+  ],
+  [
+   "",
+   "⚠ R$ 1.222 · a estrutura de fixação é nossa ou a parede já vem pronta? Está orçada, e saiu da FOLHA a pedido [Jonathan, 18/11/2026] — não do custo."
+  ],
+  [
+   "",
+   "⚠ R$ 745 · a ripa de 2 cm entra na coladeira automática? A Base separa \"filetagem na coladeira · R$ 2,50\" de \"filetagem manual · ripa de 6 mm E O QUE NÃO ENTRA NA MÁQUINA · R$ 5,00\". Orçado como manual."
+  ],
+  [
+   "",
+   "⚠ o painel é PELE sobre alvenaria, ou a marcenaria faz o volume de 50 de profundidade? Assumi pele: a prancha diz \"sóculo em ALVENARIA\" e o nicho é revestido pelo marmorista."
+  ],
+  [
+   "",
+   "⚠ a prancha pede relevo de 20 mm e cortamos de chapa de 18, que é o padrão da casa. Ou se aceita 18, ou se lamina — e aí muda."
+  ],
+  [
+   "",
+   "⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\". Sem RT a MC vai de 34,81% a 43,60%."
+  ],
+  [
+   "",
+   "⚠ o NOME DO CLIENTE não está em nenhuma das pranchas, e a capa da proposta hoje sai sem ele."
+  ]
+ ]
+}
