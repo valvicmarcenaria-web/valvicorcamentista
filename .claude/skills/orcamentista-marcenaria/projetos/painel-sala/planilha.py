@@ -129,9 +129,13 @@ def linhas():
         'uma das %d ripas' % sum(int(l // b.PASSO) for l, _a, _r in lv.BANDAS),
         frp, 'm', frp * b.FITA_22 * b.FITA_PERDA)
     mat('Filetagem manual', '⛔ coladeira automática não pega peça de 20 mm de '
-        'largura: a Base nomeia o caso em "o que não entra na máquina · R$ 5,00"',
+        'largura: a Base nomeia o caso em "o que não entra na máquina · R$ 5,00" '
+        '· são as duas faces e os dois topos de cada ripa, uma a uma · ⚠ é MÃO '
+        'DE OBRA cobrada por metro: vive fora dos dias de dupla, e ou está aqui '
+        'ou está lá',
         frp, 'm', frp * b.FILETE_RIPA)
-    mat('Filetagem na coladeira automática', 'as demais peças, 15 e 18 mm · R$ 2,50 o metro',
+    mat('Filetagem na coladeira automática', 'as demais peças, 15 e 18 mm · '
+        'R$ 2,50 o metro · ⚠ também é mão de obra por metro, fora dos dias de dupla',
         f22 + f50, 'm', (f22 + f50) * b.FILETE_MAQ)
     ag = {}
     for it, _q in T['L']:
@@ -152,9 +156,31 @@ def linhas():
     for n, (qt, u) in ag.items():
         mat(n, ESP_FER.get(n, ''), qt, 'un', qt * u)
     m2r = sum(l * a / 10000 for l, a, _r in lv.BANDAS)
-    mat('Painel ripado, mão de obra', '⚠ R$ 180 o m² na Base, que avisa "faixa observada '
-        'de 70 a 420 · depende da largura da ripa e do vão" — trama de 20/20 é a mais '
-        'fechada que já fizemos', m2r, 'm²', T['c_terc'])
+    #   ⭐ TODA A MÃO DE OBRA QUE A CASA COBRA POR MEDIDA, e que por isso
+    #     vive FORA do dia de dupla: colagem da trama por m² e as duas
+    #     filetagens por metro. É o número que a pergunta do Jonathan
+    #     colocou na mesa: ou está aqui, ou está nos dias.
+    MO_MEDIDA = T['c_terc'] + frp * b.FILETE_RIPA + (f22 + f50) * b.FILETE_MAQ
+    #   ⛔⛔ NÃO CHAME ISTO DE TERCEIRIZADO [Jonathan, 19/11/2026: "pq esta
+    #     descrevendo assim? Painel ripado · mão de obra terceirizada"].
+    #     Eu peguei o nome da ABA da Base ("Serviços terceirizados") em vez
+    #     de olhar a vizinhança da LINHA. Ela está no grupo "USINAGEM E
+    #     ACABAMENTO ESPECIAL", ao lado da cava na CNC, da perda de serra ao
+    #     tirar ripa e da moldura na router — operação de fábrica com
+    #     máquina nossa. O título da aba ("o que sai da fábrica mas não é
+    #     feito por nós") contradiz o conteúdo deste grupo: a aba é um
+    #     saco de gatos que mistura serralheiro e vidraceiro, que são
+    #     terceiros de verdade, com hora de máquina nossa cobrada por m².
+    mat('Painel ripado, mão de obra',
+        '⭐ NÃO É TERCEIRIZADO. A linha mora na aba "Serviços terceirizados" '
+        'da Base, mas no grupo USINAGEM E ACABAMENTO ESPECIAL — ao lado da '
+        'cava na CNC, da perda de serra ao tirar ripa e da moldura na router, '
+        'que são operação de fábrica com máquina nossa · ⛔ O QUE ESTA LINHA '
+        'PAGA: riscar, colar e alinhar as 162 ripas sobre a base, %.2f m² de '
+        'trama. Os DIAS DE DUPLA, lá embaixo, pagam o resto · ⚠ R$ 180 o '
+        'm², e a Base avisa "faixa observada de 70 a 420 · depende da largura '
+        'da ripa e do vão" — trama de 20/20 é a mais fechada que já fizemos'
+        % m2r, m2r, 'm²', T['c_terc'])
     mat('Corte', '%d chapas a R$ 2,00 e %d peças a R$ 2,50 · ⛔ a ripa NÃO entra nesta '
         'contagem: quem paga o corte das tiras é a mão de obra de painel ripado'
         % (T['n_chapas'], T['pecas']), T['pecas'], 'peça', T['c_corte'])
@@ -172,10 +198,21 @@ def linhas():
             'QUATRO linhas de frete da Base continuam vazias, "A COTAR"'
             % (v['obs'], b.OBRA),
             v['qtd'], v['un'], v['qtd'] * v['unit'], v['unit'])
+    #   ⛔ E A OBSERVAÇÃO DESTA LINHA DIZIA QUE OS DIAS COBRIAM "162 ripas
+    #     coladas e 292 m de filetagem manual" — o mesmo trabalho que as
+    #     três linhas de cima cobram por medida. Era o meu texto criando uma
+    #     duplicidade que os números não têm.
     mat('Fabricação · dupla de marceneiro e ajudante',
-        '⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · 83 peças, '
-        '162 ripas coladas e 292 m de filetagem manual · o custo do dia vem '
-        'da célula única da aba "Preço e Comissões"',
+        '⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · cobre o '
+        'corte das %d peças, a caixa dos três armários, a furação, o '
+        'tamponamento das duas portas de 42 mm e a ferragem · ⛔ NÃO COBRE A '
+        'TRAMA: riscar, colar e fitar as 162 ripas é pago POR MEDIDA, nas '
+        'linhas "Painel ripado" e nas duas de "Filetagem" lá em cima — '
+        'R$ %s, o equivalente a %.1f dias de dupla · ⚠ SE A DUPLA FIZER A '
+        'TRAMA DENTRO DESTES DIAS, aquelas três linhas saem, senão a mesma '
+        'mão de obra é paga duas vezes · o custo do dia vem da célula única '
+        'da aba "Preço e Comissões"'
+        % (T['pecas'], _br(MO_MEDIDA), MO_MEDIDA / b.DUPLA_DIA),
         b.DIAS_FABRICACAO, 'dia', b.DIAS_FABRICACAO * b.DUPLA_DIA, b.DUPLA_DIA)
     mat('Montagem · dupla de marceneiro e ajudante',
         '⭐ A QUANTIDADE É DIGITADA: são os MESMOS %d dias das diárias de '
@@ -304,6 +341,15 @@ NOTAS = [
  'digitados em cada ambiente. ⛔ E a equipe NÃO entra na logística: aquele bloco paga '
  'carreto, carro, cama e comida, e nada de mão de obra — as duas coisas juntas '
  'pagariam a montagem duas vezes, e isso some no total sem avisar.',
+ '⛔⛔ O MECANISMO DA DUPLA BRIGA COM TODA MÃO DE OBRA MEDIDA. Desde que fabricação e '
+ 'montagem viraram DIAS, qualquer linha que cobre mão de obra por metro ou por m² '
+ 'passa a concorrer com o dia: colagem da trama (R$ 1.042,96 por 5,79 m²), filetagem '
+ 'manual (R$ 1.459,80 por 292 m) e filetagem na coladeira (R$ 278,18 por 111 m) somam '
+ 'R$ 2.780,94 — 5,6 DIAS DE DUPLA. Hoje elas estão SEPARADAS dos 7 dias de '
+ 'fabricação, e a observação de cada linha diz o que cobre, mas é decisão do '
+ 'Jonathan: ou a trama é dia de dupla, ou é medida. As duas juntas pagam o mesmo '
+ 'trabalho duas vezes, e foi a pergunta dele sobre a palavra "terceirizada" que '
+ 'abriu isso — nome errado escondendo pergunta de dinheiro.',
  '⭐⭐ O CUSTO ESPECIAL DE GOVERNADOR VALADARES [Jonathan, 19/11/2026] substituiu a '
  'minha tabela de km × R$/km. São seis linhas, todas números dele: medição bate-volta '
  'R$ 350 por pessoa; carreto de caminhão HR R$ 2.500; Mobi com R$ 400 de combustível e '
@@ -325,13 +371,18 @@ NOTAS = [
 ]
 
 DUVIDAS = [
- '⚠ R$ 4.608 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são '
+ '⚠ R$ 5.500 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são '
  'números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. '
  'A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro '
  'número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é '
  'uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu '
  'a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os '
  'R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu.',
+ '⚠ R$ 2.780,94 · A TRAMA É DIA DE DUPLA OU É MEDIDA? A colagem por m² mais as duas '
+ 'filetagens por metro valem 5,6 dias de dupla. Hoje estão FORA dos 7 dias de '
+ 'fabricação, que cobrem corte, caixa, furação, tamponamento e ferragem. Se a dupla '
+ 'fizer a trama dentro dos dias dela, estas três linhas saem e o custo direto cai '
+ 'para R$ 24.585,37.',
  '⚠ R$ 2.132 · "GIANDUIA TRAMA - DURATEX" é padrão ESPECIAL? Trama é texturizado, e a Base '
  'tem a linha "CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000,00". Orçado no genérico de cor, '
  'R$ 700. É a primeira cotação a fazer.',

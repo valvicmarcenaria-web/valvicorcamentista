@@ -94,7 +94,7 @@
   ],
   [
    "Filetagem manual",
-   "⛔ coladeira automática não pega peça de 20 mm de largura: a Base nomeia o caso em \"o que não entra na máquina · R$ 5,00\"",
+   "⛔ coladeira automática não pega peça de 20 mm de largura: a Base nomeia o caso em \"o que não entra na máquina · R$ 5,00\" · são as duas faces e os dois topos de cada ripa, uma a uma · ⚠ é MÃO DE OBRA cobrada por metro: vive fora dos dias de dupla, e ou está aqui ou está lá",
    291.96,
    "m",
    1459.8,
@@ -103,7 +103,7 @@
   ],
   [
    "Filetagem na coladeira automática",
-   "as demais peças, 15 e 18 mm · R$ 2,50 o metro",
+   "as demais peças, 15 e 18 mm · R$ 2,50 o metro · ⚠ também é mão de obra por metro, fora dos dias de dupla",
    111.27,
    "m",
    278.18,
@@ -166,7 +166,7 @@
   ],
   [
    "Painel ripado, mão de obra",
-   "⚠ R$ 180 o m² na Base, que avisa \"faixa observada de 70 a 420 · depende da largura da ripa e do vão\" — trama de 20/20 é a mais fechada que já fizemos",
+   "⭐ NÃO É TERCEIRIZADO. A linha mora na aba \"Serviços terceirizados\" da Base, mas no grupo USINAGEM E ACABAMENTO ESPECIAL — ao lado da cava na CNC, da perda de serra ao tirar ripa e da moldura na router, que são operação de fábrica com máquina nossa · ⛔ O QUE ESTA LINHA PAGA: riscar, colar e alinhar as 162 ripas sobre a base, 5.79 m² de trama. Os DIAS DE DUPLA, lá embaixo, pagam o resto · ⚠ R$ 180 o m², e a Base avisa \"faixa observada de 70 a 420 · depende da largura da ripa e do vão\" — trama de 20/20 é a mais fechada que já fizemos",
    5.79,
    "m²",
    1042.96,
@@ -238,7 +238,7 @@
   ],
   [
    "Fabricação · dupla de marceneiro e ajudante",
-   "⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · 83 peças, 162 ripas coladas e 292 m de filetagem manual · o custo do dia vem da célula única da aba \"Preço e Comissões\"",
+   "⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · cobre o corte das 83 peças, a caixa dos três armários, a furação, o tamponamento das duas portas de 42 mm e a ferragem · ⛔ NÃO COBRE A TRAMA: riscar, colar e fitar as 162 ripas é pago POR MEDIDA, nas linhas \"Painel ripado\" e nas duas de \"Filetagem\" lá em cima — R$ 2780,93, o equivalente a 5.6 dias de dupla · ⚠ SE A DUPLA FIZER A TRAMA DENTRO DESTES DIAS, aquelas três linhas saem, senão a mesma mão de obra é paga duas vezes · o custo do dia vem da célula única da aba \"Preço e Comissões\"",
    7.0,
    "dia",
    3500.0,
@@ -829,6 +829,10 @@
   ],
   [
    "",
+   "⛔⛔ O MECANISMO DA DUPLA BRIGA COM TODA MÃO DE OBRA MEDIDA. Desde que fabricação e montagem viraram DIAS, qualquer linha que cobre mão de obra por metro ou por m² passa a concorrer com o dia: colagem da trama (R$ 1.042,96 por 5,79 m²), filetagem manual (R$ 1.459,80 por 292 m) e filetagem na coladeira (R$ 278,18 por 111 m) somam R$ 2.780,94 — 5,6 DIAS DE DUPLA. Hoje elas estão SEPARADAS dos 7 dias de fabricação, e a observação de cada linha diz o que cobre, mas é decisão do Jonathan: ou a trama é dia de dupla, ou é medida. As duas juntas pagam o mesmo trabalho duas vezes, e foi a pergunta dele sobre a palavra \"terceirizada\" que abriu isso — nome errado escondendo pergunta de dinheiro."
+  ],
+  [
+   "",
    "⭐⭐ O CUSTO ESPECIAL DE GOVERNADOR VALADARES [Jonathan, 19/11/2026] substituiu a minha tabela de km × R$/km. São seis linhas, todas números dele: medição bate-volta R$ 350 por pessoa; carreto de caminhão HR R$ 2.500; Mobi com R$ 400 de combustível e R$ 170 de pedágio; Airbnb R$ 900 pelas 4 diárias; alimentação R$ 440 por pessoa pelos 4 dias, com duas pessoas. ⛔ DÁ R$ 5.200 E EU ESTIMAVA R$ 3.420: eu estava R$ 1.780 ABAIXO, metade disso só no carreto, que sozinho vale quase o que eu punha no bloco inteiro. A lição é a de sempre — quando a Base diz \"A COTAR\", a resposta está com quem compra, não comigo."
   ],
   [
@@ -847,7 +851,11 @@
   [],
   [
    "",
-   "⚠ R$ 4.608 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu."
+   "⚠ R$ 5.500 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu."
+  ],
+  [
+   "",
+   "⚠ R$ 2.780,94 · A TRAMA É DIA DE DUPLA OU É MEDIDA? A colagem por m² mais as duas filetagens por metro valem 5,6 dias de dupla. Hoje estão FORA dos 7 dias de fabricação, que cobrem corte, caixa, furação, tamponamento e ferragem. Se a dupla fizer a trama dentro dos dias dela, estas três linhas saem e o custo direto cai para R$ 24.585,37."
   ],
   [
    "",

@@ -442,7 +442,7 @@ if __name__ == '__main__':
                    ('Filetagem · aplicação', T['c_filete']),
                    (f'Corte · {T["n_chapas"]} chapas, {T["pecas"]} peças', T['c_corte']),
                    ('Consumíveis · 6% sobre chapa e fita', T['c_cons']),
-                   ('Terceirizado · painel ripado', T['c_terc']),
+                   ('Painel ripado · colagem da trama, por m²', T['c_terc']),
                    ('Ferragem', T['c_fer']),
                    (f'Frete e estadia · {b.OBRA}', T['c_viagem']),
                    (f'Dupla · {b.DIAS_FABRICACAO:g} dias de fabricação e '
