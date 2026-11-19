@@ -25,7 +25,7 @@
    1.0,
    "chapa",
    250.0,
-   0.0113
+   0.0102
   ],
   [
    "MDF Branco TX 18 mm",
@@ -33,7 +33,7 @@
    2.0,
    "chapa",
    800.0,
-   0.0362
+   0.0326
   ],
   [
    "MDF Gianduia 6 mm",
@@ -41,7 +41,7 @@
    2.0,
    "chapa",
    700.0,
-   0.0317
+   0.0285
   ],
   [
    "MDF Gianduia 15 mm",
@@ -49,7 +49,7 @@
    5.0,
    "chapa",
    2750.0,
-   0.1245
+   0.1121
   ],
   [
    "MDF Gianduia 18 mm",
@@ -57,7 +57,7 @@
    6.0,
    "chapa",
    4200.0,
-   0.1902
+   0.1712
   ],
   [
    "Fita de borda de cor, 22 mm",
@@ -65,7 +65,7 @@
    99.81,
    "m",
    329.37,
-   0.0149
+   0.0134
   ],
   [
    "Fita de borda de cor, 50 mm",
@@ -73,7 +73,7 @@
    11.46,
    "m",
    88.24,
-   0.004
+   0.0036
   ],
   [
    "Fita de borda de cor, 22 mm · ripas",
@@ -81,7 +81,7 @@
    291.96,
    "m",
    963.47,
-   0.0436
+   0.0393
   ],
   [
    "Filetagem manual",
@@ -89,7 +89,7 @@
    291.96,
    "m",
    1459.8,
-   0.0661
+   0.0595
   ],
   [
    "Filetagem na coladeira automática",
@@ -97,7 +97,7 @@
    111.27,
    "m",
    278.18,
-   0.0126
+   0.0113
   ],
   [
    "Suporte de prateleira, jogo de 4",
@@ -105,7 +105,7 @@
    13.0,
    "un",
    84.5,
-   0.0038
+   0.0034
   ],
   [
    "Dobradiça Blum",
@@ -113,7 +113,7 @@
    21.0,
    "un",
    1050.0,
-   0.0475
+   0.0428
   ],
   [
    "Pulsador Blum Tip-on, abertura por toque",
@@ -121,7 +121,7 @@
    9.0,
    "un",
    900.0,
-   0.0408
+   0.0367
   ],
   [
    "Alma de aço, barra chata de 3 m",
@@ -129,7 +129,7 @@
    1.0,
    "un",
    50.0,
-   0.0023
+   0.002
   ],
   [
    "Sistema pivô de porta mimetizada",
@@ -137,7 +137,7 @@
    2.0,
    "un",
    240.0,
-   0.0109
+   0.0098
   ],
   [
    "Fecho rolete para porta pivotante",
@@ -145,7 +145,7 @@
    2.0,
    "un",
    150.0,
-   0.0068
+   0.0061
   ],
   [
    "Painel ripado, mão de obra",
@@ -153,7 +153,7 @@
    5.79,
    "m²",
    1042.96,
-   0.0472
+   0.0425
   ],
   [
    "Corte",
@@ -161,23 +161,31 @@
    83.0,
    "peça",
    239.5,
-   0.0108
+   0.0098
   ],
   [
-   "Logística · Conferência técnica, antes do corte",
-   "⚠ Governador Valadares fica a 320 km: 640 de ida e volta · 1 pessoa(s), 1.5 dias, 1 noite(s) · veículo R$ 768.00, equipe R$ 432.00, hospedagem R$ 180.00, alimentação R$ 120.00 · ⛔ os R$ 200 por viagem da casa são número de Belo Horizonte",
-   1.0,
+   "Frete e estadia · Governador Valadares",
+   "⭐ A QUANTIDADE É DIGITADA: quantas viagens este ambiente leva · Governador Valadares fica a 320 km, 640 de ida e volta · veículo R$ 1920.00, hospedagem R$ 900.00, alimentação R$ 600.00 · ⛔ só deslocamento, cama e comida: a mão de obra é dia de dupla, logo abaixo · ⚠ as QUATRO linhas de frete da Base estão vazias, \"A COTAR\"",
+   2.0,
    "viagem",
-   1500.0,
-   0.0679
+   3420.0,
+   0.1394
   ],
   [
-   "Logística · Instalação em Governador Valadares",
-   "⚠ Governador Valadares fica a 320 km: 640 de ida e volta · 2 pessoa(s), 3 dias, 2 noite(s) · veículo R$ 1152.00, equipe R$ 1728.00, hospedagem R$ 720.00, alimentação R$ 480.00 · ⛔ os R$ 200 por viagem da casa são número de Belo Horizonte",
-   1.0,
-   "viagem",
-   4080.0,
-   0.1847
+   "Fabricação · dupla de marceneiro e ajudante",
+   "⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · 83 peças, 162 ripas coladas e 292 m de filetagem manual · o custo do dia vem da célula única da aba \"Preço e Comissões\"",
+   6.0,
+   "dia",
+   2764.8,
+   0.1127
+  ],
+  [
+   "Montagem · dupla de marceneiro e ajudante",
+   "⭐ A QUANTIDADE É DIGITADA: 3 dias de obra em Governador Valadares mais 1 da conferência técnica, que a mesma dupla faz · ⛔ a equipe SAIU da linha de viagem: ela já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728, e somar as duas seria pagar a montagem duas vezes",
+   4.0,
+   "dia",
+   1843.2,
+   0.0751
   ],
   [
    "Consumíveis",
@@ -185,7 +193,7 @@
    0.06,
    "%",
    604.86,
-   0.0274
+   0.0247
   ],
   [
    "Embalagem",
@@ -193,14 +201,14 @@
    0.02,
    "%",
    323.62,
-   0.0147
+   0.0132
   ],
   [
    "CUSTO DIRETO DO AMBIENTE",
    "",
    "",
    "",
-   22084.5,
+   24532.5,
    1.0
   ],
   [],
@@ -227,7 +235,7 @@
    "",
    "",
    "",
-   5967.69
+   6629.19
   ],
   [
    "",
@@ -241,7 +249,7 @@
    "",
    "",
    "",
-   5775.81
+   6416.04
   ],
   [
    "",
@@ -255,7 +263,7 @@
    "",
    "",
    "",
-   3629.87
+   4032.22
   ],
   [
    "",
@@ -269,7 +277,7 @@
    "",
    "",
    "",
-   1975.56
+   2194.54
   ],
   [
    "",
@@ -283,7 +291,7 @@
    "",
    "",
    "",
-   3507.29
+   3896.06
   ],
   [
    "",
@@ -297,7 +305,7 @@
    "",
    "",
    "",
-   1228.28
+   1364.44
   ],
   [
    "",
@@ -741,6 +749,14 @@
   ],
   [
    "",
+   "⭐⭐ O DIA DA DUPLA [Jonathan, 19/11/2026]: fabricação e montagem deixaram de ser comissão e passaram a ser DIAS DE DUPLA — um marceneiro (R$ 36/h, da Base) mais um ajudante (R$ 21,60/h, ⚠ premissa minha de 60%: a Base não tem a linha), 8 h por dia = R$ 460,80. O custo do dia é UMA célula, na aba \"Preço e Comissões\"; os dias são digitados em cada ambiente. ⛔ E a equipe saiu da linha de viagem, que já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728 — somar as duas pagaria a montagem duas vezes, e isso some no total sem avisar."
+  ],
+  [
+   "",
+   "⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,38%) E DE MONTAGEM (2,38%), e o modelo diz em caixa alta que \"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro no custo direto\". Com a dupla no custo direto, as duas linhas pagam o mesmo trabalho. ⚠ DECISÃO PENDENTE do Jonathan: zerar as duas na cascata, ou manter e aceitar a sobreposição."
+  ],
+  [
+   "",
    "⭐ OS TRÊS ARMÁRIOS NÃO ESTÃO NO EXECUTIVO. A prancha desenha o painel como superfície contínua; as bandas acima e abaixo do nicho e a coluna de 50 viraram armário por decisão de 18/11/2026, com caixa, prateleira e ferragem em cada vão. A proposta diz isso em bloco destacado."
   ],
   [],
@@ -751,7 +767,7 @@
   [],
   [
    "",
-   "⚠ R$ 5.580 · a LOGÍSTICA DE GOVERNADOR VALADARES é ESTIMATIVA. Só a hora de marceneiro (R$ 36 com encargos) vem da Base; km, hospedagem e alimentação são leitura minha, porque as QUATRO linhas de frete da Base estão vazias — \"A COTAR\". Trocar um número refaz o bloco."
+   "⚠ R$ 8.028 · O FRETE E OS DIAS DE DUPLA são um TERÇO DO CUSTO DIRETO, e quase tudo neles é premissa. Só a hora de marceneiro (R$ 36 com encargos) vem da Base. Km, hospedagem e alimentação são leitura minha, porque as QUATRO linhas de frete da Base estão vazias — \"A COTAR\". A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número que o Jonathan deve trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez."
   ],
   [
    "",
@@ -775,7 +791,7 @@
   ],
   [
    "",
-   "⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\". Sem RT a MC vai de 34,81% a 43,60%."
+   "⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\". Sem RT a MC vai de 30,23% a 39,02%."
   ],
   [
    "",

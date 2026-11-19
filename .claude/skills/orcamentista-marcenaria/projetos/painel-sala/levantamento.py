@@ -292,10 +292,15 @@ def custo(itens, arredonda=True):
     #   ⛔⛔ A LOGÍSTICA DE GOVERNADOR VALADARES, no lugar do frete de BH.
     #     Ela é do PROJETO, não de um item, e por isso é rateada pelo custo
     #     direto — senão a soma dos itens deixa de ser o custo do projeto.
-    c_frete = b.CUSTO_GV
+    #   ⭐⭐ [Jonathan, 19/11/2026] DIAS DE DUPLA, por ambiente. A viagem
+    #     paga deslocamento, cama e comida; a MÃO DE OBRA de fabricação e
+    #     de montagem é dia de dupla, com uma taxa única para o projeto.
+    c_dupla = (b.DIAS_FABRICACAO + b.DIAS_MONTAGEM) * b.DUPLA_DIA
+    c_frete = b.CUSTO_GV + c_dupla
     soma = sum(diretos)
     diretos = [d + c_frete * (d / soma) for d in diretos]
-    T = dict(area=area, chapas=chapas, preco=preco, c_chapa=c_chapa,
+    T = dict(c_dupla=c_dupla, c_viagem=b.CUSTO_GV,
+             area=area, chapas=chapas, preco=preco, c_chapa=c_chapa,
              pecas=n_pecas, n_chapas=n_chapas,
              fita_m=sum(q['fita_m'] for _i, q in L),
              c_fita_mat=sum(q['c_fita_mat'] for _i, q in L),
@@ -439,25 +444,33 @@ if __name__ == '__main__':
                    ('Consumíveis · 6% sobre chapa e fita', T['c_cons']),
                    ('Terceirizado · painel ripado', T['c_terc']),
                    ('Ferragem', T['c_fer']),
-                   (f'Logística · {b.OBRA}', T['c_frete']),
+                   (f'Frete e estadia · {b.OBRA}', T['c_viagem']),
+                   (f'Dupla · {b.DIAS_FABRICACAO:g} dias de fabricação e '
+                    f'{b.DIAS_MONTAGEM:g} de montagem', T['c_dupla']),
                    ('Embalagem · 2%', T['c_emb'])]:
         print(f'  {rot:<54}{brl(v):>20}')
     print(f'  {"CUSTO DIRETO":<54}{brl(DIRETO):>20}')
 
-    print(f'\n  ⑦ A LOGÍSTICA DE {b.OBRA.upper()}  ' + S * 36)
-    print(f'  {"":<34}{"VEÍCULO":>11}{"EQUIPE":>11}{"CAMA":>9}'
-          f'{"COMIDA":>9}{"TOTAL":>11}')
+    print(f'\n  ⑦ O DESLOCAMENTO E A DUPLA  ' + S * 47)
+    print(f'  {"":<36}{"VEÍCULO":>11}{"CAMA":>10}{"COMIDA":>10}{"TOTAL":>11}')
     for v in b.LOGISTICA:
         c = b.viagem(v)
-        print(f'  {v["rotulo"]:<34}{brl(c["veiculo"]):>11}'
-              f'{brl(c["equipe"]):>11}{brl(c["hospedagem"]):>9}'
-              f'{brl(c["alimentacao"]):>9}{brl(sum(c.values())):>11}')
-        print(f'    {v["pessoas"]} pessoa(s) · {v["dias"]:g} dias · '
-              f'{v["noites"]} noite(s) · {b.KM_IDA*2:.0f} km de ida e volta')
-    print(f'  {"TOTAL":<34}{"":>40}{brl(b.CUSTO_GV):>11}')
-    print('  ⚠ Só a hora de marceneiro vem da Base (R$ 36 com encargos). O\n'
-          '     resto é estimativa minha, linha a linha, porque as QUATRO\n'
-          '     linhas de frete da Base estão vazias — "A COTAR".')
+        print(f'  {v["rotulo"]:<36}{brl(c["veiculo"]):>11}'
+              f'{brl(c["hospedagem"]):>10}{brl(c["alimentacao"]):>10}'
+              f'{brl(sum(c.values())):>11}')
+    print(f'  {"frete e estadia":<36}{"":>31}{brl(b.CUSTO_GV):>11}')
+    print(f'\n  {"":<36}{"DIAS":>11}{"R$/DIA":>10}{"":>10}{"TOTAL":>11}')
+    for rot, d in [('Fabricação · dupla', b.DIAS_FABRICACAO),
+                   ('Montagem · dupla', b.DIAS_MONTAGEM)]:
+        print(f'  {rot:<36}{d:>11.1f}{brl(b.DUPLA_DIA):>10}{"":>10}'
+              f'{brl(d * b.DUPLA_DIA):>11}')
+    print(f'  {"mão de obra da dupla":<36}{"":>31}{brl(T["c_dupla"]):>11}')
+    print(f'  ⭐ a dupla é 1 marceneiro (R$ {b.MARCENEIRO_H:.2f}/h, da Base) mais '
+          f'1 ajudante\n     (R$ {b.AJUDANTE_H:.2f}/h, ⚠ premissa minha de 60%), '
+          f'{b.HORAS_DIA:.0f} h por dia.')
+    print('  ⛔ A EQUIPE SAIU DA LINHA DE VIAGEM: a instalação já cobrava 2\n'
+          '     pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728. Somar a dupla sem\n'
+          '     tirar isso seria pagar a mesma montagem duas vezes.')
 
     print(f'\n  ⑧ O FECHAMENTO  ' + S * 59)
     print(f'  {"PREÇO FECHADO":<40}{brl(b.PRECO_FECHADO):>18}')

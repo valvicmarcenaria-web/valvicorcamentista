@@ -237,8 +237,18 @@ def pedidos(sid, linhas):
             #   ⭐ 0,06 e 0,02 na coluna QUANTIDADE são 6% e 2%, e com
             #     formato de número apareciam como "0,06". Percentual.
             E(i, i + 1, 3, 4, nf=PCT, h='RIGHT')
-        elif b.startswith('Frete \u00b7 R$'):
+        #   ⭐⭐ OS CAMPOS QUE O AMBIENTE DIGITA [Jonathan, 19/11/2026].
+        #     AMARELO = "escreva aqui". São três, e cada um por um motivo:
+        #       · FRETE  — quantidade E custo, porque as quatro linhas de
+        #         frete da Base estão vazias e cada obra tem o seu.
+        #       · FABRICAÇÃO e MONTAGEM — só a quantidade: o CUSTO é
+        #         fórmula, dias × a célula ÚNICA do dia da dupla, que mora
+        #         em 'Preço e Comissões'!$D$11 e serve a TODOS os ambientes.
+        elif b.startswith('Frete'):
             E(i, i + 1, 3, 4, b=True, bg=AMARELO, nf=N0, h='RIGHT')
+            E(i, i + 1, 5, 6, b=True, bg=AMARELO, nf=MOEDA, h='RIGHT')
+        elif b.startswith('Fabrica\u00e7\u00e3o \u00b7 dupla') or b.startswith('Montagem \u00b7 dupla'):
+            E(i, i + 1, 3, 4, b=True, bg=AMARELO, nf=N2, h='RIGHT')
     return R, cl
 
 
@@ -250,7 +260,10 @@ LARGURAS = [('A', 0, 1, 28), ('B', 1, 2, 300), ('C', 2, 3, 430), ('D-K', 3, 11, 
 #     nove abas de 781 para 760 linhas. Sem zerar antes, o que sobra fica
 #     com seção, borda e fundo de um conteúdo que não existe mais — e a
 #     mescla antiga impede a nova de entrar.
-LIMPA = 820
+#   ⛔ E A FAIXA DE LIMPEZA NÃO PODE PASSAR DO FIM DA ABA: a API
+#     recusa endRowIndex maior que o número de linhas da folha. Esta
+#     planilha tem UMA aba de ambiente, de 150 linhas.
+LIMPA = 150
 
 
 def zera(sid):

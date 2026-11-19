@@ -228,32 +228,53 @@ OBRA = 'Governador Valadares'
 KM_IDA = 320.0                 # ⚠ BH → GV por BR-381 e BR-116
 KM_LEVE = 1.20                 # ⚠ utilitário · combustível, pedágio, desgaste
 KM_CARGA = 1.80                # ⚠ caminhão com o painel
-MARCENEIRO_H = 36.00           # ⭐ Base, Terceirizados · "hora com encargos"
-#   ⛔ Era R$ 65 e a Base corrige: "Era 65, que é valor de VENDA, não custo".
-HORAS_DIA = 8.0
 HOSPEDAGEM_NOITE = 180.0       # ⚠ por pessoa, por noite
 ALIMENTACAO_DIA = 80.0         # ⚠ por pessoa, por dia
 
-#   ⭐ CONFERÊNCIA TÉCNICA — ela vem ANTES do corte, e é ela que transforma
-#     "as medidas deverão ser conferidas no local" em medida de fábrica.
-#     Um técnico, um dia e meio com a estrada, uma noite fora.
+# ── ⭐⭐ O DIA DA DUPLA [Jonathan, 19/11/2026] ──────────────────────────
+#   "considerando dias de fabricação e dias de montagem. Ambos serão
+#    baseados em custo de uma dupla de profissionais, sendo um marceneiro e
+#    um ajudante... preencher o campo do custo do dia da dupla (de uma forma
+#    que seja um preenchimento único e que se replique em todos os
+#    ambientes) e preencha de forma unitária em cada ambiente esse tempo."
+#
+#   ⭐ UM NÚMERO SÓ, REPLICADO. Na planilha ele mora numa célula amarela da
+#     aba "Preço e Comissões" e cada ambiente a referencia — trocar ali
+#     move o projeto inteiro.
+MARCENEIRO_H = 36.00           # ⭐ Base, Terceirizados · "hora com encargos"
+#   ⛔ Era R$ 65 e a Base corrige: "Era 65, que é valor de VENDA, não custo".
+#   ⚠ O AJUDANTE NÃO EXISTE NA BASE. 60% do marceneiro é premissa minha, e é
+#     o primeiro número que o Jonathan deve trocar.
+AJUDANTE_H = MARCENEIRO_H * 0.60
+HORAS_DIA = 8.0
+DUPLA_DIA = (MARCENEIRO_H + AJUDANTE_H) * HORAS_DIA      # R$ 460,80
+
+#   ⛔⛔ E A EQUIPE SAIU DA LOGÍSTICA, senão eu pagaria duas vezes. A linha
+#     de instalação já cobrava 2 pessoas × 3 dias × 8 h × R$ 36 = R$ 1.728.
+#     Agora a VIAGEM paga veículo, cama e comida; a MÃO DE OBRA é dia de
+#     dupla. Foi o primeiro efeito colateral de mudar o mecanismo, e ele
+#     não aparece em lugar nenhum da planilha — some no total.
 CONFERENCIA = dict(rotulo='Conferência técnica, antes do corte',
                    pessoas=1, dias=1.5, noites=1, km=KM_LEVE)
-#   ⭐ INSTALAÇÃO — 6,82 m de painel, três folhas de porta mimetizada e a
-#     estrutura chumbada na alvenaria. Dois montadores, três dias de obra,
-#     duas noites fora.
 INSTALACAO = dict(rotulo='Instalação em ' + OBRA,
                   pessoas=2, dias=3.0, noites=2, km=KM_CARGA)
 
 
 def viagem(v):
-    """Custo de uma ida a GV: veículo, mão de obra, cama e comida."""
+    """Só o que é DESLOCAMENTO: veículo, cama e comida. A mão de obra é dia
+    de dupla, na seção própria."""
     return dict(
         veiculo=KM_IDA * 2 * v['km'],
-        equipe=v['pessoas'] * v['dias'] * HORAS_DIA * MARCENEIRO_H,
         hospedagem=v['pessoas'] * v['noites'] * HOSPEDAGEM_NOITE,
         alimentacao=v['pessoas'] * v['dias'] * ALIMENTACAO_DIA)
 
+
+#   ⭐ OS DOIS CAMPOS QUE O AMBIENTE DIGITA. São dias de DUPLA, não de
+#     pessoa: 6 dias de bancada para 83 peças, 162 ripas coladas e 292 m de
+#     filetagem manual; 4 dias de montagem, que são os 3 de obra em GV mais
+#     1 da conferência técnica — a mesma dupla faz a viagem.
+DIAS_FABRICACAO = 6.0
+DIAS_MONTAGEM = 4.0
 
 LOGISTICA = [CONFERENCIA, INSTALACAO]
 CUSTO_GV = sum(sum(viagem(v).values()) for v in LOGISTICA)
