@@ -56,7 +56,24 @@ X1, Y1 = X0 + L, Y0 + A
 NIC_X0, NIC_X1 = X0 + lv.R_PORTA_L, X0 + lv.RIPADO_L
 NIC_Y0, NIC_Y1 = Y0 + lv.R_SUP, Y0 + lv.R_SUP + lv.NICHO_H
 
-TINTA, VERDE, TERRA, MUT, PEDRA = '#16211B', '#2C4034', '#B0704E', '#8E8A80', '#EDEAE2'
+#   ⛔⛔ O FUNDO VERDE SAIU [Jonathan, 19/11/2026: "corrija o fundo verde,
+#     não condiz com nosso padrão visual"]. Eu havia escolhido verde
+#     escuro por conta própria. A identidade da casa, consolidada em
+#     closer-vendas/referencias/identidade-marca.md a partir das propostas
+#     reais, é OUTRA: quase-preto #1A1A1A no texto e no fundo nobre,
+#     dourado mostarda #E0A521 nas faixas e títulos, dourado de documento
+#     #D4AF37 / #B8860B no detalhe, creme #FDF6E3 e fundo geral BRANCO.
+#   ⭐ No desenho: PRETO é a marcenaria, CINZA é o que não é nosso e as
+#     cotas, DOURADO marca as duas portas mimetizadas. O dourado aparece
+#     pouco e com significado — dourado em tudo não é identidade, é ruído.
+TINTA = '#1A1A1A'      # quase-preto da casa
+VERDE = '#8E8A80'      # ⚠ o nome é herança do CSS compartilhado; o valor
+                       #   é o cinza neutro, e serve às cotas do desenho
+TERRA = '#B8860B'      # dourado de documento
+MUT = '#8E8A80'
+PEDRA = '#EDEAE2'      # bege-cinza · o travertino do nicho e o sóculo
+                       # ⚠ o creme #FDF6E3 da casa é fundo de BLOCO DE TEXTO;
+                       #   numa área grande de desenho vira amarelo de post-it
 RIPA = '#B9B3A8'
 FINO, GROSSO, FINISSIMO = 0.9, 1.7, 0.6
 
@@ -206,26 +223,38 @@ _etapas = ''.join(
   for i, (t, d) in enumerate(ETAPAS, 1))
 
 CSS_X = '''
+/* ── A PALETA DA CASA ────────────────────────────────────
+   ⛔ css-brinquedoteca.css é COMPARTILHADO com outras propostas: mexer
+   nele mudaria a folha de outros clientes. Então eu redefino os valores
+   aqui, só nesta proposta. Os NOMES das variáveis continuam os de lá. */
+:root{
+  --tinta:#1A1A1A; --verde:#1A1A1A; --verde-lt:#6B6B6B;
+  --terra:#B8860B; --papel:#FFFFFF; --linha:#E6E2D8; --mut:#8E8A80;
+  --ouro:#E0A521; --ouro-dc:#D4AF37; --creme:#FDF6E3;
+}
+.cv{color:var(--creme);}
+.cv .sel{color:var(--ouro);}
+
 /* ── capa ───────────────────────────────────────────────────────────── */
 .cv .ph{flex:none;height:152mm;}
 .cv .ph img{object-position:left center;}
 .cv .pe{padding:14mm 19mm 12mm;}
 .cv .nm{font-size:31pt;line-height:1.06;letter-spacing:-.028em;margin-top:4mm;}
-.cv .nm em{font-style:italic;color:#A9BFAF;}
-.cv .sub{margin-top:6mm;color:#C3CFC5;font-size:9.4pt;max-width:128mm;
+.cv .nm em{font-style:italic;color:var(--ouro-dc);}
+.cv .sub{margin-top:6mm;color:#CFC9BD;font-size:9.4pt;max-width:128mm;
   line-height:1.6;}
 .cv .fat{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8mm;
   margin-top:9mm;}
 .cv .fat .k{font-size:6.2pt;letter-spacing:.26em;text-transform:uppercase;
-  color:#7E9A88;font-weight:600;}
+  color:var(--ouro);font-weight:600;}
 .cv .fat .v{font-family:'Fraunces',Georgia,serif;font-size:15pt;font-weight:300;
-  color:#F4F2EC;margin-top:2mm;line-height:1.15;
+  color:var(--creme);margin-top:2mm;line-height:1.15;
   font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1,'onum' 0;}
 .cv .fat .v small{display:block;font-family:'Inter',sans-serif;font-size:7.2pt;
-  color:#A9BFAF;margin-top:1.4mm;letter-spacing:0;}
+  color:#A8A29A;margin-top:1.4mm;letter-spacing:0;}
 .cv .rod{display:flex;justify-content:space-between;margin-top:8mm;
   padding-top:4mm;border-top:1px solid rgba(255,255,255,.14);font-size:6.6pt;
-  letter-spacing:.24em;text-transform:uppercase;color:#A9BFAF;}
+  letter-spacing:.24em;text-transform:uppercase;color:var(--ouro);}
 /* ── miolo ──────────────────────────────────────────────────────────── */
 .in{padding:13mm 19mm 5mm;}
 h2.tt{font-size:21pt;line-height:1.12;margin-top:3mm;letter-spacing:-.018em;}
@@ -238,12 +267,12 @@ h2.tt em{font-style:italic;color:var(--verde);}
 .duo .ph{aspect-ratio:1.66/1;position:relative;}
 .duo .ph img{width:100%;height:100%;object-fit:cover;}
 .duo .ph span{position:absolute;left:0;bottom:0;background:var(--verde);
-  color:#DCE5DD;font-size:5.6pt;letter-spacing:.2em;text-transform:uppercase;
+  color:#DCD6CA;font-size:5.6pt;letter-spacing:.2em;text-transform:uppercase;
   padding:1.2mm 2.4mm;}
 .cj{padding:1.9mm 0;grid-template-columns:7mm 1fr;}
 .cj .t{font-size:9.4pt;}
 .cj .d{font-size:7.1pt;line-height:1.42;margin-top:.9mm;max-width:154mm;}
-.nota{margin-top:3.5mm;padding:3.4mm 5mm;background:#F6F1EC;
+.nota{margin-top:3.5mm;padding:3.4mm 5mm;background:var(--creme);
   border-left:2px solid var(--terra);border-radius:2px;}
 .nota .k{font-size:6.4pt;letter-spacing:.26em;text-transform:uppercase;
   color:var(--terra);font-weight:600;}
@@ -269,13 +298,13 @@ h2.tt em{font-style:italic;color:var(--verde);}
 .gar .tx b{color:var(--tinta);font-weight:600;}
 .gar .tx + .tx{margin-top:2.6mm;}
 /* ── investimento e condições ───────────────────────────────────────── */
-.tot{margin-top:6mm;background:var(--verde);color:#F4F2EC;padding:4mm 6mm;
+.tot{margin-top:6mm;background:var(--verde);color:var(--creme);padding:4mm 6mm;
   display:flex;align-items:center;justify-content:space-between;}
 .tot .k{font-size:6.6pt;letter-spacing:.3em;text-transform:uppercase;
-  color:#A9BFAF;font-weight:500;}
-.tot .t{font-size:8.8pt;color:#D3DDD5;margin-top:1.6mm;}
+  color:#A8A29A;font-weight:500;}
+.tot .t{font-size:8.8pt;color:#D8D2C6;margin-top:1.6mm;}
 .tot .t b{color:#fff;font-weight:500;}
-.tot .gv{font-size:7.4pt;color:#A9BFAF;margin-top:1.4mm;}
+.tot .gv{font-size:7.4pt;color:#A8A29A;margin-top:1.4mm;}
 .tot .gv b{color:#fff;font-weight:500;}
 .tot .v{font-family:'Fraunces',Georgia,serif;font-size:26pt;font-weight:300;
   letter-spacing:-.025em;white-space:nowrap;padding-left:8mm;
@@ -352,7 +381,7 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
     desenha o painel como superfície contínua: os <b>três armários</b> — nove
     folhas ao todo, acima e abaixo do nicho e na coluna lateral — são acréscimo
     desta proposta, com caixa, prateleira e ferragem em cada vão. As nove folhas
-    <b>abrem por toque, com Blum Tip-on</b>, sem puxador aparente, para que a
+    <b>abrem por toque, com Blum Tip-on</b>, sem puxador aparente, para que o
     ripado corra inteiro de ponta a ponta.</div>
   </div>
 
