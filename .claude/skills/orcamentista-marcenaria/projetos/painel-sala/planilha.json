@@ -26,7 +26,8 @@
    1.0,
    "chapa",
    250.0,
-   0.0095
+   0.0093,
+   250.0
   ],
   [
    "MDF Branco TX 18 mm",
@@ -34,7 +35,8 @@
    2.0,
    "chapa",
    800.0,
-   0.0304
+   0.0298,
+   400.0
   ],
   [
    "MDF Gianduia 6 mm",
@@ -42,7 +44,8 @@
    2.0,
    "chapa",
    700.0,
-   0.0266
+   0.0261,
+   350.0
   ],
   [
    "MDF Gianduia 15 mm",
@@ -50,7 +53,8 @@
    5.0,
    "chapa",
    2750.0,
-   0.1045
+   0.1024,
+   550.0
   ],
   [
    "MDF Gianduia 18 mm",
@@ -58,7 +62,8 @@
    6.0,
    "chapa",
    4200.0,
-   0.1596
+   0.1563,
+   700.0
   ],
   [
    "Fita de borda de cor, 22 mm",
@@ -66,7 +71,8 @@
    99.81,
    "m",
    329.37,
-   0.0125
+   0.0123,
+   3.3
   ],
   [
    "Fita de borda de cor, 50 mm",
@@ -74,7 +80,8 @@
    11.46,
    "m",
    88.24,
-   0.0034
+   0.0033,
+   7.7
   ],
   [
    "Fita de borda de cor, 22 mm · ripas",
@@ -82,7 +89,8 @@
    291.96,
    "m",
    963.47,
-   0.0366
+   0.0359,
+   3.3
   ],
   [
    "Filetagem manual",
@@ -90,7 +98,8 @@
    291.96,
    "m",
    1459.8,
-   0.0555
+   0.0543,
+   5.0
   ],
   [
    "Filetagem na coladeira automática",
@@ -98,7 +107,8 @@
    111.27,
    "m",
    278.18,
-   0.0106
+   0.0104,
+   2.5
   ],
   [
    "Suporte de prateleira, jogo de 4",
@@ -106,7 +116,8 @@
    13.0,
    "un",
    84.5,
-   0.0032
+   0.0031,
+   6.5
   ],
   [
    "Dobradiça Blum",
@@ -114,7 +125,8 @@
    21.0,
    "un",
    1050.0,
-   0.0399
+   0.0391,
+   50.0
   ],
   [
    "Pulsador Blum Tip-on, abertura por toque",
@@ -122,7 +134,8 @@
    9.0,
    "un",
    900.0,
-   0.0342
+   0.0335,
+   100.0
   ],
   [
    "Alma de aço, barra chata de 3 m",
@@ -130,7 +143,8 @@
    1.0,
    "un",
    50.0,
-   0.0019
+   0.0019,
+   50.0
   ],
   [
    "Sistema pivô de porta mimetizada",
@@ -138,7 +152,8 @@
    2.0,
    "un",
    240.0,
-   0.0091
+   0.0089,
+   120.0
   ],
   [
    "Fecho rolete para porta pivotante",
@@ -146,7 +161,8 @@
    2.0,
    "un",
    150.0,
-   0.0057
+   0.0056,
+   75.0
   ],
   [
    "Painel ripado, mão de obra",
@@ -154,7 +170,8 @@
    5.79,
    "m²",
    1042.96,
-   0.0396
+   0.0388,
+   180.0
   ],
   [
    "Corte",
@@ -162,7 +179,8 @@
    83.0,
    "peça",
    239.5,
-   0.0091
+   0.0089,
+   2.89
   ],
   [
    "Medição · bate-volta, por pessoa",
@@ -170,7 +188,7 @@
    1.0,
    "pessoa",
    350.0,
-   0.0133,
+   0.013,
    350.0
   ],
   [
@@ -179,7 +197,7 @@
    1.0,
    "viagem",
    2500.0,
-   0.095,
+   0.0931,
    2500.0
   ],
   [
@@ -188,7 +206,7 @@
    1.0,
    "viagem",
    400.0,
-   0.0152,
+   0.0149,
    400.0
   ],
   [
@@ -197,7 +215,7 @@
    1.0,
    "viagem",
    170.0,
-   0.0065,
+   0.0063,
    170.0
   ],
   [
@@ -206,7 +224,7 @@
    4.0,
    "diária",
    900.0,
-   0.0342,
+   0.0335,
    225.0
   ],
   [
@@ -215,7 +233,7 @@
    8.0,
    "pessoa-dia",
    880.0,
-   0.0334,
+   0.0328,
    110.0
   ],
   [
@@ -223,41 +241,43 @@
    "⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · 83 peças, 162 ripas coladas e 292 m de filetagem manual · o custo do dia vem da célula única da aba \"Preço e Comissões\"",
    6.0,
    "dia",
-   2764.8,
-   0.1051,
-   460.8
+   3000.0,
+   0.1117,
+   500.0
   ],
   [
    "Montagem · dupla de marceneiro e ajudante",
    "⭐ A QUANTIDADE É DIGITADA: são os MESMOS 4 dias das diárias de Airbnb e dos 4 dias de alimentação, lá em cima — mexeu num, mexa nos três · ⛔ a equipe NÃO entra na logística: aquele bloco paga carreto, carro, cama e comida, e a mão de obra é esta linha · ⚠ o dia de quem vai MEDIR não está aqui nem lá: o bate-volta paga a estrada, não a diária. Somar 1 dia custa R$ 460,80",
    4.0,
    "dia",
-   1843.2,
-   0.0701,
-   460.8
+   2000.0,
+   0.0744,
+   500.0
   ],
   [
    "Consumíveis",
-   "6% sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo, fundo e verniz",
+   "6% sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo",
    0.06,
    "%",
    604.86,
-   0.023
+   0.0225,
+   10081.08
   ],
   [
    "Embalagem",
    "2% sobre o custo direto · papelão, filme e cantoneira",
-   0.02,
+   0.03,
    "%",
-   323.62,
-   0.0123
+   485.43,
+   0.0181,
+   16180.88
   ],
   [
    "CUSTO DIRETO DO AMBIENTE",
    "",
    "",
    "",
-   26312.5,
+   26866.31,
    1.0
   ],
   [],
@@ -284,7 +304,7 @@
    "",
    "",
    "",
-   7110.19
+   7259.84
   ],
   [
    "",
@@ -298,7 +318,7 @@
    "",
    "",
    "",
-   6881.57
+   7026.41
   ],
   [
    "",
@@ -312,7 +332,7 @@
    "",
    "",
    "",
-   4324.79
+   4415.82
   ],
   [
    "",
@@ -326,7 +346,7 @@
    "",
    "",
    "",
-   2353.77
+   2403.31
   ],
   [
    "",
@@ -340,7 +360,7 @@
    "",
    "",
    "",
-   4178.75
+   4266.7
   ],
   [
    "",
@@ -354,7 +374,7 @@
    "",
    "",
    "",
-   1463.43
+   1494.24
   ],
   [
    "",

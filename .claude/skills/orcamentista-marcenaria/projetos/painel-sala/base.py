@@ -106,7 +106,10 @@ FITA_RIPA_M = FITA_22 * FITA_PERDA + FILETE_RIPA        # 8,30 · ou 5,80
 
 # ── consumíveis e embalagem · aba MDF ───────────────────────────────────
 CONSUMIVEIS = 0.06           # "sobre chapa e fita · 6%"
-EMBALAGEM = 0.02             # "sobre o custo direto · 2%"
+#   ⭐ 3%, NÃO 2% [Jonathan, 19/11/2026, digitado direto na planilha].
+#     A Base diz 2%; ele subiu na célula e eu trago para cá, senão a
+#     próxima geração devolve o 2% por cima do que ele escolheu.
+EMBALAGEM = 0.03             # "sobre o custo direto"
 CORTE_CHAPA, CORTE_PECA = 2.00, 2.50     # [Jonathan, 28/10/2026]
 
 # ── terceirizados · aba Terceirizados ───────────────────────────────────
@@ -295,7 +298,13 @@ MARCENEIRO_H = 36.00           # ⭐ Base, Terceirizados · "hora com encargos"
 #     o primeiro número que o Jonathan deve trocar.
 AJUDANTE_H = MARCENEIRO_H * 0.60
 HORAS_DIA = 8.0
-DUPLA_DIA = (MARCENEIRO_H + AJUDANTE_H) * HORAS_DIA      # R$ 460,80
+#   ⭐⭐ R$ 500,00 [Jonathan, 19/11/2026, digitado na célula única da aba
+#     "Preço e Comissões"]. A conta acima dá R$ 460,80 (36,00 + 21,60) × 8;
+#     ele cravou 500 e NÃO disse como decompõe — pode ser ajudante mais
+#     caro, pode ser arredondamento para cima. ⛔ NÃO INVENTO a decomposição:
+#     guardo o número dele e deixo a conta velha à vista, como referência.
+DUPLA_DIA_CALCULADO = (MARCENEIRO_H + AJUDANTE_H) * HORAS_DIA   # R$ 460,80
+DUPLA_DIA = 500.00
 
 #   ⛔⛔ E A EQUIPE NÃO ENTRA NA LOGÍSTICA, senão eu pagaria duas vezes. O
 #     bloco de GV paga carreto, carro, cama e comida; a MÃO DE OBRA é dia

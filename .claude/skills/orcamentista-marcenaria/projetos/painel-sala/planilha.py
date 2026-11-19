@@ -59,9 +59,16 @@ def linhas():
     #     ambiente DIGITA, e nelas o custo é fórmula (quantidade × unitário).
     #     Nas demais o custo vem da Base e não há o que digitar.
     def mat(rot, esp, qtd, un, custo, unit=None):
-        lin = [rot, esp, _n(qtd, 2), un, _n(custo), _n(custo / D, 4)]
-        if unit is not None:
-            lin.append(_n(unit))
+        #   ⛔ O UNITÁRIO NÃO PODE FICAR EM BRANCO [Jonathan, 19/11/2026]:
+        #     "o valor unitario dos itens na aba 01 sala estao em branco".
+        #     Eu abri a coluna e enchi só as oito linhas digitadas — as
+        #     outras vinte ficaram vazias, e coluna com cabeçalho e sem
+        #     número parece erro, não parece escolha. Agora TODA linha tem:
+        #     amarela onde se digita, cinza onde eu derivo de custo ÷ qtd.
+        if unit is None and qtd:
+            unit = custo / qtd
+        lin = [rot, esp, _n(qtd, 2), un, _n(custo), _n(custo / D, 4),
+               _n(unit) if unit is not None else '']
         L.append(lin)
 
     for k, n in sorted(T['chapas'].items()):
@@ -137,7 +144,7 @@ def linhas():
         % (b.AIRBNB_QTD, b.ALIMENTACAO_QTD // 2),
         b.DIAS_MONTAGEM, 'dia', b.DIAS_MONTAGEM * b.DUPLA_DIA, b.DUPLA_DIA)
     mat('Consumíveis', '6% sobre chapa e fita · cola, lixa, parafuso, cavilha, '
-        'tapa-furo, fundo e verniz', b.CONSUMIVEIS, '%', T['c_cons'])
+        'tapa-furo', b.CONSUMIVEIS, '%', T['c_cons'])
     mat('Embalagem', '2% sobre o custo direto · papelão, filme e cantoneira',
         b.EMBALAGEM, '%', T['c_emb'])
     L.append(['CUSTO DIRETO DO AMBIENTE', '', '', '', _n(D), 1.0])

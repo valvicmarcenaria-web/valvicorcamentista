@@ -126,6 +126,11 @@ def une(sid, r):
         'startColumnIndex': 1, 'endColumnIndex': 11}}}
 
 
+#   ⭐ AS UNIDADES QUE SIGNIFICAM "ESCREVA AQUI". Logística e mão de
+#     obra são digitadas pelo ambiente; chapa, m, un, m² e peça vêm da
+#     Base e eu derivo o unitário de custo ÷ quantidade.
+UN_DIGITADA = ('pessoa', 'viagem', 'diária', 'pessoa-dia', 'dia')
+
 SECOES = ('  O AMBIENTE', '  OS ITENS', '  O QUE NÃO É MARCENARIA',
           '  AS PEÇAS', '  AS NOTAS', '  AS DÚVIDAS')
 CAB = {'MATERIAL': 1, 'ITEM': 2, 'PEÇA': 4}
@@ -202,7 +207,9 @@ def pedidos(sid, linhas):
     #   ⭐ OS NÚMEROS, POR SEÇÃO INTEIRA. As faixas de dado se quebram em
     #     toda linha de grupo; a seção não se quebra.
     COL = {
-        1: [(2, 3, N2, 'RIGHT'), (4, 5, MOEDA, 'RIGHT'), (5, 6, PCT, 'RIGHT')],
+        1: [(2, 3, N2, 'RIGHT'), (4, 5, MOEDA, 'RIGHT'), (5, 6, PCT, 'RIGHT'),
+            #   ⭐ R$ UNITÁRIO em TODA a seção, não só nas digitadas.
+            (6, 7, MOEDA, 'RIGHT')],
         #   ⛔ PREÇO é o índice 7 do vetor e CUSTO o 8 — e o vetor começa
         #     na coluna B. Eu tinha escrito 8 e 9, que joga os dois uma
         #     coluna à direita, em cima de J e K. Conferir índice contra
@@ -244,10 +251,12 @@ def pedidos(sid, linhas):
         #       · FABRICAÇÃO e MONTAGEM — só a quantidade: o CUSTO é
         #         fórmula, dias × a célula ÚNICA do dia da dupla, que mora
         #         em 'Preço e Comissões'!$D$11 e serve a TODOS os ambientes.
-        elif len(r) > 6 and isinstance(r[6], (int, float)):
-            #   ⭐ LINHA QUE O AMBIENTE DIGITA. Reconhece-se por ter um
-            #     R$ UNITÁRIO na coluna H — não pelo rótulo, que muda de
-            #     obra para obra. A QUANTIDADE é sempre amarela.
+        elif ((r[3] if len(r) > 3 else '') or '') in UN_DIGITADA:
+            #   ⭐ LINHA QUE O AMBIENTE DIGITA. Reconhece-se pela UNIDADE,
+            #     não pelo rótulo (que muda de obra para obra) nem por ter
+            #     unitário (que agora TODA linha tem). A QUANTIDADE é sempre
+            #     amarela. ⚠ Unidade nova e não listada só deixa de ficar
+            #     amarela — falha visível e inofensiva, nunca número errado.
             E(i, i + 1, 3, 4, b=True, bg=AMARELO, nf=N2, h='RIGHT')
             if ((r[3] if len(r) > 3 else '') or '') == 'dia':
                 #   ⛔ O UNITÁRIO DA DUPLA NÃO É AMARELO: ele é espelho da
