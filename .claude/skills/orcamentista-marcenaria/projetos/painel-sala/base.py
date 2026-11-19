@@ -48,9 +48,14 @@ ESPECIAL = _os.environ.get('ESPECIAL') == '1'
 _f = 1000.0 / 700.0 if ESPECIAL else 1.0
 PRECO = {
     #   MDF · "MDF Melamínico Fosco · é a chapa de cor padrão da casa"
-    'MDF Gianduia 18': 700.0 * _f,
-    'MDF Gianduia 15': 550.0 * _f,
-    'MDF Gianduia 6':  350.0 * _f,
+    #   ⭐⭐ TRAMA É A TEXTURA DA CHAPA [Jonathan, 19/11/2026: "trama é
+    #     textura da chapa"], não o desenho do ripado. É um padrão Duratex,
+    #     da mesma família que Velluto, Essencial Wood, Premium e Essencial,
+    #     que a Base lista nominalmente em "MDF Melamínico Fosco · Amadeirado
+    #     e cor". O padrão entra no NOME, porque quem compra precisa dele.
+    'MDF Gianduia Trama 18': 700.0 * _f,
+    'MDF Gianduia Trama 15': 550.0 * _f,
+    'MDF Gianduia Trama 6':  350.0 * _f,
     #   MDF · "CHAPA — BRANCO (interno de armário)" · nunca aparece
     'MDF Branco TX 18': 400.0,
     'MDF Branco TX 15': 350.0,
@@ -65,7 +70,7 @@ ESP_PASSAGEM = 42            # ⛔ "Portas de passagem · 42 mm"
 #   ⭐ 42 não é chapa: é tamponamento. 18 + 18 + 6 = 42, a mesma área três
 #     vezes. As duas faces em Gianduia (a de dentro é VISTA do outro
 #     ambiente) e o miolo em Branco TX de 6, que ninguém vê.
-PASSAGEM_CAMADAS = ((18, 'MDF Gianduia'), (18, 'MDF Gianduia'),
+PASSAGEM_CAMADAS = ((18, 'MDF Gianduia Trama'), (18, 'MDF Gianduia Trama'),
                     (6, 'MDF Branco TX'))
 assert sum(e for e, _m in PASSAGEM_CAMADAS) == ESP_PASSAGEM
 
@@ -117,7 +122,7 @@ CORTE_CHAPA, CORTE_PECA = 2.00, 2.50     # [Jonathan, 28/10/2026]
 #    RIPA E DO VÃO · m² · R$ 180,00"
 #   ⚠ Com ripa de 2 cm e vão de 2 cm estamos no lado CARO dessa faixa, não
 #     no meio. R$ 180 é o valor da Base e é o que uso; fica escrito que o
-#     teto observado é R$ 420 e que esta trama é a mais fechada que já
+#     teto observado é R$ 420 e que este passo é o mais fechado que já
 #     fizemos.
 RIPADO_M2 = 180.0
 
@@ -168,7 +173,7 @@ ALMA_BARRA = 50.0
 #    também serão armários, não serão apenas painéis. Então temos que
 #    considerar tanto o custo de material de estrutura quanto de ferragem."
 #   ⛔ E ISSO ARRASTA UMA FERRAGEM QUE NÃO ESTAVA EM LUGAR NENHUM: porta
-#     mimetizada em ripado NÃO TEM PUXADOR. Cava usinada cortaria a trama
+#     mimetizada em ripado NÃO TEM PUXADOR. Cava usinada cortaria o ripado
 #     justamente onde ela precisa correr inteira. Logo, abertura por TOQUE:
 #     "Pulsador outros · un · R$ 70,00" da aba Ferragens.
 #   ⚠ E o pulsador vale também para a porta de 50 × 277, que eu já tinha
@@ -201,7 +206,7 @@ SUPORTE_JOGO = 6.50
 PROF_UTIL = 46.0
 #   ⚠ 302 cm de banda dividida em QUATRO vãos. A prancha não desenha
 #     divisão nenhuma — e não desenha de propósito: a junta das folhas cai
-#     DENTRO do vão de 2 cm da trama e some. Quatro é o que dá folha de
+#     DENTRO do vão de 2 cm do ripado e some. Quatro é o que dá folha de
 #     75,5, que é o limite confortável de uma báscula HK-XS.
 VAOS_BANDA = 4
 
@@ -325,8 +330,14 @@ DIAS_MONTAGEM = 4.0
 
 
 # ── a cascata · aba Comissões ───────────────────────────────────────────
-ENCARGO_BRUTO = 0.05 + 0.02 + 0.005 + 0.005
-NOTA_FISCAL = 0.05
+#   ⭐⭐ NOTA FISCAL DE 9%, NÃO 5% [Jonathan, 19/11/2026, digitado na
+#     cascata da planilha]. Quatro pontos a mais sobre o PREÇO BRUTO, que
+#     é a base mais caninha que existe: cada ponto aqui vale um ponto de
+#     MC. ⛔ E ele derruba as comissões internas de 7,125% para 6,825%,
+#     porque elas incidem sobre o LÍQUIDO (bruto menos nota) — ou seja,
+#     subir a nota em 4 pontos tira só 3,7 da base, não 4.
+NOTA_FISCAL = 0.09
+ENCARGO_BRUTO = NOTA_FISCAL + 0.02 + 0.005 + 0.005
 CARTAO_PARCELA = 0.012
 COMISSOES_INTERNAS = 0.075
 
@@ -342,8 +353,9 @@ def cascata(parcelas=0, rt=0.0, vendedor=0.0):
 
 BASE_SEM_RT = cascata()
 BASE_COM_RT = cascata(rt=0.10)
-assert abs(BASE_SEM_RT - 0.8488) < 1e-4
-assert abs(BASE_COM_RT - 0.760875) < 1e-9
+#   ⭐ CONFERIDO CÉLULA A CÉLULA CONTRA A ABA "Preço e Comissões" em
+#     19/11/2026: ela mostra encargos de 18,83% e BASE de 81,18%.
+assert abs(BASE_SEM_RT - 0.81175) < 1e-9, BASE_SEM_RT
 
 FAIXA = (0.35, 0.40)
 
@@ -355,14 +367,20 @@ FAIXA = (0.35, 0.40)
 #     18/11  "Ajuste o valor para 53.500"  ← vale este
 #   ⭐ E ele recompõe o que o escopo novo tinha comido: 34,81% com RT, contra
 #     os 31,74% de R$ 49.800. Quase de volta ao piso de 35% da casa.
-PRECO_FECHADO = 53500.00
+#   ⭐⭐ [Jonathan, 19/11/2026] "feche a nova versao da proposta em 75.650".
+#     A planilha, com MC alvo de 40% mais os 5 pontos de "Médio" do quadro
+#     ④, pedia R$ 75.649,79. Ele arredondou para cima, 21 centavos.
+PRECO_FECHADO = 75650.00
 #   ⚠ RT DE 10%, E É LEITURA MINHA — ele não disse. São pranchas executivas
 #     de arquiteto, e a regra da casa é "RT 10% quando há parceiro
 #     indicando". Orçar COM e não pagar sobra margem; orçar SEM e ter de
 #     pagar tira 8,8 pontos de MC. Erro para o lado que não quebra, e o
 #     levantamento imprime as duas leituras.
-RT = 0.10
-BASE = BASE_COM_RT
+#   ⭐ RT ZERADO [Jonathan, 19/11/2026, na planilha]. A dúvida de RT 10%
+#     era leitura minha; ele respondeu digitando 0%. Esta obra não tem
+#     parceiro indicando.
+RT = 0.0
+BASE = BASE_SEM_RT
 #   ⭐ [Jonathan, 18/11/2026] "Altere o prazo para 90 dias". Eu tinha lido
 #     60 e ele corrigiu — 90 é o que cabe de verdade: a conferência técnica
 #     em GV vem ANTES do corte, e só depois dela nasce o plano de corte.

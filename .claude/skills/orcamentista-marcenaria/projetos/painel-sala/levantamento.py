@@ -25,7 +25,9 @@ _aqui = pathlib.Path(__file__).resolve().parent
 _sp = importlib.util.spec_from_file_location('ps_base', _aqui / 'base.py')
 b = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(b)
 
-GIA, EST = 'MDF Gianduia', 'MDF Branco TX'
+#   ⭐ O PADRÃO NO NOME. "Trama" é a textura da chapa, padrão Duratex
+#     [Jonathan, 19/11/2026], e sem ele o nome não serve para comprar.
+GIA, EST = 'MDF Gianduia Trama', 'MDF Branco TX'
 
 # ── as cotas, uma vez só ────────────────────────────────────────────────
 LARG, ALT = 682.0, 277.0
@@ -107,7 +109,7 @@ class Item:
         """⭐ A base do ripado deixa de ser UM painel e vira N FOLHAS DE
         PORTA. A área é a mesma e as ripas são as mesmas — o que muda é a
         fita, que passa a ter o perímetro de cada folha, e a ferragem.
-        ⛔ A junta das folhas cai dentro do vão de 2 cm da trama: fechadas,
+        ⛔ A junta das folhas cai dentro do vão de 2 cm do ripado: fechadas,
           elas somem, e é por isso que a prancha não desenha divisão."""
         larg = L / vaos
         self.p(f'{nome} · {vaos} folhas de {larg:.1f} × {A:.0f}'.replace('.', ','),
@@ -360,7 +362,7 @@ if __name__ == '__main__':
     print(f'  {b.EXECUTIVO}')
     print(f'  filetagem da ripa: '
           f'{"COLADEIRA · R$ 2,50" if b.RIPA_NA_MAQUINA else "MANUAL · R$ 5,00"}'
-          f'  ·  chapa de cor: R$ {brl(b.PRECO["MDF Gianduia 18"])}')
+          f'  ·  chapa de cor: R$ {brl(b.PRECO["MDF Gianduia Trama 18"])}')
 
     print(f'\n  ① A RIPA E A SUA BASE  ' + S * 52)
     print(f'  {"BANDA":<26}{"FACE":>12}{"RIPAS":>7}{"FITA+FILETE m":>15}'
@@ -442,7 +444,7 @@ if __name__ == '__main__':
                    ('Filetagem · aplicação', T['c_filete']),
                    (f'Corte · {T["n_chapas"]} chapas, {T["pecas"]} peças', T['c_corte']),
                    ('Consumíveis · 6% sobre chapa e fita', T['c_cons']),
-                   ('Painel ripado · colagem da trama, por m²', T['c_terc']),
+                   ('Painel ripado · colagem das ripas, por m²', T['c_terc']),
                    ('Ferragem', T['c_fer']),
                    (f'Frete e estadia · {b.OBRA}', T['c_viagem']),
                    (f'Dupla · {b.DIAS_FABRICACAO:g} dias de fabricação e '
@@ -476,8 +478,8 @@ if __name__ == '__main__':
     print(f'  {"PREÇO FECHADO":<40}{brl(b.PRECO_FECHADO):>18}')
     print(f'  {"custo direto":<40}{brl(DIRETO):>18}')
     print(f'  {"  dos quais, logística de GV":<40}{brl(b.CUSTO_GV):>18}')
-    print(f'  {"MC LIDA · com RT de 10%":<40}{MC*100:>17.2f}%')
-    print(f'  {"MC LIDA · se não houver RT":<40}{MC_SEM_RT*100:>17.2f}%')
+    print(f'  {"MC LIDA · RT de " + f"{b.RT*100:.0f}%":<40}{MC*100:>17.2f}%')
+    print(f'  {"MC · se houvesse RT de 10%":<40}{(b.BASE_COM_RT - DIRETO/b.PRECO_FECHADO)*100:>17.2f}%')
     print(f'  {"margem de contribuição":<40}{brl(MARGEM):>18}')
     print(f'  {"empate em dias de fábrica":<40}{MARGEM/FIXO_DIA:>16.1f} d')
     print(f'\n  ⚠ SE A LOGÍSTICA DE GV NÃO EXISTISSE (frete de BH, R$ 400):')

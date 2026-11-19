@@ -4,7 +4,7 @@
    "  VALVIC MARCENARIA        01 SALA · PAINEL RIPADO"
   ],
   [
-   "  Executivo SALA · VISTA 2 (1/50) e NICHO RIPADO (1/30, pág. 18) · obra em Governador Valadares · painel corrido de 682 × 277 sobre sóculo de pedra de 15 · ripado até 352, onde a pedra termina, e liso nos 330 seguintes · trama de 20/20, passo de 4 cm"
+   "  Executivo SALA · VISTA 2 (1/50) e NICHO RIPADO (1/30, pág. 18) · obra em Governador Valadares · painel corrido de 682 × 277 sobre sóculo de pedra de 15 · ripado até 352, onde a pedra termina, e liso nos 330 seguintes · ripa de 2 cm e vão de 2 cm, passo de 4 cm · chapa no padrão Gianduia TRAMA, da Duratex — Trama é a TEXTURA, não o desenho"
   ],
   [],
   [
@@ -39,7 +39,7 @@
    400.0
   ],
   [
-   "MDF Gianduia 6 mm",
+   "MDF Gianduia Trama 6 mm",
    "área líquida de 5.79 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
    2.0,
    "chapa",
@@ -48,7 +48,7 @@
    350.0
   ],
   [
-   "MDF Gianduia 15 mm",
+   "MDF Gianduia Trama 15 mm",
    "área líquida de 17.72 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
    5.0,
    "chapa",
@@ -57,7 +57,7 @@
    550.0
   ],
   [
-   "MDF Gianduia 18 mm",
+   "MDF Gianduia Trama 18 mm",
    "área líquida de 20.61 m² · rendimento de 4.07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
    6.0,
    "chapa",
@@ -130,7 +130,7 @@
   ],
   [
    "Pulsador Blum Tip-on, abertura por toque",
-   "⛔ porta mimetizada em ripado NÃO tem puxador: cava cortaria a trama. Nove folhas de armário",
+   "⛔ porta mimetizada em ripado NÃO tem puxador: cava cortaria o ripado. Nove folhas de armário",
    9.0,
    "un",
    900.0,
@@ -166,7 +166,7 @@
   ],
   [
    "Painel ripado, mão de obra",
-   "⭐ NÃO É TERCEIRIZADO. A linha mora na aba \"Serviços terceirizados\" da Base, mas no grupo USINAGEM E ACABAMENTO ESPECIAL — ao lado da cava na CNC, da perda de serra ao tirar ripa e da moldura na router, que são operação de fábrica com máquina nossa · ⛔ O QUE ESTA LINHA PAGA: riscar, colar e alinhar as 162 ripas sobre a base, 5.79 m² de trama. Os DIAS DE DUPLA, lá embaixo, pagam o resto · ⚠ R$ 180 o m², e a Base avisa \"faixa observada de 70 a 420 · depende da largura da ripa e do vão\" — trama de 20/20 é a mais fechada que já fizemos",
+   "⭐ NÃO É TERCEIRIZADO. A linha mora na aba \"Serviços terceirizados\" da Base, mas no grupo USINAGEM E ACABAMENTO ESPECIAL — ao lado da cava na CNC, da perda de serra ao tirar ripa e da moldura na router, que são operação de fábrica com máquina nossa · ⛔ O QUE ESTA LINHA PAGA: riscar, colar e alinhar as 162 ripas sobre a base, 5,79 m² de ripado. Os DIAS DE DUPLA, lá embaixo, pagam o resto · ⚠ R$ 180 o m², e a Base avisa \"faixa observada de 70 a 420 · depende da largura da ripa e do vão\" — ripa de 2 com vão de 2 é o ripado mais fechado que já fizemos",
    5.79,
    "m²",
    1042.96,
@@ -238,7 +238,7 @@
   ],
   [
    "Fabricação · dupla de marceneiro e ajudante",
-   "⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · cobre o corte das 83 peças, a caixa dos três armários, a furação, o tamponamento das duas portas de 42 mm e a ferragem · ⛔ NÃO COBRE A TRAMA: riscar, colar e fitar as 162 ripas é pago POR MEDIDA, nas linhas \"Painel ripado\" e nas duas de \"Filetagem\" lá em cima — R$ 2780,93, o equivalente a 5.6 dias de dupla · ⚠ SE A DUPLA FIZER A TRAMA DENTRO DESTES DIAS, aquelas três linhas saem, senão a mesma mão de obra é paga duas vezes · o custo do dia vem da célula única da aba \"Preço e Comissões\"",
+   "⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · cobre o corte das 83 peças, a caixa dos três armários, a furação, o tamponamento das duas portas de 42 mm e a ferragem · ⛔ NÃO COBRE A COLAGEM DO RIPADO: riscar, colar e fitar as 162 ripas é pago POR MEDIDA, nas linhas \"Painel ripado\" e nas duas de \"Filetagem\" lá em cima — R$ 2.780,93, o equivalente a 5,6 dias de dupla · ⚠ SE A DUPLA FIZER A COLAGEM DENTRO DESTES DIAS, aquelas três linhas saem, senão a mesma mão de obra é paga duas vezes · o custo do dia vem da célula única da aba \"Preço e Comissões\"",
    7.0,
    "dia",
    3500.0,
@@ -450,7 +450,7 @@
    75.0,
    5,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    233.11
   ],
   [
@@ -460,7 +460,7 @@
    46.0,
    4,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    375.46
   ],
   [
@@ -470,7 +470,7 @@
    75.0,
    2,
    "pç",
-   "MDF Gianduia 6",
+   "MDF Gianduia Trama 6",
    194.78
   ],
   [
@@ -480,7 +480,7 @@
    44.0,
    4,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    222.86
   ],
   [
@@ -490,7 +490,7 @@
    75.0,
    4,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    306.08
   ],
   [
@@ -500,7 +500,7 @@
    75.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    212.84
   ],
   [
@@ -514,7 +514,7 @@
    71.0,
    5,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    220.68
   ],
   [
@@ -524,7 +524,7 @@
    46.0,
    4,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    375.46
   ],
   [
@@ -534,7 +534,7 @@
    71.0,
    2,
    "pç",
-   "MDF Gianduia 6",
+   "MDF Gianduia Trama 6",
    184.39
   ],
   [
@@ -544,7 +544,7 @@
    44.0,
    4,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    222.86
   ],
   [
@@ -554,7 +554,7 @@
    71.0,
    4,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    289.76
   ],
   [
@@ -564,7 +564,7 @@
    71.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    201.49
   ],
   [
@@ -578,7 +578,7 @@
    277.0,
    1,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    187.16
   ],
   [
@@ -588,7 +588,7 @@
    277.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    125.77
   ],
   [
@@ -598,7 +598,7 @@
    277.0,
    2,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    344.38
   ],
   [
@@ -608,7 +608,7 @@
    46.0,
    2,
    "pç",
-   "MDF Gianduia 15",
+   "MDF Gianduia Trama 15",
    62.16
   ],
   [
@@ -618,7 +618,7 @@
    277.0,
    1,
    "pç",
-   "MDF Gianduia 6",
+   "MDF Gianduia Trama 6",
    119.1
   ],
   [
@@ -628,7 +628,7 @@
    44.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    35.57
   ],
   [
@@ -638,7 +638,7 @@
    44.0,
    4,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    142.27
   ],
   [
@@ -652,7 +652,7 @@
    67.0,
    2,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    380.27
   ],
   [
@@ -662,7 +662,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    50.57
   ],
   [
@@ -672,7 +672,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    516.49
   ],
   [
@@ -682,7 +682,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    72.24
   ],
   [
@@ -696,7 +696,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    299.78
   ],
   [
@@ -706,7 +706,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    299.78
   ],
   [
@@ -726,7 +726,7 @@
    15.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    129.77
   ],
   [
@@ -736,7 +736,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    252.83
   ],
   [
@@ -746,7 +746,7 @@
    210.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    252.83
   ],
   [
@@ -766,7 +766,7 @@
    15.0,
    1,
    "pç",
-   "MDF Gianduia 18",
+   "MDF Gianduia Trama 18",
    126.41
   ],
   [
@@ -801,7 +801,11 @@
   [],
   [
    "",
-   "⭐⭐ A TRAMA DESTE PROJETO NÃO É A DA CASA. A prancha crava \"RIPADO EM MDF GIANDUIA TRAMA DE 20MM E ESPAÇAMENTO DE 20MM - DURATEX\" e o detalhe 1/5 confirma com a cota 2 · 2 · 2. Passo de 4 cm, contra os 6 cm do nosso padrão (ripa 4, vão 2): são 25 ripas por metro em vez de 16,7. CINQUENTA POR CENTO MAIS RIPA E MAIS FILETAGEM por m² de face. Quem copiar o passo da casa erra o orçamento para baixo."
+   "⭐⭐ TRAMA É A TEXTURA DA CHAPA, NÃO O DESENHO DO RIPADO [Jonathan, 19/11/2026]. Eu li a prancha — \"RIPADO EM MDF GIANDUIA TRAMA DE 20MM E ESPAÇAMENTO DE 20MM - DURATEX\" — e usei \"trama\" como sinônimo de desenho do ripado no orçamento inteiro, inventando uma \"trama de 20/20\" que não existe. TRAMA É PADRÃO DURATEX, da mesma família que Velluto, Essencial Wood, Premium e Essencial, que a Base lista nominalmente em \"MDF Melamínico Fosco · Amadeirado e cor\". A frase da prancha quer dizer: ripado em MDF Gianduia no PADRÃO TRAMA, com ripa de 20 mm e espaçamento de 20 mm. O padrão agora está no NOME do material em toda a planilha, porque sem ele o nome não serve para comprar."
+  ],
+  [
+   "",
+   "⭐⭐ O PASSO DESTE PROJETO NÃO É O DA CASA. Ripa de 2 cm e vão de 2 cm dão PASSO DE 4 CM, contra os 6 cm do nosso padrão (ripa 4, vão 2), e o detalhe 1/5 confirma com a cota 2 · 2 · 2. São 25 ripas por metro em vez de 16,7: CINQUENTA POR CENTO MAIS RIPA E MAIS FILETAGEM por m² de face. Quem copiar o passo da casa erra o orçamento para baixo."
   ],
   [
    "",
@@ -829,7 +833,7 @@
   ],
   [
    "",
-   "⛔⛔ O MECANISMO DA DUPLA BRIGA COM TODA MÃO DE OBRA MEDIDA. Desde que fabricação e montagem viraram DIAS, qualquer linha que cobre mão de obra por metro ou por m² passa a concorrer com o dia: colagem da trama (R$ 1.042,96 por 5,79 m²), filetagem manual (R$ 1.459,80 por 292 m) e filetagem na coladeira (R$ 278,18 por 111 m) somam R$ 2.780,94 — 5,6 DIAS DE DUPLA. Hoje elas estão SEPARADAS dos 7 dias de fabricação, e a observação de cada linha diz o que cobre, mas é decisão do Jonathan: ou a trama é dia de dupla, ou é medida. As duas juntas pagam o mesmo trabalho duas vezes, e foi a pergunta dele sobre a palavra \"terceirizada\" que abriu isso — nome errado escondendo pergunta de dinheiro."
+   "⛔⛔ O MECANISMO DA DUPLA BRIGA COM TODA MÃO DE OBRA MEDIDA. Desde que fabricação e montagem viraram DIAS, qualquer linha que cobre mão de obra por metro ou por m² passa a concorrer com o dia: colagem das ripas (R$ 1.042,96 por 5,79 m²), filetagem manual (R$ 1.459,80 por 292 m) e filetagem na coladeira (R$ 278,18 por 111 m) somam R$ 2.780,94 — 5,6 DIAS DE DUPLA. Hoje elas estão SEPARADAS dos 7 dias de fabricação, e a observação de cada linha diz o que cobre, mas é decisão do Jonathan: ou a colagem do ripado é dia de dupla, ou é medida. As duas juntas pagam o mesmo trabalho duas vezes, e foi a pergunta dele sobre a palavra \"terceirizada\" que abriu isso — nome errado escondendo pergunta de dinheiro."
   ],
   [
    "",
@@ -837,7 +841,7 @@
   ],
   [
    "",
-   "⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,14%) E DE MONTAGEM (2,14%), R$ 2.287,12 no total — e o modelo diz em caixa alta que \"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro no custo direto\". Com a dupla no custo direto, as duas linhas pagam o MESMO trabalho. ⭐ Zerando as duas, a MC deste projeto sobe de 26,91% para 31,18% sem mexer no preço. ⚠ DECISÃO PENDENTE do Jonathan."
+   "⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,28%) E DE MONTAGEM (2,28%), R$ 3.442,07 no total — e o modelo diz em caixa alta que \"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro no custo direto\". Com a dupla no custo direto, as duas linhas pagam o MESMO trabalho. ⭐ Zerando as duas, a MC deste projeto sobe de 45,00% para 49,56% sem mexer no preço. ⚠ DECISÃO PENDENTE do Jonathan."
   ],
   [
    "",
@@ -851,15 +855,15 @@
   [],
   [
    "",
-   "⚠ R$ 5.500 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu."
+   "⚠ R$ 5.500 · OS DIAS DE DUPLA. A logística de GV saiu desta lista: os R$ 5.200 são números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é uma célula só. E os DIAS — 7 de fábrica, 4 de montagem — são estimativa de quem leu a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu."
   ],
   [
    "",
-   "⚠ R$ 2.780,94 · A TRAMA É DIA DE DUPLA OU É MEDIDA? A colagem por m² mais as duas filetagens por metro valem 5,6 dias de dupla. Hoje estão FORA dos 7 dias de fabricação, que cobrem corte, caixa, furação, tamponamento e ferragem. Se a dupla fizer a trama dentro dos dias dela, estas três linhas saem e o custo direto cai para R$ 24.585,37."
+   "⚠ R$ 2.780,94 · A COLAGEM DO RIPADO É DIA DE DUPLA OU É MEDIDA? O m² de colagem mais as duas filetagens por metro valem 5,6 dias de dupla. Hoje estão FORA dos 7 dias de fabricação, que cobrem corte, caixa, furação, tamponamento e ferragem. Se a dupla fizer a colagem dentro dos dias dela, estas três linhas saem e o custo direto cai para R$ 24.585,37."
   ],
   [
    "",
-   "⚠ R$ 2.132 · \"GIANDUIA TRAMA - DURATEX\" é padrão ESPECIAL? Trama é texturizado, e a Base tem a linha \"CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000,00\". Orçado no genérico de cor, R$ 700. É a primeira cotação a fazer."
+   "⚠ R$ 1.528,52 · GIANDUIA TRAMA É FOSCO, CRISTALLO OU ACETINATO? Já está confirmado que Trama é textura de chapa Duratex; falta saber de qual família. A Base separa três: Melamínico Fosco, \"amadeirado e cor · Velluto, Essencial Wood, Premium, Essencial\", R$ 700 em 18 mm e \"a chapa de cor padrão da casa\"; Cristallo, brilho, R$ 800; Acetinato, R$ 1.800. Orçado como FOSCO, que é onde os padrões nominais estão. As 13 chapas Gianduia (2 de 6, 5 de 15 e 6 de 18) custam R$ 7.650 em Fosco; em Cristallo são R$ 1.528,52 a mais no custo direto, e em Acetinato R$ 14.247,99 a mais. ⚠ E a Base tem uma célula que me enganou: o TÍTULO da seção \"CHAPA — COR E ACABAMENTO ESPECIAL\" traz R$ 1.000,00 ao lado, \"confirmado em plano de corte\". Não é linha de produto — é o cabeçalho do grupo em que o Fosco de R$ 700 mora. Eu tratei como preço e cravei uma dúvida de R$ 2.132 que não existia. Vale arrumar na Base."
   ],
   [
    "",
@@ -879,7 +883,7 @@
   ],
   [
    "",
-   "⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\". Sem RT a MC vai de 26,91% a 35,69%."
+   "⭐ RESPONDIDA · RT ZERADO [Jonathan, 19/11/2026]. Eu havia assumido 10% porque são pranchas executivas de arquiteto e a regra da casa é \"RT quando há parceiro indicando\"; ele digitou 0% na planilha. Fica registrado quanto valia: com RT de 10% a MC deste preço cairia de 45,00% para 36,58% — oito pontos e meio."
   ],
   [
    "",

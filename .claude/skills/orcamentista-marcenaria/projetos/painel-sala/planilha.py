@@ -79,9 +79,18 @@ def _n(v, casas=2):
     return round(float(v), casas)
 
 
-def _br(v):
-    """1234.5 -> "1.234,50", para escrever o unitário DENTRO do rótulo"""
-    return ('%0.2f' % v).replace('.', ',')
+def _br(v, casas=2):
+    """1234.5 -> "1.234,50". ⛔ O SEPARADOR DE MILHAR FALTAVA e o decimal
+    saiu com PONTO em três observações — "R$ 2780,93" e "5.79 m²" na
+    folha de uma marcenaria brasileira. Texto de planilha se lê, não se
+    calcula: se está escrito errado, está errado."""
+    t = ('%0.*f' % (casas, v)).replace('.', ',')
+    i, _, d = t.partition(',')
+    neg, i = (i[0] == '-'), i.lstrip('-')
+    out = ''
+    while len(i) > 3:
+        out, i = '.' + i[-3:] + out, i[:-3]
+    return ('-' if neg else '') + i + out + (',' + d if d else '')
 
 
 def linhas():
@@ -89,7 +98,8 @@ def linhas():
          ['  Executivo SALA · VISTA 2 (1/50) e NICHO RIPADO (1/30, pág. 18) · '
           'obra em %s · painel corrido de %.0f × %.0f sobre sóculo de pedra de 15 · '
           'ripado até 352, onde a pedra termina, e liso nos %.0f seguintes · '
-          'trama de 20/20, passo de 4 cm'
+          'ripa de 2 cm e vão de 2 cm, passo de 4 cm · chapa no padrão '
+          'Gianduia TRAMA, da Duratex — Trama é a TEXTURA, não o desenho'
           % (b.OBRA, lv.LARG, lv.ALT, lv.LISO_L)],
          []]
 
@@ -145,7 +155,7 @@ def linhas():
         'Dobradiça Blum': '⭐ 21 folhas de armário · a tabela da Base manda 2 até 90 cm, '
                           '3 até 160, 4 até 200 e 5 acima · é a linha que dá 30 anos de garantia',
         'Pulsador Blum Tip-on, abertura por toque': '⛔ porta mimetizada em ripado NÃO tem '
-                          'puxador: cava cortaria a trama. Nove folhas de armário',
+                          'puxador: cava cortaria o ripado. Nove folhas de armário',
         'Suporte de prateleira, jogo de 4': '⭐ regra 2 da casa: é a PRATELEIRA a unidade, '
                           'não o par de pinos — R$ 6,50 o jogo de quatro',
         'Alma de aço, barra chata de 3 m': '⚠ a folha de 50 × 277 em 15 mm pede barra chata '
@@ -157,7 +167,7 @@ def linhas():
         mat(n, ESP_FER.get(n, ''), qt, 'un', qt * u)
     m2r = sum(l * a / 10000 for l, a, _r in lv.BANDAS)
     #   ⭐ TODA A MÃO DE OBRA QUE A CASA COBRA POR MEDIDA, e que por isso
-    #     vive FORA do dia de dupla: colagem da trama por m² e as duas
+    #     vive FORA do dia de dupla: colagem das ripas por m² e as duas
     #     filetagens por metro. É o número que a pergunta do Jonathan
     #     colocou na mesa: ou está aqui, ou está nos dias.
     MO_MEDIDA = T['c_terc'] + frp * b.FILETE_RIPA + (f22 + f50) * b.FILETE_MAQ
@@ -176,11 +186,12 @@ def linhas():
         'da Base, mas no grupo USINAGEM E ACABAMENTO ESPECIAL — ao lado da '
         'cava na CNC, da perda de serra ao tirar ripa e da moldura na router, '
         'que são operação de fábrica com máquina nossa · ⛔ O QUE ESTA LINHA '
-        'PAGA: riscar, colar e alinhar as 162 ripas sobre a base, %.2f m² de '
-        'trama. Os DIAS DE DUPLA, lá embaixo, pagam o resto · ⚠ R$ 180 o '
+        'PAGA: riscar, colar e alinhar as 162 ripas sobre a base, %s m² de '
+        'ripado. Os DIAS DE DUPLA, lá embaixo, pagam o resto · ⚠ R$ 180 o '
         'm², e a Base avisa "faixa observada de 70 a 420 · depende da largura '
-        'da ripa e do vão" — trama de 20/20 é a mais fechada que já fizemos'
-        % m2r, m2r, 'm²', T['c_terc'])
+        'da ripa e do vão" — ripa de 2 com vão de 2 é o ripado mais fechado que '
+        'já fizemos'
+        % _br(m2r), m2r, 'm²', T['c_terc'])
     mat('Corte', '%d chapas a R$ 2,00 e %d peças a R$ 2,50 · ⛔ a ripa NÃO entra nesta '
         'contagem: quem paga o corte das tiras é a mão de obra de painel ripado'
         % (T['n_chapas'], T['pecas']), T['pecas'], 'peça', T['c_corte'])
@@ -206,13 +217,14 @@ def linhas():
         '⭐ A QUANTIDADE É DIGITADA: dias de DUPLA, não de pessoa · cobre o '
         'corte das %d peças, a caixa dos três armários, a furação, o '
         'tamponamento das duas portas de 42 mm e a ferragem · ⛔ NÃO COBRE A '
-        'TRAMA: riscar, colar e fitar as 162 ripas é pago POR MEDIDA, nas '
+        'COLAGEM DO RIPADO: riscar, colar e fitar as 162 ripas é pago POR '
+        'MEDIDA, nas '
         'linhas "Painel ripado" e nas duas de "Filetagem" lá em cima — '
-        'R$ %s, o equivalente a %.1f dias de dupla · ⚠ SE A DUPLA FIZER A '
-        'TRAMA DENTRO DESTES DIAS, aquelas três linhas saem, senão a mesma '
+        'R$ %s, o equivalente a %s dias de dupla · ⚠ SE A DUPLA FIZER A '
+        'COLAGEM DENTRO DESTES DIAS, aquelas três linhas saem, senão a mesma '
         'mão de obra é paga duas vezes · o custo do dia vem da célula única '
         'da aba "Preço e Comissões"'
-        % (T['pecas'], _br(MO_MEDIDA), MO_MEDIDA / b.DUPLA_DIA),
+        % (T['pecas'], _br(MO_MEDIDA), _br(MO_MEDIDA / b.DUPLA_DIA, 1)),
         b.DIAS_FABRICACAO, 'dia', b.DIAS_FABRICACAO * b.DUPLA_DIA, b.DUPLA_DIA)
     mat('Montagem · dupla de marceneiro e ajudante',
         '⭐ A QUANTIDADE É DIGITADA: são os MESMOS %d dias das diárias de '
@@ -311,11 +323,19 @@ def linhas():
 
 
 NOTAS = [
- '⭐⭐ A TRAMA DESTE PROJETO NÃO É A DA CASA. A prancha crava "RIPADO EM MDF GIANDUIA '
- 'TRAMA DE 20MM E ESPAÇAMENTO DE 20MM - DURATEX" e o detalhe 1/5 confirma com a cota '
- '2 · 2 · 2. Passo de 4 cm, contra os 6 cm do nosso padrão (ripa 4, vão 2): são 25 '
- 'ripas por metro em vez de 16,7. CINQUENTA POR CENTO MAIS RIPA E MAIS FILETAGEM por '
- 'm² de face. Quem copiar o passo da casa erra o orçamento para baixo.',
+ '⭐⭐ TRAMA É A TEXTURA DA CHAPA, NÃO O DESENHO DO RIPADO [Jonathan, 19/11/2026]. Eu li '
+ 'a prancha — "RIPADO EM MDF GIANDUIA TRAMA DE 20MM E ESPAÇAMENTO DE 20MM - DURATEX" — '
+ 'e usei "trama" como sinônimo de desenho do ripado no orçamento inteiro, inventando uma '
+ '"trama de 20/20" que não existe. TRAMA É PADRÃO DURATEX, da mesma família que Velluto, '
+ 'Essencial Wood, Premium e Essencial, que a Base lista nominalmente em "MDF Melamínico '
+ 'Fosco · Amadeirado e cor". A frase da prancha quer dizer: ripado em MDF Gianduia no '
+ 'PADRÃO TRAMA, com ripa de 20 mm e espaçamento de 20 mm. O padrão agora está no NOME do '
+ 'material em toda a planilha, porque sem ele o nome não serve para comprar.',
+ '⭐⭐ O PASSO DESTE PROJETO NÃO É O DA CASA. Ripa de 2 cm e vão de 2 cm dão PASSO DE '
+ '4 CM, contra os 6 cm do nosso padrão (ripa 4, vão 2), e o detalhe 1/5 confirma com a '
+ 'cota 2 · 2 · 2. São 25 ripas por metro em vez de 16,7: CINQUENTA POR CENTO MAIS RIPA '
+ 'E MAIS FILETAGEM por m² de face. Quem copiar o passo da casa erra o orçamento para '
+ 'baixo.',
  '⛔⛔ E O VÃO TEM 2 CM DE PROFUNDIDADE: enxerga-se o fundo entre as ripas. O substrato '
  'sai no MESMO Gianduia, nunca em branco nem em cru. Foi a primeira coisa que eu ia '
  'economizar e é a que apareceria na obra.',
@@ -343,11 +363,12 @@ NOTAS = [
  'pagariam a montagem duas vezes, e isso some no total sem avisar.',
  '⛔⛔ O MECANISMO DA DUPLA BRIGA COM TODA MÃO DE OBRA MEDIDA. Desde que fabricação e '
  'montagem viraram DIAS, qualquer linha que cobre mão de obra por metro ou por m² '
- 'passa a concorrer com o dia: colagem da trama (R$ 1.042,96 por 5,79 m²), filetagem '
+ 'passa a concorrer com o dia: colagem das ripas (R$ 1.042,96 por 5,79 m²), filetagem '
  'manual (R$ 1.459,80 por 292 m) e filetagem na coladeira (R$ 278,18 por 111 m) somam '
  'R$ 2.780,94 — 5,6 DIAS DE DUPLA. Hoje elas estão SEPARADAS dos 7 dias de '
  'fabricação, e a observação de cada linha diz o que cobre, mas é decisão do '
- 'Jonathan: ou a trama é dia de dupla, ou é medida. As duas juntas pagam o mesmo '
+ 'Jonathan: ou a colagem do ripado é dia de dupla, ou é medida. As duas juntas pagam '
+ 'o mesmo '
  'trabalho duas vezes, e foi a pergunta dele sobre a palavra "terceirizada" que '
  'abriu isso — nome errado escondendo pergunta de dinheiro.',
  '⭐⭐ O CUSTO ESPECIAL DE GOVERNADOR VALADARES [Jonathan, 19/11/2026] substituiu a '
@@ -358,11 +379,11 @@ NOTAS = [
  'ABAIXO, metade disso só no carreto, que sozinho vale quase o que eu punha no bloco '
  'inteiro. A lição é a de sempre — quando a Base diz "A COTAR", a resposta está com '
  'quem compra, não comigo.',
- '⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,14%) E DE MONTAGEM (2,14%), '
- 'R$ 2.287,12 no total — e o modelo diz em caixa alta que "montagem e fabricação '
+ '⛔⛔ A CASCATA AINDA COBRA COMISSÃO DE PRODUÇÃO (2,28%) E DE MONTAGEM (2,28%), '
+ 'R$ 3.442,07 no total — e o modelo diz em caixa alta que "montagem e fabricação '
  'entram AQUI, como comissão — nunca como dia de marceneiro no custo direto". Com a '
  'dupla no custo direto, as duas linhas pagam o MESMO trabalho. ⭐ Zerando as duas, a '
- 'MC deste projeto sobe de 26,91% para 31,18% sem mexer no preço. ⚠ DECISÃO PENDENTE '
+ 'MC deste projeto sobe de 45,00% para 49,56% sem mexer no preço. ⚠ DECISÃO PENDENTE '
  'do Jonathan.',
  '⭐ OS TRÊS ARMÁRIOS NÃO ESTÃO NO EXECUTIVO. A prancha desenha o painel como superfície '
  'contínua; as bandas acima e abaixo do nicho e a coluna de 50 viraram armário por decisão '
@@ -375,17 +396,26 @@ DUVIDAS = [
  'números do Jonathan, não estimativa. O que continua sendo premissa é a mão de obra. '
  'A HORA DO AJUDANTE (R$ 21,60, 60% do marceneiro) NÃO EXISTE NA BASE: é o primeiro '
  'número a trocar, e ele mexe em TODOS os ambientes de uma vez, porque o dia da dupla é '
- 'uma célula só. E os DIAS — 6 de fábrica, 4 de montagem — são estimativa de quem leu '
+ 'uma célula só. E os DIAS — 7 de fábrica, 4 de montagem — são estimativa de quem leu '
  'a prancha, não apontamento de quem fez. ⚠ Falta ainda o DIA DE QUEM VAI MEDIR: os '
  'R$ 350 do bate-volta pagam os 640 km, não a diária de quem dirigiu.',
- '⚠ R$ 2.780,94 · A TRAMA É DIA DE DUPLA OU É MEDIDA? A colagem por m² mais as duas '
+ '⚠ R$ 2.780,94 · A COLAGEM DO RIPADO É DIA DE DUPLA OU É MEDIDA? O m² de colagem '
+ 'mais as duas '
  'filetagens por metro valem 5,6 dias de dupla. Hoje estão FORA dos 7 dias de '
  'fabricação, que cobrem corte, caixa, furação, tamponamento e ferragem. Se a dupla '
- 'fizer a trama dentro dos dias dela, estas três linhas saem e o custo direto cai '
+ 'fizer a colagem dentro dos dias dela, estas três linhas saem e o custo direto cai '
  'para R$ 24.585,37.',
- '⚠ R$ 2.132 · "GIANDUIA TRAMA - DURATEX" é padrão ESPECIAL? Trama é texturizado, e a Base '
- 'tem a linha "CHAPA — COR E ACABAMENTO ESPECIAL · R$ 1.000,00". Orçado no genérico de cor, '
- 'R$ 700. É a primeira cotação a fazer.',
+ '⚠ R$ 1.528,52 · GIANDUIA TRAMA É FOSCO, CRISTALLO OU ACETINATO? Já está confirmado que '
+ 'Trama é textura de chapa Duratex; falta saber de qual família. A Base separa três: '
+ 'Melamínico Fosco, "amadeirado e cor · Velluto, Essencial Wood, Premium, Essencial", '
+ 'R$ 700 em 18 mm e "a chapa de cor padrão da casa"; Cristallo, brilho, R$ 800; '
+ 'Acetinato, R$ 1.800. Orçado como FOSCO, que é onde os padrões nominais estão. As 13 '
+ 'chapas Gianduia (2 de 6, 5 de 15 e 6 de 18) custam R$ 7.650 em Fosco; em Cristallo '
+ 'são R$ 1.528,52 a mais no custo direto, e em Acetinato R$ 14.247,99 a mais. '
+ '⚠ E a Base tem uma célula que me enganou: o TÍTULO da seção "CHAPA — COR E '
+ 'ACABAMENTO ESPECIAL" traz R$ 1.000,00 ao lado, "confirmado em plano de corte". Não é '
+ 'linha de produto — é o cabeçalho do grupo em que o Fosco de R$ 700 mora. Eu tratei '
+ 'como preço e cravei uma dúvida de R$ 2.132 que não existia. Vale arrumar na Base.',
  '⚠ R$ 1.222 · a estrutura de fixação é nossa ou a parede já vem pronta? Está orçada, e '
  'saiu da FOLHA a pedido [Jonathan, 18/11/2026] — não do custo.',
  '⚠ R$ 745 · a ripa de 2 cm entra na coladeira automática? A Base separa "filetagem na '
@@ -395,8 +425,10 @@ DUVIDAS = [
  'Assumi pele: a prancha diz "sóculo em ALVENARIA" e o nicho é revestido pelo marmorista.',
  '⚠ a prancha pede relevo de 20 mm e cortamos de chapa de 18, que é o padrão da casa. Ou '
  'se aceita 18, ou se lamina — e aí muda.',
- '⚠ RT de 10% é leitura minha: o Jonathan não disse. São pranchas executivas de arquiteto '
- 'e a regra da casa é "RT quando há parceiro indicando". Sem RT a MC vai de 26,91% a 35,69%.',
+ '⭐ RESPONDIDA · RT ZERADO [Jonathan, 19/11/2026]. Eu havia assumido 10% porque são '
+ 'pranchas executivas de arquiteto e a regra da casa é "RT quando há parceiro '
+ 'indicando"; ele digitou 0% na planilha. Fica registrado quanto valia: com RT de 10% '
+ 'a MC deste preço cairia de 45,00% para 36,58% — oito pontos e meio.',
  '⚠ o NOME DO CLIENTE não está em nenhuma das pranchas, e a capa da proposta hoje sai sem ele.',
 ]
 

@@ -115,7 +115,7 @@ def desenho():
                  f'stroke-linejoin="round">{rot}</text>')
     #   ⭐⭐ AS DUAS BANDAS VIRARAM ARMÁRIO [Jonathan, 18/11/2026] e o
     #     desenho tem de mostrar isso: oito folhas, não uma pele. As
-    #     divisões caem dentro do vão de 2 cm da trama — fechadas, somem —,
+    #     divisões caem dentro do vão de 2 cm do ripado — fechadas, somem —,
     #     mas numa proposta elas precisam ser vistas.
     def banda(y, h, rot):
         s.append(f'<rect x="{NIC_X0}" y="{y}" width="{lv.NICHO_L}" '
@@ -158,7 +158,7 @@ ITENS = [
   'Dois armários de <b>50 cm de profundidade</b> emoldurando o nicho: o '
   '<b>superior</b> — 302 × 75, a 2,17 m do piso — e o <b>inferior</b> — '
   '302 × 71 —, cada um em <b>quatro folhas de giro</b>, com caixa, prateleira '
-  'e ferragem em cada vão. As oito folhas são ripadas na mesma trama e a junta '
+  'e ferragem em cada vão. As oito folhas são ripadas no mesmo passo e a junta '
   'cai dentro do vão de 2 cm: fechadas, elas somem.'),
  ('Armário lateral', '50 × 277 × 50, folha inteira',
   'Coluna inteira atrás de uma única folha ripada de <b>2,77 m</b>, com cinco '
@@ -313,7 +313,7 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
       <em>emoldurando o nicho de travertino.</em></h1>
     <div class="sub"><b>6,82 m</b> de parede em <b>MDF Gianduia Trama</b>, com
       <b>três armários mimetizados</b> e <b>duas portas de passagem</b> que
-      desaparecem na trama.</div>
+      desaparecem no ripado.</div>
     <div class="fat">
       <div><div class="k">Obra</div><div class="v">{b.OBRA}
         <small>conferência técnica e instalação inclusas</small></div></div>
@@ -353,7 +353,7 @@ HTML = f'''<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
     folhas ao todo, acima e abaixo do nicho e na coluna lateral — são acréscimo
     desta proposta, com caixa, prateleira e ferragem em cada vão. As nove folhas
     <b>abrem por toque, com Blum Tip-on</b>, sem puxador aparente, para que a
-    trama do ripado corra inteira de ponta a ponta.</div>
+    ripado corra inteiro de ponta a ponta.</div>
   </div>
 
   <div class="pe2"><span>Valvic Marcenaria</span>
