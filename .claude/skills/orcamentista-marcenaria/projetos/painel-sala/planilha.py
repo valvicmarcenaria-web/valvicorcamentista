@@ -26,6 +26,49 @@ lv = _mod('ps_lv', 'levantamento.py')
 fo = _mod('ps_fmt', 'formato.py')
 
 PLANILHA = '1fiw2KEbRWGf6_U0w89geSBPdSaFWijbrEp3GlEtx3FQ'
+
+#   ─────────────────────────────────────────────────────────────────────
+#   ⭐ A ABA "Painel" NÃO SAI DESTE SCRIPT — ela veio do MODELO e eu a
+#     edito célula a célula. Deixo aqui o mapa, porque é onde eu procuro.
+#
+#     ⛔⛔ O BUG QUE O JONATHAN PEGOU [19/11/2026]: "Corte, consumíveis e
+#       embalagem — o valor desse item esta maior que o proprio mdf. esta
+#       certo?". Não estava. Eu tinha renomeado as COLUNAS da tabela de
+#       ambientes (FITA E FILETAGEM, FERRAGEM, RIPADO/CORTE/CONSUM.,
+#       FRETE E DUPLA) e deixei os RÓTULOS do bloco de cima para trás.
+#       Resultado: cada linha do bloco mostrava o número da linha
+#       seguinte. "Logística" exibia R$ 2.372,75, que é ripado + corte +
+#       consumíveis + embalagem; "Corte, consumíveis e embalagem" exibia
+#       R$ 10.700,00, que é frete + dupla. Os números estavam certos; os
+#       NOMES é que estavam um degrau fora. É o pior tipo de erro de
+#       planilha, porque nada quebra e tudo soma.
+#     ⭐ A lição: rótulo e fórmula têm de ser escritos na MESMA passada.
+#       Renomear coluna sem reescrever quem a lê é meio conserto.
+#
+#     ONDE ESTÁ O DINHEIRO (linhas 13 a 28) — agora abre o PREÇO inteiro,
+#     não só o custo, e lê por UNIDADE da aba do ambiente, nunca por
+#     posição de linha:
+#       14 MDF                      SUMIF un="chapa"
+#       15 Fita e filetagem         SUMIF un="m"
+#       16 Ferragem                 SUMIF un="un"
+#       17 Painel ripado            SUMIF un="m²"
+#       18 Corte, consum. e emb.    SUMIF un="peça" + un="%"
+#       19 Logística de GV          SUMIF "pessoa"+"viagem"+"diária"+"pessoa-dia"
+#       20 Dupla                    SUMIF un="dia"
+#       21 CUSTO DIRETO             SUM(G14:G20)
+#       22 Custos de venda          Preço!E14+E15+E19+E20
+#       23 Encargos de produção     Preço!E16+E17+E18
+#       24 Comissões fabris         Preço!E21+E22
+#       25 Comissões operacionais   Preço!E23+E24+E25
+#       26 SOMA DOS ENCARGOS        SUM(G22:G25)   == Preço!E26
+#       27 MARGEM                   Preço!E34
+#       28 PREÇO DE VENDA           Preço!E33
+#     ⛔ As quatro linhas de encargo cobrem E14 a E25 SEM sobra e SEM
+#       repetição — é isso que faz 21 + 26 + 27 dar 28. Mexeu na cascata,
+#       confira o particionamento aqui.
+#     ⚠ Os sete SUMIF leem UMA aba de ambiente. Com um segundo ambiente,
+#       cada linha ganha um termo por aba.
+#   ─────────────────────────────────────────────────────────────────────
 ABA, SID = '01 Sala · Painel ripado', 301
 T = lv.T
 REND = b.CHAPA_M2 * b.APROV
