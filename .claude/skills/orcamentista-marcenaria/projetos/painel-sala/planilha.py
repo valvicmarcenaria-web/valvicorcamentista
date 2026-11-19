@@ -143,9 +143,11 @@ def linhas():
         'a estrada, não a diária. Somar 1 dia custa R$ 460,80'
         % (b.AIRBNB_QTD, b.ALIMENTACAO_QTD // 2),
         b.DIAS_MONTAGEM, 'dia', b.DIAS_MONTAGEM * b.DUPLA_DIA, b.DUPLA_DIA)
-    mat('Consumíveis', '6% sobre chapa e fita · cola, lixa, parafuso, cavilha, '
-        'tapa-furo', b.CONSUMIVEIS, '%', T['c_cons'])
-    mat('Embalagem', '2% sobre o custo direto · papelão, filme e cantoneira',
+    mat('Consumíveis', '⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · '
+        'incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo', b.CONSUMIVEIS, '%', T['c_cons'])
+    mat('Embalagem', '⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · '
+        'incide sobre tudo menos a logística e a dupla · papelão, filme '
+        'e cantoneira',
         b.EMBALAGEM, '%', T['c_emb'])
     L.append(['CUSTO DIRETO DO AMBIENTE', '', '', '', _n(D), 1.0])
     L += [[], []]
@@ -153,13 +155,33 @@ def linhas():
     # ── ② OS ITENS ──────────────────────────────────────────────────────
     L += [['  OS ITENS   ·   cada item é um móvel, e é assim que ele vai para a proposta'],
           [],
-          ['ITEM', 'MÓVEL', 'MEDIDA', '', '', '', '', 'CUSTO']]
+          ['ITEM', 'MÓVEL', 'MEDIDA', '', '', '', '', 'CUSTO',
+           'MATERIAL DO ITEM']]
     MED = {0: '302 × 75 × 50', 1: '302 × 71 × 50', 2: '50 × 277 × 50',
            3: '330 × 277', 4: '83 × 210 e 70 × 210, folha de 42 mm', 5: '682 × 277'}
-    for i, ((it, _q), d) in enumerate(zip(T['L'], T['diretos'])):
-        L.append(['%02d' % (i + 1), it.nome, MED.get(i, ''), '', '', '', '', _n(d)])
+    #   ⭐⭐ O ITEM NÃO PODE SER VALOR CONGELADO [Jonathan, 19/11/2026:
+    #     "me explique ... -R$ 553,81"]. Eu escrevi os seis itens como
+    #     número fixo e depois fiz o painel de material virar fórmula — aí
+    #     ele andou (dia da dupla, embalagem, um dia a mais) e os itens
+    #     ficaram para trás. A linha de conferência gritou, que é o que ela
+    #     existe para fazer, mas o certo é ela nunca ter o que gritar.
+    #   ⭐ Vai para a planilha o MATERIAL PURO de cada móvel — sem embalagem,
+    #     sem logística, sem dupla — e o custo do item é fórmula:
+    #       item = material do item ÷ soma dos materiais × CUSTO DIRETO
+    #     Ratear o total pela fatia de material dá exatamente o mesmo que
+    #     somar o material e ratear só o frete, porque embalagem e frete são
+    #     os dois proporcionais. E a soma dos materiais é a MESMA base da
+    #     embalagem, SUM(F7:F24)+F33 — conferida, ao centavo.
+    _mat = [(d - T['c_frete'] * (d / T['direto'])) / (1 + b.EMBALAGEM)
+            for d in T['diretos']]
+    for i, ((it, _q), d, mt) in enumerate(zip(T['L'], T['diretos'], _mat)):
+        L.append(['%02d' % (i + 1), it.nome, MED.get(i, ''), '', '', '', '',
+                  _n(d), _n(mt)])
         L.append(['', it.obs])
-    L.append(['⭐ CONFERÊNCIA — a soma dos itens contra o painel de material',
+    L.append(['⭐ CONFERÊNCIA — a soma dos itens contra o painel de material · '
+              '⛔ tem de dar ZERO: é o mesmo projeto contado por dois caminhos, '
+              'por linha de material e por móvel. Qualquer número aqui é custo '
+              'que um lado cobra e o outro não.',
               '', '', '', '', '', '', _n(sum(T['diretos']) - D)])
     L += [[], []]
 

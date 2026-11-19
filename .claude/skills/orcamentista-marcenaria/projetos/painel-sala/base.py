@@ -319,7 +319,8 @@ DUPLA_DIA = 500.00
 #     640 km de estrada consomem o dia inteiro. São R$ 288 de um marceneiro
 #     sozinho, ou R$ 460,80 se for a dupla. Fica de FORA até o Jonathan
 #     dizer — basta somar 1 em DIAS_MONTAGEM.
-DIAS_FABRICACAO = 6.0
+#   ⭐ 7, não 6 [Jonathan, 19/11/2026, digitado na planilha].
+DIAS_FABRICACAO = 7.0
 DIAS_MONTAGEM = 4.0
 
 
