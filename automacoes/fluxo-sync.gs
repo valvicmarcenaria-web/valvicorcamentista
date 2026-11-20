@@ -13,7 +13,11 @@
  *   · a primeira linha de dados do fluxo é descoberta sozinha (antes estava fixa em 2,
  *     e quebrou quando o painel de saldos foi para o topo da aba);
  *   · a coluna "ID (fixo, não editar)" passa a ser preenchida pelo script;
- *   · a chave de rastreio usa o ID, não o número da linha — mover linha não duplica nada.
+ *   · a chave de rastreio usa o ID, não o número da linha — mover linha não duplica nada;
+ *   · a chave da ficha foi para a coluna P: em K a N ela caía dentro da célula mesclada
+ *     do Status (I:O) e o Apps Script descartava a escrita sem acusar erro;
+ *   · depois de gravar a chave o script confere se ela realmente ficou lá, e para com
+ *     mensagem clara se não ficou — antes isso passava batido e duplicava na rodada seguinte.
  */
 
 var FLUXO_ABA   = 'LANCAMENTOS';
@@ -31,7 +35,15 @@ var FICHA_ID     = '1tTJXG4w7lDvIcnd0dyr219-leOPwuURqrBk6lJIr18I';
 var LIVRO_TITULO = 'Descrição / fornecedor';  // cabeçalho do bloco 8
 var LIVRO_LINHAS = 60;                        // o bloco tem 60 linhas; as fórmulas da
                                               // ficha somam exatamente esse intervalo
-var LIVRO_COL_CHAVE = 11;                     // coluna K da ficha, fora das fórmulas
+var LIVRO_COL_CHAVE = 16;                     // coluna P da ficha.
+                                              // NÃO usar K a N: na ficha o campo "Status"
+                                              // é uma célula mesclada de I até O, e o
+                                              // Apps Script DESCARTA EM SILÊNCIO qualquer
+                                              // escrita numa célula que não seja a âncora
+                                              // da mescla — sem erro no log. Foi por isso
+                                              // que a primeira rodada gravou as compras
+                                              // mas não gravou as chaves. P é a primeira
+                                              // coluna livre depois da mescla.
 
 // ── colunas do fluxo (1 = A) ───────────────────────────────────────────────
 var C_DATA = 1, C_TIPO = 2, C_DESC = 3, C_CATEG = 4, C_CONTA = 5, C_VALOR = 6,
@@ -249,7 +261,19 @@ function escreverBloco_(aba, primeira, total, colIni, nCols, colChave, marca, no
   }
 
   aba.getRange(primeira, colIni, total, nCols).setValues(corpoNovo);
-  aba.getRange(primeira, colChave, total, 1).setValues(chaveNova);
-  aba.getRange(primeira, colChave, total, 1)
-     .setNote('Chave de origem — preenchida pela automação. Não editar.');
+
+  var colunaChave = aba.getRange(primeira, colChave, total, 1);
+  colunaChave.setValues(chaveNova);
+  colunaChave.setNote('Chave de origem — preenchida pela automação. Não editar.');
+
+  // Rede de segurança: se a coluna da chave cair dentro de uma célula mesclada, o
+  // Apps Script engole a escrita sem erro e na rodada seguinte tudo duplica. Confere.
+  var gravou = colunaChave.getValues();
+  for (var v = 0; v < total; v++) {
+    if (String(gravou[v][0] || '') !== String(chaveNova[v][0] || '')) {
+      throw new Error('A chave de controle não gravou em ' + aba.getName() +
+                      ', coluna ' + colChave + ' (linha ' + (primeira + v) + '). ' +
+                      'Quase sempre é célula mesclada: escolha uma coluna livre.');
+    }
+  }
 }
