@@ -285,6 +285,61 @@ FORA = [
 ]
 
 NOTAS = [
+    #   ⛔⛔⛔ ESTA NOTA EXISTIU PRIMEIRO SÓ NA PLANILHA, e eu a perdi. Em
+    #     23/11/2026 corrigi várias notas digitando DIRETO nas células, e
+    #     não aqui no código. Ao regravar a aba com os itens unificados, o
+    #     clear levou as correções. ⭐ Lição: o texto da aba se corrige NO
+    #     GERADOR. A planilha é a saída, não a fonte.
+    '⛔⛔⛔ A LIÇÃO MAIS CARA DESTA FOLHA, E EU A APRENDI DUAS VEZES: O '
+    'APROVEITAMENTO DE 80% É UMA MÉDIA, E MÉDIA SÓ VALE PARA PEÇA QUE '
+    'REPETE NA CHAPA · (1) Lancei o forro como peças do tamanho da chapa, '
+    'e o motor — que JÁ divide área por rendimento — aplicou os 80% DUAS '
+    'VEZES: dez chapas saídas do nada, sem nada quebrar. ⭐ Quem lança área '
+    'lança ÁREA; o rendimento é do motor · (2) E o inverso, que o Jonathan '
+    'pegou: "temos 6 nichos, cada um deles gasta 1 chapa de 6mm para o '
+    'fundo, vc considerou apenas 4 chapas". O fundo é peça GRANDE que NÃO '
+    'repete: 104,1 × 193 numa chapa de 275 × 185 cabe UMA vez, porque os '
+    '193 cm só entram no lado de 275 e a sobra de 82 cm não comporta a '
+    'segunda. A média me fazia comprar menos chapa do que o marceneiro '
+    'precisa · ⭐ O certo é dizer a verdade do rendimento em OS PARÂMETROS '
+    '— uma chapa rende UM fundo — e deixar o motor acertar sozinho. É por '
+    'isso que a tabela tem a coluna APROV.: ela denuncia peça que não '
+    'encaixa. 39,5% grita; 80% engana · ⛔ E a tolerância no arredondamento '
+    'não é enfeite: guardar o aproveitamento com 4 casas fez uma divisão '
+    'dar 6,000090, o ROUNDUP cobrou 7 chapas e R$ 350 apareceram do nada.',
+
+    '⭐⭐ SEIS NICHOS E DOIS PÓRTICOS DE ACESSO [Jonathan, 23/11/2026]. Eu '
+    'havia contado 5 nichos na VISTA BB mais 2 na VISTA AA e somado SETE, '
+    'e havia lançado UM pórtico de acesso. São seis nichos, e os dois '
+    'pórticos de acesso aos ambientes são NOSSOS — escopo novo: "os dois '
+    'porticos de acesso aos ambientes tbm serao em marcenaria" · ⚠ PREMISSA '
+    'MINHA: lancei o segundo pórtico igual ao primeiro, vão de 115, moldura '
+    'de 12 e profundidade de 30. Se tiver outro vão, mudam cinco linhas do '
+    'item 02 — está nas dúvidas.',
+
+    '⭐⭐ O PÓRTICO E O INTERIOR DO NICHO SÃO UM ITEM SÓ [Jonathan, '
+    '23/11/2026]: "unifique os itens 2 e 3". Eu tinha a casca curva num '
+    'item e o fundo, a prateleira e a luz em outro, e era separação '
+    'artificial: o primeiro já descrevia "6 nichos de 104 × 193", então os '
+    'dois descreviam O MESMO MÓVEL · ⭐ Ninguém compra "pórtico" e "fundo de '
+    'pórtico" em separado, e a fábrica não os monta em separado: a '
+    'prateleira entra depois da casca pronta, no mesmo nicho, com a mesma '
+    'equipe · ⭐ E unificar consertou uma coisa que me incomodava: a cola de '
+    'contato estava num item "porque é lá que o nicho é construído" e o LED '
+    'no outro, o que fazia os dois mentirem um pouco sobre o que eram.',
+
+    '⛔⛔⛔ CÉLULA MESCLADA ENGOLE A LINHA, E A API RESPONDE "success". Três '
+    'linhas desta aba apareceram pela metade depois de gravar — entre elas '
+    'dois TOTAIS DE ITEM — e a causa não era a gravação: a aba tinha '
+    'células mescladas de B a K, sobradas de um layout anterior, em linhas '
+    'que no layout novo são de DADO. Mesclada, a célula aceita valor só na '
+    'âncora e descarta o resto da linha em silêncio · ⛔ Eu já havia visto '
+    'o sintoma duas vezes e escrito que "gravação em bloco perde linha", '
+    'diagnóstico errado que me faria quebrar as gravações em pedaços cada '
+    'vez menores sem nunca resolver · ⭐ A cura é DESMESCLAR a aba inteira '
+    'antes de gravar e mesclar de volta só título, subtítulo e seção. Merge '
+    'é FORMATO, e formato sobrevive ao clear de valores.',
+
  '⭐⭐ AS DUAS COLUNAS DE DIAS, NO BLOCO OS ITENS [Jonathan, 23/11/2026]: "adicione o '
  'campo para inserir o tempo de profissionais em cada item" · ⭐ A unidade é DIA DE '
  'DUPLA, que é o mecanismo da casa: um marceneiro mais um ajudante, 8 horas, '

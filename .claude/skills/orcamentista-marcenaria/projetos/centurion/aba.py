@@ -64,29 +64,35 @@ COL = 'BCDEFGHIJK'          # B=0 … K=9
 #     com número digitado: se o Jonathan mudar a cota do nicho, esta coluna
 #     muda com ela.
 def _medidas():
-    pr = lv.N_PRAT
-    return {
-        1: '%s m² · %s m de profundidade' % (('%0.0f' % b.FORRO_M2),
-                                             ('%0.2f' % lv.FORRO_PROF
-                                              ).replace('.', ',')),
-        2: '%d arcos · moldura de %s cm, %s cm de profundidade'
-           % (b.N_NICHOS + b.N_PASSAGEM, ('%0.0f' % b.MOLDURA_L),
-              ('%0.0f' % b.NICHO_PROF)),
-        3: '%d fundos de %s × %s · %d prateleiras de %s × %s'
-           % (b.N_NICHOS, ('%0.1f' % b.NICHO_L).replace('.', ','),
-              ('%0.0f' % b.NICHO_H), pr,
-              ('%0.1f' % b.NICHO_L).replace('.', ','),
-              ('%0.0f' % b.NICHO_PROF)),
-        4: '%s m² de painel em %d panos' % (
-            ('%0.2f' % sum(L * A / 10000 for _r, L, A in b.PAINEIS)
-             ).replace('.', ','), len(b.PAINEIS)),
-        5: '%s m² de base em %d panos' % (
-            ('%0.2f' % sum(L * A / 10000 for _r, L, A in b.ESPELHOS)
-             ).replace('.', ','), len(b.ESPELHOS)),
-        6: '%s m² de espelho em %d panos' % (
-            ('%0.2f' % sum(L * A / 10000 for _r, L, A in b.ESPELHOS)
-             ).replace('.', ','), len(b.ESPELHOS)),
+    """A MEDIDA GERAL de cada item · ⛔ montada com as CONSTANTES, nunca com
+    número digitado: se a cota do nicho mudar, esta coluna muda com ela.
+
+    ⛔⛔ E A CHAVE É O NOME DO ITEM, NÃO A POSIÇÃO. Estava por posição
+      (1, 2, 3...) e em 23/11/2026 o Jonathan unificou os itens 2 e 3 —
+      tudo abaixo subiu um degrau e as medidas passariam para o item
+      errado, caladas. ⭐ Pelo nome, item que entra ou sai não desalinha
+      nada, e o assert embaixo acusa item sem medida."""
+    n2 = lambda v, c=2: ('%0.*f' % (c, v)).replace('.', ',')
+    m2 = lambda L: n2(sum(x * y / 10000 for _r, x, y in L))
+    por_nome = {
+        'Forro amadeirado':
+            '%s m² · %s m de profundidade' % (n2(b.FORRO_M2, 0),
+                                              n2(lv.FORRO_PROF)),
+        'Nichos em pórtico curvo laqueado café':
+            '%d nichos e %d acessos · %d prateleiras de %s × %s'
+            % (b.N_NICHOS, b.N_PASSAGEM, b.N_NICHOS * b.PRAT_POR_NICHO,
+               n2(b.NICHO_L, 1), n2(b.NICHO_PROF, 0)),
+        'Painéis de parede · o que era adesivo':
+            '%s m² de painel em %d panos' % (m2(b.PAINEIS), len(b.PAINEIS)),
+        'Painéis para receber o espelho':
+            '%s m² de base em %d panos' % (m2(b.ESPELHOS), len(b.ESPELHOS)),
+        'Espelhos prata, colados sobre o painel':
+            '%s m² de espelho em %d panos' % (m2(b.ESPELHOS),
+                                              len(b.ESPELHOS)),
     }
+    faltam = [it.nome for it in lv.ITENS if it.nome not in por_nome]
+    assert not faltam, 'item sem MEDIDA GERAL: %s' % faltam
+    return {i: por_nome[it.nome] for i, it in enumerate(lv.ITENS, 1)}
 
 
 def _br(v, casas=2):

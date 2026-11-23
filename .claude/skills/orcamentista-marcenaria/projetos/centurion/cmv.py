@@ -31,7 +31,25 @@ BRUTO_OUTROS = 0.03         # margem de erro 2% + serra 0,5% + manutenção 0,5%
 COMISSOES = 0.075           # 2,5 + 2,5 + 1 + 1 + 0,5, sobre o LÍQUIDO
 ENCARGOS = NOTA + BRUTO_OUTROS + COMISSOES * (1 - NOTA)
 BASE = 1 - ENCARGOS         # 0,81175
-MC = 0.50                   # ⭐ o que o Jonathan pediu AGORA
+MC = 0.50                   # ⭐ o alvo que o Jonathan pediu AGORA
+
+#   ⭐⭐ A MC POR ITEM [Jonathan, 23/11/2026]: "coloque as porcentagens de
+#     MC de cada item tbm". ⭐ Ela é ESCOLHIDA, não descoberta — e o quadro
+#     ④ da aba Preço e Comissões diz em cima: "a MC é direcionada ao
+#     projeto TODO ou a um item específico, conforme a complexidade".
+#   ⛔ MC MAIOR QUE A BASE NÃO EXISTE: a 81,175% o preço vai a infinito,
+#     porque não sobraria nada para o custo. O assert pega isso antes de a
+#     conta sair errada.
+#   ⚠ Hoje todas estão no alvo. Mudar uma linha aqui muda SÓ o preço
+#     daquele item, e o total se refaz.
+MC_ITEM = {}                # nome do item -> MC própria · vazio = todas no alvo
+
+
+def mc_de(nome):
+    m = MC_ITEM.get(nome, MC)
+    assert 0 <= m < BASE, 'MC de %.1f%% não cabe na base de %.3f%%: %s' % (
+        m * 100, BASE * 100, nome)
+    return m
 
 
 def preco(cmv, mc=MC):
@@ -77,9 +95,10 @@ def apura():
 
 ITENS = apura()
 for x in ITENS:
-    x['preco'] = preco(x['cmv'])
+    x['mc'] = mc_de(x['nome'])
+    x['preco'] = preco(x['cmv'], x['mc'])
     x['encargos'] = x['preco'] * ENCARGOS
-    x['margem'] = x['preco'] * MC
+    x['margem'] = x['preco'] * x['mc']
 
 
 def brl(v):
@@ -101,16 +120,25 @@ if __name__ == '__main__':
     print('  PREÇO = CMV ÷ (%.5f − %.2f) = CMV ÷ %.5f = CMV × %.4f'
           % (BASE, MC, BASE - MC, 1 / (BASE - MC)))
 
-    print('\n  POR ITEM  ' + '─' * 58)
-    print('  %-2s %-38s %13s %13s %13s' % ('', 'ITEM', 'CMV', 'ENCARGOS',
-                                           'PREÇO'))
+    print('\n  POR ITEM  ' + '─' * 72)
+    print('  %-2s %-34s %12s %6s %12s %12s %12s'
+          % ('', 'ITEM', 'CMV', 'MC', 'ENCARGOS', 'MARGEM', 'PREÇO'))
     for x in ITENS:
-        print('  %02d %-38s %13s %13s %13s'
-              % (x['n'], x['nome'][:38], brl(x['cmv']), brl(x['encargos']),
-                 brl(x['preco'])))
+        print('  %02d %-34s %12s %5.1f%% %12s %12s %12s'
+              % (x['n'], x['nome'][:34], brl(x['cmv']), x['mc'] * 100,
+                 brl(x['encargos']), brl(x['margem']), brl(x['preco'])))
     s = lambda c: sum(x[c] for x in ITENS)
-    print('  %-41s %13s %13s %13s'
-          % ('TOTAL', brl(s('cmv')), brl(s('encargos')), brl(s('preco'))))
+    #   ⛔ A MC DO TOTAL NÃO É A MÉDIA DAS MC, É A PONDERADA PELO PREÇO —
+    #     margem total ÷ preço total. Média simples de percentual mente
+    #     sempre que os itens têm tamanhos diferentes, e aqui o maior é 9×
+    #     o menor.
+    print('  %-37s %12s %5.1f%% %12s %12s %12s'
+          % ('TOTAL', brl(s('cmv')), s('margem') / s('preco') * 100,
+             brl(s('encargos')), brl(s('margem')), brl(s('preco'))))
+    print('  %-37s %12s %6s %12s %12s %12s'
+          % ('% do preço', '%.1f%%' % (s('cmv') / s('preco') * 100), '',
+             '%.1f%%' % (s('encargos') / s('preco') * 100),
+             '%.1f%%' % (s('margem') / s('preco') * 100), '100,0%'))
     print('\n  conferência · CMV somado = custo direto?  %s'
           % brl(s('cmv') - T['direto']))
     print('  conferência · preço − CMV − encargos − margem = %s'

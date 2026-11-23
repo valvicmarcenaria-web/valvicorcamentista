@@ -138,8 +138,18 @@ forro.m('Filetagem na coladeira automática', FORRO_PERIM * b.FITA_PERDA,
         b.FILETE_MAQ, 'm', '', chave='Filetagem automática')
 
 # ═══════════════════════════════════════════════════════════════════════
-#   02 · OS PÓRTICOS CURVOS
+#   02 · OS NICHOS EM PÓRTICO CURVO · a casca E o interior
 # ═══════════════════════════════════════════════════════════════════════
+#   ⭐⭐ ITEM ÚNICO [Jonathan, 23/11/2026]: "unifique os itens 2 e 3". Eu
+#     tinha o pórtico curvo num item e o fundo, a prateleira e a luz em
+#     outro — e era separação artificial: o item 02 já descrevia "6 nichos
+#     de 104 × 193", então os dois descreviam O MESMO MÓVEL. ⛔ Ninguém
+#     compra "pórtico" e "fundo de pórtico" em separado, e a fábrica não os
+#     monta em separado: a prateleira entra depois da casca pronta, no
+#     mesmo nicho, com a mesma equipe.
+#   ⭐ E unificar conserta uma coisa que me incomodava: a cola de contato
+#     estava no 02 "porque é lá que o nicho é construído" e o LED no 03,
+#     o que fazia os dois itens mentirem um pouco sobre o que eram.
 #   ⭐ A composição é a que o Jonathan descreveu, camada por camada:
 #       "a estrutura curva que tem uma largura de 12cm, tera a estrutura
 #        em mdf revestido de compensado flexivel nos dois lados (interno e
@@ -150,16 +160,25 @@ forro.m('Filetagem na coladeira automática', FORRO_PERIM * b.FITA_PERDA,
 #     consumir 0,55 m²; na chapa ele ocupa 1,28 × 1,52 = 1,95 m². O miolo
 #     de 1,46 m² volta ao plano de corte — e é com ele que saem fundos e
 #     prateleiras. Está escrito na folha, porque é dinheiro de verdade.
-porticos = Item('Pórticos curvos laqueados café',
+N_PRAT = b.N_NICHOS * b.PRAT_POR_NICHO
+N_PECAS_PRAT = N_PRAT * b.PRAT_CAMADAS
+
+porticos = Item('Nichos em pórtico curvo laqueado café',
                 '%d nichos de %.0f × %.0f e %d pórticos de acesso aos '
                 'ambientes de %.0f de vão · moldura de %.0f cm de face, '
-                '%.0f cm de profundidade · ⭐ os dois pórticos de acesso '
-                'entraram no escopo em 23/11/2026 ["os dois porticos de '
-                'acesso aos ambientes tbm serao em marcenaria"] · ⚠ assumi '
-                'que são iguais ao que eu já tinha lido na VISTA BB: se o '
-                'segundo tiver outro vão, o número muda'
+                '%.0f cm de profundidade · por dentro, %d fundos em MDF de '
+                '%d mm e %d prateleiras de %.0f × %.0f com %d mm, cada uma '
+                'com alma de aço e LED · ⭐ ITEM ÚNICO desde 23/11/2026 '
+                '["unifique os itens 2 e 3"]: a casca curva e o interior '
+                'são o mesmo móvel · ⭐ os dois pórticos de acesso entraram '
+                'no escopo na mesma data ["os dois porticos de acesso aos '
+                'ambientes tbm serao em marcenaria"] · ⚠ assumi que são '
+                'iguais ao que eu já tinha lido na VISTA BB: se o segundo '
+                'tiver outro vão, o número muda'
                 % (b.N_NICHOS, b.NICHO_L, b.NICHO_H, b.N_PASSAGEM,
-                   b.PASSAGEM_L, b.MOLDURA_L, b.NICHO_PROF))
+                   b.PASSAGEM_L, b.MOLDURA_L, b.NICHO_PROF, b.N_NICHOS,
+                   b.FUNDO_ESP, N_PRAT, b.NICHO_L, b.NICHO_PROF,
+                   b.PRAT_ESP))
 
 #   ⭐⭐ SÃO DOIS PÓRTICOS DE ACESSO, E ELES SÃO NOSSOS [Jonathan,
 #     23/11/2026]: "os dois porticos de acesso aos ambientes tbm serao em
@@ -237,10 +256,9 @@ porticos.s('Laca café · face, lateral do nicho e alizar', LACA_M2, b.LACA_M2,
            chave='Laca fosca PU')
 #   ⭐⭐ A COLA DE CONTATO [Jonathan, 23/11/2026]: "acrescente mais uma lata de
 #     cola de contato de 14k no custo dos nichos - custo de 600,00".
-#   ⭐ Entra NESTE item, e não no 03, porque é aqui que o nicho é construído:
-#     o item 02 se chama pórtico curvo mas descreve "7 nichos de 104 × 193",
-#     e é aqui que vivem o compensado e a fórmica que a cola cola. Pôr a
-#     cola separada do material que ela adere faria o rateio mentir.
+#   ⭐ Fica neste item junto do material que ela adere — e desde que os
+#     itens 2 e 3 viraram um só, em 23/11/2026, não há mais onde a cola
+#     pudesse ficar separada do compensado e da fórmica que ela cola.
 #   ⭐ "MAIS uma lata" porque a cola comum já está nos consumíveis de 6%:
 #     esta é uma lata inteira a mais, e laminado em curva come cola.
 porticos.s('Cola de contato · lata de %d kg' % b.COLA_KG, 1, b.COLA_LATA,
@@ -260,14 +278,10 @@ porticos.s('Cola de contato · lata de %d kg' % b.COLA_KG, 1, b.COLA_LATA,
 #     iluminação de led" [Jonathan, 23/11/2026]
 #   ⭐ ALMA DE AÇO: a Base manda "uma por peça, contra empeno". Prateleira
 #     de 104 cm de vão sem apoio no meio empena — é o caso exato.
-N_PRAT = b.N_NICHOS * b.PRAT_POR_NICHO
-N_PECAS_PRAT = N_PRAT * b.PRAT_CAMADAS
-nichos = Item('Nichos por dentro · fundo, prateleira e luz',
-              '%d fundos em MDF de %d mm e %d prateleiras de %.0f × %.0f '
-              'com %d mm de espessura, em %d peças de %d mm, cada uma com '
-              'alma de aço e LED'
-              % (b.N_NICHOS, b.FUNDO_ESP, N_PRAT, b.NICHO_L, b.NICHO_PROF,
-                 b.PRAT_ESP, N_PECAS_PRAT, b.PRAT_ESP_PECA))
+#   ⭐ as peças de dentro entram NO MESMO item, logo depois da casca:
+#     a ordem do bloco conta a montagem — costela, revestimento, laca,
+#     depois fundo, prateleira, alma e luz.
+nichos = porticos
 #   ⭐⭐ O FUNDO VAI EM 6 mm [Jonathan, 23/11/2026]: "os fundos serao em mdf
 #     de 6mm". A Base concorda em dois lugares — "MDF Branco TX · Fundos ·
 #     6 mm" e a tabela de espessura, "Fundos · 6 mm · por encaixe em rasgo,
@@ -398,7 +412,9 @@ espelhos.s('Frete de espelho', 1, b.ESPELHO_FRETE, 'serviço',
 # ═══════════════════════════════════════════════════════════════════════
 #   O FECHAMENTO
 # ═══════════════════════════════════════════════════════════════════════
-ITENS = [forro, porticos, nichos, paineis, base_esp, espelhos]
+#   ⭐ CINCO ITENS desde 23/11/2026: o pórtico curvo e o interior do nicho
+#     eram dois e viraram um, porque são o mesmo móvel.
+ITENS = [forro, porticos, paineis, base_esp, espelhos]
 
 
 def apura():
