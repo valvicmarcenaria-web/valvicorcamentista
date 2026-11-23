@@ -193,66 +193,47 @@ AMB = [
    ('Gaveteiro móvel', 'Sobre rodízios, para acompanhar a cadeira.')]),
 ]
 _a0 = N[0] + 1
-for titulo, imgs, tag, acab, itens in AMB:
-    fig = ''.join(f'<img src="{IMG[i]}" alt="">' for i in imgs)
-    folha(f'''<div class="amb">
-     <div class="amb-img{" duo" if len(imgs) > 1 else ""}">{fig}<div class="tag">{E(tag)}</div></div>
-     <div class="amb-txt">
-      <div class="eyebrow">Ambiente</div><div class="rule"></div>
-      <div class="fit"><h2 class="h2" style="margin:1mm 0 4mm">{titulo}</h2>{mv(itens)}
-       <div class="amb-nota" style="background:none;border-left-color:var(--line)">
-         <div class="t">Acabamentos</div><p>{E(acab)}</p></div></div>
-     </div></div>''', foot_r=True)
+# ⭐ [Jonathan, 23/11/2026] "coloque 2 ambientes por página"
+def metade(titulo, imgs, tag, acab, itens):
+    return f'''<div class="dp">
+     <div class="dp-img"><img src="{IMG[imgs[0]]}" alt=""><div class="tag">{E(tag)}</div></div>
+     <div class="dp-txt"><div class="eyebrow">Ambiente</div><div class="rule"></div>
+      <h2 class="h2">{titulo.replace("<br>", " ")}</h2>{mv(itens)}
+      <div class="amb-nota" style="background:none;border-left-color:var(--line)">
+        <div class="t">Acabamentos</div><p>{E(acab)}</p></div></div></div>'''
+for k in range(0, len(AMB), 2):
+    folha(f'<div class="duplo">{"".join(metade(*a) for a in AMB[k:k + 2])}</div>')
 N_AMB = (_a0, N[0])
 
 # ── a escolha: duas linhas, a diferença está na ferragem ────────────────
+# ⭐ [Jonathan, 23/11/2026] "unifique as páginas 12 e 13": a escolha e as duas opções numa folha só
 DIF = [
  ('Corrediça', 'Telescópica, com o trilho aparente na lateral da gaveta.',
   'Oculta Hettich: o trilho some por baixo, a gaveta abre inteira e fecha amortecida.'),
  ('Dobradiça', 'Nacional, de caneco.', 'Hettich Novisys, com amortecedor e regulagem nos três sentidos.'),
- ('Vidro, palhinha e estofado', 'Os mesmos nas duas linhas.', 'Os mesmos.'),
- ('Garantia', f"{GAR['Telescópica']} anos", f"{GAR['Hettich']} anos"),
+ ('O que não muda', 'Desenho, padrões de MDF, vidro, palhinha, almofada e a equipe própria.', 'Os mesmos.'),
 ]
-linhas = ''.join(f'<tr><td class="l">{E(k)}</td><td style="text-align:left;font-size:8.6pt">{E(a)}</td>'
-                 f'<td class="hi" style="text-align:left;font-size:8.6pt">{E(b)}</td></tr>' for k, a, b in DIF)
+OPC = {
+ 'Telescópica': 'Corre sobre esferas e <b>mostra o trilho</b> quando a gaveta abre. É o padrão da maior parte do mercado — <em>o que muda é por quanto tempo</em>.',
+ 'Hettich': 'Corre <b>por baixo da gaveta</b>: você abre e não vê ferragem. Sai inteira, fecha amortecida, e a dobradiça Novisys fecha a porta sem bater.',
+}
+ops = ''.join(f'''<div class="c{" hi" if k == "Hettich" else ""}">
+     <div class="anos">{GAR[k]}</div><div class="unid">anos de garantia</div>
+     <div class="nm">{E(CHAMADA[k])}</div><div class="x">{OPC[k]}</div></div>''' for k in LIN)
+linhas = ''.join(f'<tr><td class="l">{E(k)}</td><td style="text-align:left;font-size:8.3pt">{E(a)}</td>'
+                 f'<td class="hi" style="text-align:left;font-size:8.3pt">{E(b)}</td></tr>' for k, a, b in DIF)
 folha(f'''<div class="pad">
- <div class="eyebrow">Uma escolha</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">Duas linhas. A diferença está na ferragem.</h1>
- <p class="lead" style="max-width:215mm">O desenho, os padrões de MDF, o vidro, a palhinha e a
-   almofada são <b>os mesmos nas duas</b>. O que muda é a peça que vocês tocam
-   todo dia — e é ela que decide quanto tempo o móvel continua fechando bem.</p>
- <table class="cmp" style="margin-top:6mm">
+ <div class="eyebrow">Uma escolha · duas linhas</div><div class="rule"></div>
+ <h1 class="h1" style="margin:0 0 3mm">A diferença está na ferragem.</h1>
+ <p class="lead" style="max-width:225mm">A ferragem é a única peça da marcenaria que <b>se usa todo dia e
+  se desgasta</b>. O desenho e os materiais são os mesmos nas duas linhas; a garantia do conjunto
+  segue a ferragem escolhida.</p>
+ <div class="gar justo duas" style="margin-top:5mm">{ops}</div>
+ <table class="cmp" style="margin-top:5mm">
   <tr><th class="l" style="text-align:left"></th>
    {''.join(f'<th{" class=hi" if n == "Hettich" else ""}>{E(n)}</th>' for n in LIN)}</tr>
   {linhas}
  </table>
- <div class="box" style="margin-top:auto"><div class="t">O que não muda</div>
-  <p>Os padrões Arauco especificados pela arquiteta, os puxadores Zen Design e os usinados na
-   própria peça, o vidro, a palhinha natural, a almofada e a equipe própria do corte à montagem.</p></div>
-</div>''')
-
-OPC = [
- ('Telescópica', 'A corrediça telescópica corre sobre esferas e <b>mostra o trilho na lateral da gaveta</b> '
-  'quando ela abre. É a ferragem que a maior parte do mercado entrega como padrão — '
-  '<em>o que muda é por quanto tempo</em>.'),
- ('Hettich', 'A corrediça oculta alemã corre <b>por baixo da caixa da gaveta</b>: você abre e não vê '
-  'ferragem nenhuma. A gaveta sai inteira, o fechamento é amortecido e a dobradiça Novisys fecha a '
-  'porta sem bater. <em>É a nossa linha de referência.</em>'),
-]
-ops = ''.join(f'''<div class="c{" hi" if k == "Hettich" else ""}">
-     <div class="anos">{GAR[k]}</div><div class="unid">anos de garantia</div>
-     <div class="nm">{E(CHAMADA[k])}</div><div class="x">{d}</div></div>''' for k, d in OPC)
-folha(f'''<div class="pad">
- <div class="eyebrow">As duas opções</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">O que vocês vão sentir na mão.</h1>
- <p class="lead" style="max-width:215mm">A ferragem é a única peça da marcenaria que <b>se usa
-  todo dia e se desgasta</b>. O MDF não cansa, o vidro não cansa. A corrediça e a dobradiça,
-  sim — e por isso a escolha <b>vale para a casa toda</b>: a garantia do conjunto segue a
-  ferragem da linha escolhida.</p>
- <div class="gar justo duas">{ops}</div>
- <div class="box" style="margin-top:5mm"><div class="t">Como escolher</div>
-  <p>Abra uma gaveta de cada linha antes de decidir — <b>em trinta segundos a mão resolve o que
-   a tabela não resolve</b>. Levamos as duas amostras até vocês antes do fechamento.</p></div>
 </div>''')
 
 # ── a garantia ──────────────────────────────────────────────────────────
@@ -287,43 +268,37 @@ folha(f'''<div class="pad">
  </div></div>''')
 N0 = N[0] + 1   # ⛔ a primeira folha com preço
 
+# ⭐ [Jonathan, 23/11/2026] "melhore o layout da pág 15 e mescle com a página 16"
 rows = ''.join(
-    f'<tr><td class="l">{E(n)} <span class="sub">· {E(d)}</span></td>'
+    f'<tr><td class="l">{E(n)}</td>'
     + ''.join(f'<td{" class=hi" if l == "Hettich" else ""}>{brs(VAL[l][i])}</td>' for l in LIN)
     + '</tr>' for i, (n, d, _v) in enumerate(LINHAS_INV))
+def cartao(k):
+    hi = k == 'Hettich'
+    return f'''<div class="tc{" hi" if hi else ""}">
+   <div class="hd"><b>{GAR[k]}</b><span>anos de garantia<br>{E(CHAMADA[k])}</span></div>
+   <div class="k">O projeto completo</div><div class="v">{br(TOT[k])}</div>
+   <div class="k" style="margin-top:2.6mm">Entrada · {PAGTO[0][1]*100:.0f}%</div><div class="e">{br(TOT[k] * PAGTO[0][1])}</div>
+   <div class="k" style="margin-top:2mm">{len(PAGTO) - 1} parcelas de {PAGTO[1][1]*100:.0f}%</div><div class="e">{br(TOT[k] * PAGTO[1][1])}</div></div>'''
 folha(f'''<div class="pad" style="padding-top:11mm">
- <div class="eyebrow">Investimento · ambiente a ambiente</div><div class="rule"></div>
+ <div class="eyebrow">Investimento</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 2mm">O apartamento, nas duas linhas.</h1>
- <p class="lead" style="max-width:235mm;font-size:9pt">Cada móvel foi levantado <b>peça por peça
-  do caderno de marcenaria</b> — nada é rateio nem estimativa por metro quadrado. Valores em reais.</p>
- <table class="inv inv13" style="margin-top:3mm">
-  <tr><th class="l">Ambiente</th>
-   {''.join(f'<th{" class=hi" if l == "Hettich" else ""}>{E(l)}</th>' for l in LIN)}</tr>
-  {rows}
-  <tr class="tot"><td class="l">O projeto completo</td>
-   {''.join(f'<td{" class=hi" if l == "Hettich" else ""}>{brs(TOT[l])}</td>' for l in LIN)}</tr>
- </table>
-</div>''')
-
-RESUMO = {'Telescópica': 'Trilho aparente na lateral da gaveta e dobradiça nacional.',
-          'Hettich': 'Trilho oculto por baixo, gaveta que sai inteira e fechamento amortecido.'}
-cards = ''.join(f'''<div class="c{" hi" if k == "Hettich" else ""}">
-     <div class="anos">{GAR[k]}</div><div class="unid">anos de garantia</div>
-     <div class="nm">{E(CHAMADA[k])}</div><div class="x">{RESUMO[k]}</div>
-     <div class="l"><div class="k">O projeto completo</div>
-      <div class="v" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:21pt">{br(TOT[k])}</div></div>
-     <div class="l" style="margin-top:2mm"><div class="k">Entrada, na assinatura</div>
-      <div class="v">{br(TOT[k] * PAGTO[0][1])}</div></div></div>''' for k in LIN)
-folha(f'''<div class="pad">
- <div class="eyebrow">Investimento · as duas linhas</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 3mm">Dois anos, ou dez.</h1>
- <p class="lead" style="max-width:215mm">A mesma casa, o mesmo desenho e os mesmos padrões. A
-  diferença é a <b>ferragem</b> — e o tempo pelo qual respondemos por ela.</p>
- <div class="gar justo duas">{cards}</div>
- <div class="box" style="margin-top:5mm"><div class="t">O que está incluso</div>
-  <p>Projeto executivo de marcenaria, material, usinagem, ferragem da linha escolhida, o vidro
-   da cristaleira, a palhinha natural, a almofada do banco, os rodízios, transporte, montagem e
-   instalação — num só contrato, com uma só data e uma só arquiteta responsável.</p></div>
+ <p class="lead" style="max-width:235mm;font-size:9pt">Cada móvel foi levantado <b>peça por peça do
+  caderno de marcenaria</b>. A mesma casa, o mesmo desenho e os mesmos padrões: a diferença é a
+  ferragem — e o tempo pelo qual respondemos por ela.</p>
+ <div class="invx">
+  <table class="inv inv13">
+   <tr><th class="l">Ambiente</th>
+    {''.join(f'<th{" class=hi" if l == "Hettich" else ""}>{E(l)}</th>' for l in LIN)}</tr>
+   {rows}
+   <tr class="tot"><td class="l">O projeto completo</td>
+    {''.join(f'<td{" class=hi" if l == "Hettich" else ""}>{brs(TOT[l])}</td>' for l in LIN)}</tr>
+  </table>
+  <div class="tcs">{cartao('Telescópica')}{cartao('Hettich')}</div>
+ </div>
+ <div class="incl"><b>Incluso nas duas linhas:</b> projeto executivo de marcenaria, material, usinagem,
+  ferragem da linha escolhida, o vidro da cristaleira, a palhinha natural, a almofada do banco, os
+  rodízios, transporte, montagem e instalação — num só contrato, com uma só data.</div>
 </div>''')
 
 pay = ''.join(f'<tr><td>{E(r)}</td><td class="d">{p*100:.0f}%</td></tr>' for r, p in PAGTO)
@@ -349,9 +324,6 @@ folha(f'''<div class="pad" style="padding-bottom:20mm">
     {pay}</table>
    <div style="font-size:7.4pt;color:var(--mut);margin-top:2.5mm;letter-spacing:.06em">
      Todas as parcelas por transferência bancária.</div>
-   <div class="box" style="margin-top:5mm"><div class="t">A amostra das ferragens</div>
-    <p>Levamos uma gaveta de cada linha até vocês antes do fechamento, para a escolha ser
-     feita com a mão.</p></div>
   </div>
   <div class="fora">
    <div class="eyebrow" style="margin-bottom:3mm">O que não está nesta proposta</div>
@@ -406,6 +378,33 @@ EXTRA += '''
 .inv td .sub{font-size:7.4pt;color:var(--mut);margin-top:.6mm;font-weight:400}
 .inv td.l{padding-top:2.4mm;padding-bottom:2.4mm}
 .dark .h1{color:#F6F1E7}
+.duplo{display:grid;grid-template-columns:1fr 1fr;gap:9mm;height:100%;padding:10mm 14mm 16mm}
+.dp{display:flex;flex-direction:column;min-height:0}
+.dp-img{position:relative;height:84mm;flex:none;overflow:hidden;background:var(--sand)}
+.dp-img img{width:100%;height:100%;object-fit:cover;display:block}
+.dp-img .tag{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);
+  font-size:6.4pt;letter-spacing:.28em;text-transform:uppercase;padding:3mm 6mm;font-weight:600}
+.dp-txt{padding-top:5mm;min-height:0}
+.dp-txt .h2{font-size:19pt;margin:1mm 0 2.5mm}
+.dp-txt .mv .t{font-size:8.8pt}
+.dp-txt .mv .d{font-size:8.1pt}
+.dp-txt .amb-nota{margin-top:3mm}
+.invx{display:grid;grid-template-columns:1.35fr 1fr;gap:8mm;margin-top:4mm;align-items:start}
+.invx .inv13 td,.invx .inv13 th{padding-top:1.7mm !important;padding-bottom:1.7mm !important;font-size:9.2pt}
+.tcs{display:flex;flex-direction:column;gap:4mm}
+.tc{border:1.2px solid var(--line);border-radius:4px;padding:4.4mm 5mm;background:#fff}
+.tc.hi{background:var(--deep);color:#F6F1E7;border-color:var(--deep)}
+.tc .hd{display:flex;align-items:center;gap:3mm;margin-bottom:3mm}
+.tc .hd b{font-family:'Cormorant Garamond',Georgia,serif;font-size:30pt;line-height:.9;color:var(--gold);font-weight:600}
+.tc.hi .hd b{color:var(--gold-lt)}
+.tc .hd span{font-size:6.6pt;letter-spacing:.14em;text-transform:uppercase;line-height:1.4}
+.tc .k{font-size:6.4pt;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.tc.hi .k{color:var(--gold-lt)}
+.tc .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:22pt;line-height:1.05;margin-top:.6mm}
+.tc .e{font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5pt;margin-top:.3mm}
+.incl{margin-top:auto;padding-left:4mm;border-left:2.5px solid var(--gold-lt);font-size:8pt;color:var(--soft);line-height:1.5}
+.incl b{color:var(--ink)}
+
 .amb-img.duo{display:grid;grid-template-rows:1fr 1fr;gap:2mm;background:var(--paper)}
 .amb-img.duo img{width:100%;height:100%;object-fit:cover;min-height:0}
 .band.duo3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2mm;position:relative}
