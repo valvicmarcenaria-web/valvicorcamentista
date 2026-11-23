@@ -1,0 +1,23 @@
+BASE 72.7575% · sem ferragem de linha MC 38% · Telescópica 35% · Hettich 38% · ajuste +0%
+                                                         Telescópica     Hettich
+
+LAVANDERIA  · chapas 7 Alecrim 15 1, Alecrim 18 1, Branco TX 15 1, Branco TX 6 1, Lume 15 2, Lume 18 1
+  ◆ Armário do tanque com lixeira deslizante                   3,132       3,943
+  ◆ Armário superior do tanque                                 2,345       3,358
+  ◆ Armário alto de vassouras e prateleiras                    6,649       7,898
+  ◆ Armário sobre a geladeira                                  2,356       3,100
+    subtotal                                                  14,483      18,297   custo 5,468
+
+COZINHA  · chapas 10 Alecrim 15 1, Alecrim 18 1, Branco TX 15 3, Branco TX 18 1, Branco TX 6 2, Lume 15 1, Lume 18 1
+  ◆ Armário da bancada com nichos do micro e do forno          5,397       7,051
+  ◆ Armário superior com luz e depurador embutido              6,338       8,505
+  ◆ Península com gaveteiro, nichos e tampo de madeira n      14,414      17,513
+    subtotal                                                  26,149      33,069   custo 9,873
+
+QUARTO  · chapas 9 Branco TX 15 2, Branco TX 18 1, Branco TX 6 2, Carvalho Avelã 15 1, Carvalho Avelã 18 3
+  ◆ Roupeiro de correr com palha sextavada e estante lat      23,176      27,554
+    subtotal                                                  23,176      27,554   custo 8,751
+
+    TOTAL                                                     63,808      78,920
+    custo direto                                              24,092      27,431
+chapas no total: 26
