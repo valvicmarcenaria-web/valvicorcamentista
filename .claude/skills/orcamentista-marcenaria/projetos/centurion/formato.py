@@ -152,7 +152,8 @@ def classifica(linhas):
             secao = SECOES.index(next(s for s in SECOES if b.startswith(s))) + 1
         elif b in CAB and secao == CAB[b]:
             t = 'cabecalho'
-        elif b == 'CUSTO DIRETO DO AMBIENTE' or b.startswith('⭐ CONFERÊNCIA'):
+        elif (b in ('CUSTO DIRETO DO AMBIENTE', 'TOTAL DO AMBIENTE')
+              or b.startswith('⭐ CONFERÊNCIA')):
             t = 'total'
         elif b.startswith('■'):
             t = 'grupo'
@@ -240,14 +241,29 @@ def pedidos(sid, linhas):
         if s == 1:
             E(a, z, 2, 3, fs=9, fg=CINZA, w='OVERFLOW_CELL')
         if s == 2:
-            E(a, z, 3, 8, fs=9, fg=CINZA, w='OVERFLOW_CELL')
+            #   ⛔ A MEDIDA VAI ATÉ F, NÃO ATÉ H. As colunas G e H passaram a
+            #     ser DIAS FABR. e DIAS MONT. em 23/11/2026, e tinham de sair
+            #     deste pedido de texto cinza, senão o amarelo nasce morto.
+            E(a, z, 3, 6, fs=9, fg=CINZA, w='OVERFLOW_CELL')
+            #   ⭐ AS DUAS COLUNAS DE DIAS, AMARELAS porque são digitadas ·
+            #     linha por linha, e não na faixa inteira, porque entre uma
+            #     linha de item e a seguinte há uma linha de OBSERVAÇÃO, que
+            #     não se digita e não se pinta.
+            for _i in d:
+                E(_i, _i + 1, 6, 8, b=True, bg=AMARELO,
+                  nf={'type': 'NUMBER', 'pattern': '0.0'}, h='CENTER')
             #   ⭐ "01" colado vira o número 1. O formato "00" devolve o
             #     zero à esquerda sem transformar o número em texto.
             E(a, z, 1, 2, nf={'type': 'NUMBER', 'pattern': '00'}, h='LEFT')
 
     for i, r in enumerate(linhas):
         b = (r[0] if r else '') or ''
-        if b == 'CUSTO DIRETO DO AMBIENTE':
+        if b == 'TOTAL DO AMBIENTE':
+            #   ⭐ a soma dos dias é fórmula e vive em G e H; o custo em I
+            E(i, i + 1, 6, 8, b=True, nf={'type': 'NUMBER', 'pattern': '0.0'},
+              h='CENTER')
+            E(i, i + 1, 8, 9, b=True, nf=MOEDA, h='RIGHT')
+        elif b == 'CUSTO DIRETO DO AMBIENTE':
             E(i, i + 1, 5, 6, nf=MOEDA, h='RIGHT')
             E(i, i + 1, 6, 7, nf=PCT, h='RIGHT')
         elif b.startswith('\u2b50 CONFER'):
@@ -293,7 +309,7 @@ LARGURAS = [('A', 0, 1, 28), ('B', 1, 2, 300), ('C', 2, 3, 430), ('D-K', 3, 11, 
 #   ⛔ E A FAIXA DE LIMPEZA NÃO PODE PASSAR DO FIM DA ABA: a API
 #     recusa endRowIndex maior que o número de linhas da folha. Esta
 #     planilha tem UMA aba de ambiente, de 150 linhas.
-LIMPA = 120
+LIMPA = 132   # ⭐ a aba cresceu com a fórmica e a cola: 126 linhas de conteúdo
 
 
 def zera(sid):

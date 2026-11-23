@@ -56,7 +56,7 @@ def custo_itens():
         c = 0.0
         for k, v in it.areas().items():
             preco = b.PRECO['%s %d' % k]
-            rend = b.COMP_FLEX_REND if k[0] == lv.FLEX else b.REND
+            rend = b.rend(k[0])
             c += v / rend * preco            # a fatia da chapa, sem arredondar
         c += it.c_fita() * b.FITA_PERDA * (b.FITA_22 + b.FILETE_MAQ)
         c += it.c_lin() + it.c_serv()
@@ -86,7 +86,7 @@ def linhas():
           'adesivo e os espelhos em dois itens · ⛔ A LEGENDA DECIDE O '
           'ESCOPO: adesivo vira painel de MDF, MDF laqueado café é nosso, '
           'ESPELHO passou a ser nosso em 23/11/2026 e só a TINTA não é · '
-          '⭐ MC de 55%% = alvo de 35%% + COMPLEXO (20 pontos) · preço na '
+          '⭐ MC de 55%% = alvo de 50%% + MÉDIO (5 pontos) · preço na '
           'aba Preço e Comissões'
           % (_br(b.FORRO_M2, 0), b.N_NICHOS + 1)],
          []]
@@ -123,12 +123,11 @@ def linhas():
                   _n(unit) if unit is not None else ''])
 
     for k, n in sorted(T['chapas'].items()):
-        rend = b.COMP_FLEX_REND if k[0] == lv.FLEX else b.REND
+        rend = b.rend(k[0])
         esp = ('área líquida de %s m² · rendimento de %s m² por chapa '
                '(%s × %s a 80%%) · ⛔ arredonda-se por PADRÃO × ESPESSURA'
                % (_br(T['area'][k]), _br(rend),
-                  _br(b.COMP_FLEX_C if k[0] == lv.FLEX else b.CHAPA_C, 0),
-                  _br(b.COMP_FLEX_L if k[0] == lv.FLEX else b.CHAPA_L, 0)))
+                  _br(b.folha(k[0])[0], 0), _br(b.folha(k[0])[1], 0)))
         if k[0] == lv.FLEX:
             esp = ('⭐ R$ 600,00 A CHAPA, PREÇO DO JONATHAN [23/11/2026] · '
                    '⛔ não é número da Base: a Base só tem compensado COMUM, '
@@ -172,9 +171,24 @@ def linhas():
     L += [[], []]
 
     # ── ② OS ITENS ──────────────────────────────────────────────────────
+    #   ⭐⭐ AS DUAS COLUNAS DE TEMPO [Jonathan, 23/11/2026]: "adicione o campo
+    #     para inserir o tempo de profissionais em cada item" · ele escolheu
+    #     DIAS DE DUPLA, fabricação e montagem separados, e escolheu que o
+    #     tempo NÃO SOMA ao custo.
+    #   ⛔ E não somar é o certo, porque a aba Preço e Comissões avisa em
+    #     caixa alta: "montagem e fabricação entram AQUI, como comissão —
+    #     nunca como dia de marceneiro no custo direto: a equipe é salário
+    #     fixo". Somar cobraria o mesmo trabalho duas vezes: a cascata já
+    #     tira 2,28% de produção mais 2,28% de montagem do preço.
+    #   ⭐ O que o tempo faz, então: alimenta o campo DIAS DE PROJETO do
+    #     bloco O LUCRO DO PROJETO no Painel, que estava vazio, e permite
+    #     ler MC por dia de cada móvel.
     L += [['  OS ITENS   ·   cada item é um móvel, e é assim que ele vai '
-           'para a proposta'], [],
-          ['ITEM', 'MÓVEL', 'MEDIDA', '', '', '', '', 'CUSTO']]
+           'para a proposta   ·   ⭐ as duas colunas de DIAS são suas, em dias '
+           'de dupla (1 marceneiro + 1 ajudante, 8 h) · ⛔ elas NÃO entram no '
+           'custo: a cascata já paga fabricação e montagem como comissão'], [],
+          ['ITEM', 'MÓVEL', 'MEDIDA', '', '', 'DIAS FABR.', 'DIAS MONT.',
+           'CUSTO']]
     MED = {0: '%s m² de forro' % _br(b.FORRO_M2, 0),
            1: '%d arcos · moldura de %s cm, %s de profundidade'
               % (b.N_NICHOS + 1, _br(b.MOLDURA_L, 0), _br(b.NICHO_PROF, 0)),
@@ -188,9 +202,15 @@ def linhas():
     #     arredondamentos — e não só o resto do rateio
     _vi = [_n(d) for d in DIRETOS]
     _vi[-1] = _n(D - sum(_vi[:-1]))
+    #   ⭐ as duas células de DIAS saem VAZIAS, porque são dele para digitar.
+    #     ⛔ Gravar zero ali seria mentir: zero é uma resposta, e vazio é a
+    #     pergunta. O amarelo da formatação é o que diz "escreva aqui".
     for i, (it, v) in enumerate(zip(lv.ITENS, _vi)):
         L.append(['%02d' % (i + 1), it.nome, MED.get(i, ''), '', '', '', '', v])
         L.append(['', it.obs])
+    #   ⭐ O TOTAL DOS DIAS é FÓRMULA, gravada à parte: tem de somar o que ele
+    #     digitar, e por isso não pode ser valor.
+    L.append(['TOTAL DO AMBIENTE', '', '', '', '', '', '', _n(D)])
     L.append(['⭐ CONFERÊNCIA — a soma dos itens contra o painel de material '
               '· ⛔ tem de dar ZERO: é o mesmo projeto contado por dois caminhos, '
               'por linha de material e por móvel.', '', '', '', '', '', '',
@@ -213,7 +233,7 @@ def linhas():
         L.append(['■ ' + it.nome, it.obs])
         for p in it.pecas:
             k = (p['mat'], p['esp'])
-            rend = b.COMP_FLEX_REND if p['mat'] == lv.FLEX else b.REND
+            rend = b.rend(p['mat'])
             area = p['L'] * p['A'] / 10000 * p['qtd']
             L.append([p['nome'], p['obs'], _n(p['L'], 1), _n(p['A'], 1),
                       p['qtd'], 'pç', '%s %d' % k,
@@ -252,6 +272,22 @@ FORA = [
 ]
 
 NOTAS = [
+ '⭐⭐ AS DUAS COLUNAS DE DIAS, NO BLOCO OS ITENS [Jonathan, 23/11/2026]: "adicione o '
+ 'campo para inserir o tempo de profissionais em cada item" · ⭐ A unidade é DIA DE '
+ 'DUPLA, que é o mecanismo da casa: um marceneiro mais um ajudante, 8 horas, '
+ 'R$ %s o dia — o número que o Jonathan cravou na planilha do Painel da Sala em '
+ '19/11/2026. Fabricação e montagem em colunas separadas, porque são momentos '
+ 'diferentes e quem monta não é necessariamente quem faz · ⛔⛔ E ELAS NÃO SOMAM AO '
+ 'CUSTO, por decisão dele e porque a aba Preço e Comissões avisa em caixa alta: '
+ '"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro '
+ 'no custo direto: a equipe é salário fixo". Somar cobraria o mesmo trabalho duas '
+ 'vezes, já que a cascata tira %s%% de comissão de produção mais %s%% de montagem '
+ 'do preço · ⭐ O que elas fazem: a soma alimenta o campo DIAS DE PROJETO no bloco '
+ 'O LUCRO DO PROJETO do Painel, que estava vazio e é o único campo digitado de lá, '
+ 'e permite ler quanto cada móvel devolve de margem por dia de fábrica · ⚠ Eu não '
+ 'preenchi nenhuma: quem sabe quantos dias cada peça leva é quem a faz, e zero '
+ 'numa célula amarela seria uma resposta onde devia haver uma pergunta.'
+ % (_br(b.DUPLA_DIA), '2,28', '2,28'),
  '⭐⭐ A LEGENDA DA PRANCHA É QUEM DECIDE O ESCOPO, e ela tem quatro símbolos: '
  'ADESIVO (hachura rosa), ESPELHO (diagonal), MDF LAQUEADO CAFE (marrom SÓLIDO) e '
  'TINTA PAREDE SW 6069 (bege pontilhada). ⛔ A bege cobre quase toda a parede nas '
@@ -267,7 +303,14 @@ NOTAS = [
  'Todas saíram · ⭐ E a Base já dizia o que entra, em dois lugares que eu não cruzei: '
  '"MDF Branco TX · Estrutura e caixaria · 15 mm · R$ 350,00" e, na tabela ESPESSURA '
  'PADRÃO POR APLICAÇÃO, "Estrutura e caixaria · 15 mm". A casa estrutura com CHAPA '
- 'CORTADA EM TIRA, não com madeira de lei · ⛔ E isso muda de COLUNA no Painel: a '
+ 'CORTADA EM TIRA, não com madeira de lei · ⛔⛔ E PIOR: ELE NÃO PRECISAVA TER ME DITO. '
+ 'A REGRA 1 DA CASA está escrita no próprio Painel desta planilha desde 28/10/2026: '
+ '"⛔ NÃO SE USA PINUS PARA NADA. O engradado de painel virou TRAVESSA DE MDF tirada '
+ 'da própria chapa; o estrado de cama virou METALON. Não há uma única peça de pinus '
+ 'nos orçamentos da casa." Eu montei esse Painel e lancei pinus de todo modo · ⭐ A '
+ 'regra até dá o substituto exato que acabei usando: travessa de MDF tirada da '
+ 'própria chapa · ⛔ Ler as regras da casa ANTES de lançar material, não depois de '
+ 'ser corrigida · E isso muda de COLUNA no Painel: a '
  'estruturação deixou de ser material por metro e virou chapa, que se compra inteira '
  'e se arredonda por padrão × espessura.',
  '⭐ A MÃO AMIGA É MATERIAL DE MONTAGEM, NÃO ESTRUTURA [Jonathan, 23/11/2026: '
@@ -287,12 +330,43 @@ NOTAS = [
  'projeto mostra 12cm" · ⭐⭐ E A CHAPA DO PÓRTICO É MDF BRANCO, não amadeirado — '
  '"Os arcos podem ser em mdf branco". É óbvio depois de dito: a peça é LACADA CAFÉ, '
  'a laca cobre tudo, e pagar R$ 700 de chapa amadeirada para esconder sob laca é '
- 'jogar dinheiro fora. Branco 18 custa R$ 400, e são %s m² entre costela e alizar.'
+ 'jogar dinheiro fora. Branco 18 custa R$ 400, e são %s m² entre costela e alizar · '
+ '⭐⭐ E O INTRADORSO TEM UMA CAMADA A MAIS, de 23/11/2026: sobre o compensado '
+ 'flexível vai FÓRMICA, e só depois a laca. São CINCO camadas no total, de dentro '
+ 'para fora: laca café, fórmica, compensado flexível, costela de MDF branco 18 e, do '
+ 'outro lado, compensado flexível de novo — mais o alizar arrematando contra a '
+ 'parede.'
  % (_br(b.MOLDURA_L, 0), _br(b.ALIZAR_L, 0),
     _br(sum(n * A['envolvente_l'] * A['envolvente_a'] * 2 / 10000
             for _r, n, A in lv.ARCOS)
         + sum(n * A['externo'] * b.ALIZAR_L / 10000
               for _r, n, A in lv.ARCOS))),
+ '⭐⭐ A FÓRMICA NO INTRADORSO [Jonathan, 23/11/2026]: "adicione um revestimento de '
+ 'formica no intradorso. a formica tem a dimensao de 120X315 e custa 150,00 a folha" '
+ '· ⭐⭐ E ISSO FECHA A DÚVIDA QUE EU HAVIA LEVANTADO uma mensagem antes: eu escrevi '
+ 'que o intradorso é compensado flexível de 4 mm, com veio e emenda, e que a linha de '
+ 'laca da Base fala de "peça LISA" — logo havia de confirmar se os R$ 650 o m² '
+ 'cobriam massa e selador sobre compensado cru. A fórmica é a resposta: ela '
+ 'TRANSFORMA o compensado em peça lisa, e aí a linha de R$ 650 vale pelo que diz · '
+ 'São %s m² de intradorso em %d folhas de %.0f × %.0f, R$ %s · ⚠ A Base tem "Fórmica, '
+ 'laminado de alta pressão · Revestimento sobre painel · a partir de R$ 400,00" sem '
+ 'dizer de que folha; o número dele é R$ %.0f e é o que vale · ⛔⛔ ATENÇÃO NO PLANO '
+ 'DE CORTE: a folha tem %.0f cm e o intradorso do nicho desenvolve %s cm — CADA ARCO '
+ 'LEVA EMENDA. Ela desaparece sob a laca, mas tem de estar prevista.'
+ % (_br(lv._intra), T['chapas'].get((b.FORMICA, b.FORMICA_ESP), 0),
+    b.FORMICA_C, b.FORMICA_L,
+    _br(T['chapas'].get((b.FORMICA, b.FORMICA_ESP), 0) * b.FORMICA_PRECO),
+    b.FORMICA_PRECO, b.FORMICA_C, _br(b.NICHO['interno'], 1)),
+ '⭐ A COLA DE CONTATO, UMA LATA A MAIS [Jonathan, 23/11/2026]: "acrescente mais uma '
+ 'lata de cola de contato de 14k no custo dos nichos - custo de 600,00" · ⭐ "MAIS '
+ 'uma lata" é a palavra que importa: a cola comum já está nos CONSUMÍVEIS de 6%%, '
+ 'que cobrem "cola, lixa, parafuso, cavilha, tapa-furo". Esta é uma lata INTEIRA a '
+ 'mais, e faz sentido — colar laminado em superfície curva bebe cola de contato como '
+ 'nada: são %s m² de compensado flexível mais %s m² de fórmica, tudo em curva · '
+ '⭐ Lançada no item 02, junto com o material que ela cola, e não no 03: o item 02 se '
+ 'chama pórtico curvo, mas é nele que os %d nichos são construídos. Separar a cola do '
+ 'que ela adere faria o rateio do custo mentir.'
+ % (_br(T['area'].get((lv.FLEX, 4), 0)), _br(lv._intra), b.N_NICHOS),
  '⛔⛔ O RECORTE DO ARCO NÃO SE COMPRA PELO PERÍMETRO, SE COMPRA PELO RETÂNGULO '
  'QUE ELE OCUPA NA CHAPA. Um arco de %s cm de face parece consumir 0,55 m²; na chapa '
  'ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐⭐ E O MIOLO FICOU MAIS VALIOSO '
@@ -318,16 +392,20 @@ NOTAS = [
  '"primeira cotação a fazer", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS '
  'PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas.'
  % (_br(T['direto']), _br(lv.LACA_M2)),
- '⭐⭐ MC DE 55%, APLICADA [Jonathan, 23/11/2026: "aplique a mc de 55%"] · ⭐ E ela cai '
- 'EXATAMENTE na tabela da casa, sem forçar nada: a MC alvo do projeto fica no PISO de '
- '35% e o ambiente entra como COMPLEXO, que o quadro ⑤ da aba Preço e Comissões '
- 'define como "junta três ou mais ofícios, geometria fora de esquadro, estrutura '
- 'metálica aparente ou peça que não cabe em chapa inteira" — e este ambiente bate em '
- 'três dos quatro critérios: são QUATRO ofícios (marcenaria, laca, vidraceiro e '
- 'elétrica de LED), os oito arcos são geometria fora de esquadro, e o forro de 157 m², '
- 'a faixa corrida de 709 e o espelho de 745 não cabem em chapa inteira · 35 + 20 = 55. '
- '⛔ A MC não se digita no quadro ④: ela é a alvo mais os pontos da dificuldade, então '
- 'quem quiser mexer mexe em D7 ou na coluna DIFICULDADE, nunca na MC APLICADA.',
+ '⭐⭐ MC DE 55%, APLICADA [Jonathan, 23/11/2026: "aplique a mc de 55%"] · ⭐ A MC '
+ 'aplicada não se digita: ela é a MC ALVO do projeto mais os pontos da DIFICULDADE '
+ 'do ambiente, pela tabela do quadro ⑤ da aba Preço e Comissões — Médio +5, Difícil '
+ '+10, Complexo +20, e "Médio é o PISO, não o zero" · ⭐⭐ E OS 55% TÊM DOIS '
+ 'CAMINHOS, que dão o mesmo preço: eu havia posto a alvo no piso de 35% mais '
+ 'COMPLEXO, porque a definição de Complexo descreve este ambiente palavra por '
+ 'palavra — cinco ofícios (marcenaria, laminador, laca, vidraceiro e elétrica), oito '
+ 'arcos fora de esquadro e peças que não cabem em chapa inteira. O Jonathan preferiu '
+ 'o outro caminho: digitou alvo de 50% e deixou a dificuldade em MÉDIO. 50 + 5 = 55, '
+ 'igual · ⭐ A diferença não é de preço, é de onde a margem fica ANCORADA: na escolha '
+ 'do projeto, e não na complexidade do ambiente · ⚠ E tem uma consequência para '
+ 'depois: se entrar um segundo ambiente simples, ele herda a alvo de 50% e sai '
+ 'também a 55%, quando a tabela da casa o poria em 40%. Com um ambiente só, dá no '
+ 'mesmo.',
  '⭐ A GEOMETRIA DO ARCO FECHA SOZINHA, e isso dá confiança na leitura: o vão tem '
  '%s de largura, logo o raio do semicírculo é %s — e a prancha cota %s de abóbada. '
  'A altura interna sai %s + %s de prateleira + %s de trecho reto = %s, e a prancha '
@@ -366,9 +444,9 @@ NOTAS = [
  'em duas camadas de 15 (%s m²) · ⛔⛔ E ISSO CORRIGIU A FITA: eu fitava a frente MAIS '
  'os dois lados de 30 cm de cada prateleira, mas a prateleira vai de lateral a '
  'lateral e essas bordas encostam no intradorso LAQUEADO — não se vê, não se fita. '
- 'Eram 25,2 m de fita e de filetagem a mais, R$ 152,46 · ⚠ Fica uma pergunta para o '
- 'lacador: o intradorso é compensado flexível de 4 mm, que tem veio e emenda, e os '
- 'R$ 650 do m² são de "peça lisa" — confirmar se incluem massa e selador.'
+ 'Eram 25,2 m de fita e de filetagem a mais, R$ 152,46 · ⭐ E A LATERAL LAQUEADA GANHOU '
+ 'UMA CAMADA em 23/11/2026: a laca vai sobre FÓRMICA, não sobre o compensado cru — '
+ 'era isso que faltava para a linha de "peça LISA" da Base valer pelo que diz.'
  % (b.NICHO_PROF, _br(lv._intra), _br(lv._face), _br(lv._aliz),
     _br(lv.LACA_M2), _br(lv.LACA_M2 * b.LACA_M2),
     _br(b.N_NICHOS * b.NICHO_L * b.NICHO_H / 10000),
@@ -416,6 +494,19 @@ DUVIDAS = [
  'depende do plano de corte encaixar as duas coisas na mesma chapa.'
  % (_br(math.ceil(lv.ESP_M2 / b.REND) * 400), _br(MIOLO_M2), _br(lv.ESP_M2),
     math.ceil(lv.ESP_M2 / b.REND), _br(math.ceil(lv.ESP_M2 / b.REND) * 400)),
+ '⚠⚠ R$ %s · A FÓRMICA É O SUBSTRATO DA LACA, OU É O ACABAMENTO? O Jonathan disse '
+ '"ADICIONE um revestimento de formica no intradorso" — adicione, não troque — e uma '
+ 'mensagem antes havia dito que "os nichos serão laqueados nas laterais" · ⭐ Entendi '
+ 'que a fórmica entra SOB a laca: ela transforma o compensado flexível, que tem veio '
+ 'e emenda, na PEÇA LISA que a linha de R$ %.0f o m² da Base descreve, e era '
+ 'exatamente a dúvida que eu havia levantado. Com isso o intradorso leva compensado + '
+ 'fórmica + laca, e a laca segue cobrindo os %s m² · ⛔ MAS SE A FÓRMICA FOR O '
+ 'ACABAMENTO FINAL, a laca sai do intradorso: %s m² a R$ %.0f = R$ %s fora do '
+ 'orçamento, e a laca cai para %s m², só face e alizar · ⭐ É a maior consequência de '
+ 'uma palavra nesta folha, e a cola de contato que ele mandou acrescentar sugere '
+ 'colagem de laminado, não pintura — o que reforça a leitura de SUBSTRATO.'
+ % (_br(lv._intra * b.LACA_M2), b.LACA_M2, _br(lv.LACA_M2), _br(lv._intra),
+    b.LACA_M2, _br(lv._intra * b.LACA_M2), _br(lv.LACA_M2 - lv._intra)),
  '⚠ A PROFUNDIDADE DO NICHO NÃO ESTÁ EM PRANCHA NENHUMA. O Jonathan cravou %s cm '
  'em 23/11/2026, e é ela que define a caixa dos %d pórticos: o compensado flexível '
  'dos dois lados, a prateleira, o LED e a ÁREA LAQUEADA DA LATERAL escalam todos '
@@ -424,16 +515,17 @@ DUVIDAS = [
  % (_br(b.NICHO_PROF, 0), b.N_NICHOS + 1,
     _br(sum(n * A['interno'] for _r, n, A in lv.ARCOS) * 5 / 10000 * b.LACA_M2),
     _br(sum(n * (A['interno'] + A['externo']) for _r, n, A in lv.ARCOS) * 5
-        / 10000 / b.COMP_FLEX_REND * b.PRECO['Compensado flexível 4']),
+        / 10000 / b.rend(b.FLEX) * b.PRECO['Compensado flexível 4']),
     _br(b.N_NICHOS * b.PRAT_POR_NICHO * b.PRAT_CAMADAS * b.NICHO_L * 5
         / 10000 / b.REND * b.PRECO['MDF Amadeirado 15'])),
- '⚠ A LACA SOBRE COMPENSADO FLEXÍVEL. O intradorso — a lateral laqueada do nicho, '
- '%s m² — é compensado flexível de 4 mm, que tem veio e emenda, e a linha da Base '
- 'diz "Laca ou pintura em PEÇA LISA, R$ 650,00 o m²" · ⛔ Confirmar com o lacador se '
- 'esse preço inclui massa e selador sobre compensado curvo, ou se há adicional · '
- '⭐ é a maior superfície laqueada do projeto, R$ %s dos R$ %s de laca.'
- % (_br(lv._intra), _br(lv._intra * b.LACA_M2),
-    _br(lv.LACA_M2 * b.LACA_M2)),
+ '⚠ A EMENDA DA FÓRMICA. A folha tem %.0f cm e o intradorso do nicho desenvolve %s '
+ 'cm: cada um dos %d arcos leva emenda. Ela desaparece sob a laca, mas tem de estar '
+ 'no plano de corte, e quem corta decide onde — de preferência no trecho reto, nunca '
+ 'no meio da abóbada · ⚠ Lancei %d folhas pelo rendimento de 80%% da casa; se a '
+ 'emenda exigir sobreposição generosa, pode ir a %d, R$ %.0f a mais.'
+ % (b.FORMICA_C, _br(b.NICHO['interno'], 1), b.N_NICHOS + 1,
+    T['chapas'].get((b.FORMICA, b.FORMICA_ESP), 0),
+    T['chapas'].get((b.FORMICA, b.FORMICA_ESP), 0) + 1, b.FORMICA_PRECO),
  '⚠ A FITA DA PRATELEIRA. A borda da prateleira montada tem %d mm, porque são duas '
  'camadas de %d coladas — e a fita da Base tem 22 mm. Peça de 30 mm pede fita de 35 '
  'mm, que a Base não lista · lancei a de 22 mm a R$ 3,00 o metro, R$ %s nos %s m de '

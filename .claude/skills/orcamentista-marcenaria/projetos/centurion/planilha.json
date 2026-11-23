@@ -4,7 +4,7 @@
    "  VALVIC MARCENARIA        01 SHOWROOM · CENTURION MOTORS"
   ],
   [
-   "  Projeto CLS Arquitetas Associadas · prancha 554, revisão 00 de 17/11/2025 · Vila da Serra · forro amadeirado de 157 m², 8 pórticos curvos laqueados café, os painéis que a prancha marcava como adesivo e os espelhos em dois itens · ⛔ A LEGENDA DECIDE O ESCOPO: adesivo vira painel de MDF, MDF laqueado café é nosso, ESPELHO passou a ser nosso em 23/11/2026 e só a TINTA não é · ⭐ MC de 55% = alvo de 35% + COMPLEXO (20 pontos) · preço na aba Preço e Comissões"
+   "  Projeto CLS Arquitetas Associadas · prancha 554, revisão 00 de 17/11/2025 · Vila da Serra · forro amadeirado de 157 m², 8 pórticos curvos laqueados café, os painéis que a prancha marcava como adesivo e os espelhos em dois itens · ⛔ A LEGENDA DECIDE O ESCOPO: adesivo vira painel de MDF, MDF laqueado café é nosso, ESPELHO passou a ser nosso em 23/11/2026 e só a TINTA não é · ⭐ MC de 55% = alvo de 50% + MÉDIO (5 pontos) · preço na aba Preço e Comissões"
   ],
   [],
   [
@@ -26,8 +26,17 @@
    8.0,
    "chapa",
    4800.0,
-   0.0496,
+   0.048953,
    600.0
+  ],
+  [
+   "Fórmica 1 mm",
+   "área líquida de 10,70 m² · rendimento de 3,02 m² por chapa (315 × 120 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   4.0,
+   "chapa",
+   600.0,
+   0.006119,
+   150.0
   ],
   [
    "MDF Amadeirado 6 mm",
@@ -35,7 +44,7 @@
    4.0,
    "chapa",
    1400.0,
-   0.0145,
+   0.014278,
    350.0
   ],
   [
@@ -44,7 +53,7 @@
    7.0,
    "chapa",
    3850.0,
-   0.0398,
+   0.039264,
    550.0
   ],
   [
@@ -53,7 +62,7 @@
    49.0,
    "chapa",
    34300.0,
-   0.3545,
+   0.349809,
    700.0
   ],
   [
@@ -62,7 +71,7 @@
    7.0,
    "chapa",
    2450.0,
-   0.0253,
+   0.024986,
    350.0
   ],
   [
@@ -71,7 +80,7 @@
    18.0,
    "chapa",
    7200.0,
-   0.0744,
+   0.073429,
    400.0
   ],
   [
@@ -80,7 +89,7 @@
    71.48,
    "m",
    214.43,
-   0.0022,
+   0.002187,
    3.0
   ],
   [
@@ -89,7 +98,7 @@
    71.48,
    "m",
    178.69,
-   0.0018,
+   0.001822,
    2.5
   ],
   [
@@ -98,7 +107,7 @@
    55.39,
    "m",
    166.17,
-   0.0017,
+   0.001695,
    3.0
   ],
   [
@@ -107,17 +116,26 @@
    55.39,
    "m",
    138.47,
-   0.0014,
+   0.001412,
    2.5
   ],
   [
    "Laca café · face, lateral do nicho e alizar",
-   "⭐ R$ 650,00 o m², DECISÃO DO JONATHAN [23/11/2026: \"laca considere 650\"] · é a linha ALTA da Base, \"Laca ou pintura em peça lisa\" do materiais.json, e não a de R$ 300 dos jobs, que eu havia lançado · ⭐ e é o lugar certo, porque as duas linhas da Base falam de peça LISA e curva leva mais lixa e mais tempo · ⭐⭐ O QUE A LACA COBRE [Jonathan, 23/11/2026: \"os nichos serão laqueados nas laterais, amadeirado sera apenas o fundo e as prateleiras\"]: a face frontal da moldura de 12 cm (4,46 m²), o INTRADORSO, que é a lateral e a abóbada vistas de dentro do vão (10,70 m²), e o alizar de 12 cm (4,64 m²) · ⛔ NÃO cobre o extradorso (11,60 m²), que fica revestido e cru: ele some nos 6 cm entre pórticos · ⚠ o intradorso é compensado flexível de 4 mm, que tem veio e emenda: confirmar com o lacador se os R$ 650 incluem massa e selador sobre compensado",
+   "⭐ R$ 650,00 o m², DECISÃO DO JONATHAN [23/11/2026: \"laca considere 650\"] · é a linha ALTA da Base, \"Laca ou pintura em peça lisa\" do materiais.json, e não a de R$ 300 dos jobs, que eu havia lançado · ⭐ e é o lugar certo, porque as duas linhas da Base falam de peça LISA e curva leva mais lixa e mais tempo · ⭐⭐ O QUE A LACA COBRE [Jonathan, 23/11/2026: \"os nichos serão laqueados nas laterais, amadeirado sera apenas o fundo e as prateleiras\"]: a face frontal da moldura de 12 cm (4,46 m²), o INTRADORSO, que é a lateral e a abóbada vistas de dentro do vão (10,70 m²), e o alizar de 12 cm (4,64 m²) · ⛔ NÃO cobre o extradorso (11,60 m²), que fica revestido e cru: ele some nos 6 cm entre pórticos · ⭐ E A LACA DO INTRADORSO VAI SOBRE FÓRMICA, não sobre o compensado cru: foi para isso que o Jonathan mandou revestir em 23/11/2026, e é o que torna a peça LISA de que a linha de R$ 650 o m² fala · ⚠ se a fórmica for o acabamento final em vez do substrato, saem 10,70 m² daqui",
    19.8,
    "m²",
    12867.0,
-   0.133,
+   0.131224,
    650.0
+  ],
+  [
+   "Cola de contato · lata de 14 kg",
+   "⭐ UMA LATA A MAIS, cravada pelo Jonathan · a cola comum já está nos consumíveis de 6% (\"cola, lixa, parafuso, cavilha, tapa-furo\"); esta é para colar a fórmica e o compensado flexível nos 22,30 m² de superfície curva do intradorso e do extradorso, que bebem cola de contato muito acima do normal",
+   1.0,
+   "lata",
+   600.0,
+   0.006119,
+   600.0
   ],
   [
    "Fita de borda de cor · frente das prateleiras montadas",
@@ -125,7 +143,7 @@
    48.09,
    "m",
    144.28,
-   0.0015,
+   0.001471,
    3.0
   ],
   [
@@ -134,7 +152,7 @@
    48.09,
    "m",
    120.24,
-   0.0012,
+   0.001226,
    2.5
   ],
   [
@@ -143,7 +161,7 @@
    43.72,
    "m",
    6558.3,
-   0.0678,
+   0.066885,
    150.0
   ],
   [
@@ -152,7 +170,7 @@
    15.0,
    "barra",
    750.0,
-   0.0078,
+   0.007649,
    50.0
   ],
   [
@@ -161,7 +179,7 @@
    5.0,
    "un",
    600.0,
-   0.0062,
+   0.006119,
    120.0
   ],
   [
@@ -170,7 +188,7 @@
    7.25,
    "m²",
    4347.0,
-   0.0449,
+   0.044333,
    600.0
   ],
   [
@@ -179,7 +197,7 @@
    16.39,
    "m²",
    9834.0,
-   0.1016,
+   0.100292,
    600.0
   ],
   [
@@ -188,48 +206,48 @@
    1.0,
    "serviço",
    200.0,
-   0.0021,
+   0.00204,
    200.0
   ],
   [
    "Corte",
-   "93 chapas a R$ 2,00 e 143 peças a R$ 2,50",
-   143.0,
+   "97 chapas a R$ 2,00 e 151 peças a R$ 2,50",
+   151.0,
    "peça",
-   543.5,
-   0.0056,
-   3.8
+   571.5,
+   0.005828,
+   3.78
   ],
   [
    "Consumíveis",
    "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo · ⭐ O R$ UNITÁRIO AQUI É A BASE, não um preço: a soma da chapa e de TODA a fita · ⛔ a fita lançada como linha linear (o perímetro do forro e a frente das prateleiras, R$ 310,45) estava ficando fora desta base, porque só a fita do campo da peça entrava — o mesmo material contava ou não conforme COMO eu o lancei. Corrigido",
    0.06,
    "%",
-   3271.49,
-   0.0338,
-   54524.88
+   3307.49,
+   0.033732,
+   55124.88
   ],
   [
    "Embalagem",
    "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre tudo o que vem acima · papelão, filme e cantoneira · ⭐ o R$ UNITÁRIO também é a BASE, não um preço · ⭐ esta linha absorve os centavos de arredondamento das linhas acima, para que somar a coluna dê exatamente o CUSTO DIRETO",
    0.03,
    "%",
-   2818.02,
-   0.0291,
-   93933.58
+   2855.94,
+   0.029126,
+   95197.58
   ],
   [
    "CUSTO DIRETO DO AMBIENTE",
    "",
    "",
    "",
-   96751.59,
+   98053.51,
    1.0
   ],
   [],
   [],
   [
-   "  OS ITENS   ·   cada item é um móvel, e é assim que ele vai para a proposta"
+   "  OS ITENS   ·   cada item é um móvel, e é assim que ele vai para a proposta   ·   ⭐ as duas colunas de DIAS são suas, em dias de dupla (1 marceneiro + 1 ajudante, 8 h) · ⛔ elas NÃO entram no custo: a cascata já paga fabricação e montagem como comissão"
   ],
   [],
   [
@@ -238,8 +256,8 @@
    "MEDIDA",
    "",
    "",
-   "",
-   "",
+   "DIAS FABR.",
+   "DIAS MONT.",
    "CUSTO"
   ],
   [
@@ -250,7 +268,7 @@
    "",
    "",
    "",
-   31686.27
+   31708.6
   ],
   [
    "",
@@ -264,7 +282,7 @@
    "",
    "",
    "",
-   24255.17
+   25505.98
   ],
   [
    "",
@@ -278,7 +296,7 @@
    "",
    "",
    "",
-   14096.97
+   14106.91
   ],
   [
    "",
@@ -292,7 +310,7 @@
    "",
    "",
    "",
-   8239.34
+   8245.14
   ],
   [
    "",
@@ -306,7 +324,7 @@
    "",
    "",
    "",
-   2791.61
+   2793.58
   ],
   [
    "",
@@ -320,11 +338,21 @@
    "",
    "",
    "",
-   15682.23
+   15693.3
   ],
   [
    "",
    "23,64 m² de espelho prata nas vistas AA e CC"
+  ],
+  [
+   "TOTAL DO AMBIENTE",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   98053.51
   ],
   [
    "⭐ CONFERÊNCIA — a soma dos itens contra o painel de material · ⛔ tem de dar ZERO: é o mesmo projeto contado por dois caminhos, por linha de material e por móvel.",
@@ -427,6 +455,16 @@
    1984.5
   ],
   [
+   "Fórmica do arco de nicho · revestimento do intradorso",
+   "⭐ sobre o compensado flexível, para a laca receber superfície lisa · folha de 315 × 120 a R$ 150 · ⚠ a folha tem 315 cm e o intradorso desenvolve 444 cm: cada arco leva EMENDA, que desaparece sob a laca mas precisa ser prevista no corte",
+   443.5,
+   30.0,
+   7,
+   "pç",
+   "Fórmica 1",
+   462.0
+  ],
+  [
    "Compensado flexível do arco de nicho · extradorso",
    "a superfície curva de fora, que fecha a estrutura",
    481.2,
@@ -465,6 +503,16 @@
    "pç",
    "Compensado flexível 4",
    294.44
+  ],
+  [
+   "Fórmica do arco de passagem · revestimento do intradorso",
+   "⭐ sobre o compensado flexível, para a laca receber superfície lisa · folha de 315 × 120 a R$ 150 · ⚠ a folha tem 315 cm e o intradorso desenvolve 461 cm: cada arco leva EMENDA, que desaparece sob a laca mas precisa ser prevista no corte",
+   460.6,
+   30.0,
+   1,
+   "pç",
+   "Fórmica 1",
+   68.55
   ],
   [
    "Compensado flexível do arco de passagem · extradorso",
@@ -630,6 +678,10 @@
   [],
   [
    "",
+   "⭐⭐ AS DUAS COLUNAS DE DIAS, NO BLOCO OS ITENS [Jonathan, 23/11/2026]: \"adicione o campo para inserir o tempo de profissionais em cada item\" · ⭐ A unidade é DIA DE DUPLA, que é o mecanismo da casa: um marceneiro mais um ajudante, 8 horas, R$ 500,00 o dia — o número que o Jonathan cravou na planilha do Painel da Sala em 19/11/2026. Fabricação e montagem em colunas separadas, porque são momentos diferentes e quem monta não é necessariamente quem faz · ⛔⛔ E ELAS NÃO SOMAM AO CUSTO, por decisão dele e porque a aba Preço e Comissões avisa em caixa alta: \"montagem e fabricação entram AQUI, como comissão — nunca como dia de marceneiro no custo direto: a equipe é salário fixo\". Somar cobraria o mesmo trabalho duas vezes, já que a cascata tira 2,28% de comissão de produção mais 2,28% de montagem do preço · ⭐ O que elas fazem: a soma alimenta o campo DIAS DE PROJETO no bloco O LUCRO DO PROJETO do Painel, que estava vazio e é o único campo digitado de lá, e permite ler quanto cada móvel devolve de margem por dia de fábrica · ⚠ Eu não preenchi nenhuma: quem sabe quantos dias cada peça leva é quem a faz, e zero numa célula amarela seria uma resposta onde devia haver uma pergunta."
+  ],
+  [
+   "",
    "⭐⭐ A LEGENDA DA PRANCHA É QUEM DECIDE O ESCOPO, e ela tem quatro símbolos: ADESIVO (hachura rosa), ESPELHO (diagonal), MDF LAQUEADO CAFE (marrom SÓLIDO) e TINTA PAREDE SW 6069 (bege pontilhada). ⛔ A bege cobre quase toda a parede nas três vistas e eu quase a contei como MDF laqueado — ela é TINTA. Ler a legenda ANTES de contar área foi o que impediu o orçamento de dobrar sem motivo."
   ],
   [
@@ -638,7 +690,7 @@
   ],
   [
    "",
-   "⛔⛔ NÃO USAMOS SARRAFO DE PINUS [Jonathan, 23/11/2026]. Eu havia lançado 532,57 m de sarrafo a R$ 8,00 o metro — R$ 4.260,59 — em QUATRO linhas: barroteamento do forro, escoras de mão amiga, montante dos painéis e montante da base do espelho. Todas saíram · ⭐ E a Base já dizia o que entra, em dois lugares que eu não cruzei: \"MDF Branco TX · Estrutura e caixaria · 15 mm · R$ 350,00\" e, na tabela ESPESSURA PADRÃO POR APLICAÇÃO, \"Estrutura e caixaria · 15 mm\". A casa estrutura com CHAPA CORTADA EM TIRA, não com madeira de lei · ⛔ E isso muda de COLUNA no Painel: a estruturação deixou de ser material por metro e virou chapa, que se compra inteira e se arredonda por padrão × espessura."
+   "⛔⛔ NÃO USAMOS SARRAFO DE PINUS [Jonathan, 23/11/2026]. Eu havia lançado 532,57 m de sarrafo a R$ 8,00 o metro — R$ 4.260,59 — em QUATRO linhas: barroteamento do forro, escoras de mão amiga, montante dos painéis e montante da base do espelho. Todas saíram · ⭐ E a Base já dizia o que entra, em dois lugares que eu não cruzei: \"MDF Branco TX · Estrutura e caixaria · 15 mm · R$ 350,00\" e, na tabela ESPESSURA PADRÃO POR APLICAÇÃO, \"Estrutura e caixaria · 15 mm\". A casa estrutura com CHAPA CORTADA EM TIRA, não com madeira de lei · ⛔⛔ E PIOR: ELE NÃO PRECISAVA TER ME DITO. A REGRA 1 DA CASA está escrita no próprio Painel desta planilha desde 28/10/2026: \"⛔ NÃO SE USA PINUS PARA NADA. O engradado de painel virou TRAVESSA DE MDF tirada da própria chapa; o estrado de cama virou METALON. Não há uma única peça de pinus nos orçamentos da casa.\" Eu montei esse Painel e lancei pinus de todo modo · ⭐ A regra até dá o substituto exato que acabei usando: travessa de MDF tirada da própria chapa · ⛔ Ler as regras da casa ANTES de lançar material, não depois de ser corrigida · E isso muda de COLUNA no Painel: a estruturação deixou de ser material por metro e virou chapa, que se compra inteira e se arredonda por padrão × espessura."
   ],
   [
    "",
@@ -646,7 +698,15 @@
   ],
   [
    "",
-   "⭐⭐ O PÓRTICO CURVO, CAMADA POR CAMADA [Jonathan, 23/11/2026]: moldura estrutural de MDF (as costelas), revestida de compensado flexível nos DOIS lados — intradorso, que é a curva de dentro, e extradorso, a de fora — mais o alizar de acabamento externo. A moldura tem 12 cm de largura de face, cota confirmada na VISTA BB, e o alizar tem os mesmos 12 cm, que foi ele quem corrigiu: \"o alizar o projeto mostra 12cm\" · ⭐⭐ E A CHAPA DO PÓRTICO É MDF BRANCO, não amadeirado — \"Os arcos podem ser em mdf branco\". É óbvio depois de dito: a peça é LACADA CAFÉ, a laca cobre tudo, e pagar R$ 700 de chapa amadeirada para esconder sob laca é jogar dinheiro fora. Branco 18 custa R$ 400, e são 47,06 m² entre costela e alizar."
+   "⭐⭐ O PÓRTICO CURVO, CAMADA POR CAMADA [Jonathan, 23/11/2026]: moldura estrutural de MDF (as costelas), revestida de compensado flexível nos DOIS lados — intradorso, que é a curva de dentro, e extradorso, a de fora — mais o alizar de acabamento externo. A moldura tem 12 cm de largura de face, cota confirmada na VISTA BB, e o alizar tem os mesmos 12 cm, que foi ele quem corrigiu: \"o alizar o projeto mostra 12cm\" · ⭐⭐ E A CHAPA DO PÓRTICO É MDF BRANCO, não amadeirado — \"Os arcos podem ser em mdf branco\". É óbvio depois de dito: a peça é LACADA CAFÉ, a laca cobre tudo, e pagar R$ 700 de chapa amadeirada para esconder sob laca é jogar dinheiro fora. Branco 18 custa R$ 400, e são 47,06 m² entre costela e alizar · ⭐⭐ E O INTRADORSO TEM UMA CAMADA A MAIS, de 23/11/2026: sobre o compensado flexível vai FÓRMICA, e só depois a laca. São CINCO camadas no total, de dentro para fora: laca café, fórmica, compensado flexível, costela de MDF branco 18 e, do outro lado, compensado flexível de novo — mais o alizar arrematando contra a parede."
+  ],
+  [
+   "",
+   "⭐⭐ A FÓRMICA NO INTRADORSO [Jonathan, 23/11/2026]: \"adicione um revestimento de formica no intradorso. a formica tem a dimensao de 120X315 e custa 150,00 a folha\" · ⭐⭐ E ISSO FECHA A DÚVIDA QUE EU HAVIA LEVANTADO uma mensagem antes: eu escrevi que o intradorso é compensado flexível de 4 mm, com veio e emenda, e que a linha de laca da Base fala de \"peça LISA\" — logo havia de confirmar se os R$ 650 o m² cobriam massa e selador sobre compensado cru. A fórmica é a resposta: ela TRANSFORMA o compensado em peça lisa, e aí a linha de R$ 650 vale pelo que diz · São 10,70 m² de intradorso em 4 folhas de 315 × 120, R$ 600,00 · ⚠ A Base tem \"Fórmica, laminado de alta pressão · Revestimento sobre painel · a partir de R$ 400,00\" sem dizer de que folha; o número dele é R$ 150 e é o que vale · ⛔⛔ ATENÇÃO NO PLANO DE CORTE: a folha tem 315 cm e o intradorso do nicho desenvolve 443,5 cm — CADA ARCO LEVA EMENDA. Ela desaparece sob a laca, mas tem de estar prevista."
+  ],
+  [
+   "",
+   "⭐ A COLA DE CONTATO, UMA LATA A MAIS [Jonathan, 23/11/2026]: \"acrescente mais uma lata de cola de contato de 14k no custo dos nichos - custo de 600,00\" · ⭐ \"MAIS uma lata\" é a palavra que importa: a cola comum já está nos CONSUMÍVEIS de 6%, que cobrem \"cola, lixa, parafuso, cavilha, tapa-furo\". Esta é uma lata INTEIRA a mais, e faz sentido — colar laminado em superfície curva bebe cola de contato como nada: são 22,30 m² de compensado flexível mais 10,70 m² de fórmica, tudo em curva · ⭐ Lançada no item 02, junto com o material que ela cola, e não no 03: o item 02 se chama pórtico curvo, mas é nele que os 7 nichos são construídos. Separar a cola do que ela adere faria o rateio do custo mentir."
   ],
   [
    "",
@@ -654,7 +714,7 @@
   ],
   [
    "",
-   "⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas dúvidas mais caras desta folha: \"Compensado flexivel, custo - 600,00 a chapa\" e \"laca considere 650\" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Os dois juntos somaram R$ 8.125,67, levando o custo direto de R$ 86.973,29 para R$ 95.098,96: R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 na laca, R$ 108,00 de consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⚠ e as respostas que ele deu depois, na própria planilha, mais a correção da base dos consumíveis, levaram o custo a R$ 96.751,59 — a laca já está em 19,80 m² porque o alizar passou a ter 12 cm · ⭐ A folha não ficou mais CARA por acaso, ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como \"primeira cotação a fazer\", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas."
+   "⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas dúvidas mais caras desta folha: \"Compensado flexivel, custo - 600,00 a chapa\" e \"laca considere 650\" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Os dois juntos somaram R$ 8.125,67, levando o custo direto de R$ 86.973,29 para R$ 95.098,96: R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 na laca, R$ 108,00 de consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⚠ e as respostas que ele deu depois, na própria planilha, mais a correção da base dos consumíveis, levaram o custo a R$ 98.053,51 — a laca já está em 19,80 m² porque o alizar passou a ter 12 cm · ⭐ A folha não ficou mais CARA por acaso, ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como \"primeira cotação a fazer\", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas."
   ],
   [
    "",
@@ -674,7 +734,7 @@
   ],
   [
    "",
-   "⭐⭐ ONDE ACABA A LACA E COMEÇA O AMADEIRADO, DENTRO DO NICHO [Jonathan, 23/11/2026]: \"os nichos serão laqueados nas laterais, amadeirado sera apenas o fundo e as prateleiras\" · ⭐ Isso confirma a leitura e dá nome à peça: a \"lateral do nicho\" é o INTRADORSO, a superfície curva de compensado flexível que corre pelos 30 cm de profundidade e que se vê de dentro do vão — 10,70 m² nos 8 arcos. Laqueada café, junto com a face frontal da moldura (4,46 m²) e o alizar (4,64 m²): 19,80 m² ao todo, R$ 12.867,00 · ⭐ E amadeirado só o que ele disse: o fundo em 6 mm (14,06 m²) e as prateleiras em duas camadas de 15 (26,23 m²) · ⛔⛔ E ISSO CORRIGIU A FITA: eu fitava a frente MAIS os dois lados de 30 cm de cada prateleira, mas a prateleira vai de lateral a lateral e essas bordas encostam no intradorso LAQUEADO — não se vê, não se fita. Eram 25,2 m de fita e de filetagem a mais, R$ 152,46 · ⚠ Fica uma pergunta para o lacador: o intradorso é compensado flexível de 4 mm, que tem veio e emenda, e os R$ 650 do m² são de \"peça lisa\" — confirmar se incluem massa e selador."
+   "⭐⭐ ONDE ACABA A LACA E COMEÇA O AMADEIRADO, DENTRO DO NICHO [Jonathan, 23/11/2026]: \"os nichos serão laqueados nas laterais, amadeirado sera apenas o fundo e as prateleiras\" · ⭐ Isso confirma a leitura e dá nome à peça: a \"lateral do nicho\" é o INTRADORSO, a superfície curva de compensado flexível que corre pelos 30 cm de profundidade e que se vê de dentro do vão — 10,70 m² nos 8 arcos. Laqueada café, junto com a face frontal da moldura (4,46 m²) e o alizar (4,64 m²): 19,80 m² ao todo, R$ 12.867,00 · ⭐ E amadeirado só o que ele disse: o fundo em 6 mm (14,06 m²) e as prateleiras em duas camadas de 15 (26,23 m²) · ⛔⛔ E ISSO CORRIGIU A FITA: eu fitava a frente MAIS os dois lados de 30 cm de cada prateleira, mas a prateleira vai de lateral a lateral e essas bordas encostam no intradorso LAQUEADO — não se vê, não se fita. Eram 25,2 m de fita e de filetagem a mais, R$ 152,46 · ⭐ E A LATERAL LAQUEADA GANHOU UMA CAMADA em 23/11/2026: a laca vai sobre FÓRMICA, não sobre o compensado cru — era isso que faltava para a linha de \"peça LISA\" da Base valer pelo que diz."
   ],
   [
    "",
@@ -704,11 +764,15 @@
   ],
   [
    "",
+   "⚠⚠ R$ 6.952,30 · A FÓRMICA É O SUBSTRATO DA LACA, OU É O ACABAMENTO? O Jonathan disse \"ADICIONE um revestimento de formica no intradorso\" — adicione, não troque — e uma mensagem antes havia dito que \"os nichos serão laqueados nas laterais\" · ⭐ Entendi que a fórmica entra SOB a laca: ela transforma o compensado flexível, que tem veio e emenda, na PEÇA LISA que a linha de R$ 650 o m² da Base descreve, e era exatamente a dúvida que eu havia levantado. Com isso o intradorso leva compensado + fórmica + laca, e a laca segue cobrindo os 19,80 m² · ⛔ MAS SE A FÓRMICA FOR O ACABAMENTO FINAL, a laca sai do intradorso: 10,70 m² a R$ 650 = R$ 6.952,30 fora do orçamento, e a laca cai para 9,10 m², só face e alizar · ⭐ É a maior consequência de uma palavra nesta folha, e a cola de contato que ele mandou acrescentar sugere colagem de laminado, não pintura — o que reforça a leitura de SUBSTRATO."
+  ],
+  [
+   "",
    "⚠ A PROFUNDIDADE DO NICHO NÃO ESTÁ EM PRANCHA NENHUMA. O Jonathan cravou 30 cm em 23/11/2026, e é ela que define a caixa dos 8 pórticos: o compensado flexível dos dois lados, a prateleira, o LED e a ÁREA LAQUEADA DA LATERAL escalam todos com ela. Conferir na medição · ⭐ cada 5 cm de profundidade a mais valem cerca de R$ 1.158,72 de laca, R$ 791,78 de compensado e R$ 590,84 de prateleira."
   ],
   [
    "",
-   "⚠ A LACA SOBRE COMPENSADO FLEXÍVEL. O intradorso — a lateral laqueada do nicho, 10,70 m² — é compensado flexível de 4 mm, que tem veio e emenda, e a linha da Base diz \"Laca ou pintura em PEÇA LISA, R$ 650,00 o m²\" · ⛔ Confirmar com o lacador se esse preço inclui massa e selador sobre compensado curvo, ou se há adicional · ⭐ é a maior superfície laqueada do projeto, R$ 6.952,30 dos R$ 12.867,00 de laca."
+   "⚠ A EMENDA DA FÓRMICA. A folha tem 315 cm e o intradorso do nicho desenvolve 443,5 cm: cada um dos 8 arcos leva emenda. Ela desaparece sob a laca, mas tem de estar no plano de corte, e quem corta decide onde — de preferência no trecho reto, nunca no meio da abóbada · ⚠ Lancei 4 folhas pelo rendimento de 80% da casa; se a emenda exigir sobreposição generosa, pode ir a 5, R$ 150 a mais."
   ],
   [
    "",

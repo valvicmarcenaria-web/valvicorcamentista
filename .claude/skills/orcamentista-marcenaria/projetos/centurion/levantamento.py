@@ -14,7 +14,7 @@ _sp = importlib.util.spec_from_file_location('cent_base', AQUI / 'base.py')
 b = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(b)
 
 AMA, EST = 'MDF Amadeirado', 'MDF Branco TX'
-FLEX = 'Compensado flexível'
+FLEX = b.FLEX                 # ⭐ o nome mora na base, com o rendimento dele
 
 
 class Item:
@@ -159,6 +159,18 @@ for rot, n, A in ARCOS:
     porticos.p('Compensado flexível do arco de %s · intradorso' % rot,
                A['interno'], b.NICHO_PROF, n, FLEX, 4,
                'a superfície curva de dentro, que se vê do vão')
+    #   ⭐⭐ A FÓRMICA, SÓ NO INTRADORSO [Jonathan, 23/11/2026]. Ela cobre a
+    #     mesma área do compensado de dentro, e é ela que transforma o
+    #     compensado — que tem veio e emenda — na PEÇA LISA que a linha de
+    #     laca da Base descreve. ⛔ O extradorso não leva: fica cru.
+    porticos.p('Fórmica do arco de %s · revestimento do intradorso' % rot,
+               A['interno'], b.NICHO_PROF, n, b.FORMICA, b.FORMICA_ESP,
+               '⭐ sobre o compensado flexível, para a laca receber superfície '
+               'lisa · folha de %.0f × %.0f a R$ %.0f · ⚠ a folha tem %.0f cm '
+               'e o intradorso desenvolve %.0f cm: cada arco leva EMENDA, que '
+               'desaparece sob a laca mas precisa ser prevista no corte'
+               % (b.FORMICA_C, b.FORMICA_L, b.FORMICA_PRECO, b.FORMICA_C,
+                  A['interno']))
     porticos.p('Compensado flexível do arco de %s · extradorso' % rot,
                A['externo'], b.NICHO_PROF, n, FLEX, 4,
                'a superfície curva de fora, que fecha a estrutura')
@@ -191,11 +203,29 @@ porticos.s('Laca café · face, lateral do nicho e alizar', LACA_M2, b.LACA_M2,
            'INTRADORSO, que é a lateral e a abóbada vistas de dentro do vão '
            '(%s m²), e o alizar de %.0f cm (%s m²) · ⛔ NÃO cobre o '
            'extradorso (%s m²), que fica revestido e cru: ele some nos 6 cm '
-           'entre pórticos · ⚠ o intradorso é compensado flexível de 4 mm, '
-           'que tem veio e emenda: confirmar com o lacador se os R$ 650 '
-           'incluem massa e selador sobre compensado'
+           'entre pórticos · ⭐ E A LACA DO INTRADORSO VAI SOBRE FÓRMICA, não '
+           'sobre o compensado cru: foi para isso que o Jonathan mandou '
+           'revestir em 23/11/2026, e é o que torna a peça LISA de que a '
+           'linha de R$ 650 o m² fala · ⚠ se a fórmica for o acabamento '
+           'final em vez do substrato, saem %s m² daqui'
            % (b.MOLDURA_L, _br2(_face), _br2(_intra), b.ALIZAR_L,
-              _br2(_aliz), _br2(_extra)))
+              _br2(_aliz), _br2(_extra), _br2(_intra)))
+#   ⭐⭐ A COLA DE CONTATO [Jonathan, 23/11/2026]: "acrescente mais uma lata de
+#     cola de contato de 14k no custo dos nichos - custo de 600,00".
+#   ⭐ Entra NESTE item, e não no 03, porque é aqui que o nicho é construído:
+#     o item 02 se chama pórtico curvo mas descreve "7 nichos de 104 × 193",
+#     e é aqui que vivem o compensado e a fórmica que a cola cola. Pôr a
+#     cola separada do material que ela adere faria o rateio mentir.
+#   ⭐ "MAIS uma lata" porque a cola comum já está nos consumíveis de 6%:
+#     esta é uma lata inteira a mais, e laminado em curva come cola.
+porticos.s('Cola de contato · lata de %d kg' % b.COLA_KG, 1, b.COLA_LATA,
+           'lata',
+           '⭐ UMA LATA A MAIS, cravada pelo Jonathan · a cola comum já está '
+           'nos consumíveis de 6%% ("cola, lixa, parafuso, cavilha, '
+           'tapa-furo"); esta é para colar a fórmica e o compensado flexível '
+           'nos %s m² de superfície curva do intradorso e do extradorso, que '
+           'bebem cola de contato muito acima do normal'
+           % _br2(_intra + _extra))
 
 # ═══════════════════════════════════════════════════════════════════════
 #   03 · OS NICHOS POR DENTRO · fundo e prateleiras
@@ -339,7 +369,7 @@ def apura():
         for k, v in it.areas().items():
             area[k] = area.get(k, 0) + v
     for k, v in sorted(area.items()):
-        rend = b.COMP_FLEX_REND if k[0] == FLEX else b.REND
+        rend = b.rend(k[0])
         n = math.ceil(round(v / rend, 6))
         chapas[k] = n
         c_chapa += n * b.PRECO['%s %d' % k]

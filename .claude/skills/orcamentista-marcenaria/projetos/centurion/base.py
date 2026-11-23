@@ -61,10 +61,62 @@ PRECO = {
     #     comum, R$ 375 — o número dele é 60% mais alto, e é o que vale.
     #     ⭐ DÚVIDA FECHADA: era a primeira cotação a fazer da folha.
     'Compensado flexível 4': 600.0,
+    #   ⭐ a fórmica do intradorso · R$ 150,00 a folha de 120 × 315
+    'Fórmica 1': 150.0,
 }
 COMP_FLEX_C, COMP_FLEX_L = 220.0, 160.0      # a chapa de compensado é outra
 COMP_FLEX_M2 = COMP_FLEX_C * COMP_FLEX_L / 10000      # 3,52
 COMP_FLEX_REND = COMP_FLEX_M2 * APROV
+
+# ── a fórmica do intradorso · [Jonathan, 23/11/2026] ───────────────────
+#   ⭐⭐ "adicione um revestimento de formica no intradorso. a formica tem a
+#     dimensao de 120X315 e custa 150,00 a folha"
+#   ⭐⭐ E ISSO FECHA A DÚVIDA QUE EU HAVIA LEVANTADO. Eu tinha escrito que o
+#     intradorso é compensado flexível de 4 mm, com veio e emenda, e que a
+#     linha de laca da Base fala de "peça LISA" — então havia de confirmar
+#     se os R$ 650 o m² cobriam massa e selador sobre compensado cru. A
+#     fórmica é a resposta: ela TRANSFORMA o compensado em peça lisa, e aí
+#     a linha de R$ 650 vale pelo que diz.
+#   ⚠ A Base tem "Fórmica, laminado de alta pressão · Revestimento sobre
+#     painel · a partir de R$ 400,00", sem dizer de que folha. O número
+#     dele é R$ 150,00 pela folha de 120 × 315, e é o que vale.
+FORMICA = 'Fórmica'
+FORMICA_ESP = 1                              # ~0,8 mm · a chave pede inteiro
+FORMICA_C, FORMICA_L = 315.0, 120.0
+FORMICA_M2 = FORMICA_C * FORMICA_L / 10000   # 3,78
+FORMICA_REND = FORMICA_M2 * APROV            # 3,024
+FORMICA_PRECO = 150.00
+
+# ── a cola de contato · [Jonathan, 23/11/2026] ─────────────────────────
+#   ⭐ "acrescente mais uma lata de cola de contato de 14k no custo dos
+#     nichos - custo de 600,00"
+#   ⭐ "MAIS uma lata" porque a cola comum já está nos CONSUMÍVEIS, que são
+#     6% sobre chapa e fita e cobrem "cola, lixa, parafuso, cavilha,
+#     tapa-furo". Esta é uma lata INTEIRA a mais, e faz sentido: colar
+#     laminado em superfície curva come cola de contato como nada.
+COLA_LATA = 600.00
+COLA_KG = 14
+
+# ── o rendimento, por material ─────────────────────────────────────────
+#   ⛔ Eram dois `if` espalhados em três arquivos — "COMP_FLEX_REND se o
+#     material é compensado, senão REND". Com a fórmica entrando, viraria
+#     três, e o terceiro é onde se esquece um. ⭐ Um dicionário só, e quem
+#     pergunta usa `b.rend(material)`: material novo com folha própria se
+#     acrescenta AQUI e nada mais precisa saber dele.
+FLEX = 'Compensado flexível'
+REND_DE = {FLEX: COMP_FLEX_REND, FORMICA: FORMICA_REND}
+FOLHA_DE = {FLEX: (COMP_FLEX_C, COMP_FLEX_L),
+            FORMICA: (FORMICA_C, FORMICA_L)}
+
+
+def rend(material):
+    """m² úteis por folha do material, já com o aproveitamento."""
+    return REND_DE.get(material, REND)
+
+
+def folha(material):
+    """(comprimento, largura) da folha em cm."""
+    return FOLHA_DE.get(material, (CHAPA_C, CHAPA_L))
 
 # ── quem vai em que chapa · as respostas dele, uma a uma ───────────────
 #   ⭐⭐ O ARCO VAI EM MDF BRANCO [Jonathan, 23/11/2026]: "Os arcos podem
@@ -268,8 +320,17 @@ FIXO_DIA = 4000.0         # custo fixo por dia de fábrica · para o empate
 #     geometria fora de esquadro, e o forro de 157 m², a faixa de 709 e o
 #     espelho de 745 não cabem em chapa inteira. Três dos quatro batem.
 MC = 0.55
-MC_ALVO = 0.35            # o piso da casa · fica em D7 da aba de preço
-DIFICULDADE = 'Complexo'  # +20 pontos · fica em D41, célula amarela
+#   ⭐⭐ E ELE ESCOLHEU O OUTRO CAMINHO PARA OS MESMOS 55% [23/11/2026]: em
+#     vez do piso de 35% mais COMPLEXO (20 pontos), digitou MC alvo de 50%
+#     e deixou a dificuldade em MÉDIO (5 pontos). 50 + 5 = 55, igual.
+#   ⭐ A diferença não é de preço, é de onde a margem está ANCORADA: na
+#     escolha do projeto, e não na complexidade do ambiente. Faz sentido
+#     para quem não quer usar a dificuldade como alavanca.
+#   ⚠ Mas tem uma consequência: se entrar um segundo ambiente simples,
+#     ele herda a alvo de 50% e sai também a 55%, quando a tabela da casa
+#     o poria em 40%. Com um ambiente só, dá no mesmo.
+MC_ALVO = 0.50            # ⭐ o número dele · fica em D7 da aba de preço
+DIFICULDADE = 'Médio'     # ⭐ +5 pontos · fica em D41, célula amarela
 
 
 def preco(custo, mc=MC):
