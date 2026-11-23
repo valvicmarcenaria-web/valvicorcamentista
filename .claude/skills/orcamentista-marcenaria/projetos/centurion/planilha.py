@@ -72,6 +72,12 @@ def custo_itens():
 
 
 DIRETOS = custo_itens()
+#   ⭐ as áreas do arco, para a nota que responde "por que 18 chapas?"
+_COST_M2 = sum(n * A['envolvente_l'] * A['envolvente_a'] * 2 / 10000
+               for _r, n, A in lv.ARCOS)
+_ALIZ_M2 = sum(n * A['externo'] * b.ALIZAR_L / 10000 for _r, n, A in lv.ARCOS)
+_ARCO_M2 = _COST_M2 + _ALIZ_M2
+_PECA_M2 = sum(n * A['medio'] * b.MOLDURA_L / 10000 for _r, n, A in lv.ARCOS)
 MIOLO_M2 = sum(n * (A['envolvente_l'] - 2 * b.MOLDURA_L)
                * (A['envolvente_a'] - b.MOLDURA_L) / 10000 * 2
                for _r, n, A in lv.ARCOS)
@@ -367,6 +373,36 @@ NOTAS = [
  'chama pórtico curvo, mas é nele que os %d nichos são construídos. Separar a cola do '
  'que ela adere faria o rateio do custo mentir.'
  % (_br(T['area'].get((lv.FLEX, 4), 0)), _br(lv._intra), b.N_NICHOS),
+ '⛔⛔ POR QUE OS ARCOS CONSOMEM TANTA CHAPA [pergunta do Jonathan, 23/11/2026: "por '
+ 'que os arcos estao consumindo 18 chapas?"] · ⭐ Primeiro desfazendo as 18: os ARCOS '
+ 'consomem %s m² — costela %s mais alizar %s — que são %d chapas, e a BASE DO ESPELHO '
+ 'consome as outras %d. Juntas dão %s m² e arredondam para 18 · ⛔⛔ E AS %d DOS ARCOS '
+ 'SÃO QUASE TODAS MIOLO: a moldura de %s cm de face soma %s m² de PEÇA, e o retângulo '
+ 'que ela ocupa na chapa soma %s m². São %.0f%% de desperdício, e não há como fugir: '
+ 'recorte curvo se compra pelo RETÂNGULO ENVOLVENTE, nunca pelo perímetro · ⭐⭐ MAS O '
+ 'MIOLO NÃO É LIXO, É A BASE DO ESPELHO. De dentro de cada arco sai uma peça inteira '
+ 'de até 104 × 140: são %s m² de Branco 18 em peças GRANDES, e a base do espelho pede '
+ '%s m². Cabe inteiro, com folga · ⭐ Encaixando as duas coisas no mesmo plano de '
+ 'corte, as 18 chapas viram %d e R$ %s saem do orçamento · ⚠ Os outros %s m² de '
+ 'desperdício são os cantos do retângulo, retalho pequeno que não serve para peça '
+ 'grande · ⛔ Está orçado SEM aproveitar, que é o conservador: quem corta decide.'
+ % (_br(_ARCO_M2), _br(_COST_M2), _br(_ALIZ_M2),
+    math.ceil(_ARCO_M2 / b.REND), math.ceil(lv.ESP_M2 / b.REND),
+    _br(_ARCO_M2 + lv.ESP_M2), math.ceil(_ARCO_M2 / b.REND),
+    _br(b.MOLDURA_L, 0), _br(_PECA_M2), _br(_COST_M2),
+    (_COST_M2 - _PECA_M2) / _COST_M2 * 100,
+    _br(MIOLO_M2), _br(lv.ESP_M2), math.ceil(_ARCO_M2 / b.REND),
+    _br(math.ceil(lv.ESP_M2 / b.REND) * 400),
+    _br(_COST_M2 - _PECA_M2 - MIOLO_M2)),
+ '⭐⭐ O FORRO VAI EM 15 mm [Jonathan, 23/11/2026]: "as chapas do teto podem ser de '
+ '15mm". Eram 18, a R$ 700 a chapa; 15 custa R$ 550 · ⭐ São R$ 5.850,00 menos de '
+ 'chapa e R$ 6.387,03 menos de custo direto, que caiu de R$ 98.053,51 para R$ %s — e '
+ 'o preço desceu R$ 24.401,28 · ⭐ E o motivo técnico é melhor que o preço: forro '
+ 'PENDE DA LAJE, e a chapa de 15 pesa cerca de 17%% menos que a de 18. Em %s m² são '
+ 'quase 200 kg de menos pendurados no teto, o que alivia a fixação, a mão amiga e a '
+ 'montagem · ⚠ A contrapartida está nas dúvidas: 15 mm faz mais barriga entre '
+ 'barrotes que 18.'
+ % (_br(T['direto']), _br(b.FORRO_M2, 0)),
  '⛔⛔ O RECORTE DO ARCO NÃO SE COMPRA PELO PERÍMETRO, SE COMPRA PELO RETÂNGULO '
  'QUE ELE OCUPA NA CHAPA. Um arco de %s cm de face parece consumir 0,55 m²; na chapa '
  'ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐⭐ E O MIOLO FICOU MAIS VALIOSO '

@@ -194,6 +194,16 @@ DUPLA_DIA = 500.00
 
 # ── a geometria, lida das pranchas ─────────────────────────────────────
 FORRO_M2 = 157.0          # ⭐ CRAVADO na prancha 01: "ÁREA FORRO 157m²"
+#   ⭐⭐ O FORRO VAI EM 15 mm [Jonathan, 23/11/2026]: "as chapas do teto
+#     podem ser de 15mm". Eram 18 mm, a R$ 700 a chapa; 15 mm custa R$ 550.
+#   ⭐ E faz sentido mais do que pelo preço: forro PENDE DA LAJE, então
+#     cada quilo a menos é menos esforço na fixação e na mão amiga. A
+#     chapa de 15 pesa cerca de 17% menos que a de 18 — numa área de
+#     157 m², são quase 200 kg de diferença pendurados no teto.
+#   ⚠ A contrapartida é a barriga entre barrotes: 15 mm cede mais que 18,
+#     e a malha de cerca de 75 × 120 que as 5 chapas de estruturação dão
+#     pode ter de fechar. Está dimensionado nas dúvidas.
+FORRO_ESP = 15
 PE_DIREITO = 291.0        # cota da VISTA AA, trecho alto
 
 #   ── os pórticos · VISTA BB e VISTA AA ──
@@ -330,7 +340,14 @@ MC = 0.55
 #     ele herda a alvo de 50% e sai também a 55%, quando a tabela da casa
 #     o poria em 40%. Com um ambiente só, dá no mesmo.
 MC_ALVO = 0.50            # ⭐ o número dele · fica em D7 da aba de preço
-DIFICULDADE = 'Médio'     # ⭐ +5 pontos · fica em D41, célula amarela
+DIFICULDADE = 'Médio'     # ⭐ fica em D41, célula amarela
+#   ⛔ A TABELA DO QUADRO ⑤, COMO DADO E NÃO COMO TEXTO SOLTO. Eu tinha
+#     "(20 pontos)" cravado numa linha de print, e quando o Jonathan trocou
+#     COMPLEXO por MÉDIO a linha passou a dizer "Médio (20 pontos)" — que
+#     é falso, Médio vale 5. Número que descreve outro número tem de ser
+#     DERIVADO dele, nunca digitado ao lado.
+PONTOS = {'Médio': 0.05, 'Difícil': 0.10, 'Complexo': 0.20}
+assert abs(MC_ALVO + PONTOS[DIFICULDADE] - MC) < 1e-9, (MC_ALVO, DIFICULDADE, MC)
 
 
 def preco(custo, mc=MC):

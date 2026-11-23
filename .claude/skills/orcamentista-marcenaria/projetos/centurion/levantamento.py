@@ -92,9 +92,12 @@ forro = Item('Forro amadeirado',
 #     de R$ 700 saídas do nada, R$ 7.000, sem nada quebrar. Quem lança
 #     área lança ÁREA; o rendimento é do motor.
 forro.p('Forro amadeirado · a área inteira', FORRO_PROF * 100,
-        FORRO_LARG * 100, 1, AMA, 18,
+        FORRO_LARG * 100, 1, AMA, b.FORRO_ESP,
         'os 157 m² cravados na prancha · o motor divide pelo rendimento '
-        'de 4,07 m² por chapa')
+        'de 4,07 m² por chapa · ⭐ %d mm [Jonathan, 23/11/2026: "as chapas '
+        'do teto podem ser de 15mm"] — R$ 550 a chapa em vez de R$ 700, e '
+        'quase 200 kg menos pendurados na laje'
+        % b.FORRO_ESP)
 #   ⛔⛔ AQUI MORAVAM DUAS LINHAS DE SARRAFO DE PINUS — barroteamento de
 #     392,5 m e mão amiga de 35,1 m, R$ 3.420,80 — e as duas SAÍRAM:
 #     "nao usamos sarrafo de pinus" [Jonathan, 23/11/2026].

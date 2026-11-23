@@ -26,7 +26,7 @@
    8.0,
    "chapa",
    4800.0,
-   0.048953,
+   0.052364,
    600.0
   ],
   [
@@ -35,7 +35,7 @@
    4.0,
    "chapa",
    600.0,
-   0.006119,
+   0.006545,
    150.0
   ],
   [
@@ -44,25 +44,25 @@
    4.0,
    "chapa",
    1400.0,
-   0.014278,
+   0.015273,
    350.0
   ],
   [
    "MDF Amadeirado 15 mm",
-   "área líquida de 26,23 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
-   7.0,
+   "área líquida de 183,23 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   46.0,
    "chapa",
-   3850.0,
-   0.039264,
+   25300.0,
+   0.276001,
    550.0
   ],
   [
    "MDF Amadeirado 18 mm",
-   "área líquida de 196,35 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
-   49.0,
+   "área líquida de 39,35 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   10.0,
    "chapa",
-   34300.0,
-   0.349809,
+   7000.0,
+   0.076364,
    700.0
   ],
   [
@@ -71,7 +71,7 @@
    7.0,
    "chapa",
    2450.0,
-   0.024986,
+   0.026727,
    350.0
   ],
   [
@@ -80,7 +80,7 @@
    18.0,
    "chapa",
    7200.0,
-   0.073429,
+   0.078546,
    400.0
   ],
   [
@@ -89,7 +89,7 @@
    71.48,
    "m",
    214.43,
-   0.002187,
+   0.002339,
    3.0
   ],
   [
@@ -98,7 +98,7 @@
    71.48,
    "m",
    178.69,
-   0.001822,
+   0.001949,
    2.5
   ],
   [
@@ -107,7 +107,7 @@
    55.39,
    "m",
    166.17,
-   0.001695,
+   0.001813,
    3.0
   ],
   [
@@ -116,7 +116,7 @@
    55.39,
    "m",
    138.47,
-   0.001412,
+   0.001511,
    2.5
   ],
   [
@@ -125,7 +125,7 @@
    19.8,
    "m²",
    12867.0,
-   0.131224,
+   0.140368,
    650.0
   ],
   [
@@ -134,7 +134,7 @@
    1.0,
    "lata",
    600.0,
-   0.006119,
+   0.006545,
    600.0
   ],
   [
@@ -143,7 +143,7 @@
    48.09,
    "m",
    144.28,
-   0.001471,
+   0.001574,
    3.0
   ],
   [
@@ -152,7 +152,7 @@
    48.09,
    "m",
    120.24,
-   0.001226,
+   0.001312,
    2.5
   ],
   [
@@ -161,7 +161,7 @@
    43.72,
    "m",
    6558.3,
-   0.066885,
+   0.071545,
    150.0
   ],
   [
@@ -170,7 +170,7 @@
    15.0,
    "barra",
    750.0,
-   0.007649,
+   0.008182,
    50.0
   ],
   [
@@ -179,7 +179,7 @@
    5.0,
    "un",
    600.0,
-   0.006119,
+   0.006545,
    120.0
   ],
   [
@@ -188,7 +188,7 @@
    7.25,
    "m²",
    4347.0,
-   0.044333,
+   0.047422,
    600.0
   ],
   [
@@ -197,7 +197,7 @@
    16.39,
    "m²",
    9834.0,
-   0.100292,
+   0.10728,
    600.0
   ],
   [
@@ -206,7 +206,7 @@
    1.0,
    "serviço",
    200.0,
-   0.00204,
+   0.002182,
    200.0
   ],
   [
@@ -215,7 +215,7 @@
    151.0,
    "peça",
    571.5,
-   0.005828,
+   0.006235,
    3.78
   ],
   [
@@ -223,25 +223,25 @@
    "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo · ⭐ O R$ UNITÁRIO AQUI É A BASE, não um preço: a soma da chapa e de TODA a fita · ⛔ a fita lançada como linha linear (o perímetro do forro e a frente das prateleiras, R$ 310,45) estava ficando fora desta base, porque só a fita do campo da peça entrava — o mesmo material contava ou não conforme COMO eu o lancei. Corrigido",
    0.06,
    "%",
-   3307.49,
-   0.033732,
-   55124.88
+   2956.49,
+   0.032253,
+   49274.88
   ],
   [
    "Embalagem",
    "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre tudo o que vem acima · papelão, filme e cantoneira · ⭐ o R$ UNITÁRIO também é a BASE, não um preço · ⭐ esta linha absorve os centavos de arredondamento das linhas acima, para que somar a coluna dê exatamente o CUSTO DIRETO",
    0.03,
    "%",
-   2855.94,
+   2669.91,
    0.029126,
-   95197.58
+   88996.58
   ],
   [
    "CUSTO DIRETO DO AMBIENTE",
    "",
    "",
    "",
-   98053.51,
+   91666.48,
    1.0
   ],
   [],
@@ -268,7 +268,7 @@
    "",
    "",
    "",
-   31708.6
+   25374.21
   ],
   [
    "",
@@ -282,7 +282,7 @@
    "",
    "",
    "",
-   25505.98
+   25485.75
   ],
   [
    "",
@@ -296,7 +296,7 @@
    "",
    "",
    "",
-   14106.91
+   14095.71
   ],
   [
    "",
@@ -310,7 +310,7 @@
    "",
    "",
    "",
-   8245.14
+   8238.6
   ],
   [
    "",
@@ -324,7 +324,7 @@
    "",
    "",
    "",
-   2793.58
+   2791.36
   ],
   [
    "",
@@ -338,7 +338,7 @@
    "",
    "",
    "",
-   15693.3
+   15680.85
   ],
   [
    "",
@@ -352,7 +352,7 @@
    "",
    "",
    "",
-   98053.51
+   91666.48
   ],
   [
    "⭐ CONFERÊNCIA — a soma dos itens contra o painel de material · ⛔ tem de dar ZERO: é o mesmo projeto contado por dois caminhos, por linha de material e por móvel.",
@@ -412,13 +412,13 @@
   ],
   [
    "Forro amadeirado · a área inteira",
-   "os 157 m² cravados na prancha · o motor divide pelo rendimento de 4,07 m² por chapa",
+   "os 157 m² cravados na prancha · o motor divide pelo rendimento de 4,07 m² por chapa · ⭐ 15 mm [Jonathan, 23/11/2026: \"as chapas do teto podem ser de 15mm\"] — R$ 550 a chapa em vez de R$ 700, e quase 200 kg menos pendurados na laje",
    1380.0,
    1137.7,
    1,
    "pç",
-   "MDF Amadeirado 18",
-   27002.46
+   "MDF Amadeirado 15",
+   21216.22
   ],
   [
    "Estruturação do forro · tira de MDF branco 15, barrote e mão amiga",
@@ -710,15 +710,23 @@
   ],
   [
    "",
+   "⛔⛔ POR QUE OS ARCOS CONSOMEM TANTA CHAPA [pergunta do Jonathan, 23/11/2026: \"por que os arcos estao consumindo 18 chapas?\"] · ⭐ Primeiro desfazendo as 18: os ARCOS consomem 47,06 m² — costela 42,42 mais alizar 4,64 — que são 12 chapas, e a BASE DO ESPELHO consome as outras 6. Juntas dão 70,69 m² e arredondam para 18 · ⛔⛔ E AS 12 DOS ARCOS SÃO QUASE TODAS MIOLO: a moldura de 12 cm de face soma 4,46 m² de PEÇA, e o retângulo que ela ocupa na chapa soma 42,42 m². São 89% de desperdício, e não há como fugir: recorte curvo se compra pelo RETÂNGULO ENVOLVENTE, nunca pelo perímetro · ⭐⭐ MAS O MIOLO NÃO É LIXO, É A BASE DO ESPELHO. De dentro de cada arco sai uma peça inteira de até 104 × 140: são 32,53 m² de Branco 18 em peças GRANDES, e a base do espelho pede 23,64 m². Cabe inteiro, com folga · ⭐ Encaixando as duas coisas no mesmo plano de corte, as 18 chapas viram 12 e R$ 2.400,00 saem do orçamento · ⚠ Os outros 5,43 m² de desperdício são os cantos do retângulo, retalho pequeno que não serve para peça grande · ⛔ Está orçado SEM aproveitar, que é o conservador: quem corta decide."
+  ],
+  [
+   "",
+   "⭐⭐ O FORRO VAI EM 15 mm [Jonathan, 23/11/2026]: \"as chapas do teto podem ser de 15mm\". Eram 18, a R$ 700 a chapa; 15 custa R$ 550 · ⭐ São R$ 5.850,00 menos de chapa e R$ 6.387,03 menos de custo direto, que caiu de R$ 98.053,51 para R$ 91.666,48 — e o preço desceu R$ 24.401,28 · ⭐ E o motivo técnico é melhor que o preço: forro PENDE DA LAJE, e a chapa de 15 pesa cerca de 17% menos que a de 18. Em 157 m² são quase 200 kg de menos pendurados no teto, o que alivia a fixação, a mão amiga e a montagem · ⚠ A contrapartida está nas dúvidas: 15 mm faz mais barriga entre barrotes que 18."
+  ],
+  [
+   "",
    "⛔⛔ O RECORTE DO ARCO NÃO SE COMPRA PELO PERÍMETRO, SE COMPRA PELO RETÂNGULO QUE ELE OCUPA NA CHAPA. Um arco de 12 cm de face parece consumir 0,55 m²; na chapa ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐⭐ E O MIOLO FICOU MAIS VALIOSO DEPOIS QUE OS ARCOS VIRARAM BRANCOS: são 32,53 m² de MDF BRANCO 18, que é exatamente a chapa da base do espelho (23,64 m²) — cabe inteiro, com folga. Antes o miolo era amadeirado e teria de servir para fundo ou prateleira, que mudaram de espessura e não encaixam mais · Está orçado SEM aproveitar, e o ganho está na primeira dúvida."
   ],
   [
    "",
-   "⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas dúvidas mais caras desta folha: \"Compensado flexivel, custo - 600,00 a chapa\" e \"laca considere 650\" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Os dois juntos somaram R$ 8.125,67, levando o custo direto de R$ 86.973,29 para R$ 95.098,96: R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 na laca, R$ 108,00 de consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⚠ e as respostas que ele deu depois, na própria planilha, mais a correção da base dos consumíveis, levaram o custo a R$ 98.053,51 — a laca já está em 19,80 m² porque o alizar passou a ter 12 cm · ⭐ A folha não ficou mais CARA por acaso, ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como \"primeira cotação a fazer\", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas."
+   "⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas dúvidas mais caras desta folha: \"Compensado flexivel, custo - 600,00 a chapa\" e \"laca considere 650\" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Os dois juntos somaram R$ 8.125,67, levando o custo direto de R$ 86.973,29 para R$ 95.098,96: R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 na laca, R$ 108,00 de consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⚠ e as respostas que ele deu depois, na própria planilha, mais a correção da base dos consumíveis, levaram o custo a R$ 91.666,48 — a laca já está em 19,80 m² porque o alizar passou a ter 12 cm · ⭐ A folha não ficou mais CARA por acaso, ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como \"primeira cotação a fazer\", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas."
   ],
   [
    "",
-   "⭐⭐ MC DE 55%, APLICADA [Jonathan, 23/11/2026: \"aplique a mc de 55%\"] · ⭐ E ela cai EXATAMENTE na tabela da casa, sem forçar nada: a MC alvo do projeto fica no PISO de 35% e o ambiente entra como COMPLEXO, que o quadro ⑤ da aba Preço e Comissões define como \"junta três ou mais ofícios, geometria fora de esquadro, estrutura metálica aparente ou peça que não cabe em chapa inteira\" — e este ambiente bate em três dos quatro critérios: são QUATRO ofícios (marcenaria, laca, vidraceiro e elétrica de LED), os oito arcos são geometria fora de esquadro, e o forro de 157 m², a faixa corrida de 709 e o espelho de 745 não cabem em chapa inteira · 35 + 20 = 55. ⛔ A MC não se digita no quadro ④: ela é a alvo mais os pontos da dificuldade, então quem quiser mexer mexe em D7 ou na coluna DIFICULDADE, nunca na MC APLICADA."
+   "⭐⭐ MC DE 55%, APLICADA [Jonathan, 23/11/2026: \"aplique a mc de 55%\"] · ⭐ A MC aplicada não se digita: ela é a MC ALVO do projeto mais os pontos da DIFICULDADE do ambiente, pela tabela do quadro ⑤ da aba Preço e Comissões — Médio +5, Difícil +10, Complexo +20, e \"Médio é o PISO, não o zero\" · ⭐⭐ E OS 55% TÊM DOIS CAMINHOS, que dão o mesmo preço: eu havia posto a alvo no piso de 35% mais COMPLEXO, porque a definição de Complexo descreve este ambiente palavra por palavra — cinco ofícios (marcenaria, laminador, laca, vidraceiro e elétrica), oito arcos fora de esquadro e peças que não cabem em chapa inteira. O Jonathan preferiu o outro caminho: digitou alvo de 50% e deixou a dificuldade em MÉDIO. 50 + 5 = 55, igual · ⭐ A diferença não é de preço, é de onde a margem fica ANCORADA: na escolha do projeto, e não na complexidade do ambiente · ⚠ E tem uma consequência para depois: se entrar um segundo ambiente simples, ele herda a alvo de 50% e sai também a 55%, quando a tabela da casa o poria em 40%. Com um ambiente só, dá no mesmo."
   ],
   [
    "",

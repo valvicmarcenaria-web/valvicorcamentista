@@ -102,7 +102,8 @@ if __name__ == '__main__':
     print('\n  %d itens · %d chapas' % (len(lv.ITENS), T['n_ch']))
     print('\n  O PREÇO  ' + '─' * 50)
     p = b.preco(T['direto'])
-    print('  MC aplicada %.0f%% = alvo %.0f%% + %s (20 pontos)'
-          % (b.MC * 100, b.MC_ALVO * 100, b.DIFICULDADE))
+    print('  MC aplicada %.0f%% = alvo %.0f%% + %s (%.0f pontos)'
+          % (b.MC * 100, b.MC_ALVO * 100, b.DIFICULDADE,
+             b.PONTOS[b.DIFICULDADE] * 100))
     print('  %-32s %14s' % ('PREÇO DE VENDA', _br(p)))
     print('  %-32s %14s' % ('margem de contribuição', _br(p * b.MC)))
