@@ -163,18 +163,35 @@ vizinhas. **Rótulo e fórmula se escrevem na mesma passada.**
 
 ---
 
-## ⛔⛔ GRAVAÇÃO EM BLOCO PERDE LINHA, E SÓ A CONTAGEM PEGA
+## ⛔⛔⛔ CÉLULA MESCLADA ENGOLE A LINHA, E A API RESPONDE `success`
 
-Em 23/11/2026, numa aba de 120 linhas, **duas linhas se perderam** em escritas
-longas pelo `update_values` do MCP, sem erro nenhum na resposta:
+**Esta seção corrige um diagnóstico errado que esteve aqui.** Ela dizia que
+"gravação em bloco perde linha" e mandava quebrar as escritas em pedaços cada
+vez menores. Isso nunca resolveria, porque a causa era outra.
 
-- uma escrita de 31 linhas gravou a linha 88 **só com o primeiro campo** — a
-  observação e os sete valores não entraram;
-- uma escrita de 17 linhas deixou a linha 104 **inteiramente vazia**.
+O sintoma, visto três vezes: depois de gravar, uma linha aparece **só com o
+primeiro campo**, ou inteiramente vazia. A resposta diz `status: success` e
+conta as células como gravadas. O Python tem o dado certo.
 
-Nos dois casos a resposta disse `status: success`. Nos dois casos o Python
-tinha o dado certo: **conferir o motor contra si mesmo não serve de nada** —
-o que falhou foi o transporte.
+A causa, descoberta em 23/11/2026 ao listar os merges da aba: **a aba tinha
+células mescladas de B a K, sobradas de um layout anterior**, em linhas que no
+layout novo são de dado. Uma célula mesclada aceita valor só na âncora (a
+primeira coluna) e **descarta o resto da linha em silêncio**.
+
+⭐ **A cura** é desmesclar a aba inteira e mesclar de volta só o que é texto
+corrido — título, subtítulo e seção:
+
+```
+unmergeCells  A1:K<fim>
+mergeCells    B..K  em cada linha de título, subtítulo e seção
+```
+
+⛔ **E a regra que evita o problema:** regravar uma aba num layout novo
+**começa por desmesclar**. Merge é formato, e formato sobrevive ao `clear`
+de valores — por isso ele volta a morder depois de a aba parecer limpa.
+
+⚠ Conferir o motor contra si mesmo não pega nada disso: o que falha é a
+gravação. A conferência tem de rodar **na planilha**.
 
 ⭐ **As conferências que pegam isso rodam NA PLANILHA, por fórmula:**
 
@@ -185,8 +202,26 @@ o que falhou foi o transporte.
 =F29-Painel!K24                              a aba bate com o Painel → 0
 ```
 
-Escreva-as numa coluna livre (a **A** serve: é estreita e não tem merge),
-leia, e **apague**. ⛔ Antes de usar uma região "vazia" para isso, confira o
+⭐⭐ **E a mais forte de todas é a DUPLA CONFERÊNCIA**, que fica na aba para
+sempre e não precisa ser apagada: somar os itens (cada peça pagando a FRAÇÃO
+de chapa que ocupa), somar o arredondamento para chapa cheia, e comparar com
+o painel do ambiente. As duas contas saem dos mesmos lançamentos por caminhos
+diferentes, então **a diferença tem de ser zero**:
+
+```
+Soma dos itens · chapa rateada em fração      =SUM(I<itens>)
+Arredondamento para número cheio              =SUM(F<chapas>)-SUMPRODUCT(SUMIF(K;B<chapas>;I))
+MATERIAL E FERRAGEM, PELO RATEIO DOS ITENS    =soma + arredondamento
+Material e ferragem, pelo painel do ambiente  =SUM(F<chapas até insumos>)
+⭐ CONFERÊNCIA                                 =a diferença, e ela é ZERO
+```
+
+Ela pegou, em 23/11/2026: uma fita de R$ 393,13 que ficou fora do total de um
+item, e R$ 418,20 de fita que existiam no motor e não na planilha. Nenhuma
+das duas quebrava nada.
+
+As conferências descartáveis escreva numa coluna livre (a **A** serve: é
+estreita e não tem merge), leia, e **apague**. ⛔ Antes de usar uma região "vazia" para isso, confira o
 que mora lá: na aba `Preço e Comissões` a tabela de dificuldade vive em
 `B66:D68`, escondida bem abaixo do conteúdo visível.
 
@@ -201,3 +236,111 @@ a coluna somar um centavo a menos. Quem confere soma a coluna, então **a
 sua própria linha, e forçar a última a fechar faria ela mentir sobre si
 mesma. Lá a solução é **mais precisão** — guardar seis casas em vez de
 quatro, e deixar o formato exibir uma.
+
+## ⛔⛔⛔ O PADRÃO: CADA ITEM É UM BLOCO AUTOSSUFICIENTE
+
+Vem de uma correção do Jonathan em 23/11/2026: *"vc nao esta seguindo o padrao
+que estabelecemos na planilha. os itens nao estao separados. quero poder
+alterar o quantitativo de material de cada item sem comprometer o
+funcionamento da planilha."*
+
+⛔ **O que estava errado:** um painel agregado em cima e todas as peças soltas
+embaixo, agrupadas por um marcador, com a fita, a laca, o LED e a ferragem num
+painel único e o custo de cada item saído de um **rateio**. Assim o item é só
+uma etiqueta: mexer no quantitativo de um móvel contamina os outros.
+
+⭐ **O padrão certo** — na seção `AS PEÇAS, ITEM POR ITEM`, cada item traz o
+seu próprio cabeçalho, as suas peças, os **seus** insumos e o seu total:
+
+```
+ITEM 01 · nome do móvel                                    medida geral
+a observação do item
+MATERIAL | ESPECIFICAÇÃO | C | L | QTD | UN | R$ UN | CUSTO || chave na Base
+   as peças de chapa dele .........................................
+   a fita dele, a laca dele, o LED dele, a ferragem dele ..........
+TOTAL DO ITEM 01                               =SUM(OFFSET(...)) ⭐ ver abaixo
+```
+
+E então:
+
+- o **painel do ambiente** é DERIVADO: cada linha soma as peças **pela chave**
+  (coluna K), com `SUMPRODUCT` para área de chapa e `SUMIF` para insumo.
+  Ninguém digita o painel;
+- o **custo do item**, no bloco `OS ITENS`, **puxa o TOTAL DO ITEM**. Não há
+  rateio: o item custa o que as peças dele custam;
+- só `OS PARÂMETROS` se digita, e toda fórmula procura preço e rendimento
+  **pela chave**, nunca por posição.
+
+⭐ **O TOTAL DO ITEM usa `OFFSET`, não `SUM` de range fixo.** `SUM($I$97:$I$103)`
+parece certo e falha no caso que mais importa: inserir linha **dentro** do
+range faz o Sheets estender a fórmula, mas inserir **no fim do bloco** — logo
+acima do total, que é onde a pessoa naturalmente acrescenta — deixa a linha
+nova fora da soma, sem erro nenhum. Com
+
+```
+=ROUND(SUM(OFFSET($I$<primeira peça>;0;0;MAX(1;ROW()-<primeira peça>);1));2)
+```
+
+o total soma até a linha imediatamente acima de si mesmo, calculada por
+`ROW()` na hora, e nenhuma inserção escapa.
+
+## ⛔⛔⛔ O APROVEITAMENTO DE 80% É UMA MÉDIA — E MÉDIA SÓ VALE PARA PEÇA QUE REPETE
+
+Os 80% da casa descrevem o desperdício **médio** de um plano de corte com
+peças que se repetem e encaixam. Para uma peça **grande que não repete na
+chapa**, a média mente nas duas direções, e as duas custam dinheiro:
+
+- **para cima:** lançar o forro como peças do tamanho da chapa aplica o
+  aproveitamento DUAS VEZES (o motor já divide por rendimento) e compra
+  chapas do nada. ⭐ **Quem lança área lança ÁREA**; o rendimento é do motor;
+- **para baixo:** o fundo de nicho de 104,1 × 193 numa chapa de 275 × 185
+  cabe **uma vez só** — os 193 cm entram apenas no lado de 275, e a sobra de
+  82 cm não comporta o segundo. O aproveitamento real é de 39,5%, e com 80%
+  a planilha compra menos chapa do que o marceneiro precisa.
+
+⭐ **A cura é dizer a verdade do rendimento na tabela de parâmetros**, por
+chave `(padrão, espessura)` — não somar chapas na mão. Melhor ainda: deixar o
+aproveitamento ser **fórmula** derivada da própria peça, para que mudar a cota
+refaça o número de chapas sozinho.
+
+⭐ **E a coluna `APROV.` é a que denuncia** peça que não encaixa: 39,5% grita,
+80% engana. Ela tem de estar visível na tabela.
+
+⛔ **E a tolerância no arredondamento não é enfeite:** guardar o aproveitamento
+com 4 casas fez uma divisão dar `6,000090`, o `ROUNDUP` cobrou 7 chapas e R$ 350
+apareceram do nada. A planilha tem de fazer `ROUNDUP(ROUND(x;6);0)` — a mesma
+tolerância que o motor em Python já usava com `math.ceil(round(x, 6))`.
+
+## ⛔⛔ DUAS ARMADILHAS DE LOCALE pt-BR, E ELAS SÃO OPOSTAS
+
+Nenhuma das duas aparece no Python: só na célula, depois de gravar.
+
+1. **Na fórmula, o decimal é VÍRGULA.** `IFERROR(...;0.8)` faz a célula inteira
+   virar `#ERROR!`, porque `0.8` não é número em pt-BR. É a mesma regra do
+   separador de argumento (`;` e não `,`), aplicada ao decimal.
+2. **No padrão do `TEXT()`, o decimal é PONTO.** O padrão usa símbolos
+   neutros, então `TEXT(22,4;"0,00")` lê a vírgula como separador de **milhar**
+   e exibe `022`. O certo é `"0.00"`, que em pt-BR **exibe** `22,40`.
+
+⭐ Número literal dentro de fórmula passa por uma função que troca `.` por `,`;
+padrão de formato é sempre o neutro. Nunca escrever decimal solto.
+
+## ⭐ NÚMERO CALCULADO DENTRO DE TEXTO FIXO É MENTIRA ESPERANDO A PRÓXIMA MUDANÇA
+
+Escrever "área líquida de 22,30 m²" ou "4 folhas" numa observação funciona no
+dia em que se escreve e mente na mudança seguinte — e ninguém percebe, porque
+texto não quebra.
+
+⭐ **Número vive em CÉLULA, com formato; texto explica o porquê.** Quando o
+número precisa mesmo aparecer no meio da frase, a frase inteira vira
+**fórmula**:
+
+```
+="Melamínico Fosco · "&TEXT(<a soma das peças>;"0.00")&" m² de peças"
+```
+
+Assim o número está dentro do texto e **nunca mente**.
+
+⚠ A exceção é o **registro histórico**: "o Jonathan fixou R$ 650 em 23/11/2026"
+ou "eram 18 mm, a R$ 700" são fatos datados, e fato datado não muda. O que não
+pode ficar cravado é o **estado atual**.

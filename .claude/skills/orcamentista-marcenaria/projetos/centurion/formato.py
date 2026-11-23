@@ -43,6 +43,10 @@ PCT = {'type': 'PERCENT', 'pattern': '0.0%'}
 N0 = {'type': 'NUMBER', 'pattern': '0'}
 N2 = {'type': 'NUMBER', 'pattern': '0.00'}
 N3 = {'type': 'NUMBER', 'pattern': '0.000'}
+#   ⭐ QUATRO CASAS para rendimento e área: é com a quarta casa que a
+#     divisão área ÷ rendimento cai do lado certo do ROUNDUP. Exibir
+#     duas esconderia a precisão que a conta usa.
+N4 = {'type': 'NUMBER', 'pattern': '0.0000'}
 # ⭐ LIDAS CÉLULA A CÉLULA DA ABA-MODELO DA CASA, 06/11/2026 · não são escolha
 # minha: a SEÇÃO leva um fio PRETO embaixo, e o TOTAL uma barra DOURADA GROSSA
 # em cima. Eu havia posto fio cinza nos dois, e as nove abas saíram diferentes
@@ -52,6 +56,50 @@ BORDA = {'bottom': {'style': 'SOLID', 'width': 1,
                     'colorStyle': {'rgbColor': dict(TINTA)}},
          'top': {'style': 'SOLID_THICK', 'width': 3,
                  'colorStyle': {'rgbColor': DOURADO}}}
+
+
+def mini(sid, r0, r1, c0, c1, **f):
+    """⭐ Um pedido de formato com `fields` MÍNIMO — só o que muda.
+
+    ⛔ O `estilo()` acima manda sempre fontFamily, tamanho, negrito e cor
+      juntos, porque `fields` lista o grupo `textFormat` inteiro. Isso faz
+      cada pedido pesar quatro vezes mais do que precisa, e o lote de
+      formato desta aba passava de 100 KB em 132 pedidos. ⭐ Aqui cada
+      chave vira o seu próprio caminho em `fields`, então pedir só
+      `numberFormat` manda só `numberFormat`."""
+    u, campos = {}, []
+    if 'nf' in f:
+        u['numberFormat'] = f['nf']; campos.append('numberFormat')
+    if 'h' in f:
+        u['horizontalAlignment'] = f['h']
+        campos.append('horizontalAlignment')
+    if 'w' in f:
+        u['wrapStrategy'] = f['w']; campos.append('wrapStrategy')
+    if 'bg' in f:
+        u['backgroundColorStyle'] = {'rgbColor': dict(f['bg'])}
+        campos.append('backgroundColorStyle')
+    t = {}
+    if 'fs' in f:
+        t['fontSize'] = f['fs']; campos.append('textFormat.fontSize')
+    if 'b' in f:
+        t['bold'] = f['b']; campos.append('textFormat.bold')
+    if 'fg' in f:
+        t['foregroundColorStyle'] = {'rgbColor': dict(f['fg'])}
+        campos.append('textFormat.foregroundColorStyle')
+    if t:
+        u['textFormat'] = t
+    if 'lado' in f:
+        u['borders'] = {f['lado']: {
+            'style': 'SOLID_THICK' if f['lado'] == 'top' else 'SOLID',
+            'width': 3 if f['lado'] == 'top' else 1,
+            'colorStyle': {'rgbColor': dict(DOURADO if f['lado'] == 'top'
+                                            else TINTA)}}}
+        campos.append('borders')
+    return {'repeatCell': {
+        'range': {'sheetId': sid, 'startRowIndex': r0, 'endRowIndex': r1,
+                  'startColumnIndex': c0, 'endColumnIndex': c1},
+        'cell': {'userEnteredFormat': u},
+        'fields': ','.join('userEnteredFormat.' + c for c in campos)}}
 
 
 def fmt(**k):
@@ -129,11 +177,26 @@ def une(sid, r):
 #   ⭐ AS UNIDADES QUE SIGNIFICAM "ESCREVA AQUI". Logística e mão de
 #     obra são digitadas pelo ambiente; chapa, m, un, m² e peça vêm da
 #     Base e eu derivo o unitário de custo ÷ quantidade.
-UN_DIGITADA = ('pessoa', 'viagem', 'diária', 'pessoa-dia', 'dia')
 
+# ═══════════════════════════════════════════════════════════════════════
+#   A CLASSIFICAÇÃO, PARA O LAYOUT POR ITEM
+# ═══════════════════════════════════════════════════════════════════════
+#   ⛔⛔ ESTE ARQUIVO ESTAVA DUPLICADO — tudo de `SECOES` para baixo
+#     aparecia DUAS VEZES, resíduo de uma edição minha. Em Python a
+#     segunda definição vence em silêncio, então o arquivo funcionava e
+#     qualquer correção na primeira metade não tinha efeito nenhum.
+#     ⭐ Reescrito de uma vez, já no layout por item.
 SECOES = ('  O AMBIENTE', '  OS ITENS', '  O QUE NÃO É MARCENARIA',
-          '  AS PEÇAS', '  AS NOTAS', '  AS DÚVIDAS')
-CAB = {'MATERIAL': 1, 'ITEM': 2, 'PEÇA': 4}
+          '  AS PEÇAS', '  AS NOTAS', '  AS DÚVIDAS', '  OS PARÂMETROS')
+
+#   ⭐ o cabeçalho e a SEÇÃO em que ele é válido · ⛔ no layout por item o
+#     cabeçalho de cada bloco é MATERIAL, dentro da seção AS PEÇAS (4) — e
+#     também é MATERIAL no painel do ambiente (1). O mesmo rótulo em duas
+#     seções, de propósito: é a mesma ideia de coluna.
+CAB = {'MATERIAL': (1, 4), 'ITEM': (2,), 'CHAVE': (7,)}
+
+#   ⭐ as testeiras de item · elas abrem o bloco e levam a medida geral na I
+TESTEIRA = 'ITEM '
 
 
 def classifica(linhas):
@@ -141,8 +204,10 @@ def classifica(linhas):
     não tem formato — e é isso que denuncia linha que eu não previ."""
     cl, secao = [], 0
     for i, r in enumerate(linhas):
-        b = (r[0] if r else '') or ''
-        c = (r[1] if len(r) > 1 else '') or ''
+        #   ⛔ A COLUNA B PODE SER NÚMERO: no bloco OS ITENS ela é o número
+        #     do item, e `.startswith` em int explode. Converter sempre.
+        b = str((r[0] if r else '') or '')
+        c = str((r[1] if len(r) > 1 else '') or '')
         if i == 0:
             t = 'titulo'
         elif i == 1:
@@ -150,13 +215,24 @@ def classifica(linhas):
         elif any(b.startswith(s) for s in SECOES):
             t = 'secao'
             secao = SECOES.index(next(s for s in SECOES if b.startswith(s))) + 1
-        elif b in CAB and secao == CAB[b]:
+        elif b in CAB and secao in CAB[b]:
             t = 'cabecalho'
-        elif (b in ('CUSTO DIRETO DO AMBIENTE', 'TOTAL DO AMBIENTE')
+        elif b.startswith('TOTAL DO ITEM'):
+            t = 'total_item'
+        elif (b == 'CUSTO DIRETO DO AMBIENTE'
+              or b.startswith('MATERIAL E FERRAGEM')
               or b.startswith('⭐ CONFERÊNCIA')):
             t = 'total'
-        elif b.startswith('■'):
-            t = 'grupo'
+        #   ⛔ AS LINHAS DA DUPLA CONFERÊNCIA NÃO SÃO LINHAS DE ITEM. Elas
+        #     caíam em `dado2` e herdavam o formato do bloco OS ITENS —
+        #     inclusive as duas células AMARELAS de dias, que convidariam
+        #     a digitar em cima de uma conta de controle. ⭐ Classe própria.
+        elif secao == 2 and b and (b.startswith('Soma dos itens')
+                                   or b.startswith('Arredondamento')
+                                   or b.startswith('Material e ferragem')):
+            t = 'conferencia'
+        elif b.startswith(TESTEIRA) and secao == 4:
+            t = 'testeira'
         elif b == '' and c:
             t = 'nota'
         elif b == '' and not c:
@@ -173,7 +249,7 @@ def corridas(cl, alvo):
     while i < len(cl):
         if cl[i] in alvo:
             j = i
-            while j + 1 < len(cl) and cl[j + 1] == cl[i]:
+            while j + 1 < len(cl) and cl[j + 1] in alvo:
                 j += 1
             out.append((cl[i], i, j + 1))
             i = j + 1
@@ -182,140 +258,160 @@ def corridas(cl, alvo):
     return out
 
 
+# ═══════════════════════════════════════════════════════════════════════
+#   ⭐ O MAPA DE COLUNAS, POR SEÇÃO · (índice no vetor, formato, alinhar)
+# ═══════════════════════════════════════════════════════════════════════
+#   ⛔⛔ CONFERIR O ÍNDICE CONTRA O CABEÇALHO IMPRESSO, SEMPRE. O vetor
+#     começa na coluna B, então índice 0 é B, 7 é I e 9 é K. Já pintei
+#     moeda na J vazia e número de três casas no custo por contar errado —
+#     e foi o Jonathan quem viu, não eu.
+#   ⭐ Os cabeçalhos deste layout, para conferir:
+#       1  MATERIAL ESPECIFICAÇÃO QUANTIDADE UN CUSTO %DO_CUSTO
+#          0        1             2          3  4     5
+#       2  ITEM MÓVEL MEDIDA DIAS_FABR DIAS_MONT . . CUSTO
+#          0    1     2      3         4         5 6 7
+#       4  MATERIAL ESPECIFICAÇÃO C L QTD UN R$_UN CUSTO . chave
+#          0        1             2 3 4   5  6     7     8 9
+#       7  CHAVE DE_ONDE_VEM FOLHA_C FOLHA_L ÁREA APROV RENDIM R$ UN
+#          0     1           2       3       4    5     6      7  8
+COLUNAS = {
+    1: [(2, N2, 'RIGHT'), (3, None, 'CENTER'), (4, MOEDA, 'RIGHT'),
+        (5, PCT, 'RIGHT')],
+    2: [(7, MOEDA, 'RIGHT')],
+    4: [(2, N2, 'RIGHT'), (3, N2, 'RIGHT'), (4, N2, 'RIGHT'),
+        (5, None, 'CENTER'), (6, MOEDA, 'RIGHT'), (7, MOEDA, 'RIGHT')],
+    7: [(2, N2, 'RIGHT'), (3, N2, 'RIGHT'), (4, N4, 'RIGHT'),
+        (5, PCT, 'RIGHT'), (6, N4, 'RIGHT'), (7, MOEDA, 'RIGHT'),
+        (8, None, 'CENTER')],
+}
+
+#   ⭐ AMARELO = "digite aqui" · só OS PARÂMETROS e as colunas de dias
+AMARELAS = {7: (2, 3, 5, 7)}      # folha C, folha L, aproveitamento, preço
+
+
 def pedidos(sid, linhas):
     cl = classifica(linhas)
-    R = [rc(sid, 0, max(len(linhas), 120), 1, 11, fmt(), F_TUDO)]
-    E = lambda *a, **k: R.append(estilo(sid, *a, **k))
+    R = [rc(sid, 0, len(linhas), 1, 11, fmt(), F_TUDO)]
+    E = lambda *a, **k: R.append(mini(sid, *a, **k))
 
+    #   ⭐ o que se repete em muitas linhas vai por FAIXA CONTÍGUA; o que
+    #     é único vai linha a linha. Testeira, cabeçalho e total de item
+    #     são 21 linhas espalhadas, logo ficam no laço.
     for i, c in enumerate(cl):
         if c == 'titulo':
-            E(i, i + 1, 1, 11, fs=16, b=True, fg=BRANCO, bg=TINTA); R.append(une(sid, i))
+            E(i, i + 1, 1, 11, fs=16, b=True, fg=BRANCO, bg=TINTA)
         elif c == 'subtitulo':
-            E(i, i + 1, 1, 11, fs=9, fg=CINZA, w='WRAP'); R.append(une(sid, i))
+            E(i, i + 1, 1, 11, fs=9, fg=CINZA, w='WRAP')
         elif c == 'secao':
-            E(i, i + 1, 1, 11, fs=11, b=True, lado='bottom'); R.append(une(sid, i))
+            E(i, i + 1, 1, 11, fs=11, b=True, lado='bottom')
         elif c == 'cabecalho':
             E(i, i + 1, 1, 11, fs=8, b=True, fg=CINZA, bg=FUNDO_CAB)
         elif c == 'total':
             E(i, i + 1, 1, 11, fs=11, b=True, lado='top')
-        elif c == 'grupo':
-            E(i, i + 1, 1, 2, b=True)
-            E(i, i + 1, 2, 11, fs=9, fg=CINZA, w='OVERFLOW_CELL')
+            E(i, i + 1, 8, 9, fs=11, b=True, nf=MOEDA, h='RIGHT')
+        elif c == 'total_item':
+            #   ⭐ o TOTAL DO ITEM fecha o bloco: negrito, linha em cima e
+            #     o custo em moeda na coluna I
+            E(i, i + 1, 1, 11, fs=10, b=True, lado='top')
+            E(i, i + 1, 8, 9, b=True, nf=MOEDA, h='RIGHT')
+        elif c == 'conferencia':
+            #   ⭐ conta de controle: discreta, mas com o dinheiro legível
+            E(i, i + 1, 1, 8, fs=9, fg=CINZA, w='WRAP')
+            E(i, i + 1, 8, 9, fs=10, nf=MOEDA, h='RIGHT')
+        elif c == 'testeira':
+            #   ⭐⭐ A TESTEIRA DO ITEM é o que faz o bloco ser visível como
+            #     bloco: fundo claro, nome em negrito e a medida geral à
+            #     direita. Sem ela o olho não acha onde um item começa.
+            E(i, i + 1, 1, 11, bg=FUNDO_CAB)
+            E(i, i + 1, 1, 2, fs=11, b=True)
+            E(i, i + 1, 2, 3, fs=11, b=True, w='OVERFLOW_CELL')
+            E(i, i + 1, 7, 11, fs=9, fg=CINZA, h='RIGHT')
 
     for _c, a, z in corridas(cl, {'nota'}):
         E(a, z, 2, 11, fs=9, fg=CINZA, w='WRAP')
 
-    #   ⭐ OS NÚMEROS, POR SEÇÃO INTEIRA. As faixas de dado se quebram em
-    #     toda linha de grupo; a seção não se quebra.
-    COL = {
-        1: [(2, 3, N2, 'RIGHT'), (4, 5, MOEDA, 'RIGHT'), (5, 6, PCT, 'RIGHT'),
-            #   ⭐ R$ UNITÁRIO em TODA a seção, não só nas digitadas.
-            (6, 7, MOEDA, 'RIGHT')],
-        #   ⛔ PREÇO é o índice 7 do vetor e CUSTO o 8 — e o vetor começa
-        #     na coluna B. Eu tinha escrito 8 e 9, que joga os dois uma
-        #     coluna à direita, em cima de J e K. Conferir índice contra
-        #     o cabeçalho impresso é o que pega isso.
-        #   ⭐ Nesta aba a linha de item tem só CUSTO, no índice 7 → coluna
-        #     I. O par (8, 9) era resíduo da coluna PREÇO, que não existe
-        #     mais, e pintava a J, que está vazia.
-        2: [(7, 8, MOEDA, 'RIGHT')],
-        #   ⛔⛔ O ERRO QUE O JONATHAN VIU [23/11/2026]: "a coluna I a partir
-        #     da linha 60 está com formatação errada". O cabeçalho de AS
-        #     PEÇAS é PEÇA·OBSERVAÇÃO·C·L·QTD·UN·CHAVE DA BASE·CUSTO, oito
-        #     campos, índices 0 a 7 → colunas B a I. CUSTO é o índice 7,
-        #     logo a coluna I. Eu tinha (7, 8, N3), que punha número de TRÊS
-        #     CASAS no custo, e (8, 9, MOEDA), que jogava a moeda na coluna
-        #     J, vazia. O N3 era resíduo de uma coluna de espessura que esta
-        #     aba não tem · ⭐ Dinheiro em formato de número puro é o tipo de
-        #     coisa que ninguém confere e todo mundo lê errado.
-        4: [(2, 4, N2, 'RIGHT'), (4, 5, N0, 'CENTER'), (5, 6, None, 'CENTER'),
-            (7, 8, MOEDA, 'RIGHT')],
-    }
-    for s in (1, 2, 4):
+    #   ── os números, seção por seção ──
+    for s, cols in COLUNAS.items():
         d = [i for i, c in enumerate(cl) if c == 'dado%d' % s]
         if not d:
             continue
         a, z = min(d), max(d) + 1
-        for c0, c1, nf, h in COL[s]:
-            E(a, z, c0 + 1, c1 + 1, nf=nf, h=h) if nf else E(a, z, c0 + 1, c1 + 1, h=h)
-        if s == 1:
-            E(a, z, 2, 3, fs=9, fg=CINZA, w='OVERFLOW_CELL')
-        if s == 2:
-            #   ⛔ A MEDIDA VAI ATÉ F, NÃO ATÉ H. As colunas G e H passaram a
-            #     ser DIAS FABR. e DIAS MONT. em 23/11/2026, e tinham de sair
-            #     deste pedido de texto cinza, senão o amarelo nasce morto.
-            E(a, z, 3, 6, fs=9, fg=CINZA, w='OVERFLOW_CELL')
-            #   ⭐ AS DUAS COLUNAS DE DIAS, AMARELAS porque são digitadas ·
-            #     linha por linha, e não na faixa inteira, porque entre uma
-            #     linha de item e a seguinte há uma linha de OBSERVAÇÃO, que
-            #     não se digita e não se pinta.
-            for _i in d:
-                E(_i, _i + 1, 6, 8, b=True, bg=AMARELO,
-                  nf={'type': 'NUMBER', 'pattern': '0.0'}, h='CENTER')
-            #   ⭐ "01" colado vira o número 1. O formato "00" devolve o
-            #     zero à esquerda sem transformar o número em texto.
-            E(a, z, 1, 2, nf={'type': 'NUMBER', 'pattern': '00'}, h='LEFT')
-
-    for i, r in enumerate(linhas):
-        b = (r[0] if r else '') or ''
-        if b == 'TOTAL DO AMBIENTE':
-            #   ⭐ a soma dos dias é fórmula e vive em G e H; o custo em I
-            E(i, i + 1, 6, 8, b=True, nf={'type': 'NUMBER', 'pattern': '0.0'},
-              h='CENTER')
-            E(i, i + 1, 8, 9, b=True, nf=MOEDA, h='RIGHT')
-        elif b == 'CUSTO DIRETO DO AMBIENTE':
-            E(i, i + 1, 5, 6, nf=MOEDA, h='RIGHT')
-            E(i, i + 1, 6, 7, nf=PCT, h='RIGHT')
-        elif b.startswith('\u2b50 CONFER'):
-            E(i, i + 1, 8, 10, nf=MOEDA, h='RIGHT')
-        elif b in ('Consum\u00edveis', 'Embalagem'):
-            #   ⭐ 0,06 e 0,02 na coluna QUANTIDADE são 6% e 2%, e com
-            #     formato de número apareciam como "0,06". Percentual.
-            E(i, i + 1, 3, 4, nf=PCT, h='RIGHT')
-        #   ⭐⭐ OS CAMPOS QUE O AMBIENTE DIGITA [Jonathan, 19/11/2026].
-        #     AMARELO = "escreva aqui". São três, e cada um por um motivo:
-        #       · FRETE  — quantidade E custo, porque as quatro linhas de
-        #         frete da Base estão vazias e cada obra tem o seu.
-        #       · FABRICAÇÃO e MONTAGEM — só a quantidade: o CUSTO é
-        #         fórmula, dias × a célula ÚNICA do dia da dupla, que mora
-        #         em 'Preço e Comissões'!$D$11 e serve a TODOS os ambientes.
-        elif ((r[3] if len(r) > 3 else '') or '') in UN_DIGITADA:
-            #   ⭐ LINHA QUE O AMBIENTE DIGITA. Reconhece-se pela UNIDADE,
-            #     não pelo rótulo (que muda de obra para obra) nem por ter
-            #     unitário (que agora TODA linha tem). A QUANTIDADE é sempre
-            #     amarela. ⚠ Unidade nova e não listada só deixa de ficar
-            #     amarela — falha visível e inofensiva, nunca número errado.
-            E(i, i + 1, 3, 4, b=True, bg=AMARELO, nf=N2, h='RIGHT')
-            if ((r[3] if len(r) > 3 else '') or '') == 'dia':
-                #   ⛔ O UNITÁRIO DA DUPLA NÃO É AMARELO: ele é espelho da
-                #     célula Única de 'Preço e Comissões'. Pintar de amarelo
-                #     convidaria a digitar por cima da fórmula, e aí cada
-                #     ambiente teria o seu próprio dia de dupla — que é
-                #     exatamente o que o mecanismo existe para impedir.
-                E(i, i + 1, 7, 8, fs=9, fg=CINZA, nf=MOEDA, h='RIGHT')
+        for idx, nf, h in cols:
+            if nf:
+                E(a, z, idx + 1, idx + 2, nf=nf, h=h)
             else:
-                E(i, i + 1, 7, 8, b=True, bg=AMARELO, nf=MOEDA, h='RIGHT')
+                E(a, z, idx + 1, idx + 2, h=h)
+        #   a ESPECIFICAÇÃO é texto longo e cinza em toda seção
+        E(a, z, 2, 3, fs=9, fg=CINZA, w='WRAP')
+        #   ⭐ a CHAVE NA BASE, coluna K: é ela que liga a linha ao preço
+        if s == 4:
+            E(a, z, 10, 11, fs=8, fg=CINZA, h='LEFT')
+        #   ⭐⭐ AS CÉLULAS QUE SE DIGITAM, POR FAIXA E NÃO LINHA A LINHA.
+        #     Linha a linha davam 76 pedidos só para OS PARÂMETROS, e o
+        #     lote de formato passava de 100 KB. ⭐ As linhas de uma seção
+        #     são contíguas, então a faixa diz a mesma coisa em 1 pedido.
+        #   ⛔ E as de folha só valem para as linhas de CHAPA: pintar de
+        #     amarelo a célula vazia de um insumo convidaria a digitar
+        #     largura de folha onde não existe folha.
+        if s == 7:
+            ch = [i for i in d if str((linhas[i][8] if len(linhas[i]) > 8
+                                       else '') or '') == 'folha']
+            un = [i for i in d if i not in ch]
+            if ch:
+                a1, z1 = min(ch), max(ch) + 1
+                E(a1, z1, 3, 5, b=True, bg=AMARELO, nf=N2, h='RIGHT')
+                E(a1, z1, 6, 7, b=True, bg=AMARELO, nf=PCT, h='RIGHT')
+            for _c, a2, z2 in corridas(['x' if i in un else '.'
+                                        for i in range(len(linhas))], {'x'}):
+                E(a2, z2, 8, 9, b=True, bg=AMARELO, nf=MOEDA, h='RIGHT')
+            if ch:
+                E(min(ch), max(ch) + 1, 8, 9, b=True, bg=AMARELO, nf=MOEDA,
+                  h='RIGHT')
+
+    #   ── o bloco OS ITENS: medida em cinza e as duas colunas de dias ──
+    d2 = [i for i, c in enumerate(cl) if c == 'dado2']
+    if d2:
+        a, z = min(d2), max(d2) + 1
+        E(a, z, 1, 2, nf={'type': 'NUMBER', 'pattern': '00'}, h='LEFT')
+        E(a, z, 3, 4, fs=9, fg=CINZA, w='WRAP')
+        #   ⭐⭐ AS DUAS COLUNAS DE DIAS, AMARELAS porque são digitadas, e o
+        #     Jonathan escolheu DIA DE DUPLA com fabricação e montagem
+        #     separadas · ⛔ elas NÃO somam ao custo, por decisão dele: a
+        #     cascata já cobra comissão de produção e de montagem.
+        #   ⭐ as 6 linhas de item são contíguas: uma faixa basta
+        E(a, z, 4, 6, b=True, bg=AMARELO,
+          nf={'type': 'NUMBER', 'pattern': '0.0'}, h='CENTER')
+
+    #   ── a linha do CUSTO DIRETO tem o dinheiro em F e o percentual em G ──
+    for i, r in enumerate(linhas):
+        b = str((r[0] if r else '') or '')
+        if b == 'CUSTO DIRETO DO AMBIENTE':
+            E(i, i + 1, 5, 6, fs=12, b=True, nf=MOEDA, h='RIGHT')
+            E(i, i + 1, 6, 7, fs=10, b=True, nf=PCT, h='RIGHT')
+        elif b in ('Consumíveis', 'Embalagem'):
+            #   ⭐ o percentual aqui é TEXTO vindo de TEXT(), e texto não
+            #     tem formato de número: só centralizar.
+            E(i, i + 1, 4, 5, h='CENTER')
     return R, cl
 
 
-LARGURAS = [('A', 0, 1, 28), ('B', 1, 2, 300), ('C', 2, 3, 430), ('D-K', 3, 11, 100)]
+LARGURAS = [('A', 0, 1, 28), ('B', 1, 2, 300), ('C', 2, 3, 430),
+            ('D-K', 3, 11, 94)]
 
 
-#   ⛔ A ABA REESCRITA NÃO COMEÇA LIMPA. Ela já tem o formato da versão
-#     anterior, e a anterior era MAIS LONGA: tirar o Branco TX encolheu as
-#     nove abas de 781 para 760 linhas. Sem zerar antes, o que sobra fica
-#     com seção, borda e fundo de um conteúdo que não existe mais — e a
-#     mescla antiga impede a nova de entrar.
-#   ⛔ E A FAIXA DE LIMPEZA NÃO PODE PASSAR DO FIM DA ABA: a API
-#     recusa endRowIndex maior que o número de linhas da folha. Esta
-#     planilha tem UMA aba de ambiente, de 150 linhas.
-LIMPA = 132   # ⭐ a aba cresceu com a fórmica e a cola: 126 linhas de conteúdo
+def zera(sid, n):
+    """Devolve a folha inteira ao estilo base ANTES de qualquer pedido de
+    formato. Sem isto, formatar é pintar por cima.
 
-
-def zera(sid):
-    """Desfaz a mescla e devolve a folha inteira ao estilo base, antes de
-    qualquer pedido de formato. Sem isto, formatar é pintar por cima."""
-    faixa = {'sheetId': sid, 'startRowIndex': 0, 'endRowIndex': LIMPA,
+    ⛔⛔⛔ E O `unmergeCells` AQUI É O MAIS IMPORTANTE DESTE ARQUIVO. Merge
+      é FORMATO, e formato sobrevive ao clear de valores: uma célula
+      mesclada de B a K, sobrada do layout anterior, aceita valor só na
+      âncora e DESCARTA o resto da linha em silêncio — com a API
+      respondendo "success" e contando as células como gravadas. Foi o que
+      engoliu três linhas em 23/11/2026, inclusive dois TOTAIS DE ITEM, e
+      o que me fez diagnosticar "gravação em bloco perde linha" duas vezes
+      antes de ir olhar os merges."""
+    faixa = {'sheetId': sid, 'startRowIndex': 0, 'endRowIndex': n,
              'startColumnIndex': 0, 'endColumnIndex': 11}
     return [{'unmergeCells': {'range': faixa}},
             {'repeatCell': {'range': faixa, 'fields': 'userEnteredFormat',
@@ -329,7 +425,7 @@ def zera(sid):
 
 
 def pagina(sid, n):
-    R = zera(sid)
+    R = zera(sid, n)
     R += [{'updateSheetProperties': {'properties': {
         'sheetId': sid, 'gridProperties': {'frozenRowCount': 2,
                                            'hideGridlines': True}},
@@ -342,5 +438,10 @@ def pagina(sid, n):
     return R
 
 
-#   ⛔ O bloco de IDS e o __main__ do projeto de origem saíram: aqui a aba é
-#     uma só e quem chama é `planilha.py`.
+#   ⭐ e as linhas de texto corrido voltam a ser mescladas DEPOIS de tudo
+def mescla(sid, cl):
+    return [{'mergeCells': {'mergeType': 'MERGE_ALL',
+             'range': {'sheetId': sid, 'startRowIndex': i, 'endRowIndex': i + 1,
+                       'startColumnIndex': 1, 'endColumnIndex': 11}}}
+            for i, c in enumerate(cl)
+            if c in ('titulo', 'subtitulo', 'secao')]

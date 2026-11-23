@@ -1,17 +1,24 @@
-# -*- coding: utf-8 -*-
-"""CENTURION MOTORS — o levantamento vira aba de planilha.
+"""CENTURION MOTORS — ⚠ ESTE ARQUIVO VIROU REPOSITÓRIO DE TEXTO.
 
-⭐ [Jonathan, 23/11/2026] "vamos orçar pela planilha."
+⛔⛔ O QUE MUDOU EM 23/11/2026: o Jonathan apontou que "os itens nao estao
+  separados", e a aba foi reconstruída no PADRÃO POR ITEM. Quem gera a aba
+  agora é o `aba.py`; o `linhas()` daqui é do layout ANTIGO — painel
+  agregado em cima e peças soltas embaixo — e NÃO é mais usado.
 
-⛔⛔ COPIA-SE O MODELO, NUNCA O ORÇAMENTO DE OUTRO CLIENTE. Esta planilha
-  nasceu de `Valvic · PLANILHA BASE de Levantamento (modelo vazio)`
-  (11IgmtI5Xd...). O arquivo de outro cliente carregaria os dados dele e
-  quebraria o IMPORTRANGE [Jonathan, 29/10/2026].
+⭐ O que continua vivo aqui, e é por isso que o arquivo não foi apagado:
+     NOTAS     as 21 notas da leitura da prancha
+     DUVIDAS   as 8 dúvidas abertas
+     FORA      o que não é marcenaria
+  São TEXTO, não dependem de layout nenhum, e o `aba.py` os importa daqui
+  em vez de duplicá-los. ⛔ Texto duplicado é texto que diverge.
 
-⛔ A ORDEM É DESMESCLAR → GRAVAR VALOR → FORMATAR, e as linhas começam na
-  coluna B, não em A.
+⚠ O `formulas.py` foi APAGADO na mesma data: o `aba.py` faz o que ele
+  fazia, e melhor — monta as fórmulas contra UMA tabela de parâmetros em
+  vez de duas, e resolve as referências de linha em duas passadas, para
+  não haver número de linha cravado em lugar nenhum.
 
-Planilha: 1viDAEugwv4IJgML4v0JJOpusjIkEQP8VyO2HzScwLRw
+⛔ NÃO acrescentar nada ao `linhas()` daqui. Se precisar mexer no layout,
+  é no `aba.py`.
 """
 import importlib.util, json, math, pathlib
 
@@ -56,7 +63,7 @@ def custo_itens():
         c = 0.0
         for k, v in it.areas().items():
             preco = b.PRECO['%s %d' % k]
-            rend = b.rend(k[0])
+            rend = b.rend(k)
             c += v / rend * preco            # a fatia da chapa, sem arredondar
         c += it.c_fita() * b.FITA_PERDA * (b.FITA_22 + b.FILETE_MAQ)
         c += it.c_lin() + it.c_serv()
@@ -129,11 +136,11 @@ def linhas():
                   _n(unit) if unit is not None else ''])
 
     for k, n in sorted(T['chapas'].items()):
-        rend = b.rend(k[0])
+        rend = b.rend(k)
         esp = ('área líquida de %s m² · rendimento de %s m² por chapa '
                '(%s × %s a 80%%) · ⛔ arredonda-se por PADRÃO × ESPESSURA'
                % (_br(T['area'][k]), _br(rend),
-                  _br(b.folha(k[0])[0], 0), _br(b.folha(k[0])[1], 0)))
+                  _br(b.folha(k)[0], 0), _br(b.folha(k)[1], 0)))
         if k[0] == lv.FLEX:
             esp = ('⭐ R$ 600,00 A CHAPA, PREÇO DO JONATHAN [23/11/2026] · '
                    '⛔ não é número da Base: a Base só tem compensado COMUM, '

@@ -104,19 +104,63 @@ COLA_KG = 14
 #     pergunta usa `b.rend(material)`: material novo com folha própria se
 #     acrescenta AQUI e nada mais precisa saber dele.
 FLEX = 'Compensado flexível'
+
+#   ⛔⛔⛔ E AQUI MORA O ERRO QUE O JONATHAN PEGOU EM 23/11/2026: "temos 6
+#     nichos, cada um deles gasta 1 chapa de 6mm para o fundo, vc
+#     considerou apenas 4 chapas".
+#   ⭐ O APROVEITAMENTO DE 80% É UMA MÉDIA, E MÉDIA SÓ VALE PARA PEÇA QUE
+#     REPETE NA CHAPA. O fundo do nicho tem 104,1 × 193,0 e a chapa tem
+#     275 × 185: os 193 cm só cabem no lado de 275, e o que sobra é uma
+#     faixa de 82 × 185 e outra de 193 × 81 — ⛔ NENHUMA DAS DUAS comporta
+#     um segundo fundo, que precisa de 104,1 cm de um lado. Logo CADA FUNDO
+#     COME UMA CHAPA INTEIRA, e o aproveitamento real é de 39,5%, não 80%.
+#   ⛔ Pela média eu dava 3 chapas para 6 fundos. Pelo plano de corte são
+#     6. Duas vezes e meia mais chapa, e nada quebrava: a conta "área ÷
+#     rendimento" fechava lindamente num número que o marceneiro não
+#     consegue cortar.
+#   ⭐ A correção certa não é somar chapas na mão, é dizer a VERDADE do
+#     rendimento desta chave: uma chapa rende UM fundo. Aí o motor acerta
+#     sozinho, e a planilha mostra os 39,5% na cara de quem lê.
+FUNDO_POR_CHAPA = 1
+#   ⚠ O rendimento do fundo depende das cotas do nicho, que só são
+#     declaradas lá embaixo — então a ENTRADA desta chave nasce lá, junto
+#     delas, e não aqui. ⭐ É o lugar certo: quem mexer na cota do nicho vê
+#     o rendimento mudar na linha de baixo.
+
+#   ⭐ A chave é (padrão, espessura) — não só o padrão. "MDF Amadeirado"
+#     aparece em 15, 18 e 6 mm, e só a de 6 mm é o fundo do nicho.
 REND_DE = {FLEX: COMP_FLEX_REND, FORMICA: FORMICA_REND}
 FOLHA_DE = {FLEX: (COMP_FLEX_C, COMP_FLEX_L),
             FORMICA: (FORMICA_C, FORMICA_L)}
 
 
-def rend(material):
-    """m² úteis por folha do material, já com o aproveitamento."""
-    return REND_DE.get(material, REND)
+def _duas(k):
+    """aceita ('MDF Amadeirado', 6) ou só 'MDF Amadeirado'."""
+    return (k, k[0]) if isinstance(k, tuple) else (k, k)
 
 
-def folha(material):
+def rend(chave):
+    """m² úteis por folha, já com o aproveitamento · ⭐ a chave completa
+    manda sobre o padrão, que manda sobre o rendimento geral."""
+    k, mat = _duas(chave)
+    if k in REND_DE:
+        return REND_DE[k]
+    return REND_DE.get(mat, REND)
+
+
+def folha(chave):
     """(comprimento, largura) da folha em cm."""
-    return FOLHA_DE.get(material, (CHAPA_C, CHAPA_L))
+    k, mat = _duas(chave)
+    if k in FOLHA_DE:
+        return FOLHA_DE[k]
+    return FOLHA_DE.get(mat, (CHAPA_C, CHAPA_L))
+
+
+def aprov(chave):
+    """⭐ o aproveitamento REAL desta chave · é o que a planilha exibe, e é
+    o que denuncia uma peça que não encaixa: 39,5% grita, 80% engana."""
+    c, l = folha(chave)
+    return rend(chave) / (c * l / 10000)
 
 # ── quem vai em que chapa · as respostas dele, uma a uma ───────────────
 #   ⭐⭐ O ARCO VAI EM MDF BRANCO [Jonathan, 23/11/2026]: "Os arcos podem
@@ -212,8 +256,35 @@ NICHO_ABOBADA = 53.0                # a parte curva · raio ≈ 104,1/2 = 52,05
 NICHO_RETO = NICHO_H - NICHO_ABOBADA
 MOLDURA_L = 12.0                    # ⭐ "largura de 12cm" [Jonathan]
 NICHO_PROF = 30.0                   # ⭐ decisão do Jonathan, 23/11/2026
-N_NICHOS = 7                        # 5 na VISTA BB + 2 na VISTA AA
+#   ⭐⭐ SÃO SEIS NICHOS, NÃO SETE [Jonathan, 23/11/2026]: "temos 6
+#     nichos". Eu havia contado 5 na VISTA BB mais 2 na VISTA AA e somado
+#     7. ⛔ Isto não mexe só no fundo: mexe na costela, no compensado, na
+#     fórmica, no alizar, na laca, na prateleira, na alma de aço e no LED —
+#     tudo que é "por nicho". Seis prateleiras a menos (36 em vez de 42).
+N_NICHOS = 6
+
+#   ⭐⭐ E AQUI O RENDIMENTO REAL DO FUNDO, agora que as cotas existem:
+#     uma chapa de 275 × 185 rende UM fundo de 104,1 × 193, porque os 193
+#     cm só entram no lado de 275 e a sobra de 82 cm não comporta o
+#     segundo. ⛔ Aproveitamento de 39,5%, não os 80% da média.
+FUNDO_REND = FUNDO_POR_CHAPA * NICHO_L * NICHO_H / 10000
+REND_DE[('MDF Amadeirado', FUNDO_ESP)] = FUNDO_REND
 PASSAGEM_L = 115.0                  # o arco de passagem, VISTA BB
+#   ⭐⭐ SÃO DOIS PÓRTICOS DE ACESSO, E ELES SÃO NOSSOS [Jonathan,
+#     23/11/2026]: "os dois porticos de acesso aos ambientes tbm serao em
+#     marcenaria". Eu havia lançado UM, lido na VISTA BB.
+#   ⚠ PREMISSA: entendi que são dois pórticos iguais ao que eu já tinha —
+#     mesmo vão de 115, mesma moldura de 12 cm, mesma profundidade. Se o
+#     segundo tiver outro vão, o número muda; está nas dúvidas.
+N_PASSAGEM = 2
+
+#   ⭐⭐ OS PAINÉIS DE PAREDE VÃO A 15 mm [Jonathan, 23/11/2026]: "os
+#     paineis nas paredes tbm podem ser de 15mm". Mesma lógica do forro:
+#     painel é PELE sobre a alvenaria, quem sustenta é a tira de estrutura
+#     atrás, então 15 mm basta e custa R$ 550 em vez de R$ 700.
+#   ⛔ Mas a BASE DO ESPELHO fica em 18: espelho colado não perdoa barriga,
+#     e ali a chapa é o que garante o plano.
+PAINEL_ESP = 15
 
 #   ⭐⭐ A PRATELEIRA, COMO O JONATHAN MANDOU [23/11/2026]: "considere 6 em
 #     cada, com 30mm de espessura, duas peças de 15mm". Eu havia contado 4

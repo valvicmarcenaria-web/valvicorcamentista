@@ -194,7 +194,7 @@ e estimar pela escala, sinalizando.
    `M.mc()` em todos e conferir o pior. Preço de tabela com cartão em 10×
    custa **8,9 pontos** mais de encargo que o mesmo preço à vista.
    Custo direto: matéria-prima (oito linhas) + terceirizados + logística
-   (três fretes) + **embalagem, 2% do próprio custo direto**.
+   (três fretes) + **embalagem, 3% do próprio custo direto** ⭐ [Jonathan, 19/11/2026] — esta linha dizia 2%, que é o número da aba MDF da Base; ele fixou 3% e a regra escrita tinha ficado atrás da decisão.
 4. **Ferramenta oficial = `ferramentas/validacao-orcamento.html`** (o app). A
    partir de agora **o orçamento é feito no app**: biblioteca editável, ambientes,
    indicadores de MC e situação de caixa, importar/exportar JSON. Os outros HTML
