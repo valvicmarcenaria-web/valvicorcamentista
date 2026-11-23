@@ -26,62 +26,71 @@
    8.0,
    "chapa",
    4800.0,
-   0.0505,
+   0.0495,
    600.0
   ],
   [
-   "MDF Amadeirado 18 mm",
-   "área líquida de 263,51 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
-   65.0,
+   "MDF Amadeirado 6 mm",
+   "área líquida de 14,06 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   4.0,
    "chapa",
-   45500.0,
-   0.4784,
+   1400.0,
+   0.0144,
+   350.0
+  ],
+  [
+   "MDF Amadeirado 15 mm",
+   "área líquida de 26,23 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   7.0,
+   "chapa",
+   3850.0,
+   0.0397,
+   550.0
+  ],
+  [
+   "MDF Amadeirado 18 mm",
+   "área líquida de 196,35 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   49.0,
+   "chapa",
+   34300.0,
+   0.3539,
    700.0
   ],
   [
-   "MDF Branco TX 18 mm",
-   "área líquida de 23,64 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
-   6.0,
+   "MDF Branco TX 15 mm",
+   "área líquida de 27,70 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   7.0,
    "chapa",
-   2400.0,
-   0.0252,
+   2450.0,
+   0.0253,
+   350.0
+  ],
+  [
+   "MDF Branco TX 18 mm",
+   "área líquida de 70,69 m² · rendimento de 4,07 m² por chapa (275 × 185 a 80%) · ⛔ arredonda-se por PADRÃO × ESPESSURA",
+   18.0,
+   "chapa",
+   7200.0,
+   0.0743,
    400.0
   ],
   [
    "Fita de borda de cor, 22 mm",
    "bordas aparentes · R$ 3,00 o metro mais 10% de desperdício",
-   122.02,
+   71.48,
    "m",
-   366.06,
-   0.0038,
+   214.43,
+   0.0022,
    3.0
   ],
   [
    "Filetagem na coladeira automática",
    "R$ 2,50 o metro · ⚠ é mão de obra por metro: vive fora dos dias de dupla",
-   122.02,
+   71.48,
    "m",
-   305.05,
-   0.0032,
+   178.69,
+   0.0018,
    2.5
-  ],
-  [
-   "Sarrafo de pinus · barroteamento, malha de 60 × 120",
-   "barrote a cada 60 cm mais travessa a cada 120 · é o que segura o forro",
-   392.5,
-   "m",
-   3140.0,
-   0.033,
-   8.0
-  ],
-  [
-   "Sarrafo de pinus · MÃO AMIGA, escora em T de montagem",
-   "⭐ 10 escoras · o pé vai do piso ao forro (2,91 m) e a travessa de 60 cm espalha a pressão sem marcar a placa",
-   35.1,
-   "m",
-   280.8,
-   0.003,
-   8.0
   ],
   [
    "Fita de borda de cor, 22 mm · perímetro do forro",
@@ -98,62 +107,62 @@
    55.39,
    "m",
    138.47,
-   0.0015,
+   0.0014,
    2.5
   ],
   [
    "Laca café · face, intradorso e alizar",
    "⭐ R$ 650,00 o m², DECISÃO DO JONATHAN [23/11/2026: \"laca considere 650\"] · é a linha ALTA da Base, \"Laca ou pintura em peça lisa\" do materiais.json, e não a de R$ 300 dos jobs, que eu havia lançado · ⭐ e é o lugar certo, porque as duas linhas da Base falam de peça LISA e curva leva mais lixa e mais tempo · ⛔ o extradorso (11,60 m²) está revestido e NÃO lacado: ele some nos 6 cm entre pórticos",
-   17.09,
+   19.8,
    "m²",
-   11107.57,
-   0.1168,
+   12867.0,
+   0.1328,
    650.0
+  ],
+  [
+   "Fita de borda de cor · perímetro das prateleiras montadas",
+   "⚠ A BORDA TEM 30 mm E A FITA DA BASE TEM 22 mm. Prateleira de duas camadas coladas pede fita de 35 mm, que a Base não lista — lanço a de 22 mm a R$ 3,00 e marco a diferença nas dúvidas · uma fita por prateleira, não por camada",
+   75.81,
+   "m",
+   227.44,
+   0.0023,
+   3.0
+  ],
+  [
+   "Filetagem na coladeira automática · prateleiras",
+   "",
+   75.81,
+   "m",
+   189.54,
+   0.002,
+   2.5
   ],
   [
    "LED COB · conjunto completo, uma régua por prateleira",
    "⭐ CONJUNTO: fita, perfil, usinagem e instalação · a Base avisa que o LED instalado vai de R$ 66 a R$ 150 conforme o que a linha inclui, e prateleira que acende é o conjunto inteiro",
-   29.15,
+   43.72,
    "m",
-   4372.2,
-   0.046,
+   6558.3,
+   0.0677,
    150.0
   ],
   [
    "Alma de aço · barra chata de 3 m",
-   "⭐ uma alma por prateleira, como a Base manda · 28 prateleiras de 104 cm dão 29 m de barra",
-   10.0,
+   "⭐ uma alma por PRATELEIRA, como a Base manda, não uma por camada · 42 prateleiras de 104 cm dão 44 m de barra",
+   15.0,
    "barra",
-   500.0,
-   0.0053,
+   750.0,
+   0.0077,
    50.0
   ],
   [
    "Fonte de LED",
    "uma a cada 8 a 10 m de régua",
-   4.0,
+   5.0,
    "un",
-   480.0,
-   0.005,
+   600.0,
+   0.0062,
    120.0
-  ],
-  [
-   "Sarrafo de pinus · estrutura de fixação, montante a cada 60",
-   "o painel é PELE sobre a alvenaria: o sarrafo aprumado é o que recebe o parafuso",
-   65.58,
-   "m",
-   524.66,
-   0.0055,
-   8.0
-  ],
-  [
-   "Sarrafo de pinus · estrutura de fixação, montante a cada 60",
-   "⛔ espelho colado não perdoa barriga na base: o sarrafo aprumado é o que garante o plano",
-   39.39,
-   "m",
-   315.13,
-   0.0033,
-   8.0
   ],
   [
    "VISTA AA · espelho de 350",
@@ -161,7 +170,7 @@
    7.25,
    "m²",
    4347.0,
-   0.0457,
+   0.0449,
    600.0
   ],
   [
@@ -170,7 +179,7 @@
    16.39,
    "m²",
    9834.0,
-   0.1034,
+   0.1015,
    600.0
   ],
   [
@@ -184,37 +193,37 @@
   ],
   [
    "Corte",
-   "79 chapas a R$ 2,00 e 84 peças a R$ 2,50",
-   84.0,
+   "93 chapas a R$ 2,00 e 143 peças a R$ 2,50",
+   143.0,
    "peça",
-   368.0,
-   0.0039,
-   4.38
+   543.5,
+   0.0056,
+   3.8
   ],
   [
    "Consumíveis",
-   "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo",
+   "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo · ⭐ O R$ UNITÁRIO AQUI É A BASE, não um preço: a soma da chapa e de TODA a fita · ⛔ a fita lançada como linha linear (o perímetro do forro e as prateleiras montadas, R$ 393,61) estava ficando fora desta base, porque só a fita do campo `fita` das peças entrava — o mesmo material contava ou não conforme COMO eu o lancei. Corrigido",
    0.06,
    "%",
-   3183.96,
-   0.0335,
-   53066.06
+   3276.48,
+   0.0338,
+   54608.04
   ],
   [
    "Embalagem",
-   "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre tudo o que vem acima · papelão, filme e cantoneira",
+   "⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · incide sobre tudo o que vem acima · papelão, filme e cantoneira · ⭐ o R$ UNITÁRIO também é a BASE, não um preço · ⭐ esta linha absorve os centavos de arredondamento das linhas acima, para que somar a coluna dê exatamente o CUSTO DIRETO",
    0.03,
    "%",
-   2769.87,
+   2822.74,
    0.0291,
-   92329.09
+   94091.03
   ],
   [
    "CUSTO DIRETO DO AMBIENTE",
    "",
    "",
    "",
-   95098.96,
+   96913.76,
    1.0
   ],
   [],
@@ -241,11 +250,11 @@
    "",
    "",
    "",
-   33029.65
+   31684.93
   ],
   [
    "",
-   "157 m² de forro em MDF amadeirado 18 mm, liso · barroteamento, fixação e escora de montagem"
+   "157 m² de forro em MDF amadeirado 18 mm, liso · estruturação em tira de chapa branca de 15 mm, que cobre o barroteamento e as escoras de mão amiga"
   ],
   [
    "02",
@@ -255,7 +264,7 @@
    "",
    "",
    "",
-   25245.63
+   24254.15
   ],
   [
    "",
@@ -264,16 +273,16 @@
   [
    "03",
    "Nichos por dentro · fundo, prateleira e luz",
-   "7 fundos e 28 prateleiras",
+   "7 fundos e 42 prateleiras",
    "",
    "",
    "",
    "",
-   10268.58
+   14262.62
   ],
   [
    "",
-   "7 fundos e 28 prateleiras de 104 × 30, com alma de aço e LED em cada uma"
+   "7 fundos em MDF de 6 mm e 42 prateleiras de 104 × 30 com 30 mm de espessura, em 84 peças de 15 mm, cada uma com alma de aço e LED"
   ],
   [
    "04",
@@ -283,7 +292,7 @@
    "",
    "",
    "",
-   8261.26
+   8238.99
   ],
   [
    "",
@@ -297,7 +306,7 @@
    "",
    "",
    "",
-   2835.59
+   2791.49
   ],
   [
    "",
@@ -311,7 +320,7 @@
    "",
    "",
    "",
-   15458.25
+   15681.58
   ],
   [
    "",
@@ -371,7 +380,7 @@
   ],
   [
    "■ Forro amadeirado",
-   "157 m² de forro em MDF amadeirado 18 mm, liso · barroteamento, fixação e escora de montagem"
+   "157 m² de forro em MDF amadeirado 18 mm, liso · estruturação em tira de chapa branca de 15 mm, que cobre o barroteamento e as escoras de mão amiga"
   ],
   [
    "Forro amadeirado · a área inteira",
@@ -384,18 +393,28 @@
    27002.46
   ],
   [
+   "Estruturação do forro · tira de MDF branco 15, barrote e mão amiga",
+   "⭐ 5 chapas cravadas pelo Jonathan = 20,35 m² de chapa = 290,7 m de tira de 7 cm · cobre o barroteamento E as escoras de mão amiga, que são o que segura a placa contra a laje enquanto se parafusa · ⚠ dá uma malha de cerca de 75 × 120, mais aberta que os 60 × 120 que eu havia assumido com sarrafo",
+   29071.4,
+   7.0,
+   1,
+   "pç",
+   "MDF Branco TX 15",
+   1750.0
+  ],
+  [
    "■ Pórticos curvos laqueados café",
    "7 nichos de 104 × 193 mais o arco de passagem de 115 · moldura de 12 cm, 30 cm de profundidade"
   ],
   [
    "Moldura estrutural do arco de nicho · costela",
-   "⛔ retângulo do recorte, não o perímetro · o miolo volta ao corte",
+   "⛔ retângulo do recorte, não o perímetro · o miolo volta ao corte · ⭐ MDF BRANCO: a peça é lacada café, a chapa não aparece",
    128.1,
    204.1,
    14,
    "pç",
-   "MDF Amadeirado 18",
-   6293.86
+   "MDF Branco TX 18",
+   3596.49
   ],
   [
    "Compensado flexível do arco de nicho · intradorso",
@@ -419,23 +438,23 @@
   ],
   [
    "Alizar de acabamento do arco de nicho",
-   "⚠ largura de 5 cm é premissa: a prancha não cota o alizar",
+   "⭐ 12 cm de largura [Jonathan, 23/11/2026: \"o alizar o projeto mostra 12cm\"] — eu havia lançado 5 cm como premissa e estava errada · ⭐ MDF BRANCO, porque é peça lacada",
    481.2,
-   5.0,
+   12.0,
    7,
    "pç",
-   "MDF Amadeirado 18",
-   289.68
+   "MDF Branco TX 18",
+   397.27
   ],
   [
    "Moldura estrutural do arco de passagem · costela",
-   "⛔ retângulo do recorte, não o perímetro · o miolo volta ao corte",
+   "⛔ retângulo do recorte, não o perímetro · o miolo volta ao corte · ⭐ MDF BRANCO: a peça é lacada café, a chapa não aparece",
    139.0,
    209.5,
    2,
    "pç",
-   "MDF Amadeirado 18",
-   1001.69
+   "MDF Branco TX 18",
+   572.39
   ],
   [
    "Compensado flexível do arco de passagem · intradorso",
@@ -459,37 +478,37 @@
   ],
   [
    "Alizar de acabamento do arco de passagem",
-   "⚠ largura de 5 cm é premissa: a prancha não cota o alizar",
+   "⭐ 12 cm de largura [Jonathan, 23/11/2026: \"o alizar o projeto mostra 12cm\"] — eu havia lançado 5 cm como premissa e estava errada · ⭐ MDF BRANCO, porque é peça lacada",
    498.3,
-   5.0,
+   12.0,
    1,
    "pç",
-   "MDF Amadeirado 18",
-   42.85
+   "MDF Branco TX 18",
+   58.77
   ],
   [
    "■ Nichos por dentro · fundo, prateleira e luz",
-   "7 fundos e 28 prateleiras de 104 × 30, com alma de aço e LED em cada uma"
+   "7 fundos em MDF de 6 mm e 42 prateleiras de 104 × 30 com 30 mm de espessura, em 84 peças de 15 mm, cada uma com alma de aço e LED"
   ],
   [
    "Fundo do nicho · era ADESIVO na prancha",
-   "⭐ decisão do Jonathan: onde a prancha diz adesivo, vai painel de MDF",
+   "⭐ 6 mm, decisão do Jonathan · AMADEIRADO, porque é a face vista dentro do nicho · ⭐ a Base manda fundo por encaixe em rasgo, SEM fita — por isso esta linha não tem borda",
    104.1,
    193.0,
    7,
    "pç",
-   "MDF Amadeirado 18",
-   2418.85
+   "MDF Amadeirado 6",
+   1209.43
   ],
   [
-   "Prateleira do nicho",
-   "28 prateleiras · 4 por nicho, contadas na VISTA BB ampliada",
+   "Prateleira do nicho · camada de 15 mm",
+   "⭐ 42 prateleiras × 2 camadas = 84 peças · 6 por nicho, cravadas pelo Jonathan (eu havia contado 4 na VISTA BB) · as duas camadas colam e viram uma peça de 30 mm",
    104.1,
    30.0,
-   28,
+   84,
    "pç",
-   "MDF Amadeirado 18",
-   1503.95
+   "MDF Amadeirado 15",
+   3545.03
   ],
   [
    "■ Painéis de parede · o que era adesivo",
@@ -556,6 +575,16 @@
    1793.51
   ],
   [
+   "Estruturação do painel · tira de MDF branco 15, montante a cada 60",
+   "o painel é PELE sobre a alvenaria: a tira aprumada é o que recebe o parafuso · 65,6 m de tira de 7 cm, saída de chapa branca de 15 mm, que é o que a Base manda para estrutura",
+   6558.3,
+   7.0,
+   1,
+   "pç",
+   "MDF Branco TX 15",
+   394.79
+  ],
+  [
    "■ Painéis para receber o espelho",
    "23,64 m² de base em MDF 18 mm, aprumada e plana, onde o espelho vai colado"
   ],
@@ -580,6 +609,16 @@
    1610.81
   ],
   [
+   "Estruturação da base · tira de MDF branco 15, montante a cada 60",
+   "⛔ espelho colado não perdoa barriga na base: a tira aprumada é o que garante o plano · 39,4 m de tira de 7 cm",
+   3939.2,
+   7.0,
+   1,
+   "pç",
+   "MDF Branco TX 15",
+   237.12
+  ],
+  [
    "■ Espelhos prata, colados sobre o painel",
    "23,64 m² de espelho prata nas vistas AA e CC"
   ],
@@ -595,23 +634,27 @@
   ],
   [
    "",
-   "⭐⭐ O FORRO TEM 157 m² CRAVADOS NA PRANCHA: \"ÁREA FORRO 157m²\", escrito na planta 01. Não é cálculo meu, é número do projetista · São 39 chapas e R$ 27.300 só de material: o maior item do orçamento, sozinho."
+   "⭐⭐ O FORRO TEM 157 m² CRAVADOS NA PRANCHA: \"ÁREA FORRO 157m²\", escrito na planta 01. Não é cálculo meu, é número do projetista · Sozinho ele consome 38,6 chapas de amadeirado, R$ 27.002,46 de material: o maior item do orçamento."
   ],
   [
    "",
-   "⭐ A MÃO AMIGA É MATERIAL DE MONTAGEM, NÃO ESTRUTURA [Jonathan, 23/11/2026: \"importante considerar material para montagem de mao amiga\"]. São as escoras em T — um sarrafo em pé com travessa no topo — que seguram a placa contra a laje enquanto o marceneiro parafusa. Sem elas não se monta forro a 2,91 m do chão. A Base tem a linha: \"Sarrafo de pinus · Estrutura interna · R$ 8,00/m\" · Estão orçadas 10 escoras, e elas são uma linha SEPARADA do barroteamento, que é o que fica."
+   "⛔⛔ NÃO USAMOS SARRAFO DE PINUS [Jonathan, 23/11/2026]. Eu havia lançado 532,57 m de sarrafo a R$ 8,00 o metro — R$ 4.260,59 — em QUATRO linhas: barroteamento do forro, escoras de mão amiga, montante dos painéis e montante da base do espelho. Todas saíram · ⭐ E a Base já dizia o que entra, em dois lugares que eu não cruzei: \"MDF Branco TX · Estrutura e caixaria · 15 mm · R$ 350,00\" e, na tabela ESPESSURA PADRÃO POR APLICAÇÃO, \"Estrutura e caixaria · 15 mm\". A casa estrutura com CHAPA CORTADA EM TIRA, não com madeira de lei · ⛔ E isso muda de COLUNA no Painel: a estruturação deixou de ser material por metro e virou chapa, que se compra inteira e se arredonda por padrão × espessura."
   ],
   [
    "",
-   "⭐⭐ O PÓRTICO CURVO, CAMADA POR CAMADA [Jonathan, 23/11/2026]: moldura estrutural de MDF (as costelas), revestida de compensado flexível nos DOIS lados — intradorso, que é a curva de dentro, e extradorso, a de fora — mais o alizar de acabamento externo. A moldura tem 12 cm de largura de face, cota confirmada na VISTA BB."
+   "⭐ A MÃO AMIGA É MATERIAL DE MONTAGEM, NÃO ESTRUTURA [Jonathan, 23/11/2026: \"importante considerar material para montagem de mao amiga\"]. São as escoras em T — uma tira em pé com travessa no topo — que seguram a placa contra a laje enquanto o marceneiro parafusa. Sem elas não se monta forro a 2,91 m do chão · ⭐ O número é dele: \"Considere 5 chapas brancas de 15mm para estruturação\", e essas 5 chapas cobrem o barroteamento E as escoras, 20,35 m² de chapa que dão 290,7 m de tira de 7 cm · ⚠ Isso é uma malha de cerca de 75 × 120, mais aberta que os 60 × 120 que eu havia assumido com sarrafo."
   ],
   [
    "",
-   "⛔⛔ O RECORTE DO ARCO NÃO SE COMPRA PELO PERÍMETRO, SE COMPRA PELO RETÂNGULO QUE ELE OCUPA NA CHAPA. Um arco de 12 cm de face parece consumir 0,55 m²; na chapa ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐ E O MIOLO DÁ 32,53 m², que cabe inteiro o fundo e a prateleira de todos os nichos. Está orçado SEM esse aproveitamento, que é o conservador — o ganho está nas dúvidas."
+   "⭐⭐ O PÓRTICO CURVO, CAMADA POR CAMADA [Jonathan, 23/11/2026]: moldura estrutural de MDF (as costelas), revestida de compensado flexível nos DOIS lados — intradorso, que é a curva de dentro, e extradorso, a de fora — mais o alizar de acabamento externo. A moldura tem 12 cm de largura de face, cota confirmada na VISTA BB, e o alizar tem os mesmos 12 cm, que foi ele quem corrigiu: \"o alizar o projeto mostra 12cm\" · ⭐⭐ E A CHAPA DO PÓRTICO É MDF BRANCO, não amadeirado — \"Os arcos podem ser em mdf branco\". É óbvio depois de dito: a peça é LACADA CAFÉ, a laca cobre tudo, e pagar R$ 700 de chapa amadeirada para esconder sob laca é jogar dinheiro fora. Branco 18 custa R$ 400, e são 47,06 m² entre costela e alizar."
   ],
   [
    "",
-   "⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas dúvidas mais caras desta folha: \"Compensado flexivel, custo - 600,00 a chapa\" e \"laca considere 650\" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Juntos somam R$ 8.125,67 ao custo direto, que foi de R$ 86.973,29 para R$ 95.098,96: R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 nos 17,09 m² de laca, R$ 108,00 de consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⭐ E a folha não ficou mais CARA por acaso, ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como \"primeira cotação a fazer\", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas."
+   "⛔⛔ O RECORTE DO ARCO NÃO SE COMPRA PELO PERÍMETRO, SE COMPRA PELO RETÂNGULO QUE ELE OCUPA NA CHAPA. Um arco de 12 cm de face parece consumir 0,55 m²; na chapa ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐⭐ E O MIOLO FICOU MAIS VALIOSO DEPOIS QUE OS ARCOS VIRARAM BRANCOS: são 32,53 m² de MDF BRANCO 18, que é exatamente a chapa da base do espelho (23,64 m²) — cabe inteiro, com folga. Antes o miolo era amadeirado e teria de servir para fundo ou prateleira, que mudaram de espessura e não encaixam mais · Está orçado SEM aproveitar, e o ganho está na primeira dúvida."
+  ],
+  [
+   "",
+   "⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas dúvidas mais caras desta folha: \"Compensado flexivel, custo - 600,00 a chapa\" e \"laca considere 650\" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Os dois juntos somaram R$ 8.125,67, levando o custo direto de R$ 86.973,29 para R$ 95.098,96: R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 na laca, R$ 108,00 de consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⚠ e as respostas que ele deu depois, na própria planilha, mais a correção da base dos consumíveis, levaram o custo a R$ 96.913,76 — a laca já está em 19,80 m² porque o alizar passou a ter 12 cm · ⭐ A folha não ficou mais CARA por acaso, ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como \"primeira cotação a fazer\", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas."
   ],
   [
    "",
@@ -623,11 +666,19 @@
   ],
   [
    "",
-   "⭐ ALMA DE AÇO EM TODA PRATELEIRA, como a Base manda: \"uma por peça, contra empeno\". Prateleira de 104,1 cm de vão sem apoio no meio empena — é o caso exato, e o Jonathan pediu nominalmente."
+   "⭐⭐ A PRATELEIRA, E POR QUE ELA TEM DUAS CAMADAS [Jonathan, 23/11/2026]: \"considere 6 em cada, com 30mm de espessura, duas peças de 15mm\" · ⭐ Duas peças de 15 em vez de uma de 30 não é só o que existe em estoque: é ONDE A ALMA DE AÇO MORA. Rasga-se uma das faces, assenta-se a barra chata e cola-se a outra camada em cima — a alma fica embutida, invisível, e a peça de 30 mm sai monolítica. Numa peça inteira de 30 a alma teria de ser fresada por baixo e apareceria · ⛔ São 42 prateleiras × 2 camadas = 84 peças, e a área de chapa TRIPLICOU: eu havia contado 4 por nicho em uma camada de 18 mm, 8,74 m²; agora são 26,23 m² em MDF Amadeirado de 15 mm, a R$ 550 a chapa · ⭐ E a Base justifica a espessura: ela manda 18 mm acima de 70 cm de vão, e aqui o vão é de 104,1 cm."
   ],
   [
    "",
-   "⛔ O LED É CONJUNTO COMPLETO, NÃO SÓ O PERFIL. A Base avisa em caixa alta que o LED instalado vai de R$ 66 a R$ 150 o metro \"conforme entre só o perfil ou o conjunto com fita, fonte, usinagem e instalação. Antes de orçar, fechar o que a linha inclui\". Fechado no CONJUNTO, porque prateleira que acende é o conjunto inteiro · São 29,15 m de régua e 4 fontes."
+   "⭐ ALMA DE AÇO EM TODA PRATELEIRA, como a Base manda: \"uma por peça, contra empeno\" — e uma por PRATELEIRA, não uma por camada: são 42 almas, 15 barras de 3 m. Prateleira de 104,1 cm de vão sem apoio no meio empena, e o Jonathan pediu nominalmente."
+  ],
+  [
+   "",
+   "⭐ O FUNDO DO NICHO VAI EM 6 mm [Jonathan, 23/11/2026]: \"os fundos serao em mdf de 6mm\" · A Base concorda em dois lugares — \"MDF Branco TX · Fundos · 6 mm\" e a tabela de espessura, \"Fundos · 6 mm · por encaixe em rasgo, SEM FITA\" — e é por isso que a linha do fundo não leva borda nenhuma nesta folha · ⚠ Mas AMADEIRADO de 6 mm (R$ 350), não branco: este fundo é a face que se vê dentro do nicho, a que a prancha marcava como ADESIVO."
+  ],
+  [
+   "",
+   "⛔ O LED É CONJUNTO COMPLETO, NÃO SÓ O PERFIL. A Base avisa em caixa alta que o LED instalado vai de R$ 66 a R$ 150 o metro \"conforme entre só o perfil ou o conjunto com fita, fonte, usinagem e instalação. Antes de orçar, fechar o que a linha inclui\". Fechado no CONJUNTO, porque prateleira que acende é o conjunto inteiro · São 43,72 m de régua e 5 fontes."
   ],
   [
    "",
@@ -645,11 +696,7 @@
   [],
   [
    "",
-   "⭐ DUAS DÚVIDAS SAÍRAM DESTA LISTA EM 23/11/2026, e eram as duas mais caras: o preço do compensado flexível (R$ 600,00 a chapa) e o da laca (R$ 650,00 o m²), ambos fechados pelo Jonathan · estão registrados nas NOTAS, com o que mudaram."
-  ],
-  [
-   "",
-   "⚠ R$ 5.595,16 · O MIOLO DOS 16 RECORTES DE ARCO. São 32,53 m² de chapa que saem de dentro dos arcos em peças de até 104 × 140 — cabe o fundo e a prateleira de todos os nichos, que somam 22,82 m². Está orçado SEM aproveitar, que é o conservador · ⭐ Aproveitando, saem cerca de 7 chapas do orçamento."
+   "⭐⭐ R$ 2.400,00 · O MIOLO DOS 16 RECORTES DE ARCO, E AGORA ELE VALE MAIS. São 32,53 m² de chapa que saem de dentro dos arcos em peças de até 104 × 140 · ⭐ e desde que os arcos passaram a ser MDF BRANCO 18, o miolo é BRANCO 18 — que é exatamente a chapa da base do espelho, 23,64 m². CABE INTEIRO, com folga · ⛔ Está orçado SEM aproveitar, que é o conservador: aproveitando, saem as 6 chapas de Branco 18 da base do espelho, R$ 2.400,00 · ⭐ É a decisão de corte mais rentável da folha, e só depende do plano de corte encaixar as duas coisas na mesma chapa."
   ],
   [
    "",
@@ -657,27 +704,23 @@
   ],
   [
    "",
-   "⚠ O PERÍMETRO DO FORRO É ESTIMATIVA. A prancha dá a ÁREA (157 m²) e uma cota de 1380 de profundidade; pelo retângulo equivalente o perímetro fica em 50,35 m. É ele que manda na fita e na filetagem — R$ 671,11 ao todo, então o erro possível é pequeno, mas está registrado."
+   "⚠ A FITA DA PRATELEIRA. A borda da prateleira montada tem 30 mm, porque são duas camadas de 15 coladas — e a fita da Base tem 22 mm. Peça de 30 mm pede fita de 35 mm, que a Base não lista · lancei a de 22 mm a R$ 3,00 o metro, R$ 227,44 nos 75,81 m de perímetro das 42 prateleiras. ⭐ Fita de 35 mm costuma custar cerca de metade mais, o que daria uns R$ 113,72 a mais — pouco dinheiro, mas é material que não existe na Base e precisa de linha própria."
   ],
   [
    "",
-   "⚠ A LARGURA DO ALIZAR é premissa minha de 5 cm — a prancha não cota. São 1,93 m² de chapa e entram também na laca, que agora custa R$ 650 o m²."
+   "⚠ AS 5 CHAPAS DE ESTRUTURAÇÃO COBREM SÓ O FORRO? O Jonathan cravou \"5 chapas brancas de 15mm para estruturação\" respondendo à dúvida da MÃO AMIGA, então entendi que são do FORRO — barroteamento mais escora — e acrescentei 7,35 m² de tira para os painéis de parede e a base do espelho, que também precisam de montante aprumado. Dá 7 chapas no total, R$ 2.450,00 · ⛔ Se as 5 já eram para tudo, saem 2 chapas, R$ 700."
   ],
   [
    "",
-   "⚠ QUANTAS PRATELEIRAS POR NICHO? Contei 4 na VISTA BB ampliada. Se forem 5, muda chapa, alma de aço e LED — cerca de R$ 227,21 por prateleira a mais em cada um dos 7 nichos."
+   "⚠ A LARGURA DA TIRA DE ESTRUTURA é premissa minha de 7 cm — quem corta decide. Ela não muda o número de chapas do forro, que o Jonathan cravou, mas muda os painéis e a base: tira mais larga, mais chapa."
   ],
   [
    "",
-   "⚠ O PADRÃO EXATO DO AMADEIRADO não foi escolhido pela arquiteta. Está no genérico de cor da Base, R$ 700 a chapa de 18 mm · ⛔ se cair em Cristallo (brilho, R$ 800) são R$ 6.500,00 a mais; em Acetinato (R$ 1.800), R$ 71.500,00 · ⭐ É A MAIOR DÚVIDA QUE RESTA, agora que o compensado e a laca fecharam."
+   "⚠ O PERÍMETRO DO FORRO É ESTIMATIVA. A prancha dá a ÁREA (157 m²) e uma cota de 1380 de profundidade; pelo retângulo equivalente o perímetro fica em 50,35 m. É ele que manda na fita e na filetagem do forro — R$ 304,64 —, então o erro possível é pequeno, mas está registrado."
   ],
   [
    "",
-   "⚠ O NÚMERO DE ESCORAS DE MÃO AMIGA é premissa: 10 para 157 m². Quem monta sabe quantas precisa · são R$ 8,00 o metro de sarrafo, então cada escora a mais custa cerca de R$ 28."
-  ],
-  [
-   "",
-   "⚠ O CLIENTE É \"CENTURIUM\" no carimbo da prancha e \"Centurion Motors\" no moodboard. Conferir a grafia antes de a proposta sair."
+   "⚠ O CLIENTE É \"CENTURIUM\" no carimbo da prancha e \"Centurion Motors\" no moodboard. O Jonathan confirmou em 23/11/2026, e a proposta sai como \"Centurion Motors\", que é a grafia do moodboard e a que ele usa."
   ]
  ]
 }

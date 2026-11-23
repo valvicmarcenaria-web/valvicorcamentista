@@ -214,9 +214,21 @@ def pedidos(sid, linhas):
         #     na coluna B. Eu tinha escrito 8 e 9, que joga os dois uma
         #     coluna à direita, em cima de J e K. Conferir índice contra
         #     o cabeçalho impresso é o que pega isso.
-        2: [(7, 8, MOEDA, 'RIGHT'), (8, 9, MOEDA, 'RIGHT')],
+        #   ⭐ Nesta aba a linha de item tem só CUSTO, no índice 7 → coluna
+        #     I. O par (8, 9) era resíduo da coluna PREÇO, que não existe
+        #     mais, e pintava a J, que está vazia.
+        2: [(7, 8, MOEDA, 'RIGHT')],
+        #   ⛔⛔ O ERRO QUE O JONATHAN VIU [23/11/2026]: "a coluna I a partir
+        #     da linha 60 está com formatação errada". O cabeçalho de AS
+        #     PEÇAS é PEÇA·OBSERVAÇÃO·C·L·QTD·UN·CHAVE DA BASE·CUSTO, oito
+        #     campos, índices 0 a 7 → colunas B a I. CUSTO é o índice 7,
+        #     logo a coluna I. Eu tinha (7, 8, N3), que punha número de TRÊS
+        #     CASAS no custo, e (8, 9, MOEDA), que jogava a moeda na coluna
+        #     J, vazia. O N3 era resíduo de uma coluna de espessura que esta
+        #     aba não tem · ⭐ Dinheiro em formato de número puro é o tipo de
+        #     coisa que ninguém confere e todo mundo lê errado.
         4: [(2, 4, N2, 'RIGHT'), (4, 5, N0, 'CENTER'), (5, 6, None, 'CENTER'),
-            (7, 8, N3, 'RIGHT'), (8, 9, MOEDA, 'RIGHT')],
+            (7, 8, MOEDA, 'RIGHT')],
     }
     for s in (1, 2, 4):
         d = [i for i, c in enumerate(cl) if c == 'dado%d' % s]

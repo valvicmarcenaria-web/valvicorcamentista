@@ -96,10 +96,23 @@ def linhas():
           ['MATERIAL', 'ESPECIFICAÇÃO', 'QUANTIDADE', 'UN', 'CUSTO',
            '% DO CUSTO', 'R$ UNITÁRIO']]
 
-    def mat(rot, esp, qtd, un, custo, unit=None):
+    #   ⛔ A COLUNA TEM DE SOMAR O QUE O TOTAL DIZ. Eu exibia cada linha
+    #     arredondada a 2 casas e o total pelo valor exato do motor: somar
+    #     as 22 linhas na planilha dava R$ 96.913,75 contra R$ 96.913,76 no
+    #     total. Um centavo, mas é a conta não fechando na cara de quem
+    #     confere — e quem confere soma a COLUNA.
+    #   ⭐ A última linha (embalagem) absorve a diferença dos arredondamentos,
+    #     que é o mesmo mecanismo que o último item já usava.
+    exibido = []
+
+    def mat(rot, esp, qtd, un, custo, unit=None, ultima=False):
         if unit is None and qtd:
             unit = custo / qtd
-        L.append([rot, esp, _n(qtd, 2), un, _n(custo), _n(custo / D, 4),
+        v = _n(custo)
+        if ultima:
+            v = _n(D - sum(exibido))
+        exibido.append(v)
+        L.append([rot, esp, _n(qtd, 2), un, v, _n(custo / D, 4),
                   _n(unit) if unit is not None else ''])
 
     for k, n in sorted(T['chapas'].items()):
@@ -133,11 +146,19 @@ def linhas():
     mat('Corte', '%d chapas a R$ 2,00 e %d peças a R$ 2,50'
         % (T['n_ch'], T['n_pc']), T['n_pc'], 'peça', T['c_corte'])
     mat('Consumíveis', '⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · '
-        'incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo',
+        'incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo '
+        '· ⭐ O R$ UNITÁRIO AQUI É A BASE, não um preço: a soma da chapa e de '
+        'TODA a fita · ⛔ a fita lançada como linha linear (o perímetro do '
+        'forro e as prateleiras montadas, R$ 393,61) estava ficando fora desta '
+        'base, porque só a fita do campo `fita` das peças entrava — o mesmo '
+        'material contava ou não conforme COMO eu o lancei. Corrigido',
         b.CONSUMIVEIS, '%', T['c_cons'])
     mat('Embalagem', '⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · '
-        'incide sobre tudo o que vem acima · papelão, filme e cantoneira',
-        b.EMBALAGEM, '%', T['c_emb'])
+        'incide sobre tudo o que vem acima · papelão, filme e cantoneira · '
+        '⭐ o R$ UNITÁRIO também é a BASE, não um preço · ⭐ esta linha '
+        'absorve os centavos de arredondamento das linhas acima, para que '
+        'somar a coluna dê exatamente o CUSTO DIRETO',
+        b.EMBALAGEM, '%', T['c_emb'], ultima=True)
     L.append(['CUSTO DIRETO DO AMBIENTE', '', '', '', _n(D), 1.0])
     L += [[], []]
 
@@ -153,9 +174,13 @@ def linhas():
            3: '%s m² de painel' % _br(lv.PAINEL_M2),
            4: '%s m² de base em Branco TX 18' % _br(lv.ESP_M2),
            5: '%s m² de espelho prata' % _br(lv.ESP_M2)}
-    for i, (it, d) in enumerate(zip(lv.ITENS, DIRETOS)):
-        L.append(['%02d' % (i + 1), it.nome, MED.get(i, ''), '', '', '', '',
-                  _n(d)])
+    #   ⭐ a mesma regra do bloco acima: os valores EXIBIDOS têm de somar o
+    #     total exibido, então o último item absorve o centavo dos
+    #     arredondamentos — e não só o resto do rateio
+    _vi = [_n(d) for d in DIRETOS]
+    _vi[-1] = _n(D - sum(_vi[:-1]))
+    for i, (it, v) in enumerate(zip(lv.ITENS, _vi)):
+        L.append(['%02d' % (i + 1), it.nome, MED.get(i, ''), '', '', '', '', v])
         L.append(['', it.obs])
     L.append(['⭐ CONFERÊNCIA — a soma dos itens contra o painel de material '
               '· ⛔ tem de dar ZERO: é o mesmo projeto contado por dois caminhos, '
@@ -224,36 +249,62 @@ NOTAS = [
  'três vistas e eu quase a contei como MDF laqueado — ela é TINTA. Ler a legenda '
  'ANTES de contar área foi o que impediu o orçamento de dobrar sem motivo.',
  '⭐⭐ O FORRO TEM 157 m² CRAVADOS NA PRANCHA: "ÁREA FORRO 157m²", escrito na '
- 'planta 01. Não é cálculo meu, é número do projetista · São 39 chapas e '
- 'R$ 27.300 só de material: o maior item do orçamento, sozinho.',
+ 'planta 01. Não é cálculo meu, é número do projetista · Sozinho ele consome '
+ '38,6 chapas de amadeirado, R$ %s de material: o maior item do orçamento.'
+ % _br(b.FORRO_M2 / b.REND * 700),
+ '⛔⛔ NÃO USAMOS SARRAFO DE PINUS [Jonathan, 23/11/2026]. Eu havia lançado 532,57 m '
+ 'de sarrafo a R$ 8,00 o metro — R$ 4.260,59 — em QUATRO linhas: barroteamento do '
+ 'forro, escoras de mão amiga, montante dos painéis e montante da base do espelho. '
+ 'Todas saíram · ⭐ E a Base já dizia o que entra, em dois lugares que eu não cruzei: '
+ '"MDF Branco TX · Estrutura e caixaria · 15 mm · R$ 350,00" e, na tabela ESPESSURA '
+ 'PADRÃO POR APLICAÇÃO, "Estrutura e caixaria · 15 mm". A casa estrutura com CHAPA '
+ 'CORTADA EM TIRA, não com madeira de lei · ⛔ E isso muda de COLUNA no Painel: a '
+ 'estruturação deixou de ser material por metro e virou chapa, que se compra inteira '
+ 'e se arredonda por padrão × espessura.',
  '⭐ A MÃO AMIGA É MATERIAL DE MONTAGEM, NÃO ESTRUTURA [Jonathan, 23/11/2026: '
  '"importante considerar material para montagem de mao amiga"]. São as escoras em T '
- '— um sarrafo em pé com travessa no topo — que seguram a placa contra a laje '
- 'enquanto o marceneiro parafusa. Sem elas não se monta forro a 2,91 m do chão. '
- 'A Base tem a linha: "Sarrafo de pinus · Estrutura interna · R$ 8,00/m" · '
- 'Estão orçadas 10 escoras, e elas são uma linha SEPARADA do barroteamento, que '
- 'é o que fica.',
+ '— uma tira em pé com travessa no topo — que seguram a placa contra a laje enquanto '
+ 'o marceneiro parafusa. Sem elas não se monta forro a 2,91 m do chão · ⭐ O número é '
+ 'dele: "Considere 5 chapas brancas de 15mm para estruturação", e essas 5 chapas '
+ 'cobrem o barroteamento E as escoras, %s m² de chapa que dão %s m de tira de %.0f '
+ 'cm · ⚠ Isso é uma malha de cerca de 75 × 120, mais aberta que os 60 × 120 que eu '
+ 'havia assumido com sarrafo.'
+ % (_br(lv.ESTRUT_M2_FORRO), _br(lv.ESTRUT_TIRA_FORRO, 1), b.TIRA_L),
  '⭐⭐ O PÓRTICO CURVO, CAMADA POR CAMADA [Jonathan, 23/11/2026]: moldura '
  'estrutural de MDF (as costelas), revestida de compensado flexível nos DOIS lados '
  '— intradorso, que é a curva de dentro, e extradorso, a de fora — mais o alizar '
  'de acabamento externo. A moldura tem %s cm de largura de face, cota confirmada na '
- 'VISTA BB.' % _br(b.MOLDURA_L, 0),
+ 'VISTA BB, e o alizar tem os mesmos %s cm, que foi ele quem corrigiu: "o alizar o '
+ 'projeto mostra 12cm" · ⭐⭐ E A CHAPA DO PÓRTICO É MDF BRANCO, não amadeirado — '
+ '"Os arcos podem ser em mdf branco". É óbvio depois de dito: a peça é LACADA CAFÉ, '
+ 'a laca cobre tudo, e pagar R$ 700 de chapa amadeirada para esconder sob laca é '
+ 'jogar dinheiro fora. Branco 18 custa R$ 400, e são %s m² entre costela e alizar.'
+ % (_br(b.MOLDURA_L, 0), _br(b.ALIZAR_L, 0),
+    _br(sum(n * A['envolvente_l'] * A['envolvente_a'] * 2 / 10000
+            for _r, n, A in lv.ARCOS)
+        + sum(n * A['externo'] * b.ALIZAR_L / 10000
+              for _r, n, A in lv.ARCOS))),
  '⛔⛔ O RECORTE DO ARCO NÃO SE COMPRA PELO PERÍMETRO, SE COMPRA PELO RETÂNGULO '
  'QUE ELE OCUPA NA CHAPA. Um arco de %s cm de face parece consumir 0,55 m²; na chapa '
- 'ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐ E O MIOLO DÁ %s m², que '
- 'cabe inteiro o fundo e a prateleira de todos os nichos. Está orçado SEM esse '
- 'aproveitamento, que é o conservador — o ganho está nas dúvidas.'
- % (_br(b.MOLDURA_L, 0), _br(MIOLO_M2)),
+ 'ele ocupa 1,28 × 2,04 = 2,61 m². São 16 recortes · ⭐⭐ E O MIOLO FICOU MAIS VALIOSO '
+ 'DEPOIS QUE OS ARCOS VIRARAM BRANCOS: são %s m² de MDF BRANCO 18, que é exatamente '
+ 'a chapa da base do espelho (%s m²) — cabe inteiro, com folga. Antes o miolo era '
+ 'amadeirado e teria de servir para fundo ou prateleira, que mudaram de espessura e '
+ 'não encaixam mais · Está orçado SEM aproveitar, e o ganho está na primeira dúvida.'
+ % (_br(b.MOLDURA_L, 0), _br(MIOLO_M2), _br(lv.ESP_M2)),
  '⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas '
  'dúvidas mais caras desta folha: "Compensado flexivel, custo - 600,00 a chapa" e '
  '"laca considere 650" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL '
  'não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a '
  'laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de '
  'R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam '
- 'de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Juntos somam '
- 'R$ 8.125,67 ao custo direto, que foi de R$ 86.973,29 para R$ %s: R$ 1.800,00 nas 8 '
- 'chapas de compensado, R$ 5.981,00 nos %s m² de laca, R$ 108,00 de consumíveis sobre '
- 'a chapa nova e R$ 236,67 de embalagem · ⭐ E a folha não ficou mais CARA por acaso, '
+ 'de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Os dois juntos '
+ 'somaram R$ 8.125,67, levando o custo direto de R$ 86.973,29 para R$ 95.098,96: '
+ 'R$ 1.800,00 nas 8 chapas de compensado, R$ 5.981,00 na laca, R$ 108,00 de '
+ 'consumíveis sobre a chapa nova e R$ 236,67 de embalagem · ⚠ e as respostas que ele '
+ 'deu depois, na própria planilha, mais a correção da base dos consumíveis, levaram '
+ 'o custo a R$ %s — a laca já está em %s m² '
+ 'porque o alizar passou a ter 12 cm · ⭐ A folha não ficou mais CARA por acaso, '
  'ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como '
  '"primeira cotação a fazer", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS '
  'PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas.'
@@ -274,9 +325,33 @@ NOTAS = [
  'cota %s no meio do terceiro nicho. Bate.'
  % (_br(b.NICHO_L, 1), _br(b.NICHO_L / 2, 2), _br(b.NICHO_ABOBADA, 0),
     _br(b.NICHO_ABOBADA, 0), '1,8', '138', '192,8', _br(b.NICHO_H, 0)),
+ '⭐⭐ A PRATELEIRA, E POR QUE ELA TEM DUAS CAMADAS [Jonathan, 23/11/2026]: '
+ '"considere 6 em cada, com 30mm de espessura, duas peças de 15mm" · ⭐ Duas peças de '
+ '15 em vez de uma de 30 não é só o que existe em estoque: é ONDE A ALMA DE AÇO '
+ 'MORA. Rasga-se uma das faces, assenta-se a barra chata e cola-se a outra camada '
+ 'em cima — a alma fica embutida, invisível, e a peça de %d mm sai monolítica. Numa '
+ 'peça inteira de 30 a alma teria de ser fresada por baixo e apareceria · ⛔ São '
+ '%d prateleiras × 2 camadas = %d peças, e a área de chapa TRIPLICOU: eu havia '
+ 'contado 4 por nicho em uma camada de 18 mm, 8,74 m²; agora são %s m² em %s de '
+ '15 mm, a R$ 550 a chapa · ⭐ E a Base justifica a espessura: ela manda 18 mm acima '
+ 'de 70 cm de vão, e aqui o vão é de %s cm.'
+ % (b.PRAT_ESP, b.N_NICHOS * b.PRAT_POR_NICHO,
+    b.N_NICHOS * b.PRAT_POR_NICHO * b.PRAT_CAMADAS,
+    _br(b.N_NICHOS * b.PRAT_POR_NICHO * b.PRAT_CAMADAS * b.NICHO_L
+        * b.NICHO_PROF / 10000), b.PRAT_MAT, _br(b.NICHO_L, 1)),
  '⭐ ALMA DE AÇO EM TODA PRATELEIRA, como a Base manda: "uma por peça, contra '
- 'empeno". Prateleira de %s cm de vão sem apoio no meio empena — é o caso exato, e '
- 'o Jonathan pediu nominalmente.' % _br(b.NICHO_L, 1),
+ 'empeno" — e uma por PRATELEIRA, não uma por camada: são %d almas, %d barras de '
+ '3 m. Prateleira de %s cm de vão sem apoio no meio empena, e o Jonathan pediu '
+ 'nominalmente.'
+ % (b.N_NICHOS * b.PRAT_POR_NICHO,
+    math.ceil(b.N_NICHOS * b.PRAT_POR_NICHO * b.NICHO_L / b.ALMA_M),
+    _br(b.NICHO_L, 1)),
+ '⭐ O FUNDO DO NICHO VAI EM 6 mm [Jonathan, 23/11/2026]: "os fundos serao em mdf '
+ 'de 6mm" · A Base concorda em dois lugares — "MDF Branco TX · Fundos · 6 mm" e a '
+ 'tabela de espessura, "Fundos · 6 mm · por encaixe em rasgo, SEM FITA" — e é por '
+ 'isso que a linha do fundo não leva borda nenhuma nesta folha · ⚠ Mas AMADEIRADO '
+ 'de 6 mm (R$ 350), não branco: este fundo é a face que se vê dentro do nicho, a '
+ 'que a prancha marcava como ADESIVO.',
  '⛔ O LED É CONJUNTO COMPLETO, NÃO SÓ O PERFIL. A Base avisa em caixa alta que o '
  'LED instalado vai de R$ 66 a R$ 150 o metro "conforme entre só o perfil ou o '
  'conjunto com fita, fonte, usinagem e instalação. Antes de orçar, fechar o que a '
@@ -300,46 +375,53 @@ NOTAS = [
  'lança área lança ÁREA; o rendimento é do motor.',
 ]
 
+#   ⭐⭐ OITO DÚVIDAS FECHADAS EM 23/11/2026 — seis respondidas pelo Jonathan
+#     na própria planilha, na coluna ao lado de cada uma, mais o compensado e
+#     a laca que vieram no chat. O que sobra é só o que ninguém ainda sabe.
 DUVIDAS = [
- '⭐ DUAS DÚVIDAS SAÍRAM DESTA LISTA EM 23/11/2026, e eram as duas mais caras: o '
- 'preço do compensado flexível (R$ 600,00 a chapa) e o da laca (R$ 650,00 o m²), '
- 'ambos fechados pelo Jonathan · estão registrados nas NOTAS, com o que mudaram.',
- '⚠ R$ %s · O MIOLO DOS 16 RECORTES DE ARCO. São %s m² de chapa que saem de '
- 'dentro dos arcos em peças de até 104 × 140 — cabe o fundo e a prateleira de '
- 'todos os nichos, que somam %s m². Está orçado SEM aproveitar, que é o '
- 'conservador · ⭐ Aproveitando, saem cerca de %d chapas do orçamento.'
- % (_br(MIOLO_M2 / b.REND * 700), _br(MIOLO_M2),
-    _br(14.07 + 8.75), math.floor(MIOLO_M2 / b.REND)),
+ '⭐⭐ R$ %s · O MIOLO DOS 16 RECORTES DE ARCO, E AGORA ELE VALE MAIS. São %s m² de '
+ 'chapa que saem de dentro dos arcos em peças de até 104 × 140 · ⭐ e desde que os '
+ 'arcos passaram a ser MDF BRANCO 18, o miolo é BRANCO 18 — que é exatamente a '
+ 'chapa da base do espelho, %s m². CABE INTEIRO, com folga · ⛔ Está orçado SEM '
+ 'aproveitar, que é o conservador: aproveitando, saem as %d chapas de Branco 18 da '
+ 'base do espelho, R$ %s · ⭐ É a decisão de corte mais rentável da folha, e só '
+ 'depende do plano de corte encaixar as duas coisas na mesma chapa.'
+ % (_br(math.ceil(lv.ESP_M2 / b.REND) * 400), _br(MIOLO_M2), _br(lv.ESP_M2),
+    math.ceil(lv.ESP_M2 / b.REND), _br(math.ceil(lv.ESP_M2 / b.REND) * 400)),
  '⚠ A PROFUNDIDADE DO NICHO NÃO ESTÁ EM PRANCHA NENHUMA. O Jonathan cravou %s cm '
  'em 23/11/2026, e é ela que define a caixa dos %d pórticos: o compensado flexível '
  'dos dois lados, a prateleira e o LED escalam todos com ela. Conferir na medição.'
  % (_br(b.NICHO_PROF, 0), b.N_NICHOS + 1),
+ '⚠ A FITA DA PRATELEIRA. A borda da prateleira montada tem %d mm, porque são duas '
+ 'camadas de %d coladas — e a fita da Base tem 22 mm. Peça de 30 mm pede fita de 35 '
+ 'mm, que a Base não lista · lancei a de 22 mm a R$ 3,00 o metro, R$ %s nos %s m de '
+ 'perímetro das %d prateleiras. ⭐ Fita de 35 mm costuma custar cerca de metade mais, '
+ 'o que daria uns R$ %s a mais — pouco dinheiro, mas é material que não existe na '
+ 'Base e precisa de linha própria.'
+ % (b.PRAT_ESP, b.PRAT_ESP_PECA, _br(lv.PRAT_PERIM * b.FITA_PERDA * b.FITA_22),
+    _br(lv.PRAT_PERIM * b.FITA_PERDA), b.N_NICHOS * b.PRAT_POR_NICHO,
+    _br(lv.PRAT_PERIM * b.FITA_PERDA * b.FITA_22 * 0.5)),
+ '⚠ AS 5 CHAPAS DE ESTRUTURAÇÃO COBREM SÓ O FORRO? O Jonathan cravou "5 chapas '
+ 'brancas de 15mm para estruturação" respondendo à dúvida da MÃO AMIGA, então '
+ 'entendi que são do FORRO — barroteamento mais escora — e acrescentei %s m² de '
+ 'tira para os painéis de parede e a base do espelho, que também precisam de '
+ 'montante aprumado. Dá %d chapas no total, R$ %s · ⛔ Se as 5 já eram para tudo, '
+ 'saem 2 chapas, R$ 700.'
+ % (_br(lv.PAINEL_TIRA * b.TIRA_L / 100 + lv.ESP_TIRA * b.TIRA_L / 100),
+    T['chapas'].get((b.ESTRUT, b.ESTRUT_ESP), 0),
+    _br(T['chapas'].get((b.ESTRUT, b.ESTRUT_ESP), 0) * 350)),
+ '⚠ A LARGURA DA TIRA DE ESTRUTURA é premissa minha de %.0f cm — quem corta decide. '
+ 'Ela não muda o número de chapas do forro, que o Jonathan cravou, mas muda os '
+ 'painéis e a base: tira mais larga, mais chapa.' % b.TIRA_L,
  '⚠ O PERÍMETRO DO FORRO É ESTIMATIVA. A prancha dá a ÁREA (157 m²) e uma cota de '
  '1380 de profundidade; pelo retângulo equivalente o perímetro fica em %s m. É ele '
- 'que manda na fita e na filetagem — R$ %s ao todo, então o erro possível é '
+ 'que manda na fita e na filetagem do forro — R$ %s —, então o erro possível é '
  'pequeno, mas está registrado.'
- % (_br(lv.FORRO_PERIM), _br(T['c_fita'] + T['c_filete'])),
- '⚠ A LARGURA DO ALIZAR é premissa minha de %s cm — a prancha não cota. São '
- '%s m² de chapa e entram também na laca, que agora custa R$ 650 o m².'
- % (_br(b.ALIZAR_L, 0),
-    _br(sum(n * A['externo'] * b.ALIZAR_L for _r, n, A in lv.ARCOS) / 10000)),
- '⚠ QUANTAS PRATELEIRAS POR NICHO? Contei %d na VISTA BB ampliada. Se forem %d, '
- 'muda chapa, alma de aço e LED — cerca de R$ %s por prateleira a mais em cada um '
- 'dos %d nichos.'
- % (b.PRAT_POR_NICHO, b.PRAT_POR_NICHO + 1,
-    _br(b.NICHO_L * b.NICHO_PROF / 10000 / b.REND * 700
-        + b.NICHO_L / 100 * b.LED_M + b.ALMA_BARRA * b.NICHO_L / b.ALMA_M),
-    b.N_NICHOS),
- '⚠ O PADRÃO EXATO DO AMADEIRADO não foi escolhido pela arquiteta. Está no '
- 'genérico de cor da Base, R$ 700 a chapa de 18 mm · ⛔ se cair em Cristallo '
- '(brilho, R$ 800) são R$ %s a mais; em Acetinato (R$ 1.800), R$ %s · '
- '⭐ É A MAIOR DÚVIDA QUE RESTA, agora que o compensado e a laca fecharam.'
- % (_br(65 * 100), _br(65 * 1100)),
- '⚠ O NÚMERO DE ESCORAS DE MÃO AMIGA é premissa: 10 para 157 m². Quem monta sabe '
- 'quantas precisa · são R$ 8,00 o metro de sarrafo, então cada escora a mais custa '
- 'cerca de R$ 28.',
+ % (_br(lv.FORRO_PERIM), _br(lv.FORRO_PERIM * b.FITA_PERDA
+                             * (b.FITA_22 + b.FILETE_MAQ))),
  '⚠ O CLIENTE É "CENTURIUM" no carimbo da prancha e "Centurion Motors" no '
- 'moodboard. Conferir a grafia antes de a proposta sair.',
+ 'moodboard. O Jonathan confirmou em 23/11/2026, e a proposta sai como '
+ '"Centurion Motors", que é a grafia do moodboard e a que ele usa.',
 ]
 
 

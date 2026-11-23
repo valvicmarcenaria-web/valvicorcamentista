@@ -42,7 +42,10 @@ ALMA = sum(x['qtd'] * x['unit'] for it in lv.ITENS for x in it.serv
 COLUNAS = dict(
     #   F · a chapa inteira, em número cheio
     mdf=T['c_chapa'],
-    #   G · tudo que se compra por metro: fita, filetagem, sarrafo e LED
+    #   G · tudo que se compra por metro: fita, filetagem e LED
+    #   ⛔ O SARRAFO SAIU DAQUI em 23/11/2026 — "nao usamos sarrafo de
+    #     pinus" — e a estruturação virou CHAPA, logo migrou para a coluna
+    #     F. Esta coluna perdeu R$ 4.260,59 e o rótulo teve de mudar junto.
     fita=T['c_fita'] + T['c_filete'] + T['c_lin'],
     #   H · a alma de aço, sozinha, porque é ela que a prateleira pede
     alma=ALMA,
@@ -52,16 +55,16 @@ COLUNAS = dict(
     direto=T['direto'],
 )
 
-#   ⭐ OS RÓTULOS, agora casando com o que cada coluna CARREGA DE FATO
+#   ⭐ OS RÓTULOS, casando com o que cada coluna CARREGA DE FATO
 ROTULOS = [
-    'Chapa — MDF e compensado flexível, em número cheio',
-    'Fita, filetagem, sarrafo e LED — o que se compra por metro',
+    'Chapa — MDF, compensado flexível e a tira de estrutura, em número cheio',
+    'Fita, filetagem e LED — o que se compra por metro',
     'Alma de aço — uma barra por prateleira, contra empeno',
     'Laca, espelho e avulsos — o que é serviço de terceiro',
     'Corte, consumíveis e embalagem',
 ]
 CAB = ['AMBIENTE', 'PRANCHAS', 'ITENS', 'CHAPAS', 'CHAPA',
-       'FITA, SARRAFO E LED', 'ALMA DE AÇO', 'LACA, ESPELHO E AVULSOS',
+       'FITA, FILETAGEM E LED', 'ALMA DE AÇO', 'LACA, ESPELHO E AVULSOS',
        'CORTE E CONSUM.', 'CUSTO DIRETO']
 
 LINHA_AMB = ['01 Showroom · Centurion',
@@ -83,7 +86,7 @@ def _br(v, casas=2):
 
 if __name__ == '__main__':
     print('\n  A LINHA DO AMBIENTE  ' + '─' * 50)
-    for rot, k in [('F · Chapa', 'mdf'), ('G · Fita, sarrafo e LED', 'fita'),
+    for rot, k in [('F · Chapa', 'mdf'), ('G · Fita, filetagem e LED', 'fita'),
                    ('H · Alma de aço', 'alma'),
                    ('I · Laca, espelho e avulsos', 'laca')]:
         print('  %-32s %14s' % (rot, _br(COLUNAS[k])))

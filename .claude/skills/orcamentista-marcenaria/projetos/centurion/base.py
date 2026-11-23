@@ -17,10 +17,23 @@
     nosso. Ler a legenda antes de contar área foi o que salvou o
     orçamento de dobrar de tamanho sem motivo.
 
-⭐ AS TRÊS DECISÕES DO JONATHAN [23/11/2026]:
-    forro            melamínico fosco amadeirado 18 mm, LISO
-    nicho            30 cm de profundidade
+⭐ AS DECISÕES DO JONATHAN [23/11/2026], na ordem em que chegaram:
+    forro              melamínico fosco amadeirado 18 mm, LISO
+    nicho              30 cm de profundidade
     painel ex-adesivo  mesmo amadeirado do forro
+    espelho            dois itens: o painel que recebe, e o espelho
+    compensado flex.   R$ 600,00 a chapa
+    laca               R$ 650,00 o m²
+    MC                 55% (alvo 35% + COMPLEXO)
+  ⭐ e as respondidas na própria planilha, na coluna ao lado da dúvida:
+    arcos              MDF BRANCO — "Os arcos podem ser em mdf branco"
+    fundo do nicho     MDF de 6 mm — "os fundos serao em mdf de 6mm"
+    alizar             12 cm — "o alizar o projeto mostra 12cm"
+    prateleiras        6 por nicho, 30 mm em duas peças de 15 mm
+    amadeirado         R$ 700,00 — fica no genérico de cor
+    estruturação       5 chapas brancas de 15 mm
+    grafia do cliente  confirmada
+  ⛔ e a regra que apagou quatro linhas: "nao usamos sarrafo de pinus".
 """
 import math
 
@@ -53,6 +66,25 @@ COMP_FLEX_C, COMP_FLEX_L = 220.0, 160.0      # a chapa de compensado é outra
 COMP_FLEX_M2 = COMP_FLEX_C * COMP_FLEX_L / 10000      # 3,52
 COMP_FLEX_REND = COMP_FLEX_M2 * APROV
 
+# ── quem vai em que chapa · as respostas dele, uma a uma ───────────────
+#   ⭐⭐ O ARCO VAI EM MDF BRANCO [Jonathan, 23/11/2026]: "Os arcos podem
+#     ser em mdf branco". ⭐ É óbvio depois de dito: o pórtico é LACADO
+#     CAFÉ, a laca cobre tudo, então pagar R$ 700 de chapa amadeirada para
+#     escondê-la sob laca é jogar dinheiro fora. Branco 18 custa R$ 400 ·
+#     vale para a costela E para o alizar, que também é lacado.
+ARCO_MAT = 'MDF Branco TX'
+ARCO_ESP = 18
+#   ⭐⭐ O FUNDO DO NICHO VAI EM 6 mm [Jonathan, 23/11/2026]: "os fundos
+#     serao em mdf de 6mm". A Base concorda em dois lugares: "MDF Branco TX
+#     · Fundos · 6 mm" e a tabela de espessura, "Fundos · 6 mm · Duplo
+#     revestimento · por encaixe em rasgo, SEM FITA".
+#   ⚠ Mas o fundo AQUI é a face que se vê dentro do nicho — era ADESIVO na
+#     prancha — logo vai AMADEIRADO de 6 mm (R$ 350), não branco.
+FUNDO_ESP = 6
+#   ⭐ A prateleira é peça vista, amadeirada, em duas camadas de 15 mm
+#     (R$ 550 a chapa).
+PRAT_MAT = 'MDF Amadeirado'
+
 # ── fita e filetagem · aba MDF ─────────────────────────────────────────
 FITA_22, FITA_PERDA = 3.00, 1.10
 FILETE_MAQ, FILETE_MAO = 2.50, 5.00
@@ -67,8 +99,23 @@ EMBALAGEM = 0.03          # ⭐ 3%, como o Jonathan fixou em 19/11/2026
 # ── ferragens e iluminação · aba Ferragens ─────────────────────────────
 ALMA_BARRA = 50.00        # barra chata 5 mm, 3 m · uma por peça
 ALMA_M = 300.0            # a barra tem 3 m
-SARRAFO_M = 8.00          # ⭐ "Sarrafo de pinus · Estrutura interna · R$ 8,00/m"
 SUPORTE_OCULTO = 30.00    # ⭐ "de 40 em 40 cm"
+
+# ── a estruturação · ⛔⛔ NÃO USAMOS SARRAFO DE PINUS ───────────────────
+#   ⛔ [Jonathan, 23/11/2026] "nao usamos sarrafo de pinus". Eu havia
+#     lançado 532,57 m de sarrafo a R$ 8,00 — R$ 4.260,59 — em quatro
+#     linhas: barroteamento do forro, mão amiga, montante dos painéis e
+#     montante da base do espelho. TODAS saem.
+#   ⭐ E a Base já dizia o que entra, em dois lugares que eu não cruzei:
+#       "MDF Branco TX · Estrutura e caixaria · 15 mm · R$ 350,00"
+#       tabela ESPESSURA PADRÃO POR APLICAÇÃO: "Estrutura e caixaria · 15 mm"
+#     A casa estrutura com CHAPA cortada em tira, não com madeira de lei.
+#   ⭐ O número do forro é dele: "Considere 5 chapas brancas de 15mm para
+#     estruturação" [23/11/2026], respondendo à dúvida da mão amiga.
+ESTRUT = 'MDF Branco TX'
+ESTRUT_ESP = 15
+ESTRUT_CHAPAS_FORRO = 5   # ⭐ cravado pelo Jonathan · barrote + mão amiga
+TIRA_L = 7.0              # ⚠ largura da tira de estrutura: premissa minha
 #   ⭐ A Base avisa em caixa alta: "O LED INSTALADO APARECE DE R$ 66 A
 #     R$ 150 POR METRO nos jobs, conforme entre só o perfil ou o conjunto
 #     com fita, fonte, usinagem e instalação. Antes de orçar, fechar o que
@@ -105,9 +152,26 @@ MOLDURA_L = 12.0                    # ⭐ "largura de 12cm" [Jonathan]
 NICHO_PROF = 30.0                   # ⭐ decisão do Jonathan, 23/11/2026
 N_NICHOS = 7                        # 5 na VISTA BB + 2 na VISTA AA
 PASSAGEM_L = 115.0                  # o arco de passagem, VISTA BB
-PRAT_POR_NICHO = 4                  # contadas na VISTA BB ampliada
-PRAT_ESP = 18                       # cota 1,8 na VISTA BB
-ALIZAR_L = 5.0                      # ⚠ largura do alizar não está em prancha
+
+#   ⭐⭐ A PRATELEIRA, COMO O JONATHAN MANDOU [23/11/2026]: "considere 6 em
+#     cada, com 30mm de espessura, duas peças de 15mm". Eu havia contado 4
+#     na VISTA BB e lançado 18 mm de uma peça.
+#   ⛔ São DUAS mudanças que se multiplicam: 6 em vez de 4 (+50%) e duas
+#     peças em vez de uma (×2) — a área de chapa triplica, de 8,74 m² para
+#     26,23 m². E o LED e a alma de aço seguem o NÚMERO de prateleiras.
+#   ⭐ 30 mm num vão de 104 cm é coerente com a Base, que manda 18 mm acima
+#     de 70 cm de vão: aqui o vão é maior e a peça é mais grossa, com alma.
+PRAT_POR_NICHO = 6
+PRAT_ESP = 30                       # ⭐ 30 mm montados
+PRAT_CAMADAS = 2                    # ⭐ duas peças de 15 mm coladas
+PRAT_ESP_PECA = 15
+
+#   ⭐ O ALIZAR TEM 12 cm [Jonathan, 23/11/2026]: "o alizar o projeto mostra
+#     12cm". Eu havia lançado 5 cm como premissa, e estava errada: ele tem a
+#     mesma largura da moldura, o que faz sentido numa peça que arremata
+#     contra a parede · ⛔ isso mais que dobra a área do alizar, e o alizar
+#     é peça LACADA, logo a laca sobe também.
+ALIZAR_L = 12.0
 
 #   ── os espelhos · VISTA AA e VISTA CC ──
 #   ⭐ [Jonathan, 23/11/2026] "os espelhos vamos fazer da seguinte forma.

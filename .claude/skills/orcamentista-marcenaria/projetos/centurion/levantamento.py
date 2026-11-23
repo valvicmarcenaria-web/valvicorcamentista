@@ -82,8 +82,9 @@ FORRO_LARG = b.FORRO_M2 / FORRO_PROF
 FORRO_PERIM = 2 * (FORRO_PROF + FORRO_LARG)
 
 forro = Item('Forro amadeirado',
-             '157 m² de forro em MDF amadeirado 18 mm, liso · '
-             'barroteamento, fixação e escora de montagem')
+             '157 m² de forro em MDF amadeirado 18 mm, liso · estruturação '
+             'em tira de chapa branca de 15 mm, que cobre o barroteamento e '
+             'as escoras de mão amiga')
 #   ⛔⛔ A PLACA ENTRA PELA ÁREA REAL, NÃO POR CHAPAS INTEIRAS. Eu lancei
 #     39 peças do tamanho da chapa (275 × 185) e o motor, que já divide
 #     área por RENDIMENTO, aplicou o aproveitamento de 80% DUAS VEZES:
@@ -94,17 +95,28 @@ forro.p('Forro amadeirado · a área inteira', FORRO_PROF * 100,
         FORRO_LARG * 100, 1, AMA, 18,
         'os 157 m² cravados na prancha · o motor divide pelo rendimento '
         'de 4,07 m² por chapa')
-#   ⭐ BARROTEAMENTO: malha de 60 × 120, que é o que forro de 18 mm pede
-forro.m('Sarrafo de pinus · barroteamento, malha de 60 × 120',
-        b.FORRO_M2 / 0.60 + b.FORRO_M2 / 1.20, b.SARRAFO_M, 'm',
-        'barrote a cada 60 cm mais travessa a cada 120 · é o que segura o forro')
-#   ⭐ MÃO AMIGA: 10 escoras em T, cada uma com um pé de 2,91 m mais a
-#     travessa de 60 cm que distribui a pressão na placa
-MAO_AMIGA_N = 10
-forro.m('Sarrafo de pinus · MÃO AMIGA, escora em T de montagem',
-        MAO_AMIGA_N * (b.PE_DIREITO / 100 + 0.60), b.SARRAFO_M, 'm',
-        '⭐ %d escoras · o pé vai do piso ao forro (2,91 m) e a travessa de '
-        '60 cm espalha a pressão sem marcar a placa' % MAO_AMIGA_N)
+#   ⛔⛔ AQUI MORAVAM DUAS LINHAS DE SARRAFO DE PINUS — barroteamento de
+#     392,5 m e mão amiga de 35,1 m, R$ 3.420,80 — e as duas SAÍRAM:
+#     "nao usamos sarrafo de pinus" [Jonathan, 23/11/2026].
+#   ⭐ Entra o que a casa usa de verdade, e a Base já dizia em dois lugares
+#     que eu não cruzei: "MDF Branco TX · Estrutura e caixaria · 15 mm ·
+#     R$ 350,00" e, na tabela de espessura padrão, "Estrutura e caixaria ·
+#     15 mm". Estrutura de forro é CHAPA CORTADA EM TIRA.
+#   ⭐ As 5 chapas são número dele: "Considere 5 chapas brancas de 15mm
+#     para estruturação" — e lanço a ÁREA LÍQUIDA das 5, 20,35 m², porque
+#     quem lança área lança ÁREA; o rendimento é do motor.
+ESTRUT_M2_FORRO = b.ESTRUT_CHAPAS_FORRO * b.REND
+ESTRUT_TIRA_FORRO = ESTRUT_M2_FORRO / (b.TIRA_L / 100)
+forro.p('Estruturação do forro · tira de MDF branco 15, barrote e mão amiga',
+        ESTRUT_TIRA_FORRO * 100, b.TIRA_L, 1, b.ESTRUT, b.ESTRUT_ESP,
+        '⭐ 5 chapas cravadas pelo Jonathan = %s m² de chapa = %s m de tira '
+        'de %s cm · cobre o barroteamento E as escoras de mão amiga, que são '
+        'o que segura a placa contra a laje enquanto se parafusa · ⚠ dá uma '
+        'malha de cerca de 75 × 120, mais aberta que os 60 × 120 que eu '
+        'havia assumido com sarrafo'
+        % (('%0.2f' % ESTRUT_M2_FORRO).replace('.', ','),
+           ('%0.1f' % ESTRUT_TIRA_FORRO).replace('.', ','),
+           ('%0.0f' % b.TIRA_L)))
 forro.m('Fita de borda de cor, 22 mm · perímetro do forro',
         FORRO_PERIM * b.FITA_PERDA, b.FITA_22, 'm',
         '⚠ perímetro ESTIMADO: a prancha dá a área, não o contorno')
@@ -133,9 +145,16 @@ porticos = Item('Pórticos curvos laqueados café',
 ARCOS = [('nicho', b.N_NICHOS, b.NICHO), ('passagem', 1, b.PASSAGEM)]
 for rot, n, A in ARCOS:
     #   2 costelas por pórtico: uma na boca, outra no fundo da profundidade
+    #   ⭐⭐ EM MDF BRANCO, não amadeirado [Jonathan, 23/11/2026]: "Os arcos
+    #     podem ser em mdf branco". O pórtico é LACADO CAFÉ e a laca cobre
+    #     tudo — pagar R$ 700 de chapa amadeirada para esconder sob laca é
+    #     jogar dinheiro fora. Branco 18 custa R$ 400.
     porticos.p('Moldura estrutural do arco de %s · costela' % rot,
-               A['envolvente_l'], A['envolvente_a'], 2 * n, AMA, 18,
-               '⛔ retângulo do recorte, não o perímetro · o miolo volta ao corte')
+               A['envolvente_l'], A['envolvente_a'], 2 * n,
+               b.ARCO_MAT, b.ARCO_ESP,
+               '⛔ retângulo do recorte, não o perímetro · o miolo volta ao '
+               'corte · ⭐ MDF BRANCO: a peça é lacada café, a chapa não '
+               'aparece')
     #   compensado flexível: intradorso e extradorso, ao longo da profundidade
     porticos.p('Compensado flexível do arco de %s · intradorso' % rot,
                A['interno'], b.NICHO_PROF, n, FLEX, 4,
@@ -145,8 +164,10 @@ for rot, n, A in ARCOS:
                'a superfície curva de fora, que fecha a estrutura')
     #   alizar de acabamento externo, arrematando contra a parede
     porticos.p('Alizar de acabamento do arco de %s' % rot,
-               A['externo'], b.ALIZAR_L, n, AMA, 18,
-               '⚠ largura de %.0f cm é premissa: a prancha não cota o alizar'
+               A['externo'], b.ALIZAR_L, n, b.ARCO_MAT, b.ARCO_ESP,
+               '⭐ %.0f cm de largura [Jonathan, 23/11/2026: "o alizar o '
+               'projeto mostra 12cm"] — eu havia lançado 5 cm como premissa '
+               'e estava errada · ⭐ MDF BRANCO, porque é peça lacada'
                % b.ALIZAR_L)
 
 #   ⭐ A LACA, só no que se vê: face frontal de 12 cm, intradorso e alizar.
@@ -173,27 +194,53 @@ porticos.s('Laca café · face, intradorso e alizar', LACA_M2, b.LACA_M2, 'm²',
 #     iluminação de led" [Jonathan, 23/11/2026]
 #   ⭐ ALMA DE AÇO: a Base manda "uma por peça, contra empeno". Prateleira
 #     de 104 cm de vão sem apoio no meio empena — é o caso exato.
-nichos = Item('Nichos por dentro · fundo, prateleira e luz',
-              '%d fundos e %d prateleiras de %.0f × %.0f, com alma de aço '
-              'e LED em cada uma'
-              % (b.N_NICHOS, b.N_NICHOS * b.PRAT_POR_NICHO,
-                 b.NICHO_L, b.NICHO_PROF))
-#   fundo: o retângulo reto mais a abóbada (meia elipse)
-FUNDO_M2 = (b.NICHO_L * b.NICHO_RETO / 10000
-            + math.pi * (b.NICHO_L / 2) * b.NICHO_ABOBADA / 2 / 10000)
-nichos.p('Fundo do nicho · era ADESIVO na prancha', b.NICHO_L, b.NICHO_H,
-         b.N_NICHOS, AMA, 18,
-         '⭐ decisão do Jonathan: onde a prancha diz adesivo, vai painel de MDF')
 N_PRAT = b.N_NICHOS * b.PRAT_POR_NICHO
-nichos.p('Prateleira do nicho', b.NICHO_L, b.NICHO_PROF, N_PRAT, AMA, 18,
-         '%d prateleiras · %d por nicho, contadas na VISTA BB ampliada'
-         % (N_PRAT, b.PRAT_POR_NICHO),
-         fita=(b.NICHO_L + 2 * b.NICHO_PROF) / 100)
+N_PECAS_PRAT = N_PRAT * b.PRAT_CAMADAS
+nichos = Item('Nichos por dentro · fundo, prateleira e luz',
+              '%d fundos em MDF de %d mm e %d prateleiras de %.0f × %.0f '
+              'com %d mm de espessura, em %d peças de %d mm, cada uma com '
+              'alma de aço e LED'
+              % (b.N_NICHOS, b.FUNDO_ESP, N_PRAT, b.NICHO_L, b.NICHO_PROF,
+                 b.PRAT_ESP, N_PECAS_PRAT, b.PRAT_ESP_PECA))
+#   ⭐⭐ O FUNDO VAI EM 6 mm [Jonathan, 23/11/2026]: "os fundos serao em mdf
+#     de 6mm". A Base concorda em dois lugares — "MDF Branco TX · Fundos ·
+#     6 mm" e a tabela de espessura, "Fundos · 6 mm · por encaixe em rasgo,
+#     SEM FITA" — e é por isso que esta linha não leva fita.
+#   ⚠ Mas AMADEIRADO de 6 mm, não branco: este fundo é a face que se vê
+#     dentro do nicho, a que a prancha marcava como ADESIVO.
+nichos.p('Fundo do nicho · era ADESIVO na prancha', b.NICHO_L, b.NICHO_H,
+         b.N_NICHOS, AMA, b.FUNDO_ESP,
+         '⭐ 6 mm, decisão do Jonathan · AMADEIRADO, porque é a face vista '
+         'dentro do nicho · ⭐ a Base manda fundo por encaixe em rasgo, SEM '
+         'fita — por isso esta linha não tem borda')
+#   ⭐⭐ A PRATELEIRA TEM 30 mm EM DUAS PEÇAS DE 15 [Jonathan, 23/11/2026]:
+#     "considere 6 em cada, com 30mm de espessura, duas peças de 15mm".
+#   ⛔ São duas mudanças que se multiplicam: 6 por nicho em vez de 4 e duas
+#     camadas em vez de uma. A área de chapa TRIPLICA.
+nichos.p('Prateleira do nicho · camada de %d mm' % b.PRAT_ESP_PECA,
+         b.NICHO_L, b.NICHO_PROF, N_PECAS_PRAT, b.PRAT_MAT, b.PRAT_ESP_PECA,
+         '⭐ %d prateleiras × %d camadas = %d peças · %d por nicho, cravadas '
+         'pelo Jonathan (eu havia contado 4 na VISTA BB) · as duas camadas '
+         'colam e viram uma peça de %d mm'
+         % (N_PRAT, b.PRAT_CAMADAS, N_PECAS_PRAT, b.PRAT_POR_NICHO,
+            b.PRAT_ESP))
+#   ⭐ A FITA É DA PRATELEIRA MONTADA, UMA POR PRATELEIRA — não uma por
+#     camada. Por isso vem como linha linear, e não no campo `fita` da
+#     peça, que multiplicaria pelas 84 peças.
+PRAT_PERIM = N_PRAT * (b.NICHO_L + 2 * b.NICHO_PROF) / 100
+nichos.m('Fita de borda de cor · perímetro das prateleiras montadas',
+         PRAT_PERIM * b.FITA_PERDA, b.FITA_22, 'm',
+         '⚠ A BORDA TEM %d mm E A FITA DA BASE TEM 22 mm. Prateleira de duas '
+         'camadas coladas pede fita de 35 mm, que a Base não lista — lanço a '
+         'de 22 mm a R$ 3,00 e marco a diferença nas dúvidas · uma fita por '
+         'prateleira, não por camada' % b.PRAT_ESP)
+nichos.m('Filetagem na coladeira automática · prateleiras',
+         PRAT_PERIM * b.FITA_PERDA, b.FILETE_MAQ, 'm', '')
 nichos.s('Alma de aço · barra chata de 3 m', math.ceil(N_PRAT * b.NICHO_L
          / b.ALMA_M), b.ALMA_BARRA, 'barra',
-         '⭐ uma alma por prateleira, como a Base manda · %d prateleiras de '
-         '%.0f cm dão %.0f m de barra' % (N_PRAT, b.NICHO_L,
-                                          N_PRAT * b.NICHO_L / 100))
+         '⭐ uma alma por PRATELEIRA, como a Base manda, não uma por camada · '
+         '%d prateleiras de %.0f cm dão %.0f m de barra'
+         % (N_PRAT, b.NICHO_L, N_PRAT * b.NICHO_L / 100))
 LED_TOTAL = N_PRAT * b.NICHO_L / 100
 nichos.m('LED COB · conjunto completo, uma régua por prateleira', LED_TOTAL,
          b.LED_M, 'm',
@@ -212,10 +259,14 @@ paineis = Item('Painéis de parede · o que era adesivo',
 for rot, L, A in b.PAINEIS:
     paineis.p(rot, L, A, 1, AMA, 18, '', fita=2 * (L + A) / 100)
 PAINEL_M2 = sum(L * A / 10000 for _r, L, A in b.PAINEIS)
-paineis.m('Sarrafo de pinus · estrutura de fixação, montante a cada 60',
-          PAINEL_M2 / 0.60, b.SARRAFO_M, 'm',
-          'o painel é PELE sobre a alvenaria: o sarrafo aprumado é o que '
-          'recebe o parafuso')
+#   ⛔ aqui havia 65,58 m de sarrafo de pinus, R$ 524,66 · saiu
+PAINEL_TIRA = PAINEL_M2 / 0.60
+paineis.p('Estruturação do painel · tira de MDF branco 15, montante a cada 60',
+          PAINEL_TIRA * 100, b.TIRA_L, 1, b.ESTRUT, b.ESTRUT_ESP,
+          'o painel é PELE sobre a alvenaria: a tira aprumada é o que recebe '
+          'o parafuso · %s m de tira de %.0f cm, saída de chapa branca de 15 '
+          'mm, que é o que a Base manda para estrutura'
+          % (('%0.1f' % PAINEL_TIRA).replace('.', ','), b.TIRA_L))
 
 # ═══════════════════════════════════════════════════════════════════════
 #   05 · OS PAINÉIS QUE RECEBEM O ESPELHO
@@ -236,10 +287,13 @@ for rot, L, A in b.ESPELHOS:
                '⭐ Branco TX, não amadeirado: a face some inteira sob o '
                'espelho e a chapa custa R$ 400 em vez de R$ 700')
 ESP_M2 = sum(L * A / 10000 for _r, L, A in b.ESPELHOS)
-base_esp.m('Sarrafo de pinus · estrutura de fixação, montante a cada 60',
-           ESP_M2 / 0.60, b.SARRAFO_M, 'm',
-           '⛔ espelho colado não perdoa barriga na base: o sarrafo '
-           'aprumado é o que garante o plano')
+#   ⛔ aqui havia 39,39 m de sarrafo de pinus, R$ 315,13 · saiu
+ESP_TIRA = ESP_M2 / 0.60
+base_esp.p('Estruturação da base · tira de MDF branco 15, montante a cada 60',
+           ESP_TIRA * 100, b.TIRA_L, 1, b.ESTRUT, b.ESTRUT_ESP,
+           '⛔ espelho colado não perdoa barriga na base: a tira aprumada é o '
+           'que garante o plano · %s m de tira de %.0f cm'
+           % (('%0.1f' % ESP_TIRA).replace('.', ','), b.TIRA_L))
 
 # ═══════════════════════════════════════════════════════════════════════
 #   06 · OS ESPELHOS
@@ -276,10 +330,23 @@ def apura():
     c_filete = sum(it.c_fita() for it in ITENS) * b.FITA_PERDA * b.FILETE_MAQ
     c_lin = sum(it.c_lin() for it in ITENS)
     c_serv = sum(it.c_serv() for it in ITENS)
+    #   ⛔⛔ A FITA LANÇADA COMO LINHA LINEAR TAMBÉM É FITA. A regra da casa
+    #     é "consumíveis, 6% sobre chapa e fita", e eu lanço fita de dois
+    #     jeitos: no campo `fita` da peça (painéis) e como linha `.m()`
+    #     quando a borda não é por peça (o perímetro do forro, e a
+    #     prateleira montada, cuja fita é uma por prateleira e não uma por
+    #     camada). ⭐ A segunda ficava FORA da base dos consumíveis, então
+    #     o mesmo material entrava ou não na conta conforme COMO eu o
+    #     lancei — e nada quebrava. São R$ 393,61 de fita e R$ 23,62 de
+    #     consumíveis que faltavam.
+    c_fita_lin = sum(x['qtd'] * x['unit'] for it in ITENS for x in it.lin
+                     if 'Fita de borda' in x['nome'])
     n_ch = sum(chapas.values())
     n_pc = sum(it.n_pecas() for it in ITENS)
     c_corte = n_ch * b.CORTE_CHAPA + n_pc * b.CORTE_PECA
-    c_cons = (c_chapa + c_fita) * b.CONSUMIVEIS
+    #   ⚠ A FILETAGEM NÃO ENTRA: a regra diz chapa e FITA, e filetagem é
+    #     mão de obra por metro, não material.
+    c_cons = (c_chapa + c_fita + c_fita_lin) * b.CONSUMIVEIS
     base = c_chapa + c_fita + c_filete + c_lin + c_serv + c_corte + c_cons
     c_emb = base * b.EMBALAGEM
     return dict(chapas=chapas, area=area, c_chapa=c_chapa, c_fita=c_fita,
@@ -327,11 +394,14 @@ if __name__ == '__main__':
                      brl(x['qtd'] * x['unit'])))
 
     print('\n  ③ O CUSTO DIRETO  ' + S * 56)
+    #   ⛔ RÓTULO E CONTEÚDO NA MESMA PASSADA: "Sarrafo, alma de aço e LED"
+    #     mentia duas vezes — o sarrafo saiu do projeto e a alma de aço
+    #     nunca esteve nesta linha, ela é serviço.
     for rot, v in [('Chapa · %d chapas' % T['n_ch'], T['c_chapa']),
-                   ('Fita de borda, material', T['c_fita']),
-                   ('Filetagem, aplicação', T['c_filete']),
-                   ('Sarrafo, alma de aço e LED', T['c_lin']),
-                   ('Laca, fonte e avulsos', T['c_serv']),
+                   ('Fita de borda nas peças', T['c_fita']),
+                   ('Filetagem nas peças', T['c_filete']),
+                   ('Fita, filetagem e LED lançados por metro', T['c_lin']),
+                   ('Laca, alma de aço, espelho e avulsos', T['c_serv']),
                    ('Corte · %d chapas e %d peças' % (T['n_ch'], T['n_pc']),
                     T['c_corte']),
                    ('Consumíveis · 6%% sobre chapa e fita', T['c_cons']),
