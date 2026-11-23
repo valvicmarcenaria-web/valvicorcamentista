@@ -1,54 +1,54 @@
-BASE 76.0875% · sem ferragem de linha MC 38% · Telescópica 35% · ajuste +0%
-                                                         Telescópica
+BASE 72.7575% · sem ferragem de linha MC 38% · Telescópica 35% · Hettich 38% · ajuste +0%
+                                                         Telescópica     Hettich
 
 LAVANDERIA  · chapas 4 Branco TX 15 2, Branco TX 18 1, Branco TX 6 1
-  ◆ Armário sob o tanque                                       2,089
-  ◆ Armário com cesto de roupa e gaveta                        3,024
-    subtotal                                                   5,113   custo 2,101
+  ◆ Armário sob o tanque                                       2,273       3,009
+  ◆ Armário com cesto de roupa e gaveta                        3,291       4,367
+    subtotal                                                   5,564       7,376   custo 2,101
 
 DESPENSA  · chapas 11 Branco TX 15 5, Branco TX 18 3, Branco TX 6 3
-  ◆ Armário com nicho do micro-ondas e gaveta                  4,788
-  ◆ Armário de piso ao teto com reforço para revestiment       9,074
-    Prateleira dobrável de bordas arredondadas                   684
-    subtotal                                                  14,546   custo 5,956
+  ◆ Armário com nicho do micro-ondas e gaveta                  5,210       7,946
+  ◆ Armário de piso ao teto com reforço para revestiment       9,874      14,759
+    Prateleira dobrável de bordas arredondadas                   750         750
+    subtotal                                                  15,834      23,454   custo 5,956
 
 SALA DE JANTAR  · chapas 6 Branco TX 15 1, Branco TX 6 1, Frapê 15 1, Frapê 18 1, Louro Freijó 15 1, Louro Freijó 18 1
-  ◆ Armário sob a bancada existente                            4,606
-  ◆ Cristaleira com portas de vidro                            7,444
-    subtotal                                                  12,050   custo 4,951
+  ◆ Armário sob a bancada existente                            5,012       7,064
+  ◆ Cristaleira com portas de vidro                            8,101       9,880
+    subtotal                                                  13,113      16,944   custo 4,951
 
 HALL DE ENTRADA  · chapas 6 Branco TX 6 1, Frapê 15 1, Frapê 18 2, Louro Freijó 15 1, Louro Freijó 18 1
-  ◆ Banco sapateira solto com palhinha                         3,172
-  ◆ Armário com portas de palhinha e nicho em Freijó           9,459
-    subtotal                                                  12,631   custo 5,190
+  ◆ Banco sapateira solto com palhinha                         4,201       5,104
+  ◆ Armário com portas de palhinha e nicho em Freijó          10,293      12,261
+    subtotal                                                  14,494      17,365   custo 5,473
 
 SALA DE TV  · chapas 12 Branco TX 15 1, Branco TX 6 3, Louro Freijó 15 3, Louro Freijó 18 5
-  ◆ Estante com nicho da TV, de piso a teto                   19,205
-    subtotal                                                  19,205   custo 7,891
+  ◆ Estante com nicho da TV, de piso a teto                   20,898      24,862
+    subtotal                                                  20,898      24,862   custo 7,891
 
 BRINQUEDOTECA  · chapas 4 Branco TX 6 1, Louro Freijó 18 1, Verde Jade 15 1, Verde Jade 18 1
-    Bancada solta com caixas de brinquedo e suportes           8,689
-    subtotal                                                   8,689   custo 3,309
+    Bancada solta com caixas de brinquedo e suportes           9,521       9,521
+    subtotal                                                   9,521       9,521   custo 3,309
 
-QUARTO DIEGO  · chapas 16 Branco TX 15 3, Branco TX 18 1, Branco TX 6 3, Frapê 15 1, Frapê 18 5, Louro Freijó 15 1, Louro Freijó 18 1, Verde Jade 18 1
-  ◆ Guarda-roupa com maleiro e armário estreito               24,197
-    Mesa de estudo regulável e nichos redondos                 5,649
-    subtotal                                                  29,846   custo 12,093
+QUARTO DIEGO  · chapas 15 Branco TX 15 3, Branco TX 18 1, Branco TX 6 3, Frapê 15 1, Frapê 18 4, Louro Freijó 15 1, Louro Freijó 18 1, Verde Jade 18 1
+  ◆ Guarda-roupa com maleiro e armário raso                   25,163      36,823
+    Mesa de estudo regulável e nichos redondos                 6,036       6,036
+    subtotal                                                  31,199      42,859   custo 11,599
 
 QUARTO CASAL  · chapas 18 Branco TX 15 4, Branco TX 18 1, Branco TX 6 4, Frapê 15 1, Frapê 18 6, Louro Freijó 15 1, Louro Freijó 18 1
-  ◆ Guarda-roupa de correr A                                  14,260
-  ◆ Guarda-roupa de correr D                                  12,134
-  ◆ Armário de giro                                            6,181
-    Cabeceira em painéis e prateleira de bordas arredond       5,137
-    subtotal                                                  37,711   custo 15,341
+  ◆ Guarda-roupa de correr A                                  15,517      18,837
+  ◆ Guarda-roupa de correr D                                  13,204      16,324
+  ◆ Armário de giro                                            6,727       8,657
+    Cabeceira em painéis e prateleira de bordas arredond       5,629       5,629
+    subtotal                                                  41,076      49,448   custo 15,341
 
 ESCRITÓRIO  · chapas 7 Branco TX 15 1, Branco TX 6 1, Frapê 15 1, Frapê 18 2, Louro Freijó 15 1, Louro Freijó 18 1
-  ◆ Armário sob a bancada com prateleira da impressora         4,069
-    Bancada em L de 5 cm                                       3,861
-  ◆ Armário aéreo em Freijó                                    3,838
-  ◆ Gaveteiro móvel com rodízios                               2,185
-    subtotal                                                  13,954   custo 5,618
+  ◆ Armário sob a bancada com prateleira da impressora         4,428       6,016
+    Bancada em L de 5 cm                                       4,231       4,231
+  ◆ Armário aéreo em Freijó                                    4,177       5,617
+  ◆ Gaveteiro móvel com rodízios                               2,378       3,772
+    subtotal                                                  15,214      19,637   custo 5,618
 
-    TOTAL                                                    153,744
-    custo direto                                              62,449
-chapas no total: 84
+    TOTAL                                                    166,914     211,466
+    custo direto                                              62,237      73,500
+chapas no total: 83
