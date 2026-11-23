@@ -41,12 +41,13 @@ PRECO = {
     'MDF Branco TX 18':  400.0,
     'MDF Branco TX 15':  350.0,
     'MDF Branco TX 6':   250.0,
-    #   ⚠⚠ COMPENSADO FLEXÍVEL NÃO EXISTE NA BASE. A Base tem compensado
-    #     COMUM, em chapa de 1600 × 2200, a R$ 150 (4 mm) e R$ 170 (6 mm).
-    #     Flexível é outro produto e custa mais — pelo mercado, de duas a
-    #     três vezes. Lanço a 2,5× o comum de 4 mm e marco como a primeira
-    #     cotação a fazer.
-    'Compensado flexível 4': 150.0 * 2.5,
+    #   ⭐⭐ R$ 600,00 A CHAPA, PREÇO DO JONATHAN [23/11/2026: "Compensado
+    #     flexivel, custo - 600,00 a chapa"]. ⛔ Não é número da Base: a
+    #     Base só tem compensado COMUM, em chapa de 1600 × 2200, a R$ 150
+    #     (4 mm), e flexível é outro produto. Eu havia ESTIMADO 2,5× o
+    #     comum, R$ 375 — o número dele é 60% mais alto, e é o que vale.
+    #     ⭐ DÚVIDA FECHADA: era a primeira cotação a fazer da folha.
+    'Compensado flexível 4': 600.0,
 }
 COMP_FLEX_C, COMP_FLEX_L = 220.0, 160.0      # a chapa de compensado é outra
 COMP_FLEX_M2 = COMP_FLEX_C * COMP_FLEX_L / 10000      # 3,52
@@ -77,13 +78,14 @@ LED_M = 150.00            # LED COB, conjunto completo
 LED_FONTE = 120.00        # uma a cada 8 a 10 m
 
 # ── terceirizados · aba Terceirizados ──────────────────────────────────
-#   ⚠ A Base tem DUAS linhas de laca, em escalas diferentes:
-#       "Laca ou pintura em peça lisa"  R$ 650,00/m²  materiais.json
-#       "Laca fosca PU"                 R$ 300,00/m²  jobs · faixa 210 a 650
-#     Uso a dos JOBS, que é o que a casa pagou de verdade. ⛔ Mas as duas
-#     linhas falam de peça LISA, e pórtico curvo não é peça lisa: lixar e
-#     lacar curva leva mais tempo. A dúvida está dimensionada no fim.
-LACA_M2 = 300.00
+#   ⭐⭐ R$ 650,00 O m², DECISÃO DO JONATHAN [23/11/2026: "laca considere
+#     650"]. É a linha ALTA da Base — "Laca ou pintura em peça lisa",
+#     R$ 650,00/m², do materiais.json — e não a de R$ 300,00 dos jobs, que
+#     eu havia lançado (faixa de 210 a 650).
+#   ⭐ E faz sentido: as duas linhas da Base falam de peça LISA, e pórtico
+#     curvo não é peça lisa. Lixar e lacar curva leva mais tempo, então o
+#     TETO da faixa é o lugar certo. DÚVIDA FECHADA.
+LACA_M2 = 650.00
 MARCENEIRO_H = 36.00
 
 # ── o dia da dupla · mecanismo do Jonathan [19/11/2026] ────────────────
@@ -106,6 +108,29 @@ PASSAGEM_L = 115.0                  # o arco de passagem, VISTA BB
 PRAT_POR_NICHO = 4                  # contadas na VISTA BB ampliada
 PRAT_ESP = 18                       # cota 1,8 na VISTA BB
 ALIZAR_L = 5.0                      # ⚠ largura do alizar não está em prancha
+
+#   ── os espelhos · VISTA AA e VISTA CC ──
+#   ⭐ [Jonathan, 23/11/2026] "os espelhos vamos fazer da seguinte forma.
+#     Um item considerando os paineis para receber a colagem dos espelhos.
+#     e outro item com os espelhos."
+#   ⛔ Isso TIRA o espelho de "o que não é marcenaria". A regra da casa é
+#     que espelho e vidro só entram quando fazem parte do MÓVEL — e agora
+#     fazem: nós entregamos o painel e colamos o espelho nele.
+#   ⚠ A Base avisa duas coisas na aba Vidro, e as duas mudam cronograma:
+#     "Vidraceiro. A medida sai depois do móvel montado, nunca antes." e
+#     "O VIDRO ENTRA PELA ÁREA DA FOLHA, não pelo vão."
+ESPELHO_M2_PRECO = 600.00      # "Espelho prata · R$ 600,00/m²"
+ESPELHO_FRETE = 200.00         # "Frete de espelho · serviço"
+#     (rótulo, largura, altura) — cota a cota
+ESPELHOS = [
+    ('VISTA AA \u00b7 espelho de 350', 350.0, 207.0),
+    ('VISTA CC \u00b7 espelho de 745', 745.0, 220.0),
+]
+#   ⭐ O SUBSTRATO N\u00c3O \u00c9 AMADEIRADO. Ele some inteiro sob o espelho, ent\u00e3o
+#     vai em Branco TX 18: R$ 400 a chapa contra R$ 700. Espelho colado
+#     pede base plana e est\u00e1vel, e 18 mm \u00e9 o que a Base manda para pe\u00e7a
+#     que n\u00e3o pode empenar.
+ESPELHO_SUBSTRATO = 'MDF Branco TX'
 
 #   ── os painéis que eram adesivo · as três vistas ──
 #     (rótulo, largura, altura) — cada um lido da sua cota
@@ -161,3 +186,28 @@ assert abs(BASE_SEM_RT - 0.81175) < 1e-9, BASE_SEM_RT
 RT = 0.0
 BASE = BASE_SEM_RT
 FIXO_DIA = 4000.0         # custo fixo por dia de fábrica · para o empate
+
+# ── a margem · [Jonathan, 23/11/2026] "aplique a mc de 55%" ────────────
+#   ⭐⭐ 55% é MC APLICADA, e na planilha ela não se digita: é a MC ALVO do
+#     projeto MAIS os pontos da DIFICULDADE do ambiente. O quadro ⑤ da aba
+#     Preço e Comissões tem a tabela:
+#         Médio     +5     "marcenaria de caixa, o que a fábrica faz todo dia"
+#         Difícil   +10    "usinagem de relevo, palhinha, segundo ofício"
+#         Complexo  +20    "três ou mais ofícios, geometria fora de esquadro,
+#                           estrutura metálica aparente ou peça que não cabe
+#                           em chapa inteira"
+#     ⛔ E a própria aba avisa: "Médio é o PISO, não o zero".
+#   ⭐ Então 55% cai EXATAMENTE na tabela da casa, sem forçar nada: MC alvo
+#     no piso de 35% + COMPLEXO (20) = 55%. E Complexo é a classificação
+#     honesta deste ambiente, critério por critério: são quatro ofícios
+#     (marcenaria, laca, vidraceiro e elétrica de LED), os oito arcos são
+#     geometria fora de esquadro, e o forro de 157 m², a faixa de 709 e o
+#     espelho de 745 não cabem em chapa inteira. Três dos quatro batem.
+MC = 0.55
+MC_ALVO = 0.35            # o piso da casa · fica em D7 da aba de preço
+DIFICULDADE = 'Complexo'  # +20 pontos · fica em D41, célula amarela
+
+
+def preco(custo, mc=MC):
+    """PREÇO = custo ÷ (BASE − MC) · o modelo da casa, igual ao da planilha."""
+    return custo / (BASE - mc)

@@ -157,10 +157,13 @@ _aliz = sum(n * A['externo'] * b.ALIZAR_L for _r, n, A in ARCOS) / 10000
 LACA_M2 = _face + _intra + _aliz
 _extra = sum(n * A['externo'] * b.NICHO_PROF for _r, n, A in ARCOS) / 10000
 porticos.s('Laca café · face, intradorso e alizar', LACA_M2, b.LACA_M2, 'm²',
-           '⚠ R$ 300 o m² é a linha "Laca fosca PU" dos JOBS; a outra linha '
-           'da Base, do materiais.json, diz R$ 650 · e as duas falam de peça '
-           'LISA, não de curva · ⛔ o extradorso (%s m²) está revestido e '
-           'NÃO lacado: ele some nos 6 cm entre pórticos'
+           '⭐ R$ 650,00 o m², DECISÃO DO JONATHAN [23/11/2026: "laca '
+           'considere 650"] · é a linha ALTA da Base, "Laca ou pintura em '
+           'peça lisa" do materiais.json, e não a de R$ 300 dos jobs, que eu '
+           'havia lançado · ⭐ e é o lugar certo, porque as duas linhas da '
+           'Base falam de peça LISA e curva leva mais lixa e mais tempo · '
+           '⛔ o extradorso (%s m²) está revestido e NÃO lacado: ele some '
+           'nos 6 cm entre pórticos'
            % ('%0.2f' % _extra).replace('.', ','))
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -215,9 +218,48 @@ paineis.m('Sarrafo de pinus · estrutura de fixação, montante a cada 60',
           'recebe o parafuso')
 
 # ═══════════════════════════════════════════════════════════════════════
+#   05 · OS PAINÉIS QUE RECEBEM O ESPELHO
+# ═══════════════════════════════════════════════════════════════════════
+#   ⭐ [Jonathan, 23/11/2026] o espelho virou DOIS itens: o painel que o
+#     recebe e o espelho em si. Separar é certo — são dois fornecedores,
+#     dois prazos e duas responsabilidades. O painel sai da nossa fábrica
+#     com o móvel; o espelho é medido DEPOIS do painel montado, porque a
+#     Base avisa: "Vidraceiro. A medida sai depois do móvel montado,
+#     nunca antes."
+base_esp = Item('Painéis para receber o espelho',
+                '%s m² de base em MDF 18 mm, aprumada e plana, onde o '
+                'espelho vai colado' % ('%0.2f' % sum(
+                    L * A / 10000 for _r, L, A in b.ESPELHOS)).replace('.', ','))
+for rot, L, A in b.ESPELHOS:
+    base_esp.p(rot.replace('espelho', 'base do espelho'), L, A, 1,
+               b.ESPELHO_SUBSTRATO, 18,
+               '⭐ Branco TX, não amadeirado: a face some inteira sob o '
+               'espelho e a chapa custa R$ 400 em vez de R$ 700')
+ESP_M2 = sum(L * A / 10000 for _r, L, A in b.ESPELHOS)
+base_esp.m('Sarrafo de pinus · estrutura de fixação, montante a cada 60',
+           ESP_M2 / 0.60, b.SARRAFO_M, 'm',
+           '⛔ espelho colado não perdoa barriga na base: o sarrafo '
+           'aprumado é o que garante o plano')
+
+# ═══════════════════════════════════════════════════════════════════════
+#   06 · OS ESPELHOS
+# ═══════════════════════════════════════════════════════════════════════
+espelhos = Item('Espelhos prata, colados sobre o painel',
+                '%s m² de espelho prata nas vistas AA e CC'
+                % ('%0.2f' % ESP_M2).replace('.', ','))
+for rot, L, A in b.ESPELHOS:
+    espelhos.s(rot, L * A / 10000, b.ESPELHO_M2_PRECO, 'm²',
+               '⚠ a Base avisa: "O VIDRO ENTRA PELA ÁREA DA FOLHA, não '
+               'pelo vão" · aqui o espelho cobre o painel inteiro, então '
+               'área da folha e área do painel são a mesma coisa')
+espelhos.s('Frete de espelho', 1, b.ESPELHO_FRETE, 'serviço',
+           'a Base tem a linha, por serviço · chapa de espelho não vai '
+           'junto com a carga de marcenaria')
+
+# ═══════════════════════════════════════════════════════════════════════
 #   O FECHAMENTO
 # ═══════════════════════════════════════════════════════════════════════
-ITENS = [forro, porticos, nichos, paineis]
+ITENS = [forro, porticos, nichos, paineis, base_esp, espelhos]
 
 
 def apura():
@@ -250,7 +292,13 @@ T = apura()
 
 
 def brl(v):
-    return ('%0.2f' % v).replace(',', '·').replace('.', ',').replace('·', '.')
+    #   ⛔ folha brasileira: separador de milhar, senão 52700,00 não se lê
+    t = ('%0.2f' % v).replace('.', ',')
+    i, _, d = t.partition(',')
+    out = ''
+    while len(i) > 3:
+        out, i = '.' + i[-3:] + out, i[:-3]
+    return i + out + ',' + d
 
 
 if __name__ == '__main__':
@@ -266,7 +314,7 @@ if __name__ == '__main__':
               % ('%s %d' % k, T['area'][k], n, brl(n * b.PRECO['%s %d' % k])))
     print('  %-28s %9s %7d %12s' % ('', '', T['n_ch'], brl(T['c_chapa'])))
 
-    print('\n  ② OS QUATRO ITENS  ' + S * 55)
+    print('\n  ② OS %d ITENS  ' % len(ITENS) + S * 55)
     for it in ITENS:
         print('\n  ■ %s' % it.nome)
         print('    %s' % it.obs)

@@ -82,9 +82,12 @@ def linhas():
     L = [['  VALVIC MARCENARIA        01 SHOWROOM · CENTURION MOTORS'],
          ['  Projeto CLS Arquitetas Associadas · prancha 554, revisão 00 de '
           '17/11/2025 · Vila da Serra · forro amadeirado de %s m², %d pórticos '
-          'curvos laqueados café e os painéis que a prancha marcava como '
-          'adesivo · ⛔ A LEGENDA DECIDE O ESCOPO: adesivo vira painel de MDF, '
-          'MDF laqueado café é nosso, TINTA e ESPELHO não são'
+          'curvos laqueados café, os painéis que a prancha marcava como '
+          'adesivo e os espelhos em dois itens · ⛔ A LEGENDA DECIDE O '
+          'ESCOPO: adesivo vira painel de MDF, MDF laqueado café é nosso, '
+          'ESPELHO passou a ser nosso em 23/11/2026 e só a TINTA não é · '
+          '⭐ MC de 55%% = alvo de 35%% + COMPLEXO (20 pontos) · preço na '
+          'aba Preço e Comissões'
           % (_br(b.FORRO_M2, 0), b.N_NICHOS + 1)],
          []]
 
@@ -107,10 +110,13 @@ def linhas():
                   _br(b.COMP_FLEX_C if k[0] == lv.FLEX else b.CHAPA_C, 0),
                   _br(b.COMP_FLEX_L if k[0] == lv.FLEX else b.CHAPA_L, 0)))
         if k[0] == lv.FLEX:
-            esp = ('⚠⚠ COMPENSADO FLEXÍVEL NÃO EXISTE NA BASE. A Base tem o '
-                   'compensado COMUM, em chapa de 1600 × 2200, a R$ 150 (4 mm). '
-                   'Flexível é outro produto e custa de duas a três vezes mais; '
-                   'lancei a 2,5× · É A PRIMEIRA COTAÇÃO A FAZER · ' + esp)
+            esp = ('⭐ R$ 600,00 A CHAPA, PREÇO DO JONATHAN [23/11/2026] · '
+                   '⛔ não é número da Base: a Base só tem compensado COMUM, '
+                   'em chapa de 1600 × 2200, a R$ 150 (4 mm), e flexível é '
+                   'outro produto. Eu havia ESTIMADO R$ 375, 2,5× o comum — '
+                   'o dele é 60% mais alto, e é o que vale · ⚠ VALE SUBIR '
+                   'ESTA LINHA PARA A BASE: todo projeto com curva vai '
+                   'precisar dela · ' + esp)
         mat('%s %d mm' % k, esp, n, 'chapa', n * b.PRECO['%s %d' % k])
 
     fita_m = sum(it.c_fita() for it in lv.ITENS) * b.FITA_PERDA
@@ -144,7 +150,9 @@ def linhas():
               % (b.N_NICHOS + 1, _br(b.MOLDURA_L, 0), _br(b.NICHO_PROF, 0)),
            2: '%d fundos e %d prateleiras'
               % (b.N_NICHOS, b.N_NICHOS * b.PRAT_POR_NICHO),
-           3: '%s m² de painel' % _br(lv.PAINEL_M2)}
+           3: '%s m² de painel' % _br(lv.PAINEL_M2),
+           4: '%s m² de base em Branco TX 18' % _br(lv.ESP_M2),
+           5: '%s m² de espelho prata' % _br(lv.ESP_M2)}
     for i, (it, d) in enumerate(zip(lv.ITENS, DIRETOS)):
         L.append(['%02d' % (i + 1), it.nome, MED.get(i, ''), '', '', '', '',
                   _n(d)])
@@ -197,10 +205,9 @@ FORA = [
  'cobre a maior parte das três vistas. Não é marcenaria · ⚠ Eu quase a li como MDF '
  'laqueado, o que teria dobrado o orçamento sem motivo: só o marrom SÓLIDO da legenda '
  'é nosso.',
- '⛔ O ESPELHO. São %s m² nas vistas AA e CC (hachura diagonal). Regra da casa: '
- 'espelho e vidro só entram quando fazem parte do móvel · ⭐ A MOLDURA em volta do '
- 'espelho da VISTA AA, essa sim, está orçada: ela é painel de MDF.'
- % _br(350 * 227 / 10000 + 745 * 220 / 10000),
+ '⛔ A TINTA DE FUNDO atrás dos painéis e o reboco: a parede chega pronta e aprumada '
+ 'para receber a marcenaria · ⭐ O ESPELHO SAIU DESTA LISTA em 23/11/2026: agora ele '
+ 'é nosso, em dois itens.',
  '⛔ A ILUMINAÇÃO DO FORRO. Os renders mostram fitas de LED correndo no teto e '
  'sanca acesa. O Jonathan pediu LED nas PRATELEIRAS, e só isso está orçado · no '
  'forro deixamos o rasgo e a passagem; fita, fonte e acionamento são do elétrico.',
@@ -237,6 +244,30 @@ NOTAS = [
  'cabe inteiro o fundo e a prateleira de todos os nichos. Está orçado SEM esse '
  'aproveitamento, que é o conservador — o ganho está nas dúvidas.'
  % (_br(b.MOLDURA_L, 0), _br(MIOLO_M2)),
+ '⭐⭐ DOIS PREÇOS FECHADOS PELO JONATHAN EM 23/11/2026, e eram justamente as duas '
+ 'dúvidas mais caras desta folha: "Compensado flexivel, custo - 600,00 a chapa" e '
+ '"laca considere 650" · ⛔ Nenhum dos dois é número da Base. O compensado FLEXÍVEL '
+ 'não existe lá — só o comum, a R$ 150 — e eu havia ESTIMADO R$ 375, 2,5× o comum; a '
+ 'laca tem duas linhas e eu havia lançado a de R$ 300 dos jobs, quando a certa é a de '
+ 'R$ 650 do materiais.json, que também é a mais coerente, porque as duas linhas falam '
+ 'de peça LISA e pórtico curvo leva mais lixa e mais tempo · ⭐ Juntos somam '
+ 'R$ 8.125,67 ao custo direto, que foi de R$ 86.973,29 para R$ %s: R$ 1.800,00 nas 8 '
+ 'chapas de compensado, R$ 5.981,00 nos %s m² de laca, R$ 108,00 de consumíveis sobre '
+ 'a chapa nova e R$ 236,67 de embalagem · ⭐ E a folha não ficou mais CARA por acaso, '
+ 'ficou mais FIRME: eram as duas únicas linhas que eu mesma havia marcado como '
+ '"primeira cotação a fazer", e agora são preço de verdade · ⚠ VALE SUBIR AS DUAS '
+ 'PARA A BASE DE CUSTOS — o próximo projeto com curva vai precisar delas.'
+ % (_br(T['direto']), _br(lv.LACA_M2)),
+ '⭐⭐ MC DE 55%, APLICADA [Jonathan, 23/11/2026: "aplique a mc de 55%"] · ⭐ E ela cai '
+ 'EXATAMENTE na tabela da casa, sem forçar nada: a MC alvo do projeto fica no PISO de '
+ '35% e o ambiente entra como COMPLEXO, que o quadro ⑤ da aba Preço e Comissões '
+ 'define como "junta três ou mais ofícios, geometria fora de esquadro, estrutura '
+ 'metálica aparente ou peça que não cabe em chapa inteira" — e este ambiente bate em '
+ 'três dos quatro critérios: são QUATRO ofícios (marcenaria, laca, vidraceiro e '
+ 'elétrica de LED), os oito arcos são geometria fora de esquadro, e o forro de 157 m², '
+ 'a faixa corrida de 709 e o espelho de 745 não cabem em chapa inteira · 35 + 20 = 55. '
+ '⛔ A MC não se digita no quadro ④: ela é a alvo mais os pontos da dificuldade, então '
+ 'quem quiser mexer mexe em D7 ou na coluna DIFICULDADE, nunca na MC APLICADA.',
  '⭐ A GEOMETRIA DO ARCO FECHA SOZINHA, e isso dá confiança na leitura: o vão tem '
  '%s de largura, logo o raio do semicírculo é %s — e a prancha cota %s de abóbada. '
  'A altura interna sai %s + %s de prateleira + %s de trecho reto = %s, e a prancha '
@@ -253,6 +284,15 @@ NOTAS = [
  'inteiro · São %s m de régua e %d fontes.'
  % (_br(b.N_NICHOS * b.PRAT_POR_NICHO * b.NICHO_L / 100), math.ceil(
      b.N_NICHOS * b.PRAT_POR_NICHO * b.NICHO_L / 100 / 9)),
+ '⭐⭐ O ESPELHO VIROU DOIS ITENS [Jonathan, 23/11/2026]: "um item considerando os '
+ 'paineis para receber a colagem dos espelhos. e outro item com os espelhos." ⛔ Isso '
+ 'TIROU o espelho de "o que não é marcenaria": a regra da casa é que vidro e espelho '
+ 'só entram quando fazem parte do MÓVEL, e agora fazem · ⭐ Separar os dois é certo, '
+ 'porque são dois fornecedores, dois preços e dois prazos — e a Base avisa que "a '
+ 'medida sai depois do móvel montado, nunca antes", então o espelho é a ÚLTIMA coisa '
+ 'a entrar na obra · O substrato vai em Branco TX 18, não em amadeirado: a face some '
+ 'inteira sob o espelho e a chapa custa R$ 400 em vez de R$ 700, o que economiza '
+ 'R$ 1.800,00 nas 6 chapas.',
  '⛔⛔ ERRO QUE EU COMETI E QUE NÃO QUEBRA NADA: lancei o forro como 39 peças do '
  'tamanho da chapa, e o motor — que já divide área por RENDIMENTO — aplicou o '
  'aproveitamento de 80% DUAS VEZES. Os 157 m² viraram 198 e as 39 chapas viraram '
@@ -261,16 +301,9 @@ NOTAS = [
 ]
 
 DUVIDAS = [
- '⚠ R$ 3.000 · O COMPENSADO FLEXÍVEL NÃO EXISTE NA BASE. A Base tem compensado '
- 'COMUM (4 mm, R$ 150, chapa de 1600 × 2200). Flexível é outro produto e custa de '
- 'duas a três vezes mais; lancei a 2,5×, R$ 375 a chapa, 8 chapas. É A PRIMEIRA '
- 'COTAÇÃO A FAZER · cada R$ 100 de erro na chapa vale R$ 800 no projeto.',
- '⚠ R$ 5.254 · A LACA EM PEÇA CURVA NÃO TEM LINHA NA BASE. A Base tem duas linhas '
- 'de laca e as duas falam de peça LISA: "Laca ou pintura em peça lisa, R$ 650 o m²" '
- '(materiais.json) e "Laca fosca PU, R$ 300" (jobs, faixa de 210 a 650). Lancei a dos '
- 'JOBS, que é o que a casa pagou · ⛔ lixar e lacar curva leva mais tempo que peça '
- 'lisa: a R$ 650 estes %s m² subiriam de R$ %s para R$ %s.'
- % (_br(lv.LACA_M2), _br(lv.LACA_M2 * 300), _br(lv.LACA_M2 * 650)),
+ '⭐ DUAS DÚVIDAS SAÍRAM DESTA LISTA EM 23/11/2026, e eram as duas mais caras: o '
+ 'preço do compensado flexível (R$ 600,00 a chapa) e o da laca (R$ 650,00 o m²), '
+ 'ambos fechados pelo Jonathan · estão registrados nas NOTAS, com o que mudaram.',
  '⚠ R$ %s · O MIOLO DOS 16 RECORTES DE ARCO. São %s m² de chapa que saem de '
  'dentro dos arcos em peças de até 104 × 140 — cabe o fundo e a prateleira de '
  'todos os nichos, que somam %s m². Está orçado SEM aproveitar, que é o '
@@ -287,7 +320,7 @@ DUVIDAS = [
  'pequeno, mas está registrado.'
  % (_br(lv.FORRO_PERIM), _br(T['c_fita'] + T['c_filete'])),
  '⚠ A LARGURA DO ALIZAR é premissa minha de %s cm — a prancha não cota. São '
- '%s m² de chapa e entram também na laca.'
+ '%s m² de chapa e entram também na laca, que agora custa R$ 650 o m².'
  % (_br(b.ALIZAR_L, 0),
     _br(sum(n * A['externo'] * b.ALIZAR_L for _r, n, A in lv.ARCOS) / 10000)),
  '⚠ QUANTAS PRATELEIRAS POR NICHO? Contei %d na VISTA BB ampliada. Se forem %d, '
@@ -299,7 +332,8 @@ DUVIDAS = [
     b.N_NICHOS),
  '⚠ O PADRÃO EXATO DO AMADEIRADO não foi escolhido pela arquiteta. Está no '
  'genérico de cor da Base, R$ 700 a chapa de 18 mm · ⛔ se cair em Cristallo '
- '(brilho, R$ 800) são R$ %s a mais; em Acetinato (R$ 1.800), R$ %s.'
+ '(brilho, R$ 800) são R$ %s a mais; em Acetinato (R$ 1.800), R$ %s · '
+ '⭐ É A MAIOR DÚVIDA QUE RESTA, agora que o compensado e a laca fecharam.'
  % (_br(65 * 100), _br(65 * 1100)),
  '⚠ O NÚMERO DE ESCORAS DE MÃO AMIGA é premissa: 10 para 157 m². Quem monta sabe '
  'quantas precisa · são R$ 8,00 o metro de sarrafo, então cada escora a mais custa '

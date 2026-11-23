@@ -105,3 +105,58 @@ reproduzo o mapa. O layout agora é **lido de uma referência**, não lembrado.
 
 ⚠ **O bloco 61–70 traz o custo fixo mensal da empresa.** Antes de abrir a planilha a
 um cliente ou a um parceiro, **esconder essas linhas**.
+
+---
+
+## ⛔⛔ DOIS DEFEITOS NO MODELO, achados em projeto real
+
+Os dois são da pior espécie: **não quebram nada, não acusam erro, e continuam
+somando.** Toda cópia nova do MODELO nasce com eles, então **corrigir na cópia é
+obrigatório** — e corrigir no MODELO, melhor ainda.
+
+### 1 · `Preço e Comissões!E41` · a tabela de dificuldade não alcança "Complexo"
+
+A fórmula da MC APLICADA busca os pontos da dificuldade num intervalo curto:
+
+```
+=IF($C41=0;0;$D$7+IFERROR(VLOOKUP($D41;$B$66:$D$68;3;FALSE);0))
+                                       ↑↑↑↑↑↑↑↑↑↑↑↑
+```
+
+A tabela do quadro ⑤ tem **cabeçalho na 66** e os três níveis nas linhas
+**67 (Médio), 68 (Difícil) e 69 (Complexo)**. O intervalo `$B$66:$D$68` cobre o
+cabeçalho e dois níveis — **"Complexo" fica de fora**. O VLOOKUP falha, o
+`IFERROR` devolve 0 e a MC sai igual à alvo, sem os 20 pontos.
+
+⛔ No Centurion isso significava **MC de 35% em vez de 55%** e um preço
+R$ 157 mil mais baixo, sem um único aviso na tela.
+
+**Correto:** `$B$67:$D$69` — e aplicar nas vinte linhas de ambiente, `E41:E60`,
+não só na primeira.
+
+### 2 · `Preço e Comissões` · a coluna EM R$ da cascata aponta para `$D$33`
+
+Deveria apontar para `$E$33`, onde está o preço de venda. Com `$D$33` a cascata
+multiplica pela célula errada e a conferência acusa valores que não existem.
+Corrigido nas cópias do Painel da Sala e do Centurion; **o MODELO segue com o
+defeito.**
+
+### 3 · a nota fiscal do MODELO ainda está em 5%
+
+O Jonathan fixou **9%** em 19/11/2026 (`D14`). Nota fiscal é alíquota da
+empresa, não varia por projeto — então o lugar dela é o MODELO, não a cópia.
+
+---
+
+## ⚠ Ao renomear uma coluna do quadro ③, renomear também o rótulo do bloco ②
+
+O bloco ② ONDE ESTÁ O DINHEIRO **espelha as colunas F..K** do quadro por
+ambiente, na ordem, por `=SUM($F$24:$F$43)` e irmãs. Os rótulos são texto solto:
+renomear a coluna e esquecer o rótulo faz **cada linha do bloco exibir o número
+da coluna seguinte**, somando certo e dizendo errado.
+
+⛔ Já aconteceu duas vezes — no Painel da Sala e no Centurion. No Centurion,
+"Frete do projeto · R$ 200 a viagem" exibia R$ 9.953,57 de laca e concluía
+"49,76785 viagens", porque `I17` guarda a fórmula de frete do MODELO
+(`$G17/VLOOKUP("Frete";precos;2;FALSE)`) em vez da barra `REPT("█";…)` das
+vizinhas. **Rótulo e fórmula se escrevem na mesma passada.**
