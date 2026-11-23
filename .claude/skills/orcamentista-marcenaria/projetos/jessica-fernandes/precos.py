@@ -44,7 +44,8 @@ BASE = 1 - (NF + ERRO + SERRA + MANUT + RT * LIQ + VEND * LIQ + 0.075 * (LIQ - R
 # ⭐ [Jonathan, 23/11/2026] "vamos propor os 2 cenários (telescópica, hettich)"
 LINHAS = {'Telescópica': dict(dob=4.0, corr=15.0, mc=0.35), 'Hettich': dict(dob=50.0, corr=150.0, mc=0.38)}
 MC_FIXA = 0.38
-AJUSTE_MC = 0.0
+# ⭐ [Jonathan, 23/11/2026] "suba a margem em 3%": +3 pontos em todos os itens
+AJUSTE_MC = 0.03
 AJUSTE_AMB = {}
 
 def custos(amb, lin):
