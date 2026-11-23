@@ -112,7 +112,14 @@ def linhas():
         if ultima:
             v = _n(D - sum(exibido))
         exibido.append(v)
-        L.append([rot, esp, _n(qtd, 2), un, v, _n(custo / D, 4),
+        #   ⭐ SEIS CASAS, não quatro: com quatro, a soma dos 22 percentuais
+        #     dava 99,9% em vez de 100,0% — o erro de arredondamento de cada
+        #     linha acumulava. ⛔ E aqui NÃO vale a regra de a última linha
+        #     absorver, como no dinheiro: a coluna de dinheiro É a conta e
+        #     tem de somar o total, mas cada percentual é uma razão da sua
+        #     própria linha. Forçar a última a fechar faria ela mentir sobre
+        #     si mesma. Mais precisão resolve sem mentir.
+        L.append([rot, esp, _n(qtd, 2), un, v, _n(custo / D, 6),
                   _n(unit) if unit is not None else ''])
 
     for k, n in sorted(T['chapas'].items()):
@@ -149,9 +156,11 @@ def linhas():
         'incide sobre chapa e fita · cola, lixa, parafuso, cavilha, tapa-furo '
         '· ⭐ O R$ UNITÁRIO AQUI É A BASE, não um preço: a soma da chapa e de '
         'TODA a fita · ⛔ a fita lançada como linha linear (o perímetro do '
-        'forro e as prateleiras montadas, R$ 393,61) estava ficando fora desta '
-        'base, porque só a fita do campo `fita` das peças entrava — o mesmo '
-        'material contava ou não conforme COMO eu o lancei. Corrigido',
+        'forro e a frente das prateleiras, R$ %s) estava ficando fora desta '
+        'base, porque só a fita do campo da peça entrava — o mesmo material '
+        'contava ou não conforme COMO eu o lancei. Corrigido'
+        % _br(sum(x['qtd'] * x['unit'] for it in lv.ITENS for x in it.lin
+                  if 'Fita de borda' in x['nome'])),
         b.CONSUMIVEIS, '%', T['c_cons'])
     mat('Embalagem', '⭐ O PERCENTUAL É DIGITADO, na coluna QUANTIDADE · '
         'incide sobre tudo o que vem acima · papelão, filme e cantoneira · '
@@ -341,11 +350,30 @@ NOTAS = [
         * b.NICHO_PROF / 10000), b.PRAT_MAT, _br(b.NICHO_L, 1)),
  '⭐ ALMA DE AÇO EM TODA PRATELEIRA, como a Base manda: "uma por peça, contra '
  'empeno" — e uma por PRATELEIRA, não uma por camada: são %d almas, %d barras de '
- '3 m. Prateleira de %s cm de vão sem apoio no meio empena, e o Jonathan pediu '
- 'nominalmente.'
+ '3 m, R$ 750,00 · Prateleira de %s cm de vão sem apoio no meio empena, e o '
+ 'Jonathan pediu nominalmente · ⭐ é ela que explica as duas camadas de 15 mm: a '
+ 'barra chata mora ENTRE elas.'
  % (b.N_NICHOS * b.PRAT_POR_NICHO,
     math.ceil(b.N_NICHOS * b.PRAT_POR_NICHO * b.NICHO_L / b.ALMA_M),
     _br(b.NICHO_L, 1)),
+ '⭐⭐ ONDE ACABA A LACA E COMEÇA O AMADEIRADO, DENTRO DO NICHO [Jonathan, '
+ '23/11/2026]: "os nichos serão laqueados nas laterais, amadeirado sera apenas o '
+ 'fundo e as prateleiras" · ⭐ Isso confirma a leitura e dá nome à peça: a "lateral '
+ 'do nicho" é o INTRADORSO, a superfície curva de compensado flexível que corre pelos '
+ '%.0f cm de profundidade e que se vê de dentro do vão — %s m² nos 8 arcos. Laqueada '
+ 'café, junto com a face frontal da moldura (%s m²) e o alizar (%s m²): %s m² ao todo, '
+ 'R$ %s · ⭐ E amadeirado só o que ele disse: o fundo em 6 mm (%s m²) e as prateleiras '
+ 'em duas camadas de 15 (%s m²) · ⛔⛔ E ISSO CORRIGIU A FITA: eu fitava a frente MAIS '
+ 'os dois lados de 30 cm de cada prateleira, mas a prateleira vai de lateral a '
+ 'lateral e essas bordas encostam no intradorso LAQUEADO — não se vê, não se fita. '
+ 'Eram 25,2 m de fita e de filetagem a mais, R$ 152,46 · ⚠ Fica uma pergunta para o '
+ 'lacador: o intradorso é compensado flexível de 4 mm, que tem veio e emenda, e os '
+ 'R$ 650 do m² são de "peça lisa" — confirmar se incluem massa e selador.'
+ % (b.NICHO_PROF, _br(lv._intra), _br(lv._face), _br(lv._aliz),
+    _br(lv.LACA_M2), _br(lv.LACA_M2 * b.LACA_M2),
+    _br(b.N_NICHOS * b.NICHO_L * b.NICHO_H / 10000),
+    _br(b.N_NICHOS * b.PRAT_POR_NICHO * b.PRAT_CAMADAS * b.NICHO_L
+        * b.NICHO_PROF / 10000)),
  '⭐ O FUNDO DO NICHO VAI EM 6 mm [Jonathan, 23/11/2026]: "os fundos serao em mdf '
  'de 6mm" · A Base concorda em dois lugares — "MDF Branco TX · Fundos · 6 mm" e a '
  'tabela de espessura, "Fundos · 6 mm · por encaixe em rasgo, SEM FITA" — e é por '
@@ -390,8 +418,22 @@ DUVIDAS = [
     math.ceil(lv.ESP_M2 / b.REND), _br(math.ceil(lv.ESP_M2 / b.REND) * 400)),
  '⚠ A PROFUNDIDADE DO NICHO NÃO ESTÁ EM PRANCHA NENHUMA. O Jonathan cravou %s cm '
  'em 23/11/2026, e é ela que define a caixa dos %d pórticos: o compensado flexível '
- 'dos dois lados, a prateleira e o LED escalam todos com ela. Conferir na medição.'
- % (_br(b.NICHO_PROF, 0), b.N_NICHOS + 1),
+ 'dos dois lados, a prateleira, o LED e a ÁREA LAQUEADA DA LATERAL escalam todos '
+ 'com ela. Conferir na medição · ⭐ cada 5 cm de profundidade a mais valem cerca de '
+ 'R$ %s de laca, R$ %s de compensado e R$ %s de prateleira.'
+ % (_br(b.NICHO_PROF, 0), b.N_NICHOS + 1,
+    _br(sum(n * A['interno'] for _r, n, A in lv.ARCOS) * 5 / 10000 * b.LACA_M2),
+    _br(sum(n * (A['interno'] + A['externo']) for _r, n, A in lv.ARCOS) * 5
+        / 10000 / b.COMP_FLEX_REND * b.PRECO['Compensado flexível 4']),
+    _br(b.N_NICHOS * b.PRAT_POR_NICHO * b.PRAT_CAMADAS * b.NICHO_L * 5
+        / 10000 / b.REND * b.PRECO['MDF Amadeirado 15'])),
+ '⚠ A LACA SOBRE COMPENSADO FLEXÍVEL. O intradorso — a lateral laqueada do nicho, '
+ '%s m² — é compensado flexível de 4 mm, que tem veio e emenda, e a linha da Base '
+ 'diz "Laca ou pintura em PEÇA LISA, R$ 650,00 o m²" · ⛔ Confirmar com o lacador se '
+ 'esse preço inclui massa e selador sobre compensado curvo, ou se há adicional · '
+ '⭐ é a maior superfície laqueada do projeto, R$ %s dos R$ %s de laca.'
+ % (_br(lv._intra), _br(lv._intra * b.LACA_M2),
+    _br(lv.LACA_M2 * b.LACA_M2)),
  '⚠ A FITA DA PRATELEIRA. A borda da prateleira montada tem %d mm, porque são duas '
  'camadas de %d coladas — e a fita da Base tem 22 mm. Peça de 30 mm pede fita de 35 '
  'mm, que a Base não lista · lancei a de 22 mm a R$ 3,00 o metro, R$ %s nos %s m de '
@@ -419,10 +461,10 @@ DUVIDAS = [
  'pequeno, mas está registrado.'
  % (_br(lv.FORRO_PERIM), _br(lv.FORRO_PERIM * b.FITA_PERDA
                              * (b.FITA_22 + b.FILETE_MAQ))),
- '⚠ O CLIENTE É "CENTURIUM" no carimbo da prancha e "Centurion Motors" no '
- 'moodboard. O Jonathan confirmou em 23/11/2026, e a proposta sai como '
- '"Centurion Motors", que é a grafia do moodboard e a que ele usa.',
 ]
+#   ⭐ A GRAFIA DO CLIENTE SAIU DAS DÚVIDAS em 23/11/2026: o Jonathan
+#     confirmou, e a proposta sai como "Centurion Motors", que é a do
+#     moodboard e a que ele usa. No carimbo da prancha está "CENTURIUM".
 
 
 if __name__ == '__main__':

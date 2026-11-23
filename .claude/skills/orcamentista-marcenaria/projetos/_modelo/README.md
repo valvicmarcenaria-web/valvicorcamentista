@@ -160,3 +160,44 @@ da coluna seguinte**, somando certo e dizendo errado.
 "49,76785 viagens", porque `I17` guarda a fórmula de frete do MODELO
 (`$G17/VLOOKUP("Frete";precos;2;FALSE)`) em vez da barra `REPT("█";…)` das
 vizinhas. **Rótulo e fórmula se escrevem na mesma passada.**
+
+---
+
+## ⛔⛔ GRAVAÇÃO EM BLOCO PERDE LINHA, E SÓ A CONTAGEM PEGA
+
+Em 23/11/2026, numa aba de 120 linhas, **duas linhas se perderam** em escritas
+longas pelo `update_values` do MCP, sem erro nenhum na resposta:
+
+- uma escrita de 31 linhas gravou a linha 88 **só com o primeiro campo** — a
+  observação e os sete valores não entraram;
+- uma escrita de 17 linhas deixou a linha 104 **inteiramente vazia**.
+
+Nos dois casos a resposta disse `status: success`. Nos dois casos o Python
+tinha o dado certo: **conferir o motor contra si mesmo não serve de nada** —
+o que falhou foi o transporte.
+
+⭐ **As conferências que pegam isso rodam NA PLANILHA, por fórmula:**
+
+```
+=SUMPRODUCT((D63:D88<>"")*(I63:I88=""))     linha com medida e sem custo → 0
+=SUMPRODUCT((C94:C109<>"")*1)               quantas notas chegaram
+=SUM(F7:F28)-F29                            a coluna soma o total → 0
+=F29-Painel!K24                              a aba bate com o Painel → 0
+```
+
+Escreva-as numa coluna livre (a **A** serve: é estreita e não tem merge),
+leia, e **apague**. ⛔ Antes de usar uma região "vazia" para isso, confira o
+que mora lá: na aba `Preço e Comissões` a tabela de dificuldade vive em
+`B66:D68`, escondida bem abaixo do conteúdo visível.
+
+## ⭐ A COLUNA DE DINHEIRO TEM DE SOMAR O TOTAL; A DE PERCENTUAL, NÃO
+
+Exibir cada linha arredondada a dois centavos e o total pelo valor exato faz
+a coluna somar um centavo a menos. Quem confere soma a coluna, então **a
+última linha absorve a diferença** — a embalagem no bloco de material, o
+último móvel no bloco de itens.
+
+⛔ Mas a regra **não** se aplica ao percentual: cada célula ali é a razão da
+sua própria linha, e forçar a última a fechar faria ela mentir sobre si
+mesma. Lá a solução é **mais precisão** — guardar seis casas em vez de
+quatro, e deixar o formato exibir uma.

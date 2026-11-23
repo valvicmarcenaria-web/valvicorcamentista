@@ -177,15 +177,25 @@ _intra = sum(n * A['interno'] * b.NICHO_PROF for _r, n, A in ARCOS) / 10000
 _aliz = sum(n * A['externo'] * b.ALIZAR_L for _r, n, A in ARCOS) / 10000
 LACA_M2 = _face + _intra + _aliz
 _extra = sum(n * A['externo'] * b.NICHO_PROF for _r, n, A in ARCOS) / 10000
-porticos.s('Laca café · face, intradorso e alizar', LACA_M2, b.LACA_M2, 'm²',
+_br2 = lambda v: ('%0.2f' % v).replace('.', ',')
+porticos.s('Laca café · face, lateral do nicho e alizar', LACA_M2, b.LACA_M2,
+           'm²',
            '⭐ R$ 650,00 o m², DECISÃO DO JONATHAN [23/11/2026: "laca '
            'considere 650"] · é a linha ALTA da Base, "Laca ou pintura em '
            'peça lisa" do materiais.json, e não a de R$ 300 dos jobs, que eu '
            'havia lançado · ⭐ e é o lugar certo, porque as duas linhas da '
            'Base falam de peça LISA e curva leva mais lixa e mais tempo · '
-           '⛔ o extradorso (%s m²) está revestido e NÃO lacado: ele some '
-           'nos 6 cm entre pórticos'
-           % ('%0.2f' % _extra).replace('.', ','))
+           '⭐⭐ O QUE A LACA COBRE [Jonathan, 23/11/2026: "os nichos serão '
+           'laqueados nas laterais, amadeirado sera apenas o fundo e as '
+           'prateleiras"]: a face frontal da moldura de %.0f cm (%s m²), o '
+           'INTRADORSO, que é a lateral e a abóbada vistas de dentro do vão '
+           '(%s m²), e o alizar de %.0f cm (%s m²) · ⛔ NÃO cobre o '
+           'extradorso (%s m²), que fica revestido e cru: ele some nos 6 cm '
+           'entre pórticos · ⚠ o intradorso é compensado flexível de 4 mm, '
+           'que tem veio e emenda: confirmar com o lacador se os R$ 650 '
+           'incluem massa e selador sobre compensado'
+           % (b.MOLDURA_L, _br2(_face), _br2(_intra), b.ALIZAR_L,
+              _br2(_aliz), _br2(_extra)))
 
 # ═══════════════════════════════════════════════════════════════════════
 #   03 · OS NICHOS POR DENTRO · fundo e prateleiras
@@ -227,14 +237,21 @@ nichos.p('Prateleira do nicho · camada de %d mm' % b.PRAT_ESP_PECA,
 #   ⭐ A FITA É DA PRATELEIRA MONTADA, UMA POR PRATELEIRA — não uma por
 #     camada. Por isso vem como linha linear, e não no campo `fita` da
 #     peça, que multiplicaria pelas 84 peças.
-PRAT_PERIM = N_PRAT * (b.NICHO_L + 2 * b.NICHO_PROF) / 100
-nichos.m('Fita de borda de cor · perímetro das prateleiras montadas',
+#   ⛔⛔ E SÓ A FRENTE LEVA FITA [Jonathan, 23/11/2026: "os nichos serão
+#     laqueados nas laterais, amadeirado sera apenas o fundo e as
+#     prateleiras"]. Eu fitava frente MAIS os dois lados de 30 cm — mas a
+#     prateleira vai de lateral a lateral do nicho, e essas duas bordas
+#     encostam no intradorso LAQUEADO: não se vê, não se fita. Eram 25,2 m
+#     de fita e de filetagem a mais, R$ 152,46.
+PRAT_PERIM = N_PRAT * b.NICHO_L / 100
+nichos.m('Fita de borda de cor · frente das prateleiras montadas',
          PRAT_PERIM * b.FITA_PERDA, b.FITA_22, 'm',
          '⚠ A BORDA TEM %d mm E A FITA DA BASE TEM 22 mm. Prateleira de duas '
          'camadas coladas pede fita de 35 mm, que a Base não lista — lanço a '
-         'de 22 mm a R$ 3,00 e marco a diferença nas dúvidas · uma fita por '
-         'prateleira, não por camada' % b.PRAT_ESP)
-nichos.m('Filetagem na coladeira automática · prateleiras',
+         'de 22 mm a R$ 3,00 e marco a diferença nas dúvidas · ⭐ SÓ A FRENTE: '
+         'uma fita por prateleira, não por camada, e não nos lados, que '
+         'encostam na lateral laqueada do nicho' % b.PRAT_ESP)
+nichos.m('Filetagem na coladeira automática · frente das prateleiras',
          PRAT_PERIM * b.FITA_PERDA, b.FILETE_MAQ, 'm', '')
 nichos.s('Alma de aço · barra chata de 3 m', math.ceil(N_PRAT * b.NICHO_L
          / b.ALMA_M), b.ALMA_BARRA, 'barra',
@@ -337,8 +354,8 @@ def apura():
     #     prateleira montada, cuja fita é uma por prateleira e não uma por
     #     camada). ⭐ A segunda ficava FORA da base dos consumíveis, então
     #     o mesmo material entrava ou não na conta conforme COMO eu o
-    #     lancei — e nada quebrava. São R$ 393,61 de fita e R$ 23,62 de
-    #     consumíveis que faltavam.
+    #     lancei — e nada quebrava. São R$ 310,45 de fita, 6% dos quais
+    #     faltavam na conta.
     c_fita_lin = sum(x['qtd'] * x['unit'] for it in ITENS for x in it.lin
                      if 'Fita de borda' in x['nome'])
     n_ch = sum(chapas.values())
