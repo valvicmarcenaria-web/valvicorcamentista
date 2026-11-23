@@ -119,3 +119,15 @@ if __name__ == '__main__':
     print('chapas no total:', sum(sum(c.values()) for c in CHAPAS.values()))
 
 
+
+
+# ⭐ [Jonathan, 23/11/2026] "mude os preços: itens 1, 2 e 3 juntos 15.400 · sapateira 3.200 · rack 7.500 ·
+#   cristaleira 24.300 · apenas com a Hettich". Valores FECHADOS da proposta.
+VALORES = [
+ ('Prateleiras e painel da TV', 'Prateleiras de parede com luz embutida, prateleiras em L, painel da TV com tubos de inox e o arranhador em sisal', 15400),
+ ('Sapateira', 'Portas basculantes, pés de madeira e puxador ouro velho', 3200),
+ ('Rack', 'Ponta arredondada, puxador cava e pés em perfil dourado', 7500),
+ ('Cristaleira', 'Laqueada no tom da parede, portas em arco com vidro, boiserie, luz nas prateleiras', 24300),
+]
+TOTAL = sum(v for *_, v in VALORES)
+CUSTO = custo('Hettich')
