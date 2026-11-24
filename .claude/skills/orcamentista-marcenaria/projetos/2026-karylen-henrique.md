@@ -167,9 +167,12 @@ corrediças invisíveis e puxador slim.
 | **FREIJÓ PURO** | Duratex | quarto de hóspedes (painel da cabeceira) |
 | TAUARI | — (**maciço de verdade**, é o piso) | escritório, suíte 01 |
 
-**E mais dois insumos fora da Base:**
-- **PALHINHA** — frente de gaveta. Aparece no apoio, no quarto de hóspedes e (provável) nas suítes.
-- **VIDRO CANELADO** — portas de correr do guarda-roupa de hóspedes.
+**E mais dois insumos:**
+- **PALHINHA** — frente de gaveta (apoio, quarto de hóspedes e, provável, as suítes).
+  ✅ **Já tem regra na casa: R$ 650 o m², e é TAPECEIRO**, não chapa melamínica (regra 7).
+  Nosso é o fundo em que ela se fixa (regra 17).
+- **VIDRO CANELADO** — portas de correr do guarda-roupa de hóspedes. ⚠ sem linha na Base;
+  vai pelo vidraceiro, como porta de vidro (regra 10: especificar e perguntar ao fornecedor).
 
 ---
 
@@ -296,3 +299,37 @@ Amortecimento, corrediças invisíveis e **puxador cava** em todo o conjunto.
 > ponto** no nosso módulo.
 > ◻ **Faltam ler as pg 4-7** (elevações restantes, R1 e isometrias).
 
+
+---
+
+## ⭐⭐ DECISÃO DO JONATHAN (24/11/2026): **TUDO COM FERRAGEM BLUM**
+
+A Base só tinha Blum em articulador e pulsador. Acrescentei as duas linhas que faltavam,
+**por paridade e marcadas para confirmação**:
+
+| ferragem | custo | origem do número |
+|---|---|---|
+| **Dobradiça Blum Clip Top Blumotion** | **R$ 35** /un | ⚠ **paridade** com a Hettich Sensys (35), par direto dela |
+| **Corrediça Oculta Blum Movento** | **R$ 400** /par | ⚠ **paridade** com a Hettich Actro (400) |
+| Articulador Blum **Aventos HK-xs** | R$ 250 /un | ✅ já na Base (Jonathan, 13/08/2026) |
+| Articulador **Aventos** (HF/HL, porta grande) | R$ 600 /un | ✅ já na Base |
+| **Pulsador Blum Tip-on / Servo** | R$ 100 /un | ✅ já na Base |
+| **Corrediça touch** | R$ 500 /par | ✅ regra 5 — substitui corrediça **e** pulsador |
+
+> ⭐ **A regra 5 fecha a conta e confirma a paridade:** se a corrediça touch custa 500 e
+> *substitui o par de corrediça e o pulsador*, e o pulsador Blum é 100, então a corrediça
+> oculta sozinha vale **400**. É exatamente o preço da Actro. Os dois números se sustentam.
+
+**Como aplicar neste projeto:**
+- As pranchas pedem **"corrediças invisíveis + puxador slim / puxador cava"** quase em todo
+  lugar → **Movento com puxador (400/par)**, não touch. A touch de 500 só entra onde a
+  prancha **não** especificar puxador.
+- As **básculas** (13 na cozinha + 5 no rack da sala de estar, todas de 20 a 35 de altura)
+  são porta pequena → **Aventos HK-xs a 250**, não o Aventos grande de 600.
+- Em báscula e porta **o pulsador continua valendo** (regra 5); em gaveta, nunca.
+
+> ⚠⚠ **ORDEM DE GRANDEZA DA FERRAGEM.** Só nos 7 ambientes já lidos contei **≈53 gavetas**
+> e **18 básculas**. A 400 o par e 250 a unidade isso dá **≈ R$ 21.200 + R$ 4.500 = R$ 25.700**
+> — e ainda faltam a suíte master, as duas suítes e a área de serviço, que são os ambientes
+> com mais gaveta. **A ferragem sozinha vai passar de R$ 40 mil.** Confirmar os dois preços
+> de paridade antes de fechar: cada R$ 50 de erro na corrediça move o custo em ~R$ 5 mil.
