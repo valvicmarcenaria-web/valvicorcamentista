@@ -26,8 +26,10 @@ var FLUXO_ABA   = 'LANCAMENTOS';
 var NF_ID       = '1-7XUrVso9oVKccQjM2m5Tgd9_-QIk-r1LZ8XZbDnGL0';
 var NF_ABA      = 'Nova Fábrica';
 var NF_PREFIXO  = 'Nova Fábrica · ';
-var NF_PRIMEIRA = 31;
-var NF_ULTIMA   = 600;
+var NF_ULTIMA   = 600;   // última linha do bloco de compras.
+                         // A PRIMEIRA linha é descoberta sozinha (veja primeiraLinhaNF_):
+                         // mexer no quadro por categoria acima da tabela desloca as linhas,
+                         // e um número fixo aqui faria o script escrever no lugar errado.
 var NF_COL_CHAVE = 11;
 
 // ── destino 2: fichas de cliente ───────────────────────────────────────────
@@ -164,8 +166,19 @@ function sincronizarNovaFabrica_(d) {
 
   var destino = SpreadsheetApp.openById(NF_ID).getSheetByName(NF_ABA);
   if (!destino) throw new Error('Aba ' + NF_ABA + ' não encontrada no destino.');
-  escreverBloco_(destino, NF_PRIMEIRA, NF_ULTIMA - NF_PRIMEIRA + 1, 2, 8,
+  var primeira = primeiraLinhaNF_(destino);
+  escreverBloco_(destino, primeira, NF_ULTIMA - primeira + 1, 2, 8,
                  NF_COL_CHAVE, d.marca, novas);
+}
+
+/** Acha o cabeçalho "Data" na coluna B e devolve a primeira linha de compras. */
+function primeiraLinhaNF_(aba) {
+  var n = Math.min(aba.getMaxRows(), 60);
+  var col = aba.getRange(1, 2, n, 1).getValues();
+  for (var i = 0; i < n; i++) {
+    if (String(col[i][0]).trim() === 'Data') return i + 2;
+  }
+  throw new Error('Não achei o cabeçalho "Data" na coluna B da aba ' + NF_ABA + '.');
 }
 
 // ── destino 2 · fichas de cliente ──────────────────────────────────────────
