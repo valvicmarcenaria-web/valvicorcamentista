@@ -1,36 +1,35 @@
-BASE 72.7575% · sem ferragem de linha MC 38% · Telescópica 35% · Hettich 38% · ajuste +0%
-                                                         Telescópica     Hettich
+BASE 72.7575% · sem ferragem de linha MC 38% · Hettich 38% · ajuste +0%
+                                                             Hettich
 
 SALA  · chapas 16 Atenna 18 2, Branco TX 15 3, Branco TX 6 1, Nogueira Caiena 18 9, Off White Suave 18 1
-    Painel em Nogueira com duas portas de correr embutid      22,497      22,497
-  ◆ Buffet com ponta curva e prateleiras em Atenna            15,044      18,232
-    Estante com portas de correr frisadas                      5,570       5,570
-  ◆ Rack curvo com cachepô                                     5,125       6,107
-    Revestimento do pilar e moldura de ripas da TV             7,968       7,968
-    subtotal                                                  56,202      60,373   custo 20,140
+  ◆ Painel com portas de correr embutidas, buffet e prat      40,729
+    Estante com portas de correr frisadas                      5,570
+  ◆ Rack curvo com cachepô                                    12,214
+    Revestimento do pilar e moldura de ripas da TV             7,968
+    subtotal                                                  66,480   custo 20,984
 
 COZINHA  · chapas 16 Branco TX 15 6, Branco TX 6 3, Nogueira Caiena 15 1, Nogueira Caiena 18 2, Off White Suave 15 1, Off White Suave 18 3
-  ◆ Bancada em L com frentes emolduradas e gaveteiro          10,538      14,382
-  ◆ Armário superior com luz e canto arredondado               5,470       7,157
-  ◆ Torre quente e aéreo da geladeira                          6,711       8,496
-  ◆ Cristaleira com vidro e luz, e armários do aparador       14,809      19,850
-    subtotal                                                  37,528      49,885   custo 14,170
+  ◆ Bancada em L com frentes emolduradas e gaveteiro          14,382
+  ◆ Armário superior com luz e canto arredondado               7,157
+  ◆ Torre quente e aéreo da geladeira                          8,496
+  ◆ Cristaleira com vidro e luz, e armários do aparador       19,850
+    subtotal                                                  49,885   custo 17,339
 
 LAVANDERIA  · chapas 7 Branco TX 15 2, Branco TX 6 1, Nogueira Caiena 15 1, Nogueira Caiena 18 1, Off White Suave 15 1, Off White Suave 18 1
-  ◆ Armário do tanque e armário inferior com tulha             6,770       8,434
-    Armário alto raso e prateleiras com cabideiro              9,716       9,716
-    subtotal                                                  16,486      18,150   custo 5,933
+  ◆ Armário do tanque e armário inferior com tulha             8,434
+    Armário alto raso e prateleiras com cabideiro              9,716
+    subtotal                                                  18,150   custo 6,309
 
 SUÍTE  · chapas 7 Branco TX 15 1, Branco TX 6 1, Nogueira Caiena 15 1, Nogueira Caiena 18 4
-    Cabeceira emoldurada com estofado e painel ripado         14,003      14,003
-  ◆ Penteadeira suspensa e mesas de cabeceira                  8,035      11,898
-    subtotal                                                  22,038      25,901   custo 7,901
+    Cabeceira emoldurada com estofado e painel ripado         14,003
+  ◆ Penteadeira suspensa e mesas de cabeceira                 11,898
+    subtotal                                                  25,901   custo 9,003
 
 QUARTO INFANTIL  · chapas 9 Azul Sereno 15 1, Azul Sereno 18 1, Branco TX 15 2, Branco TX 6 1, Mint 15 1, Mint 18 1, Off White Suave 18 2
-  ◆ Estante com gaveteiro colorido e torre de nichos          13,601      17,945
-    Escrivaninha, placa com nome e rodateto                    7,655       7,655
-    subtotal                                                  21,256      25,599   custo 7,796
+  ◆ Estante com gaveteiro colorido e torre de nichos          17,945
+    Escrivaninha, placa com nome e rodateto                    7,655
+    subtotal                                                  25,599   custo 8,898
 
-    TOTAL                                                    153,510     179,908
-    custo direto                                              55,939      62,532
+    TOTAL                                                    186,015
+    custo direto                                              62,532
 chapas no total: 55

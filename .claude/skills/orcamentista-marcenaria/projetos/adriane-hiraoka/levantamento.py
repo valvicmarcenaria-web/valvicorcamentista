@@ -156,12 +156,12 @@ def led(it, m, fonte=True):
 
 
 # ══ SALA ═════════════════════════════════════════════════════════════════
-it = item('Sala', 'Painel em Nogueira com duas portas de correr embutidas', '713 × 210')
+it = item('Sala', 'Painel com portas de correr embutidas, buffet e prateleiras', '713 × 210 · buffet 297 × 50 × 30')
 painel(it, 713, 210, NC18, 'Painel de parede')
 P(it, 'Folha de correr · face e contraface', 210, 90, 4, NC18)
 F(it, 'Kit de porta de correr embutida', 2, 'Kit porta de correr de passagem')
 chanfro(it, 4.2)
-it = item('Sala', 'Buffet com ponta curva e prateleiras em Atenna', '297 × 50 × 30 + prateleiras')
+# ⭐ [Jonathan, 24/11/2026] "unifique o painel com o buffet e prateleiras": mesmo item
 caixa(it, 297, 48, 30, NC18, ndiv=4, base_ext=True)
 P(it, 'Tampo em Off White Suave', 297, 32, 1, OW18, 3.3)
 giro(it, 5, 43, 48, NC18, pux=''); P(it, 'Portas curvas em MDF flexível', 48, 36, 2, NC18)

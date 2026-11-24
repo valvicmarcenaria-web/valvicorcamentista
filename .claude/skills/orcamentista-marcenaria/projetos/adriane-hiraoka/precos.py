@@ -43,7 +43,8 @@ LIQ = 1 - NF
 BASE = 1 - (NF + ERRO + SERRA + MANUT + RT * LIQ + VEND * LIQ + 0.075 * (LIQ - RT * LIQ - VEND * LIQ))
 # ⚠ telescópica, como a prancha pede, até o Jonathan definir
 # ⭐ [Jonathan, 23/11/2026] "vamos propor os 2 cenários (telescópica, hettich)"
-LINHAS = {'Telescópica': dict(dob=4.0, corr=15.0, mc=0.35), 'Hettich': dict(dob=50.0, corr=150.0, mc=0.38)}
+# ⭐ [Jonathan, 24/11/2026] "vamos apenas de Hettich"
+LINHAS = {'Hettich': dict(dob=50.0, corr=150.0, mc=0.38)}
 MC_FIXA = 0.38
 AJUSTE_MC = 0.0
 AJUSTE_AMB = {}
@@ -79,6 +80,7 @@ def custos(amb, lin):
     return out, nch
 
 
+MULT_ITEM = {'Rack curvo com cachepô': 2}
 TAB, CHAPAS = {}, {}
 for lin, f in LINHAS.items():
     TAB[lin] = {}
@@ -87,8 +89,10 @@ for lin, f in LINHAS.items():
         for it in its:
             mc = (f['mc'] if it['linha'] else MC_FIXA) + AJUSTE_MC + AJUSTE_AMB.get(amb, 0)
             TAB[lin][(amb, it['movel'])] = dict(it, mc=mc, pv=it['custo'] / (BASE - mc))
+            # ⭐ [Jonathan, 24/11/2026] "rack curvo pode dobrar o valor"
+            TAB[lin][(amb, it['movel'])]['pv'] *= MULT_ITEM.get(it['movel'], 1)
 
-for x, v in TAB['Telescópica'].items():
+for x, v in TAB['Hettich'].items():
     if not v['linha']:
         assert len({round(TAB[l][x]['pv'], 2) for l in LINHAS}) == 1, x
 
@@ -110,11 +114,11 @@ if __name__ == '__main__':
     for amb in L.AMBIENTES:
         print(f'\n{amb.upper()}  · chapas {sum(CHAPAS[amb].values())} ' +
               ', '.join(f"{k.replace('MDF ','')} {n}" for k, n in sorted(CHAPAS[amb].items())))
-        for (a, m), v in TAB['Telescópica'].items():
+        for (a, m), v in TAB['Hettich'].items():
             if a != amb: continue
             print(f"  {'◆' if v['linha'] else ' '} {m[:52]:52s}" + ''.join(f"{TAB[l][(a, m)]['pv']:>12,.0f}" for l in LINHAS))
         print(f"    {'subtotal':52s}" + ''.join(f'{total(l, amb):>12,.0f}' for l in LINHAS)
-              + f"   custo {custo('Telescópica', amb):,.0f}")
+              + f"   custo {custo('Hettich', amb):,.0f}")
     print(f"\n    {'TOTAL':52s}" + ''.join(f'{total(l):>12,.0f}' for l in LINHAS))
     print(f"    {'custo direto':52s}" + ''.join(f'{custo(l):>12,.0f}' for l in LINHAS))
     print('chapas no total:', sum(sum(c.values()) for c in CHAPAS.values()))
