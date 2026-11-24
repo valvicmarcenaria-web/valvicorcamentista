@@ -101,6 +101,10 @@ for x, v in TAB['Hettich'].items():
 
 
 FECHADO = {}
+# ⭐ [Jonathan, 24/11/2026] "a mesa de cabeceira do Marcelo pode considerar em 2.400": preço fechado do item
+ITEM_FIXO = {('Quarto Marcelo', 'Mesa de cabeceira com ponta curva, nicho e prateleira suspensa'): 2400.0}
+for _x, _v in ITEM_FIXO.items():
+    TAB['Hettich'][_x]['pv'] = _v
 
 
 def total(lin, amb=None):

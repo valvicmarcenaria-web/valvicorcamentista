@@ -162,7 +162,7 @@ F(it, 'Sistema de correr 3 folhas', 1, 'Sistema de correr 3 folhas'); slim(it, 2
 P(it, 'Rodapé e faixa superior', 285, 5, 2, AM18)
 
 # ══ QUARTO MARCELA ═══════════════════════════════════════════════════════
-it = item('Quarto Marcela', 'Roupeiro de correr com ponta curva de prateleiras abertas', '285 × 280 × 60 + ponta 60')
+it = item('Quarto Marcela', 'Roupeiro de correr com ponta curva, coluna de prateleiras e bancada suspensa', '285 × 280 × 60 + ponta, coluna e bancada')
 caixa(it, 285, 270, 60, AM18, ndiv=2)
 prat(it, 9, 92, 57, AM18)
 F(it, 'Cabideiro (tubo)', 2, 'Cabideiro')
@@ -174,7 +174,7 @@ P(it, 'Rodapé e faixa superior', 285, 5, 2, AM18)
 P(it, 'Ponta curva · prateleiras', 60, 60, 5, AM18, 1.0); P(it, 'Ponta curva · base, topo e lateral', 280, 60, 1, AM18)
 P(it, 'Ponta curva · base e topo', 60, 60, 2, AM18, 1.0)
 F(it, 'Curvatura das prateleiras', 1, 'Canto boleado')
-it = item('Quarto Marcela', 'Coluna de prateleiras e bancada suspensa', 'coluna até o teto · bancada 160 × 40 a 80 cm')
+# ⭐ [Jonathan, 24/11/2026] "da Marcela unifique os dois itens"
 P(it, 'Coluna · laterais', 280, 40, 2, AM18); P(it, 'Coluna · prateleiras', 45, 38, 7, AM18, 0.45)
 P(it, 'Bancada suspensa · tampo e base', 160, 40, 2, AM18, 3.2); P(it, 'Bancada · frente', 160, 10, 1, AM18, 1.6)
 F(it, 'Ponta arredondada', 1, 'Canto boleado'); F(it, 'Fixação da bancada suspensa', 4, 'Fixação invisível')

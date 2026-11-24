@@ -6,14 +6,13 @@ QUARTO LUCIA  · chapas 10 Amadeirado fosco 18 4, Branco TX 15 3, Branco TX 6 3
     subtotal                                                  27,624   custo 11,259
 
 QUARTO MARCELA  · chapas 13 Amadeirado fosco 18 7, Branco TX 15 3, Branco TX 6 3
-  ◆ Roupeiro de correr com ponta curva de prateleiras ab      27,931
-    Coluna de prateleiras e bancada suspensa                   4,299
+  ◆ Roupeiro de correr com ponta curva, coluna de pratel      32,230
     subtotal                                                  32,230   custo 13,136
 
 QUARTO MARCELO  · chapas 3 Amadeirado fosco 18 1, Branco TX 15 1, Branco TX 6 1
-  ◆ Mesa de cabeceira com ponta curva, nicho e prateleir       6,110
-    subtotal                                                   6,110   custo 2,490
+  ◆ Mesa de cabeceira com ponta curva, nicho e prateleir       2,400
+    subtotal                                                   2,400   custo 2,490
 
-    TOTAL                                                     65,964
+    TOTAL                                                     62,254
     custo direto                                              26,885
 chapas no total: 26
