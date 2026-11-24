@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
-"""QUARTOS LUCIA, MARCELA E MARCELO — levantamento PRELIMINAR de material  [24/11/2026]
-Quatro pranchas A3 (CAD), sem carimbo, sem cliente, sem material especificado. Referência enviada pelo cliente:
-roupeiro claro com a ponta de prateleiras abertas arredondadas em madeira.
-⚠ PREMISSAS até as pendências serem respondidas: caixa e portas em MDF de cor 18 mm, interno Branco TX,
-  prateleiras de 2,5 lidas como MDF 25 (chapa de 25 no preço de 18 + 20%), profundidade dos roupeiros 60.
-⛔ Sem preço: este arquivo só conta material.
+"""QUARTOS LUCIA, MARCELA E MARCELO — levantamento  [24/11/2026]
+Quatro pranchas A3 (CAD) + referência do cliente (roupeiro com ponta de prateleiras abertas arredondadas).
+⭐ [Jonathan, 24/11/2026] respostas às pendências: cliente em Nova Lima · padrão AMADEIRADO FOSCO · MDF 18 ·
+  profundidade 60 · portas de correr com puxador perfil slim · área de 76 da Lucia: nada · Marcela: ponta curva com
+  5 prateleiras, coluna de prateleiras à esquerda, bancada suspensa a 80 cm · Marcelo: o "ripado" são hachuras da
+  curva da peça, puxador cava, mais uma prateleira suspensa · sem LED · Hettich · comissão de vendedor 10% ·
+  120 dias · pagamento das últimas propostas.
 """
 ITENS = []
 BR15, BR18, BR6 = 'MDF Branco TX 15', 'MDF Branco TX 18', 'MDF Branco TX 6'
-CO15, CO18, CO25 = 'MDF cor 15', 'MDF cor 18', 'MDF cor 25'
-MA18 = 'MDF madeirado 18'
+AM15, AM18 = 'MDF Amadeirado fosco 15', 'MDF Amadeirado fosco 18'
+
+
+def slim(it, n): F(it, 'Puxador perfil slim (m)', round(n * 2.6, 1), 'Perfil de proteção de piso')
 
 def item(amb, movel, medida, linha=True):
     d = dict(amb=amb, movel=movel, medida=medida, pecas=[], ferr=[], m2=[])
@@ -147,43 +150,42 @@ def led(it, m, fonte=True):
 
 
 # ══ QUARTO LUCIA ═════════════════════════════════════════════════════════
-it = item('Quarto Lucia', 'Roupeiro de correr, 3 folhas (central com espelho)', '285 × 280 × 60')
-caixa(it, 285, 270, 60, CO18, ndiv=2)
-P(it, 'Prateleiras de 2,5', 92, 57, 8, CO25, 0.92)
+it = item('Quarto Lucia', 'Roupeiro de correr, folha central com espelho', '285 × 280 × 60')
+caixa(it, 285, 270, 60, AM18, ndiv=2)
+prat(it, 8, 92, 57, AM18)
 F(it, 'Cabideiro (tubo)', 2, 'Cabideiro')
 gavetas(it, 8, 92, 20, 55, BR15, pux='espaçado')
 P(it, 'Sapateira', 92, 45, 2, BR15, 0.92); F(it, 'Corrediça · sapateira', 2, 'Corrediça Hettich')
-P(it, 'Porta de correr', 270, 95, 2, CO18); M2(it, 'Porta de correr com espelho', 95, 270, 1, 'Porta de espelho em alumínio')
-F(it, 'Sistema de correr 3 folhas', 1, 'Sistema de correr 3 folhas'); F(it, 'Desempenador', 4, 'Desempenador de porta')
-P(it, 'Rodapé e faixa superior (5)', 285, 5, 2, CO18)
+P(it, 'Porta de correr', 270, 95, 2, AM18); F(it, 'Desempenador', 4, 'Desempenador de porta')
+M2(it, 'Porta de correr com espelho em perfil de alumínio', 95, 270, 1, 'Porta de espelho em alumínio')
+F(it, 'Sistema de correr 3 folhas', 1, 'Sistema de correr 3 folhas'); slim(it, 2)
+P(it, 'Rodapé e faixa superior', 285, 5, 2, AM18)
 
 # ══ QUARTO MARCELA ═══════════════════════════════════════════════════════
-it = item('Quarto Marcela', 'Roupeiro de correr, 3 folhas', '285 × 280 × 60')
-caixa(it, 285, 270, 60, CO18, ndiv=2)
-P(it, 'Prateleiras de 2,5', 92, 57, 9, CO25, 0.92)
+it = item('Quarto Marcela', 'Roupeiro de correr com ponta curva de prateleiras abertas', '285 × 280 × 60 + ponta 60')
+caixa(it, 285, 270, 60, AM18, ndiv=2)
+prat(it, 9, 92, 57, AM18)
 F(it, 'Cabideiro (tubo)', 2, 'Cabideiro')
 gavetas(it, 8, 80, 20, 55, BR15, pux='espaçado')
 P(it, 'Sapateira', 92, 45, 2, BR15, 0.92); F(it, 'Corrediça · sapateira', 2, 'Corrediça Hettich')
-P(it, 'Porta de correr', 270, 95, 3, CO18)
-F(it, 'Sistema de correr 3 folhas', 1, 'Sistema de correr 3 folhas'); F(it, 'Desempenador', 6, 'Desempenador de porta')
-P(it, 'Rodapé e faixa superior (5)', 285, 5, 2, CO18)
-it = item('Quarto Marcela', 'Ponta curva de prateleiras abertas (referência)', '60 × 280 × 60 · curva R60')
-P(it, 'Prateleiras curvas de 2,5', 60, 60, 6, MA18, 1.0); P(it, 'Lateral', 280, 60, 1, MA18)
-F(it, 'Curvatura em MDF flexível / usinagem', 1, 'Canto boleado')
-it = item('Quarto Marcela', 'Estante lateral de prateleiras (lado esquerdo)', '~25–40 × 280 · 7 prat.')
-P(it, 'Prateleiras de 2,5', 40, 30, 7, CO25, 0.4); P(it, 'Lateral', 280, 30, 1, CO18)
-it = item('Quarto Marcela', 'Peça 40 × 160 com ponta arredondada (parede inclinada)', '160 × ? × 40')
-P(it, 'Tampo com ponta arredondada', 160, 40, 1, CO25, 2.0)
+P(it, 'Porta de correr', 270, 95, 3, AM18); F(it, 'Desempenador', 6, 'Desempenador de porta')
+F(it, 'Sistema de correr 3 folhas', 1, 'Sistema de correr 3 folhas'); slim(it, 3)
+P(it, 'Rodapé e faixa superior', 285, 5, 2, AM18)
+P(it, 'Ponta curva · prateleiras', 60, 60, 5, AM18, 1.0); P(it, 'Ponta curva · base, topo e lateral', 280, 60, 1, AM18)
+P(it, 'Ponta curva · base e topo', 60, 60, 2, AM18, 1.0)
+F(it, 'Curvatura das prateleiras', 1, 'Canto boleado')
+it = item('Quarto Marcela', 'Coluna de prateleiras e bancada suspensa', 'coluna até o teto · bancada 160 × 40 a 80 cm')
+P(it, 'Coluna · laterais', 280, 40, 2, AM18); P(it, 'Coluna · prateleiras', 45, 38, 7, AM18, 0.45)
+P(it, 'Bancada suspensa · tampo e base', 160, 40, 2, AM18, 3.2); P(it, 'Bancada · frente', 160, 10, 1, AM18, 1.6)
+F(it, 'Ponta arredondada', 1, 'Canto boleado'); F(it, 'Fixação da bancada suspensa', 4, 'Fixação invisível')
 
 # ══ QUARTO MARCELO ═══════════════════════════════════════════════════════
-it = item('Quarto Marcelo', 'Mesa de cabeceira / aparador com 2 portas e prateleira', '138 × 55 × 40, ponta arredondada')
-caixa(it, 138, 55, 40, CO18, ndiv=1, base_ext=True, topo_ext=True)
-giro(it, 2, 69, 52, CO18, pux='')
-prat(it, 1, 67, 38)
-F(it, 'Ponta arredondada', 1, 'Canto boleado')
-it = item('Quarto Marcelo', 'Painel ripado com nichos (Vista 03)', 'sem cotas')
-P(it, 'Painel de fundo (estimado 100 × 260)', 260, 100, 1, MA18, 0)
-P(it, 'Ripas (estimado)', 260, 4, 18, MA18, 5.2)
-P(it, 'Nichos · prateleiras (3)', 100, 25, 4, MA18, 1.0)
+it = item('Quarto Marcelo', 'Mesa de cabeceira com ponta curva, nicho e prateleira suspensa', '138 × 55 × 40')
+caixa(it, 138, 55, 40, AM18, ndiv=1, base_ext=True, topo_ext=True)
+giro(it, 2, 69, 52, AM18, pux='')
+F(it, 'Puxador cava (m)', 1.38, 'Cava usinada')
+prat(it, 1, 67, 38, AM18)
+P(it, 'Ponta curva com nichos', 55, 40, 3, AM18, 1.0); F(it, 'Curvatura da ponta', 1, 'Canto boleado')
+P(it, 'Prateleira suspensa', 100, 25, 1, AM18, 2.5); F(it, 'Fixação invisível', 3, 'Fixação invisível')
 
 AMBIENTES = list(dict.fromkeys(i['amb'] for i in ITENS))
