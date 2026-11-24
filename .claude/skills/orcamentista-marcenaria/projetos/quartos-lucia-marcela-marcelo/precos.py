@@ -49,7 +49,7 @@ BASE = 1 - (NF + ERRO + SERRA + MANUT + RT * LIQ + VEND * LIQ + 0.075 * (LIQ - R
 LINHAS = {'Hettich': dict(dob=50.0, corr=150.0, mc=0.38)}
 MC_FIXA = 0.38
 # ⭐ [Jonathan, 23/11/2026] "suba a margem em 3%": +3 pontos em todos os itens
-AJUSTE_MC = 0.0   # margem da casa: 38% na Hettich
+AJUSTE_MC = -0.06   # ⭐ [Jonathan, 24/11/2026] "vamos reduzir a MC para 32%"
 AJUSTE_AMB = {}
 # ⭐ [Jonathan, 23/11/2026] "a cabeceira pode considerar 60%": MC absoluta por item
 MC_ITEM = {}
