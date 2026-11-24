@@ -214,7 +214,8 @@ DIFS = [
  ('03', 'Portas de espelho em alumínio', 'Todas as portas de espelho, dos banhos aos roupeiros, em esquadria de alumínio: o perfil mantém a folha no esquadro e protege o espelho.'),
  ('04', 'Portas em MDF 18 mm', 'Todas as portas em MDF de 18 mm: mais rígidas, sem empenar com o tempo.'),
  ('05', 'Estrutura metálica na cama suspensa', 'A cama de cima do beliche apoiada em estrutura metálica de sustentação, além da marcenaria.'),
- ('06', 'Perfil slim nas portas de espelho', 'Puxador em cava não se faz em espelho: nas portas de espelho consideramos o <b>perfil slim</b>, discreto e firme.'),
+ # ⭐ [Jonathan, 24/11/2026] a cava no espelho não é feita por indisponibilidade de fornecedor e por valor — não por limite técnico
+ ('06', 'Perfil slim nas portas de espelho', 'A cava no espelho não está no nosso escopo de fornecimento: nas portas de espelho consideramos o <b>perfil slim</b>, discreto e firme, com fornecedor de prazo e valor competitivos.'),
 ]
 difs = ''.join(f'''<div class="df"><div class="n">{n}</div><div class="t">{E(t)}</div><p>{d}</p></div>''' for n, t, d in DIFS)
 folha(f'''<div class="pad">
