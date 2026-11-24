@@ -124,7 +124,8 @@ if __name__ == '__main__':
 
 # ⭐ [Jonathan, 24/11/2026] "preciso chegar à opção na Hettich a 157k e a telescópica abaixo
 #   proporcionalmente": todos os itens das DUAS linhas escalados pelo mesmo fator, Hettich = 157.000.
-TOTAL_HETTICH = 157000
+# ⭐ [Jonathan, 24/11/2026] "vamos subir mais 5%": 157.000 × 1,05
+TOTAL_HETTICH = 164850
 
 
 def valores_fechados():
