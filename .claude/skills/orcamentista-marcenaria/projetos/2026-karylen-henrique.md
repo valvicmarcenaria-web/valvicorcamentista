@@ -232,33 +232,53 @@ cuba 90 × 30) · kit box quadrado preto com vidro Reflecta e puxador em barra �
 
 ---
 
-## ⭐⭐ MAPA DAS 61 PÁGINAS — CADA ARQUIVO TEM **DOIS** CONJUNTOS DE PRANCHAS
+## ⭐⭐⭐ MAPA DAS 61 PÁGINAS — **SÃO 16 AMBIENTES, NÃO 11**
 
-Cada PDF da pasta traz **duas numerações de prancha**. O 1º conjunto é **MARCENARIA**;
-o 2º é, no geral, **PAGINAÇÃO DE REVESTIMENTO** (porcelanato, louças e metais) —
-confirmado no banho social, onde o 2º conjunto traz "BANHO SOCIAL — PAGINAÇÃO",
-memorial Deca/Eliane e tabela QUANTITATIVO em m². **Não é escopo de marcenaria.**
+Cada PDF da pasta traz **dois conjuntos de prancha**, e o 2º conjunto **quase nunca é
+revestimento: são AMBIENTES A MAIS**, que não aparecem no nome das subpastas do Drive.
+Só o do banho social é paginação de porcelanato.
 
-| arquivo | pg | 1º conjunto (marcenaria) | 2º conjunto |
+| arquivo (subpasta do Drive) | pg | 1º conjunto | 2º conjunto |
 |---|---|---|---|
-| apoio | 2 | 01/02, 02/02 (selo não atualizado) | — |
-| area-servico | 9 | **pg 1-5** = 01/05…05/05 | pg 6-9 = 01/04…04/04 |
-| banho-social | 6 | **pg 1-2** = 01/02, 02/02 | pg 3-6 = 01/04…04/04 ⛔ revestimento |
-| cozinha | 7 | **pg 1-2** = 01/02, 02/02 | pg 3-7 = "COZINHA — JANELA" ⚠ **também MARCENARIA, pg 3-4 em REVISÃO R1** |
-| escritorio | 2 | 01/02, 02/02 | — |
-| quarto-hospedes | 2 | 01/02, 02/02 | — |
-| sala-estar | 3 | 01/03…03/03 | — |
-| sala-jantar | 2 | 01/01, 01/01 | — |
-| suite-01-menina | 8 | **pg 1-3** = 01/03…03/03 | pg 4-8 = 01/05…05/05 |
-| suite-02-menino | 8 | **pg 1-4** = 01/04…04/04 | pg 5-8 = 01/04…04/04 |
-| suite-master | 12 | **pg 1-5** = 01/05…05/05 | pg 6-12 = 01/07…07/07 |
+| apoio | 2 | APOIO (01/02, 02/02) | — |
+| area-servico | 9 | ÁREA DE SERVIÇO 01/05…05/05 | pg 6-9 · **ÁREA DE SERVIÇO** (continua) |
+| banho-social | 6 | BANHO SOCIAL 01/02, 02/02 | pg 3-6 · BANHO SOCIAL ⛔ **paginação de revestimento** |
+| cozinha | 7 | COZINHA 01/02, 02/02 | pg 3-4 · **COZINHA — JANELA** (⚠ **R1**) · pg 5-7 · COZINHA |
+| escritorio | 2 | ESCRITÓRIO | — |
+| quarto-hospedes | 2 | QUARTO DE HÓSPEDES | — |
+| sala-estar | 3 | SALA DE ESTAR | — |
+| sala-jantar | 2 | SALA DE JANTAR | — |
+| suite-01-menina | 8 | SUÍTE 01 (pg 1-3) | pg 4-8 · ⭐ **BANHO 01** |
+| suite-02-menino | 8 | SUÍTE 02 (pg 1-4) | pg 5 · ⭐ **BANHO 02** · pg 6-8 · ⭐ **LAVABO** |
+| suite-master | 12 | SUÍTE MASTER (pg 1-5) | pg 6-12 · ⭐ **BANHO SUÍTE MASTER** (7 pranchas!) |
 
-> ⚠⚠ **O 2º CONJUNTO NÃO É SEMPRE REVESTIMENTO — VARIA POR AMBIENTE.**
-> No banho social ele é paginação de porcelanato (⛔ fora do escopo). **Na cozinha ele é
-> MARCENARIA**: um detalhamento à parte intitulado **"COZINHA — JANELA"**, e as páginas 3 e 4
-> estão carimbadas **R1**, não 00 — são as únicas peças revisadas de todo o projeto.
-> **Conferir cada 2º conjunto antes de descartar**, e confirmar com a arquiteta qual revisão
-> da cozinha vale.
+### ⭐ A lista real de ambientes a orçar
+
+| # | ambiente | páginas | situação |
+|---|---|---|---|
+| 1 | Apoio | 2 | ✅ levantado |
+| 2 | Área de serviço | 9 | ◻ a ler |
+| 3 | Banho social | 2 | ✅ levantado |
+| 4 | Cozinha (+ Cozinha-janela) | 7 | ◻ parcial (pg 1-3 lidas) |
+| 5 | Escritório | 2 | ✅ levantado |
+| 6 | Quarto de hóspedes | 2 | ✅ levantado |
+| 7 | Sala de estar | 3 | ✅ levantado |
+| 8 | Sala de jantar | 2 | ✅ levantado |
+| 9 | Suíte 01 (menina) | 3 | ◻ a ler |
+| 10 | **Banho 01** | 5 | ◻ a ler |
+| 11 | Suíte 02 (menino) | 4 | ◻ a ler |
+| 12 | **Banho 02** | 1 | ◻ a ler |
+| 13 | **Lavabo** | 3 | ◻ a ler |
+| 14 | Suíte master | 5 | ◻ parcial (pg 2 e 4 lidas) |
+| 15 | **Banho da suíte master** | 7 | ◻ parcial (pg 10 lida) |
+
+> ⚠⚠ **AS 4 SUBPASTAS DO DRIVE ESCONDEM 5 AMBIENTES.** "QUARTO 1 MENINA" traz também o
+> **Banho 01**; "QUARTO 2 MENINO" traz o **Banho 02 e o Lavabo**; "SUÍTE MASTER" traz o
+> **Banho da suíte master**, que sozinho tem 7 pranchas e **728,5 de extensão**.
+> Quem orçar olhando só o nome das pastas deixa 5 ambientes de fora.
+
+> ⚠ **A R1 DA COZINHA.** As páginas 3 e 4 ("COZINHA — JANELA") estão carimbadas **R1**,
+> não 00 — as únicas peças revisadas do projeto. Confirmar com a arquiteta qual vale.
 
 ---
 
@@ -333,3 +353,52 @@ A Base só tinha Blum em articulador e pulsador. Acrescentei as duas linhas que 
 > — e ainda faltam a suíte master, as duas suítes e a área de serviço, que são os ambientes
 > com mais gaveta. **A ferragem sozinha vai passar de R$ 40 mil.** Confirmar os dois preços
 > de paridade antes de fechar: cada R$ 50 de erro na corrediça move o custo em ~R$ 5 mil.
+---
+
+### 14 · SUÍTE MASTER — pranchas 01/05 a 05/05 (pg 1-5) ◻ parcial (pg 2 e 4 lidas)
+
+⭐ **Mais dois padrões novos:** **MDF NEBLINA — GUARARAPES** e **MDF CARVALHO HANOUVER — DURATEX**.
+
+**ELEVAÇÃO A** — 454,5 × 270, modulação `2 | 83 | 50 | 206,3 | 100 | 13,2`:
+
+| # | Peça | C | A | P | material / detalhe |
+|---|---|---|---|---|---|
+| A1 | **Painel ripado da cabeceira** | 454,5 | 217 | — | **MDF NEBLINA-Guararapes, ripas 10×1 cm** com intervalo de 2 |
+| A2 | **Mesa de cabeceira** suspensa ×2 ⚠ | 50 | 24 | 40 | **MDF Carvalho Hanouver-Duratex**, gaveta de 20, **fundo em MDF liso — interromper o painel ripado**, amortecimento, corrediças invisíveis |
+| A3 | Escrivaninha (trecho desta elevação) | 100 | 22,3 | ⚠ | MDF Carvalho Hanouver, fixada na parede |
+
+Mesas de cabeceira assentadas a **53 do piso**; escrivaninha com tampo a **75,3**.
+
+**ELEVAÇÃO B** — 345,1 × 270, `127,5 | 127,5 | 80 | 10`:
+- **Painel e rodapé em MDF NOGUEIRA-Guararapes**, 255 de altura + 10 de rodapé
+- O módulo de **80 tem puxador vertical → é PORTA de passagem** embutida no painel
+- 2 luminárias "BEAT 0,75" no forro ⚠ confirmar se o perfil de LED é nosso
+
+**ELEVAÇÃO D** — 345,1 × 270, `2 | 41 | 297,5 | 4,6`:
+- Parte alta (195) é **esquadria de vidro** ⛔ não é nossa
+- **ESCRIVANINHA de 297,5 × 75** em MDF Carvalho Hanouver, fixada na parede, com
+  **pés de fixação em MDF Carvalho Hanouver** (2 intermediários visíveis)
+- Mesa de cabeceira de 41 à esquerda, com gaveta de 20
+
+◻ **Faltam ler as pg 1, 3 e 5** (planta, elevação C e isometria).
+
+---
+
+### 15 · BANHO DA SUÍTE MASTER — pranchas 01/07 a 07/07 (pg 6-12) ◻ parcial (pg 10 lida)
+
+⭐ **Mais um padrão: MDF TECNO FOS — GUARARAPES.**
+**Ambiente de 728,5 de extensão × 270** — é o maior banheiro da casa e tem closet dentro.
+
+**ELEVAÇÃO C** — `143,4 | 182 | 192 | 87,9 | 3 | 120,3` = 728,5:
+
+| # | Peça | C | A | P | material / detalhe |
+|---|---|---|---|---|---|
+| C1 | **Roupeiro / closet** | 143,4 | 270 | ⚠ | **MDF TECNO FOS-Guararapes** · 2 prateleiras (33,5/33,5) + **cabideiro** com vão de 108 + nicho |
+| C2 | **Gaveteiro** | 182 | 84 | ⚠ | **8 gavetas**: 2 colunas (88 / 90) × 4 fileiras de 16 |
+| C3 | Armário **espelhado** | 192 | 160 | ⚠ | 3 folhas de correr (63,5 / 64,5 / 64) · **espelho Crystal Prata 5 mm, fixação flutuante, iluminação LED** |
+| C4 | Armário sob a bancada | 192 | 75 | ⚠ | **MDF Carvalho Hanouver-Duratex**, **frente RIPADA**, puxador em barra, 2 fileiras de 37,5 |
+| C5 | Espelhos nas outras paredes | 87,9 + 120,3 | ⚠ | — | Crystal Prata 5 mm, fixação flutuante, **iluminação LED** |
+
+⛔ Bancada em revestimento **Bianco Covelo 90×180 — Portobello**: não é nossa.
+◻ **Faltam ler as pg 6-9, 11 e 12.**
+
