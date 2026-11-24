@@ -1,0 +1,52 @@
+BASE 72.7575% · sem ferragem de linha MC 38% · Telescópica 35% · Hettich 38% · ajuste +0%
+                                                         Telescópica     Hettich
+
+SALA  · chapas 6 Branco Brilhante 18 1, Branco TX 15 1, Branco TX 6 1, Carvalho Malva 15 1, Carvalho Malva 18 2
+    Painel da TV em Carvalho com canais de luz                 9,324       9,324
+  ◆ Rack suspenso com gavetões e prateleira                    5,381       7,034
+    Prateleira recortada da varanda, em Carvalho               1,407       1,407
+    subtotal                                                  16,112      17,765   custo 5,762
+
+COZINHA  · chapas 13 Branco Brilhante 15 1, Branco Brilhante 18 3, Branco TX 15 4, Branco TX 6 3, Carvalho Malva 15 1, Carvalho Malva 18 1
+  ◆ Torre quente com nichos em Carvalho                        5,811       6,853
+  ◆ Aéreos com básculas em Carvalho, luz e escorredor          7,422       9,683
+  ◆ Armários inferiores da pia e do cooktop                    5,856       8,090
+  ◆ Aéreo da geladeira e despensa deslizante                   7,137       8,563
+    subtotal                                                  26,227      33,189   custo 9,903
+
+LAVANDERIA  · chapas 4 Branco TX 15 2, Branco TX 18 1, Branco TX 6 1
+  ◆ Aéreo em L com nicho e cabideiro                           2,752       4,070
+  ◆ Armário de limpeza com vão de vassouras                    3,285       4,919
+    subtotal                                                   6,038       8,989   custo 2,280
+
+BANHO SOCIAL  · chapas 4 Branco TX 15 1, Branco TX 6 1, Frapê 15 1, Frapê 18 1
+  ◆ Espelheira e gabinete suspenso                             7,897       9,254
+    subtotal                                                   7,897       9,254   custo 2,982
+
+BANHO SUÍTE  · chapas 4 Branco TX 15 1, Branco TX 6 1, Frapê 15 1, Frapê 18 1
+  ◆ Espelheira com nichos e gabinete chanfrado                11,508      14,121
+    subtotal                                                  11,508      14,121   custo 4,345
+
+QUARTO LARA  · chapas 10 Branco TX 15 3, Branco TX 6 2, Carvalho Malva 15 1, Carvalho Malva 18 2, Frapê 18 2
+  ◆ Roupeiro de correr com portas de espelho                  17,699      20,811
+  ◆ Escrivaninha, painel com espelho e ripado, prateleir      10,854      12,583
+  ◆ Cabeceira estofada em arcos, mesa de cabeceira e pai       8,900      11,127
+    subtotal                                                  37,453      44,521   custo 14,141
+
+QUARTO ISABELA E LÍVIA  · chapas 17 Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Carvalho Malva 18 4, Frapê 18 2, Sal Rosa 15 1, Sal Rosa 18 2
+  ◆ Beliche com gavetões, escada, guarda-corpo e nicho i      14,064      16,070
+  ◆ Roupeiro de correr, uma porta de espelho                  19,461      25,103
+  ◆ Baú, coluna de prateleiras e escrivaninha em Sal Ros       6,063       6,983
+    Painéis estofados em arcos                                 5,860       5,860
+    subtotal                                                  45,448      54,016   custo 16,984
+
+QUARTO SUÍTE  · chapas 15 Branco TX 15 5, Branco TX 6 3, Carvalho Malva 15 1, Carvalho Malva 18 2, Frapê 15 1, Frapê 18 3
+  ◆ Guarda-roupa com portas de espelho                        19,575      26,854
+  ◆ Armário aéreo sobre a cama                                 6,846       9,867
+  ◆ Cabeceira em Carvalho com estofado e mesas de cabece      10,508      13,792
+    Painel da TV com ripado em Carvalho                        5,276       5,276
+    subtotal                                                  42,204      55,789   custo 15,777
+
+    TOTAL                                                    192,888     237,644
+    custo direto                                              72,174      82,599
+chapas no total: 73
