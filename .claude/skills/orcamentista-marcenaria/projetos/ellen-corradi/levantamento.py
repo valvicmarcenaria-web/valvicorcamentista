@@ -8,7 +8,8 @@ todas no preço da linha de cor. Puxador chanfrado; Sotille nos roupeiros de cor
 """
 ITENS = []
 BR15, BR18, BR6 = 'MDF Branco TX 15', 'MDF Branco TX 18', 'MDF Branco TX 6'
-BB15, BB18 = 'MDF Branco Brilhante 15', 'MDF Branco Brilhante 18'
+# ⭐ [Jonathan, 24/11/2026] "carvalho malva e branco tx": a cozinha e o rack saem em Branco TX
+BB15, BB18 = BR15, BR18
 CM15, CM18 = 'MDF Carvalho Malva 15', 'MDF Carvalho Malva 18'
 FR15, FR18 = 'MDF Frapê 15', 'MDF Frapê 18'
 SR15, SR18 = 'MDF Sal Rosa 15', 'MDF Sal Rosa 18'
@@ -161,6 +162,10 @@ gavetas(it, 3, 60, 35, 32, BB18, pux=''); chanfro(it, 1.8)
 P(it, 'Prateleira de 5 · faces', 180, 34, 2, CM15, 0); P(it, 'Prateleira · frente e topos', 248, 5, 1, CM15, 2.48)
 F(it, 'Fixação invisível', 6, 'Fixação invisível')
 
+# ⭐ [Jonathan, 24/11/2026] "espelhos entra como item separado"
+it = item('Sala', 'Espelhos bisotados prata da parede de jantar', '268 × 253,5')
+M2(it, 'Espelho prata bisotado, colado em duas peças', 268, 253.5, 1, 'Espelho bisotado')
+
 # ══ VARANDA ══════════════════════════════════════════════════════════════
 it = item('Sala', 'Prateleira recortada da varanda, em Carvalho', '38 × 45 × 5')
 P(it, 'Prateleira de 5 · faces', 45, 38, 2, CM15); F(it, 'Recorte chanfrado e fixação invisível', 1, 'Canto boleado')
@@ -248,6 +253,8 @@ gavetas(it, 2, 68, 25, 90, CM18, pux='', nome='Gavetão')
 P(it, 'Guarda-corpo ripado', 196, 6, 7, CM18, 3.9)
 P(it, 'Escada · degraus e montantes', 50, 20, 6, CM18); P(it, 'Escada · montantes', 165, 8, 2, CM18)
 P(it, 'Nicho revisteiro', 41, 15, 4, CM18); led(it, 1.2)
+# ⭐ [Jonathan, 24/11/2026] "evidenciar as estruturas metálicas na cama suspensa"
+F(it, 'Estrutura metálica de sustentação da cama suspensa', 1, 'Estrutura metálica cama')
 it = item('Quarto Isabela e Lívia', 'Roupeiro de correr, uma porta de espelho', '188 × 279 × 60')
 caixa(it, 188, 273, 60, FR18, ndiv=1)
 interno(it, 91, prat=4, cab=2, gav=[(18, 91), (18, 91), (18, 91), (18, 91)], sap=6, k=BR15)
@@ -260,6 +267,8 @@ P(it, 'Tampa basculante', 85, 52, 1, SR18); F(it, 'Pistão', 2, 'Pistão com amo
 P(it, 'Coluna · laterais', 194, 50, 1, SR18); P(it, 'Coluna · prateleiras', 50, 20, 5, SR18, 0.5)
 caixa(it, 75, 75, 52, SR18, base_ext=True, topo_ext=True)
 gavetas(it, 1, 68, 10, 48, SR15, pux=''); F(it, 'Divisória de acrílico', 1, 'Divisória de acrílico')
+# ⭐ [Jonathan, 24/11/2026] tampo de vidro "entra"
+M2(it, 'Tampo de vidro temperado da escrivaninha', 75, 52, 1, 'Vidro temperado')
 F(it, 'Meia esquadria', 1, 'Canto boleado')
 it = item('Quarto Isabela e Lívia', 'Painéis estofados em arcos', '2 × 195,5 × 70')
 P(it, 'Base dos painéis', 195.5, 70, 2, BR15, 0)

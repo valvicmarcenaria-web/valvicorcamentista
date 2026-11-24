@@ -18,7 +18,7 @@ import levantamento as L
 PRECO = {
  'MDF Frapê 15': 550, 'MDF Frapê 18': 700, 'MDF Branco Brilhante 15': 550, 'MDF Branco Brilhante 18': 700,
  'MDF Carvalho Malva 15': 550, 'MDF Carvalho Malva 18': 700, 'MDF Sal Rosa 15': 550, 'MDF Sal Rosa 18': 700,
- 'Escorredor': 250, 'Kit despensa deslizante': 900, 'MDF Branco TX 15': 350, 'MDF Branco TX 18': 400,
+ 'Escorredor': 250, 'Kit despensa deslizante': 900, 'Espelho bisotado': 700, 'Estrutura metálica cama': 1500, 'MDF Branco TX 15': 350, 'MDF Branco TX 18': 400,
  'MDF Branco TX 6': 250, 'Fita cor': 3, 'Fita Branco TX': 2, 'Filetagem automática': 2.5,
  'Dobradiça Hettich': 50, 'Corrediça Hettich': 150, 'Pistão com amortecimento': 30,
  'Cava usinada': 50, 'Suporte de prateleira': 6.5, 'Perfil de proteção de piso': 15,
@@ -120,3 +120,20 @@ if __name__ == '__main__':
     print('chapas no total:', sum(sum(c.values()) for c in CHAPAS.values()))
 
 
+
+
+# ⭐ [Jonathan, 24/11/2026] "preciso chegar à opção na Hettich a 157k e a telescópica abaixo
+#   proporcionalmente": todos os itens das DUAS linhas escalados pelo mesmo fator, Hettich = 157.000.
+TOTAL_HETTICH = 157000
+
+
+def valores_fechados():
+    f = TOTAL_HETTICH / total('Hettich')
+    out = {}
+    for lin in LINHAS:
+        v = {x: round(t['pv'] * f) for x, t in TAB[lin].items()}
+        alvo = round(total(lin) * f)
+        v[max(v, key=v.get)] += alvo - sum(v.values())
+        out[lin] = v
+    assert sum(out['Hettich'].values()) == TOTAL_HETTICH
+    return out, f

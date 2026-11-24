@@ -1,18 +1,19 @@
 BASE 72.7575% · sem ferragem de linha MC 38% · Telescópica 35% · Hettich 38% · ajuste +0%
                                                          Telescópica     Hettich
 
-SALA  · chapas 6 Branco Brilhante 18 1, Branco TX 15 1, Branco TX 6 1, Carvalho Malva 15 1, Carvalho Malva 18 2
-    Painel da TV em Carvalho com canais de luz                 9,324       9,324
-  ◆ Rack suspenso com gavetões e prateleira                    5,381       7,034
-    Prateleira recortada da varanda, em Carvalho               1,407       1,407
-    subtotal                                                  16,112      17,765   custo 5,762
+SALA  · chapas 6 Branco TX 15 1, Branco TX 18 1, Branco TX 6 1, Carvalho Malva 15 1, Carvalho Malva 18 2
+    Painel da TV em Carvalho com canais de luz                 9,296       9,296
+  ◆ Rack suspenso com gavetões e prateleira                    4,550       6,131
+    Espelhos bisotados prata da parede de jantar              13,956      13,956
+    Prateleira recortada da varanda, em Carvalho               1,405       1,405
+    subtotal                                                  29,207      30,788   custo 10,288
 
-COZINHA  · chapas 13 Branco Brilhante 15 1, Branco Brilhante 18 3, Branco TX 15 4, Branco TX 6 3, Carvalho Malva 15 1, Carvalho Malva 18 1
-  ◆ Torre quente com nichos em Carvalho                        5,811       6,853
-  ◆ Aéreos com básculas em Carvalho, luz e escorredor          7,422       9,683
-  ◆ Armários inferiores da pia e do cooktop                    5,856       8,090
-  ◆ Aéreo da geladeira e despensa deslizante                   7,137       8,563
-    subtotal                                                  26,227      33,189   custo 9,903
+COZINHA  · chapas 13 Branco TX 15 5, Branco TX 18 3, Branco TX 6 3, Carvalho Malva 15 1, Carvalho Malva 18 1
+  ◆ Torre quente com nichos em Carvalho                        4,868       5,828
+  ◆ Aéreos com básculas em Carvalho, luz e escorredor          6,742       8,944
+  ◆ Armários inferiores da pia e do cooktop                    5,489       7,691
+  ◆ Aéreo da geladeira e despensa deslizante                   5,978       7,304
+    subtotal                                                  23,077      29,767   custo 8,713
 
 LAVANDERIA  · chapas 4 Branco TX 15 2, Branco TX 18 1, Branco TX 6 1
   ◆ Aéreo em L com nicho e cabideiro                           2,752       4,070
@@ -34,11 +35,11 @@ QUARTO LARA  · chapas 10 Branco TX 15 3, Branco TX 6 2, Carvalho Malva 15 1, Ca
     subtotal                                                  37,453      44,521   custo 14,141
 
 QUARTO ISABELA E LÍVIA  · chapas 17 Branco TX 15 4, Branco TX 18 1, Branco TX 6 3, Carvalho Malva 18 4, Frapê 18 2, Sal Rosa 15 1, Sal Rosa 18 2
-  ◆ Beliche com gavetões, escada, guarda-corpo e nicho i      14,064      16,070
+  ◆ Beliche com gavetões, escada, guarda-corpo e nicho i      18,116      20,472
   ◆ Roupeiro de correr, uma porta de espelho                  19,461      25,103
-  ◆ Baú, coluna de prateleiras e escrivaninha em Sal Ros       6,063       6,983
+  ◆ Baú, coluna de prateleiras e escrivaninha em Sal Ros       6,485       7,441
     Painéis estofados em arcos                                 5,860       5,860
-    subtotal                                                  45,448      54,016   custo 16,984
+    subtotal                                                  49,922      58,875   custo 18,674
 
 QUARTO SUÍTE  · chapas 15 Branco TX 15 5, Branco TX 6 3, Carvalho Malva 15 1, Carvalho Malva 18 2, Frapê 15 1, Frapê 18 3
   ◆ Guarda-roupa com portas de espelho                        19,575      26,854
@@ -47,6 +48,6 @@ QUARTO SUÍTE  · chapas 15 Branco TX 15 5, Branco TX 6 3, Carvalho Malva 15 1, 
     Painel da TV com ripado em Carvalho                        5,276       5,276
     subtotal                                                  42,204      55,789   custo 15,777
 
-    TOTAL                                                    192,888     237,644
-    custo direto                                              72,174      82,599
+    TOTAL                                                    207,306     252,105
+    custo direto                                              77,200      87,625
 chapas no total: 73
