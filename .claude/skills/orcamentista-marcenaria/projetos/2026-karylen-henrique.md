@@ -408,3 +408,65 @@ Mesas de cabeceira assentadas a **53 do piso**; escrivaninha com tampo a **75,3*
 ⛔ Bancada em revestimento **Bianco Covelo 90×180 — Portobello**: não é nossa.
 ◻ **Faltam ler as pg 6-9, 11 e 12.**
 
+---
+
+### 2 · ÁREA DE SERVIÇO / DESPENSA — 9 pg ◻ parcial (pg 2 e 8 lidas)
+
+⭐ **Mais um padrão: MDF CINZA PERFEITO — GUARARAPES** (marcenaria **e** rodapé).
+
+**ELEVAÇÃO B — DESPENSA** (265 × 270):
+
+| # | Peça | C | A | P | detalhe |
+|---|---|---|---|---|---|
+| B1 | **Estante aberta** | 212 | 180 | ⚠ | **4 prateleiras** de 3, vãos de 40,7 / 40,7 / 40,8 / 40,7 |
+| B2 | **Gaveteiro** | 210 | 90 | ⚠ | **6 gavetas**: 3 colunas de 70 × 2 fileiras de 39 |
+| B3 | Coluna lateral esquerda | 50 | 270 | ⚠ | nichos de 40 e 38 na base |
+
+**ELEVAÇÃO C — DESPENSA** (434,9 × 270), `40 | 79,9 | 110,1 | 10 | 70 | 75 | 50`:
+- Armário alto de 40 de altura à esquerda (MDF Cinza Perfeito)
+- **Porta de vidro** de 79,9 (abertura tracejada) — porta da despensa ⚠ vidro: nosso ou do vidraceiro?
+- Porta de passagem de 70, amadeirada, com puxador vertical
+- À direita, **3 prateleiras** de 3 (vãos 40,7 / 40,8 / 40,7 — altura 177) + armário baixo de 93,
+  largura 50, em MDF Cinza Perfeito
+
+⛔ Alvenaria em revestimento **Metro Grey 10×20 Eliane** e **rodapé em granito Branco Siena
+escovado**: não são nossos.
+
+◻ **Faltam ler as pg 1, 3, 4, 5** (planta, demais elevações, isometria da bancada).
+
+---
+
+## ⭐⭐ AS PÁGINAS SE REPETEM — O JOGO DE PRANCHAS ESTÁ DUPLICADO
+
+Rodei uma comparação perceptual das 61 páginas. Dentro de cada arquivo há desenhos
+**repetidos com numeração de prancha diferente**:
+
+| par | distância | o que é |
+|---|---|---|
+| area-servico **2 ≡ 8** | 6,1 | mesma elevação B+C da despensa (02/04 e 03/05) |
+| area-servico **3 ≡ 9** | 9,6 | mesmo desenho |
+| cozinha **1 ≡ 3** | 6,3 | mesma planta, só reposicionada na folha (00 e **R1**) |
+| cozinha **5 ≡ 7** | 7,9 | mesma isometria |
+| suite-master **3 ≡ 7** | 7,3 | mesmo desenho |
+
+> ⭐ **Consequência prática:** as 61 páginas **não são 61 desenhos**. Boa parte do 2º conjunto
+> é o 1º renumerado. Conferir o par antes de levantar duas vezes a mesma peça — lançar o
+> mesmo armário duas vezes é o erro que esse tipo de pasta provoca.
+
+### ✅ O QUE A R1 DA COZINHA MUDOU — e por que não muda o nosso preço
+
+Comparei a elevação A em **00** (pg 2) com a mesma em **R1** (pg 4):
+
+| mudou | é nosso? |
+|---|---|
+| Entrou **PROJ. COIFA** na fileira baixa de básculas | ⚠ sim: um módulo vira vão de coifa |
+| Entrou **"tijolo refratário"** na churrasqueira | ⛔ não |
+| Entraram duas chamadas de **bancada em pedra** | ⛔ não |
+| Cotas novas 65 / 15 / 105 junto da churrasqueira | ⛔ não |
+
+**Contagem de básculas: 5 + 5 + 3 = 13 nas duas revisões.** A coifa ocupa um vão que já
+existia, não some com báscula.
+✅ **Pode orçar pela R1 sem risco** — a diferença 00→R1 não move o quantitativo de marcenaria.
+Ainda assim vale confirmar com a arquiteta que a R1 é a válida, porque é o único carimbo
+diferente do projeto inteiro.
+
