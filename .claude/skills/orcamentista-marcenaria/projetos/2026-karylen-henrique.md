@@ -329,16 +329,22 @@ A Base só tinha Blum em articulador e pulsador. Acrescentei as duas linhas que 
 
 | ferragem | custo | origem do número |
 |---|---|---|
-| **Dobradiça Blum Clip Top Blumotion** | **R$ 35** /un | ⚠ **paridade** com a Hettich Sensys (35), par direto dela |
+| **Dobradiça Blum Clip Top Blumotion** | **R$ 50** /un | ✅ **preço do Jonathan (25/11/2026)** — topo da tabela, acima da Sensys Ônix/Black (40) |
 | **Corrediça Oculta Blum Movento** | **R$ 400** /par | ⚠ **paridade** com a Hettich Actro (400) |
 | Articulador Blum **Aventos HK-xs** | R$ 250 /un | ✅ já na Base (Jonathan, 13/08/2026) |
 | Articulador **Aventos** (HF/HL, porta grande) | R$ 600 /un | ✅ já na Base |
 | **Pulsador Blum Tip-on / Servo** | R$ 100 /un | ✅ já na Base |
 | **Corrediça touch** | R$ 500 /par | ✅ regra 5 — substitui corrediça **e** pulsador |
 
-> ⭐ **A regra 5 fecha a conta e confirma a paridade:** se a corrediça touch custa 500 e
-> *substitui o par de corrediça e o pulsador*, e o pulsador Blum é 100, então a corrediça
-> oculta sozinha vale **400**. É exatamente o preço da Actro. Os dois números se sustentam.
+> ⭐ **A regra 5 sustenta os 400 da corrediça:** se a touch custa 500 e *substitui o par de
+> corrediça e o pulsador*, e o pulsador Blum é 100, a corrediça oculta sozinha vale **400** —
+> exatamente o preço da Actro.
+>
+> ⚠ **Mas a correção da dobradiça abre uma dúvida sobre a corrediça.** A paridade com a
+> Hettich dava 35 na dobradiça e o Jonathan corrigiu para **50 (+43%)**. Se a Blum está
+> 43% acima da Hettich também em corrediça, a Movento não seria 400 e sim ~570 — e aí a
+> regra 5 (touch 500) é que estaria desatualizada. **Os 400 ficam até o Jonathan dizer
+> outra coisa**, mas é o número que mais move o custo deste projeto.
 
 **Como aplicar neste projeto:**
 - As pranchas pedem **"corrediças invisíveis + puxador slim / puxador cava"** quase em todo
@@ -348,11 +354,11 @@ A Base só tinha Blum em articulador e pulsador. Acrescentei as duas linhas que 
   são porta pequena → **Aventos HK-xs a 250**, não o Aventos grande de 600.
 - Em báscula e porta **o pulsador continua valendo** (regra 5); em gaveta, nunca.
 
-> ⚠⚠ **ORDEM DE GRANDEZA DA FERRAGEM.** Só nos 7 ambientes já lidos contei **≈53 gavetas**
-> e **18 básculas**. A 400 o par e 250 a unidade isso dá **≈ R$ 21.200 + R$ 4.500 = R$ 25.700**
-> — e ainda faltam a suíte master, as duas suítes e a área de serviço, que são os ambientes
-> com mais gaveta. **A ferragem sozinha vai passar de R$ 40 mil.** Confirmar os dois preços
-> de paridade antes de fechar: cada R$ 50 de erro na corrediça move o custo em ~R$ 5 mil.
+> ⚠⚠ **ORDEM DE GRANDEZA DA FERRAGEM.** Nos ambientes já lidos contei **≈69 gavetas** e
+> **18 básculas** — e ainda faltam a área de serviço, as duas suítes, três banheiros e o
+> lavabo. A 400 o par e 250 a unidade, o que já está contado dá **≈ R$ 32.100**.
+> **Com os 16 ambientes a ferragem sozinha passa de R$ 50 mil.**
+> Cada R$ 50 de erro na corrediça move o custo em ~R$ 6 mil: é o número a travar primeiro.
 ---
 
 ### 14 · SUÍTE MASTER — pranchas 01/05 a 05/05 (pg 1-5) ◻ parcial (pg 2 e 4 lidas)
