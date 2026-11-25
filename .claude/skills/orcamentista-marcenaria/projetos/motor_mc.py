@@ -57,7 +57,10 @@ VENDEDOR  = 0.10      # sobre o líquido, mesma base do RT
 PRODUCAO  = dict(producao=0.025, montagem=0.025, projeto=0.010,
                  coordenacao=0.010, gestao=0.005)    # sobre o líquido 2
 PROD      = sum(PRODUCAO.values())                   # 7,5%
-EMBALAGEM = 0.02      # sobre o CUSTO DIRETO do projeto, não sobre o preço
+EMBALAGEM = 0.03      # sobre o CUSTO DIRETO do projeto, não sobre o preço
+# ⭐ [Jonathan 19/11/2026] era 0.02 — o 2% é o número da aba MDF da Base; ele
+#   fixou 3%. O SKILL.md já estava corrigido e este motor tinha ficado atrás,
+#   então todo projeto fechado por aqui vinha 1 ponto de custo direto abaixo.
 
 MC_PISO, MC_IDEAL = 0.35, (0.35, 0.40)
 
@@ -130,7 +133,7 @@ def preco_repasse(custo_direto, preco_avista, parcelas, rt=True, vendedor=True):
 
 
 def com_embalagem(custo_sem_embalagem):
-    """Embalagem = 2% do custo direto, SOMADA ao resto.
+    """Embalagem = 3% do custo direto, SOMADA ao resto.
 
     [Jonathan 12/09] Ela NÃO substitui os consumíveis. Consumível é cola,
     parafuso, limpeza e acabamento aplicados NO móvel (os motores usam 6% de
