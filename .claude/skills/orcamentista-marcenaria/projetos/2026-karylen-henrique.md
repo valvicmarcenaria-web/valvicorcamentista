@@ -558,3 +558,77 @@ pg 6-9, 11 e 12 do arquivo da suíte master.**
 - **Lavabo externo:** gabinete suspenso em madeira + espelho redondo → é o "LAVABO" que está
   nas pg 6-8 do arquivo do quarto 2 menino. ✅ tem detalhamento, ainda não lido.
 
+
+## Confronto fechado — as divergências FORA da cozinha
+
+### 7 ⭐⭐⭐ BANHO SOCIAL — a espelheira do detalhamento **não existe no 3D**
+
+| | detalhamento (01/02 e 02/02) | 3D (pg 18 e 19) |
+|---|---|---|
+| sobre a bancada | **armário de 150 × 160** em MDF Cinza Cobalto-Líder, **2 portas de correr espelhadas** (Crystal Prata 5 mm), **4 prateleiras internas**, fixação flutuante, LED | **um espelho liso colado na parede.** Sem armário, sem portas, sem prateleira |
+| sob a bancada | prateleira em MDF Imbuia | ✅ está lá, em madeira escura |
+
+> **Divergência PARA MENOS: ~R$ 14,5 mil de preço.** É o item mais caro do banho social e
+> o 3D simplesmente não o desenha.
+
+### 8 ⭐⭐ SUÍTE MASTER — o painel ripado tem **metade** da altura no 3D
+
+- Detalhamento: painel ripado em Neblina, ripas 10×1, **454,5 × 217**
+- 3D (pg 41): faixa de ripado de ~454 × **~110**, só atrás da cama; acima é parede lisa pintada
+
+> **PARA MENOS: ~R$ 6 mil.** ✅ Confirma, porém, que são **duas** mesas de cabeceira
+> (uma de cada lado), o que estava em dúvida.
+
+### 9 ⭐⭐ ESCRITÓRIO — a escrivaninha é bem maior no 3D
+
+| | detalhamento | 3D (pg 37 e 38) |
+|---|---|---|
+| escrivaninha | **190,7 × 50**, nicho + **4 gavetas de 17** | **bancada corrida de parede a parede**, gavetas em toda a extensão **+ gaveteiro lateral de 3 gavetas** |
+| prateleiras | 2 × 260 × 20, mão francesa | ✅ as duas estão lá — **mas com LED embutido**, que a prancha não cita |
+| extra | — | **régua/calha rebaixada** atrás do tampo |
+
+> **PARA MAIS.**
+
+### 10 ⭐ SALA DE ESTAR — o rack parece mais baixo e contínuo
+
+Detalhamento: 415 × **72**, 5 básculas de 20 **+** 5 gavetas de 29. No 3D (pg 16 e 17) é uma
+faixa de ripado **contínua**, de ~40-50 de altura, sem divisão aparente entre báscula e gaveta.
+⚠ Pode ser simplificação do render — mas se não houver as 5 básculas são **5 Aventos a menos
+(R$ 1.250 de custo)**. **Confirmar com a arquiteta.**
+
+### 11 ⭐⭐ ÁREA DE SERVIÇO — não é divergência, é **lacuna minha**
+
+O 3D (pg 28-31) mostra **dois ambientes**, e eu só levantei um:
+- **DESPENSA**: prateleiras em **U** (três planos), não numa parede só como eu lancei
+- **LAVANDERIA**: armários superiores, **torre alta do chão ao teto**, bancada em L com tanque,
+  armário inferior, varal suspenso — **nada disso está no meu levantamento**
+
+◻ As elevações estão nas **pg 1, 3, 4 e 5** do arquivo, que eu ainda não li. **PARA MAIS.**
+
+### ✅ O que CONFERE, item por item
+
+| ambiente | confere |
+|---|---|
+| Quarto de hóspedes | ✅ **exato** — palhinha na mesa de cabeceira, vidro canelado no guarda-roupa, painel da cabeceira, painel da TV |
+| Apoio | ✅ a "copa" do 3D é o interior do armário de correr |
+| Banho da suíte master | ✅ gabinete ripado sob a bancada, armário espelhado, closet com cabideiro |
+| Sala de estar | ✅ o rack em ripado vazado existe (só a altura em dúvida) |
+| Área externa | ✅ só mobiliário solto — **sem marcenaria** |
+
+### ⭐⭐ BALANÇO: as divergências andam nos DOIS sentidos
+
+| | efeito estimado no PREÇO |
+|---|---|
+| **Adega** da sala de jantar (3D ≫ prancha) | **+ 30 a 60 mil** |
+| **Lavanderia** da área de serviço (lacuna) | **+ 25 a 35 mil** |
+| **LED** não escrito em lugar nenhum | **+ ~20 mil** |
+| **Escritório**, escrivaninha corrida | **+ 5 a 8 mil** |
+| **Espelheira** do banho social (não existe no 3D) | **− 14,5 mil** |
+| **Ilha** da cozinha (só o lado de serviço) | **− ~8 mil** |
+| **Painel ripado** da suíte master (metade da altura) | **− ~6 mil** |
+| **Rack** da sala de estar (se não tiver báscula) | **− ~6 mil** |
+
+> ⚠ **Nenhuma destas se resolve lendo mais prancha.** Todas precisam da arquiteta dizer
+> qual documento manda. O 3D é o que o cliente comprou com os olhos; a prancha é o que a
+> marcenaria executa. Quando os dois divergem, quem decide é quem desenhou.
+
