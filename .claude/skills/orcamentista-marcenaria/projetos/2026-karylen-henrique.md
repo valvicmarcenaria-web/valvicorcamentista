@@ -470,3 +470,91 @@ existia, não some com báscula.
 Ainda assim vale confirmar com a arquiteta que a R1 é a válida, porque é o único carimbo
 diferente do projeto inteiro.
 
+
+---
+
+# ⚠⚠⚠ DIVERGÊNCIAS ENTRE O 3D E OS DETALHAMENTOS
+
+Fonte: `APRESENTAÇÃO KARYLEN E HENRIQUE-compactado.pdf` (`1HpoHnQlptzLElkk7p6shJ62S00g98UA_`,
+5,4 MB, 62 páginas) — o Jonathan compactou o original de 137 MB em 24/11 para viabilizar a leitura.
+
+## ✅ RESOLVIDO — a grafia é **KARYLEN**
+
+A capa do 3D diz **"KARYLEN E HENRIQUE"** e **todos os nomes de arquivo** dizem
+`..._HENRIQUE E KARYLEN_00.pdf`. Só o **selo** das pranchas diz "KARELEN" — é erro de
+digitação no carimbo. **Usar KARYLEN em proposta e contrato.**
+
+## Dados novos que o 3D trouxe
+
+- Condomínio: **BRISAS DA PAMPULHA** ⭐ o mesmo do projeto Eliuton (`2026-eliuton-brisas-da-pampulha.md`)
+- Arquitetura: **ESTÚDIO ROIZ** · +55 31 98483.7149 · contato@estudioroiz.com.br
+- A casa tem **2 pavimentos** (plantas nas pg 02 e 03)
+
+## As divergências, por impacto no preço
+
+### 1 ⭐⭐⭐ A ADEGA — o detalhamento mostra 8% do que o 3D desenha
+
+| | detalhamento (SALA DE JANTAR 01/01) | 3D (pg 12 e 13) |
+|---|---|---|
+| peça | cristaleira de **150 × 175**, prof. ~35 | **parede inteira de adega** sobre o balcão |
+| folhas de vidro | **2** | **~5 módulos** de porta de vidro, ~180-200 de altura |
+| interior | 4 prateleiras lisas + 1 divisória | **10 a 12 níveis de porta-garrafas inclinados por módulo** |
+| iluminação | nenhuma | **LED em cada nível**, em todos os módulos |
+| estrutura | MDF | **perfil metálico fino** emoldurando cada folha → **serralheria** |
+| extra | — | um módulo com **gaveta/cesto de vidro** |
+| o balcão de 16 gavetas abaixo | frentes em MDF Capuccino | **frentes espelhadas / vidro bronze** (refletem as cadeiras) |
+
+> ⭐ Pelo 3D, a adega vai de ~150 a ~450 de extensão e de 175 a ~200 de altura, mais um
+> balcão de frentes espelhadas. **Não é a mesma peça.** Orçar pelo detalhamento é subdimensionar
+> o item mais caro da sala de jantar por um fator de 3 a 5.
+
+### 2 ⭐⭐ COZINHA — o "armário de portas de vidro" não existe no 3D
+
+| | detalhamento (elevação A) | 3D (pg 11) |
+|---|---|---|
+| peça entre os superiores e a bancada | **armário em Nogueira com 3 folhas de VIDRO** (132,6 / 131 / 132,9), 408,5 × 60 | **painel RIPADO vertical em nogueira com LED embutido** — sem vidro nenhum |
+
+> ⚠ Isto afeta diretamente o item que você pediu para chamar de **"adega"**: no detalhamento
+> da cozinha o armário de vidro é esta faixa de 408,5 × 60 — e no 3D ela **não é adega nem
+> tem vidro**. A adega de verdade está na **sala de jantar**.
+
+### 3 ⭐⭐ ILHA DA COZINHA — nossa parte é só um lado
+
+3D (pg 11 e 12): o lado voltado para a sala é **um bloco de pedra fechado**; o lado da cozinha
+tem os **gavetões em nogueira**. ✅ Confirma o `PROJ. ALVENARIA` do detalhamento:
+**corpo de alvenaria revestido em pedra, e nós fazemos só as frentes e gavetas do lado de serviço.**
+Isso **reduz** o nosso escopo na ilha em relação ao que eu tinha lançado.
+
+### 4 ⭐⭐ CLOSET DA SUÍTE MASTER — o detalhamento só mostra uma parede
+
+3D (pg 43-46): closet com **duas paredes**, não uma:
+- fundo: 2 prateleiras altas com **LED** + **cabideiro duplo com LED** + gaveteiro de 6 gavetas + cabideiro baixo com **LED**
+- lateral: **sapateira de ~8 níveis**, toda iluminada
+
+O detalhamento só me deu a elevação C (roupeiro 143,4 + gaveteiro 182). ◻ **Faltam ler as
+pg 6-9, 11 e 12 do arquivo da suíte master.**
+
+### 5 ⭐ LED EM QUASE TUDO NO 3D, QUASE NADA NOS DETALHAMENTOS
+
+| onde o 3D mostra LED | o detalhamento cita? |
+|---|---|
+| cada nível da adega | ⛔ não |
+| 5 prateleiras da copa do apoio | ⛔ não |
+| nicho ripado da cozinha | ⛔ não |
+| cabideiros e sapateira do closet master | ⛔ não |
+| rack da sala de estar (luz no piso) | ⛔ não |
+| espelheira do banho social | ✅ sim |
+| armário espelhado do banho master | ✅ sim |
+
+> A R$ 150 o metro de LED COB, o que o 3D mostra e a prancha não escreve passa fácil de
+> **40 metros** — cerca de **R$ 6 mil** de custo que hoje não está em lugar nenhum.
+
+### 6 ✅ O que BATE (conferido, sem divergência)
+
+- **Apoio:** a "copa" que aparece no 3D é o interior do armário de correr — bancada de pedra,
+  cuba, frigobar e prateleiras. ✅ Confere com o INTERNO ARMÁRIO da prancha.
+- **Sala de estar:** o rack em ripado vazado está no 3D como desenhado. ✅
+- **Área externa / piscina:** só mobiliário solto. ⛔ **sem marcenaria** — não é escopo.
+- **Lavabo externo:** gabinete suspenso em madeira + espelho redondo → é o "LAVABO" que está
+  nas pg 6-8 do arquivo do quarto 2 menino. ✅ tem detalhamento, ainda não lido.
+
