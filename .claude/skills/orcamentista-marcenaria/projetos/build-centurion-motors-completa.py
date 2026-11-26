@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""CENTURION MOTORS — Showroom Vila da Serra · proposta COMPLETA em OITO páginas  [26/11/2026]
+"""CENTURION MOTORS — Showroom Vila da Serra · proposta COMPLETA em NOVE páginas  [26/11/2026]
 
 ⭐ [Jonathan, 26/11/2026] "vamos montar a versão mais completa, apresentando os processos da empresa,
   falando mais sobre o processo da laca, incluindo os materiais da curva: esqueleto, compensado flexível,
@@ -40,7 +40,7 @@ assert TOTAL == sum(v for _, _, v, _ in PR.VALORES) == 295500
 S, N = [], [0]
 def folha(corpo, dark=False, rodape=True):
     N[0] += 1
-    f = (f'<div class="foot"><span>Valvic&nbsp;·&nbsp;{E(CLIENTE)}</span><span>{N[0]:02d} / 08</span></div>'
+    f = (f'<div class="foot"><span>Valvic&nbsp;·&nbsp;{E(CLIENTE)}</span><span>{N[0]:02d} / 09</span></div>'
          if rodape else '')
     S.append(f'<div class="slide{" dark" if dark else ""}">{corpo}{f}</div>')
 
@@ -85,107 +85,152 @@ folha(f"""<div class="pad p2">
  </div>
 </div>""")
 
-# ── 03 · como trabalhamos ──────────────────────────────────────────────
-PROC = [('01', 'Medição técnica', 'Conferimos no local prumo, nível e esquadro de paredes e laje — é daqui que sai o executivo, não da planta.'),
-        ('02', 'Executivo e engenharia de produto', 'Cada pórtico, costela, painel e módulo de forro é desenhado peça por peça, com o plano de corte e a lista de compra.'),
-        ('03', 'Aprovação', 'O executivo passa pelas arquitetas e por vocês antes de qualquer corte: nada é fabricado sem aprovação.'),
-        ('04', 'Compra e corte', 'Chapas, compensado flexível, fórmica e espelho comprados para este projeto; corte e usinagem em máquina.'),
-        ('05', 'Fabricação', 'Esqueletos, curvas e painéis montados na fábrica, com o arco conferido no gabarito antes de seguir.'),
-        ('06', 'Acabamento', 'Laca aplicada em cabine, em camadas, com o nosso controle em cada demão e o tempo de cura respeitado.'),
-        ('07', 'Transporte e instalação', 'Peças embaladas e protegidas; equipe própria na obra, fixação na estrutura e arremates finais.'),
-        ('08', 'Entrega', 'Vistoria conjunta, regulagem final e termo de garantia assinado na entrega.')]
-folha(f"""<div class="pad p3x">
- <div class="eyebrow">Como trabalhamos</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 2mm">Do primeiro traço à última regulagem, um só responsável.</h1>
- <p class="lead" style="max-width:200mm;margin:0 0 6mm">A Valvic não revende móvel: projeta o executivo, fabrica e instala. Em uma obra
-  comercial isso significa um único interlocutor para prazo, qualidade e garantia — e nenhum vazio entre quem
-  desenha, quem fabrica e quem monta.</p>
- <div class="pr">{''.join(f'<div class="pr-c"><div class="pr-n">{n}</div><b>{E(t)}</b><p>{E(d)}</p></div>' for n, t, d in PROC)}</div>
+# ── 03 · a empresa e a infraestrutura (o padrão das outras propostas) ───
+PILX = [
+ ('01', 'O projeto pede mais que marcenaria.',
+  'Forro, painéis, pórticos curvos laqueados, luz embutida nos nichos e espelhos. Tudo isso entra no nosso '
+  'escopo, no mesmo contrato e na mesma data. <b>A loja não contrata mais ninguém</b> para a marcenaria e '
+  'para o que faz parte dela. O que fica fora vem nomeado.'),
+ ('02', 'A peça sai daqui conferida.',
+  'Detalhamento, programação, usinagem, montagem e conferência acontecem dentro da nossa fábrica. Cada '
+  'pórtico é montado e conferido no gabarito antes de seguir para o acabamento. A conferência é '
+  '<b>etapa do processo</b>, não boa vontade no fim.'),
+ ('03', 'Uma arquiteta responsável pelo projeto.',
+  'Do orçamento aprovado à entrega, o projeto tem uma arquiteta nossa como responsável. É ela quem lê o '
+  'executivo prancha por prancha, está na medição e segue as peças pela fábrica, conversando com a '
+  f'{E(DESIGNER)} na mesma linguagem técnica. <b>Vocês explicam o projeto uma vez, a uma pessoa.</b>'),
+ ('04', 'O executivo de marcenaria é nosso.',
+  'Antes de cortar, a Valvic desenha. O projeto de interiores diz o que o ambiente precisa ser; o nosso '
+  'executivo diz como cada peça se constrói — a costela de cada arco, a fixação do forro, o prumo da base '
+  'do espelho. É nele que a divergência aparece <em>no papel, antes de virar retrabalho</em>.'),
+]
+pilx = '\n'.join(f'''<div class="c"><div class="n">{n}</div><div class="t">{E(t)}</div>
+  <div class="d">{d}</div></div>''' for n, t, d in PILX)
+folha(f"""<div class="pad" style="padding-bottom:20mm">
+ <div class="eyebrow">A empresa e a infraestrutura</div><div class="rule"></div>
+ <h1 class="h1" style="margin:0 0 4mm">A Valvic articula todas as soluções do projeto.</h1>
+ <p class="lead" style="max-width:215mm">Um projeto raramente se perde na marcenaria. Ele se perde na costura
+  entre os ofícios, quando cada um chega com contrato, prazo e medida próprios. Aqui não há essa costura para
+  fazer: tudo o que esta proposta reúne entra no mesmo escopo, no mesmo contrato e na mesma data.</p>
+ <div class="fr" style="margin-top:6mm;flex:1;min-height:0">{pilx}</div>
+ <div class="box" style="margin-top:5mm"><p style="font-size:9.4pt;color:var(--ink)">
+   Na próxima folha, o caminho que o projeto percorre — etapa por etapa, até o dia em que a loja abre as
+   portas com a marcenaria pronta.</p></div>
 </div>""")
 
-# ── 04 · do esqueleto à laca (o corte) ─────────────────────────────────
-SVG = '''<svg viewBox="4 0 462 250" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,Arial,sans-serif">
- <defs><pattern id="mdf" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#F2EFE8"/>
-  <circle cx="1.5" cy="1.5" r=".55" fill="#CFC8BA"/><circle cx="4.5" cy="4.2" r=".45" fill="#CFC8BA"/></pattern>
-  <pattern id="comp" width="8" height="4" patternUnits="userSpaceOnUse"><rect width="8" height="4" fill="#D9B98A"/>
-  <line x1="0" y1="2" x2="8" y2="2" stroke="#B8915C" stroke-width=".5"/></pattern></defs>
- <text x="150" y="16" font-size="7.5" fill="#918A7C" text-anchor="middle" letter-spacing="1.5">EXTRADORSO · OCULTO ENTRE OS PÓRTICOS</text>
- <rect x="40" y="26" width="220" height="8" fill="url(#comp)" stroke="#8C6A3F" stroke-width=".6"/>
- <rect x="40" y="34" width="12" height="150" fill="url(#mdf)" stroke="#9A9284" stroke-width=".6"/>
- <rect x="248" y="34" width="12" height="150" fill="url(#mdf)" stroke="#9A9284" stroke-width=".6"/>
- <rect x="52" y="104" width="196" height="9" fill="url(#mdf)" stroke="#9A9284" stroke-width=".6"/>
- <rect x="40" y="184" width="220" height="8" fill="url(#comp)" stroke="#8C6A3F" stroke-width=".6"/>
- <rect x="40" y="192" width="220" height="5" fill="#C9CCCE" stroke="#8E9296" stroke-width=".5"/>
- <rect x="34" y="197" width="226" height="5" fill="#4B2F22"/>
- <rect x="26" y="22" width="14" height="175" fill="url(#mdf)" stroke="#9A9284" stroke-width=".6"/>
- <rect x="20" y="22" width="6" height="180" fill="#4B2F22"/>
- <text x="150" y="222" font-size="7.5" fill="#4B2F22" text-anchor="middle" letter-spacing="1.5" font-weight="700">INTRADORSO · O QUE SE VÊ NO VÃO</text>
- <text x="12" y="112" font-size="7" fill="#918A7C" transform="rotate(-90 12 112)" text-anchor="middle" letter-spacing="1.2">FRENTE · SALÃO</text>
- <text x="272" y="112" font-size="7" fill="#918A7C" transform="rotate(90 272 112)" text-anchor="middle" letter-spacing="1.2">FUNDO · PAREDE</text>
- <g stroke="#9C7A3C" stroke-width=".7" fill="#9C7A3C" font-size="9">
-  <line x1="254" y1="60" x2="300" y2="40"/><circle cx="254" cy="60" r="1.6"/>
-  <line x1="200" y1="108" x2="300" y2="74"/><circle cx="200" cy="108" r="1.6"/>
-  <line x1="230" y1="30" x2="300" y2="108"/><circle cx="230" cy="30" r="1.6"/>
-  <line x1="230" y1="188" x2="300" y2="142"/><circle cx="230" cy="188" r="1.6"/>
-  <line x1="215" y1="194.5" x2="300" y2="176"/><circle cx="215" cy="194.5" r="1.6"/>
-  <line x1="190" y1="199.5" x2="300" y2="210"/><circle cx="190" cy="199.5" r="1.6"/>
-  <line x1="33" y1="180" x2="38" y2="234" /><circle cx="33" cy="180" r="1.6"/>
- </g>
- <g font-size="9.4" fill="#1A1714">
-  <text x="306" y="43"><tspan font-weight="700">1 · Costelas</tspan><tspan x="306" dy="10" font-size="7.6" fill="#5C564C">o esqueleto, no desenho exato do arco</tspan></text>
-  <text x="306" y="77"><tspan font-weight="700">2 · Travessas</tspan><tspan x="306" dy="10" font-size="7.6" fill="#5C564C">amarram as costelas e travam o prumo</tspan></text>
-  <text x="306" y="111"><tspan font-weight="700">3 · Compensado flexível · fora</tspan><tspan x="306" dy="10" font-size="7.6" fill="#5C564C">a pele que fecha o arco por cima</tspan></text>
-  <text x="306" y="145"><tspan font-weight="700">3 · Compensado flexível · dentro</tspan><tspan x="306" dy="10" font-size="7.6" fill="#5C564C">a curva do vão, colada às costelas</tspan></text>
-  <text x="306" y="179"><tspan font-weight="700">4 · Fórmica</tspan><tspan x="306" dy="10" font-size="7.6" fill="#5C564C">a base lisa, dura e estável da laca</tspan></text>
-  <text x="306" y="213"><tspan font-weight="700">5 · Laca PU fosca café</tspan><tspan x="306" dy="10" font-size="7.6" fill="#5C564C">aderência, fundo e acabamento</tspan></text>
-  <text x="40" y="244"><tspan font-weight="700">6 · Alizar laqueado</tspan><tspan font-size="7.6" fill="#5C564C"> · a moldura vista de frente</tspan></text>
- </g>
+# ── 04 · as doze etapas (as mesmas do caderno de referência) ────────────
+_src = (P / 'build-gustavo-caderno.py').read_text(encoding='utf-8')
+BLOCOS = eval(re.search(r'^BLOCOS = (\[.*?\n\])', _src, re.S | re.M).group(1))
+assert sum(len(b[2]) for b in BLOCOS) == 12
+_LOJA = [('da nossa fábrica à sua casa', 'da nossa fábrica à sua loja'), ('até a porta da sua casa', 'até a porta da loja'),
+         ('O projeto virou casa.', 'O projeto virou loja.'), ('Casa', 'Loja')]
+def _loja(t):
+    for a, b in _LOJA:
+        t = t.replace(a, b)
+    return t
+BLOCOS = [(_loja(nm), _loja(sub), [tuple(_loja(x) for x in e) for e in ets]) for nm, sub, ets in BLOCOS]
+_n = [0]
+def etapa(k, t, l, e):
+    _n[0] += 1
+    return f'''<div class="pe"><div class="pe-n">{_n[0]:02d}</div><div class="pe-k">{E(k)}</div>
+      <div class="pe-t">{E(t)}</div><div class="pe-l">{E(l)}</div><div class="pe-e">{E(e)}</div></div>'''
+cols = '\n'.join(f'''<div class="pb"><div class="pb-h">{E(nm)}</div><div class="pb-s">{E(sub)}</div>
+  {''.join(etapa(*e) for e in ets)}</div>''' for nm, sub, ets in BLOCOS)
+folha(f"""<div class="pad" style="padding:13mm 15mm 20mm">
+ <div class="eyebrow">O caminho do seu projeto</div><div class="rule"></div>
+ <div style="display:flex;align-items:baseline;gap:9mm;margin-bottom:5mm">
+  <h1 class="h1" style="margin:0">Doze etapas,<br>um só responsável</h1>
+  <p class="lead" style="margin:0;max-width:112mm">Da sua decisão até a loja pronta são doze
+    etapas — e nenhuma delas muda de dono.</p></div>
+ <div class="rail"></div><div class="proc">{cols}</div>
+</div>""")
+
+# ── 05 · o pórtico curvo: vista frontal e as camadas ────────────────────
+import math
+CX, CY, BASE = 190, 168, 318
+def _banda(r1, r2, lado):
+    s = 1 if lado == 'd' else -1
+    sw_o, sw_i = (1, 0) if lado == 'd' else (0, 1)
+    return (f'M {CX},{CY - r2} A {r2} {r2} 0 0 {sw_o} {CX + s * r2},{CY} L {CX + s * r2},{BASE} '
+            f'L {CX + s * r1},{BASE} L {CX + s * r1},{CY} A {r1} {r1} 0 0 {sw_i} {CX},{CY - r1} Z')
+CAMADAS = [  # (r1, r2, preenchimento, rótulo, explicação)
+    (96, 116, 'url(#mdf)', 'Esqueleto', 'costelas recortadas no desenho exato do arco'),
+    (88, 96, 'url(#comp)', 'Compensado flexível', 'a pele que acompanha a curva'),
+    (83, 88, '#C3C7CA', 'Fórmica', 'a base lisa e estável da laca'),
+    (78, 83, '#4B2F22', 'Laca PU fosca café', 'aderência, fundo e acabamento'),
+]
+_rot, _ld = [], ''
+for i, (r1, r2, cor, t, d) in enumerate(CAMADAS):
+    a = math.radians(62 - i * 15)
+    rm = (r1 + r2) / 2
+    px, py = CX + rm * math.cos(a), CY - rm * math.sin(a)
+    ly = 60 + i * 52
+    _ld += (f'<line x1="{px:.1f}" y1="{py:.1f}" x2="352" y2="{ly - 4}" stroke="#9C7A3C" stroke-width=".8"/>'
+            f'<circle cx="{px:.1f}" cy="{py:.1f}" r="2.2" fill="#9C7A3C"/>')
+    _rot.append(f'<text x="358" y="{ly}" font-size="12" font-weight="700" fill="#1A1714">{i + 1} · {E(t)}</text>'
+                f'<text x="358" y="{ly + 14}" font-size="9.6" fill="#5C564C">{E(d)}</text>')
+ABERTO = ''.join(f'<path d="{_banda(r1, r2, "d")}" fill="{cor}" stroke="#7d746a" stroke-width=".5"/>'
+                 for r1, r2, cor, *_ in CAMADAS)
+VAO = f'M {CX - 78},{BASE} L {CX - 78},{CY} A 78 78 0 0 1 {CX + 78},{CY} L {CX + 78},{BASE} Z'
+PRAT = ''.join(f'<rect x="{CX - 78}" y="{y}" width="156" height="5" fill="#B88A5A"/>'
+               f'<rect x="{CX - 74}" y="{y + 5}" width="148" height="2" fill="#F6D9A0" opacity=".9"/>'
+               for y in (190, 232, 274))
+SVG = f'''<svg viewBox="66 40 500 300" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,Arial,sans-serif">
+ <defs><pattern id="mdf" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#F2EFE8"/>
+  <circle cx="2" cy="2" r=".7" fill="#C9C1B2"/><circle cx="5.2" cy="5" r=".55" fill="#C9C1B2"/></pattern>
+  <pattern id="comp" width="9" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><rect width="9" height="4" fill="#DDBD8C"/>
+  <line x1="0" y1="2" x2="9" y2="2" stroke="#B8915C" stroke-width=".6"/></pattern>
+  <linearGradient id="fundo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5E38"/><stop offset="1" stop-color="#A97A4E"/></linearGradient></defs>
+ <path d="{VAO}" fill="url(#fundo)"/>{PRAT}
+ <path d="{_banda(78, 116, 'e')}" fill="#4B2F22"/>
+ {ABERTO}
+ <line x1="{CX}" y1="{CY - 122}" x2="{CX}" y2="{BASE + 4}" stroke="#1A1714" stroke-width=".7" stroke-dasharray="4 3"/>
+ <text x="{CX - 58}" y="{BASE + 22}" font-size="9.6" text-anchor="middle" fill="#4B2F22" letter-spacing="1.6" font-weight="700">ACABADO</text>
+ <text x="{CX + 58}" y="{BASE + 22}" font-size="9.6" text-anchor="middle" fill="#9C7A3C" letter-spacing="1.6" font-weight="700">ABERTO · AS CAMADAS</text>
+ {_ld}{''.join(_rot)}
 </svg>'''
-ARCO = '''<svg viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
- <path d="M10 148 V60 A50 50 0 0 1 110 60 V148 H96 V60 A36 36 0 0 0 24 60 V148 Z" fill="#4B2F22"/>
- <path d="M24 148 V60 A36 36 0 0 1 96 60 V148 Z" fill="#E9DCC6"/>
- <line x1="60" y1="2" x2="60" y2="30" stroke="#9C7A3C" stroke-width="1.2" stroke-dasharray="3 2"/>
- <text x="66" y="12" font-size="9" fill="#9C7A3C" font-family="DM Sans,Arial" font-weight="700">corte</text>
-</svg>'''
-CAM = [('Esqueleto', 'Costelas recortadas no desenho exato do arco e amarradas por travessas em espaçamento regular. É a estrutura que dá a forma: '
-        'conferida em nível e prumo no gabarito, porque uma costela fora de prumo vira uma onda visível na laca.'),
-       ('Compensado flexível', 'Lâminas orientadas para curvar num só sentido — o sentido da curva é escolhido antes da compra. '
-        'Ele não se sustenta sozinho: veste o esqueleto por dentro e por fora, colado com cola de contato.'),
-       ('Fórmica', 'O compensado tem veio aberto e pequenas ondulações que apareceriam através da laca. A fórmica fecha a superfície: '
-        'curva a frio no raio largo destes arcos, assentada com rolo do centro para as bordas, sem bolha. A emenda da folha é posicionada no corte e desaparece sob a laca.'),
-       ('Laca', 'Por último, e só sobre a base perfeita: aderência, fundo e acabamento fosco café — detalhados na folha seguinte.')]
+FOTOS = [('pt-esqueleto', 'Esqueleto', 'Costelas e travessas dão a forma: é a estrutura, conferida em nível e prumo, que mantém a curva.'),
+         ('pt-desenho', 'O desenho da curva', 'Raio, espessura e encaixe definidos no executivo, antes de qualquer corte.'),
+         ('pt-flexivel', 'Compensado flexível', 'Lâminas que curvam num só sentido. Não se sustenta sozinho: veste o esqueleto.'),
+         ('pt-colagem', 'Colagem', 'A pele é colada às costelas, por dentro e por fora, até a curva correr contínua.')]
+fotos = ''.join(f'''<div class="pf"><div class="pf-i"><img src="{IMG[k]}" alt=""><span>{i}</span></div>
+  <b>{E(t)}</b><p>{E(d)}</p></div>''' for i, (k, t, d) in enumerate(FOTOS, 1))
 folha(f"""<div class="pad p4">
  <div class="eyebrow">O pórtico curvo · do esqueleto à laca</div><div class="rule"></div>
  <h1 class="h1" style="margin:0 0 4mm">Uma curva perfeita é feita de quatro camadas.</h1>
- <div class="ct">
-  <div class="ct-d"><div class="ct-a">{ARCO}</div><div class="ct-s">{SVG}</div>
-   <div class="ct-l">Corte no alto do arco · ilustrativo, fora de escala</div></div>
-  <div class="ct-t">{''.join(f'<div class="ct-p"><div class="n">{i}</div><div><b>{E(t)}</b><p>{E(d)}</p></div></div>' for i, (t, d) in enumerate(CAM, 1))}</div>
+ <div class="pv">
+  <div class="pv-d"><div class="pv-s">{SVG}</div>
+   <p class="pv-x">Vista frontal de um pórtico · ilustrativa, fora de escala. À esquerda, como ele fica; à direita, as
+    camadas que estão por baixo da laca. A <b>fórmica</b> fecha o veio do compensado com uma superfície lisa e estável — é por
+    isso que a laca corre limpa na curva, sem onda e sem marca de emenda.</p></div>
+  <div class="pfs">{fotos}</div>
  </div>
 </div>""")
 
-# ── 05 · a laca, demão por demão ───────────────────────────────────────
-LACA = [('Preparo', 'A fórmica é desengordurada e recebe uma lixa leve — só o suficiente para criar a ancoragem, sem atravessar o laminado.'),
-        ('Primer de aderência', 'A etapa decisiva: a fórmica não absorve nada, e é o primer próprio para superfície lisa que prende a laca a ela. A face e o alizar, em MDF, recebem o fundo direto.'),
-        ('Fundo PU', 'Aplicado em camadas e lixado com lixa fina. É depois do fundo que aparecem imperfeições antes invisíveis — e é aqui que elas são corrigidas.'),
-        ('Laca PU fosca café', 'Catalisada e aplicada com pistola, em cabine, em camadas finas e contínuas, com o lixamento separado da pintura: pó em suspensão é o maior inimigo do acabamento liso.'),
-        ('Cura', 'A laca PU endurece por reação química, e reação precisa de tempo. A peça só é embalada depois da cura completa.'),
-        ('Inspeção', 'Cada pórtico é conferido sob luz rasante antes de sair: a curva tem de correr limpa, sem onda, sem marca de emenda.')]
+# ── 06 · a laca, demão por demão (com as fotos) ─────────────────────────
+LACA = [('lc-lixa', 'Preparo', 'A superfície é desengordurada e recebe uma lixa leve: só a ancoragem, sem atravessar o laminado.'),
+        ('lc-tinta', 'Primer e laca preparados', 'Primer de aderência próprio para superfície lisa e laca catalisada na proporção certa, demão por demão.'),
+        ('lc-lixadeira', 'Fundo PU e lixamento', 'O fundo é lixado com lixa fina. É depois dele que aparecem imperfeições antes invisíveis — e é aqui que se corrigem.'),
+        ('lc-pistola', 'Laca em cabine', 'Laca PU fosca café aplicada com pistola, em camadas finas e contínuas, longe do pó da lixa.'),
+        ('lc-pistola-branca', 'Cura e inspeção', 'A laca endurece por reação química. A peça só é embalada depois da cura completa e conferida sob luz rasante.')]
+lac = ''.join(f'''<div class="lf"><div class="lf-i"><img src="{IMG[k]}" alt=""><span>{i:02d}</span></div>
+  <b>{E(t)}</b><p>{E(d)}</p></div>''' for i, (k, t, d) in enumerate(LACA, 1))
 folha(f"""<div class="pad p5">
  <div class="eyebrow">A laca · demão por demão</div><div class="rule"></div>
- <h1 class="h1" style="margin:0 0 5mm">O café do projeto, com acabamento de peça única.</h1>
- <div class="lc">{''.join(f'<div class="lc-c"><div class="lc-n">{i:02d}</div><b>{E(t)}</b><p>{E(d)}</p></div>' for i, (t, d) in enumerate(LACA, 1))}</div>
+ <h1 class="h1" style="margin:0 0 2mm">A qualidade da laca se decide antes da primeira demão.</h1>
+ <p class="lead" style="max-width:220mm;margin:0 0 4mm">O café do projeto pede acabamento de peça única: a laca é a última
+  camada, nunca a que corrige. Tudo o que vem antes dela — esqueleto, pele, fórmica e preparo — é o que garante a curva lisa por anos.</p>
+ <div class="lfs">{lac}</div>
  <div class="lc-b">
-  <div class="lc-k"><div class="big">5 a 7</div><div class="u">dias de cura</div><p>antes de embalar a peça. Pressa aqui é a laca marcada na obra.</p></div>
+  <div class="lc-k"><div class="big">5 a 7</div><div class="u">dias de cura</div><p>antes de embalar a peça. Pressa aqui é laca marcada na obra.</p></div>
   <div class="lc-x"><b>Por que fórmica por baixo da laca?</b><p>Laca é rígida: se o que está por baixo trabalha, ela trinca na emenda ou no
-   encontro do arco com o pilar. O esqueleto firme, o compensado bem colado e a fórmica estável são o que mantém a curva lisa por anos —
-   a laca é a última camada, nunca a que corrige.</p></div>
-  <div class="lc-x"><b>Clima de pintura</b><p>Frio intenso ou umidade alta pedem adiar a demão: a laca não cura direito e perde o acabamento.
-   A cabine controla isso — a obra, não. Por isso nenhum pórtico é laqueado no local.</p></div>
+   encontro do arco com o pilar. Esqueleto firme, compensado bem colado e fórmica estável mantêm a curva lisa por anos.</p></div>
+  <div class="lc-x"><b>Clima de pintura</b><p>Frio intenso ou umidade alta pedem adiar a demão: a laca não cura direito. A cabine controla
+   isso — a obra, não. Por isso nenhum pórtico é laqueado no local.</p></div>
  </div>
 </div>""")
 
-# ── 06 · os itens ──────────────────────────────────────────────────────
+# ── 07 · os itens ──────────────────────────────────────────────────────
 MOV = [('01', 'Forro amadeirado', 'convivencia',
         'Em MDF amadeirado, sobre o salão e a convivência, contínuo de ponta a ponta, fixado em estrutura própria contra a laje.'),
        ('02', 'Nichos e pórticos', 'nichos',
@@ -209,7 +254,7 @@ folha(f"""<div class="pad p6">
  </div>
 </div>""")
 
-# ── 07 · o que está e o que não está ───────────────────────────────────
+# ── 08 · o que está e o que não está ───────────────────────────────────
 INC = ['Medição técnica no local', 'Projeto executivo e engenharia de produto', 'Todo o material de marcenaria, a fórmica e o compensado flexível',
        'Laca PU fosca café nos pórticos', 'Prateleiras com alma de aço e luz embutida nos nichos', 'Espelho prata, com transporte próprio',
        'Transporte, montagem, fixação e arremates', 'Limpeza fina da marcenaria e vistoria de entrega']
@@ -234,7 +279,7 @@ folha(f"""<div class="pad p7">
  </div>
 </div>""")
 
-# ── 08 · investimento e condições ───────────────────────────────────────
+# ── 09 · investimento e condições ───────────────────────────────────────
 rows = ''.join(f'<tr><td class="l">{E(n)}<div class="sub">{E(d)}</div></td><td class="hi">{brs(v)}</td></tr>'
                for n, d, v, _ in PR.VALORES)
 pay = ''.join(f'<tr><td>{E(r)}</td><td class="d">{p*100:.0f}%</td><td class="d">{br(TOTAL * p)}</td></tr>'
@@ -392,6 +437,43 @@ EXTRA = '''
 .gs p{font-size:7.8pt;color:#D9D2C4;margin:.8mm 0 0;line-height:1.45}
 .cu b{font-size:8.4pt;color:#F6F1E7}
 .cu p{font-size:8.2pt;color:#BDB5A6;line-height:1.45;margin:.4mm 0 0}
+.rail{height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold-lt) 70%,var(--hair));
+      margin:0;flex:none}
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0 7mm;flex:1;min-height:0;
+      margin-top:-1px;overflow:hidden;align-content:start;align-items:start}
+.proc .pb{transform-origin:top left}
+.pb{border-left:1px solid var(--hair);padding:5mm 5mm 0 5mm}
+.pb:first-child{border-left:none;padding-left:0}
+.pb-h{font-size:7.4pt;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+      font-weight:700}
+.pb-s{font-size:7.6pt;color:var(--mut);margin:1mm 0 3.4mm;min-height:6mm;line-height:1.35}
+.pe{position:relative;padding:0 0 3.2mm 0}
+.pe-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:15pt;color:var(--gold-lt);
+      line-height:1;float:right;margin-left:3mm}
+.pe-k{font-size:6pt;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+      font-weight:700}
+.pe-t{font-size:9.6pt;font-weight:700;margin:.6mm 0 1mm;letter-spacing:-.006em}
+.pe-l{font-size:7.8pt;color:var(--soft);line-height:1.46}
+.pe-e{font-size:7.1pt;color:var(--mut);margin-top:1.4mm;padding-left:3mm;
+      border-left:1.5px solid var(--gold-pale);line-height:1.38}
+
+
+.pv{display:grid;grid-template-columns:1.25fr 1fr;gap:7mm;flex:1;min-height:0}
+.pv-d{background:#FFFDF8;border:1px solid var(--line);border-radius:4px;padding:4mm 5mm;display:flex;flex-direction:column}
+.pv-s{flex:1;min-height:0;display:flex;align-items:center}.pv-s svg{width:100%;height:100%;display:block}
+.pv-x{font-size:7.8pt;color:var(--soft);line-height:1.5;margin:2mm 0 0;border-top:1px solid var(--hair);padding-top:2.4mm}
+.pv-x b{color:var(--ink)}
+.pfs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4mm 5mm;min-height:0}
+.pf{display:flex;flex-direction:column;min-height:0}
+.pf-i{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:2px;background:#fff;border:1px solid var(--hair)}
+.pf-i img{width:100%;height:100%;object-fit:cover;display:block}
+.pf-i span,.lf-i span{position:absolute;left:0;bottom:0;background:var(--deep);color:var(--gold-lt);font-family:'Cormorant Garamond',Georgia,serif;font-size:12pt;padding:.6mm 3.4mm}
+.pf b,.lf b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:12.5pt;font-weight:600;margin-top:1.4mm;line-height:1.1}
+.pf p,.lf p{font-size:7.3pt;color:var(--soft);line-height:1.42;margin:.6mm 0 0}
+.lfs{display:grid;grid-template-columns:repeat(5,1fr);gap:4.5mm;flex:1;min-height:0;margin-bottom:5mm}
+.lf{display:flex;flex-direction:column;min-height:0}
+.lf-i{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:2px}
+.lf-i img{width:100%;height:100%;object-fit:cover;display:block}
 '''
 HTML = ('<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">'
         f'<title>Proposta · {E(CLIENTE)}</title>'
@@ -412,5 +494,5 @@ PDF = R / 'proposta-centurion-motors-completa.pdf'
 subprocess.run(['node', str(P / 'render-pdf.js'), str(OUT), str(PDF)], check=True,
                env=dict(os.environ, NODE_PATH='/opt/node22/lib/node_modules'))
 npg = int(re.search(r'Pages:\s+(\d+)', subprocess.run(['pdfinfo', str(PDF)], capture_output=True, text=True).stdout).group(1))
-assert npg == 8, f'⛔ a proposta tem de ter 8 páginas: saiu com {npg}'
+assert npg == 9, f'⛔ a proposta tem de ter 9 páginas: saiu com {npg}'
 print(f'{PDF.name} · {npg} folhas · {br(TOTAL)} · entrada {br(TOTAL * PAGTO[0][1])}')
