@@ -686,3 +686,41 @@ bancada é pórtico de pedra, nós fazemos o que vai embaixo).
 > ⭐⭐ **+4 BÁSCULAS** além das 13 da cozinha. São de 85 × 37,5, maiores que as da cozinha
 > (82 × 35) — pelo critério do Jonathan, **HK-S também aqui**. ⚠ confirmar.
 
+
+---
+
+### 9 · SUÍTE 01 (menina) — pranchas 01/03 a 03/03 ✅ lida
+
+**Quarto de 304,5 × 437,5**, pé-direito 270.
+
+| # | Peça | C | A | P | material / detalhe |
+|---|---|---|---|---|---|
+| A1 | **Painel ripado** (elev. A) | 304,5 | 110 | — | MDF Gianduia, **ripas 10×2 cm**, réguas de 44,5 com 10 de intervalo |
+| A2 | **2 prateleiras** com **mão francesa invisível** | 2 × 100 | — | ~27 | ⚠ **Tauari maciço** ou MDF Nogueira — ver contradição abaixo |
+| A3 | **Escrivaninha** (elev. A / isométrica) | 282,5 | 12 | 50 | **4 gavetas de 70** · **GAVETAS FECHO TOQUE** · ⭐ **altura adaptável 50 e 70 cm** |
+| B1 | Painel + **porta de correr** + rodapé (elev. B) | 437,5 | 270 | — | MDF Gianduia · modulação 59,5 \| 80 \| 103 \| 90 \| 103 |
+| B2 | Prateleira Tauari (elev. B) | ~59,5 | — | — | mão francesa invisível |
+| C1 | **Painel ripado** (elev. C) | 304,5 | 110 | — | MDF Gianduia, ripas 10×2 cm |
+| P1 | Armário da planta (parede do topo) | 198,5 + 100 | ⚠ | 59,5 | ⚠ **sem elevação cotada** |
+
+⛔ **Elevação D é esquadria de vidro** com guarda-corpo Infinity de embutir — não é nossa.
+⛔ Papel de parede, guarda-corpo: não são nossos.
+
+> ⭐⭐ **"GAVETAS FECHO TOQUE" = corrediça TOUCH.** Pela **regra 5** da casa ela custa
+> **R$ 500 o par e substitui a corrediça E o pulsador**. São 4 gavetas → **R$ 2.000**.
+> É a primeira vez que o projeto pede touch; em todo o resto as pranchas pedem puxador.
+
+> ⚠⚠ **"ALTURA ADAPTÁVEL PARA ATENDER AS ALTURAS DE 50 E 70 cm".** É mesa com mecanismo de
+> regulagem — **não existe na Base e não é marcenaria comum**. Precisa de coluna regulável
+> (manual ou elétrica). **Perguntar ao Jonathan** se entra como ferragem especial ou se a
+> arquiteta aceita duas alturas fixas.
+
+> ⚠⚠ **DUAS CONTRADIÇÕES DENTRO DA MESMA PRANCHA:**
+> | item | memorial (pg 1) | elevações (pg 1 e 2) |
+> |---|---|---|
+> | Gianduia | **LIDER** | **GUARARAPES** |
+> | escrivaninha e prateleira | **MDF NOGUEIRA-Guararapes** | **madeira TAUARI** |
+>
+> A segunda pesa: **Tauari é maciço de verdade** (é o piso da casa) e custa bem acima do MDF
+> melamínico. A prancha se contradiz sozinha — não é divergência com o 3D. **Perguntar.**
+
