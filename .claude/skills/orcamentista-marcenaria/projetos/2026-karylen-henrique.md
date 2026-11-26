@@ -632,3 +632,57 @@ O 3D (pg 28-31) mostra **dois ambientes**, e eu só levantei um:
 > qual documento manda. O 3D é o que o cliente comprou com os olhos; a prancha é o que a
 > marcenaria executa. Quando os dois divergem, quem decide é quem desenhou.
 
+
+---
+
+# ⭐⭐ DECISÃO [Jonathan, 26/11/2026]: **VALE O DETALHAMENTO**
+
+Toda a análise passa a seguir as **pranchas técnicas**, não o 3D. As divergências
+mapeadas acima ficam registradas como histórico — não entram no cálculo.
+E: **nas básculas da cozinha, articulador Blum Aventos HK-S**, não HK-xs.
+
+| ferragem | custo | situação |
+|---|---|---|
+| **Articulador Blum Aventos HK-S** | **R$ 390** /un | ⚠ **ESTIMADO** — não estava na Base. O HK-S é o degrau acima do HK-xs (250) e abaixo do Aventos HF/HL (600); 390 é o meio geométrico. **Confirmar.** |
+
+---
+
+### 2 · ÁREA DE SERVIÇO — levantamento COMPLETO (9 pg lidas) ✅
+
+**MDF CINZA PERFEITO — GUARARAPES** em tudo, com amortecimento e **puxador cava**.
+⛔ Bancada e rodapé em **granito Branco Siena escovado**, revestimento Metro Grey 10×20 Eliane,
+e as barras de metalon da bancada: **não são nossos** (mesma regra da sala de jantar — a
+bancada é pórtico de pedra, nós fazemos o que vai embaixo).
+
+**LAVANDERIA**
+
+| # | Peça | C | A | P | detalhe |
+|---|---|---|---|---|---|
+| L1 | **Armário de básculas** | 170 | 80 | 40 | **4 básculas** de 85 × 37,5 (2 col. × 2 fileiras) |
+| L2 | Armários sob a bancada em **L** | 170 + 200 | 88 | ~60 | nicho lava-e-seca 65-70 · armário 41 com prateleira · 2 portas de 63,8 · armário 60 |
+| L3 | Elevação A/F — armário alto | 40 | 80 | ⚠ | 2 nichos de 32 |
+| L4 | Elevação A/F — inferior | 70 + 64 + 64 | 88 | ⚠ | 2 portas que **abrem** (78 de altura) |
+| L5 | Elevação A/F — painel | 89,6 | 255 | — | painel liso |
+| L6 | Elevação E — armário alto | 40 | 40 | ⚠ | + nicho de 30 na base |
+| L7 | Porta de vidro da área de serviço | 80 | 209 | — | ⚠ vidraceiro |
+| L8 | **Cabideiro inox** | — | — | — | sob as básculas (elev. G) |
+
+**DESPENSA**
+
+| # | Peça | C | A | P | detalhe |
+|---|---|---|---|---|---|
+| D1 | Estante aberta | 212 | 180 | 45 | **4 prateleiras**, vãos de ~40,7 |
+| D2 | **Gaveteiro** | 210 | 90 | 45 | **6 gavetas**: 3 col. de 70 × 2 fileiras de 39 |
+| D3 | Coluna lateral | 50 | 270 | 45 | 2 prateleiras + nichos de 40 e 38 |
+| D4 | Elevação C — armário alto | 40 | 40 | 45 | |
+| D5 | Elevação C — prateleiras | 50 | 177 | 45 | **3 prateleiras** |
+| D6 | Elevação C — armário baixo | 50 | 93 | 45 | 1 porta |
+| D7 | Porta de vidro da despensa | 79,9 | 209 | — | ⚠ vidraceiro |
+
+> ⭐ **CUIDADO COM A DUPLICAÇÃO:** as elevações **A ≡ F** e **B ≡ G** são o mesmo desenho
+> renumerado (289,6 e 170, cotas idênticas). A única diferença real é o **cabideiro inox**,
+> que só aparece na G. **Lançar uma vez só.**
+
+> ⭐⭐ **+4 BÁSCULAS** além das 13 da cozinha. São de 85 × 37,5, maiores que as da cozinha
+> (82 × 35) — pelo critério do Jonathan, **HK-S também aqui**. ⚠ confirmar.
+
