@@ -24,7 +24,9 @@ MDF   = {6: 300.0, 15: 500.0, 18: 600.0}
 FITA, FILET, CONSUM = 3.0, 2.5, 0.06
 CORTE_CH, CORTE_PC = 2.0, 2.5
 SUP, ALMA = 6.50, 35.0
-DOBR, CORR, BASC, PULS = 50.0, 400.0, 250.0, 100.0
+DOBR, CORR, PULS = 50.0, 400.0, 100.0
+BASC_XS = 250.0   # Aventos HK-xs — portas pequenas (rack da sala de estar, 20 de altura)
+BASC_S  = 390.0   # Aventos HK-S  — [Jonathan 26/11] basculas da cozinha. ⚠ custo estimado
 PALHA, ESPELHO, VIDRO, LED = 650.0, 600.0, 250.0, 150.0
 CAVA, CORRER2, CORRER3, TRILHO, PIVO, CABIDE = 50.0, 700.0, 850.0, 350.0, 120.0, 60.0
 
@@ -103,7 +105,7 @@ I(a, 'Prateleira em Imbuia sob a bancada', '150 × 22') \
 a = '04 Cozinha'
 I(a, 'Armário superior de básculas', '408 × 90 × 35') \
  .caixa(408,90,35,prat=1,div=4).frente(82,35,10).frente(82,20,3) \
- .f(BASC,13,'Aventos HK-xs').f(PULS,13,'Tip-on').f(DOBR,26,'dobradiça Blum').prat(1,408)
+ .f(BASC_S,13,'Aventos HK-S').f(PULS,13,'Tip-on').f(DOBR,26,'dobradiça Blum').prat(1,408)
 I(a, 'Armário de portas de vidro', '408,5 × 60 × 35') \
  .caixa(408.5,60,35,prat=1,div=2).f(DOBR,6,'dobradiça Blum').prat(1,131) \
  .t(VIDRO*408.5*60/1e4*1.1+200,'3 folhas de vidro (vidraceiro)')
@@ -150,7 +152,7 @@ I(a, 'Painel de parede acima do rack', '415 × 198').painel(415,198)
 I(a, 'Rack com básculas e gavetas em ripado vazado', '415 × 72 × 50') \
  .caixa(415,72,50,prat=1,div=4).frente(82,20,5).frente(82,29,5) \
  .ch(18,(82*20*5+82*29*5)/1e4,10,0) \
- .f(BASC,5,'Aventos HK-xs').f(PULS,5,'Tip-on') \
+ .f(BASC_XS,5,'Aventos HK-xs').f(PULS,5,'Tip-on') \
  .f(CORR,5,'corrediça Movento').f(CAVA,5,'cava usinada').prat(1,415)
 I(a, 'Porta de abrir em Capuccino', '85 × 270').painel(85,270).f(DOBR,3,'dobradiça Blum')
 I(a, 'Parede ripada com porta pivotante oculta', '320 × 270') \
