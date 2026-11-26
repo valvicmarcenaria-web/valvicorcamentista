@@ -171,14 +171,24 @@ function sincronizarNovaFabrica_(d) {
                  NF_COL_CHAVE, d.marca, novas);
 }
 
-/** Acha o cabeçalho "Data" na coluna B e devolve a primeira linha de compras. */
+/** Acha o cabeçalho da tabela COMPRAS e devolve a primeira linha de compras.
+ *
+ *  Procura a linha em que a coluna B é "Data" E a coluna C é "Item / material".
+ *  As DUAS condições são obrigatórias: acima da tabela de compras existe o bloco
+ *  PROJEÇÕES, cujo cabeçalho é "Data prevista" / "Item / serviço". Conferir só a
+ *  coluna B faria o script escrever as compras dentro das projeções no dia em que
+ *  alguém encurtasse aquele título para "Data".
+ */
 function primeiraLinhaNF_(aba) {
-  var n = Math.min(aba.getMaxRows(), 60);
-  var col = aba.getRange(1, 2, n, 1).getValues();
+  var n = Math.min(aba.getMaxRows(), 200);
+  var cab = aba.getRange(1, 2, n, 2).getValues();
   for (var i = 0; i < n; i++) {
-    if (String(col[i][0]).trim() === 'Data') return i + 2;
+    if (String(cab[i][0]).trim() === 'Data' &&
+        String(cab[i][1]).trim() === 'Item / material') return i + 2;
   }
-  throw new Error('Não achei o cabeçalho "Data" na coluna B da aba ' + NF_ABA + '.');
+  throw new Error('Não achei o cabeçalho da tabela COMPRAS ("Data" na coluna B e ' +
+                  '"Item / material" na coluna C) nas primeiras ' + n +
+                  ' linhas da aba ' + NF_ABA + '.');
 }
 
 // ── destino 2 · fichas de cliente ──────────────────────────────────────────
