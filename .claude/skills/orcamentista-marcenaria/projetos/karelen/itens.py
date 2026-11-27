@@ -40,29 +40,50 @@ class I:
     def __init__(s, amb, nome, medida=''):
         s.amb, s.nome, s.medida = amb, nome, medida
         s.area, s.fita, s.pc, s.fer, s.ter = {}, 0.0, 0, 0.0, 0.0
+        s.lista = []          # peças, uma a uma
+        s.fers  = []          # (nome, qtd, custo unitário)
+        s.ters  = []          # (nome, custo)
         s.det = []
         ITENS.append(s)
-    # ---- chapa
-    def ch(s, esp, m2, pecas=1, fita_m=0.0):
+    # ---- chapa.  Toda peça entra em s.lista: (desc, C, L, qtd, esp, fita_m)
+    def ch(s, esp, m2, pecas=1, fita_m=0.0, desc=None, C=None, L=None, q=1):
         s.area[esp] = s.area.get(esp, 0.0) + m2
-        s.pc += pecas; s.fita += fita_m; return s
-    def caixa(s, C, A, P, esp=15, prat=0, div=0, fundo=True):
-        s.ch(esp, (2*A*P + 2*C*P + prat*C*P + div*A*P)/1e4, 4+prat+div,
-             ((2*(A+P) + 2*(C+P) + prat*(C+P) + div*(A+P)))/100)
-        if fundo: s.ch(6, C*A/1e4, 1)
+        s.pc += pecas; s.fita += fita_m
+        if desc: s.lista.append((desc, C, L, q, esp, fita_m))
         return s
-    def frente(s, L, A, q, esp=18):
-        return s.ch(esp, L*A*q/1e4, q, 2*(L+A)*q/100)
+    def _p(s, desc, C, L, q, esp, fita_m):
+        """uma peça: área + fita, e registra a linha"""
+        s.area[esp] = s.area.get(esp, 0.0) + C*L*q/1e4
+        s.pc += q; s.fita += fita_m
+        s.lista.append((desc, C, L, q, esp, fita_m))
+        return s
+    def caixa(s, C, A, P, esp=15, prat=0, div=0, fundo=True):
+        s._p('lateral',    A, P, 2, esp, 2*(A+P)/100)
+        s._p('tampo/base', C, P, 2, esp, 2*(C+P)/100)
+        if prat: s._p('prateleira', C, P, prat, esp, prat*(C+P)/100)
+        if div:  s._p('divisória',  A, P, div,  esp, div*(A+P)/100)
+        if fundo: s._p('fundo', C, A, 1, 6, 0.0)
+        return s
+    def frente(s, L, A, q, esp=18, desc='frente'):
+        return s._p(desc, L, A, q, esp, 2*(L+A)*q/100)
     def painel(s, C, A, ripado=False, esp=18):
-        return s.ch(esp, C*A/1e4*(2.0 if ripado else 1.15),
-                    (int(C/12)+1) if ripado else 1, 2*(C+A)/100)
+        if ripado:
+            n = int(C/12)+1
+            s._p('ripa', A, 10, n, esp, 0.0)
+            s._p('base do ripado', C, A, 1, esp, 2*(C+A)/100)
+        else:
+            s._p('painel', C, A, 1, esp, 2*(C+A)/100)
+            s._p('travessa de fixação', C, 10, 1, esp, 0.0)
+        return s
     # ---- ferragem e terceiro
     def f(s, v, q=1, o=''):
         s.fer += v*q
+        if o: s.fers.append((o, q, v))
         if o: s.det.append('%s ×%g' % (o, q))
         return s
     def t(s, v, o=''):
         s.ter += v
+        if o: s.ters.append((o, v))
         if o: s.det.append(o)
         return s
     def prat(s, n, vao_cm):
