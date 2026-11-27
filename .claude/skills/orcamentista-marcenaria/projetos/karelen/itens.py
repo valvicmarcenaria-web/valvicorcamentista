@@ -118,7 +118,7 @@ I(a, 'Coluna lateral', '50 × 270 × 45').caixa(50,270,45,prat=2).prat(2,50)
 I(a, 'Armários da elevação C', '50 × 93 e 40 × 40') \
  .caixa(50,93,45).frente(50,93,1).f(DOBR,2,'dobradiça Blum') \
  .caixa(40,40,45).frente(40,40,1).f(DOBR,2,'dobradiça Blum') \
- .ch(18,3*50*45/1e4,3,3*2*(50+45)/100).prat(3,50)
+ ._p('prateleira',50,45,3,18,3*2*(50+45)/100).prat(3,50)
 I(a, 'Porta de vidro da despensa', '79,9 × 209') \
  .t(VIDRO*79.9*209/1e4+200,'vidraceiro')
 
@@ -129,7 +129,7 @@ I(a, 'Espelheira de correr com LED', '150 × 160 × 15') \
  .t(ESPELHO*150*160/1e4*1.1,'espelho Crystal Prata 5 mm, 2 folhas') \
  .t(CORRER2,'sistema de correr 2 portas').t(LED*3.0,'iluminação LED')
 I(a, 'Prateleira em Imbuia sob a bancada', '150 × 22') \
- .ch(18,150*22/1e4,1,2*(150+22)/100)
+ ._p('prateleira em Imbuia',150,22,1,18,2*(150+22)/100)
 
 # ══════════════ 04 · COZINHA ═════════════════════════════════════════════
 # [Jonathan 27/11] tres itens: ILHA · ADEGA · RESTANTE.
@@ -166,7 +166,7 @@ I(a, 'RESTANTE da cozinha', 'elevação A, 590,5 × 270') \
 a = '05 Escritório'
 I(a, 'Painel de parede', '270 × 270').painel(270,270)
 I(a, 'Prateleiras com mão francesa invisível', '2 × 260 × 20') \
- .ch(18,2*260*20/1e4,2,2*2*(260+20)/100).t(600,'mão francesa invisível ×2 (serralheiro)')
+ ._p('prateleira',260,20,2,18,2*2*(260+20)/100).t(MAOFRAN*2,'mão francesa invisível ×2')
 I(a, 'Escrivaninha com nicho e 4 gavetas', '190,7 × 75 × 50') \
  .caixa(190.7,75,50,div=1).frente(45,17,4) \
  .f(CORR,4,'corrediça Movento').f(CAVA,4,'cava usinada')
@@ -193,7 +193,7 @@ a = '07 Sala de estar'
 I(a, 'Painel de parede acima do rack', '415 × 198').painel(415,198)
 I(a, 'Rack com básculas e gavetas em ripado vazado', '415 × 72 × 50') \
  .caixa(415,72,50,prat=1,div=4).frente(82,20,5).frente(82,29,5) \
- .ch(18,(82*20*5+82*29*5)/1e4,10,0) \
+ ._p('ripa do vazado 2×2 · 2ª camada',82,20,5,18,0.0)._p('ripa do vazado 2×2 · 2ª camada',82,29,5,18,0.0) \
  .f(BASC_XS,5,'Aventos HK-xs').f(PULS,5,'Tip-on') \
  .f(CORR,5,'corrediça Movento').f(CAVA,5,'cava usinada').prat(1,415)
 I(a, 'Porta de abrir em Capuccino', '85 × 270').painel(85,270).f(DOBR,3,'dobradiça Blum')
@@ -237,7 +237,7 @@ I(a, 'Armário espelhado de correr com LED', '192 × 160 × 20') \
  .t(ESPELHO*192*160/1e4*1.1,'espelho Crystal Prata 5 mm, 3 folhas') \
  .t(CORRER3+TRILHO,'sistema de correr 3 portas').t(LED*6.0,'iluminação LED')
 I(a, 'Armário ripado sob a bancada', '192 × 75 × 50') \
- .caixa(192,75,50,div=2).frente(63,37.5,4).ch(18,192*75/1e4,4,0) \
+ .caixa(192,75,50,div=2).frente(63,37.5,4)._p('ripa da frente · 2ª camada',192,75,1,18,0.0) \
  .f(DOBR,8,'dobradiça Blum')
 I(a, 'Espelhos das outras duas paredes', '87,9 e 120,3 × 200') \
  .t(ESPELHO*(87.9+120.3)*200/1e4*1.1,'espelho Crystal Prata 5 mm') \
@@ -299,7 +299,7 @@ a = '09 Suíte 01 (menina)'
 I(a, 'Painel ripado da elevação A', '304,5 × 110') \
  .painel(304.5,110,ripado=True)
 I(a, 'Prateleiras com mão francesa invisível', '2 × 100 × 27') \
- .ch(18,2*100*27/1e4,2,2*2*(100+27)/100).t(MAOFRAN*2,'mão francesa invisível ×2')
+ ._p('prateleira em Tauari',100,27,2,18,2*2*(100+27)/100).t(MAOFRAN*2,'mão francesa invisível ×2')
 I(a, 'Escrivaninha com altura regulável', '282,5 × 50') \
  .caixa(282.5,50,50,div=3,fundo=False).frente(70,12,4) \
  .f(TOUCH,4,'corrediça TOUCH (fecho toque)') \
@@ -308,7 +308,7 @@ I(a, 'Painel, porta de correr e rodapé (elev. B)', '437,5 × 270') \
  .painel(437.5,270).frente(90,260,1) \
  .t(CORRER2+TRILHO,'sistema de correr')
 I(a, 'Prateleira Tauari da elevação B', '59,5 × 27') \
- .ch(18,59.5*27/1e4,1,2*(59.5+27)/100).t(MAOFRAN,'mão francesa invisível')
+ ._p('prateleira em Tauari',59.5,27,1,18,2*(59.5+27)/100).t(MAOFRAN,'mão francesa invisível')
 I(a, 'Painel ripado da elevação C', '304,5 × 110') \
  .painel(304.5,110,ripado=True)
 I(a, 'Armário da planta (parede do topo)', '298,5 × 270 × 59,5') \

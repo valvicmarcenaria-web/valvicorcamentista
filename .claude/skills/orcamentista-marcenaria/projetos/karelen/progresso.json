@@ -1,1 +1,21 @@
-{"gravadas": []}
+{
+ "gravadas": [
+  "12 Banho 02",
+  "13 Lavabo"
+ ],
+ "pendentes": [
+  "01 Apoio",
+  "02 Área de serviço",
+  "03 Banho social",
+  "04 Cozinha",
+  "05 Escritório",
+  "06 Quarto de hóspedes",
+  "07 Sala de estar",
+  "08 Sala de jantar",
+  "09 Suíte 01 (menina)",
+  "10 Banho 01",
+  "11 Suíte 02 (menino)",
+  "14 Suíte master",
+  "15 Banho da suíte master"
+ ]
+}
