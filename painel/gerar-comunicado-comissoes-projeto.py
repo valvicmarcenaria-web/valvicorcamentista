@@ -159,7 +159,7 @@ A comiss&atilde;o &eacute; paga antes porque a empresa confia no trabalho, n&ati
     <li>Material, cor ou espessura divergentes do que foi vendido e aceito</li>
     <li>Sentido de abertura, de veio ou usinagem indicados de forma incorreta</li>
     <li>Interfer&ecirc;ncia n&atilde;o prevista entre m&oacute;vel, parede, el&eacute;trica, hidr&aacute;ulica ou eletrodom&eacute;stico</li>
-    <li>Programa&ccedil;&atilde;o liberada para a f&aacute;brica sem a confer&ecirc;ncia da etapa 09</li>
+    <li>Arquivos gerais ou lista de compras liberados para a produ&ccedil;&atilde;o incompletos, ou divergentes do detalhamento que foi validado</li>
   </ul></div>
   <div class="sim"><div class="hh">N&atilde;o responde o projetista</div><ul>
     <li>Altera&ccedil;&atilde;o pedida pelo cliente ou pelo arquiteto <b>depois</b> do aceite</li>
