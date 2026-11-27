@@ -1,21 +1,21 @@
 {
  "gravadas_ok": [
-  "13 Lavabo",
-  "03 Banho social"
+  "01 Apoio",
+  "03 Banho social",
+  "08 Sala de jantar",
+  "10 Banho 01",
+  "13 Lavabo"
  ],
  "regravar": [
   "12 Banho 02"
  ],
  "pendentes": [
-  "01 Apoio",
   "02 Área de serviço",
   "04 Cozinha",
   "05 Escritório",
   "06 Quarto de hóspedes",
   "07 Sala de estar",
-  "08 Sala de jantar",
   "09 Suíte 01 (menina)",
-  "10 Banho 01",
   "11 Suíte 02 (menino)",
   "14 Suíte master",
   "15 Banho da suíte master"
