@@ -80,7 +80,7 @@ class I:
     def f(s, v, q=1, o=''):
         # ⭐ a Base cobra CAVA USINADA POR METRO, não por peça: converte pela
         #   largura da última frente lançada (é nela que a cava corre).
-        if v == CAVA and getattr(s, '_ultL', None):
+        if 'cava' in o.lower() and getattr(s, '_ultL', None):
             q = round(q * s._ultL / 100.0, 2)
         s.fer += v*q
         if o: s.fers.append((o, q, v))

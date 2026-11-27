@@ -1,12 +1,14 @@
 {
- "gravadas": [
-  "12 Banho 02",
-  "13 Lavabo"
+ "gravadas_ok": [
+  "13 Lavabo",
+  "03 Banho social"
+ ],
+ "regravar": [
+  "12 Banho 02"
  ],
  "pendentes": [
   "01 Apoio",
   "02 Área de serviço",
-  "03 Banho social",
   "04 Cozinha",
   "05 Escritório",
   "06 Quarto de hóspedes",
