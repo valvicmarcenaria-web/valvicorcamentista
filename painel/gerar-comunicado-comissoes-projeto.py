@@ -39,6 +39,29 @@ ul.cmp{padding-left:0}
 .passo .t{font-size:7.8pt;line-height:1.42}
 .passo .t b{color:var(--navy)}
 .falta{background:var(--goldbg);color:#7A5B17;font-weight:700;padding:0 1mm;border-radius:.6mm}
+.flx{display:flex;align-items:stretch;gap:0;margin:1mm 0 2mm}
+.flx .cx{flex:1;min-width:0;display:flex;flex-direction:column}
+.flx .lane{font-size:5.4pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:800;text-align:center;margin-bottom:1.2mm;min-height:3mm}
+.flx .bx{flex:1;border:.35mm solid var(--gold);background:#FFFCF4;border-radius:1mm;
+  padding:2.4mm 2mm;display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:7.4pt;font-weight:700;color:var(--navy);line-height:1.25}
+.flx .dia{flex:1;border:.35mm solid #7FA6CC;background:#EEF4FA;border-radius:1mm;
+  padding:2.4mm 2mm;display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:7.4pt;font-weight:800;color:#204A73;line-height:1.25}
+.flx .ar{display:flex;align-items:center;justify-content:center;width:5mm;flex:0 0 5mm;
+  color:var(--gold);font-size:10pt;font-weight:700;padding-top:4mm}
+.ramos{display:flex;gap:4mm;margin:0 0 3mm}
+.ramo{flex:1;border-radius:1mm;padding:2.4mm 3mm;font-size:7.6pt;line-height:1.4}
+.ramo .q{font-size:6pt;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:1.2mm}
+.ramo.s{background:#F0F6F2;border-left:1.1mm solid var(--ok)}
+.ramo.s .q{color:var(--ok)}
+.ramo.n{background:#FBF6EF;border-left:1.1mm solid var(--gold)}
+.ramo.n .q{color:#8A6A1E}
+.ramo b{color:var(--navy)}
+.obs{display:flex;gap:4mm;font-size:6.8pt;line-height:1.35;color:#7A5B17;margin:0 0 3mm}
+.obs div{flex:1;background:var(--goldbg);border-radius:1mm;padding:1.6mm 2.4mm}
+.obs b{color:#5E4512}
 </style>"""
 
 HEAD = """<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
@@ -69,35 +92,42 @@ adivinhar.</p>
   <div class="f"><div class="k">Decis&atilde;o</div><div class="v">Diretoria</div></div>
 </div>
 
-<div class="mini">As etapas do fluxo que s&atilde;o suas</div>
-<div class="duas">
-  <div>
-    <p style="font-size:6.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:1.6mm">Entrada do projeto</p>
-    <div class="et"><div class="n">01</div><div class="t"><b>Receber o escopo de venda</b> e o projeto do cliente ou do arquiteto.</div></div>
-    <div class="et"><div class="n">02</div><div class="t"><b>Ler o projeto com o Checklist de Libera&ccedil;&atilde;o</b> &mdash; as 13 se&ccedil;&otilde;es &mdash; e levantar o que est&aacute; em aberto.</div></div>
-    <div class="et"><div class="n">03</div><div class="t"><b>Resolver as pend&ecirc;ncias t&eacute;cnicas</b> com o comercial, o cliente e o arquiteto.</div></div>
-    <div class="et"><div class="n">04</div><div class="t"><b>Confer&ecirc;ncia t&eacute;cnica em obra</b>, quando o projeto pedir medida de obra.</div></div>
-    <div class="et"><div class="n">05</div><div class="t"><b>Elaborar o detalhamento</b>: medida, ferragem, material e m&eacute;todo definidos.</div></div>
-    <div class="et"><div class="n">06</div><div class="t"><b>Apresentar o detalhamento ao cliente</b> e colher o aceite.</div></div>
-  </div>
-  <div>
-    <p style="font-size:6.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:1.6mm">Produ&ccedil;&atilde;o</p>
-    <div class="et"><div class="n">07</div><div class="t"><b>Liberar o projeto</b> para a programa&ccedil;&atilde;o.</div></div>
-    <div class="et"><div class="n">08</div><div class="t"><b>Programar o projeto no sistema</b>.</div></div>
-    <div class="et"><div class="n">09</div><div class="t"><b>Conferir a programa&ccedil;&atilde;o</b> antes de liberar para a f&aacute;brica.</div></div>
-    <div class="et"><div class="n">10</div><div class="t"><b>Atender as d&uacute;vidas t&eacute;cnicas da f&aacute;brica</b> durante a fabrica&ccedil;&atilde;o.</div></div>
-    <div class="et"><div class="n">11</div><div class="t"><b>Responder pelas diverg&ecirc;ncias de projeto</b> apontadas na Confer&ecirc;ncia de Sa&iacute;da e na obra.</div></div>
-    <div class="nota" style="margin-top:2.4mm;padding:2mm 3mm;font-size:7.4pt">A comiss&atilde;o nasce na etapa <b>06</b>.
-    As etapas <b>07 a 11</b> continuam sendo responsabilidade sua depois de a comiss&atilde;o ser paga &mdash;
-    &eacute; o que a p&aacute;gina 2 trata.</div>
-  </div>
+<div class="mini">O fluxo do setor &mdash; etapa a etapa</div>
+<div class="flx">
+  <div class="cx"><div class="lane">Projetista</div><div class="bx">Medi&ccedil;&atilde;o</div></div>
+  <div class="ar">&rarr;</div>
+  <div class="cx"><div class="lane">Projetista</div><div class="bx">Programa&ccedil;&atilde;o</div></div>
+  <div class="ar">&rarr;</div>
+  <div class="cx"><div class="lane">Desenhista / projetista</div><div class="bx">Detalhamento do cliente</div></div>
+  <div class="ar">&rarr;</div>
+  <div class="cx"><div class="lane">&nbsp;</div><div class="dia">Validou?</div></div>
+  <div class="ar">&rarr;</div>
+  <div class="cx"><div class="lane">Desenhista</div><div class="bx">Detalhamento produ&ccedil;&atilde;o</div></div>
+  <div class="ar">&rarr;</div>
+  <div class="cx"><div class="lane">Projetista</div><div class="bx">Libera&ccedil;&atilde;o para produ&ccedil;&atilde;o<br>arquivos gerais e lista de compras</div></div>
+</div>
+
+<div class="ramos">
+  <div class="ramo s"><div class="q">Validou &middot; sim</div>
+  Segue para o <b>detalhamento de produ&ccedil;&atilde;o</b> e, na mesma hora,
+  <b>libera a comiss&atilde;o do projetista</b>.</div>
+  <div class="ramo n"><div class="q">Validou &middot; n&atilde;o</div>
+  Vai para o <b>Ajusta</b> e <b>volta para a Programa&ccedil;&atilde;o</b>. O ciclo se repete at&eacute;
+  validar, e <b>n&atilde;o gera comiss&atilde;o nem penalidade</b> &mdash; ajuste antes da valida&ccedil;&atilde;o
+  faz parte do trabalho.</div>
+</div>
+
+<div class="obs">
+  <div><b>Na valida&ccedil;&atilde;o:</b> &eacute; necess&aacute;rio <b>documento assinado</b> pelo cliente.</div>
+  <div><b>Na libera&ccedil;&atilde;o:</b> a <b>lista de compras</b> vai lan&ccedil;ada no <b>Calcme</b>.</div>
 </div>
 
 <div class="gatilho">
   <div class="h">Quando a comiss&atilde;o fica v&aacute;lida</div>
   <p>A comiss&atilde;o de projeto &eacute; considerada <b>v&aacute;lida mediante a aprova&ccedil;&atilde;o do
-  detalhamento apresentado ao cliente, com o aceite dele</b>. Antes do aceite, o projeto n&atilde;o gera
-  comiss&atilde;o, ainda que j&aacute; esteja desenhado.</p>
+  detalhamento apresentado ao cliente, com o aceite dele</b> &mdash; e o aceite s&oacute; existe com
+  <b>documento assinado</b>. Antes disso o projeto n&atilde;o gera comiss&atilde;o, ainda que j&aacute;
+  esteja desenhado e reapresentado v&aacute;rias vezes.</p>
 </div>
 
 <div class="mini">Datas de corte e de pagamento</div>
@@ -110,7 +140,7 @@ adivinhar.</p>
 <p style="font-size:7.4pt;line-height:1.45;color:var(--muted);margin-top:1.6mm">Se o dia 15 ou o dia 30 ca&iacute;rem
 em s&aacute;bado, domingo ou feriado, o pagamento ocorre no primeiro dia &uacute;til seguinte. Em fevereiro, e nos
 meses de 31 dias, o &ldquo;dia 30&rdquo; &eacute; o <b>&uacute;ltimo dia do m&ecirc;s</b>. A data que vale &eacute;
-a do <b>registro do aceite</b> do cliente, n&atilde;o a do envio do detalhamento.</p>
+a da <b>assinatura do documento de aceite</b> pelo cliente, n&atilde;o a do envio do detalhamento.</p>
 </div>%(f)s</section>"""
 
 P2 = """<section class="sheet">%(h)s<div class="body">
@@ -148,9 +178,9 @@ divergiu.</div></div>
 <div class="passo"><div class="n">2</div><div class="t"><b>Apresenta&ccedil;&atilde;o.</b> O erro &eacute; apresentado ao
 profissional de forma <b>&eacute;tica, correta e respeitosa</b>, em conversa reservada, com o material em
 m&atilde;os. Nunca em grupo e nunca por terceiros.</div></div>
-<div class="passo"><div class="n">3</div><div class="t"><b>Direito de resposta.</b> O profissional tem
-<span class="falta">[[__ dias]]</span> para apresentar a sua leitura t&eacute;cnica. Se ela afastar a origem no
-projeto, a ocorr&ecirc;ncia &eacute; encerrada sem desconto.</div></div>
+<div class="passo"><div class="n">3</div><div class="t"><b>Direito de resposta.</b> O profissional tem direito a
+apresentar a sua leitura t&eacute;cnica. Se ela afastar a origem no projeto, a ocorr&ecirc;ncia &eacute;
+encerrada sem desconto.</div></div>
 <div class="passo"><div class="n">4</div><div class="t"><b>Apura&ccedil;&atilde;o do custo.</b> Confirmada a origem,
 levanta-se <b>apenas o custo de mat&eacute;ria-prima</b> que a empresa precisou repor. M&atilde;o de obra, frete e
 tempo de f&aacute;brica n&atilde;o entram nesta conta.</div></div>
@@ -158,19 +188,6 @@ tempo de f&aacute;brica n&atilde;o entram nesta conta.</div></div>
 <div class="mini" style="margin-top:3.4mm">O desconto</div>
 <p style="font-size:8.2pt;line-height:1.5">Quando o erro exp&otilde;e a empresa a <b>custo de mat&eacute;ria-prima</b>,
 esse valor &eacute; descontado das <b>comiss&otilde;es em aberto e, se necess&aacute;rio, das futuras</b>.</p>
-<table class="compacta">
-<tr><th style="width:40%%">Regra</th><th>Como funciona</th></tr>
-<tr><td><b>Limite por m&ecirc;s</b></td><td>O desconto n&atilde;o ultrapassa <span class="falta">[[__%%]]</span> da comiss&atilde;o do m&ecirc;s. O saldo passa para os meses seguintes, at&eacute; a quita&ccedil;&atilde;o.</td></tr>
-<tr><td><b>Teto por ocorr&ecirc;ncia</b></td><td><span class="falta">[[R$ ______]]</span> &mdash; acima disso a diretoria decide caso a caso, junto com o profissional.</td></tr>
-<tr><td><b>Base de c&aacute;lculo</b></td><td>Custo de reposi&ccedil;&atilde;o da mat&eacute;ria-prima, comprovado por nota fiscal.</td></tr>
-<tr><td><b>Registro</b></td><td>Toda ocorr&ecirc;ncia com desconto &eacute; registrada por escrito, com o valor e a assinatura das duas partes.</td></tr>
-</table>
-
-<div class="nota ok" style="margin-top:3mm"><div class="h">A contrapartida</div>
-Erro <b>avisado pelo pr&oacute;prio projetista</b>, antes de virar pe&ccedil;a cortada, n&atilde;o gera desconto
-algum &mdash; ainda que a empresa tenha algum custo. Avisar cedo &eacute; o comportamento que a casa quer
-premiar, e ningu&eacute;m aqui &eacute; cobrado por avisar: s&oacute; por esconder.</div>
-
 <div class="local" style="margin-top:4mm">Belo Horizonte, <span class="l"></span> de
 <span class="l"></span> de <span class="s"></span>.</div>
 <div class="assin">
