@@ -28,6 +28,7 @@ DOBR, CORR, PULS = 50.0, 400.0, 100.0
 BASC_XS = 250.0   # Aventos HK-xs — portas pequenas (rack da sala de estar, 20 de altura)
 BASC_S  = 390.0   # Aventos HK-S  — [Jonathan 26/11] basculas da cozinha. ⚠ custo estimado
 PALHA, ESPELHO, VIDRO, LED = 650.0, 600.0, 250.0, 150.0
+VIDRO_LAQ = 480.0   # vidro laqueado (pintado) — frentes de gaveta da adega. ⚠ estimado
 CAVA, CORRER2, CORRER3, TRILHO, PIVO, CABIDE = 50.0, 700.0, 850.0, 350.0, 120.0, 60.0
 
 ITENS = []          # (ambiente, nome, Item)
@@ -101,24 +102,36 @@ I(a, 'Espelheira de correr com LED', '150 × 160 × 15') \
 I(a, 'Prateleira em Imbuia sob a bancada', '150 × 22') \
  .ch(18,150*22/1e4,1,2*(150+22)/100)
 
-# ══════════════ 04 · COZINHA ══════════════════════════════════════════════
+# ══════════════ 04 · COZINHA ═════════════════════════════════════════════
+# [Jonathan 27/11] tres itens: ILHA · ADEGA · RESTANTE.
 a = '04 Cozinha'
-I(a, 'Armário superior de básculas', '408 × 90 × 35') \
- .caixa(408,90,35,prat=1,div=4).frente(82,35,10).frente(82,20,3) \
- .f(BASC_S,13,'Aventos HK-S').f(PULS,13,'Tip-on').f(DOBR,26,'dobradiça Blum').prat(1,408)
-I(a, 'Armário de portas de vidro', '408,5 × 60 × 35') \
- .caixa(408.5,60,35,prat=1,div=2).f(DOBR,6,'dobradiça Blum').prat(1,131) \
- .t(VIDRO*408.5*60/1e4*1.1+200,'3 folhas de vidro (vidraceiro)')
-I(a, 'Balcão inferior com 4 gavetões', '408,5 × 80 × 77') \
- .caixa(408.5,80,77,div=3).frente(112.8,38.5,4) \
- .f(CORR,4,'corrediça Movento').f(CAVA,4,'cava usinada')
-I(a, 'Nichos de forno e lava-e-seca', '59,6 × 70  ·  70 × 90') \
- .caixa(59.6,70,77,fundo=False).caixa(70,90,77,fundo=False)
-I(a, 'Ilha com chopeira', '370 × 90 × 90') \
+
+# --- ADEGA: o armario de portas de vidro da elevacao A -------------------
+# [Jonathan 27/11] interior em MDF GIANDUIA TRAMA, frentes de gaveta em
+# VIDRO LAQUEADO. O detalhamento nao poe gavetas neste armario (so 3 folhas
+# de vidro de 132,6 / 131 / 132,9); as 16 gavetas de frente de vidro estao
+# na SALA DE JANTAR, logo abaixo da cristaleira — o laqueado foi para la.
+I(a, 'ADEGA — armário de portas de vidro', '408,5 × 60 × 35') \
+ .caixa(408.5,60,35,prat=1,div=2).prat(1,131) \
+ .f(DOBR,6,'dobradiça Blum') \
+ .t(VIDRO*408.5*60/1e4*1.1+200,'3 folhas de vidro temperado (vidraceiro)') \
+ .t(900,'serralheria: perfil metálico de moldura das 3 folhas') \
+ .t(LED*4.1,'LED das prateleiras da adega')
+
+# --- ILHA -----------------------------------------------------------------
+I(a, 'ILHA com chopeira', '370 × 90 × 90') \
  .caixa(370,90,90,div=3).frente(91.5,87,1).frente(91.5,38.5,4) \
  .frente(91.5,20,2).frente(91.5,19.1,1) \
  .f(DOBR,2,'dobradiça Blum').f(CORR,7,'corrediça Movento').f(CAVA,7,'cava usinada') \
  .t(300,'serralheiro: recorte e ponto da chopeira')
+
+# --- RESTANTE: tudo o mais da cozinha num item so -------------------------
+I(a, 'RESTANTE da cozinha', 'elevação A, 590,5 × 270') \
+ .caixa(408,90,35,prat=1,div=4).frente(82,35,10).frente(82,20,3) \
+ .f(BASC_S,13,'Aventos HK-S').f(PULS,13,'Tip-on').f(DOBR,26,'dobradiça Blum').prat(1,408) \
+ .caixa(408.5,80,77,div=3).frente(112.8,38.5,4) \
+ .f(CORR,4,'corrediça Movento').f(CAVA,4,'cava usinada') \
+ .caixa(59.6,70,77,fundo=False).caixa(70,90,77,fundo=False)
 
 # ══════════════ 05 · ESCRITÓRIO ═══════════════════════════════════════════
 a = '05 Escritório'
@@ -166,8 +179,9 @@ I(a, 'Cristaleira com portas de vidro', '150 × 175 × 35') \
  .caixa(150,175,35,prat=4,div=1).prat(4,150).f(DOBR,4,'dobradiça Blum') \
  .t(VIDRO*150*175/1e4*1.1+200,'2 folhas de vidro (vidraceiro)')
 I(a, 'Gaveteiro de 16 gavetas sob a pedra', '372,5 × 87 × 40') \
- .caixa(372.5,87,40,div=3,fundo=True).frente(92.6,19.3,16) \
- .f(CORR,16,'corrediça Movento').f(CAVA,16,'cava usinada')
+ .caixa(372.5,87,40,div=3,fundo=True) \
+ .f(CORR,16,'corrediça Movento').f(CAVA,16,'cava usinada') \
+ .t(VIDRO_LAQ*92.6*19.3*16/1e4*1.1,'⭐ frentes das 16 gavetas em VIDRO LAQUEADO [Jonathan 27/11]')
 I(a, 'Nicho das duas adegas', '150 × 87 × 60').caixa(150,87,60,div=1)
 
 # ══════════════ 14 · SUÍTE MASTER ═════════════════════════════════════════

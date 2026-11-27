@@ -213,6 +213,27 @@
      "custo": 400,
      "unidade": "chapa",
      "obs": "a partir de 400"
+    },
+    {
+     "produto": "MDF Gianduia Trama",
+     "variacao": "6mm",
+     "custo": 300,
+     "unidade": "chapa",
+     "obs": "interior da adega do projeto Karylen [Jonathan 27/11/2026]. ⚠ PISO DO MELAMINICO FOSCO, E UM MINIMO: \"trama\" e textura e textura custa acima do fosco liso. Mesmo furo ja registrado no Eliuton 2a fase e no dossie da Nadia & Maurilio - terceira vez."
+    },
+    {
+     "produto": "MDF Gianduia Trama",
+     "variacao": "15mm",
+     "custo": 500,
+     "unidade": "chapa",
+     "obs": "interior da adega do projeto Karylen [Jonathan 27/11/2026]. ⚠ PISO DO MELAMINICO FOSCO, E UM MINIMO: \"trama\" e textura e textura custa acima do fosco liso. Mesmo furo ja registrado no Eliuton 2a fase e no dossie da Nadia & Maurilio - terceira vez."
+    },
+    {
+     "produto": "MDF Gianduia Trama",
+     "variacao": "18mm",
+     "custo": 600,
+     "unidade": "chapa",
+     "obs": "interior da adega do projeto Karylen [Jonathan 27/11/2026]. ⚠ PISO DO MELAMINICO FOSCO, E UM MINIMO: \"trama\" e textura e textura custa acima do fosco liso. Mesmo furo ja registrado no Eliuton 2a fase e no dossie da Nadia & Maurilio - terceira vez."
     }
    ]
   },
@@ -706,6 +727,13 @@
      "custo": 900,
      "unidade": "m²",
      "obs": null
+    },
+    {
+     "produto": "Vidro laqueado (pintado)",
+     "variacao": "8mm",
+     "custo": 480,
+     "unidade": "m²",
+     "obs": "frentes de gaveta da adega [Jonathan 27/11/2026]. ⚠ CUSTO ESTIMADO, A CONFIRMAR COM O VIDRACEIRO: ~1,9x o temperado incolor 8mm (250). Varia com a cor e se e laqueado em uma ou duas faces."
     }
    ]
   },
