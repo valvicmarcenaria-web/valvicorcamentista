@@ -65,6 +65,7 @@ class I:
         if fundo: s._p('fundo', C, A, 1, 6, 0.0)
         return s
     def frente(s, L, A, q, esp=18, desc='frente'):
+        s._ultL, s._ultq = L, q
         return s._p(desc, L, A, q, esp, 2*(L+A)*q/100)
     def painel(s, C, A, ripado=False, esp=18):
         if ripado:
@@ -77,6 +78,10 @@ class I:
         return s
     # ---- ferragem e terceiro
     def f(s, v, q=1, o=''):
+        # ⭐ a Base cobra CAVA USINADA POR METRO, não por peça: converte pela
+        #   largura da última frente lançada (é nela que a cava corre).
+        if v == CAVA and getattr(s, '_ultL', None):
+            q = round(q * s._ultL / 100.0, 2)
         s.fer += v*q
         if o: s.fers.append((o, q, v))
         if o: s.det.append('%s ×%g' % (o, q))

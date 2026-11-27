@@ -75,6 +75,57 @@ P_CONS  = 'Consum'     # consumíveis
 P_EMB   = 'Embal'      # embalagem
 
 CHAVE_CH = {6: 'MDF cor 6', 15: 'MDF cor 15', 18: 'MDF cor 18'}
+FITA_CH, FILE_CH = 'Fita cor', 'Filetagem automática'
+
+# ⭐ o preço de TUDO vem da Base pela chave. Nada de número solto na célula:
+#   mudou na Base de Custos, mudou aqui. As chaves abaixo são as que a aba
+#   `Base (importada)` realmente tem — conferidas uma a uma em 27/11/2026.
+CH_FER = [
+    ('corrediça touch',  'Corrediça touch Blum'),
+    ('corrediça movento','Corrediça Blum Movento'),
+    ('dobradiça',        'Dobradiça Blum Clip Top'),
+    ('hk-s',             'Báscula Blum HK-S'),
+    ('hk-xs',            'Báscula HK-XS'),
+    ('tip-on',           'Pulsador'),
+    ('cava',             'Cava usinada'),
+    ('suporte',          'Suporte de prateleira'),
+    ('alma de aço',      'Alma de aço'),
+    ('cabideiro',        'Cabideiro'),
+]
+CH_TER = [
+    ('palhinha',          'Palhinha natural'),
+    ('espelho',           'Espelho prata colado'),
+    ('vidro canelado',    'Vidro canelado'),
+    ('vidro laqueado',    'Vidro laqueado'),
+    ('vidro',             'Vidro temperado 8 mm'),
+    ('led',               'LED conjunto'),
+    ('correr',            'Sistema de correr Dominus'),
+    ('mão francesa',      'Serralheria · mão francesa invisível'),
+    ('pivô',              'Serralheria · pivô de alta carga'),
+    ('altura regul',      'Mecanismo de altura regulável'),
+    ('serralh',           'Serralheria · fixação em balanço'),
+    ('vidrac',            'Vidro temperado 8 mm'),
+]
+# preço e unidade de cada chave, como estão na aba Base (importada).
+# Serve só para DERIVAR a quantidade a partir do valor que o levantamento
+# calculou — o preço que a célula usa vem sempre da Base, por VLOOKUP.
+UN_CH = {
+    'Palhinha natural': (650.0, 'm²'), 'Espelho prata colado': (600.0, 'm²'),
+    'Vidro temperado 8 mm': (250.0, 'm²'), 'Vidro laqueado': (480.0, 'm²'),
+    'Vidro canelado': (320.0, 'm²'), 'LED conjunto': (150.0, 'm'),
+    'Sistema de correr Dominus': (800.0, 'conjunto'),
+    'Serralheria · mão francesa invisível': (300.0, 'un'),
+    'Serralheria · pivô de alta carga': (960.0, 'conjunto'),
+    'Serralheria · fixação em balanço': (300.0, 'conjunto'),
+    'Serralheria · perfil de moldura': (900.0, 'conjunto'),
+    'Mecanismo de altura regulável': (900.0, 'un'),
+}
+
+def chave_de(nome, tabela, default):
+    n = nome.lower()
+    for k, v in tabela:
+        if k in n: return v
+    return default
 
 def monta(nome_amb, itens_amb, chapas):
     """Devolve (linhas, marcadores) de uma aba de ambiente."""
@@ -96,7 +147,7 @@ def monta(nome_amb, itens_amb, chapas):
               'chapa', PRECO('$K%d' % (len(A.ln)+1)), None, '', CHAVE_CH[esp])
         A.ln[-1][8] = (lambda r=len(A.ln): (lambda ix: '=ROUND($F%d*$H%d;2)' % (r, r)))()
     amb_chapa_fim = len(A.ln)
-    for ch, un in (('Fita de borda cor', 'm'), ('Filetagem máquina', 'm')):
+    for ch, un in ((FITA_CH, 'm'), (FILE_CH, 'm')):
         r = len(A.ln) + 1
         A.add('', 'Insumo', ch, '', '',
               (lambda c=ch: (lambda ix: '=ROUND(SUMIF($K$%d:$K$%d;"%s";$F$%d:$F$%d);2)'
@@ -156,19 +207,25 @@ def pecas_e_fim(A, itens_amb):
                   CHAVE_CH[esp])
         ft = round(it.fita*1.15, 2)
         if ft:
-            for ch in ('Fita de borda cor', 'Filetagem máquina'):
+            for ch in (FITA_CH, FILE_CH):
                 r = len(A.ln) + 1
                 A.add('', 'Insumo', ch + ' · perímetro aparente ×1,15', '', '', ft, 'm',
                       PRECO('$K%d' % r),
                       (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', ch)
         for nome, q, v in it.fers:
             r = len(A.ln) + 1
-            A.add('', 'Ferragem', nome, '', '', q, 'un', v,
-                  (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', 'ferragem')
+            k = chave_de(nome, CH_FER, 'Dobradiça')
+            un = 'm' if k == 'Cava usinada' else ('por gaveta' if 'touch' in k.lower() else 'un')
+            A.add('', 'Ferragem', nome, '', '', q, un, PRECO('$K%d' % r),
+                  (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', k)
         for nome, v in it.ters:
             r = len(A.ln) + 1
-            A.add('', 'Terceiro', nome, '', '', 1, 'vb', round(v, 2),
-                  (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', 'terceiro')
+            k = chave_de(nome, CH_TER, 'Serralheria · fixação em balanço')
+            if 'perfil metálico' in nome.lower(): k = 'Serralheria · perfil de moldura'
+            pu, un = UN_CH.get(k, (v, 'vb'))
+            q = round(v / pu, 4) if pu else 1
+            A.add('', 'Terceiro', nome, '', '', q, un, PRECO('$K%d' % r),
+                  (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', k)
         r = len(A.ln) + 1
         A.add('', 'Consumíveis', 'cola, parafuso, limpeza e acabamento · 6% de chapa e fita',
               '', '', 1, 'vb',
