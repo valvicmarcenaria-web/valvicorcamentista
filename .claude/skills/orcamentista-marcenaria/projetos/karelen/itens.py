@@ -28,7 +28,10 @@ DOBR, CORR, PULS = 50.0, 400.0, 100.0
 BASC_XS = 250.0   # Aventos HK-xs — portas pequenas (rack da sala de estar, 20 de altura)
 BASC_S  = 390.0   # Aventos HK-S  — [Jonathan 26/11] basculas da cozinha. ⚠ custo estimado
 PALHA, ESPELHO, VIDRO, LED = 650.0, 600.0, 250.0, 150.0
-VIDRO_LAQ = 480.0   # vidro laqueado (pintado) — frentes de gaveta da adega. ⚠ estimado
+VIDRO_LAQ = 480.0   # vidro laqueado (pintado) ⚠ estimado
+TOUCH     = 500.0   # corrediça touch (regra 5) — substitui corrediça E pulsador
+MAOFRAN   = 300.0   # mão francesa invisível (serralheiro), por peça
+REGUL     = 900.0   # ⚠ coluna de altura regulável 50/70 — ESTIMADO, não está na Base
 CAVA, CORRER2, CORRER3, TRILHO, PIVO, CABIDE = 50.0, 700.0, 850.0, 350.0, 120.0, 60.0
 
 ITENS = []          # (ambiente, nome, Item)
@@ -180,8 +183,7 @@ I(a, 'Cristaleira com portas de vidro', '150 × 175 × 35') \
  .t(VIDRO*150*175/1e4*1.1+200,'2 folhas de vidro (vidraceiro)')
 I(a, 'Gaveteiro de 16 gavetas sob a pedra', '372,5 × 87 × 40') \
  .caixa(372.5,87,40,div=3,fundo=True) \
- .f(CORR,16,'corrediça Movento').f(CAVA,16,'cava usinada') \
- .t(VIDRO_LAQ*92.6*19.3*16/1e4*1.1,'⭐ frentes das 16 gavetas em VIDRO LAQUEADO [Jonathan 27/11]')
+ .f(CORR,16,'corrediça Movento').f(CAVA,16,'cava usinada').frente(92.6,19.3,16)
 I(a, 'Nicho das duas adegas', '150 × 87 × 60').caixa(150,87,60,div=1)
 
 # ══════════════ 14 · SUÍTE MASTER ═════════════════════════════════════════
@@ -246,3 +248,97 @@ def fechar():
                                corte=c_corte, fer=it.fer, ter=it.ter, cd=cd))
         res[amb] = dict(chapas=chapas, itens=linhas, cd=sum(l['cd'] for l in linhas))
     return res
+
+# ══════════════ 2b · ÁREA DE SERVIÇO — complemento (lavanderia) ═══════════
+a = '02 Área de serviço'
+I(a, 'Armário de básculas da lavanderia', '170 × 80 × 40') \
+ .caixa(170,80,40,div=1).frente(85,37.5,4) \
+ .f(BASC_S,4,'Aventos HK-S').f(PULS,4,'Tip-on').f(DOBR,8,'dobradiça Blum')
+I(a, 'Armários sob a bancada em L', '170 + 200 × 88 × 60') \
+ .caixa(170,88,60,div=1).caixa(200,88,60,div=2) \
+ .frente(63.8,88,2).frente(41,88,1).frente(60,88,1) \
+ .f(DOBR,8,'dobradiça Blum').f(CAVA,4,'cava usinada').prat(1,41) \
+ .f(CABIDE,1,'cabideiro inox')
+I(a, 'Armários da elevação A', '40 × 80  ·  70 + 64 + 64 × 88') \
+ .caixa(40,80,40,prat=1).caixa(70,88,60).caixa(128,88,60,div=1) \
+ .frente(64,78,2).f(DOBR,4,'dobradiça Blum').prat(1,40)
+I(a, 'Painel de fechamento da elevação A', '89,6 × 255').painel(89.6,255)
+I(a, 'Armário alto e nicho da elevação E', '40 × 40  ·  30') \
+ .caixa(40,40,40).caixa(30,30,40,fundo=False).f(DOBR,2,'dobradiça Blum')
+I(a, 'Porta de vidro da área de serviço', '80 × 209') \
+ .t(VIDRO*80*209/1e4*1.1+200,'vidraceiro')
+
+# ══════════════ 9 · SUÍTE 01 (menina) ═════════════════════════════════════
+a = '09 Suíte 01 (menina)'
+I(a, 'Painel ripado da elevação A', '304,5 × 110') \
+ .painel(304.5,110,ripado=True)
+I(a, 'Prateleiras com mão francesa invisível', '2 × 100 × 27') \
+ .ch(18,2*100*27/1e4,2,2*2*(100+27)/100).t(MAOFRAN*2,'mão francesa invisível ×2')
+I(a, 'Escrivaninha com altura regulável', '282,5 × 50') \
+ .caixa(282.5,50,50,div=3,fundo=False).frente(70,12,4) \
+ .f(TOUCH,4,'corrediça TOUCH (fecho toque)') \
+ .t(REGUL,'⚠ mecanismo de altura regulável 50/70 cm')
+I(a, 'Painel, porta de correr e rodapé (elev. B)', '437,5 × 270') \
+ .painel(437.5,270).frente(90,260,1) \
+ .t(CORRER2+TRILHO,'sistema de correr')
+I(a, 'Prateleira Tauari da elevação B', '59,5 × 27') \
+ .ch(18,59.5*27/1e4,1,2*(59.5+27)/100).t(MAOFRAN,'mão francesa invisível')
+I(a, 'Painel ripado da elevação C', '304,5 × 110') \
+ .painel(304.5,110,ripado=True)
+I(a, 'Armário da planta (parede do topo)', '298,5 × 270 × 59,5') \
+ .caixa(198.5,270,59.5,prat=2,div=1).caixa(100,270,59.5,prat=2) \
+ .frente(99,260,2).frente(100,260,1).f(DOBR,9,'dobradiça Blum').prat(4,99)
+
+# ══════════════ 11 · SUÍTE 02 (menino) ════════════════════════════════════
+a = '11 Suíte 02 (menino)'
+I(a, 'Painel ripado azul petróleo (elev. A)', '304,5 × 120 · ripas 1×1') \
+ .painel(304.5,120,ripado=True)
+I(a, 'Painel e porta (elev. B)', '437,5 × 260') \
+ .painel(437.5,260).frente(103,260,1) \
+ .t(CORRER2+TRILHO,'sistema de correr').f(DOBR,3,'dobradiça Blum')
+I(a, 'Painel ripado e nichos Tauari (elev. C)', '304,5 × 208 · ripas 10×2') \
+ .painel(304.5,208,ripado=True) \
+ .caixa(70,20,25,fundo=True).caixa(70,20,25,fundo=True)
+I(a, 'Escrivaninha com altura regulável', '304,5 × 50') \
+ .caixa(304.5,50,50,div=3,fundo=False).frente(70,12,4) \
+ .f(TOUCH,4,'corrediça TOUCH (fecho toque)') \
+ .t(REGUL,'⚠ mecanismo de altura regulável 50/70 cm')
+I(a, 'Guarda-roupa de 3 portas de correr (elev. D)', '437,5 × 270 × 60') \
+ .caixa(437.5,270,60,prat=3,div=2).frente(145.8,268,3) \
+ .prat(3,145).f(CABIDE,2,'cabideiro') \
+ .t(CORRER3+TRILHO,'sistema de correr 3 portas')
+
+# ══════════════ 10 · BANHO 01 (da suíte da menina) ════════════════════════
+# MDF GIANDUIA-LIDER. ⛔ bancada e cuba em pietra Lombarda Viva Sabbia
+# 90x90 Portobello, box de vidro e rodapé em pietra: não são nossos.
+a = '10 Banho 01'
+I(a, 'Torre de armário', '58 × 270 × 35') \
+ .caixa(58,270,35,prat=2,div=0).frente(56,106,1).frente(56,68,1) \
+ .prat(2,58).f(DOBR,4,'dobradiça Blum').f(CAVA,2,'cava usinada')
+I(a, 'Gaveteiro sob a bancada', '123 × 61 × 45') \
+ .caixa(123,61,45,fundo=True).frente(121,20,3) \
+ .f(CORR,3,'corrediça Movento').f(CAVA,3,'cava usinada')
+I(a, 'Espelho com fixação flutuante e LED', '123 × 152,5') \
+ .t(ESPELHO*123*152.5/1e4*1.1,'espelho Crystal Prata 5 mm') \
+ .t(LED*3.0,'iluminação LED')
+
+# ══════════════ 12 · BANHO 02 (da suíte do menino) ════════════════════════
+# MDF GIANDUIA-LIDER. Ambiente de 235 × 270. ⛔ bancada esculpida em pietra
+# (110 × 55 × 20, cuba 60 × 35), louças e metais Mix and Match: não são nossos.
+a = '12 Banho 02'
+I(a, 'Gaveteiro sob a bancada', '110 × 61 × 45') \
+ .caixa(110,61,45,fundo=True).frente(108,20,3) \
+ .f(CORR,3,'corrediça Movento').f(CAVA,3,'cava usinada')
+I(a, 'Espelho com fixação flutuante e LED', '110 × 150') \
+ .t(ESPELHO*110*150/1e4*1.1,'espelho Crystal Prata 5 mm') \
+ .t(LED*2.7,'iluminação LED')
+
+# ══════════════ 13 · LAVABO ═══════════════════════════════════════════════
+# MDF GIANDUIA-LIDER. ⛔ bancada e cuba esculpida em pedra, espelho redondo
+# com moldura e revestimento: conferir com a prancha 02/04 a 04/04.
+a = '13 Lavabo'
+I(a, 'Gabinete suspenso', '100 × 50 × 45') \
+ .caixa(100,50,45,fundo=True).frente(98,20,2) \
+ .f(CORR,2,'corrediça Movento').f(CAVA,2,'cava usinada')
+I(a, 'Espelho', '80 × 120') \
+ .t(ESPELHO*80*120/1e4*1.1,'espelho Crystal Prata 5 mm').t(LED*2.0,'iluminação LED')
