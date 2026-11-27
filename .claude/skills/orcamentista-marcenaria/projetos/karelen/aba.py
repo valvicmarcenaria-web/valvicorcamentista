@@ -69,6 +69,14 @@ class Aba:
 # ⭐ intervalos nomeados: a fórmula fica curta e legível, e um só lugar
 #   aponta para a Base. Criados na planilha por addNamedRange.
 def PRECO(k):   return '=IFERROR(VLOOKUP(%s;Base;2;FALSE);0)' % k
+
+# ⭐⭐ as TRÊS fórmulas de linha de peça, idênticas em toda linha — é isso
+#   que permite gravar só os dados e replicá-las com copyPaste.
+#   I decide sozinha: se a linha tem ÁREA (J), paga por chapa; senão, F × H.
+def F_H(r): return '=IFERROR(VLOOKUP($K%d;Base;2;FALSE);0)' % r
+def F_I(r): return ('=ROUND(IF($J%d="";$F%d*$H%d;$J%d/ChapaM2/Aprov*$H%d);2)'
+                    % (r, r, r, r, r))
+def F_J(r): return '=IF($D%d="";"";ROUND($D%d*$E%d*$F%d/10000;4))' % (r, r, r, r)
 P_AREA  = 'ChapaM2'    # área útil da chapa (m²)
 P_APROV = 'Aprov'      # aproveitamento
 P_CONS  = 'Consum'     # consumíveis
@@ -200,43 +208,39 @@ def pecas_e_fim(A, itens_amb):
         a = len(A.ln) + 1
         for desc, C, Lg, q, esp, fita in it.lista:
             r = len(A.ln) + 1
-            A.add('', 'Chapa %d mm' % esp, desc, C, Lg, q, 'pç', PRECO('$K%d' % r),
-                  (lambda rr=r: (lambda ix: '=ROUND($J%d/%s/%s*$H%d;2)'
-                     % (rr, P_AREA, P_APROV, rr)))(),
-                  (lambda rr=r: (lambda ix: '=ROUND($D%d*$E%d*$F%d/10000;4)' % (rr, rr, rr)))(),
-                  CHAVE_CH[esp])
+            A.add('', 'Chapa %d mm' % esp, desc, C, Lg, q, 'pç',
+                  F_H(r), F_I(r), F_J(r), CHAVE_CH[esp])
         ft = round(it.fita*1.15, 2)
         if ft:
             for ch in (FITA_CH, FILE_CH):
                 r = len(A.ln) + 1
                 A.add('', 'Insumo', ch + ' · perímetro aparente ×1,15', '', '', ft, 'm',
-                      PRECO('$K%d' % r),
-                      (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', ch)
+                      F_H(r), F_I(r), F_J(r), ch)
         for nome, q, v in it.fers:
             r = len(A.ln) + 1
             k = chave_de(nome, CH_FER, 'Dobradiça')
             un = 'm' if k == 'Cava usinada' else ('por gaveta' if 'touch' in k.lower() else 'un')
-            A.add('', 'Ferragem', nome, '', '', q, un, PRECO('$K%d' % r),
-                  (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', k)
+            A.add('', 'Ferragem', nome, '', '', q, un, F_H(r), F_I(r), F_J(r), k)
         for nome, v in it.ters:
             r = len(A.ln) + 1
             k = chave_de(nome, CH_TER, 'Serralheria · fixação em balanço')
             if 'perfil metálico' in nome.lower(): k = 'Serralheria · perfil de moldura'
             pu, un = UN_CH.get(k, (v, 'vb'))
             q = round(v / pu, 4) if pu else 1
-            A.add('', 'Terceiro', nome, '', '', q, un, PRECO('$K%d' % r),
-                  (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', k)
+            A.add('', 'Terceiro', nome, '', '', q, un, F_H(r), F_I(r), F_J(r), k)
         r = len(A.ln) + 1
-        A.add('', 'Consumíveis', 'cola, parafuso, limpeza e acabamento · 6% de chapa e fita',
-              '', '', 1, 'vb',
-              (lambda aa=a, rr=r: (lambda ix: '=ROUND(SUMPRODUCT(($K$%d:$K$%d<>"ferragem")*($K$%d:$K$%d<>"terceiro")*$I$%d:$I$%d)*%s;2)'
-                 % (aa, rr-1, aa, rr-1, aa, rr-1, P_CONS)))(),
-              (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', 'consumível')
+        # ⭐ QTD = base de cálculo (chapa + fita do bloco) · R$ UN = 6% da Base
+        #   pela chave `Consumíveis`. Assim a linha usa a MESMA fórmula de I
+        #   que todas as outras e sobrevive à réplica por copyPaste.
+        A.add('', 'Consumíveis', 'cola, parafuso, limpeza e acabamento · % sobre chapa e fita',
+              '', '',
+              (lambda aa=a, rr=r: (lambda ix: '=ROUND(SUMPRODUCT(($K$%d:$K$%d<>"ferragem")*($K$%d:$K$%d<>"terceiro")*$I$%d:$I$%d);2)'
+                 % (aa, rr-1, aa, rr-1, aa, rr-1)))(),
+              'R$', F_H(r), F_I(r), F_J(r), 'Consumíveis')
         r = len(A.ln) + 1
-        A.add('', 'Corte', 'R$ 2,50 por peça (regra 10)', '', '',
+        A.add('', 'Corte', 'por peça de chapa (regra 10)', '', '',
               (lambda aa=a, rr=r: (lambda ix: '=SUMIF($K$%d:$K$%d;"MDF*";$F$%d:$F$%d)' % (aa, rr-1, aa, rr-1)))(),
-              'pç', CORTE_PC,
-              (lambda rr=r: (lambda ix: '=ROUND($F%d*$H%d;2)' % (rr, rr)))(), '', 'corte')
+              'pç', F_H(r), F_I(r), F_J(r), 'Corte por peça')
         r = len(A.ln) + 1
         A.add('', 'TOTAL DO ITEM %02d' % i, '', '', '', '', '', '',
               (lambda aa=a: (lambda ix: '=ROUND(SUM(OFFSET($I$%d;0;0;MAX(1;ROW()-%d);1));2)' % (aa, aa)))())
