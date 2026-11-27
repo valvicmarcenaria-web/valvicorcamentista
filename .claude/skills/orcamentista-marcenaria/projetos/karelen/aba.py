@@ -66,12 +66,13 @@ class Aba:
 # ── colunas ───────────────────────────────────────────────────────────────
 # A rótulo · B MATERIAL · C ESPECIFICAÇÃO · D C · E L · F QTD · G UN
 # H R$ UN · I CUSTO · J (livre) · K CHAVE NA BASE
-BASE = "'Base (importada)'"
-def PRECO(k):   return '=IFERROR(VLOOKUP(%s;%s!$A:$B;2;FALSE);0)' % (k, BASE)
-P_AREA  = "%s!$B$7"  % BASE      # área útil da chapa (m²)
-P_APROV = "%s!$B$8"  % BASE      # aproveitamento
-P_CONS  = "%s!$B$9"  % BASE      # consumíveis
-P_EMB   = "%s!$B$10" % BASE      # embalagem
+# ⭐ intervalos nomeados: a fórmula fica curta e legível, e um só lugar
+#   aponta para a Base. Criados na planilha por addNamedRange.
+def PRECO(k):   return '=IFERROR(VLOOKUP(%s;Base;2;FALSE);0)' % k
+P_AREA  = 'ChapaM2'    # área útil da chapa (m²)
+P_APROV = 'Aprov'      # aproveitamento
+P_CONS  = 'Consum'     # consumíveis
+P_EMB   = 'Embal'      # embalagem
 
 CHAVE_CH = {6: 'MDF cor 6', 15: 'MDF cor 15', 18: 'MDF cor 18'}
 
@@ -89,9 +90,9 @@ def monta(nome_amb, itens_amb, chapas):
     for esp in sorted(chapas):
         k = CHAVE_CH[esp]
         A.add('', 'Chapa', 'MDF %d mm · o que o ambiente compra' % esp, '', '',
-              (lambda e=esp: (lambda ix: '=ROUNDUP(ROUND(SUMPRODUCT(($K$%d:$K$%d="%s")*$D$%d:$D$%d*$E$%d:$E$%d*$F$%d:$F$%d)/10000/%s/%s;6);0)'
-                 % (ix['pec_ini'], ix['pec_fim'], T(CHAVE_CH[e]), ix['pec_ini'], ix['pec_fim'],
-                    ix['pec_ini'], ix['pec_fim'], ix['pec_ini'], ix['pec_fim'], P_AREA, P_APROV)))(),
+              (lambda e=esp: (lambda ix: '=ROUNDUP(ROUND(SUMIF($K$%d:$K$%d;"%s";$J$%d:$J$%d)/%s/%s;6);0)'
+                 % (ix['pec_ini'], ix['pec_fim'], T(CHAVE_CH[e]),
+                    ix['pec_ini'], ix['pec_fim'], P_AREA, P_APROV)))(),
               'chapa', PRECO('$K%d' % (len(A.ln)+1)), None, '', CHAVE_CH[esp])
         A.ln[-1][8] = (lambda r=len(A.ln): (lambda ix: '=ROUND($F%d*$H%d;2)' % (r, r)))()
     amb_chapa_fim = len(A.ln)
@@ -144,13 +145,15 @@ def pecas_e_fim(A, itens_amb):
     for i, L in enumerate(itens_amb, 1):
         it = L['it']
         A.add('', 'ITEM %02d · %s' % (i, it.nome), it.medida)
-        A.add('', 'MATERIAL', 'ESPECIFICAÇÃO', 'C', 'L', 'QTD', 'UN', 'R$ UN', 'CUSTO', '', 'CHAVE')
+        A.add('', 'MATERIAL', 'ESPECIFICAÇÃO', 'C', 'L', 'QTD', 'UN', 'R$ UN', 'CUSTO', 'M²', 'CHAVE')
         a = len(A.ln) + 1
         for desc, C, Lg, q, esp, fita in it.lista:
             r = len(A.ln) + 1
             A.add('', 'Chapa %d mm' % esp, desc, C, Lg, q, 'pç', PRECO('$K%d' % r),
-                  (lambda rr=r, e=esp: (lambda ix: '=ROUND($D%d*$E%d*$F%d/10000/%s/%s*$H%d;2)'
-                     % (rr, rr, rr, P_AREA, P_APROV, rr)))(), '', CHAVE_CH[esp])
+                  (lambda rr=r: (lambda ix: '=ROUND($J%d/%s/%s*$H%d;2)'
+                     % (rr, P_AREA, P_APROV, rr)))(),
+                  (lambda rr=r: (lambda ix: '=ROUND($D%d*$E%d*$F%d/10000;4)' % (rr, rr, rr)))(),
+                  CHAVE_CH[esp])
         ft = round(it.fita*1.15, 2)
         if ft:
             for ch in ('Fita de borda cor', 'Filetagem máquina'):
@@ -224,10 +227,10 @@ def pecas_e_fim(A, itens_amb):
                 ix['pec_ini'], ix['pec_fim'])),
         # 2 · o painel do ambiente derива das mesmas peças: a área de chapa
         #     lida pelo painel tem de ser a área somada das linhas de chapa
-        ('painel × peças — área de chapa em m²',
-         lambda ix: '=ROUND(SUMPRODUCT(($K$%d:$K$%d="MDF cor 18")+($K$%d:$K$%d="MDF cor 15")+($K$%d:$K$%d="MDF cor 6");$D$%d:$D$%d*$E$%d:$E$%d*$F$%d:$F$%d)/10000-SUMPRODUCT(($K$%d:$K$%d="MDF cor 18")+($K$%d:$K$%d="MDF cor 15")+($K$%d:$K$%d="MDF cor 6");$D$%d:$D$%d*$E$%d:$E$%d*$F$%d:$F$%d)/10000;4)'
-             % ((ix['pec_ini'], ix['pec_fim'])*3 + (ix['pec_ini'], ix['pec_fim'])*3
-                + (ix['pec_ini'], ix['pec_fim'])*3 + (ix['pec_ini'], ix['pec_fim'])*3)),
+        ('nenhuma peça sem preço — linhas com chave e R$ UN zerado',
+         lambda ix: '=SUMPRODUCT(($K$%d:$K$%d<>"")*($K$%d:$K$%d<>"corte")*($H$%d:$H$%d=0))'
+             % (ix['pec_ini'], ix['pec_fim'], ix['pec_ini'], ix['pec_fim'],
+                ix['pec_ini'], ix['pec_fim'])),
         # 3 · o custo direto é exatamente itens + logística + embalagem
         ('custo direto × itens + logística + embalagem',
          lambda ix: '=ROUND($I$%d-SUM($I$%d:$I$%d)-$I$%d-$I$%d;2)'
